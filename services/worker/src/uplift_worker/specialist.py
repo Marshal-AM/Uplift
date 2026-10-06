@@ -28,9 +28,12 @@ def intake(task: dict, schema: list[dict], answers: list[str]) -> dict[str, Any]
               for f in schema if f["type"] != "none" and f["id"] != "context"]
     return llm.structured(
         f"A merchant assigned this Task:\nTitle: {task.get('name')}\nBrief: {task.get('description')}\n"
-        f"Follow-up answers: {answers}\nFill the form fields from the brief. Leave unknown fields empty. "
-        "Set uses_connected_store if the work is about a product in the merchant's own store (not pasted copy/URLs), "
-        "and product_hint to its name/handle/URL if mentioned.\nFields: " + json.dumps(fields),
+        f"Follow-up answers: {answers}\nFill the form fields from the brief. Copy any content the merchant pasted "
+        "(product copy, HTML, ad text, URLs, image links) verbatim and in full into the matching field. Leave unknown "
+        "fields empty. "
+        "Set uses_connected_store to true only if the merchant wants you to work on a product in their store and has "
+        "NOT given you the copy, URLs or images the work needs; pasted content means false. Set product_hint to the "
+        "product's name/handle/URL if mentioned.\nFields: " + json.dumps(fields),
         {"type": "object", "properties": {
             "values": {"type": "object", "additionalProperties": {"type": "string"}},
             "uses_connected_store": {"type": "boolean"}, "product_hint": {"type": "string"},

@@ -1,11 +1,14 @@
 """Uplift Worker: one executor loop per coworker, plus chat (Responses API) and hook endpoints."""
 
 import asyncio
+import base64
 import hashlib
 import hmac
 import json
 import logging
+import os
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 import uvicorn
 from fastapi import FastAPI, Header, HTTPException, Request
@@ -110,6 +113,18 @@ async def cre_result(request: Request, authorization: str | None = Header(None))
     return {"ok": True}
 
 
+def _install_cre_session() -> None:
+    """`cre workflow simulate` requires a CRE login. Seed the CLI's session (its refresh token is not rotated, so
+    this copy refreshes independently) from CRE_SESSION_B64 / CRE_CONTEXT_B64."""
+    home = Path.home() / ".cre"
+    for var, name in (("CRE_SESSION_B64", "cre.yaml"), ("CRE_CONTEXT_B64", "context.yaml")):
+        if os.environ.get(var):
+            home.mkdir(mode=0o700, exist_ok=True)
+            (home / name).write_bytes(base64.b64decode(os.environ[var]))
+            (home / name).chmod(0o600)
+
+
 def run() -> None:
     logging.basicConfig(level=logging.INFO)
+    _install_cre_session()
     uvicorn.run("uplift_worker.app:app", host="0.0.0.0", port=settings().port)

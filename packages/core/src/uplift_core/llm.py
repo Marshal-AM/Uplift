@@ -9,14 +9,16 @@ from typing import Any
 import boto3
 from botocore.config import Config
 
-MODEL_ID = os.environ.get("BEDROCK_MODEL_ID", "global.anthropic.claude-sonnet-5-5")
+# One model for text and image inputs, one region. Auth: the Bedrock API key in AWS_BEARER_TOKEN_BEDROCK.
+MODEL_ID = os.environ.get("BEDROCK_MODEL_ID", "us.xai.grok-4.7")
+REGION = os.environ.get("AWS_REGION", "us-east-1")
 
 
 @lru_cache
 def _client():
     return boto3.client(
         "bedrock-runtime",
-        region_name=os.environ.get("AWS_REGION", "us-east-1"),
+        region_name=REGION,
         config=Config(retries={"max_attempts": 5, "mode": "adaptive"}, read_timeout=300),
     )
 
@@ -36,7 +38,7 @@ def text(prompt: str, system: str = "", max_tokens: int = 4000, images: list[byt
         modelId=MODEL_ID,
         system=[{"text": system}] if system else [],
         messages=[{"role": "user", "content": _content(prompt, images, None)}],
-        inferenceConfig={"maxTokens": max_tokens, "temperature": 0.4},
+        inferenceConfig={"maxTokens": max_tokens},
     )
     return "".join(b.get("text", "") for b in resp["output"]["message"]["content"])
 
@@ -48,14 +50,13 @@ def structured(
     max_tokens: int = 4000,
     images: list[bytes] | None = None,
     documents: list[tuple[str, bytes]] | None = None,
-    temperature: float = 0.2,
 ) -> dict[str, Any]:
     """Return JSON matching `schema` by forcing the model to call a single `respond` tool."""
     resp = _client().converse(
         modelId=MODEL_ID,
         system=[{"text": system}] if system else [],
         messages=[{"role": "user", "content": _content(prompt, images, documents)}],
-        inferenceConfig={"maxTokens": max_tokens, "temperature": temperature},
+        inferenceConfig={"maxTokens": max_tokens},
         toolConfig={
             "tools": [{"toolSpec": {"name": "respond", "description": "Return the answer.",
                                     "inputSchema": {"json": schema}}}],

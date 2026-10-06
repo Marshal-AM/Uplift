@@ -2,7 +2,7 @@
   "sokosumiApiUrl": "https://api.preprod.sokosumi.com",
   "gatewayUrl": "https://gateway-production-518d.up.railway.app",
   "bedrockRegion": "us-east-1",
-  "bedrockModel": "global.anthropic.claude-sonnet-5-5",
+  "bedrockModel": "us.xai.grok-4.7",
   "secretsOwner": "",
   "authorizedKeys": []
 }

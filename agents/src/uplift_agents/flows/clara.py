@@ -126,7 +126,7 @@ def run(inputs: dict, tracer) -> str:
     styles = ["benefit-led and concise", "story-led and vivid", "spec-led and precise"]
     with ThreadPoolExecutor(3) as pool:
         variants = list(pool.map(lambda st: llm.structured(f"{prompt}\nStyle: {st}", VARIANT_SCHEMA,
-                                                           max_tokens=4000, temperature=0.7), styles))
+                                                           max_tokens=4000), styles))
     scored = [(rubric(v, primary.lower(), secondary, objections, facts, forbidden), v) for v in variants]
     best_score, best = max(scored, key=lambda x: x[0]["total"])
     description = to_html(best["blocks"])

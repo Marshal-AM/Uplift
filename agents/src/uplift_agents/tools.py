@@ -88,7 +88,8 @@ def scrape(url: str, schema: dict | None = None, formats: list | None = None) ->
 
 
 def fetch_bytes(url: str) -> bytes:
-    resp = httpx.get(url, timeout=TIMEOUT, follow_redirects=True)
+    resp = httpx.get(url, timeout=TIMEOUT, follow_redirects=True,
+                     headers={"User-Agent": "Mozilla/5.0 (compatible; UpliftBot/1.0; +https://uplift.example)"})
     resp.raise_for_status()
     return resp.content
 
