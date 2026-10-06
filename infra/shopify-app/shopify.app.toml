@@ -1,0 +1,19 @@
+# Uplift v1 commerce adapter. client_id is filled in by `shopify app config link`.
+name = "Uplift"
+client_id = "ff7a8764f48897525aa72d1068736d1d"
+application_url = "https://gateway-production-518d.up.railway.app/health"
+embedded = false
+
+[access_scopes]
+scopes = "read_products,write_products,write_translations,read_locales,read_discounts,write_discounts,write_content,write_files,read_inventory,read_reports"
+
+[auth]
+redirect_urls = ["https://gateway-production-518d.up.railway.app/connect/shopify/callback"]
+
+[webhooks]
+api_version = "2026-10"
+
+[[webhooks.subscriptions]]
+topics = ["app/uninstalled"]
+compliance_topics = ["customers/redact", "customers/data_request", "shop/redact"]
+uri = "https://gateway-production-518d.up.railway.app/webhooks/shopify"
