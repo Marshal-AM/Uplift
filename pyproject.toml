@@ -1,0 +1,21 @@
+[project]
+name = "uplift"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+
+[tool.uv.workspace]
+members = ["packages/core", "services/gateway", "services/worker", "agents"]
+
+[tool.uv.sources]
+uplift-core = { workspace = true }
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.14"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["B008", "SIM108", "E501", "B905"]
