@@ -1,0 +1,11 @@
+# Uplift CRE project. One workflow: uplift-clearing (verify + publish). It uses no chain, but the CLI requires
+# an RPC entry per target, so the docs' default public Sepolia endpoint is listed.
+local-simulation:
+  rpcs:
+    - chain-name: ethereum-testnet-sepolia
+      url: https://ethereum-sepolia-rpc.publicnode.com
+
+production-settings:
+  rpcs:
+    - chain-name: ethereum-testnet-sepolia
+      url: https://ethereum-sepolia-rpc.publicnode.com
