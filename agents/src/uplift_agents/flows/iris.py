@@ -1,0 +1,252 @@
+"""Iris — Product Visual Designer: audit, cleanup, lifestyle scenes around the real product, channel crops, alt text."""
+
+import base64
+import io
+from concurrent.futures import ThreadPoolExecutor
+
+import imagehash
+import numpy as np
+from kodosumi.core import forms as F
+from PIL import Image, ImageDraw, ImageFilter
+from skimage.metrics import structural_similarity
+from uplift_core import llm
+
+from .. import tools
+from ..runtime import Context, Deliverable
+
+FIELDS = [
+    F.InputArea(label="Image URLs, one per line (skip if your store is connected)", name="image_urls"),
+    F.InputText(label="Product name", name="product_name", required=True),
+    F.InputText(label="Category", name="category", required=True),
+    F.InputText(label="Channels (comma separated: store, google_shopping, google_ads, amazon, social)",
+                name="channels", value="store,google_shopping,google_ads"),
+    F.InputArea(label="Brand style: palette, mood (optional)", name="brand_style"),
+    F.InputArea(label="Scene ideas, one per line (optional)", name="scene_briefs"),
+    F.InputNumber(label="Lifestyle scenes (0–4)", name="lifestyle_count", value="3"),
+    F.InputText(label="Features that must be visible (optional)", name="must_show"),
+]
+
+CHANNELS = {
+    "store": [("store", (2048, 2048), "white")],
+    "google_shopping": [("google_shopping", (1500, 1500), "white")],
+    "google_ads": [("google_ads_square", (1200, 1200), "scene"), ("google_ads_landscape", (1200, 628), "scene")],
+    "amazon": [("amazon_main", (1600, 1600), "white")],
+    "social": [("social", (1080, 1080), "scene")],
+}
+
+AUDIT_SCHEMA = {"type": "object", "properties": {
+    "shot_type": {"type": "string", "enum": ["hero", "angle", "detail", "scale", "lifestyle", "infographic",
+                                             "packaging", "other"]},
+    "background": {"type": "string"}, "lighting_ok": {"type": "boolean"}, "sharp": {"type": "boolean"},
+    "has_text_overlay": {"type": "boolean"}, "has_watermark": {"type": "boolean"}, "issues": {"type": "array",
+                                                                                              "items": {"type": "string"}}},
+    "required": ["shot_type", "has_text_overlay", "issues"]}
+
+
+def _png(img: Image.Image) -> bytes:
+    buf = io.BytesIO()
+    img.save(buf, "PNG")
+    return buf.getvalue()
+
+
+def _jpg(img: Image.Image, quality: int = 90) -> bytes:
+    buf = io.BytesIO()
+    img.convert("RGB").save(buf, "JPEG", quality=quality)
+    return buf.getvalue()
+
+
+def _on_white(cutout: Image.Image) -> Image.Image:
+    """Product cutout (RGBA) cropped to its alpha bbox, composited on white."""
+    rgba = cutout.convert("RGBA")
+    box = rgba.getchannel("A").getbbox() or (0, 0, *rgba.size)
+    crop = rgba.crop(box)
+    white = Image.new("RGBA", crop.size, (255, 255, 255, 255))
+    return Image.alpha_composite(white, crop).convert("RGB")
+
+
+def _place(cutout: Image.Image, size: tuple[int, int], background: tuple[int, int, int, int], fill: float,
+           low: bool = False, shadow: bool = False) -> Image.Image:
+    """Put the RGBA cut-out on a canvas; optional soft contact shadow under it."""
+    canvas = Image.new("RGBA", size, background)
+    scale = min(size[0] * fill / cutout.width, size[1] * fill / cutout.height)
+    product = cutout.resize((max(1, int(cutout.width * scale)), max(1, int(cutout.height * scale))), Image.LANCZOS)
+    x = (size[0] - product.width) // 2
+    y = int(size[1] * 0.92) - product.height if low else (size[1] - product.height) // 2
+    if shadow:
+        ellipse = Image.new("L", size, 0)
+        w, h = int(product.width * 0.9), max(8, int(product.height * 0.06))
+        ImageDraw.Draw(ellipse).ellipse((x + (product.width - w) // 2, y + product.height - h // 2,
+                                         x + (product.width + w) // 2, y + product.height + h // 2), fill=90)
+        ellipse = ellipse.filter(ImageFilter.GaussianBlur(h))
+        canvas = Image.alpha_composite(canvas, Image.merge("RGBA", (*[Image.new("L", size, 0)] * 3, ellipse)))
+    canvas.alpha_composite(product, (x, y))
+    return canvas
+
+
+def _thumb(img: Image.Image) -> tuple[str, np.ndarray]:
+    g = np.asarray(img.convert("L").resize((64, 64), Image.BILINEAR), dtype=np.uint8)
+    return base64.b64encode(g.tobytes()).decode(), g
+
+
+def _fit(img: Image.Image, size: tuple[int, int], fill: float = 0.85) -> Image.Image:
+    """Center the subject on a white canvas filling `fill` of the shorter side."""
+    canvas = Image.new("RGB", size, (255, 255, 255))
+    scale = min(size[0] * fill / img.width, size[1] * fill / img.height)
+    resized = img.resize((max(1, int(img.width * scale)), max(1, int(img.height * scale))), Image.LANCZOS)
+    canvas.paste(resized, ((size[0] - resized.width) // 2, (size[1] - resized.height) // 2))
+    return canvas
+
+
+def _cover(img: Image.Image, size: tuple[int, int]) -> Image.Image:
+    scale = max(size[0] / img.width, size[1] / img.height)
+    resized = img.resize((int(img.width * scale) + 1, int(img.height * scale) + 1), Image.LANCZOS)
+    left, top = (resized.width - size[0]) // 2, (resized.height - size[1]) // 2
+    return resized.crop((left, top, left + size[0], top + size[1]))
+
+
+def _border_mean(img: Image.Image) -> float:
+    a = np.asarray(img.convert("L"), dtype=np.float32)
+    return float(np.concatenate([a[0], a[-1], a[:, 0], a[:, -1]]).mean())
+
+
+def run(inputs: dict, tracer) -> str:
+    ctx = Context.from_inputs(inputs)
+    out = Deliverable("iris", "Iris", ctx)
+    product = ctx.product or {}
+    name = product.get("title") or ctx.get("product_name")
+    channels = [c.strip() for c in ctx.get("channels", "store,google_shopping").split(",") if c.strip() in CHANNELS]
+    sources = [{"id": m["id"], "url": m["image"]["url"], "alt": m.get("alt")}
+               for m in product.get("media", {}).get("nodes", []) if m.get("image")] or \
+              [{"id": None, "url": u, "alt": None} for u in ctx.lines("image_urls")]
+    sources = sources[:8]
+    if not sources:
+        raise RuntimeError("INPUT_MISSING: add product image URLs or connect your store")
+
+    tracer.markdown_sync(f"**Iris** · auditing {len(sources)} images")
+    raw = [tools.fetch_bytes(s["url"]) for s in sources]
+    images = [Image.open(io.BytesIO(b)).convert("RGB") for b in raw]
+    hashes = [imagehash.phash(i) for i in images]
+
+    def audit(i: int) -> dict:
+        a = llm.structured(f"Audit this e-commerce product photo of '{name}'.", AUDIT_SCHEMA,
+                           images=[_jpg(images[i].resize((min(1024, images[i].width),
+                                    int(images[i].height * min(1024, images[i].width) / images[i].width))), 85)])
+        a["width"], a["height"] = images[i].size
+        a["duplicate_of"] = next((j for j in range(i) if hashes[i] - hashes[j] <= 4), None)
+        return a
+
+    with ThreadPoolExecutor(4) as pool:
+        audits = list(pool.map(audit, range(len(images))))
+    have = {a["shot_type"] for a in audits}
+    wanted = ["hero", "angle", "detail", "scale", "lifestyle"]
+    missing = [w for w in wanted if w not in have]
+
+    tracer.markdown_sync("Cutting out the product")
+    hero_idx = next((i for i, a in enumerate(audits) if a["shot_type"] == "hero"), 0)
+    cutout = Image.open(io.BytesIO(tools.remove_background(raw[hero_idx]))).convert("RGBA")
+    cutout = cutout.crop(cutout.getchannel("A").getbbox() or (0, 0, *cutout.size))
+    product_on_white = _on_white(cutout)
+    clean = _place(cutout, (2048, 2048), (255, 255, 255, 255), fill=0.8, shadow=True).convert("RGB")
+
+    count = max(0, min(4, int(ctx.get("lifestyle_count", 3) or 0)))
+    briefs = ctx.lines("scene_briefs")
+    if count and len(briefs) < count:
+        win = ctx.upstream_artifact("priya", "win_plan.json") or []
+        briefs += llm.structured(
+            f"Product: {name} ({ctx.get('category')}). Brand style: {ctx.get('brand_style', 'natural, bright')}. "
+            f"Must show: {ctx.get('must_show', '-')}. Proof ideas: {[w['action'] for w in win if 'image' in w['action_type'].lower()]}\n"
+            f"Write {count - len(briefs)} short photographic background scene prompts (no people, product stays as is).",
+            {"type": "object", "properties": {"scenes": {"type": "array", "items": {"type": "string"}}},
+             "required": ["scenes"]})["scenes"]
+    briefs = briefs[:count]
+
+    tracer.markdown_sync(f"Composing {len(briefs)} lifestyle scenes around the real product")
+
+    def scene(prompt: str) -> dict:
+        # transparent canvas with the product placed low and centred; Stability fills only the transparent area
+        canvas = _place(cutout, (1536, 1536), (0, 0, 0, 0), fill=0.55, low=True)
+        generated = Image.open(io.BytesIO(tools.inpaint_background(_png(canvas), prompt))).convert("RGBA")
+        generated = generated.resize(canvas.size, Image.LANCZOS)
+        img = Image.alpha_composite(generated, canvas).convert("RGB")  # original product pixels on top
+        recut = _on_white(Image.open(io.BytesIO(tools.remove_background(_png(img)))))
+        t_ref, g_ref = _thumb(product_on_white)
+        t_out, g_out = _thumb(recut)
+        ssim = float(structural_similarity(g_ref, g_out, data_range=255))
+        return {"prompt": prompt, "image": img.resize((2048, 2048), Image.LANCZOS), "ssim": ssim,
+                "thumb_ref": t_ref, "thumb_out": t_out}
+
+    with ThreadPoolExecutor(2) as pool:
+        scenes = list(pool.map(scene, briefs))
+    kept = [s for s in scenes if s["ssim"] >= 0.90]
+
+    tracer.markdown_sync("Exporting channel versions and writing alt text")
+    exports, stats = [], []
+    for ch in channels:
+        for label, size, kind in CHANNELS[ch]:
+            if kind == "white":
+                img = _fit(product_on_white, size, 0.85 if ch != "amazon" else 0.9)
+            elif kept:
+                img = _cover(kept[0]["image"], size)
+            else:
+                img = _fit(product_on_white, size)
+            url = out.artifact(f"{label}.jpg", _jpg(img), "image/jpeg")
+            arr = np.asarray(img.convert("L"))
+            fill = float((arr < 245).mean())
+            stats.append({"name": label, "channel": ch, "width": size[0], "height": size[1],
+                          "border_mean": _border_mean(img), "fill_ratio": fill, "kind": kind})
+            exports.append({"name": label, "url": url, "image": img})
+
+    new_media = [{"name": "clean_hero", "image": clean}] + [{"name": f"scene_{i + 1}", "image": s["image"]}
+                                                             for i, s in enumerate(kept)]
+
+    def alt_for(img: Image.Image) -> str:
+        return llm.structured(f"Write alt text (≤125 chars) for this image of '{name}'. Describe what is visible, "
+                              "include the product name, no 'image of'.",
+                              {"type": "object", "properties": {"alt": {"type": "string"}}, "required": ["alt"]},
+                              images=[_jpg(img.resize((768, int(img.height * 768 / img.width))), 85)])["alt"][:125]
+
+    with ThreadPoolExecutor(4) as pool:
+        new_alts = list(pool.map(lambda m: alt_for(m["image"]), new_media))
+        existing_alts = list(pool.map(alt_for, images))
+
+    media_urls = []
+    for m, alt in zip(new_media, new_alts):
+        url = out.artifact(f"{m['name']}.jpg", _jpg(m["image"]), "image/jpeg")
+        media_urls.append({"url": url, "alt": alt, "name": m["name"]})
+    order = llm.structured(
+        f"Order these product images for the product page: hero first, then the image that answers the main buyer "
+        f"objection, angles, lifestyle, detail. Images: "
+        f"{[{'ref': f'existing:{i}', 'type': a['shot_type'], 'alt': existing_alts[i]} for i, a in enumerate(audits) if a['duplicate_of'] is None]}"
+        f" + {[{'ref': f'new:{m['name']}', 'alt': m['alt']} for m in media_urls]}",
+        {"type": "object", "properties": {"order": {"type": "array", "items": {"type": "string"}}},
+         "required": ["order"]})["order"]
+
+    if product.get("id"):
+        out.changeset.append({"op": "media.add", "product_id": product["id"],
+                              "media": [{"url": m["url"], "alt": m["alt"]} for m in media_urls]})
+        files = [{"id": s["id"], "alt": alt} for s, alt in zip(sources, existing_alts) if s["id"]]
+        if files:
+            out.changeset.append({"op": "media.update_alt", "files": files})
+        moves = [{"id": sources[int(r.split(":")[1])]["id"], "newPosition": str(pos)}
+                 for pos, r in enumerate(order) if r.startswith("existing:") and r.split(":")[1].isdigit()
+                 and int(r.split(":")[1]) < len(sources) and sources[int(r.split(":")[1])]["id"]]
+        if moves:
+            out.changeset.append({"op": "media.reorder", "product_id": product["id"], "moves": moves})
+
+    out.artifact("visual_audit.json", {"audits": audits, "missing_shot_types": missing})
+    out.artifact("alt_text.json", {"existing": existing_alts, "new": new_alts})
+    out.artifact("order.json", order)
+    out.artifact("fidelity.json", [{"prompt": s["prompt"], "ssim": s["ssim"], "kept": s in kept} for s in scenes])
+    out.bundle = {
+        "product_name": name, "hero_width": audits[hero_idx]["width"],
+        "exports": stats, "missing_before": missing,
+        "added_types": (["hero"] if "hero" in missing else []) + (["lifestyle"] if kept and "lifestyle" in missing
+                                                                   else []),
+        "alts": new_alts + existing_alts,
+        "scenes": [{"ssim": s["ssim"], "thumb_ref": s["thumb_ref"], "thumb_out": s["thumb_out"]} for s in kept],
+        "overlay_flags": {"google_shopping": False},
+    }
+    return out.finalize(
+        f"Audited {len(images)} images · missing shot types: {', '.join(missing) or 'none'}.\n\n"
+        f"Added a clean white hero and {len(kept)} lifestyle scene(s) built around the real product "
+        f"(fidelity ≥ 0.90). Exported {len(exports)} channel versions and wrote alt text for every image.")
