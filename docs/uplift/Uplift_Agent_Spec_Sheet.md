@@ -31,14 +31,13 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 - **Store writes** are only ever a `changeset` in the Deliverable Manifest. CRE `publish` executes them after the merchant approves the change set in Sokosumi.
 - **Questions to the merchant** use Task `INPUT_REQUIRED`, raised via Kodosumi `tracer.lock`, in standalone mode only.
   - In Nora's Jobs, inputs are complete. A missing input makes the Job fail fast with reason `INPUT_MISSING`, and Nora asks the merchant instead.
-- **All LLM inference** uses **Claude Sonnet 5.5 on Amazon Bedrock**:
-  - Converse API, inference profile `global.anthropic.claude-sonnet-5-5`.
-  - JSON output via the tool-use schema, vision via image content blocks, and document input.
-  - Agents authenticate with the cluster's IAM role.
-  - **Stability AI Image Services on Bedrock** (background removal, inpainting) are used only by Iris.
-  - Translation, grammar, image OCR and keyword clustering are Sonnet 5.5 calls.
+- **All LLM inference** uses **Grok 4.7 on Amazon Bedrock**:
+  - bedrock-runtime Chat Completions API (OpenAI-compatible), inference profile `us.xai.grok-4.7` in `us-east-1`, called over HTTPS with a Bedrock API key.
+  - JSON output via a forced function call, and vision via `image_url` content parts.
+  - Translation, grammar, image OCR and keyword clustering are Grok 4.7 calls.
+- **Image work** is Iris's alone: **remove.bg** for cut-outs and AI shadows, and **Gemini Nano Banana 2.1** for lifestyle background sets. Iris composites the product's own pixels into every image.
 - **CRE judge**
-  - One judge: Claude Sonnet 5.5 on Bedrock, called via Confidential HTTP with `Authorization: Bearer {{.bedrockApiKey}}`.
+  - One judge: Claude Grok 4.7 on Bedrock, called via Confidential HTTP with `Authorization: Bearer {{.bedrockApiKey}}`.
   - It contributes at most 5 points in any profile.
   - If the judge call errors, those points are scored at the neutral midpoint.
 - **Every verify result** (score and PASS/FAIL) is posted as a comment on the Sokosumi Task.
@@ -73,7 +72,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Ads and analytics connection (Google in v1) | only if the plan needs it | Requested per plan |
 
 ### W — Workflow
-1. **Intake.** Bedrock (Sonnet 5.5) extracts the goal, products, markets, constraints and capability tags.
+1. **Intake.** Bedrock (Grok 4.7) extracts the goal, products, markets, constraints and capability tags.
 2. **Connection check.** Nora asks the Gateway whether a link exists for this user or organization. If not, she posts `AUTHENTICATION_REQUIRED` with the connect URL and waits for the Gateway callback.
 3. **Baseline.** Nora takes a store snapshot (Gateway read). She hires **Quinn** in audit mode whenever a listing will change or a diagnosis is requested.
 4. **Routing.** §0.3 picks the specialists, and dependencies are closed in code (§0.4).
@@ -181,12 +180,12 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 - Final before/after report.
 
 ### K — Kodosumi
-- Nora has no Kodosumi flow. Intake, planning, merging and her state machine run in the Uplift Worker (Bedrock via the Worker's IAM credentials), because they need Sokosumi coworker credentials and long waits.
+- Nora has no Kodosumi flow. Intake, planning, merging and her state machine run in the Uplift Worker (Bedrock via the Worker's API key), because they need Sokosumi coworker credentials and long waits.
 
 ### X — Services
 | Service | Use |
 |---|---|
-| Amazon Bedrock (Sonnet 5.5) | Intake, planning, merging, report writing |
+| Amazon Bedrock (Grok 4.7) | Intake, planning, merging, report writing |
 | Sokosumi Core API | Task events and approvals, Jobs, files, ratings, receipt |
 | Uplift Connection Gateway | Snapshots, connection status |
 | Chainlink CRE HTTP trigger | `verify`, `publish` (JWT signed with the Worker's authorized key) |
@@ -223,7 +222,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 **Questions it may ask:** the market, if it cannot be inferred.
 
 ### W
-1. **Normalize the product.** Firecrawl `/scrape` on `product_url`, or the Gateway snapshot. Bedrock (Sonnet 5.5) extracts attributes and use cases, plus 10–30 seed keywords.
+1. **Normalize the product.** Firecrawl `/scrape` on `product_url`, or the Gateway snapshot. Bedrock (Grok 4.7) extracts attributes and use cases, plus 10–30 seed keywords.
 2. **Expand.**
    - DataForSEO Labs `google/keyword_ideas/live` and `google/keyword_suggestions/live` (≤200 seeds, `limit` 700).
    - `google/ranked_keywords/live` per competitor domain.
@@ -234,8 +233,8 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
    - Build a brand-term set from `exclude_terms`, competitor domains, and SERP result domains (DataForSEO SERP `organic`).
    - Drop or flag keywords containing other companies' marks.
 7. **Cluster.**
-   - Bedrock (Sonnet 5.5) groups the keywords into clusters of the same shopper need, every keyword in exactly one cluster.
-   - Bedrock (Sonnet 5.5) names each cluster and assigns a role: `title`, `description`, `seo_meta`, `blog`, `ads_exact`, `ads_phrase` or `negative`.
+   - Bedrock (Grok 4.7) groups the keywords into clusters of the same shopper need, every keyword in exactly one cluster.
+   - Bedrock (Grok 4.7) names each cluster and assigns a role: `title`, `description`, `seo_meta`, `blog`, `ads_exact`, `ads_phrase` or `negative`.
 8. **Seasonality.**
    - Peak months: the top 3 by index.
    - Launch and promo windows: 6 weeks before each peak.
@@ -269,7 +268,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Step | Service | API |
 |---|---|---|
 | 1 | Firecrawl | `POST /v2/scrape` |
-| 1, 4, 7 | Amazon Bedrock | Converse (Sonnet 5.5) |
+| 1, 4, 7 | Amazon Bedrock | Chat Completions (Grok 4.7) |
 | 2–5 | DataForSEO Labs | `keyword_ideas`, `keyword_suggestions`, `ranked_keywords` (item `keyword_info`, `keyword_properties`, `search_intent_info`) |
 | 6 | DataForSEO SERP | `google/organic/live/advanced` |
 
@@ -309,7 +308,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | `max_competitors` | number | — | Default 8, max 15 |
 
 ### W
-1. **Query set.** Up to 5 head queries: Kai's map if present, otherwise Bedrock (Sonnet 5.5).
+1. **Query set.** Up to 5 head queries: Kai's map if present, otherwise Bedrock (Grok 4.7).
 2. **SERPs.**
    - DataForSEO SERP `google/organic/live/advanced`: top 20, SERP features, People Also Ask.
    - DataForSEO Merchant `google/products/task_post`: Shopping offers and sellers.
@@ -322,7 +321,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 5. **Analysis.**
    - Price bands (min, p25, median, p75, max), computed deterministically.
    - Claim frequency, offer patterns, content gaps and SERP features.
-   - A positioning map via Bedrock (Sonnet 5.5).
+   - A positioning map via Bedrock (Grok 4.7).
 6. **Write the deliverables.**
 
 ### O
@@ -354,7 +353,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | DataForSEO Labs | `serp_competitors` |
 | Firecrawl | `/v1/scrape` with JSON extraction |
 | Shopify public storefront | `/products/{handle}.js` |
-| Amazon Bedrock | Sonnet 5.5 |
+| Amazon Bedrock | Grok 4.7 |
 
 ### V — `rafael@5` · pass ≥ 60
 | Check | Method | Points |
@@ -410,8 +409,8 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 3. **Clean.**
    - Dedupe with MinHash.
    - Drop reviews under 5 words.
-   - Reviews in any language are coded directly by Sonnet 5.5; quotes stay in their original language.
-4. **Aspect-based sentiment.** Bedrock (Sonnet 5.5) codes batches of 50 reviews against a JSON schema:
+   - Reviews in any language are coded directly by Grok 4.7; quotes stay in their original language.
+4. **Aspect-based sentiment.** Bedrock (Grok 4.7) codes batches of 50 reviews against a JSON schema:
    - aspects;
    - polarity −2..+2;
    - flags `is_wish`, `is_dealbreaker`, `switch_reason`;
@@ -422,7 +421,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
    - Rank Loves, Complaints, Wishes and Deal-breakers.
 6. **Quotes.** 3–5 verbatim quotes per finding, each with source URL, stars and date.
 7. **Buyer personas.** 2–4 personas, built only from coded reviews. Each attribute cites ≥3 review IDs.
-8. **"How to win" synthesis** (Sonnet 5.5). One action per finding:
+8. **"How to win" synthesis** (Grok 4.7). One action per finding:
    - a listing claim (only if `my_product` supports it);
    - an FAQ;
    - a proof image;
@@ -460,7 +459,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | 2 | DataForSEO Business Data | `trustpilot/reviews` |
 | 2 | Firecrawl | `/v1/scrape` |
 | 2 | Tavily | Search API (Reddit discussions) |
-| 4, 7, 8 | Amazon Bedrock | Sonnet 5.5 |
+| 4, 7, 8 | Amazon Bedrock | Grok 4.7 |
 
 ### V — `priya@5` · pass ≥ 60
 | Check | Method | Points |
@@ -514,7 +513,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
    - Post-discount margin per mechanic: percent, fixed, threshold, bundle, free shipping.
    - Break-even lift: `ΔQ = d / (m − d)`.
    - Position vs the price bands.
-5. **Strategy.** Bedrock (Sonnet 5.5) chooses:
+5. **Strategy.** Bedrock (Grok 4.7) chooses:
    - the positioning;
    - list-price guidance (advisory);
    - a calendar of 1–4 promotions.
@@ -551,7 +550,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Uplift Gateway (Shopify Admin GraphQL) | Products, variants, `inventoryItem.unitCost`, existing discounts |
 | DataForSEO Merchant | Light market scan |
 | Nager.Date API | Public holidays |
-| Amazon Bedrock | Sonnet 5.5 |
+| Amazon Bedrock | Grok 4.7 |
 
 ### V — `marcus@5` · pass ≥ 65
 | Check | Method | Points |
@@ -592,14 +591,14 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 1. **Facts ledger.** Build `facts.json` from the snapshot (or the product page) and `product_facts`. Every claim must cite a fact ID.
 2. **Keywords.** Kai's map, or DataForSEO Labs `keyword_suggestions/live` (top 15, split into primary and secondary).
 3. **Objections and language.** From Priya's findings, when present.
-4. **Generate three variants** (Bedrock Sonnet 5.5, structured output). Each variant contains:
+4. **Generate three variants** (Bedrock Grok 4.7, structured output). Each variant contains:
    - `title` (≤70 characters);
    - `descriptionHtml` (sanitized), structured as hook → benefits → specs → use cases → objection answers → care and guarantee;
    - `seo.title` (≤60), `seo.description` (≤155);
    - `handle`;
    - copy `tags`.
 5. **Self-score** each variant on the 45-point rubric and pick the best.
-   - Grammar and spelling check by Sonnet 5.5.
+   - Grammar and spelling check by Grok 4.7.
    - Readability via Flesch (textstat).
 6. **Redirect.** If the handle changes, the changeset includes a redirect from the old path.
 
@@ -628,7 +627,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 ### X
 | Service | Use |
 |---|---|
-| Amazon Bedrock | Sonnet 5.5: facts, generation, self-scoring |
+| Amazon Bedrock | Grok 4.7: facts, generation, self-scoring |
 | DataForSEO Labs | Mini keyword pass |
 | Firecrawl | `current_copy` from URL |
 | Uplift Gateway | Snapshot |
@@ -672,18 +671,21 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 
 ### W
 1. **Ingest.** From Shopify media (snapshot URLs) or `/in`. Read dimensions and color profile with libvips/pyvips and convert to sRGB.
-2. **Audit.** Bedrock (Sonnet 5.5) vision, per image:
+2. **Audit.** Bedrock (Grok 4.7) vision, per image:
    - type;
    - background, lighting, sharpness;
    - product fill;
    - overlays and watermarks;
    - duplicates (**imagehash**).
 3. **Gap analysis.** Against the category's best-practice set: hero on white, 3+ angles, scale/in-hand, detail, lifestyle, `must_show` proof, packaging. Uses Priya's proof points and Rafael's benchmarks.
-4. **Cleanup.**
-   - Background removal with Stability AI **Remove Background** on Bedrock;
-   - a soft contact shadow and padding/framing to each output size (Pillow).
-5. **Lifestyle scenes.** Stability AI **Inpaint** on Bedrock fills only the transparent area **around the cut-out product**; the original product pixels are composited back on top.
-6. **Fidelity check.** SSIM between the cut-out and the product region of each scene must be ≥0.90. Otherwise the scene is dropped.
+4. **Cleanup** with the **remove.bg API** (`POST /v1.0/removebg`, `type=product`, `crop=true`, `size=auto`):
+   - a transparent cut-out of the hero product;
+   - a second cut-out with its AI drop shadow (`shadow_type=drop`);
+   - a white studio shot: the shadowed cut-out composited on a 2048×2048 white canvas (Pillow).
+5. **Lifestyle scenes.**
+   - **Gemini Nano Banana 2.1** generates an empty, photorealistic set from the scene brief, using the product photo only as a reference for scale and lighting. It never draws the product.
+   - Iris composites the shadowed remove.bg cut-out (the product's original pixels) into that set (Pillow). The product's pixels are never generated.
+6. **Fidelity check.** remove.bg re-cuts the product from each finished scene; SSIM against the original cut-out must be ≥0.90. Otherwise the scene is dropped.
 7. **Channel variants** (Pillow):
 
    | Channel | Spec |
@@ -694,7 +696,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
    | Amazon main | Pure white background, ≥85% fill, ≥1600 px |
    | Social | 1080×1080 |
 8. **Export stats.** Border brightness and product fill are measured on every export for the channel checks.
-9. **Alt text.** Bedrock (Sonnet 5.5) vision, ≤125 characters, includes the product name.
+9. **Alt text.** Bedrock (Grok 4.7) vision, ≤125 characters, includes the product name.
 10. **Order and variant mapping.** Hero first, then the image answering the top objection, then angles, lifestyle, detail. Images are mapped to color variants.
 
 ### O
@@ -729,8 +731,9 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 ### X
 | Step | Service |
 |---|---|
-| 2, 9 | Amazon Bedrock (Sonnet 5.5 vision) |
-| 4, 5 | Amazon Bedrock: Stability AI Image Services (Remove Background, Inpaint) |
+| 2, 9 | Amazon Bedrock (Grok 4.7 vision) |
+| 4, 6 | remove.bg API (`/v1.0/removebg`) |
+| 5 | Gemini API: Nano Banana 2.1 (Interactions API) |
 | 7, 8 | Pillow (local) |
 | Publish | Shopify `stagedUploadsCreate`, `fileCreate`, `productUpdate`, `productReorderMedia`, `fileUpdate` |
 
@@ -769,7 +772,7 @@ The bundle carries each kept scene's SSIM and thumbnail references, plus every e
 
 ### W
 1. **Category.**
-   - Map to the **Shopify Standard Product Taxonomy**: Admin API taxonomy search, ranked by Bedrock (Sonnet 5.5).
+   - Map to the **Shopify Standard Product Taxonomy**: Admin API taxonomy search, ranked by Bedrock (Grok 4.7).
    - Recommend category attribute values (in `catalog_changes.json`) for the merchant to set.
    - Normalize `productType` and `vendor`.
 2. **Tags.** Taxonomy and merchandising tags from Kai's clusters and the store's existing tag vocabulary.
@@ -780,7 +783,7 @@ The bundle carries each kept scene's SSIM and thumbnail references, plus every e
    - Score existing collections for fit. Add the product with `collectionAddProducts`, or confirm a smart rule already includes it.
    - Where useful, create a category collection (`collectionCreate`: title, `descriptionHtml`, SEO title and description, rule set) targeting a Kai cluster.
 5. **Related and complementary products.**
-   - Chosen by attribute similarity, complementarity (Sonnet 5.5) and stock status.
+   - Chosen by attribute similarity, complementarity (Grok 4.7) and stock status.
    - Written to the Search & Discovery **related** and **complementary** product metafields.
 6. **Feed health.** Check Google's required feed fields (ID, title, Google product category, brand, GTIN or MPN, condition) on the product's data; Shopify's Google & YouTube channel syncs the fixes.
 7. **Export.** A Google supplemental feed CSV.
@@ -815,7 +818,7 @@ The bundle carries each kept scene's SSIM and thumbnail references, plus every e
 |---|---|
 | Shopify Admin GraphQL (Gateway) | Taxonomy, product, collections, metafields |
 | Google Merchant API | Product statuses and issues (OAuth `content`) |
-| Amazon Bedrock | Sonnet 5.5 |
+| Amazon Bedrock | Grok 4.7 |
 | GS1 check digit | Local |
 
 ### V — `oskar@5` · pass ≥ 65
@@ -857,14 +860,14 @@ The bundle carries each kept scene's SSIM and thumbnail references, plus every e
    - Gateway `translatableResource`: `title`, `body_html`, `meta_title`, `meta_description` and `handle`, with their `translatableContentDigest`.
    - Media alt text and the FAQ metafield are included.
 2. **Locales.** Enabled shop locales (`read_locales`).
-3. **Local keywords.** DataForSEO Labs `keyword_suggestions/live` with the target `location_code`/`language_code`, seeded with source terms translated by Sonnet 5.5.
+3. **Local keywords.** DataForSEO Labs `keyword_suggestions/live` with the target `location_code`/`language_code`, seeded with source terms translated by Grok 4.7.
 4. **Locked terms.** Brand and product terms that must stay verbatim.
-5. **Transcreation.** Bedrock (Sonnet 5.5), straight from the source:
+5. **Transcreation.** Bedrock (Grok 4.7), straight from the source:
    - native fluency;
    - local keywords in the title, meta and opening;
    - units and date formats;
    - HTML preserved.
-6. **Back-translation.** Sonnet 5.5 translates back to the source language and flags drift.
+6. **Back-translation.** Grok 4.7 translates back to the source language and flags drift.
 7. **Changeset.** `translationsRegister` entries (`locale`, `key`, `value`, `translatableContentDigest`; optional `marketId`).
 
 ### O
@@ -887,7 +890,7 @@ The bundle carries each kept scene's SSIM and thumbnail references, plus every e
 |---|---|
 | Shopify Admin GraphQL | `translatableResource`, `shopLocales`, `translationsRegister` |
 | DataForSEO Labs | Local keywords |
-| Amazon Bedrock | Sonnet 5.5 |
+| Amazon Bedrock | Grok 4.7 |
 
 ### V — `yuki@5` · pass ≥ 65
 | Check | Method | Points |
@@ -973,7 +976,7 @@ The bundle carries each kept scene's SSIM and thumbnail references, plus every e
 | Service | Use |
 |---|---|
 | DataForSEO SERP | People Also Ask, outlines |
-| Amazon Bedrock | Sonnet 5.5 |
+| Amazon Bedrock | Grok 4.7 |
 | Shopify Admin GraphQL | `metafieldsSet`, `articleCreate`, blogs |
 
 ### V — `leo@5` · pass ≥ 60
@@ -1025,7 +1028,7 @@ The bundle carries each kept scene's SSIM and thumbnail references, plus every e
    - Search ad groups per cluster.
    - A Shopping / Performance Max asset group filtered to the product.
    - Budgets split by expected return, with the total ≤ cap.
-5. **Ad copy** (Bedrock Sonnet 5.5).
+5. **Ad copy** (Bedrock Grok 4.7).
    - RSA headlines ≤30 characters (×15) and descriptions ≤90 (×4).
    - PMax long headline ≤90.
    - Angles come from Priya; claims only from verified facts.
@@ -1055,7 +1058,7 @@ The bundle carries each kept scene's SSIM and thumbnail references, plus every e
 | Service | Use |
 |---|---|
 | DataForSEO Labs | CPC, volume |
-| Amazon Bedrock | Sonnet 5.5 |
+| Amazon Bedrock | Grok 4.7 |
 
 ### V — `sasha@5` · pass ≥ 65
 | Check | Method | Points |
@@ -1090,7 +1093,7 @@ The bundle carries each kept scene's SSIM and thumbnail references, plus every e
 | `substantiation` | file | — | Certificates and test reports that unlock claims |
 
 ### W
-1. **Extract text.** From copy, HTML, email and ads; image text read by Sonnet 5.5 vision.
+1. **Extract text.** From copy, HTML, email and ads; image text read by Grok 4.7 vision.
 2. **Rule engine.** `uplift-rules`: deterministic, versioned, open source, with its hash recorded in the verifier profile. Rule packs:
    - superlatives and comparatives;
    - environmental claims (FTC Green Guides; EU rules on generic environmental claims);
@@ -1101,7 +1104,7 @@ The bundle carries each kept scene's SSIM and thumbnail references, plus every e
    - trademarks (competitor marks beyond nominative use; ®/™ misuse);
    - platform policies (Google Ads; Merchant Center, including no promotional overlays on Shopping images).
 3. **Substantiation matching.** A claim backed by a supplied certificate is downgraded to "substantiated".
-4. **Rewrites.** Bedrock (Sonnet 5.5) proposes compliant alternatives. The engine re-checks each one.
+4. **Rewrites.** Bedrock (Grok 4.7) proposes compliant alternatives. The engine re-checks each one.
 5. **Verdict.** pass / pass-with-fixes / blocked (any unresolved high-severity finding).
 
 ### O
@@ -1122,7 +1125,7 @@ The bundle carries each kept scene's SSIM and thumbnail references, plus every e
 ### X
 | Service | Use |
 |---|---|
-| Amazon Bedrock | Sonnet 5.5, rewrites only (never verdicts) |
+| Amazon Bedrock | Grok 4.7, rewrites only (never verdicts) |
 | `uplift-rules` | Local deterministic engine |
 
 ### V — `ruth@5` · pass ≥ 65
@@ -1158,7 +1161,7 @@ CRE runs the **same rule engine** (a JS port generated from the same rule YAML) 
 
 ### W
 1. **Page capture.** Firecrawl `/scrape` (rendered HTML, markdown), plus Gateway product data when connected.
-2. **Ranking snapshot.** DataForSEO SERP `google/organic/live/advanced` and Merchant `google/products` for the product's top 5 keywords (Kai's map if present, otherwise generated with Sonnet 5.5). Records the product's current organic and Google Shopping positions, and who outranks it.
+2. **Ranking snapshot.** DataForSEO SERP `google/organic/live/advanced` and Merchant `google/products` for the product's top 5 keywords (Kai's map if present, otherwise generated with Grok 4.7). Records the product's current organic and Google Shopping positions, and who outranks it.
 3. **Content and visuals.**
    - Title/meta and keyword placement (Kai's map if present).
    - Copy depth.
@@ -1207,7 +1210,7 @@ CRE runs the **same rule engine** (a JS port generated from the same rule YAML) 
 | Google PageSpeed Insights API v5 | Speed notes (informational) |
 | Shopify Admin GraphQL | `shopifyqlQuery` (`read_reports`), product data |
 | DataForSEO SERP / Merchant | Ranking snapshot |
-| Amazon Bedrock | Sonnet 5.5 (keyword generation, report writing) |
+| Amazon Bedrock | Grok 4.7 (keyword generation, report writing) |
 | `uplift-rules` | Compliance quick scan |
 
 ### V — `quinn@5` · pass ≥ 65
@@ -1225,7 +1228,9 @@ CRE runs the **same rule engine** (a JS port generated from the same rule YAML) 
 
 | Service | Agents | Purpose | Auth / secret holder |
 |---|---|---|---|
-| **Amazon Bedrock**: Claude Sonnet 5.5; Stability AI Image Services | All agents, Worker (Nora, chat), CRE judge | All LLM inference, vision, translation, OCR, keyword clustering; Iris image edits | IAM credentials (Kodosumi, Worker); Bedrock API key in the CRE Vault (judge) |
+| **Amazon Bedrock**: Grok 4.7 | All agents, Worker (Nora, chat), CRE judge | All LLM inference, vision, translation, OCR, keyword clustering | Bedrock API key: Kodosumi and Worker env, CRE Vault (judge) |
+| **remove.bg API** | Iris | Product cut-outs and AI drop shadows | Kodosumi env |
+| **Gemini API** (Nano Banana 2.1) | Iris | Lifestyle background generation | Kodosumi env |
 | **DataForSEO** (Labs, Keywords Data, SERP, Merchant, Business Data) | Kai, Rafael, Priya, Marcus, Clara, Yuki, Leo, Sasha | Keywords, SERPs, Shopping offers and reviews, Trustpilot | Basic auth: Kodosumi env, CRE Vault |
 | **Bright Data** (Amazon scrapers) | Priya | Amazon reviews | Kodosumi env |
 | **Firecrawl** | Kai, Rafael, Priya, Clara, Quinn | Rendering, scraping, extraction | Kodosumi env |

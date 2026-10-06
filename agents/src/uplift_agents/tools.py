@@ -199,10 +199,29 @@ def grammar_issues(text: str, language: str = "en-US") -> list[dict[str, Any]]:
             "required": ["excerpt", "message"]}}}, "required": ["issues"]})["issues"]
 
 
-# --- Images (Bedrock: Sonnet vision, Stability AI Image Services) -------------------------------
+# --- Images: Grok vision (reading), remove.bg (cut-outs and shadows), Gemini (scene backgrounds) ----------
+
+RETRYABLE = {429, 500, 502, 503, 504}
+
+
+def _request(method: str, url: str, **kwargs: Any) -> httpx.Response:
+    """HTTP call with exponential backoff on throttling and transient errors."""
+    for attempt in range(5):
+        try:
+            resp = httpx.request(method, url, timeout=httpx.Timeout(300, connect=10), **kwargs)
+        except httpx.TransportError:
+            if attempt == 4:
+                raise
+        else:
+            if resp.status_code not in RETRYABLE or attempt == 4:
+                resp.raise_for_status()
+                return resp
+        time.sleep(min(30, 2 ** attempt))
+    raise RuntimeError("unreachable")
+
 
 def _shrink(image: bytes, max_pixels: int, fmt: str = "PNG") -> bytes:
-    """Downscale to the model's pixel budget (Stability ≤ 9.4 MP; Converse images ≤ 3.75 MB)."""
+    """Downscale to a pixel budget (remove.bg ≤ 25 MP; Bedrock image blocks ≤ 3.75 MB)."""
     img = Image.open(io.BytesIO(image))
     if img.width * img.height <= max_pixels and len(image) < 3_500_000:
         return image
@@ -221,18 +240,39 @@ def ocr(image: bytes) -> str:
     return "\n".join(lines)
 
 
-def remove_background(image: bytes) -> bytes:
-    """Transparent PNG cut-out of the product."""
-    return llm.image("us.stability.stable-image-remove-background-v1:0",
-                     {"image": base64.b64encode(_shrink(image, 9_000_000)).decode(), "output_format": "png"})
+def cut_out(image: bytes, shadow: bool = False) -> bytes:
+    """remove.bg: transparent PNG of the product, cropped to the subject; optionally with its AI drop shadow.
+    `size=auto` returns the highest resolution the account's credits allow."""
+    params = {"size": "auto", "type": "product", "format": "png", "crop": "true", "semitransparency": "true"}
+    if shadow:
+        params |= {"shadow_type": "drop", "shadow_opacity": "auto"}
+    return _request("POST", "https://api.remove.bg/v1.0/removebg", data=params,
+                    files={"image_file": ("image.jpg", _shrink(image, 25_000_000, "JPEG"))},
+                    headers={"X-API-Key": _env("REMOVEBG_API_KEY")}).content
 
 
-def inpaint_background(cutout_rgba_png: bytes, prompt: str) -> bytes:
-    """Generate a scene in the transparent area around the product; opaque (product) pixels are preserved."""
-    return llm.image("us.stability.stable-image-inpaint-v1:0", {
-        "image": base64.b64encode(cutout_rgba_png).decode(), "prompt": prompt, "grow_mask": 3,
-        "negative_prompt": "text, watermark, logo, extra products, duplicate product, distorted product, people",
-        "style_preset": "photographic", "output_format": "png"})
+def generate_scene(prompt: str, product_reference: bytes) -> bytes:
+    """An empty photographic background (no product) for the real product to be composited into: Gemini Nano Banana 2.1
+    via the Interactions API, with the product photo as a reference for scale, lighting and style."""
+    resp = _request("POST", "https://generativelanguage.googleapis.com/v1beta/interactions",
+                    headers={"x-goog-api-key": _env("GEMINI_API_KEY")}, json={
+        "model": "gemini-nano-banana-2.1",
+        "input": [
+            {"type": "text", "text": (
+                f"Photograph an empty product-photography set: {prompt}. The reference image shows the product "
+                "that will be placed here later — match its scale, lighting and style, but do NOT include the "
+                "product or any similar object. Leave a clear, flat surface in the lower centre of the frame. "
+                "Photorealistic, natural light, no people, no text, no logos.")},
+            {"type": "image", "mime_type": "image/png",
+             "data": base64.b64encode(_shrink(product_reference, 2_000_000)).decode()},
+        ],
+        "response_format": {"type": "image", "mime_type": "image/jpeg", "aspect_ratio": "1:1", "image_size": "2K"},
+    }).json()
+    images = [c for step in resp.get("steps", []) if step.get("type") == "model_output"
+              for c in step.get("content", []) if c.get("type") == "image"]
+    if not images:
+        raise RuntimeError(f"Gemini returned no image (status {resp.get('status')})")
+    return base64.b64decode(images[-1]["data"])
 
 
 # --- Misc ----------------------------------------------------------------------------------------

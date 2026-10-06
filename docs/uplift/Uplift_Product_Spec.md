@@ -164,19 +164,21 @@ Verified against `masumi-network/sokosumi` commit `5d6d6cf` (2026-10-06).
 - **Files.** Inputs go in `/in`, deliverables in `/out`. Deliverables are mirrored to the artifact store and attached to the Task.
 - **Result-hash rule.** Every flow returns `final` as one string: the **RFC 8785 canonical JSON of the Deliverable Manifest** (§6.3). Kodosumi's `create_result_hash` gives `sha256_utf8(final_string)`, which becomes the Job's `resultHash`.
 
-### 3.4 Amazon Bedrock (all LLM inference)
-- **Model:** **Claude Sonnet 5.5** via the Bedrock **Converse API**, inference profile `global.anthropic.claude-sonnet-5-5` in `us-east-1`. It is used for:
+### 3.4 Models (LLM on Amazon Bedrock; image work on remove.bg and Gemini)
+- **LLM:** **Grok 4.7** via the bedrock-runtime **Chat Completions API** (OpenAI-compatible), inference profile `us.xai.grok-4.7` in `us-east-1` (one model, one region). It is used for:
   - all text generation, coding/classification and synthesis;
-  - vision (image content blocks);
-  - document input;
-  - structured JSON output (via the tool-use schema).
-- **Image models:** Stability AI Image Services on Bedrock (`us.stability.stable-image-remove-background-v1:0`, `us.stability.stable-image-inpaint-v1:0`), used only by Iris for cut-outs and lifestyle backgrounds.
-- Translation, grammar checks, image OCR and keyword clustering all run on Sonnet 5.5; no separate translation, grammar, OCR or embedding services.
+  - vision (`image_url` content parts);
+  - structured JSON output (via a forced function call).
+- **Image work (Iris only):**
+  - **remove.bg API** (`POST /v1.0/removebg`): product cut-outs (`type=product`, `crop=true`, `size=auto`), with an AI drop shadow (`shadow_type=drop`) for compositing. Iris places these exact pixels on white for studio shots and into generated backgrounds for lifestyle scenes.
+  - **Gemini Nano Banana 2.1** (`gemini-nano-banana-2.1`, Gemini Interactions API): generates the empty background sets for lifestyle scenes. It never draws the product.
+- Translation, grammar checks, image OCR and keyword clustering all run on Grok 4.7; no separate translation, grammar, OCR or embedding services.
 - **Who calls Bedrock:** agents, the Worker (Nora and chat) and Chainlink.
 - **Auth:**
-  - Kodosumi and the Worker run under **IAM credentials** (SigV4 via boto3), scoped to Converse/InvokeModel on these two models.
-  - Chainlink CRE uses a **Bedrock API key** (`Authorization: Bearer …`) held in the Vault DON. IAM scopes it to Converse on Sonnet 5.5, and it is rotated on a fixed schedule.
-- **Cost tracking:** application inference profiles per agent.
+  - Kodosumi and the Worker call Bedrock over HTTPS with a **Bedrock API key** (`Authorization: Bearer …`, env `BEDROCK_LLM_API_KEY`).
+  - Chainlink CRE uses the same key from the Vault DON (`{{.bedrockApiKey}}`).
+  - remove.bg (`X-API-Key`, `REMOVEBG_API_KEY`) and Gemini (`x-goog-api-key`, `GEMINI_API_KEY`) keys live only in the Kodosumi service environment.
+- **Retries:** throttling and transient errors (429/5xx) back off exponentially; there are no alternative models or regions.
 
 ### 3.5 Chainlink CRE
 See §5.
@@ -198,7 +200,7 @@ See §5.
                         │ HTTP trigger│ result callback   │ payments │ LLM
                         ▼             │               ┌───▼──────┐   ▼
                    Chainlink CRE `uplift-clearing`    │Uplift MPS│  Amazon Bedrock
-                   (verify · publish)                 └───┬──────┘  (Converse API)
+                   (verify · publish)                 └───┬──────┘  (Chat Completions)
                         │ Confidential HTTP (Vault keys)  │ Masumi escrow (Cardano Preprod)
                         ▼
                   Uplift Connection Gateway ◄── writes only with CRE's key
@@ -211,7 +213,7 @@ See §5.
 | Component | Tech | Responsibility | Holds secrets? |
 |---|---|---|---|
 | **Uplift Worker** | Python (asyncio) + PostgreSQL | One executor per coworker key. Polls events, runs standalone Tasks (paid-Task flow) and Nora's orchestration. Keeps a per-Task journal, writing each step **before** its side effect. Receives CRE result callbacks. | 13 coworker runtime keys, scoped MPS `ReadAndPay` token, CRE trigger key (Railway service variables) |
-| **Kodosumi cluster** | Ray 2.48 + Kodosumi 1.2 | Runs the 12 specialist flows, Sumi endpoints and Job payments | Data-API keys as service env vars; Bedrock via IAM credentials |
+| **Kodosumi cluster** | Ray 2.48 + Kodosumi 1.2 | Runs the 12 specialist flows, Sumi endpoints and Job payments | Data-API, remove.bg, Gemini and Bedrock API keys as service env vars |
 | **Worker chat** | FastAPI (in the Worker) | Responses API for all coworkers; creates DRAFT Tasks | Coworker keys |
 | **Uplift MPS** | masumi-payment-service + PostgreSQL | 13 selling wallets, auto-withdraw, refund authorization | Encrypted wallet mnemonics, admin key |
 | **Uplift Connection Gateway** | Python (FastAPI) + PostgreSQL + AWS KMS | Platform adapters (v1: Shopify) for OAuth connect and reconnect, encrypted token storage and rotation; a **read API** for agents and CRE; a **write API only CRE can call** | All merchant tokens, envelope-encrypted |
@@ -251,8 +253,8 @@ How each read is done:
 - **Deterministic maths and rules:** run in workflow code.
 
 ### 5.3 The Bedrock judge
-- **Model:** Claude Sonnet 5.5 on Amazon Bedrock.
-- **Call:** Converse API through Confidential HTTP, with `Authorization: Bearer {{.bedrockApiKey}}`.
+- **Model:** Claude Grok 4.7 on Amazon Bedrock.
+- **Call:** Chat Completions through Confidential HTTP, with `Authorization: Bearer {{.bedrockApiKey}}`.
 - **Prompts:** strict JSON output; each prompt is versioned with its role's verifier profile.
 - **Weight:** the judge contributes at most **5 of 100 points** in any profile. Everything else is deterministic or source-checked.
 - **Errors:** if the judge call errors, those points are scored at the neutral midpoint.
@@ -419,7 +421,7 @@ There is one store link per Sokosumi user or organization, shared by all Uplift 
 ## 10. Orchestration (Nora)
 Routing details are in the spec sheet, §0.
 
-1. **Intake.** Bedrock (Sonnet 5.5) maps the request to capability tags.
+1. **Intake.** Bedrock (Grok 4.7) maps the request to capability tags.
    - Keyword scoring runs against each specialist's name, caption, description and tags.
    - Fit check (≥ 0.4), using Soko Bot's wording: *"Can this agent do what the request asks? A related topic is not enough."*
 2. **Dependency closure** in code (sheet §0.4).
@@ -473,7 +475,7 @@ Routing details are in the spec sheet, §0.
 **First-hour spikes**
 1. A Kodosumi Sumi `start_job` hired by a coworker through `POST /tasks/{id}/jobs` on preprod (Fixed pricing).
 2. Install the v1 Shopify app on a dev store via the Task's Authenticate button, confirm the offline token type, and run `productUpdate` through the gateway.
-3. Confidential HTTP with `{{.bedrockApiKey}}` calling Bedrock Converse, in simulation.
+3. Confidential HTTP with `{{.bedrockApiKey}}` calling Bedrock Chat Completions, in simulation.
 4. CRE reading a Task's approval event through the Sokosumi API with the coworker key.
 5. `POST /v1/jobs/{id}/refund` on a test Job.
 

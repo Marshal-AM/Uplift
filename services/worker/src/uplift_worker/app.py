@@ -57,9 +57,10 @@ async def executor(role: str) -> None:
                         continue
                 if run is None or run["phase"] not in ("done", "closed"):
                     asyncio.create_task(_kick(role, task_id))
-            # time-driven phases (store connect, escrow funding, running Jobs) advance without new events
-            for run in db.all_("select task_id from runs where coworker = %s and phase in ('auth_wait', "
-                               "'funds_wait', 'execute', 'report')", role):
+            # every run not waiting on the merchant (or finished) keeps advancing without new events: store
+            # connect, escrow funding, running Jobs, and resuming after a failed step or a restart
+            for run in db.all_("select task_id from runs where coworker = %s and phase not in ('input_wait', "
+                               "'quote_wait', 'approval_wait', 'done', 'closed')", role):
                 asyncio.create_task(_kick(role, run["task_id"]))
         except Exception:
             log.exception("executor %s poll failed", role)

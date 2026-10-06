@@ -84,29 +84,28 @@ export function fetchVerified(n: NodeRuntime<Config>, url: string, expected: str
   return r.body
 }
 
-// --- Judge: Claude Sonnet 5.5 on Bedrock, max 5 points, neutral 2.5 when unavailable ------------------
+// --- Judge: Grok 4.7 on Bedrock (Chat Completions), max 5 points, neutral 2.5 when unavailable ------------------
 
 export function judge(runtime: Runtime<Config>, question: string, material: string): { points: number; note: string } {
   const c = runtime.config
   try {
-    const out = callJson(runtime,
-      `https://bedrock-runtime.${c.bedrockRegion}.amazonaws.com/model/${c.bedrockModel}/converse`, {
-        headers: { Authorization: "Bearer {{.bedrockApiKey}}" },
-        secrets: ["bedrockApiKey"],
-        body: {
-          messages: [{ role: "user", content: [{ text: `${question}\n\nMaterial:\n${material.slice(0, 12000)}` }] }],
-          inferenceConfig: { maxTokens: 400, temperature: 0 },
-          toolConfig: {
-            tools: [{ toolSpec: { name: "verdict", description: "Score the material.", inputSchema: { json: {
-              type: "object",
-              properties: { score: { type: "number", minimum: 0, maximum: 5 }, reason: { type: "string" } },
-              required: ["score", "reason"],
-            } } } }],
-            toolChoice: { tool: { name: "verdict" } },
-          },
-        },
-      })
-    const use = out.output.message.content.find((b: Json) => b.toolUse)?.toolUse.input
+    const out = callJson(runtime, `https://bedrock-runtime.${c.bedrockRegion}.amazonaws.com/openai/v1/chat/completions`, {
+      headers: { Authorization: "Bearer {{.bedrockApiKey}}" },
+      secrets: ["bedrockApiKey"],
+      body: {
+        model: c.bedrockModel,
+        reasoning_effort: "low",
+        max_tokens: 1000,
+        messages: [{ role: "user", content: `${question}\n\nMaterial:\n${material.slice(0, 12000)}` }],
+        tools: [{ type: "function", function: { name: "verdict", description: "Score the material.", parameters: {
+          type: "object",
+          properties: { score: { type: "number", minimum: 0, maximum: 5 }, reason: { type: "string" } },
+          required: ["score", "reason"],
+        } } }],
+        tool_choice: { type: "function", function: { name: "verdict" } },
+      },
+    })
+    const use = JSON.parse(out.choices[0].message.tool_calls[0].function.arguments)
     return { points: Math.max(0, Math.min(5, Number(use.score))), note: String(use.reason ?? "").slice(0, 300) }
   } catch (e) {
     runtime.log(`judge unavailable: ${String(e).slice(0, 200)}`)

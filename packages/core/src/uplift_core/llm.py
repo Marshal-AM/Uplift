@@ -1,46 +1,54 @@
-"""Amazon Bedrock: Converse (plain text, schema-constrained JSON via forced tool use) and image models."""
+"""Amazon Bedrock over HTTPS with a Bedrock API key: Grok 4.7 for every text and image-input call, through the
+bedrock-runtime OpenAI-compatible Chat Completions API (plain text, and schema-constrained JSON via a forced
+function call). Fixed model, one region."""
 
 import base64
 import json
 import os
-from functools import lru_cache
+import time
 from typing import Any
 
-import boto3
-from botocore.config import Config
+import httpx
 
-# One model for text and image inputs, one region. Auth: the Bedrock API key in AWS_BEARER_TOKEN_BEDROCK.
-MODEL_ID = os.environ.get("BEDROCK_MODEL_ID", "us.xai.grok-4.7")
-REGION = os.environ.get("AWS_REGION", "us-east-1")
-
-
-@lru_cache
-def _client():
-    return boto3.client(
-        "bedrock-runtime",
-        region_name=REGION,
-        config=Config(retries={"max_attempts": 5, "mode": "adaptive"}, read_timeout=300),
-    )
+REGION = "us-east-1"
+LLM_MODEL = "us.xai.grok-4.7"
+LLM_KEY_ENV = "BEDROCK_LLM_API_KEY"
+URL = f"https://bedrock-runtime.{REGION}.amazonaws.com/openai/v1/chat/completions"
+REASONING = "low"  # Grok's hidden reasoning counts against max_tokens; low keeps answers inside the budget
+RETRYABLE = {429, 500, 502, 503, 504}
 
 
-def _content(prompt: str, images: list[bytes] | None, documents: list[tuple[str, bytes]] | None) -> list:
-    blocks: list[dict[str, Any]] = [{"text": prompt}]
+def _complete(body: dict[str, Any]) -> dict[str, Any]:
+    """POST a chat completion; retries throttling and transient errors with exponential backoff."""
+    headers = {"Authorization": f"Bearer {os.environ[LLM_KEY_ENV]}"}
+    for attempt in range(5):
+        try:
+            resp = httpx.post(URL, json={"model": LLM_MODEL, "reasoning_effort": REASONING, **body}, headers=headers,
+                              timeout=httpx.Timeout(300, connect=10))
+        except httpx.TransportError:
+            if attempt == 4:
+                raise
+        else:
+            if resp.status_code not in RETRYABLE or attempt == 4:
+                break
+        time.sleep(min(30, 2 ** attempt))
+    if resp.status_code >= 400:
+        raise RuntimeError(f"Bedrock chat completion → {resp.status_code}: {resp.text[:300]}")
+    return resp.json()["choices"][0]
+
+
+def _messages(prompt: str, system: str, images: list[bytes] | None) -> list[dict[str, Any]]:
+    content: list[dict[str, Any]] = [{"type": "text", "text": prompt}]
     for raw in images or []:
-        fmt = "png" if raw[:4] == b"\x89PNG" else "jpeg" if raw[:2] == b"\xff\xd8" else "webp"
-        blocks.append({"image": {"format": fmt, "source": {"bytes": raw}}})
-    for i, (fmt, raw) in enumerate(documents or []):
-        blocks.append({"document": {"format": fmt, "name": f"doc{i}", "source": {"bytes": raw}}})
-    return blocks
+        mime = "image/png" if raw[:4] == b"\x89PNG" else "image/jpeg" if raw[:2] == b"\xff\xd8" else "image/webp"
+        content.append({"type": "image_url",
+                        "image_url": {"url": f"data:{mime};base64,{base64.b64encode(raw).decode()}"}})
+    return ([{"role": "system", "content": system}] if system else []) + [{"role": "user", "content": content}]
 
 
 def text(prompt: str, system: str = "", max_tokens: int = 4000, images: list[bytes] | None = None) -> str:
-    resp = _client().converse(
-        modelId=MODEL_ID,
-        system=[{"text": system}] if system else [],
-        messages=[{"role": "user", "content": _content(prompt, images, None)}],
-        inferenceConfig={"maxTokens": max_tokens},
-    )
-    return "".join(b.get("text", "") for b in resp["output"]["message"]["content"])
+    choice = _complete({"messages": _messages(prompt, system, images), "max_tokens": max_tokens})
+    return choice["message"].get("content") or ""
 
 
 def structured(
@@ -49,30 +57,16 @@ def structured(
     system: str = "",
     max_tokens: int = 4000,
     images: list[bytes] | None = None,
-    documents: list[tuple[str, bytes]] | None = None,
 ) -> dict[str, Any]:
-    """Return JSON matching `schema` by forcing the model to call a single `respond` tool."""
-    resp = _client().converse(
-        modelId=MODEL_ID,
-        system=[{"text": system}] if system else [],
-        messages=[{"role": "user", "content": _content(prompt, images, documents)}],
-        inferenceConfig={"maxTokens": max_tokens},
-        toolConfig={
-            "tools": [{"toolSpec": {"name": "respond", "description": "Return the answer.",
-                                    "inputSchema": {"json": schema}}}],
-            "toolChoice": {"tool": {"name": "respond"}},
-        },
-    )
-    for block in resp["output"]["message"]["content"]:
-        if "toolUse" in block:
-            return block["toolUse"]["input"]
-    raise RuntimeError("model returned no structured output")
-
-
-def image(model: str, body: dict[str, Any]) -> bytes:
-    """Stability AI Image Services on Bedrock (InvokeModel). Returns the first image's bytes."""
-    out = json.loads(_client().invoke_model(modelId=model, body=json.dumps(body))["body"].read())
-    reason = (out.get("finish_reasons") or [None])[0]
-    if reason:
-        raise RuntimeError(f"{model}: {reason}")
-    return base64.b64decode(out["images"][0])
+    """Return JSON matching `schema` by forcing the model to call a single `respond` function."""
+    choice = _complete({
+        "messages": _messages(prompt, system, images),
+        "max_tokens": max_tokens,
+        "tools": [{"type": "function", "function": {"name": "respond", "description": "Return the answer.",
+                                                    "parameters": schema}}],
+        "tool_choice": {"type": "function", "function": {"name": "respond"}},
+    })
+    calls = choice["message"].get("tool_calls") or []
+    if not calls:
+        raise RuntimeError(f"model returned no structured output (finish_reason={choice.get('finish_reason')})")
+    return json.loads(calls[0]["function"]["arguments"])

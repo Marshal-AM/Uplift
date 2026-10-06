@@ -15,6 +15,11 @@ from .clients import Sokosumi, mps
 from .config import settings
 
 
+def _iso(t: datetime) -> str:
+    """MPS date inputs: UTC, millisecond precision, `Z` suffix."""
+    return t.astimezone(UTC).strftime("%Y-%m-%dT%H:%M:%S.") + f"{t.microsecond // 1000:03d}Z"
+
+
 def request_terms(role: str, input_text: str, task_id: str) -> dict[str, Any]:
     s = settings()
     now = datetime.now(UTC)
@@ -22,8 +27,8 @@ def request_terms(role: str, input_text: str, task_id: str) -> dict[str, Any]:
     body = {
         "network": s.network, "agentIdentifier": s.agent_identifiers[role], "paymentSourceType": "Web3CardanoV2",
         "supportedPaymentSourceIndex": 0, "inputHash": sha256_hex(input_text), "identifierFromPurchaser": nonce,
-        "payByTime": (now + timedelta(minutes=10)).isoformat(),
-        "submitResultTime": (now + timedelta(hours=6)).isoformat(),
+        "payByTime": _iso(now + timedelta(minutes=10)),
+        "submitResultTime": _iso(now + timedelta(hours=6)),
         "metadata": f'{{"taskId":"{task_id}"}}',
     }
     payment = mps("/payment", body)

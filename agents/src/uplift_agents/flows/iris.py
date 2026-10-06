@@ -1,4 +1,5 @@
-"""Iris — Product Visual Designer: audit, cleanup, lifestyle scenes around the real product, channel crops, alt text."""
+"""Iris — Product Visual Designer: audit (Grok vision), remove.bg cut-outs with AI shadows, studio shots and lifestyle
+scenes (Gemini backgrounds with the real product's pixels composited in), channel exports, alt text."""
 
 import base64
 import io
@@ -7,7 +8,7 @@ from concurrent.futures import ThreadPoolExecutor
 import imagehash
 import numpy as np
 from kodosumi.core import forms as F
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image
 from skimage.metrics import structural_similarity
 from uplift_core import llm
 
@@ -64,23 +65,15 @@ def _on_white(cutout: Image.Image) -> Image.Image:
     return Image.alpha_composite(white, crop).convert("RGB")
 
 
-def _place(cutout: Image.Image, size: tuple[int, int], background: tuple[int, int, int, int], fill: float,
-           low: bool = False, shadow: bool = False) -> Image.Image:
-    """Put the RGBA cut-out on a canvas; optional soft contact shadow under it."""
-    canvas = Image.new("RGBA", size, background)
-    scale = min(size[0] * fill / cutout.width, size[1] * fill / cutout.height)
-    product = cutout.resize((max(1, int(cutout.width * scale)), max(1, int(cutout.height * scale))), Image.LANCZOS)
-    x = (size[0] - product.width) // 2
-    y = int(size[1] * 0.92) - product.height if low else (size[1] - product.height) // 2
-    if shadow:
-        ellipse = Image.new("L", size, 0)
-        w, h = int(product.width * 0.9), max(8, int(product.height * 0.06))
-        ImageDraw.Draw(ellipse).ellipse((x + (product.width - w) // 2, y + product.height - h // 2,
-                                         x + (product.width + w) // 2, y + product.height + h // 2), fill=90)
-        ellipse = ellipse.filter(ImageFilter.GaussianBlur(h))
-        canvas = Image.alpha_composite(canvas, Image.merge("RGBA", (*[Image.new("L", size, 0)] * 3, ellipse)))
-    canvas.alpha_composite(product, (x, y))
-    return canvas
+def _compose(subject: Image.Image, canvas: Image.Image, fill: float, low: bool = False) -> Image.Image:
+    """Place an RGBA cut-out (with its shadow) on a canvas: centred, or standing on the lower part of a scene."""
+    out = canvas.convert("RGBA")
+    scale = min(out.width * fill / subject.width, out.height * fill / subject.height)
+    sized = subject.resize((max(1, int(subject.width * scale)), max(1, int(subject.height * scale))), Image.LANCZOS)
+    x = (out.width - sized.width) // 2
+    y = int(out.height * 0.92) - sized.height if low else (out.height - sized.height) // 2
+    out.alpha_composite(sized, (x, y))
+    return out
 
 
 def _thumb(img: Image.Image) -> tuple[str, np.ndarray]:
@@ -141,12 +134,12 @@ def run(inputs: dict, tracer) -> str:
     wanted = ["hero", "angle", "detail", "scale", "lifestyle"]
     missing = [w for w in wanted if w not in have]
 
-    tracer.markdown_sync("Cutting out the product")
+    tracer.markdown_sync("Cutting out the product and shooting it on white")
     hero_idx = next((i for i, a in enumerate(audits) if a["shot_type"] == "hero"), 0)
-    cutout = Image.open(io.BytesIO(tools.remove_background(raw[hero_idx]))).convert("RGBA")
-    cutout = cutout.crop(cutout.getchannel("A").getbbox() or (0, 0, *cutout.size))
+    cutout = Image.open(io.BytesIO(tools.cut_out(raw[hero_idx]))).convert("RGBA")
+    shadowed = Image.open(io.BytesIO(tools.cut_out(raw[hero_idx], shadow=True))).convert("RGBA")
     product_on_white = _on_white(cutout)
-    clean = _place(cutout, (2048, 2048), (255, 255, 255, 255), fill=0.8, shadow=True).convert("RGB")
+    clean = _compose(shadowed, Image.new("RGB", (2048, 2048), "white"), fill=0.8).convert("RGB")
 
     count = max(0, min(4, int(ctx.get("lifestyle_count", 3) or 0)))
     briefs = ctx.lines("scene_briefs")
@@ -163,17 +156,14 @@ def run(inputs: dict, tracer) -> str:
     tracer.markdown_sync(f"Composing {len(briefs)} lifestyle scenes around the real product")
 
     def scene(prompt: str) -> dict:
-        # transparent canvas with the product placed low and centred; Stability fills only the transparent area
-        canvas = _place(cutout, (1536, 1536), (0, 0, 0, 0), fill=0.55, low=True)
-        generated = Image.open(io.BytesIO(tools.inpaint_background(_png(canvas), prompt))).convert("RGBA")
-        generated = generated.resize(canvas.size, Image.LANCZOS)
-        img = Image.alpha_composite(generated, canvas).convert("RGB")  # original product pixels on top
-        recut = _on_white(Image.open(io.BytesIO(tools.remove_background(_png(img)))))
+        # Gemini paints an empty set; the real product (original pixels + its shadow) is composited into it
+        background = Image.open(io.BytesIO(tools.generate_scene(prompt, _png(product_on_white)))).convert("RGB")
+        img = _compose(shadowed, background.resize((2048, 2048), Image.LANCZOS), fill=0.55, low=True).convert("RGB")
+        recut = _on_white(Image.open(io.BytesIO(tools.cut_out(_jpg(img)))))
         t_ref, g_ref = _thumb(product_on_white)
         t_out, g_out = _thumb(recut)
         ssim = float(structural_similarity(g_ref, g_out, data_range=255))
-        return {"prompt": prompt, "image": img.resize((2048, 2048), Image.LANCZOS), "ssim": ssim,
-                "thumb_ref": t_ref, "thumb_out": t_out}
+        return {"prompt": prompt, "image": img, "ssim": ssim, "thumb_ref": t_ref, "thumb_out": t_out}
 
     with ThreadPoolExecutor(2) as pool:
         scenes = list(pool.map(scene, briefs))
