@@ -24,6 +24,10 @@ def close_pool() -> None:
         _pool.close()
 
 
+def connection():
+    return _pool.connection()
+
+
 def fetch_one(query: str, *params):
     with _pool.connection() as conn:
         return conn.execute(query, params).fetchone()

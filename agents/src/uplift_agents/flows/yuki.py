@@ -6,7 +6,6 @@ from kodosumi.core import forms as F
 from uplift_core import llm
 
 from .. import tools
-from ..markets import location_code
 from ..runtime import Context, Deliverable
 
 FIELDS = [
@@ -54,12 +53,9 @@ def run(inputs: dict, tracer) -> str:
     local = ctx.lines("local_keywords")
     if not local:
         seeds_local = tools.translate(seeds, locale)
-        res = tools.dataforseo("dataforseo_labs/google/keyword_suggestions/live",
-                               {"keyword": seeds_local[0], "location_code": location_code(market),
-                                "language_code": locale, "limit": 40})
-        ranked = sorted([i for r in res for i in r.get("items") or []],
-                        key=lambda i: -((i.get("keyword_info") or {}).get("search_volume") or 0))
-        local = [i["keyword"] for i in ranked[:10]] or seeds_local
+        local = list(dict.fromkeys(s for seed in seeds_local[:3]
+                                   for s in tools.google_autocomplete(seed, market, locale.split("-")[0])))[:10] \
+            or seeds_local
     primary_local = local[0]
 
     tracer.markdown_sync("Transcreating")
@@ -86,7 +82,7 @@ def run(inputs: dict, tracer) -> str:
     out.artifact(f"translations_{locale}.json", {k: final[k] for k in keys})
     out.artifact(f"local_keywords_{locale}.csv", "keyword\n" + "\n".join(local), "text/csv")
     out.artifact("qa_report.md", f"Back-translation drift: {', '.join(drift) or 'none'}", "text/markdown")
-    out.bundle = {"locale": locale, "market": market, "location_code": location_code(market),
+    out.bundle = {"locale": locale, "market": market,
                   "locked_terms": locked, "primary_local": primary_local, "local_keywords": local[:3],
                   "source": {k: {"value": source[k]["value"][:6000], "digest": source[k]["digest"]} for k in keys},
                   "translated": {k: final[k][:6000] for k in keys}}

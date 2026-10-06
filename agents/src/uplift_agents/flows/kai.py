@@ -1,15 +1,15 @@
-"""Kai — Search Demand Analyst: clustered keyword map, intent, seasonality, peak windows."""
+"""Kai — Search Demand Analyst: keyword map from Google autocomplete, related searches and questions (Serper),
+demand signal, brand filter, clusters with intent and on-page roles."""
 
 import csv
 import io
 import re
+from concurrent.futures import ThreadPoolExecutor
 
-import numpy as np
 from kodosumi.core import forms as F
 from uplift_core import llm
 
 from .. import tools
-from ..markets import location_code
 from ..runtime import Context, Deliverable
 
 FIELDS = [
@@ -18,13 +18,13 @@ FIELDS = [
     F.InputText(label="Market (country code, e.g. US, DE, JP)", name="market_country", value="US", required=True),
     F.InputText(label="Language code (e.g. en, de, ja)", name="language", value="en", required=True),
     F.InputArea(label="Seed keywords (one per line, optional)", name="seed_keywords"),
-    F.InputArea(label="Competitor domains (one per line, optional)", name="competitor_domains"),
+    F.InputArea(label="Competitor brands or domains to exclude (one per line, optional)", name="competitor_domains"),
     F.InputArea(label="Terms to avoid, e.g. other brands (optional)", name="exclude_terms"),
     F.InputArea(label="Your own brand terms (optional)", name="own_brand_terms"),
 ]
 
 ROLES = ["title", "description", "seo_meta", "blog", "ads_exact", "ads_phrase", "negative"]
-MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+INTENTS = ["informational", "commercial", "transactional", "navigational"]
 
 
 def _product_text(ctx: Context) -> str:
@@ -37,66 +37,62 @@ def _product_text(ctx: Context) -> str:
     return text
 
 
-def _items(results: list[dict]) -> list[dict]:
-    out = []
-    for r in results:
-        out.extend(r.get("items") or [])
-    return out
+SCORES = {"autocomplete": 10, "related": 4, "paa": 2, "seed": 3}
 
 
-def _row(item: dict) -> dict | None:
-    data = item.get("keyword_data", item)  # ranked_keywords nests under keyword_data
-    info = data.get("keyword_info") or {}
-    if not data.get("keyword") or not info.get("search_volume"):
-        return None
-    return {
-        "keyword": data["keyword"].lower(),
-        "volume": info["search_volume"],
-        "cpc": info.get("cpc"),
-        "competition": info.get("competition"),
-        "kd": (data.get("keyword_properties") or {}).get("keyword_difficulty"),
-        "intent": (data.get("search_intent_info") or {}).get("main_intent") or "unknown",
-        "monthly": [m["search_volume"] or 0 for m in sorted(
-            info.get("monthly_searches") or [], key=lambda m: (m["year"], m["month"]))][-12:],
-        "monthly_index": [(m["year"], m["month"]) for m in sorted(
-            info.get("monthly_searches") or [], key=lambda m: (m["year"], m["month"]))][-12:],
-    }
+def demand_scores(sources: dict[str, list[dict]]) -> dict[str, float]:
+    """Demand signal per keyword from how Google surfaces it: autocomplete rank, related searches, People Also Ask.
+    Kept identical to CRE's recomputation (cre/uplift-clearing/src/profiles.ts)."""
+    raw = {}
+    for kw, srcs in sources.items():
+        raw[kw] = sum(max(1, SCORES[s["type"]] - s.get("position", 0)) if s["type"] == "autocomplete"
+                      else SCORES[s["type"]] for s in srcs)
+    top = max(raw.values(), default=1)
+    return {kw: round(100 * v / top, 1) for kw, v in raw.items()}
 
 
 def run(inputs: dict, tracer) -> str:
     ctx = Context.from_inputs(inputs)
     out = Deliverable("kai", "Kai", ctx)
-    loc, lang = location_code(ctx.get("market_country", "US")), ctx.get("language", "en")
+    country, lang = ctx.get("market_country", "US").upper(), ctx.get("language", "en")
     text = _product_text(ctx)
 
     tracer.markdown_sync("**Kai** · finding seed terms")
     seeds = llm.structured(
-        f"Product:\n{text}\n\nList the attributes, use cases and 10–30 seed search terms a shopper would type.",
+        f"Product:\n{text}\n\nList the attributes, use cases and 10–20 short seed search terms (2–4 words) a shopper "
+        "would type.",
         {"type": "object", "properties": {
             "attributes": {"type": "array", "items": {"type": "string"}},
             "use_cases": {"type": "array", "items": {"type": "string"}},
             "seeds": {"type": "array", "items": {"type": "string"}}}, "required": ["seeds"]},
     )["seeds"] + ctx.lines("seed_keywords")
-    seeds = list(dict.fromkeys(s.lower().strip() for s in seeds if s.strip()))[:30]
+    seeds = list(dict.fromkeys(s.lower().strip() for s in seeds if s.strip()))[:12]
 
-    tracer.markdown_sync(f"Expanding {len(seeds)} seeds with DataForSEO")
-    base = {"location_code": loc, "language_code": lang}
-    raw = _items(tools.dataforseo("dataforseo_labs/google/keyword_ideas/live",
-                                  {**base, "keywords": seeds[:20], "limit": 400}))
-    for seed in seeds[:5]:
-        raw += _items(tools.dataforseo("dataforseo_labs/google/keyword_suggestions/live",
-                                       {**base, "keyword": seed, "limit": 60}))
-    for domain in ctx.lines("competitor_domains")[:3]:
-        raw += _items(tools.dataforseo("dataforseo_labs/google/ranked_keywords/live",
-                                       {**base, "target": domain, "limit": 100}))
-    rows = {}
-    for item in raw:
-        row = _row(item)
-        if row and row["keyword"] not in rows:
-            rows[row["keyword"]] = row
-    keywords = sorted(rows.values(), key=lambda r: -r["volume"])[:300]
+    tracer.markdown_sync(f"Expanding {len(seeds)} seeds with Google autocomplete, related searches and questions")
+    sources: dict[str, list[dict]] = {}
+
+    def add(kw: str, src: dict) -> None:
+        kw = re.sub(r"\s+", " ", kw.lower()).strip()
+        if 2 <= len(kw) <= 80:
+            sources.setdefault(kw, []).append(src)
+
+    def expand(seed: str) -> None:
+        add(seed, {"type": "seed", "query": seed})
+        for pos, sug in enumerate(tools.google_autocomplete(seed, country, lang)):
+            add(sug, {"type": "autocomplete", "query": seed, "position": pos})
+        serp = tools.google_search(seed, country, lang)
+        for rel in serp.get("relatedSearches", []):
+            add(rel["query"], {"type": "related", "query": seed})
+        for q in serp.get("peopleAlsoAsk", []):
+            add(q["question"], {"type": "paa", "query": seed})
+
+    with ThreadPoolExecutor(4) as pool:
+        list(pool.map(expand, seeds))
+    demand = demand_scores(sources)
+    keywords = [{"keyword": kw, "demand": demand[kw], "sources": srcs} for kw, srcs in sources.items()]
+    keywords = sorted(keywords, key=lambda k: -k["demand"])[:300]
     if not keywords:
-        raise RuntimeError("No keywords with search volume found for this product and market")
+        raise RuntimeError("No keywords found for this product and market")
 
     tracer.markdown_sync("Filtering other brands and trademarks")
     own = {t.lower() for t in ctx.lines("own_brand_terms")}
@@ -118,60 +114,49 @@ def run(inputs: dict, tracer) -> str:
     groups = llm.structured(
         f"Product:\n{text[:1500]}\n\nGroup these search terms into clusters of the same shopper need (usually "
         f"8–25 clusters). Put every id in exactly one cluster. Name each cluster and give its best use. "
-        f"Roles: {', '.join(ROLES)}. Use 'negative' for intent the product does not serve.\n{listing}",
+        f"Roles: {', '.join(ROLES)}. Use 'negative' for intent the product does not serve. Give each cluster's "
+        f"search intent.\n{listing}",
         {"type": "object", "properties": {"clusters": {"type": "array", "items": {"type": "object", "properties": {
             "name": {"type": "string"}, "role": {"type": "string", "enum": ROLES},
-            "ids": {"type": "array", "items": {"type": "integer"}}}, "required": ["name", "role", "ids"]}}},
+            "intent": {"type": "string", "enum": INTENTS},
+            "ids": {"type": "array", "items": {"type": "integer"}}}, "required": ["name", "role", "intent", "ids"]}}},
          "required": ["clusters"]}, max_tokens=8000)["clusters"]
     for g in groups:
         for i in g["ids"]:
             if 0 <= i < len(keywords) and "cluster" not in keywords[i]:
-                keywords[i] |= {"cluster": g["name"], "role": g["role"]}
+                keywords[i] |= {"cluster": g["name"], "role": g["role"], "intent": g["intent"]}
     for k in keywords:
         k.setdefault("cluster", "Other")
         k.setdefault("role", "description")
+        k.setdefault("intent", "commercial")
         if k["brand"]:
             k["role"] = "negative"
-
-    tracer.markdown_sync("Computing seasonality")
-    top = [k for k in keywords if k["monthly"] and not k["brand"]][:50]
-    totals = np.zeros(12)
-    for k in top:
-        series = np.array(k["monthly"][-12:] + [0] * (12 - len(k["monthly"][-12:])))
-        totals += series
-    months = [m for (_, m) in top[0]["monthly_index"]] if top else list(range(1, 13))
-    by_month = {months[i]: float(totals[i]) for i in range(min(12, len(months)))}
-    peak_months = sorted(by_month, key=lambda m: -by_month[m])[:3]
-    windows = [{"peak": MONTHS[m - 1], "start_promo": MONTHS[(m - 3) % 12] + " (6 weeks before)"} for m in peak_months]
 
     primary = next((k for k in keywords if k["role"] == "title"), keywords[0])
     secondary = [k["keyword"] for k in keywords if k["role"] in ("title", "description", "seo_meta")
                  and k is not primary][:12]
-    keyword_map = {"market": ctx.get("market_country"), "language": lang, "primary": primary["keyword"],
-                   "secondary": secondary,
-                   "keywords": [{x: k[x] for x in ("keyword", "volume", "cpc", "kd", "intent", "cluster", "role")}
-                                for k in keywords]}
+    fields = ("keyword", "demand", "intent", "cluster", "role")
+    keyword_map = {"market": country, "language": lang, "primary": primary["keyword"], "secondary": secondary,
+                   "demand_signal": "0–100, from Google autocomplete rank, related searches and People Also Ask",
+                   "keywords": [{x: k[x] for x in fields} for k in keywords]}
     buf = io.StringIO()
-    w = csv.DictWriter(buf, fieldnames=["keyword", "volume", "cpc", "kd", "intent", "cluster", "role"])
+    w = csv.DictWriter(buf, fieldnames=list(fields))
     w.writeheader()
     w.writerows(keyword_map["keywords"])
     negatives = sorted({k["keyword"] for k in keywords if k["role"] == "negative"})
 
     out.artifact("keyword_map.json", keyword_map)
     out.artifact("keyword_map.csv", buf.getvalue(), "text/csv")
-    out.artifact("seasonality.json", {"by_month": {MONTHS[m - 1]: v for m, v in by_month.items()},
-                                      "peak_months": [MONTHS[m - 1] for m in peak_months], "windows": windows})
     out.artifact("negatives.txt", "\n".join(negatives))
     out.bundle = {
-        "location_code": loc, "language_code": lang, "brand_terms": sorted(brands),
-        "keywords": [{"keyword": k["keyword"], "volume": k["volume"], "intent": k["intent"],
-                      "cluster": k["cluster"], "role": k["role"], "monthly": k["monthly"]} for k in keywords[:150]],
-        "peak_months": peak_months, "months": months,
+        "country": country, "language": lang, "brand_terms": sorted(brands),
+        "keywords": [{"keyword": k["keyword"], "demand": k["demand"], "intent": k["intent"], "cluster": k["cluster"],
+                      "role": k["role"], "sources": k["sources"]} for k in keywords[:150]],
     }
     clusters = sorted({(k["cluster"], k["role"]) for k in keywords if k["role"] != "negative"})
-    summary = (f"**Primary keyword:** {primary['keyword']} ({primary['volume']:,}/mo)\n\n"
-               f"**{len(keywords)} keywords** in {len(clusters)} clusters for {ctx.get('market_country')}.\n\n"
+    summary = (f"**Primary keyword:** {primary['keyword']} (demand {primary['demand']}/100)\n\n"
+               f"**{len(keywords)} keywords** from Google autocomplete, related searches and questions, in "
+               f"{len(clusters)} clusters for {country}.\n\n"
                + "\n".join(f"- {c} → {r}" for c, r in clusters[:15])
-               + f"\n\n**Peak months:** {', '.join(MONTHS[m - 1] for m in peak_months)}"
                + (f"\n\n{len(negatives)} brand/irrelevant terms moved to negatives." if negatives else ""))
     return out.finalize(summary)

@@ -12,13 +12,12 @@ from kodosumi.core import forms as F
 from uplift_core import llm
 
 from .. import tools
-from ..markets import location_code
 from ..runtime import Context, Deliverable
 
 FIELDS = [
     F.InputArea(label="Competitor products (URLs or Amazon ASINs, one per line, up to 5)", name="competitor_products"),
     F.InputText(label="…or a product category to discover competitors", name="category"),
-    F.InputArea(label="Competitor brand domains for Trustpilot (optional)", name="competitor_domains"),
+    F.InputArea(label="Competitor brand domains for Trustpilot reviews (optional)", name="competitor_domains"),
     F.InputText(label="Market (country code)", name="market_country", value="US", required=True),
     F.InputText(label="Language code", name="language", value="en", required=True),
     F.InputArea(label="Your product, for context only (optional)", name="my_product"),
@@ -49,10 +48,9 @@ def _asin(value: str) -> str | None:
     return m.group(1) if m else None
 
 
-def collect(ctx: Context, competitors: list[str], shopping: list[dict], tracer) -> list[dict]:
+def collect(ctx: Context, competitors: list[str], tracer) -> list[dict]:
     own = urlparse((ctx.snapshot or {}).get("shop", {}).get("primaryDomain", {}).get("url", "") or "").netloc
     reviews: list[dict] = []
-    loc, lang = location_code(ctx.get("market_country", "US")), ctx.get("language", "en")
 
     def amazon(ref: str) -> list[dict]:
         asin = _asin(ref)
@@ -68,27 +66,15 @@ def collect(ctx: Context, competitors: list[str], shopping: list[dict], tracer) 
         return [{"source": "storefront", "competitor": data.get("product") or urlparse(url).netloc, "url": url, **r}
                 for r in data.get("reviews") or []]
 
-    def google(item: dict) -> list[dict]:
-        res = tools.dataforseo_task("merchant/google/reviews/task_post", "merchant/google/reviews/task_get/advanced",
-                                    {"gid": item["gid"], "location_code": loc, "language_code": lang, "depth": 100})
-        return [{"source": "google_shopping", "competitor": item.get("title"), "text": r.get("review_text") or "",
-                 "rating": (r.get("rating") or {}).get("value"), "date": r.get("timestamp"),
-                 "url": r.get("url") or "https://shopping.google.com"} for x in res for r in x.get("items") or []]
-
     def trustpilot(domain: str) -> list[dict]:
-        res = tools.dataforseo_task("business_data/trustpilot/reviews/task_post",
-                                    "business_data/trustpilot/reviews/task_get", {"domain": domain, "depth": 200})
-        return [{"source": "trustpilot", "competitor": domain, "text": r.get("review_text") or "",
-                 "rating": (r.get("rating") or {}).get("value"), "date": r.get("timestamp"),
-                 "url": r.get("url") or f"https://www.trustpilot.com/review/{domain}"}
-                for x in res for r in x.get("items") or []]
+        url = f"https://www.trustpilot.com/review/{domain}"
+        return [{**r, "source": "trustpilot", "competitor": domain} for r in storefront(url)]
 
     jobs = []
     for ref in competitors:
         if own and own in ref:
             continue  # never analyse the merchant's own reviews
         jobs.append((amazon if _asin(ref) and ("amazon." in ref or not ref.startswith("http")) else storefront, ref))
-    jobs += [(google, s) for s in shopping if s.get("gid")][:3]
     jobs += [(trustpilot, d) for d in ctx.lines("competitor_domains") if d not in own][:3]
 
     tracer.markdown_sync(f"**Priya** · collecting reviews from {len(jobs)} competitor sources")
@@ -114,6 +100,15 @@ def collect(ctx: Context, competitors: list[str], shopping: list[dict], tracer) 
     return clean
 
 
+def discover(category: str, country: str, language: str) -> list[str]:
+    """Competitor product pages for a category from Google results: Amazon listings plus brand product pages."""
+    amazon = [o["link"] for o in tools.google_search(f"{category} site:amazon.com", country, language).get("organic", [])
+              if _asin(o["link"])][:3]
+    pages = [o["link"] for o in tools.google_search(f"best {category}", country, language).get("organic", [])
+             if "amazon." not in o["link"] and urlparse(o["link"]).path.count("/") >= 2][:2]
+    return amazon + pages
+
+
 def _safe(fn, *args) -> list:
     try:
         return fn(*args)
@@ -125,24 +120,15 @@ def run(inputs: dict, tracer) -> str:
     ctx = Context.from_inputs(inputs)
     out = Deliverable("priya", "Priya", ctx)
     competitors = ctx.lines("competitor_products")[:5]
-    shopping: list[dict] = []
     rafael = ctx.upstream_artifact("rafael", "competitor_set.json")
-    if rafael:
-        competitors = competitors or [p["url"] for p in rafael["products"]][:5]
-        shopping = rafael.get("google_shopping", [])
+    if rafael and not competitors:
+        competitors = [p["url"] for p in rafael["products"]][:5]
     if not competitors and ctx.get("category"):
-        loc, lang = location_code(ctx.get("market_country", "US")), ctx.get("language", "en")
-        found = tools.dataforseo_task("merchant/google/products/task_post", "merchant/google/products/task_get/advanced",
-                                      {"keyword": ctx.get("category"), "location_code": loc, "language_code": lang,
-                                       "depth": 40})
-        offers = sorted([i for r in found for i in r.get("items") or []],
-                        key=lambda i: -((i.get("product_rating") or {}).get("votes_count") or 0))
-        shopping = offers[:5]
-        competitors = [o["url"] for o in offers[:5] if o.get("url")]
-    if not competitors and not shopping:
+        competitors = discover(ctx.get("category"), ctx.get("market_country", "US"), ctx.get("language", "en"))
+    if not competitors:
         raise RuntimeError("INPUT_MISSING: give competitor products or a category")
 
-    reviews = collect(ctx, competitors, shopping, tracer)
+    reviews = collect(ctx, competitors, tracer)
     if not reviews:
         raise RuntimeError("No competitor reviews could be collected from the given sources")
 
@@ -168,7 +154,8 @@ def run(inputs: dict, tracer) -> str:
     weight = {}
     for r in reviews:
         try:
-            recent = datetime.fromisoformat(str(r.get("date")).replace("Z", "+00:00")) > now - timedelta(days=548)
+            posted = datetime.fromisoformat(str(r.get("date")).replace("Z", "+00:00"))
+            recent = (posted if posted.tzinfo else posted.replace(tzinfo=UTC)) > now - timedelta(days=548)
         except ValueError:
             recent = False
         weight[r["id"]] = 2 if recent else 1

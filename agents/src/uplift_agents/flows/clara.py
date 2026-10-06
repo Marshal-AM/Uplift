@@ -101,12 +101,9 @@ def run(inputs: dict, tracer) -> str:
         primary, secondary = ctx.lines("target_keywords")[0].lower(), [k.lower() for k in ctx.lines("target_keywords")[1:]]
     else:
         tracer.markdown_sync("No keywords given — running a quick keyword pass")
-        res = tools.dataforseo("dataforseo_labs/google/keyword_suggestions/live",
-                               {"keyword": (product.get("title") or current.split("\n")[0])[:80],
-                                "location_code": 2840, "language_code": ctx.get("locale", "en")[:2], "limit": 30})
-        ranked = sorted([i for r in res for i in r.get("items") or []],
-                        key=lambda i: -((i.get("keyword_info") or {}).get("search_volume") or 0))
-        kws = [i["keyword"] for i in ranked[:15]] or [current.split("\n")[0].lower()]
+        locale = ctx.get("locale", "en-US")
+        kws = tools.google_autocomplete((product.get("title") or current.split("\n")[0])[:80],
+                                        locale.split("-")[-1], locale[:2])[:15] or [current.split("\n")[0].lower()]
         primary, secondary = kws[0], kws[1:10]
     findings = ctx.upstream_artifact("priya", "findings.json") or []
     objections = [f["aspect"] for f in findings if f["kind"] in ("complaint", "dealbreaker")][:5]

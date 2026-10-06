@@ -11,7 +11,6 @@ from kodosumi.core import forms as F
 from uplift_core import llm
 
 from .. import tools
-from ..markets import location_code
 from ..runtime import Context, Deliverable
 
 FIELDS = [
@@ -44,7 +43,7 @@ def _domain(url: str) -> str:
 def run(inputs: dict, tracer) -> str:
     ctx = Context.from_inputs(inputs)
     out = Deliverable("rafael", "Rafael", ctx)
-    loc, lang = location_code(ctx.get("market_country", "US")), ctx.get("language", "en")
+    country, lang = ctx.get("market_country", "US").upper(), ctx.get("language", "en")
     max_n = int(ctx.get("max_competitors", 8) or 8)
     product = ctx.product["title"] if ctx.product else ctx.get("product", "")
     own_domain = _domain((ctx.snapshot or {}).get("shop", {}).get("primaryDomain", {}).get("url", "") or "x")
@@ -56,21 +55,14 @@ def run(inputs: dict, tracer) -> str:
          "required": ["queries"]})["queries"][:5])
 
     tracer.markdown_sync(f"**Rafael** · reading Google results for {len(queries)} queries")
-    serp_rows, paa, features = [], set(), set()
+    serp_rows, paa = [], set()
     for q in queries:
-        for res in tools.dataforseo("serp/google/organic/live/advanced",
-                                    {"keyword": q, "location_code": loc, "language_code": lang, "depth": 20}):
-            for item in res.get("items") or []:
-                features.add(item["type"])
-                if item["type"] == "organic":
-                    serp_rows.append({"query": q, "rank": item["rank_absolute"], "domain": item["domain"],
-                                      "url": item["url"], "title": item.get("title")})
-                elif item["type"] == "people_also_ask":
-                    paa |= {i.get("title") for i in item.get("items") or [] if i.get("title")}
-    shopping = tools.dataforseo_task("merchant/google/products/task_post", "merchant/google/products/task_get/advanced",
-                                     {"keyword": queries[0], "location_code": loc, "language_code": lang,
-                                      "depth": 40})
-    offers = [i for r in shopping for i in r.get("items") or [] if i.get("price")]
+        serp = tools.google_search(q, country, lang, num=20)
+        for item in serp.get("organic", []):
+            serp_rows.append({"query": q, "rank": item["position"], "domain": _domain(item["link"]),
+                              "url": item["link"], "title": item.get("title")})
+        paa |= {p["question"] for p in serp.get("peopleAlsoAsk", [])}
+    offers = [o for o in tools.google_shopping(queries[0], country, lang) if o.get("price_value")]
 
     tracer.markdown_sync("Choosing the competitor set")
     visibility: dict[str, float] = {}
@@ -104,7 +96,7 @@ def run(inputs: dict, tracer) -> str:
         if row.get("price"):
             out.cite(f"{row['domain']} price {row['price']}", row["url"], row.get("title", ""))
 
-    prices = sorted([r["price"] for r in matrix if r.get("price")] + [o["price"] for o in offers])
+    prices = sorted([r["price"] for r in matrix if r.get("price")] + [o["price_value"] for o in offers])
     bands = {}
     if prices:
         q = statistics.quantiles(prices, n=4) if len(prices) >= 4 else [prices[0], statistics.median(prices),
@@ -136,8 +128,9 @@ def run(inputs: dict, tracer) -> str:
     competitor_set = {
         "products": [{"domain": r["domain"], "url": r["url"], "title": r.get("title")}
                      for r in matrix if not r.get("unavailable")],
-        "google_shopping": [{"title": o.get("title"), "product_id": o.get("product_id"), "gid": o.get("gid"),
-                             "data_docid": o.get("data_docid"), "seller": o.get("seller")} for o in offers[:10]],
+        "google_shopping": [{"title": o.get("title"), "product_id": o.get("productId"), "seller": o.get("source"),
+                             "price": o["price_value"], "rating": o.get("rating"),
+                             "rating_count": o.get("ratingCount")} for o in offers[:10]],
         "brands": sorted({r.get("brand") for r in matrix if r.get("brand")}),
     }
     out.artifact("competitor_matrix.json", matrix)
@@ -147,7 +140,7 @@ def run(inputs: dict, tracer) -> str:
     out.artifact("gaps.md", "\n".join(f"- {g}" for g in synthesis["content_gaps"]), "text/markdown")
     out.artifact("competitor_set.json", competitor_set)
     out.bundle = {
-        "location_code": loc, "language_code": lang, "queries": queries,
+        "country": country, "language": lang, "queries": queries,
         "top_domains": [r["domain"] for r in sorted(serp_rows, key=lambda r: r["rank"]) if r["query"] == queries[0]][:5],
         "evidence": [{"url": r["url"], "title": r.get("title"), "price": r.get("price")}
                      for r in matrix if not r.get("unavailable")],

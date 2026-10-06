@@ -17,8 +17,8 @@ VERSION = "5.0.0"
 
 SPECIALISTS = [
     ("kai", kai, "Kai · Search Demand Analyst",
-     "Clustered keyword map with search volume, intent, difficulty, CPC, seasonality and peak windows.",
-     ["keyword research", "seo", "seasonality"]),
+     "Clustered keyword map from real Google autocomplete, related searches and questions, with demand and intent.",
+     ["keyword research", "seo", "search intent"]),
     ("rafael", rafael, "Rafael · Competitor & Market Analyst",
      "Who ranks on Google and Google Shopping, what they charge and promise, and where the gaps are.",
      ["competitor analysis", "google shopping", "pricing"]),

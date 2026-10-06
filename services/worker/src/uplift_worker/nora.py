@@ -28,7 +28,7 @@ CAPABILITIES = {
     "compliance": "ruth", "audit": "quinn", "analytics": "quinn",
 }
 ORDER = ["quinn", "kai", "rafael", "priya", "marcus", "clara", "iris", "oskar", "leo", "sasha", "yuki"]
-DEPENDS = {"priya": ["rafael"], "marcus": ["rafael", "kai"], "clara": ["kai", "priya"], "iris": ["priya"],
+DEPENDS = {"priya": ["rafael"], "marcus": ["rafael"], "clara": ["kai", "priya"], "iris": ["priya"],
            "oskar": ["kai"], "leo": ["clara", "priya", "rafael", "kai", "marcus"], "sasha": ["marcus", "kai", "iris", "clara"],
            "yuki": ["clara", "leo", "iris"]}
 FULL_FLOW = ["kai", "rafael", "priya", "marcus", "clara", "iris", "oskar", "leo", "sasha", "yuki"]
@@ -44,7 +44,7 @@ def close(roles: set[str], has_keywords: bool, competitors_known: bool) -> set[s
     if "priya" in roles and not competitors_known:
         roles.add("rafael")
     if "marcus" in roles:
-        roles |= {"rafael", "kai"}
+        roles.add("rafael")
     if "sasha" in roles:
         roles |= {"marcus", "iris"}
     return roles
@@ -109,7 +109,7 @@ def fields_for(role: str, intent: dict, product: dict, locale: str | None = None
         "sasha": {"campaign_types": "search,shopping", "budget_cap": "1000", "market_country": market,
                   "margin_pct": ""},
         "ruth": {"markets": "US,EU", "category": "general"},
-        "quinn": {"mode": "audit", "market_country": market},
+        "quinn": {"mode": "audit", "market_country": market, "store_queries": "\n".join(intent.get("keywords", []))},
     }[role]
 
 

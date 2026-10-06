@@ -97,8 +97,7 @@ def connect_callback(request: Request):
         raise HTTPException(400, "This connect link was already used. Request a new one in Sokosumi.") from exc
 
     grant = shopify.exchange_code(shop_domain, params["code"])
-    links.save(claims["user_id"], claims.get("org_id", ""), "shopify", shop_domain,
-               grant["access_token"], grant.get("scope", ""))
+    links.save(claims["user_id"], claims.get("org_id", ""), "shopify", shop_domain, grant)
     _notify_worker({"event": "store_connected", "platform": "shopify", "shop": shop_domain, **claims})
     return _page("Store connected", f"<p><b>{html.escape(shop_domain)}</b> is connected to Uplift. "
                                     "You can close this tab and return to Sokosumi.</p>")

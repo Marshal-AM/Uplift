@@ -21,13 +21,13 @@
   "kai": {
     "name": "Kai · Search Demand Analyst",
     "caption": "Search Demand Analyst",
-    "description": "Finds what your customers actually search for. Give Kai your product and market and get a clustered keyword map with search volume, buyer intent, difficulty, cost-per-click, 12-month seasonality and peak selling windows. Each keyword cluster says where to use it: product title, description, blog or ads.",
+    "description": "Finds what your customers actually search for. Give Kai your product and market and get a clustered keyword map built from real Google autocomplete suggestions, related searches and shopper questions, with a demand signal for each keyword, buyer intent, and where to use each cluster: product title, description, blog or ads.",
     "tags": [
       "keyword research",
       "SEO",
-      "search volume",
-      "seasonality",
+      "google autocomplete",
       "search intent",
+      "keyword clusters",
       "ecommerce SEO",
       "PPC keywords"
     ],

@@ -30,7 +30,7 @@ const NORA: Member = {
 }
 
 const TEAM: Member[] = [
-  { name: "Kai", role: "Search Demand Analyst", deliverable: "Keyword map, intent clusters, seasonality and peak windows", price: "1.25", icon: Search },
+  { name: "Kai", role: "Search Demand Analyst", deliverable: "Keyword map from real Google searches, demand and intent clusters", price: "1.25", icon: Search },
   { name: "Rafael", role: "Competitor & Market Analyst", deliverable: "Who ranks, their prices, claims, offers and gaps", price: "1.25", icon: Radar },
   { name: "Priya", role: "Competitor Review & Sentiment Analyst", deliverable: "What competitors' customers love, hate and still need", price: "1.50", icon: MessagesSquare },
   { name: "Marcus", role: "Pricing & Promotions Strategist", deliverable: "Price positioning, promo calendar, margin-safe discount codes", price: "1.25", icon: BadgePercent },

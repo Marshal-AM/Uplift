@@ -8,7 +8,6 @@ from kodosumi.core import forms as F
 from uplift_core import llm
 
 from .. import tools
-from ..markets import location_code
 from ..runtime import Context, Deliverable
 
 FIELDS = [
@@ -39,7 +38,7 @@ def run(inputs: dict, tracer) -> str:
     ctx = Context.from_inputs(inputs)
     out = Deliverable("sasha", "Sasha", ctx)
     product = ctx.product or {}
-    loc = location_code(ctx.get("market_country", "US"))
+    country = ctx.get("market_country", "US").upper()
     price = float(product["variants"]["nodes"][0]["price"]) if product.get("variants") else None
     margin = None
     if ctx.get("margin_pct"):
@@ -70,14 +69,11 @@ def run(inputs: dict, tracer) -> str:
         kws = [k for k in kai["keywords"] if k["role"] in ("ads_exact", "ads_phrase", "title", "description")]
         negatives = [k["keyword"] for k in kai["keywords"] if k["role"] == "negative"]
     else:
-        res = tools.dataforseo("dataforseo_labs/google/keyword_suggestions/live",
-                               {"keyword": product.get("title") or ctx.get("product_facts", "")[:80],
-                                "location_code": loc, "language_code": "en", "limit": 60})
-        kws = [{"keyword": i["keyword"], "cpc": (i.get("keyword_info") or {}).get("cpc"), "cluster": "core",
-                "role": "ads_phrase", "volume": (i.get("keyword_info") or {}).get("search_volume") or 0}
-               for r in res for i in r.get("items") or []]
+        seed = product.get("title") or ctx.get("product_facts", "")[:80]
+        kws = [{"keyword": k, "cluster": "core", "role": "ads_phrase"}
+               for k in tools.google_autocomplete(seed, country, "en")]
         negatives = []
-    affordable = [k for k in kws if (k.get("cpc") or 0) <= max_cpc * 1.5][:60]
+    affordable = kws[:60]  # every keyword is bid at max_cpc, which is capped by break-even economics
     competitor_brands = (ctx.upstream_artifact("rafael", "competitor_set.json") or {}).get("brands", [])
     negatives = list(dict.fromkeys(negatives + [b.lower() for b in competitor_brands]))
     negatives = [n for n in negatives if not any(negative_blocks(n, "phrase", k["keyword"]) for k in affordable)]

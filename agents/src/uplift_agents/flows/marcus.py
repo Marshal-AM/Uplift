@@ -9,7 +9,6 @@ from kodosumi.core import forms as F
 from uplift_core import llm
 
 from .. import tools
-from ..markets import location_code
 from ..runtime import Context, Deliverable
 
 FIELDS = [
@@ -55,14 +54,10 @@ def run(inputs: dict, tracer) -> str:
 
     bands = ctx.upstream_artifact("rafael", "price_bands.json")
     if not bands:
-        found = tools.dataforseo_task(
-            "merchant/google/products/task_post", "merchant/google/products/task_get/advanced",
-            {"keyword": product.get("title") or ctx.get("product"), "location_code": location_code(country),
-             "language_code": "en", "depth": 40})
-        prices = sorted(i["price"] for r in found for i in r.get("items") or [] if i.get("price"))
+        found = tools.google_shopping(product.get("title") or ctx.get("product"), country, "en")
+        prices = sorted(o["price_value"] for o in found if o.get("price_value"))
         bands = {"min": prices[0], "median": statistics.median(prices), "max": prices[-1], "n": len(prices)} \
             if prices else {}
-    season = ctx.upstream_artifact("kai", "seasonality.json") or {}
 
     tracer.markdown_sync("Modelling discount scenarios against your margin")
     scenarios = []
@@ -85,7 +80,7 @@ def run(inputs: dict, tracer) -> str:
     strategy = llm.structured(
         f"Product: {product.get('title') or ctx.get('product')}\nPrice {price}, unit cost {cost}, shipping {shipping}, "
         f"margin floor {floor:.0%}. Max allowed discount: {max_pct}%.\nMarket price bands: {bands}\n"
-        f"Seasonality: {season}\nUpcoming retail events: {events}\nPublic holidays: "
+        f"Upcoming retail events: {events}\nPublic holidays: "
         f"{[h['date'] + ' ' + h['localName'] for h in holidays if h['date'] > str(today)][:10]}\n"
         f"Goal: {ctx.get('goal', 'launch')}. Merchant window: {window}. Limits: {ctx.get('discount_limits', 'none')}\n"
         "Recommend positioning (premium/parity/value) with advisory list-price guidance, and 1–4 promotions. "

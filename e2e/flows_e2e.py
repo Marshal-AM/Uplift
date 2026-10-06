@@ -14,20 +14,20 @@ import httpx
 from uplift_agents.flows import clara, iris, kai, leo, marcus, oskar, priya, quinn, rafael, ruth, sasha, yuki
 from uplift_core.hashing import result_hash, sha256_hex
 
-PRODUCT = "Fellow Stagg [X] pour-over dripper"
-FACTS = ("Double-wall stainless steel pour-over dripper; vacuum-insulated walls keep the brew temperature stable; "
-         "ridged interior for even flow; fits size 02 cone filters; includes a 20-filter starter pack; "
-         "dishwasher safe; price 34 USD; 1-year warranty.")
+PRODUCT = "Bamboo-lid insulated stainless steel water bottle, 500 ml"
+FACTS = ("Double-wall vacuum-insulated 18/8 stainless steel bottle; natural bamboo lid with leak-proof silicone seal; "
+         "500 ml; keeps drinks cold 24 hours and hot 12 hours; BPA-free; fits most cup holders; hand-wash the lid; "
+         "price 34 USD; 1-year warranty.")
 COPY = ("Stagg X Pour-Over Dripper\n<p>The best dripper in the world. 100% safe and eco-friendly. Double-wall "
         "stainless steel keeps heat steady for a balanced cup. Fits size 02 filters.</p>")
 FLOWS = {"kai": kai, "rafael": rafael, "priya": priya, "marcus": marcus, "clara": clara, "iris": iris,
          "oskar": oskar, "yuki": yuki, "leo": leo, "sasha": sasha, "ruth": ruth, "quinn": quinn}
 INPUTS = {
-    "kai": {"product": PRODUCT, "market_country": "US", "language": "en", "seed_keywords": "pour over dripper",
-            "competitor_domains": "hario.com\nkalita.co.jp"},
+    "kai": {"product": PRODUCT, "market_country": "US", "language": "en", "seed_keywords": "bamboo water bottle",
+            "competitor_domains": "hydroflask.com\nyeti.com"},
     "rafael": {"product": PRODUCT, "market_country": "US", "language": "en", "price_point": "34", "max_competitors": "6"},
-    "priya": {"category": "pour over coffee dripper", "market_country": "US", "language": "en",
-              "my_product": PRODUCT, "competitor_domains": "hario.com", "include_social": "yes"},
+    "priya": {"category": "insulated bamboo water bottle", "market_country": "US", "language": "en",
+              "my_product": PRODUCT, "competitor_domains": "hydroflask.com", "include_social": "yes"},
     "marcus": {"product": PRODUCT, "goal": "launch", "margin_floor_pct": "35", "unit_cost": "11", "price": "34",
                "shipping_cost": "4", "market_country": "US"},
     "clara": {"current_copy": COPY, "product_facts": FACTS, "target_keywords": "pour over dripper\nstainless steel dripper",

@@ -45,8 +45,11 @@ def run(inputs: dict, tracer) -> str:
     product_url = product.get("onlineStoreUrl") or (f"{shop_url}/products/{product.get('handle')}" if shop_url else "")
     campaign = f"uplift-{ctx.run_id[:12]}"
     facts = ctx.upstream_artifact("clara", "facts.json") or {}
-    facts_text = "\n".join(f"{k}: {v}" for k, v in facts.items()) or ctx.get("product_facts", "") or \
-        re.sub("<[^>]+>", " ", product.get("descriptionHtml") or "")
+    if not facts:  # no Clara fact sheet: number the merchant's own facts so every claim can cite one
+        raw = ctx.get("product_facts", "") or re.sub("<[^>]+>", " ", product.get("descriptionHtml") or "")
+        parts = [x.strip(" .") for x in re.split(r"[;\n]|(?<=\.)\s+", raw) if len(x.strip(" .")) > 3]
+        facts = {f"f{i + 1}": x for i, x in enumerate(parts)}
+    facts_text = "\n".join(f"{k}: {v}" for k, v in facts.items())
     title = product.get("title") or ctx.get("product_facts", "").split("\n")[0]
     kai = ctx.upstream_artifact("kai", "keyword_map.json")
     findings = ctx.upstream_artifact("priya", "findings.json") or []
@@ -56,16 +59,14 @@ def run(inputs: dict, tracer) -> str:
     voice = ctx.get("brand_voice", "clear, warm, confident")
 
     tracer.markdown_sync("**Leo** · researching what people ask")
-    head = kai["primary"] if kai else title
+    head = kai["primary"] if kai else llm.text(
+        f"Product: {title}\nFacts:\n{facts_text}\nReply with only the generic 3–6 word phrase a shopper would type into "
+        "Google to find this kind of product (no brand or model names).", max_tokens=400).strip().strip('"')
     paa: list[str] = []
     outline: list[str] = []
-    for res in tools.dataforseo("serp/google/organic/live/advanced",
-                                {"keyword": head, "location_code": 2840, "language_code": "en", "depth": 10}):
-        for item in res.get("items") or []:
-            if item["type"] == "people_also_ask":
-                paa += [i["title"] for i in item.get("items") or [] if i.get("title")]
-            elif item["type"] == "organic":
-                outline.append(item.get("title", ""))
+    serp = tools.google_search(head, "US", "en")
+    paa += [p["question"] for p in serp.get("peopleAlsoAsk", [])]
+    outline += [o.get("title", "") for o in serp.get("organic", [])]
     questions = [k["keyword"] for k in (kai["keywords"] if kai else []) if k["intent"] == "informational"][:10]
 
     if "faq" in wanted:
@@ -73,7 +74,8 @@ def run(inputs: dict, tracer) -> str:
         faq = llm.structured(
             f"Product: {title}\nFacts (cite ids):\n{facts_text}\nShopper questions: {paa + questions}\n"
             f"Objections from competitor reviews: {objections}\nWrite 6–10 FAQ entries answering real questions and "
-            "objections using only the facts. Each answer lists the fact ids it relies on.",
+            "objections using only the facts. Answer each question directly in the first sentence; skip questions the facts "
+            "cannot answer. Each answer lists the fact ids it relies on.",
             {"type": "object", "properties": {"faq": {"type": "array", "items": {"type": "object", "properties": {
                 "question": {"type": "string"}, "answer": {"type": "string"},
                 "fact_ids": {"type": "array", "items": {"type": "string"}}},

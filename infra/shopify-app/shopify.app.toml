@@ -5,7 +5,7 @@ application_url = "https://gateway-production-518d.up.railway.app/health"
 embedded = false
 
 [access_scopes]
-scopes = "read_products,write_products,write_translations,read_locales,read_discounts,write_discounts,write_content,write_files,read_inventory,read_reports"
+scopes = "read_products,write_products,write_translations,read_locales,write_locales,read_discounts,write_discounts,write_content,write_files,read_inventory,read_reports,write_metaobjects,write_publications,unauthenticated_read_product_listings"
 
 [auth]
 redirect_urls = ["https://gateway-production-518d.up.railway.app/connect/shopify/callback"]

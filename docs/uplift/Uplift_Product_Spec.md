@@ -49,7 +49,7 @@ All merchant-facing wording, coworker listings and deliverables are platform-neu
 | "Launch my new bamboo bottle" | Full launch with all 12 specialists: research, listing, visuals, catalog and shopping feed, translations, content and email copy, ad campaigns, compliance, publishing, before/after report |
 | "Rewrite these 3 product pages" | Keywords, competitor reviews, copy, compliance, audit |
 | "Why isn't this product selling?" | Audit and analytics diagnosis, competitor intel, competitor reviews, then a prioritized fix plan |
-| "Plan our Black Friday promotion" | Demand seasonality, competitor prices, promotion plan with discount codes, email copy, ads plan |
+| "Plan our Black Friday promotion" | Holiday and retail-event calendar, competitor prices, promotion plan with discount codes, email copy, ads plan |
 | "Sell this in Germany and Japan" | Localized listings, local keywords, compliance |
 | "Get my products into Google Shopping without errors" | Catalog and feed fixes, plus a Merchant Center issue report |
 | "Make my product photos convert better" | Image audit, cleanup, lifestyle scenes, channel crops, alt text |
@@ -98,7 +98,7 @@ All merchant-facing wording, coworker listings and deliverables are platform-neu
 | # | Name | Sokosumi caption (role) | Core deliverable | Unit · fixed price (tUSDM = credits) |
 |---|---|---|---|---|
 | 0 | **Nora** | Uplift Lead · E-commerce Growth Manager | Plan and quote, orchestration, merged launch pack, publishing | Task fee 1.50, plus hired specialists |
-| 1 | **Kai** | Search Demand Analyst | Keyword map, intent clusters, seasonality, peak windows | Per product or topic · 1.25 |
+| 1 | **Kai** | Search Demand Analyst | Keyword map with demand signal, intent and clusters, from Google autocomplete, related searches and questions | Per product or topic · 1.25 |
 | 2 | **Rafael** | Competitor & Market Analyst | Competitor matrix: who ranks, prices, claims, offers, gaps | Per product or category · 1.25 |
 | 3 | **Priya** | Competitor Review & Sentiment Analyst | Competitor customer sentiment: loves, complaints, unmet needs, quotes | Per competitor set (up to 5 products) · 1.50 |
 | 4 | **Marcus** | Pricing & Promotions Strategist | Price positioning, promotion calendar, margin-safe discount codes | Per product or campaign · 1.25 |
@@ -109,7 +109,7 @@ All merchant-facing wording, coworker listings and deliverables are platform-neu
 | 9 | **Leo** | Content & Email Marketer | FAQ, comparison table, blog article, email campaign copy, social pack | Per product or campaign · 2.00 |
 | 10 | **Sasha** | Paid Ads Strategist | Campaign plan with break-even bids, ad copy, import file, paused campaigns (Google Ads in v1) | Per product or campaign · 1.50 |
 | 11 | **Ruth** | Claims & Compliance Reviewer | Claim, trademark and policy findings with safe rewrites | Per product or asset bundle · 0.25 |
-| 12 | **Quinn** | Store Auditor & Performance Analyst | 0–100 listing score, conversion audit, analytics diagnosis, before/after report | Per product per report · 0.50 |
+| 12 | **Quinn** | Store Auditor & Performance Analyst | 0–100 listing score, Google and store search ranks, conversion audit, analytics diagnosis, before/after report | Per product per report · 0.50 |
 
 - Catalog data, collections, product linking and feed health live with **Oskar**.
 - Handle, SEO title and meta live with **Clara**.
@@ -263,7 +263,7 @@ How each read is done:
 - A deliverable **passes** when both hold:
   - all of its role's **hard gates** hold (safety rules only: margin floor, spend cap, bid ceiling, field ownership, product-pixel fidelity, competitor-only sources);
   - its weighted score reaches the role's pass threshold, which is between 60 and 70 (sheet §V).
-- Numeric re-checks use generous tolerance bands (±30% for market metrics), because third-party data shifts between fetches.
+- Re-checks of third-party data use tolerance bands (±10% on prices, ±5 positions on rankings), because results shift between fetches.
 - The score is reported with every result and shown to the merchant.
 
 ### 5.5 Vault DON secrets
@@ -274,7 +274,7 @@ How each read is done:
 | `noraCoworkerKey` | Sokosumi Task and Job reads; refunds | Confidential HTTP header template |
 | `bedrockApiKey` | Bedrock judge | Confidential HTTP header template |
 | `workerCallbackKey` | Result callback to the Worker | Confidential HTTP header template |
-| `dataforseoBasic` | Market re-checks | Confidential HTTP |
+| `serperApiKey` | Market re-checks (`{{.serperApiKey}}`) | Confidential HTTP |
 | `firecrawlKey` | Page re-fetch fallback | Confidential HTTP |
 
 Merchant store and ad-account tokens stay in the Connection Gateway, encrypted. The gateway executes writes only when they are presented with CRE's `gatewayWriteKey` (§9).
@@ -484,5 +484,5 @@ Routing details are in the spec sheet, §0.
 ## 13. Open items
 - **ShopifyQL product-level sessions and conversion datasets** for Quinn's diagnosis; v1 diagnoses from sales, rankings and the score.
 - **Task-claim refunds:** whether Core refunds Task-claim credits when `submitResultTime` lapses without a result (the standalone FAIL path).
-- **Amazon reviews:** DataForSEO's Amazon reviews endpoint is "temporarily unavailable", so Bright Data is the primary source.
+- **Amazon reviews** come from Bright Data.
 - **Google Ads API developer token** (Basic access) is needed for direct paused pushes, beyond v1's Editor import file.

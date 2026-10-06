@@ -124,7 +124,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Clara, Leo, Sasha, or Yuki needing local keywords | **Kai**, unless the merchant supplied a keyword list |
 | Clara, Leo, Iris, or Sasha | **Priya**, when competitors are known or discoverable (≥1 competitor product with ≥20 public reviews). Otherwise Priya is skipped, with a note in the quote. |
 | Priya | **Rafael**, unless the merchant named the competitors |
-| Marcus | **Rafael**, plus **Kai** for seasonal promotions |
+| Marcus | **Rafael** (price bands) |
 | Sasha | **Marcus** (margin), plus **Iris** if Performance Max is in scope (image assets) |
 | Leo together with Clara | Leo runs **after** Clara, to reuse her facts and voice |
 | Yuki | Runs after every copy producer in the plan (Clara, Leo, Iris alt text) |
@@ -203,8 +203,8 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Field | Value |
 |---|---|
 | `caption` | Search Demand Analyst |
-| `description` | "Finds what your customers actually search for. Give Kai your product and market and get a clustered keyword map with search volume, buyer intent, difficulty, cost-per-click, 12-month seasonality and peak selling windows. Each keyword cluster says where to use it: product title, description, blog or ads." |
-| `tags` | keyword research, SEO, search volume, seasonality, search intent, ecommerce SEO, PPC keywords |
+| `description` | "Finds what your customers actually search for. Give Kai your product and market and get a clustered keyword map built from real Google autocomplete suggestions, related searches and shopper questions, with a demand signal for each keyword, buyer intent, and where to use each cluster: product title, description, blog or ads." |
+| `tags` | keyword research, SEO, google autocomplete, search intent, keyword clusters, ecommerce SEO, PPC keywords |
 | Unit · price | per product or topic, per market · **1.25** |
 
 ### S
@@ -212,38 +212,33 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 |---|---|---|---|
 | `product` | textarea | ✅ | Product name and short description, **or** `product_url` |
 | `product_url` | url | — | Read via Firecrawl, or via the Gateway if connected |
-| `market_country` | option | ✅ | e.g. US, DE, JP; maps to DataForSEO `location_code` |
-| `language` | option | ✅ | DataForSEO `language_code` |
+| `market_country` | option | ✅ | e.g. US, DE, JP; maps to Serper `gl` |
+| `language` | option | ✅ | Serper `hl` |
 | `seed_keywords` | textarea | — | One per line |
-| `competitor_domains` | textarea | — | Improves gap discovery |
+| `competitor_domains` | textarea | — | Competitor brands to filter |
 | `exclude_terms` | textarea | — | Brand terms to avoid |
 | `own_brand_terms` | textarea | — | Allowed brand terms |
 
 **Questions it may ask:** the market, if it cannot be inferred.
 
 ### W
-1. **Normalize the product.** Firecrawl `/scrape` on `product_url`, or the Gateway snapshot. Bedrock (Grok 4.7) extracts attributes and use cases, plus 10–30 seed keywords.
-2. **Expand.**
-   - DataForSEO Labs `google/keyword_ideas/live` and `google/keyword_suggestions/live` (≤200 seeds, `limit` 700).
-   - `google/ranked_keywords/live` per competitor domain.
-3. **Metrics.** From each DataForSEO Labs item: volume, CPC, competition and 12-month `monthly_searches` (`keyword_info`), and keyword difficulty (`keyword_properties`).
-4. **Intent.** DataForSEO Labs search-intent labels on each item (`search_intent_info`).
-5. **Seasonality.** Peak months from the summed 12-month `monthly_searches` of the top 50 non-brand keywords.
-6. **Brand and trademark filter.**
-   - Build a brand-term set from `exclude_terms`, competitor domains, and SERP result domains (DataForSEO SERP `organic`).
-   - Drop or flag keywords containing other companies' marks.
-7. **Cluster.**
-   - Bedrock (Grok 4.7) groups the keywords into clusters of the same shopper need, every keyword in exactly one cluster.
-   - Bedrock (Grok 4.7) names each cluster and assigns a role: `title`, `description`, `seo_meta`, `blog`, `ads_exact`, `ads_phrase` or `negative`.
-8. **Seasonality.**
-   - Peak months: the top 3 by index.
-   - Launch and promo windows: 6 weeks before each peak.
-   - Year-over-year growth.
-9. **Write the deliverables.**
+1. **Normalize the product.** Firecrawl `/scrape` on `product_url`, or the Gateway snapshot. Bedrock (Grok 4.7) extracts attributes and use cases, plus 10–20 seed keywords (merged with `seed_keywords`).
+2. **Expand.** For up to 12 seeds, in the target market and language:
+   - Serper `/autocomplete`: Google autocomplete suggestions, with their position.
+   - Serper `/search`: related searches and People Also Ask questions.
+   - Each keyword keeps its source evidence (type, seed query, autocomplete position).
+3. **Demand signal** (deterministic, 0–100). Points per source: autocomplete = max(1, 10 − position), related search = 4, People Also Ask = 2, seed = 3. Summed per keyword and normalized to the top keyword.
+4. **Brand and trademark filter.**
+   - Build a brand-term set from `exclude_terms`, competitor domains, and brand names Bedrock (Grok 4.7) detects in the keyword list, minus `own_brand_terms`.
+   - Keywords containing other companies' marks move to negatives.
+5. **Cluster.** Bedrock (Grok 4.7) groups the keywords into clusters of the same shopper need, every keyword in exactly one cluster, and gives each cluster:
+   - a name;
+   - an on-page role: `title`, `description`, `seo_meta`, `blog`, `ads_exact`, `ads_phrase` or `negative`;
+   - a search intent: `informational`, `commercial`, `transactional` or `navigational`.
+6. **Write the deliverables.** Primary keyword (best `title` keyword) and up to 12 secondary keywords.
 
 ### O
-- `keyword_map.json` / `.csv`
-- `seasonality.json`
+- `keyword_map.json` / `.csv` (keyword, demand, intent, cluster, role)
 - `negatives.txt`
 - `summary.md`
 - **Store writes:** none
@@ -256,11 +251,11 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
   - Sasha (ad groups, negatives)
   - Yuki (local seeds)
   - Oskar (tags, collection names)
-  - Marcus (seasonality)
+  - Quinn (keyword placement, ranking snapshot)
 
 ### K
 - Expose `kai`, entrypoint `run(inputs, tracer)`.
-- Steps 2–5 fan out with Ray `@ray.remote`, one call per API batch.
+- Step 2 fans out over the seeds, 4 concurrent Serper calls.
 - Lock: `market` (standalone only).
 - Dependencies: `httpx`, `boto3` (in the Kodosumi image).
 
@@ -268,23 +263,22 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Step | Service | API |
 |---|---|---|
 | 1 | Firecrawl | `POST /v2/scrape` |
-| 1, 4, 7 | Amazon Bedrock | Chat Completions (Grok 4.7) |
-| 2–5 | DataForSEO Labs | `keyword_ideas`, `keyword_suggestions`, `ranked_keywords` (item `keyword_info`, `keyword_properties`, `search_intent_info`) |
-| 6 | DataForSEO SERP | `google/organic/live/advanced` |
+| 1, 4, 5 | Amazon Bedrock | Chat Completions (Grok 4.7) |
+| 2 | Serper.dev | `POST /autocomplete` (`suggestions`), `POST /search` (`relatedSearches`, `peopleAlsoAsk`) |
 
 ### V — `kai@5` · pass ≥ 60
 | Check | Method | Points |
 |---|---|---|
-| Volumes are real | Confidential HTTP DataForSEO `search_volume` for 10 sampled keywords; ≥70% within ±30% | 30 |
 | No foreign trademarks | Deterministic match against the brand-term set in the bundle | 20 (**hard gate**) |
-| Seasonality recomputed | Peak months recomputed from `monthly_searches`; ≥2 of 3 match | 20 |
+| Demand recomputed | Demand scores recomputed from the bundle's sources match | 20 |
 | Cluster integrity | Each keyword in exactly one cluster; valid roles | 15 |
-| Intent labels | 10 sampled vs DataForSEO intent; ≥60% agree | 10 |
+| Intent labels | Every keyword has a valid intent label | 10 |
+| Keywords are real | Confidential HTTP Serper autocomplete re-run for up to 5 sampled autocomplete-sourced keywords; ≥60% reappear | 30 |
 | Judge | Relevance of top clusters to the product | 5 |
 
 ### F
-- **Thin market** (<50 keywords with volume): result is delivered with a `low_volume_market` note.
-- **DataForSEO errors:** 3 retries with backoff, then `SOURCE_UNAVAILABLE`.
+- **No keywords found:** the Job fails with a clear message.
+- **Serper errors:** retries with backoff on rate limits and server errors, then `SOURCE_UNAVAILABLE`.
 
 ---
 
@@ -309,18 +303,18 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 
 ### W
 1. **Query set.** Up to 5 head queries: Kai's map if present, otherwise Bedrock (Grok 4.7).
-2. **SERPs.**
-   - DataForSEO SERP `google/organic/live/advanced`: top 20, SERP features, People Also Ask.
-   - DataForSEO Merchant `google/products/task_post`: Shopping offers and sellers.
+2. **Google results.**
+   - Serper `/search` (top 20) per query: SERP rows (position, domain, link) and People Also Ask.
+   - Serper `/shopping` for the first query: Shopping offers (title, seller, price, rating, rating count, product ID).
 3. **Competitor set.**
-   - Rank domains by visibility (DataForSEO Labs `google/serp_competitors/live`).
+   - Rank domains by visibility (sum of 1/position across the SERP rows), excluding the merchant's own domain.
    - Add `known_competitors` and keep the top N.
 4. **Product pages.**
    - Firecrawl `/scrape` (rendered) with a JSON extraction schema covering: title, price, compare-at price, currency, claims, guarantees, shipping/returns text, bundles, image count, video, review count and rating, and JSON-LD `Product`/`Offer`/`AggregateRating`.
    - For Shopify stores, also read the public `/products/{handle}.js` when exposed.
 5. **Analysis.**
-   - Price bands (min, p25, median, p75, max), computed deterministically.
-   - Claim frequency, offer patterns, content gaps and SERP features.
+   - Price bands (min, p25, median, p75, max), computed deterministically from competitor page prices and parsed Shopping offer prices.
+   - Claim frequency, offer patterns and content gaps.
    - A positioning map via Bedrock (Grok 4.7).
 6. **Write the deliverables.**
 
@@ -329,7 +323,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 - `price_bands.json`
 - `positioning.md`
 - `gaps.md`
-- `competitor_set.json` (product URLs, Amazon ASINs, Google Shopping `gid`s; feeds Priya)
+- `competitor_set.json` (competitor product URLs; Google Shopping offers with title, product ID, seller, price, rating and rating count; competitor brands; feeds Priya and Sasha)
 - **Store writes:** none
 
 ### U
@@ -348,9 +342,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 ### X
 | Service | Endpoints |
 |---|---|
-| DataForSEO SERP | `google/organic/live/advanced` |
-| DataForSEO Merchant | `google/products` |
-| DataForSEO Labs | `serp_competitors` |
+| Serper.dev | `POST /search` (`organic`, `peopleAlsoAsk`), `POST /shopping` |
 | Firecrawl | `/v1/scrape` with JSON extraction |
 | Shopify public storefront | `/products/{handle}.js` |
 | Amazon Bedrock | Grok 4.7 |
@@ -360,13 +352,13 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 |---|---|---|
 | Cited pages support the facts | Re-fetch 3 sampled evidence URLs (regular HTTP, consensus on the extracted field; one Confidential fetch for volatile pages); ≥2 of 3 contain the claimed title or a price within ±10% | 35 |
 | Band maths | Recomputed | 20 |
-| Ranking sanity | One SERP call: ≥3 of the claimed top-5 domains appear in the top 10 | 20 |
+| Ranking sanity | One Serper search: ≥3 of the claimed top-5 domains appear in the top 10 | 20 |
 | Coverage | ≥4 competitors with ≥5 filled attributes | 15 |
 | Judge | Positioning consistent with the matrix | 5 |
 | Evidence URLs | https | 5 |
 
 ### F
-- **Blocked pages:** Firecrawl stealth proxy, then Google Shopping data. Pages still blocked are marked `unavailable` and excluded from coverage.
+- **Blocked pages:** marked `unavailable` and excluded from coverage; Shopping offer prices still feed the price bands.
 
 ---
 
@@ -385,7 +377,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 ### S
 | id | type | Req. | Notes |
 |---|---|---|---|
-| `competitor_products` | textarea | ✅ unless `category` | Product URLs, Amazon ASINs/URLs, Google Shopping links (1–5) |
+| `competitor_products` | textarea | ✅ unless `category` | Product URLs or Amazon ASINs/URLs (1–5) |
 | `category` | text | ✅ unless products | Priya discovers the top 5 competitors |
 | `competitor_domains` | textarea | — | For Trustpilot brand reviews |
 | `market_country`, `language` | option | ✅ | |
@@ -398,12 +390,12 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 ### W
 1. **Resolve the competitor set.**
    - From URLs: detect the platform.
-   - From a category: Bright Data Amazon search plus DataForSEO Merchant `google/products`; take the top 5 by review count.
+   - From Rafael's `competitor_set.json` when present.
+   - From a category: Serper `/search` for `<category> site:amazon.com` (Amazon listings) and `best <category>` (brand product pages); up to 5 products.
    - The merchant's own shop domain is excluded.
 2. **Collect reviews.**
    - **Amazon:** Bright Data **Amazon Reviews** scraper (by ASIN), ≤300 per product, mixed stars.
-   - **Google Shopping:** DataForSEO Merchant `google/reviews/task_post` by `gid`.
-   - **Trustpilot:** DataForSEO Business Data `trustpilot/reviews/task_post`, ≤200.
+   - **Trustpilot:** `https://www.trustpilot.com/review/<domain>` pages read with Firecrawl `/scrape`.
    - **Competitor storefronts:** Firecrawl `/scrape`, parsing JSON-LD `Review` and rendered review-widget text.
    - **Social (optional):** Reddit threads found and excerpted with the **Tavily** Search API (`include_domains: reddit.com`).
 3. **Clean.**
@@ -454,17 +446,16 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 ### X
 | Step | Service | API |
 |---|---|---|
-| 1, 2 | Bright Data | Amazon Products / Reviews Web Scraper API |
-| 1, 2 | DataForSEO Merchant | `google/products`, `google/reviews` |
-| 2 | DataForSEO Business Data | `trustpilot/reviews` |
-| 2 | Firecrawl | `/v1/scrape` |
+| 2 | Bright Data | Amazon Reviews Web Scraper API |
+| 1 | Serper.dev | `POST /search` (competitor discovery) |
+| 2 | Firecrawl | `/v1/scrape` (storefronts, Trustpilot) |
 | 2 | Tavily | Search API (Reddit discussions) |
 | 4, 7, 8 | Amazon Bedrock | Grok 4.7 |
 
 ### V — `priya@5` · pass ≥ 60
 | Check | Method | Points |
 |---|---|---|
-| Quotes are verbatim | Re-fetch 5 sampled quotes (DataForSEO/Trustpilot via Confidential HTTP, storefronts via regular HTTP); fuzzy substring match ≥0.9 similarity; ≥3 of 5 match | 30 |
+| Quotes are verbatim | Re-fetch the source pages of 5 sampled quotes; fuzzy substring match ≥0.9 similarity; ≥3 of 5 match | 30 |
 | Counts recomputed | From the bundle's coded-review table | 25 |
 | Competitor-only | No source matches the merchant's shop or primary domain | 15 (**hard gate**) |
 | Persona evidence | Attributes cite existing review IDs | 10 |
@@ -484,7 +475,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Field | Value |
 |---|---|
 | `caption` | Pricing & Promotions Strategist |
-| `description` | "Prices and promotions that sell without killing your margin. Marcus benchmarks your price against the market, models discount scenarios against your real unit costs, plans a promotion calendar around peak demand and holidays, and creates scheduled discount codes in your store that never go below your margin floor." |
+| `description` | "Prices and promotions that sell without killing your margin. Marcus benchmarks your price against the market, models discount scenarios against your real unit costs, plans a promotion calendar around holidays and retail events, and creates scheduled discount codes in your store that never go below your margin floor." |
 | `tags` | pricing strategy, promotions, discount codes, black friday, margin, price benchmarking, promo calendar, store discounts |
 | Unit · price | per product or campaign · **1.25** |
 
@@ -493,7 +484,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 |---|---|---|---|
 | `product` / connected product | url | ✅ | |
 | `goal` | option | ✅ | launch, clearance, seasonal (e.g. BFCM), AOV growth |
-| `promo_window` | date range | — | Default: next peak window |
+| `promo_window` | date range | — | Default: next holiday or retail event |
 | `margin_floor_pct` | number | ✅ | e.g. 35 |
 | `unit_cost` | number | ✅ unless in Shopify | From `InventoryItem.unitCost` when connected |
 | `shipping_cost` | number | — | |
@@ -504,9 +495,8 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 1. **Costs and prices.**
    - Gateway read of variants' `price` and `compareAtPrice`, plus `inventoryItem.unitCost`.
    - A missing cost becomes an `INPUT_REQUIRED` question.
-2. **Market prices.** Rafael's `price_bands.json`, or a light 2-query scan with DataForSEO Merchant `google/products`.
+2. **Market prices.** Rafael's `price_bands.json`, or price bands from Serper `/shopping` offers for the product.
 3. **Demand calendar.**
-   - Kai's `seasonality.json`, or public holidays alone when Kai did not run.
    - Public holidays from **Nager.Date** (`/api/v3/PublicHolidays/{year}/{country}`).
    - A maintained retail-event table (Prime Day, BFCM, Singles' Day).
 4. **Scenarios** (deterministic).
@@ -533,7 +523,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 - Never writes prices or variants.
 
 ### U
-- **Input:** Rafael's bands, Kai's seasonality, snapshot.
+- **Input:** Rafael's bands, snapshot.
 - **Consumers:**
   - Leo (email offer)
   - Sasha (margin)
@@ -548,7 +538,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Service | Use |
 |---|---|
 | Uplift Gateway (Shopify Admin GraphQL) | Products, variants, `inventoryItem.unitCost`, existing discounts |
-| DataForSEO Merchant | Light market scan |
+| Serper.dev | `POST /shopping` (light market scan) |
 | Nager.Date API | Public holidays |
 | Amazon Bedrock | Grok 4.7 |
 
@@ -589,7 +579,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 
 ### W
 1. **Facts ledger.** Build `facts.json` from the snapshot (or the product page) and `product_facts`. Every claim must cite a fact ID.
-2. **Keywords.** Kai's map, or DataForSEO Labs `keyword_suggestions/live` (top 15, split into primary and secondary).
+2. **Keywords.** Kai's map, or `target_keywords`, or Google autocomplete via Serper `/autocomplete` in the locale's market and language (top 15, split into primary and secondary).
 3. **Objections and language.** From Priya's findings, when present.
 4. **Generate three variants** (Bedrock Grok 4.7, structured output). Each variant contains:
    - `title` (≤70 characters);
@@ -628,7 +618,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Service | Use |
 |---|---|
 | Amazon Bedrock | Grok 4.7: facts, generation, self-scoring |
-| DataForSEO Labs | Mini keyword pass |
+| Serper.dev | `POST /autocomplete` (mini keyword pass) |
 | Firecrawl | `current_copy` from URL |
 | Uplift Gateway | Snapshot |
 
@@ -855,7 +845,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
    - Gateway `translatableResource`: `title`, `body_html`, `meta_title`, `meta_description` and `handle`, with their `translatableContentDigest`.
    - Media alt text and the FAQ metafield are included.
 2. **Locales.** Enabled shop locales (`read_locales`).
-3. **Local keywords.** DataForSEO Labs `keyword_suggestions/live` with the target `location_code`/`language_code`, seeded with source terms translated by Grok 4.7.
+3. **Local keywords.** `local_keywords` when given; otherwise Google autocomplete via Serper `/autocomplete` in the target market and language (`gl`/`hl`), seeded with source terms translated by Grok 4.7.
 4. **Locked terms.** Brand and product terms that must stay verbatim.
 5. **Transcreation.** Bedrock (Grok 4.7), straight from the source:
    - native fluency;
@@ -884,7 +874,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 | Service | Use |
 |---|---|
 | Shopify Admin GraphQL | `translatableResource`, `shopLocales`, `translationsRegister` |
-| DataForSEO Labs | Local keywords |
+| Serper.dev | `POST /autocomplete` (local keywords) |
 | Amazon Bedrock | Grok 4.7 |
 
 ### V — `yuki@5` · pass ≥ 65
@@ -895,7 +885,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 | Lengths | Title ≤75, meta title ≤65, meta description ≤165 (CJK-aware) | 15 |
 | Local keyword | Primary local keyword (or variant) in title, meta or first paragraph | 15 |
 | Completeness | ≥95% of segments in the target language; HTML balanced | 15 |
-| Volumes | Top 3 local keywords re-fetched; ≥2 have real search volume | 10 |
+| Local keywords are real | Each of the top 3 local keywords comes back from Serper autocomplete in that market; ≥2 of 3 | 10 |
 | Judge | Meaning preserved | 5 |
 
 ---
@@ -925,14 +915,14 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 
 ### W
 1. **Research.**
-   - DataForSEO SERP `google/organic/live/advanced` for the head term: People Also Ask and the top outlines.
+   - Serper `/search` for the head term: People Also Ask questions and the top result titles.
    - Kai's clusters; Priya's complaints and wishes.
 2. **FAQ.**
    - 6–10 fact-grounded Q&As in the product metafield `custom.faq` (JSON).
    - Questions target real search queries: People Also Ask and Kai's question keywords.
 3. **Comparison table.** Merchant vs 2–4 competitors, on attributes from Rafael's matrix only. Stored in the metafield `custom.comparison`.
 4. **Blog article.**
-   - 1,200–1,800 words, H2/H3 from the SERP outlines.
+   - 1,200–1,800 words, H2/H3 informed by the top result titles and People Also Ask.
    - Internal links to the product and its collection, an Iris image, and UTM links.
    - Created **unpublished** (`articleCreate`, `isPublished: false`).
 5. **Email.**
@@ -970,7 +960,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 ### X
 | Service | Use |
 |---|---|
-| DataForSEO SERP | People Also Ask, outlines |
+| Serper.dev | `POST /search` (People Also Ask, result titles) |
 | Amazon Bedrock | Grok 4.7 |
 | Shopify Admin GraphQL | `metafieldsSet`, `articleCreate`, blogs |
 
@@ -1016,8 +1006,8 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
    - Max CPC = target CPA × CVR.
    - CVR comes from the input, or a flagged category default.
 2. **Keywords.**
-   - Kai's `ads_exact`/`ads_phrase` clusters, plus DataForSEO Labs keyword suggestions with CPCs.
-   - Drop keywords whose CPC is above the max CPC.
+   - Kai's map (`ads_exact`, `ads_phrase`, `title` and `description` roles), or Google autocomplete via Serper `/autocomplete` for the product.
+   - Every keyword is bid at the max CPC from the unit economics, which is capped by break-even.
 3. **Negatives.** Kai's negatives, competitor brand terms (unless conquesting) and irrelevant intents.
 4. **Structure.**
    - Search ad groups per cluster.
@@ -1052,7 +1042,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 ### X
 | Service | Use |
 |---|---|
-| DataForSEO Labs | CPC, volume |
+| Serper.dev | `POST /autocomplete` (keywords when Kai did not run) |
 | Amazon Bedrock | Grok 4.7 |
 
 ### V — `sasha@5` · pass ≥ 65
@@ -1141,7 +1131,7 @@ CRE runs the **same rule engine** (a JS port generated from the same rule YAML) 
 | Field | Value |
 |---|---|
 | `caption` | Store Auditor & Performance Analyst |
-| `description` | "Finds out why a product isn't ranking or selling. Quinn checks where your product ranks today and audits its page for search, copy, images, trust content, catalog and feed data and compliance, giving a 0–100 score with prioritized fixes. Connect your store and she uses your sales data to diagnose whether you have a traffic, conversion or basket-size problem. After changes go live, she produces the before/after report." |
+| `description` | "Finds out why a product isn't ranking or selling. Quinn checks where your product ranks today, on Google and in your store's own search, and audits its page for search, copy, images, trust content, catalog and feed data and compliance, giving a 0–100 score with prioritized fixes. Connect your store and she uses your sales data to diagnose whether you have a traffic, conversion or basket-size problem. After changes go live, she produces the before/after report." |
 | `tags` | ecommerce audit, product page audit, SEO audit, product ranking, search visibility, ecommerce analytics, listing score |
 | Unit · price | per product per report · **0.50** |
 
@@ -1153,25 +1143,27 @@ CRE runs the **same rule engine** (a JS port generated from the same rule YAML) 
 | Shopify connection | — | recommended | ShopifyQL sales (`read_reports`), data checks |
 | `date_range` | date range | `diagnose` | Default: last 28 days |
 | `competitor_urls` | textarea | — | Benchmarks |
+| `store_queries` | textarea | — | Store search phrases to track; default: the keyword list |
 
 ### W
 1. **Page capture.** Firecrawl `/scrape` (rendered HTML, markdown), plus Gateway product data when connected.
-2. **Ranking snapshot.** DataForSEO SERP `google/organic/live/advanced` and Merchant `google/products` for the product's top 5 keywords (Kai's map if present, otherwise generated with Grok 4.7). Records the product's current organic and Google Shopping positions, and who outranks it.
-3. **Content and visuals.**
+2. **Ranking snapshot.** Serper `/search` (top 20) for the product's top 5 keywords (Kai's map if present, otherwise generated with Grok 4.7). Records the store domain's current Google position and who outranks it.
+3. **Store search rank.** The product's position in the store's own relevance-ranked product search (Shopify Admin `products(query:, sortKey: RELEVANCE)` through the Gateway read API) for the tracked phrases: `store_queries`, or the keyword list.
+4. **Content and visuals.**
    - Title/meta and keyword placement (Kai's map if present).
    - Copy depth.
    - Image count, size and alt text.
    - Video.
-4. **Trust content.**
+5. **Trust content.**
    - Shipping and returns information present.
    - FAQ and comparison table present.
    - Review signals present.
    - Specs complete; guarantee stated.
-5. **Catalog and feed.** Category, attributes, GTIN.
-6. **Compliance quick scan.** `uplift-rules` superlative and trademark packs.
-7. **Score.** Listing Score 0–100, with the weights in product spec §7.
-8. **Page speed** (informational, not scored). **PageSpeed Insights API v5** (mobile): LCP, CLS, INP and top opportunities, listed in the report.
-9. **Analytics** (`diagnose`).
+6. **Catalog and feed.** Category, attributes, GTIN.
+7. **Compliance quick scan.** `uplift-rules` superlative and trademark packs.
+8. **Score.** Listing Score 0–100, with the weights in product spec §7.
+9. **Page speed** (informational, not scored). **PageSpeed Insights API v5** (mobile): LCP, CLS, INP and top opportunities, listed in the report.
+10. **Analytics** (`diagnose`).
    - ShopifyQL: `FROM sales SHOW total_sales, orders GROUP BY product_title SINCE -28d`.
    - Funnel diagnosis (Bedrock, from sales, rankings and the score sections):
 
@@ -1181,11 +1173,11 @@ CRE runs the **same rule engine** (a JS port generated from the same rule YAML) 
      | Low add-to-cart rate | Page | Clara, Iris, Leo |
      | Low checkout rate | Offer or shipping | Marcus |
      | Low AOV | Bundles / related products | Marcus, Oskar |
-10. **Fix plan.** Prioritized by impact × effort. Each fix names the Uplift specialist and their price, ready for Nora's quote.
-11. **Before/after** (`before_after`). Compares the baseline snapshot and score with the published state, section by section, listing every change and its owner.
+11. **Fix plan.** Prioritized by impact × effort. Each fix names the Uplift specialist and their price, ready for Nora's quote.
+12. **Before/after** (`before_after`). Compares the baseline snapshot and score with the published state, section by section, including Google positions and store search ranks before vs after, listing every change and its owner.
 
 ### O
-- `audit_report.md` / `.json` (score breakdown, ranking snapshot, findings, diagnosis, page-speed notes, before/after in that mode)
+- `audit_report.md` / `.json` (score breakdown, ranking snapshot, store search ranks, findings, diagnosis, page-speed notes, before/after in that mode)
 - `fix_plan.json`
 - **Store writes:** none
 
@@ -1203,8 +1195,8 @@ CRE runs the **same rule engine** (a JS port generated from the same rule YAML) 
 |---|---|
 | Firecrawl | Page render |
 | Google PageSpeed Insights API v5 | Speed notes (informational) |
-| Shopify Admin GraphQL | `shopifyqlQuery` (`read_reports`), product data |
-| DataForSEO SERP / Merchant | Ranking snapshot |
+| Shopify Admin GraphQL | `shopifyqlQuery` (`read_reports`), product data, `products(query:, sortKey: RELEVANCE)` (store search rank) |
+| Serper.dev | `POST /search` (ranking snapshot) |
 | Amazon Bedrock | Grok 4.7 (keyword generation, report writing) |
 | `uplift-rules` | Compliance quick scan |
 
@@ -1213,7 +1205,7 @@ CRE runs the **same rule engine** (a JS port generated from the same rule YAML) 
 |---|---|---|
 | Score agreement | CRE recomputes the deterministic sections from the bundle plus a fresh gateway snapshot; Quinn's total within ±3 points | 50 |
 | Sales numbers | A ShopifyQL result is present whenever the sales query ran | 20 |
-| Findings reproduced | Ranking positions re-checked for 2 keywords (within ±5 positions); checklist findings from a page re-fetch, ≥80% agree | 20 |
+| Findings reproduced | Google position re-checked for one keyword via Serper search (within ±5 positions); checklist findings from a page re-fetch, ≥80% agree | 20 |
 | Fix-plan mapping | Each fix names a valid specialist and price | 5 |
 | Judge | Diagnosis consistent with the numbers | 5 |
 
@@ -1225,9 +1217,9 @@ CRE runs the **same rule engine** (a JS port generated from the same rule YAML) 
 |---|---|---|---|
 | **Amazon Bedrock**: Grok 4.7 | All agents, Worker (Nora, chat), CRE judge | All LLM inference, vision, translation, OCR, keyword clustering | Bedrock API key: Kodosumi and Worker env, CRE Vault (judge) |
 | **Gemini API** (Nano Banana 2.1) | Iris | Studio shots and lifestyle scenes | Kodosumi env |
-| **DataForSEO** (Labs, Keywords Data, SERP, Merchant, Business Data) | Kai, Rafael, Priya, Marcus, Clara, Yuki, Leo, Sasha | Keywords, SERPs, Shopping offers and reviews, Trustpilot | Basic auth: Kodosumi env, CRE Vault |
+| **Serper.dev** (search, shopping, autocomplete) | Kai, Rafael, Priya, Marcus, Clara, Yuki, Leo, Sasha, Quinn | Google results, Shopping offers, autocomplete | API key (`X-API-KEY`): `SERPER_API_KEY` in Kodosumi env, `serperApiKey` in CRE Vault |
 | **Bright Data** (Amazon scrapers) | Priya | Amazon reviews | Kodosumi env |
-| **Firecrawl** | Kai, Rafael, Priya, Clara, Quinn | Rendering, scraping, extraction | Kodosumi env |
+| **Firecrawl** | Kai, Rafael, Priya, Clara, Quinn | Rendering, scraping, extraction (incl. Trustpilot pages) | Kodosumi env |
 | **Tavily Search API** | Priya | Reddit discussions | Kodosumi env |
 | **Nager.Date** | Marcus | Public holidays | None |
 | **Google PageSpeed Insights API** | Quinn | Speed notes | Kodosumi env |

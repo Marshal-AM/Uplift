@@ -1,8 +1,8 @@
 // Verifier profiles (`<role>@5`). `local` runs on every node over the hash-checked manifest and bundle and must
-// be deterministic; `remote` runs in DON mode for re-checks that need a secret (DataForSEO) or the live web.
+// be deterministic; `remote` runs in DON mode for re-checks that need a secret (Serper) or the live web.
 import type { NodeRuntime, Runtime } from "@chainlink/cre-sdk"
 import { ownsAll, scan, score } from "./core"
-import { type Config, dataforseo, type Json, medianOnNodes, nodeFetch } from "./lib"
+import { type Config, type Json, medianOnNodes, nodeFetch, serper } from "./lib"
 
 export type Check = { name: string; points: number; max: number; gate?: boolean }
 export type Local = { checks: Check[]; probes: Json; judge: { question: string; material: string } }
@@ -23,6 +23,7 @@ const within = (a: number, b: number, tol: number) => b === 0 ? a === 0 : Math.a
 const plain = (html: string) => (html || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()
 const isHttps = (u: string) => /^https:\/\//.test(u || "")
 const norm = (s: string) => (s || "").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim()
+const host = (url: string) => norm((url.match(/^[a-z]+:\/\/([^/?#:]+)/i)?.[1] ?? "").replace(/^www\./i, ""))
 const sigWords = (s: string) => norm(s).split(" ").filter((w) => w.length > 3)
 const overlaps = (a: string, b: string) => {
   const bw = new Set(sigWords(b))
@@ -72,51 +73,47 @@ function pagesContain(runtime: Runtime<Config>, items: { url: string; needles: s
 
 // --- profiles -------------------------------------------------------------------------------------
 
+const KAI_SCORES: Record<string, number> = { autocomplete: 10, related: 4, paa: 2, seed: 3 }
+
 const kai: Profile = {
   pass: 60,
   local: (m, b) => {
     const kws: Json[] = b.keywords ?? []
     const live = kws.filter((k) => k.role !== "negative")
     const brandHits = live.filter((k) => (b.brand_terms ?? []).some((t: string) => t && norm(k.keyword).includes(norm(t))))
-    const totals = Array(12).fill(0)
-    for (const k of live.filter((k) => k.monthly?.length).slice(0, 50)) {
-      const s = k.monthly.slice(-12)
-      s.forEach((v: number, i: number) => { totals[i] += v || 0 })
-    }
-    const months: number[] = b.months ?? []
-    const peaks = totals.map((v, i) => [months[i], v]).sort((x, y) => y[1] - x[1]).slice(0, 3).map((x) => x[0])
-    const agree = (b.peak_months ?? []).filter((p: number) => peaks.includes(p)).length
+    // demand signal recomputed from the evidence (same formula as Kai)
+    const raw = kws.map((k) => (k.sources ?? []).reduce((a: number, s: Json) => a + (s.type === "autocomplete"
+      ? Math.max(1, KAI_SCORES.autocomplete - (s.position ?? 0)) : KAI_SCORES[s.type] ?? 0), 0))
+    const top = Math.max(1, ...raw)
+    const demandOk = kws.filter((k, i) => Math.abs(Math.round((1000 * raw[i]) / top) / 10 - k.demand) <= 0.2).length
     const roles = ["title", "description", "seo_meta", "blog", "ads_exact", "ads_phrase", "negative"]
+    const intents = ["informational", "commercial", "transactional", "navigational"]
     const seen = new Map<string, number>()
     kws.forEach((k) => seen.set(norm(k.keyword), (seen.get(norm(k.keyword)) ?? 0) + 1))
     const clean = kws.filter((k) => k.cluster != null && roles.includes(k.role) && seen.get(norm(k.keyword)) === 1)
-    const sample = pick([...live].sort((x, y) => (y.volume ?? 0) - (x.volume ?? 0)), 10)
+    const sample = pick(live.filter((k) => (k.sources ?? []).some((s: Json) => s.type === "autocomplete")), 5)
+      .map((k) => ({ keyword: k.keyword, query: k.sources.find((s: Json) => s.type === "autocomplete").query }))
     return {
       checks: [
         check("No foreign trademarks", brandHits.length === 0, 20, true),
-        check("Seasonality recomputed", agree >= 2 || !b.peak_months?.length, 20),
+        check("Demand recomputed", atLeast(ratio(demandOk, kws.length), 0.95), 20),
         check("Cluster integrity", atLeast(ratio(clean.length, kws.length), 0.95), 15),
+        check("Intent labels", ratio(kws.filter((k) => intents.includes(k.intent)).length, kws.length), 10),
       ],
-      probes: { loc: b.location_code, lang: b.language_code,
-        sample: sample.map((k) => ({ keyword: k.keyword, volume: k.volume, intent: k.intent })) },
+      probes: { gl: (b.country ?? "US").toLowerCase(), hl: b.language ?? "en", sample },
       judge: { question: "Do these keyword clusters fit the product a shopper would search for? 5 = all relevant.",
-        material: `${m.summary_md}\n${JSON.stringify(sample.map((k) => [k.keyword, k.cluster, k.role]))}` },
+        material: `${m.summary_md}\n${JSON.stringify(live.slice(0, 40).map((k) => [k.keyword, k.cluster, k.role]))}` },
     }
   },
   remote: (runtime, p) => {
-    const kws = p.sample.map((k: Json) => k.keyword)
-    if (!kws.length) return [check("Volumes are real", false, 30), check("Intent labels", false, 10)]
-    const vol = dataforseo(runtime, "keywords_data/google_ads/search_volume/live",
-      [{ keywords: kws, location_code: p.loc, language_code: p.lang }])
-    const live = new Map(vol.map((r: Json) => [norm(r.keyword), r.search_volume ?? 0]))
-    const volOk = p.sample.filter((k: Json) => live.has(norm(k.keyword))
-      && within(k.volume ?? 0, live.get(norm(k.keyword)) as number, 0.3)).length
-    const intent = dataforseo(runtime, "dataforseo_labs/google/search_intent/live",
-      [{ keywords: kws, language_code: p.lang }])[0]?.items ?? []
-    const labels = new Map(intent.map((r: Json) => [norm(r.keyword), r.keyword_intent?.label]))
-    const intentOk = p.sample.filter((k: Json) => labels.get(norm(k.keyword)) === k.intent).length
-    return [check("Volumes are real", atLeast(ratio(volOk, kws.length), 0.7), 30),
-      check("Intent labels", atLeast(ratio(intentOk, kws.length), 0.6), 10)]
+    if (!p.sample.length) return [check("Keywords are real", false, 30)]
+    let found = 0
+    for (const k of p.sample as Json[]) {
+      const suggestions = (serper(runtime, "autocomplete", { q: k.query, gl: p.gl, hl: p.hl }).suggestions ?? [])
+        .map((s: Json) => norm(s.value))
+      if (suggestions.includes(norm(k.keyword))) found++
+    }
+    return [check("Keywords are real", atLeast(found / p.sample.length, 0.6), 30)]
   },
 }
 
@@ -127,7 +124,7 @@ const rafael: Profile = {
     const median = prices.length ? (prices.length % 2 ? prices[(prices.length - 1) / 2]
       : (prices[prices.length / 2 - 1] + prices[prices.length / 2]) / 2) : null
     const bands = b.bands ?? {}
-    const bandsOk = !prices.length || (within(bands.min, prices[0], 0.01) && within(bands.max, prices.at(-1)!, 0.01)
+    const bandsOk = !prices.length || (within(bands.min, prices[0], 0.01) && within(bands.max, prices[prices.length - 1], 0.01)
       && (median == null || within(bands.median, median, 0.02)))
     const evidence: Json[] = b.evidence ?? []
     const covered = (b.coverage ?? []).filter((c: Json) => c.filled >= 5).length
@@ -137,7 +134,7 @@ const rafael: Profile = {
         check("Coverage", atLeast(covered / 4, 1), 15),
         check("Evidence URLs", atLeast(ratio(evidence.filter((e) => isHttps(e.url)).length, evidence.length), 0.9), 5),
       ],
-      probes: { loc: b.location_code, lang: b.language_code, query: b.queries?.[0], top: b.top_domains ?? [],
+      probes: { gl: (b.country ?? "US").toLowerCase(), hl: b.language ?? "en", query: b.queries?.[0], top: b.top_domains ?? [],
         pages: pick(evidence.filter((e) => isHttps(e.url)), 3)
           .map((e) => ({ url: e.url, needles: [e.title?.slice(0, 60), e.price != null ? String(e.price) : ""] })) },
       judge: { question: "Is the positioning consistent with the competitor matrix and price bands? 5 = fully.",
@@ -148,10 +145,9 @@ const rafael: Profile = {
     const cited = pagesContain(runtime, p.pages)
     let ranking = 1
     if (p.query && p.top.length) {
-      const items = dataforseo(runtime, "serp/google/organic/live/advanced",
-        [{ keyword: p.query, location_code: p.loc, language_code: p.lang, depth: 10 }])[0]?.items ?? []
-      const top10 = items.filter((i: Json) => i.type === "organic").map((i: Json) => i.domain)
-      ranking = atLeast(p.top.filter((d: string) => top10.includes(d)).length / Math.min(5, p.top.length), 0.6)
+      const organic: Json[] = serper(runtime, "search", { q: p.query, gl: p.gl, hl: p.hl, num: 10 }).organic ?? []
+      const top10 = organic.map((o) => host(o.link))
+      ranking = atLeast(p.top.filter((d: string) => top10.includes(norm(d))).length / Math.min(5, p.top.length), 0.6)
     }
     return [check("Cited pages support the facts", atLeast(cited, 0.67), 35), check("Ranking sanity", ranking, 20)]
   },
@@ -240,7 +236,7 @@ const clara: Profile = {
     const primaryWords = primary.split(" ").filter(Boolean)
     const near = (t: string) => !primary || norm(t).includes(primary)
       || primaryWords.filter((w) => norm(t).includes(w)).length >= Math.ceil(primaryWords.length * 0.75)
-    const facts = new Set(Object.keys(b.facts ?? {}).length ? Object.keys(b.facts) : (b.facts ?? []).map((f: Json) => f.id))
+    const facts = new Set(Array.isArray(b.facts) ? b.facts.map((f: Json) => f.id) : Object.keys(b.facts ?? {}))
     const claims = blocks.filter((x) => x.type === "p" || x.type === "li")
     const grounded = claims.filter((x) => x.fact_ids?.length && x.fact_ids.every((f: string) => facts.has(f))).length
     const secondary: string[] = b.secondary ?? []
@@ -347,25 +343,29 @@ const yuki: Profile = {
           .some((t) => norm(t ?? "").includes(local)), 15),
         check("Completeness", atLeast(ratio(changed, keys.length), 0.95) * (htmlBalanced(tr.body_html ?? "") ? 1 : 0.5), 15),
       ],
-      probes: { loc: b.location_code, lang: (b.locale ?? "").split("-")[0], keywords: (b.local_keywords ?? []).slice(0, 3) },
+      probes: { gl: (b.market ?? "US").toLowerCase(), hl: (b.locale ?? "").split("-")[0], keywords: (b.local_keywords ?? []).slice(0, 3) },
       judge: { question: `Does the ${b.locale} text preserve the meaning of the source? 5 = fully.`,
         material: `SOURCE: ${plain(srcAll).slice(0, 4000)}\n\nTRANSLATION: ${plain(all).slice(0, 4000)}` },
     }
   },
   remote: (runtime, p) => {
     const kws = (p.keywords as Json[]).map((k) => (typeof k === "string" ? k : k.keyword)).filter(Boolean)
-    if (!kws.length) return [check("Volumes", 0.5, 10)]
-    const res = dataforseo(runtime, "keywords_data/google_ads/search_volume/live",
-      [{ keywords: kws, location_code: p.loc, language_code: p.lang }])
-    const real = res.filter((r: Json) => (r.search_volume ?? 0) > 0).length
-    return [check("Volumes", atLeast(real / kws.length, 0.67), 10)]
+    if (!kws.length) return [check("Local keywords are real", 0.5, 10)]
+    let real = 0
+    for (const kw of kws) {  // a real local query comes back from Google autocomplete in that market
+      const prefix = kw.split(" ").slice(0, 2).join(" ")
+      const suggestions = (serper(runtime, "autocomplete", { q: prefix, gl: p.gl, hl: p.hl }).suggestions ?? [])
+        .map((s: Json) => norm(s.value))
+      if (suggestions.includes(norm(kw))) real++
+    }
+    return [check("Local keywords are real", atLeast(real / kws.length, 0.67), 10)]
   },
 }
 
 const leo: Profile = {
   pass: 60,
   local: (m, b) => {
-    const facts = new Set(Object.keys(b.facts ?? {}).length ? Object.keys(b.facts) : (b.facts ?? []).map((f: Json) => f.id))
+    const facts = new Set(Array.isArray(b.facts) ? b.facts.map((f: Json) => f.id) : Object.keys(b.facts ?? {}))
     const faq: Json[] = b.faq ?? []
     const questions = [...(b.paa ?? []), ...(b.question_keywords ?? [])].map((q: Json) => (typeof q === "string" ? q : q.question ?? q.keyword ?? ""))
     const covered = faq.filter((f) => questions.some((q) => overlaps(f.question, q))).length
@@ -472,17 +472,16 @@ const quinn: Profile = {
         check("Analytics numbers", !b.sales_query || !!b.sales, 20),
         check("Fix-plan mapping", fixes.every((f) => SPECIALISTS.includes(f.specialist) && f.price > 0), 5),
       ],
-      probes: { loc: b.location_code, rank, domain: norm(new URL(b.product?.onlineStoreUrl || "https://x").hostname.replace(/^www\./, "")) },
+      probes: { gl: (b.country ?? "US").toLowerCase(), rank, domain: host(b.product?.onlineStoreUrl || "https://x") },
       judge: { question: "Is the diagnosis consistent with the score sections, rankings and sales numbers? 5 = yes.",
         material: `${m.summary_md}\n${JSON.stringify({ sections: b.sections, rankings: b.rankings, sales: b.sales }).slice(0, 6000)}` },
     }
   },
   remote: (runtime, p) => {
     if (!p.rank || !p.domain || p.domain === "x") return [check("Findings reproduced", 0.75, 20)]
-    const items = dataforseo(runtime, "serp/google/organic/live/advanced",
-      [{ keyword: p.rank.keyword, location_code: p.loc, language_code: "en", depth: 50 }])[0]?.items ?? []
-    const hit = items.find((i: Json) => i.type === "organic" && norm(i.domain).includes(p.domain))
-    const pos = hit ? hit.rank_absolute : null
+    const organic: Json[] = serper(runtime, "search", { q: p.rank.keyword, gl: p.gl, hl: "en", num: 20 }).organic ?? []
+    const hit = organic.find((o) => host(o.link).includes(p.domain))
+    const pos = hit ? hit.position : null
     const claimed = p.rank.organic_position
     return [check("Findings reproduced", (pos == null && claimed == null) || (pos != null && claimed != null
       && Math.abs(pos - claimed) <= 5), 20)]

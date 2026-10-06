@@ -54,15 +54,24 @@ def valid_webhook_hmac(body: bytes, header: str) -> bool:
     return hmac.compare_digest(base64.b64encode(digest).decode(), header or "")
 
 
-def exchange_code(shop: str, code: str) -> dict[str, Any]:
+def _token_request(shop: str, grant: dict[str, Any]) -> dict[str, Any]:
     s = settings()
-    resp = httpx.post(
-        f"https://{shop}/admin/oauth/access_token",
-        json={"client_id": s.shopify_client_id, "client_secret": s.shopify_client_secret, "code": code},
-        timeout=20,
-    )
+    resp = httpx.post(f"https://{shop}/admin/oauth/access_token", timeout=20,
+                      json={"client_id": s.shopify_client_id, "client_secret": s.shopify_client_secret, **grant})
+    if resp.status_code in (400, 401):
+        raise ReauthRequired()
     resp.raise_for_status()
-    return resp.json()  # {"access_token": ..., "scope": ...}
+    return resp.json()  # {access_token, expires_in, refresh_token, refresh_token_expires_in, scope}
+
+
+def exchange_code(shop: str, code: str) -> dict[str, Any]:
+    """Expiring offline token (Shopify no longer accepts non-expiring ones on the Admin API)."""
+    return _token_request(shop, {"code": code, "expiring": 1})
+
+
+def refresh(shop: str, refresh_token: str) -> dict[str, Any]:
+    """Returns a new access token and a new refresh token (the old refresh token stops working)."""
+    return _token_request(shop, {"grant_type": "refresh_token", "refresh_token": refresh_token})
 
 
 def graphql(shop: str, token: str, query: str, variables: dict[str, Any] | None = None) -> dict[str, Any]:

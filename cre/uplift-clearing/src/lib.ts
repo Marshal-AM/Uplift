@@ -136,10 +136,9 @@ export function gateway(runtime: Runtime<Config>, path: string, body: Json, writ
     { body, headers: { Authorization: `Bearer {{.${key}}}` }, secrets: [key] })
 }
 
-export function dataforseo(runtime: Runtime<Config>, path: string, tasks: Json[]): Json[] {
-  const r = callJson(runtime, `https://api.dataforseo.com/v3/${path}`,
-    { body: tasks, headers: { Authorization: "Basic {{.dataforseoAuth}}" }, secrets: ["dataforseoAuth"] })
-  return (r.tasks ?? []).flatMap((t: Json) => t.result ?? [])
+export function serper(runtime: Runtime<Config>, endpoint: "search" | "autocomplete", body: Json): Json {
+  return callJson(runtime, `https://google.serper.dev/${endpoint}`,
+    { body, headers: { "X-API-KEY": "{{.serperApiKey}}" }, secrets: ["serperApiKey"] })
 }
 
 export function callback(runtime: Runtime<Config>, url: string, result: Json): void {

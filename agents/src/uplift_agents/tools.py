@@ -39,40 +39,37 @@ def store_query(read_token: str, query: str, variables: dict | None = None) -> d
     return gateway("/v1/read/graphql", {"query": query, "variables": variables or {}}, read_token)
 
 
-# --- DataForSEO --------------------------------------------------------------------------------
+# --- Serper.dev (Google results, Shopping, autocomplete) ----------------------------------------
 
-def _dfs_auth() -> str:
-    return base64.b64encode(f"{_env('DATAFORSEO_LOGIN')}:{_env('DATAFORSEO_PASSWORD')}".encode()).decode()
-
-
-def dataforseo(path: str, task: dict[str, Any]) -> list[dict[str, Any]]:
-    """Live endpoint: returns `tasks[0].result` (a list)."""
-    resp = httpx.post(f"https://api.dataforseo.com/v3/{path}", json=[task], timeout=httpx.Timeout(120),
-                      headers={"Authorization": f"Basic {_dfs_auth()}"})
+def _serper(endpoint: str, q: str, country: str, language: str, **extra: Any) -> dict[str, Any]:
+    body = {"q": q, "gl": country.lower(), "hl": language.lower(), **extra}
+    for attempt in range(5):
+        resp = httpx.post(f"https://google.serper.dev/{endpoint}", json=body, timeout=TIMEOUT,
+                          headers={"X-API-KEY": _env("SERPER_API_KEY")})
+        if resp.status_code not in (429, 500, 502, 503, 504) or attempt == 4:
+            break
+        time.sleep(min(30, 2 ** attempt))
     resp.raise_for_status()
-    t = resp.json()["tasks"][0]
-    if t["status_code"] >= 40000:
-        raise RuntimeError(f"DataForSEO {path}: {t['status_message']}")
-    return t.get("result") or []
+    return resp.json()
 
 
-def dataforseo_task(post_path: str, get_path: str, task: dict[str, Any], wait_s: int = 240) -> list[dict]:
-    """Task endpoint (task_post → task_get) for Merchant and Business Data APIs."""
-    headers = {"Authorization": f"Basic {_dfs_auth()}"}
-    posted = httpx.post(f"https://api.dataforseo.com/v3/{post_path}", json=[task], headers=headers,
-                        timeout=TIMEOUT).json()["tasks"][0]
-    if posted["status_code"] >= 40000:
-        raise RuntimeError(f"DataForSEO {post_path}: {posted['status_message']}")
-    deadline = time.time() + wait_s
-    while time.time() < deadline:
-        time.sleep(8)
-        got = httpx.get(f"https://api.dataforseo.com/v3/{get_path}/{posted['id']}", headers=headers,
-                        timeout=TIMEOUT).json()["tasks"][0]
-        if got["status_code"] == 20000:
-            return got.get("result") or []
-        if got["status_code"] >= 40000 and got["status_code"] not in (40601, 40602):  # 4060x = in queue
-            raise RuntimeError(f"DataForSEO {get_path}: {got['status_message']}")
-    raise TimeoutError(f"DataForSEO task {posted['id']} did not finish")
+def google_search(q: str, country: str = "US", language: str = "en", num: int = 10) -> dict[str, Any]:
+    """Organic results (title, link, snippet, position), peopleAlsoAsk, relatedSearches."""
+    return _serper("search", q, country, language, num=num)
+
+
+def google_shopping(q: str, country: str = "US", language: str = "en") -> list[dict[str, Any]]:
+    """Google Shopping offers: title, source (seller), price (parsed to float), rating, ratingCount, productId."""
+    offers = _serper("shopping", q, country, language).get("shopping", [])
+    for o in offers:
+        m = re.search(r"[\d.,]+", (o.get("price") or "").replace(",", ""))
+        o["price_value"] = float(m.group(0)) if m and m.group(0).replace(".", "", 1).isdigit() else None
+    return offers
+
+
+def google_autocomplete(q: str, country: str = "US", language: str = "en") -> list[str]:
+    """Google autocomplete suggestions, most popular first."""
+    return [s["value"] for s in _serper("autocomplete", q, country, language).get("suggestions", [])]
 
 
 # --- Web pages -------------------------------------------------------------------------------

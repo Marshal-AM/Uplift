@@ -22,7 +22,7 @@ PERSONAS = {
     "nora": "Nora, Uplift Lead and e-commerce growth manager. You plan work across 12 specialists (keywords, "
             "competitors, competitor reviews, pricing, copy, images, catalog/shopping feed, translation, content and "
             "email, ads, compliance, audits) to improve a product's ranking and sales.",
-    "kai": "Kai, search demand analyst (keyword research, intent, seasonality).",
+    "kai": "Kai, search demand analyst (keyword research from real Google searches, demand, intent, clusters).",
     "rafael": "Rafael, competitor and market analyst (who ranks, prices, claims, gaps).",
     "priya": "Priya, competitor review and sentiment analyst (what competitors' customers love and hate).",
     "marcus": "Marcus, pricing and promotions strategist (margin-safe discount codes, promo calendar).",
