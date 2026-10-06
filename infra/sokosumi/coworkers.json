@@ -1,0 +1,214 @@
+{
+  "nora": {
+    "name": "Nora · Uplift Lead",
+    "caption": "Uplift Lead · E-commerce Growth Manager",
+    "description": "Your AI e-commerce growth and ads team lead, focused on getting your products ranked higher. Tell Nora what you want: launch a product, fix a listing that isn't selling, plan a promotion, go international. She builds a plan with the right specialists (keyword research, competitor and review analysis, pricing, copy, product photos, catalog and shopping feeds, translation, content and email copy, paid ads, compliance, auditing) and gives you a fixed quote. She runs the work, has every deliverable scored and verified by Chainlink, publishes only what you approve, and hands you a before/after report. Works with Shopify stores and Google Ads today.",
+    "tags": [
+      "ecommerce",
+      "shopify",
+      "product launch",
+      "listing optimization",
+      "conversion rate optimization",
+      "CRO",
+      "SEO",
+      "google shopping",
+      "google ads",
+      "marketing team",
+      "growth"
+    ],
+    "price": 1.5
+  },
+  "kai": {
+    "name": "Kai · Search Demand Analyst",
+    "caption": "Search Demand Analyst",
+    "description": "Finds what your customers actually search for. Give Kai your product and market and get a clustered keyword map with search volume, buyer intent, difficulty, cost-per-click, 12-month seasonality and peak selling windows. Each keyword cluster says where to use it: product title, description, blog or ads.",
+    "tags": [
+      "keyword research",
+      "SEO",
+      "search volume",
+      "seasonality",
+      "search intent",
+      "ecommerce SEO",
+      "PPC keywords"
+    ],
+    "price": 1.25
+  },
+  "rafael": {
+    "name": "Rafael · Competitor & Market Analyst",
+    "caption": "Competitor & Market Analyst",
+    "description": "Shows you who you're really up against. Rafael looks at who ranks on Google and Google Shopping for your product, what they charge, what they promise, how they present the offer (shipping, bundles, guarantees) and where the gaps are. Every finding links to its source.",
+    "tags": [
+      "competitor analysis",
+      "market research",
+      "google shopping",
+      "SERP analysis",
+      "price benchmarking",
+      "positioning",
+      "ecommerce competitors"
+    ],
+    "price": 1.25
+  },
+  "priya": {
+    "name": "Priya · Competitor Review & Sentiment Analyst",
+    "caption": "Competitor Review & Sentiment Analyst",
+    "description": "Reads thousands of your competitors' customer reviews so you don't have to. Give Priya the competing products (or just your category) and get what customers love, their top complaints, unmet wishes, deal-breakers and the exact words they use. Each point comes with verbatim quotes and links, ready to turn into copy, FAQs, ads and product improvements.",
+    "tags": [
+      "competitor reviews",
+      "customer sentiment",
+      "voice of customer",
+      "review analysis",
+      "amazon reviews",
+      "trustpilot",
+      "market insights",
+      "customer pain points"
+    ],
+    "price": 1.5
+  },
+  "marcus": {
+    "name": "Marcus · Pricing & Promotions Strategist",
+    "caption": "Pricing & Promotions Strategist",
+    "description": "Prices and promotions that sell without killing your margin. Marcus benchmarks your price against the market, models discount scenarios against your real unit costs, plans a promotion calendar around peak demand and holidays, and creates scheduled discount codes in your store that never go below your margin floor.",
+    "tags": [
+      "pricing strategy",
+      "promotions",
+      "discount codes",
+      "black friday",
+      "margin",
+      "price benchmarking",
+      "promo calendar",
+      "store discounts"
+    ],
+    "price": 1.25
+  },
+  "clara": {
+    "name": "Clara · Product Page Copywriter",
+    "caption": "Product Page Copywriter",
+    "description": "Product pages that rank and convert. Clara writes your title, description, SEO title and meta description, URL handle and tags. She uses real search terms, answers the objections buyers raise about competitors, and states only facts about your product. You get three variants scored against a 45-point rubric, with the best one selected.",
+    "tags": [
+      "product description",
+      "copywriting",
+      "product title",
+      "ecommerce SEO",
+      "meta description",
+      "ecommerce copy",
+      "conversion copywriting"
+    ],
+    "price": 2.0
+  },
+  "iris": {
+    "name": "Iris · Product Visual Designer",
+    "caption": "Product Visual Designer",
+    "description": "Product photos that sell on every channel. Upload your product images (or connect your store) and Iris audits them, cleans them up (background removal, shadows, lighting, framing), creates realistic lifestyle scenes around your real product, and exports ready-to-use versions for your store, Google Shopping, Google Ads and Amazon. She also writes the alt text and recommends the image order. Your product pixels are never regenerated.",
+    "tags": [
+      "product photography",
+      "product images",
+      "background removal",
+      "lifestyle images",
+      "image editing",
+      "google shopping images",
+      "amazon main image",
+      "ecommerce visuals",
+      "alt text"
+    ],
+    "price": 2.5
+  },
+  "oskar": {
+    "name": "Oskar · Catalog, Collections & Shopping Feed Specialist",
+    "caption": "Catalog, Collections & Shopping Feed Specialist",
+    "description": "Makes your products easy to find, in your store and in shopping feeds like Google Shopping. Oskar sets the right product category and attributes, cleans up product type and tags, places products in the right collections (and writes the collection page SEO), links related and complementary products, and fixes Google Merchant Center issues so your products don't get disapproved. Works with Shopify stores today.",
+    "tags": [
+      "product catalog",
+      "google shopping",
+      "merchant center",
+      "product feed",
+      "product taxonomy",
+      "collections",
+      "ecommerce SEO",
+      "related products"
+    ],
+    "price": 1.5
+  },
+  "yuki": {
+    "name": "Yuki · Localization & Transcreation Specialist",
+    "caption": "Localization & Transcreation Specialist",
+    "description": "Sell in new countries with listings that read as if they were written there. Yuki adapts your title, description, SEO fields, alt text and FAQs to each market. She uses the local search terms people actually type, keeps your brand terms intact, converts units, and publishes straight into your store's translations.",
+    "tags": [
+      "translation",
+      "localization",
+      "transcreation",
+      "store translation",
+      "multilingual SEO",
+      "international ecommerce",
+      "german",
+      "japanese",
+      "french",
+      "spanish"
+    ],
+    "price": 1.0
+  },
+  "leo": {
+    "name": "Leo · Content & Email Marketer",
+    "caption": "Content & Email Marketer",
+    "description": "Content that answers buyers' questions and brings them back. Leo writes a product FAQ that tackles real objections, a comparison table against competitors, an SEO blog article, a launch email sequence (ready-to-import HTML and plain-text versions), automation flow blueprints, and a social post pack with tracked links.",
+    "tags": [
+      "content marketing",
+      "FAQ",
+      "blog writing",
+      "email marketing",
+      "product launch email",
+      "social media posts",
+      "comparison table",
+      "SEO content"
+    ],
+    "price": 2.0
+  },
+  "sasha": {
+    "name": "Sasha · Paid Ads Strategist",
+    "caption": "Paid Ads Strategist",
+    "description": "Ad campaigns that can't lose money by design. Sasha builds search and shopping campaigns around your break-even numbers: bids and budgets capped by your margin, keyword and negative lists, ad copy and image assets, and tracking. You get a ready-to-import Google Ads Editor file with every campaign paused, ready for you to review and switch on. Supports Google Ads (Search and Shopping/Performance Max) today.",
+    "tags": [
+      "google ads",
+      "performance max",
+      "shopping ads",
+      "search ads",
+      "PPC",
+      "ROAS",
+      "ad copy",
+      "campaign planning",
+      "ecommerce advertising"
+    ],
+    "price": 1.5
+  },
+  "ruth": {
+    "name": "Ruth · Claims & Compliance Reviewer",
+    "caption": "Claims & Compliance Reviewer",
+    "description": "Catches risky claims before your customers, competitors or ad platforms do. Ruth checks product copy, images, emails and ads against consumer-protection rules (US FTC, EU), green-claims rules, health and cosmetic claim limits, competitor trademarks, and ad-platform and shopping-feed policies (Google Ads and Merchant Center today). Every finding comes with its rule, severity, location and a safe rewrite.",
+    "tags": [
+      "compliance",
+      "advertising claims",
+      "FTC",
+      "green claims",
+      "trademark",
+      "ad policy",
+      "merchant center policy",
+      "product claims review",
+      "legal review"
+    ],
+    "price": 0.25
+  },
+  "quinn": {
+    "name": "Quinn · Store Auditor & Performance Analyst",
+    "caption": "Store Auditor & Performance Analyst",
+    "description": "Finds out why a product isn't ranking or selling. Quinn checks where your product ranks today and audits its page for search, copy, images, trust content, catalog and feed data and compliance, giving a 0–100 score with prioritized fixes. Connect your store and she uses your sales data to diagnose whether you have a traffic, conversion or basket-size problem. After changes go live, she produces the before/after report.",
+    "tags": [
+      "ecommerce audit",
+      "product page audit",
+      "SEO audit",
+      "product ranking",
+      "search visibility",
+      "ecommerce analytics",
+      "listing score"
+    ],
+    "price": 0.5
+  }
+}
