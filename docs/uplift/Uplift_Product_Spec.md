@@ -164,20 +164,20 @@ Verified against `masumi-network/sokosumi` commit `5d6d6cf` (2026-10-06).
 - **Files.** Inputs go in `/in`, deliverables in `/out`. Deliverables are mirrored to the artifact store and attached to the Task.
 - **Result-hash rule.** Every flow returns `final` as one string: the **RFC 8785 canonical JSON of the Deliverable Manifest** (§6.3). Kodosumi's `create_result_hash` gives `sha256_utf8(final_string)`, which becomes the Job's `resultHash`.
 
-### 3.4 Models (LLM on Amazon Bedrock; image work on remove.bg and Gemini)
+### 3.4 Models (LLM on Amazon Bedrock; image generation on Gemini)
 - **LLM:** **Grok 4.7** via the bedrock-runtime **Chat Completions API** (OpenAI-compatible), inference profile `us.xai.grok-4.7` in `us-east-1` (one model, one region). It is used for:
   - all text generation, coding/classification and synthesis;
   - vision (`image_url` content parts);
   - structured JSON output (via a forced function call).
 - **Image work (Iris only):**
-  - **remove.bg API** (`POST /v1.0/removebg`): product cut-outs (`type=product`, `crop=true`, `size=auto`), with an AI drop shadow (`shadow_type=drop`) for compositing. Iris places these exact pixels on white for studio shots and into generated backgrounds for lifestyle scenes.
-  - **Gemini Nano Banana 2.1** (`gemini-nano-banana-2.1`, Gemini Interactions API): generates the empty background sets for lifestyle scenes. It never draws the product.
+  - **Gemini Nano Banana 2.1** (`gemini-nano-banana-2.1`, Gemini Interactions API): renders, from the merchant's hero photo, a white-background studio shot and each lifestyle scene (2K, 1:1, JPEG).
+  - **Grok 4.7 vision** checks every render against the original photo (same shape, proportions, colour, material, logos and markings). Only renders scoring ≥0.90 are kept.
 - Translation, grammar checks, image OCR and keyword clustering all run on Grok 4.7; no separate translation, grammar, OCR or embedding services.
 - **Who calls Bedrock:** agents, the Worker (Nora and chat) and Chainlink.
 - **Auth:**
   - Kodosumi and the Worker call Bedrock over HTTPS with a **Bedrock API key** (`Authorization: Bearer …`, env `BEDROCK_LLM_API_KEY`).
   - Chainlink CRE uses the same key from the Vault DON (`{{.bedrockApiKey}}`).
-  - remove.bg (`X-API-Key`, `REMOVEBG_API_KEY`) and Gemini (`x-goog-api-key`, `GEMINI_API_KEY`) keys live only in the Kodosumi service environment.
+  - The Gemini key (`x-goog-api-key`, `GEMINI_API_KEY`) lives only in the Kodosumi service environment.
 - **Retries:** throttling and transient errors (429/5xx) back off exponentially; there are no alternative models or regions.
 
 ### 3.5 Chainlink CRE
@@ -213,7 +213,7 @@ See §5.
 | Component | Tech | Responsibility | Holds secrets? |
 |---|---|---|---|
 | **Uplift Worker** | Python (asyncio) + PostgreSQL | One executor per coworker key. Polls events, runs standalone Tasks (paid-Task flow) and Nora's orchestration. Keeps a per-Task journal, writing each step **before** its side effect. Receives CRE result callbacks. | 13 coworker runtime keys, scoped MPS `ReadAndPay` token, CRE trigger key (Railway service variables) |
-| **Kodosumi cluster** | Ray 2.48 + Kodosumi 1.2 | Runs the 12 specialist flows, Sumi endpoints and Job payments | Data-API, remove.bg, Gemini and Bedrock API keys as service env vars |
+| **Kodosumi cluster** | Ray 2.48 + Kodosumi 1.2 | Runs the 12 specialist flows, Sumi endpoints and Job payments | Data-API, Gemini and Bedrock API keys as service env vars |
 | **Worker chat** | FastAPI (in the Worker) | Responses API for all coworkers; creates DRAFT Tasks | Coworker keys |
 | **Uplift MPS** | masumi-payment-service + PostgreSQL | 13 selling wallets, auto-withdraw, refund authorization | Encrypted wallet mnemonics, admin key |
 | **Uplift Connection Gateway** | Python (FastAPI) + PostgreSQL + AWS KMS | Platform adapters (v1: Shopify) for OAuth connect and reconnect, encrypted token storage and rotation; a **read API** for agents and CRE; a **write API only CRE can call** | All merchant tokens, envelope-encrypted |

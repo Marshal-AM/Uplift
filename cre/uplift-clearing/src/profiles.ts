@@ -282,7 +282,7 @@ const iris: Profile = {
     const missing: string[] = b.missing_before ?? []
     return {
       checks: [
-        check("Product fidelity", scenes.every((s) => s.ssim >= 0.9), 25, true),
+        check("Product fidelity", scenes.length > 0 && scenes.every((s) => s.fidelity >= 0.9), 25, true),
         check("Channel rules", ratio(rules.filter(Boolean).length, rules.length) * (b.overlay_flags?.google_shopping ? 0 : 1), 25),
         check("Alt text", atLeast(ratio(altOk, alts.length), 0.9), 15),
         check("Hero", (b.hero_width ?? 0) >= 1000, 15),

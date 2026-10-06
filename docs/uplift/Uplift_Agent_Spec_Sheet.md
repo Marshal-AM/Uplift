@@ -35,7 +35,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
   - bedrock-runtime Chat Completions API (OpenAI-compatible), inference profile `us.xai.grok-4.7` in `us-east-1`, called over HTTPS with a Bedrock API key.
   - JSON output via a forced function call, and vision via `image_url` content parts.
   - Translation, grammar, image OCR and keyword clustering are Grok 4.7 calls.
-- **Image work** is Iris's alone: **remove.bg** for cut-outs and AI shadows, and **Gemini Nano Banana 2.1** for lifestyle background sets. Iris composites the product's own pixels into every image.
+- **Image work** is Iris's alone: **Gemini Nano Banana 2.1** renders studio shots and lifestyle scenes from the merchant's photo, and Grok 4.7 vision checks each render's fidelity against that photo.
 - **CRE judge**
   - One judge: Claude Grok 4.7 on Bedrock, called via Confidential HTTP with `Authorization: Bearer {{.bedrockApiKey}}`.
   - It contributes at most 5 points in any profile.
@@ -652,8 +652,8 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Field | Value |
 |---|---|
 | `caption` | Product Visual Designer |
-| `description` | "Product photos that sell on every channel. Upload your product images (or connect your store) and Iris audits them, cleans them up (background removal, shadows, lighting, upscaling, text removal), creates realistic lifestyle scenes around your **real** product, and exports ready-to-use versions for your store, Google Shopping, Google Ads and Amazon. She also writes the alt text and recommends the image order. Your product pixels are never regenerated." |
-| `tags` | product photography, product images, background removal, lifestyle images, image editing, google shopping images, amazon main image, ecommerce visuals, alt text |
+| `description` | "Product photos that sell on every channel. Upload your product images (or connect your store) and Iris audits them, re-shoots your product as a clean white studio photo, places it in realistic lifestyle scenes, and exports ready-to-use versions for your store, Google Shopping, Google Ads and Amazon. Every new image is checked against your original photo so the product stays true to life. She also writes the alt text and recommends the image order." |
+| `tags` | product photography, product images, white background, lifestyle images, image editing, google shopping images, amazon main image, ecommerce visuals, alt text |
 | Unit · price | per product (up to 8 source images and 4 lifestyle scenes) · **2.50** |
 
 ### S
@@ -678,14 +678,9 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
    - overlays and watermarks;
    - duplicates (**imagehash**).
 3. **Gap analysis.** Against the category's best-practice set: hero on white, 3+ angles, scale/in-hand, detail, lifestyle, `must_show` proof, packaging. Uses Priya's proof points and Rafael's benchmarks.
-4. **Cleanup** with the **remove.bg API** (`POST /v1.0/removebg`, `type=product`, `crop=true`, `size=auto`):
-   - a transparent cut-out of the hero product;
-   - a second cut-out with its AI drop shadow (`shadow_type=drop`);
-   - a white studio shot: the shadowed cut-out composited on a 2048×2048 white canvas (Pillow).
-5. **Lifestyle scenes.**
-   - **Gemini Nano Banana 2.1** generates an empty, photorealistic set from the scene brief, using the product photo only as a reference for scale and lighting. It never draws the product.
-   - Iris composites the shadowed remove.bg cut-out (the product's original pixels) into that set (Pillow). The product's pixels are never generated.
-6. **Fidelity check.** remove.bg re-cuts the product from each finished scene; SSIM against the original cut-out must be ≥0.90. Otherwise the scene is dropped.
+4. **Studio shot.** **Gemini Nano Banana 2.1** re-shoots the hero photo as an e-commerce studio image: the product alone on pure white (#FFFFFF) with a soft contact shadow, 2K square. The prompt requires the product to stay unchanged (shape, colours, material, logos, markings).
+5. **Lifestyle scenes.** **Gemini Nano Banana 2.1** places the product from the hero photo into each scene brief (photorealistic, realistic scale, matching light and shadows; no people, no added text or logos).
+6. **Fidelity check.** **Grok 4.7 vision** compares every render with the original photo and scores product fidelity 0–1 with a list of differences. Renders below 0.90 are dropped. White-background channel exports are cropped from a studio shot that passed.
 7. **Channel variants** (Pillow):
 
    | Channel | Spec |
@@ -732,17 +727,17 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Step | Service |
 |---|---|
 | 2, 9 | Amazon Bedrock (Grok 4.7 vision) |
-| 4, 6 | remove.bg API (`/v1.0/removebg`) |
-| 5 | Gemini API: Nano Banana 2.1 (Interactions API) |
+| 4, 5 | Gemini API: Nano Banana 2.1 (Interactions API) |
+| 6 | Amazon Bedrock: Grok 4.7 vision (fidelity) |
 | 7, 8 | Pillow (local) |
 | Publish | Shopify `stagedUploadsCreate`, `fileCreate`, `productUpdate`, `productReorderMedia`, `fileUpdate` |
 
 ### V — `iris@5` · pass ≥ 60
-The bundle carries each kept scene's SSIM and thumbnail references, plus every export's size, border brightness and fill.
+The bundle carries each kept render's fidelity score (Grok vision against the original photo), plus every export's size, border brightness and fill.
 
 | Check | Method | Points |
 |---|---|---|
-| Product fidelity | Every kept scene's SSIM ≥0.90 | 25 (**hard gate**) |
+| Product fidelity | At least one render kept, and every kept render's fidelity ≥0.90 | 25 (**hard gate**) |
 | Channel rules | Google Shopping variant: light border (≥240), no overlay flag. Amazon main: white background, ≥80% fill. Sizes meet minimums. | 25 |
 | Alt text | Non-empty, ≤140 characters, names the product | 15 |
 | Hero | ≥1000 px, light/neutral background | 15 |
@@ -1229,8 +1224,7 @@ CRE runs the **same rule engine** (a JS port generated from the same rule YAML) 
 | Service | Agents | Purpose | Auth / secret holder |
 |---|---|---|---|
 | **Amazon Bedrock**: Grok 4.7 | All agents, Worker (Nora, chat), CRE judge | All LLM inference, vision, translation, OCR, keyword clustering | Bedrock API key: Kodosumi and Worker env, CRE Vault (judge) |
-| **remove.bg API** | Iris | Product cut-outs and AI drop shadows | Kodosumi env |
-| **Gemini API** (Nano Banana 2.1) | Iris | Lifestyle background generation | Kodosumi env |
+| **Gemini API** (Nano Banana 2.1) | Iris | Studio shots and lifestyle scenes | Kodosumi env |
 | **DataForSEO** (Labs, Keywords Data, SERP, Merchant, Business Data) | Kai, Rafael, Priya, Marcus, Clara, Yuki, Leo, Sasha | Keywords, SERPs, Shopping offers and reviews, Trustpilot | Basic auth: Kodosumi env, CRE Vault |
 | **Bright Data** (Amazon scrapers) | Priya | Amazon reviews | Kodosumi env |
 | **Firecrawl** | Kai, Rafael, Priya, Clara, Quinn | Rendering, scraping, extraction | Kodosumi env |

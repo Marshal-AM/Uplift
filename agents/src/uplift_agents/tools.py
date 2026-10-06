@@ -199,7 +199,7 @@ def grammar_issues(text: str, language: str = "en-US") -> list[dict[str, Any]]:
             "required": ["excerpt", "message"]}}}, "required": ["issues"]})["issues"]
 
 
-# --- Images: Grok vision (reading), remove.bg (cut-outs and shadows), Gemini (scene backgrounds) ----------
+# --- Images: Grok vision (reading, fidelity checks), Gemini Nano Banana 2.1 (studio shots, scenes) -------
 
 RETRYABLE = {429, 500, 502, 503, 504}
 
@@ -221,7 +221,7 @@ def _request(method: str, url: str, **kwargs: Any) -> httpx.Response:
 
 
 def _shrink(image: bytes, max_pixels: int, fmt: str = "PNG") -> bytes:
-    """Downscale to a pixel budget (remove.bg ≤ 25 MP; Bedrock image blocks ≤ 3.75 MB)."""
+    """Downscale to a pixel budget (image inputs to Gemini and Bedrock)."""
     img = Image.open(io.BytesIO(image))
     if img.width * img.height <= max_pixels and len(image) < 3_500_000:
         return image
@@ -240,32 +240,13 @@ def ocr(image: bytes) -> str:
     return "\n".join(lines)
 
 
-def cut_out(image: bytes, shadow: bool = False) -> bytes:
-    """remove.bg: transparent PNG of the product, cropped to the subject; optionally with its AI drop shadow.
-    `size=auto` returns the highest resolution the account's credits allow."""
-    params = {"size": "auto", "type": "product", "format": "png", "crop": "true", "semitransparency": "true"}
-    if shadow:
-        params |= {"shadow_type": "drop", "shadow_opacity": "auto"}
-    return _request("POST", "https://api.remove.bg/v1.0/removebg", data=params,
-                    files={"image_file": ("image.jpg", _shrink(image, 25_000_000, "JPEG"))},
-                    headers={"X-API-Key": _env("REMOVEBG_API_KEY")}).content
-
-
-def generate_scene(prompt: str, product_reference: bytes) -> bytes:
-    """An empty photographic background (no product) for the real product to be composited into: Gemini Nano Banana 2.1
-    via the Interactions API, with the product photo as a reference for scale, lighting and style."""
+def _gemini_image(instruction: str, photo: bytes) -> bytes:
+    """Gemini Nano Banana 2.1 (Interactions API): an edited render of the merchant's product photo, 2K square JPEG."""
     resp = _request("POST", "https://generativelanguage.googleapis.com/v1beta/interactions",
                     headers={"x-goog-api-key": _env("GEMINI_API_KEY")}, json={
         "model": "gemini-nano-banana-2.1",
-        "input": [
-            {"type": "text", "text": (
-                f"Photograph an empty product-photography set: {prompt}. The reference image shows the product "
-                "that will be placed here later — match its scale, lighting and style, but do NOT include the "
-                "product or any similar object. Leave a clear, flat surface in the lower centre of the frame. "
-                "Photorealistic, natural light, no people, no text, no logos.")},
-            {"type": "image", "mime_type": "image/png",
-             "data": base64.b64encode(_shrink(product_reference, 2_000_000)).decode()},
-        ],
+        "input": [{"type": "text", "text": instruction},
+                  {"type": "image", "mime_type": "image/jpeg", "data": base64.b64encode(_shrink(photo, 4_000_000, "JPEG")).decode()}],
         "response_format": {"type": "image", "mime_type": "image/jpeg", "aspect_ratio": "1:1", "image_size": "2K"},
     }).json()
     images = [c for step in resp.get("steps", []) if step.get("type") == "model_output"
@@ -273,6 +254,25 @@ def generate_scene(prompt: str, product_reference: bytes) -> bytes:
     if not images:
         raise RuntimeError(f"Gemini returned no image (status {resp.get('status')})")
     return base64.b64decode(images[-1]["data"])
+
+
+KEEP_PRODUCT = ("Keep the product exactly as it is in the photo: same shape, proportions, colours, material, finish, "
+                "logos, text and markings. Do not add, remove or redesign anything on the product. No people, no added "
+                "text or logos, no props touching the product.")
+
+
+def studio_shot(photo: bytes) -> bytes:
+    """The product from the merchant's photo on a pure white (#FFFFFF) seamless background with a soft contact shadow."""
+    return _gemini_image("Re-shoot this product as an e-commerce studio photo: the product alone, centred and filling "
+                         "about 80% of the frame, on a pure white (#FFFFFF) seamless background with a soft, natural "
+                         "contact shadow and even studio lighting. " + KEEP_PRODUCT, photo)
+
+
+def scene_shot(photo: bytes, scene: str) -> bytes:
+    """The product from the merchant's photo placed in a photorealistic lifestyle scene."""
+    return _gemini_image(f"Place this exact product in a photorealistic lifestyle photo: {scene}. The product stands "
+                         "naturally in the lower centre of the frame at a realistic scale, with lighting and shadows "
+                         "that match the scene. " + KEEP_PRODUCT, photo)
 
 
 # --- Misc ----------------------------------------------------------------------------------------

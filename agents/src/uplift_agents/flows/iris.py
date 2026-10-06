@@ -1,7 +1,7 @@
-"""Iris — Product Visual Designer: audit (Grok vision), remove.bg cut-outs with AI shadows, studio shots and lifestyle
-scenes (Gemini backgrounds with the real product's pixels composited in), channel exports, alt text."""
+"""Iris — Product Visual Designer: audit (Grok vision), studio shots and lifestyle scenes rendered from the product photo
+(Gemini Nano Banana 2.1), a fidelity check of every render against the original (Grok vision), channel exports, alt
+text."""
 
-import base64
 import io
 from concurrent.futures import ThreadPoolExecutor
 
@@ -9,7 +9,6 @@ import imagehash
 import numpy as np
 from kodosumi.core import forms as F
 from PIL import Image
-from skimage.metrics import structural_similarity
 from uplift_core import llm
 
 from .. import tools
@@ -44,41 +43,35 @@ AUDIT_SCHEMA = {"type": "object", "properties": {
     "required": ["shot_type", "has_text_overlay", "issues"]}
 
 
-def _png(img: Image.Image) -> bytes:
-    buf = io.BytesIO()
-    img.save(buf, "PNG")
-    return buf.getvalue()
-
-
 def _jpg(img: Image.Image, quality: int = 90) -> bytes:
     buf = io.BytesIO()
     img.convert("RGB").save(buf, "JPEG", quality=quality)
     return buf.getvalue()
 
 
-def _on_white(cutout: Image.Image) -> Image.Image:
-    """Product cutout (RGBA) cropped to its alpha bbox, composited on white."""
-    rgba = cutout.convert("RGBA")
-    box = rgba.getchannel("A").getbbox() or (0, 0, *rgba.size)
-    crop = rgba.crop(box)
-    white = Image.new("RGBA", crop.size, (255, 255, 255, 255))
-    return Image.alpha_composite(white, crop).convert("RGB")
+FIDELITY_SCHEMA = {"type": "object", "properties": {
+    "fidelity": {"type": "number", "minimum": 0, "maximum": 1},
+    "differences": {"type": "array", "items": {"type": "string"}}}, "required": ["fidelity", "differences"]}
 
 
-def _compose(subject: Image.Image, canvas: Image.Image, fill: float, low: bool = False) -> Image.Image:
-    """Place an RGBA cut-out (with its shadow) on a canvas: centred, or standing on the lower part of a scene."""
-    out = canvas.convert("RGBA")
-    scale = min(out.width * fill / subject.width, out.height * fill / subject.height)
-    sized = subject.resize((max(1, int(subject.width * scale)), max(1, int(subject.height * scale))), Image.LANCZOS)
-    x = (out.width - sized.width) // 2
-    y = int(out.height * 0.92) - sized.height if low else (out.height - sized.height) // 2
-    out.alpha_composite(sized, (x, y))
-    return out
+def _fidelity(original: Image.Image, render: Image.Image, name: str) -> dict:
+    """Grok vision: is the product in the generated image exactly the merchant's product?"""
+    return llm.structured(
+        f"Image 1 is the merchant's original photo of '{name}'. Image 2 is a generated product image. Compare only "
+        "the product: shape, proportions, colour, material, finish, logos, text and markings. Score 1.0 if it is "
+        "the same product with no visible changes, lower for every change; list each difference.",
+        FIDELITY_SCHEMA, images=[_jpg(_bounded(original)), _jpg(_bounded(render))])
 
 
-def _thumb(img: Image.Image) -> tuple[str, np.ndarray]:
-    g = np.asarray(img.convert("L").resize((64, 64), Image.BILINEAR), dtype=np.uint8)
-    return base64.b64encode(g.tobytes()).decode(), g
+def _bounded(img: Image.Image, side: int = 1024) -> Image.Image:
+    scale = min(1.0, side / max(img.size))
+    return img.resize((int(img.width * scale), int(img.height * scale))) if scale < 1 else img
+
+
+def _crop_white(img: Image.Image) -> Image.Image:
+    """Crop a white-background studio shot to the product (and its shadow)."""
+    box = Image.fromarray((np.asarray(img.convert("L")) < 245).astype(np.uint8) * 255).getbbox()
+    return img.crop(box) if box else img
 
 
 def _fit(img: Image.Image, size: tuple[int, int], fill: float = 0.85) -> Image.Image:
@@ -134,12 +127,10 @@ def run(inputs: dict, tracer) -> str:
     wanted = ["hero", "angle", "detail", "scale", "lifestyle"]
     missing = [w for w in wanted if w not in have]
 
-    tracer.markdown_sync("Cutting out the product and shooting it on white")
     hero_idx = next((i for i, a in enumerate(audits) if a["shot_type"] == "hero"), 0)
-    cutout = Image.open(io.BytesIO(tools.cut_out(raw[hero_idx]))).convert("RGBA")
-    shadowed = Image.open(io.BytesIO(tools.cut_out(raw[hero_idx], shadow=True))).convert("RGBA")
-    product_on_white = _on_white(cutout)
-    clean = _compose(shadowed, Image.new("RGB", (2048, 2048), "white"), fill=0.8).convert("RGB")
+    tracer.markdown_sync("Re-shooting the product on white")
+    renders = [{"name": "clean_hero", "prompt": "white studio shot",
+                "image": Image.open(io.BytesIO(tools.studio_shot(raw[hero_idx]))).convert("RGB")}]
 
     count = max(0, min(4, int(ctx.get("lifestyle_count", 3) or 0)))
     briefs = ctx.lines("scene_briefs")
@@ -153,32 +144,34 @@ def run(inputs: dict, tracer) -> str:
              "required": ["scenes"]})["scenes"]
     briefs = briefs[:count]
 
-    tracer.markdown_sync(f"Composing {len(briefs)} lifestyle scenes around the real product")
-
-    def scene(prompt: str) -> dict:
-        # Gemini paints an empty set; the real product (original pixels + its shadow) is composited into it
-        background = Image.open(io.BytesIO(tools.generate_scene(prompt, _png(product_on_white)))).convert("RGB")
-        img = _compose(shadowed, background.resize((2048, 2048), Image.LANCZOS), fill=0.55, low=True).convert("RGB")
-        recut = _on_white(Image.open(io.BytesIO(tools.cut_out(_jpg(img)))))
-        t_ref, g_ref = _thumb(product_on_white)
-        t_out, g_out = _thumb(recut)
-        ssim = float(structural_similarity(g_ref, g_out, data_range=255))
-        return {"prompt": prompt, "image": img, "ssim": ssim, "thumb_ref": t_ref, "thumb_out": t_out}
-
+    tracer.markdown_sync(f"Placing the product in {len(briefs)} lifestyle scenes")
     with ThreadPoolExecutor(2) as pool:
-        scenes = list(pool.map(scene, briefs))
-    kept = [s for s in scenes if s["ssim"] >= 0.90]
+        shots = list(pool.map(lambda brief: tools.scene_shot(raw[hero_idx], brief), briefs))
+    renders += [{"name": f"scene_{i + 1}", "prompt": brief, "image": Image.open(io.BytesIO(shot)).convert("RGB")}
+                for i, (brief, shot) in enumerate(zip(briefs, shots))]
+
+    tracer.markdown_sync("Checking every new image against the original photo")
+    with ThreadPoolExecutor(4) as pool:
+        verdicts = list(pool.map(lambda r: _fidelity(images[hero_idx], r["image"], name), renders))
+    for r, v in zip(renders, verdicts):
+        r |= v
+    kept = [r for r in renders if r["fidelity"] >= 0.90]
+    studio = next((r["image"] for r in kept if r["name"] == "clean_hero"), None)
+    scenes = [r for r in kept if r["name"] != "clean_hero"]
+    product_on_white = _crop_white(studio) if studio else None
 
     tracer.markdown_sync("Exporting channel versions and writing alt text")
     exports, stats = [], []
     for ch in channels:
         for label, size, kind in CHANNELS[ch]:
             if kind == "white":
+                if product_on_white is None:
+                    continue  # white-background channels need a studio shot that passed the fidelity check
                 img = _fit(product_on_white, size, 0.85 if ch != "amazon" else 0.9)
-            elif kept:
-                img = _cover(kept[0]["image"], size)
+            elif scenes:
+                img = _cover(scenes[0]["image"], size)
             else:
-                img = _fit(product_on_white, size)
+                img = _cover(studio or images[hero_idx], size)
             url = out.artifact(f"{label}.jpg", _jpg(img), "image/jpeg")
             arr = np.asarray(img.convert("L"))
             fill = float((arr < 245).mean())
@@ -186,8 +179,7 @@ def run(inputs: dict, tracer) -> str:
                           "border_mean": _border_mean(img), "fill_ratio": fill, "kind": kind})
             exports.append({"name": label, "url": url, "image": img})
 
-    new_media = [{"name": "clean_hero", "image": clean}] + [{"name": f"scene_{i + 1}", "image": s["image"]}
-                                                             for i, s in enumerate(kept)]
+    new_media = [{"name": r["name"], "image": r["image"]} for r in kept]
 
     def alt_for(img: Image.Image) -> str:
         return llm.structured(f"Write alt text (≤125 chars) for this image of '{name}'. Describe what is visible, "
@@ -226,17 +218,19 @@ def run(inputs: dict, tracer) -> str:
     out.artifact("visual_audit.json", {"audits": audits, "missing_shot_types": missing})
     out.artifact("alt_text.json", {"existing": existing_alts, "new": new_alts})
     out.artifact("order.json", order)
-    out.artifact("fidelity.json", [{"prompt": s["prompt"], "ssim": s["ssim"], "kept": s in kept} for s in scenes])
+    out.artifact("fidelity.json", [{"name": r["name"], "prompt": r["prompt"], "fidelity": r["fidelity"],
+                                    "differences": r["differences"], "kept": r in kept} for r in renders])
     out.bundle = {
         "product_name": name, "hero_width": audits[hero_idx]["width"],
         "exports": stats, "missing_before": missing,
-        "added_types": (["hero"] if "hero" in missing else []) + (["lifestyle"] if kept and "lifestyle" in missing
-                                                                   else []),
+        "added_types": (["hero"] if studio is not None and "hero" in missing else [])
+        + (["lifestyle"] if scenes and "lifestyle" in missing else []),
         "alts": new_alts + existing_alts,
-        "scenes": [{"ssim": s["ssim"], "thumb_ref": s["thumb_ref"], "thumb_out": s["thumb_out"]} for s in kept],
+        "scenes": [{"name": r["name"], "fidelity": r["fidelity"]} for r in kept],
         "overlay_flags": {"google_shopping": False},
     }
     return out.finalize(
         f"Audited {len(images)} images · missing shot types: {', '.join(missing) or 'none'}.\n\n"
-        f"Added a clean white hero and {len(kept)} lifestyle scene(s) built around the real product "
-        f"(fidelity ≥ 0.90). Exported {len(exports)} channel versions and wrote alt text for every image.")
+        f"Added {'a clean white hero and ' if studio is not None else ''}{len(scenes)} lifestyle scene(s), each "
+        f"checked against your original photo (fidelity ≥ 0.90). Exported {len(exports)} channel versions and wrote "
+        "alt text for every image.")

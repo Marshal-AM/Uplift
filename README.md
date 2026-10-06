@@ -12,7 +12,7 @@ A verified multi-agent e-commerce growth and ads team, listed on Sokosumi. The p
 | Database access | `psycopg` 3 + plain SQL migrations | Small schemas; no ORM needed |
 | Token encryption | AWS KMS `GenerateDataKey` + AES-GCM (`cryptography`) | Envelope encryption as specified |
 | LLM | Amazon Bedrock Chat Completions (OpenAI-compatible, bedrock-runtime) over HTTPS, `us.xai.grok-4.7` in `us-east-1`, Bedrock API key | One model for text and image inputs; CRE judge uses the same key |
-| Images (Iris) | remove.bg `/v1.0/removebg` (cut-outs, AI shadows) + Gemini `gemini-nano-banana-2.1` (background sets) | The product's pixels always come from the original photo |
+| Images (Iris) | Gemini `gemini-nano-banana-2.1` (studio shots, lifestyle scenes) + Grok vision fidelity check | Every render is checked against the merchant's original photo (≥0.90 kept) |
 | Canonical JSON | RFC 8785 JCS: `rfc8785` (Python), `canonicalize` (TS) | Same `resultHash` / `change_hash` on both sides (`e2e/cre_parity.py`) |
 | Shopify | Admin GraphQL `2026-10`; app config via Shopify CLI (`shopify.app.toml`) | Official tooling |
 | Hosting | Railway: Postgres, gateway, worker, Kodosumi (Ray in one container, `/data` volume), MPS | Railway CLI per requirement |
