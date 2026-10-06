@@ -1,0 +1,113 @@
+{
+  "version": "5.0.0",
+  "about": "uplift-rules: deterministic claim and policy rules shared by Ruth, Quinn (Python) and CRE verify (TypeScript). Patterns are case-insensitive regexes valid in both Python re and JS RegExp.",
+  "rules": [
+    {
+      "id": "SUP-001",
+      "pack": "superlatives",
+      "severity": "medium",
+      "message": "Superlative claim needs substantiation.",
+      "pattern": "\\b(best|#1|number one|no\\.? ?1|world's (?:best|first|leading)|unbeatable|ultimate)\\b",
+      "substantiable": true
+    },
+    {
+      "id": "SUP-002",
+      "pack": "superlatives",
+      "severity": "medium",
+      "message": "Comparative performance claim needs substantiation.",
+      "pattern": "\\b(fastest|strongest|longest[- ]lasting|most (?:effective|durable|powerful))\\b",
+      "substantiable": true
+    },
+    {
+      "id": "ENV-001",
+      "pack": "environmental",
+      "severity": "high",
+      "message": "Generic environmental claim (EU ban on unsubstantiated generic claims; FTC Green Guides).",
+      "pattern": "\\b(eco[- ]?friendly|environmentally friendly|green product|planet[- ]friendly|climate[- ]neutral|carbon[- ]neutral|sustainable)\\b",
+      "substantiable": true
+    },
+    {
+      "id": "ENV-002",
+      "pack": "environmental",
+      "severity": "medium",
+      "message": "Degradability claim needs qualification (conditions and timeframe).",
+      "pattern": "\\b(biodegradable|compostable|plastic[- ]free)\\b",
+      "substantiable": true
+    },
+    {
+      "id": "HLT-001",
+      "pack": "health",
+      "severity": "high",
+      "message": "Disease or medical claim.",
+      "pattern": "\\b(cures?|treats?|prevents?|heals?) (?:cancer|diabetes|covid|disease|infection|anxiety|depression|arthritis)\\b",
+      "substantiable": false
+    },
+    {
+      "id": "HLT-002",
+      "pack": "health",
+      "severity": "high",
+      "message": "Regulatory approval claim.",
+      "pattern": "\\b(fda[- ]approved|clinically proven|doctor[- ]recommended|dermatologist[- ]approved)\\b",
+      "substantiable": true
+    },
+    {
+      "id": "HLT-003",
+      "pack": "health",
+      "severity": "medium",
+      "message": "Absolute safety claim.",
+      "pattern": "\\b(100% safe|completely safe|non[- ]toxic|chemical[- ]free|toxin[- ]free)\\b",
+      "substantiable": true
+    },
+    {
+      "id": "COS-001",
+      "pack": "cosmetics",
+      "severity": "high",
+      "message": "Drug-like cosmetic claim.",
+      "pattern": "\\b(anti[- ]aging miracle|removes wrinkles|regrows hair|cures acne|permanent(?:ly)? removes?)\\b",
+      "substantiable": false
+    },
+    {
+      "id": "PRC-001",
+      "pack": "pricing",
+      "severity": "medium",
+      "message": "Urgency or scarcity claim must be true and time-bound.",
+      "pattern": "\\b(only \\d+ left|last chance|ends tonight|limited time only|while stocks? last)\\b",
+      "substantiable": true
+    },
+    {
+      "id": "PRC-002",
+      "pack": "pricing",
+      "severity": "medium",
+      "message": "Reference-price claim needs a genuine prior price.",
+      "pattern": "\\b(was \\$?\\d+|regular price|compare at|\\d{2}% off everything)\\b",
+      "substantiable": true
+    },
+    {
+      "id": "GUA-001",
+      "pack": "guarantees",
+      "severity": "low",
+      "message": "Guarantee claim must match the store's actual policy.",
+      "pattern": "\\b(lifetime (?:warranty|guarantee)|money[- ]back guarantee|guaranteed results)\\b",
+      "substantiable": true
+    },
+    {
+      "id": "PLT-001",
+      "pack": "platform",
+      "severity": "medium",
+      "message": "Promotional text is not allowed on Google Shopping images.",
+      "pattern": "\\b(free shipping|sale|% off|buy now|discount)\\b",
+      "substantiable": false,
+      "applies_to": "shopping_image"
+    },
+    {
+      "id": "PLT-002",
+      "pack": "platform",
+      "severity": "medium",
+      "message": "Google Ads disallows excessive capitalization and gimmicky punctuation.",
+      "pattern": "([A-Z]{6,}|!{2,})",
+      "case_sensitive": true,
+      "substantiable": false,
+      "applies_to": "ad"
+    }
+  ]
+}
