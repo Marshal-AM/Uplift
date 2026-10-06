@@ -1,0 +1,31 @@
+[project]
+name = "uplift-agents"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "uplift-core",
+  "kodosumi @ git+https://github.com/masumi-network/kodosumi@c4f2032e4fcd4dbc87fafc340d132ef2fb25f9c0",
+  "ray[serve]==2.48.0",
+  "fastapi==0.116.1",
+  "starlette==0.47.3",
+  "pydantic==2.11.7",
+  "protobuf>=5,<6",  # Ray 2.48 serve uses FieldDescriptor.label (removed in protobuf 7)
+  "httpx>=0.28",
+  "boto3>=1.43",
+  "pyyaml>=6",
+  "pillow>=11",
+  "imagehash>=4.3",
+  "scikit-image>=0.25",
+  "numpy>=2",
+  "pyjwt>=2.15",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/uplift_agents"]
