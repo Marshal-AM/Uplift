@@ -18,7 +18,7 @@ The result is the last response (the caller decides with raise_for_status) or th
 
 import random
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from email.utils import parsedate_to_datetime
 from typing import Any
 
@@ -38,9 +38,14 @@ class Policy:
     budget: float | None = None  # seconds for the whole call; default attempts × attempt_timeout + waits
     base_delay: float = 1.0
     max_delay: float = 20.0
+    retry_status: frozenset[int] = frozenset(RETRY_STATUS)  # answers worth another attempt on the same key
 
     def with_timeout(self, attempt_timeout: float, budget: float | None = None) -> "Policy":
-        return Policy(self.service, attempt_timeout, self.attempts, budget, self.base_delay, self.max_delay)
+        return replace(self, attempt_timeout=attempt_timeout, budget=budget)
+
+    def without(self, *statuses: int) -> "Policy":
+        """The same policy, handing these answers straight back (e.g. a 429 a fallback key can serve)."""
+        return replace(self, retry_status=self.retry_status - set(statuses))
 
 
 def _retry_after(resp: httpx.Response) -> float | None:
@@ -76,7 +81,7 @@ def request(method: str, url: str, policy: Policy, **kwargs: Any) -> httpx.Respo
             last, why, wait = exc, ("timed out" if isinstance(exc, httpx.TimeoutException)
                                     else f"connection failed ({type(exc).__name__})"), None
         else:
-            if resp.status_code not in RETRY_STATUS:
+            if resp.status_code not in policy.retry_status:
                 return resp
             last, why, wait = resp, f"answered {resp.status_code}", _retry_after(resp)
         if attempt == policy.attempts - 1:

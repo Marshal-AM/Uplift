@@ -113,11 +113,34 @@ def scrape(url: str, schema: dict | None = None, formats: list | None = None) ->
         fmts = [*fmts, {"type": "json", "schema": schema}]
     with trace.span("Firecrawl", f"Reading page {_short(url)}", "rendering and extracting" +
                     (" structured data" if schema else " text"), kind="firecrawl", meta={"url": url}) as s:
-        resp = _request("POST", "https://api.firecrawl.dev/v2/scrape", FIRECRAWL, json={"url": url, "formats": fmts},
-                        headers={"Authorization": f"Bearer {_env('FIRECRAWL_API_KEY')}"})
+        resp = _firecrawl({"url": url, "formats": fmts})
         data = resp.json()["data"]
         s.detail = f"{len(data.get('markdown') or ''):,} characters read" + (" + structured fields" if schema else "")
         return data
+
+
+FIRECRAWL_KEYS = ("FIRECRAWL_API_KEY", "FIRECRAWL_API_KEY_2")  # the second account takes over at a rate or credit limit
+FIRECRAWL_SWITCH = (402, 429)
+
+
+def _firecrawl(body: dict[str, Any]) -> httpx.Response:
+    """POST /v2/scrape. When a key hits its rate or credit limit (429, 402) and another key is configured, the call
+    moves to the next key at once (another account's limits); the last key gets the normal retry policy. Other
+    answers (a site that refuses Firecrawl, 403) are not retried with another key."""
+    keys = [k for k in (os.environ.get(name) for name in FIRECRAWL_KEYS) if k]
+    if not keys:
+        raise RuntimeError("FIRECRAWL_API_KEY is not configured")
+    for i, key in enumerate(keys):
+        last = i == len(keys) - 1
+        resp = _call("POST", "https://api.firecrawl.dev/v2/scrape", FIRECRAWL if last else FIRECRAWL.without(*FIRECRAWL_SWITCH),
+                     json=body, headers={"Authorization": f"Bearer {key}"})
+        if resp.status_code in FIRECRAWL_SWITCH and not last:
+            trace.emit("Firecrawl", f"Firecrawl key {i + 1} answered {resp.status_code} — switching to key {i + 2}",
+                       "a separate account with its own rate limit", status="wait", kind="retry")
+            continue
+        resp.raise_for_status()
+        return resp
+    raise RuntimeError("unreachable")
 
 
 def _short(url: str) -> str:
