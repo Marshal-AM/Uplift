@@ -266,6 +266,12 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
 
         elif phase == "publish":
             if st.get("terms") and not payments.funds_locked(st["terms"]):
+                if payments.lock_expired(st["terms"]):
+                    st["error"] = ("The payment was not locked in escrow before its deadline, so nothing was "
+                                   "published or delivered.")
+                    phase = "failed"
+                    save(phase)
+                    continue
                 return  # nothing is published before the payment is locked in escrow
             user_id, org_id = runs.owner(task)
             st["publish"] = cre.trigger("publish", {

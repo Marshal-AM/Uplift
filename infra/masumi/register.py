@@ -2,8 +2,8 @@
 
 - The 12 specialists register through the Kodosumi panel (their MIP-003 API is the Kodosumi Sumi endpoint).
 - The 12 specialists are Fixed-priced (their standalone coworker Tasks).
-- Nora has no Kodosumi flow; she registers directly on the MPS as an OpenApi agent (the Worker's OpenAPI spec) with
-  Dynamic pricing: each Task is charged the sum of the specialists she used.
+- Nora has no Kodosumi flow; she registers directly on the MPS as a Standard agent whose API is the Worker's
+  /agents/nora, with Dynamic pricing: each Task is charged the sum of the specialists she used.
 
     uv run python infra/masumi/register.py            # register what is missing, then wait for confirmation
     uv run python infra/masumi/register.py --publish  # also push AGENT_IDENTIFIERS_JSON / AGENT_IDS_JSON to the Worker
@@ -88,15 +88,15 @@ def _parses(text: str) -> bool:
 
 def register_nora(mps: httpx.Client, vkey: str) -> None:
     nora = LISTINGS["nora"]
-    if any(a["name"] == nora["name"] and _dynamic(a) for a in registry(mps)):
-        print("nora    already registered (Dynamic)")
+    if any(a["name"] == nora["name"] and _current_nora(a) for a in registry(mps)):
+        print("nora    already registered (Standard, Dynamic)")
         return
     source = mps.get("/payment-source", params={"take": 10}).json()["data"]["PaymentSources"]
     address = next(s["smartContractAddress"] for s in source if s["paymentSourceType"] == "Web3CardanoV2"
                    and s["network"] == "Preprod")
     resp = mps.post("/registry", json={
-        "network": "Preprod", "type": "OpenApi", "sellingWalletVkey": vkey, "name": nora["name"],
-        "description": nora["caption"], "openApiSpecUrl": f"{WORKER}/openapi.json",
+        "network": "Preprod", "type": "Standard", "sellingWalletVkey": vkey, "name": nora["name"],
+        "description": nora["caption"], "apiBaseUrl": f"{WORKER}/agents/nora",
         "Tags": nora["tags"][:15], "ExampleOutputs": [], "Capability": {"name": "grok-4.7", "version": "1"},
         "Author": {"name": "Uplift", "organization": "Uplift"},
         "supportedPaymentSources": [{
@@ -111,7 +111,7 @@ def wait_confirmed(mps: httpx.Client, timeout_s: int = 1800) -> dict[str, str]:
     deadline = time.time() + timeout_s
     while True:
         assets = [a for a in registry(mps) if (a["name"] in names or any(a["name"].startswith(r.title()) for r in LISTINGS))
-                  and (a["name"] != LISTINGS["nora"]["name"] or _dynamic(a))]  # Nora's Fixed v1 is superseded
+                  and (a["name"] != LISTINGS["nora"]["name"] or _current_nora(a))]  # earlier Noras are superseded
         states = {a["name"]: a["state"] for a in assets}
         done = {a["name"]: a["agentIdentifier"] for a in assets if a["state"] in ("RegistrationConfirmed", "UpdateConfirmed")}
         failed = [n for n, s in states.items() if s in ("RegistrationFailed", "UpdateFailed")]
@@ -123,8 +123,10 @@ def wait_confirmed(mps: httpx.Client, timeout_s: int = 1800) -> dict[str, str]:
         time.sleep(30)
 
 
-def _dynamic(asset: dict) -> bool:
-    return any((s.get("pricing") or {}).get("pricingType") == "Dynamic" for s in asset.get("supportedPaymentSources") or [])
+def _current_nora(asset: dict) -> bool:
+    """Nora's registration: Standard (every payment node resolves its api_base_url) with Dynamic pricing."""
+    return asset.get("type") == "Standard" and any(
+        (s.get("pricing") or {}).get("pricingType") == "Dynamic" for s in asset.get("supportedPaymentSources") or [])
 
 
 def _role(name: str) -> str:

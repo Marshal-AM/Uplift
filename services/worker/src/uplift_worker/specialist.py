@@ -133,6 +133,12 @@ def advance(role: str, task_id: str) -> None:
 
         elif phase == "funds_wait":
             if st.get("terms") and not payments.funds_locked(st["terms"]):
+                if payments.lock_expired(st["terms"]):
+                    st["error"] = ("The payment was not locked in escrow before its deadline, so nothing was "
+                                   "delivered and no result was submitted.")
+                    phase = "failed"
+                    save(phase)
+                    continue
                 return
             phase = st.pop("after_funds", "execute")
             save(phase)

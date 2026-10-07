@@ -82,6 +82,11 @@ def _confirmed(payment: dict, state: str) -> bool:
         t.get("status") == "Confirmed" and t.get("newOnChainState") == state for t in txs)
 
 
+def lock_expired(terms: dict[str, Any]) -> bool:
+    """The buyer never locked the escrow: past the pay-by deadline plus the payment node's 5-minute grace."""
+    return int(terms["payment"]["payByTime"]) / 1000 + 300 < time.time()
+
+
 def funds_locked(terms: dict[str, Any]) -> bool:
     payment = mps("/payment/resolve-blockchain-identifier", {
         "network": settings().network, "blockchainIdentifier": terms["payment"]["blockchainIdentifier"],

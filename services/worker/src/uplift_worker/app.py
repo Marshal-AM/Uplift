@@ -14,6 +14,7 @@ import uvicorn
 from fastapi import FastAPI, Header, HTTPException, Request
 
 from . import db, nora, specialist
+from .agent_api import router as agent_api_router
 from .chat import router as chat_router
 from .clients import Sokosumi
 from .config import settings
@@ -103,6 +104,7 @@ async def lifespan(_: FastAPI):
 
 app = FastAPI(title="Uplift Worker", lifespan=lifespan)
 app.include_router(chat_router)
+app.include_router(agent_api_router)
 
 
 @app.get("/health")
