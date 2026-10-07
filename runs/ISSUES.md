@@ -51,3 +51,13 @@ Each entry: what happened, the evidence, the fix and where it landed. Times are 
   are unique per store, so publishing would fail). Declined as the merchant.
 - **Fix:** Marcus reads the store's existing codes, tells the model to avoid them and makes any remaining collision
   unique (`SINGLES11` → `SINGLES112`).
+
+## 9. Oskar put the tumbler into the "Bamboo Bottles" collection; the approval showed only an id
+- **Seen:** Oskar Task `01a1147d-df75…` proposed "collections: add to 333623328929" (= "Bamboo Bottles"): the tumbler
+  shares a bamboo lid, not a product type. Declined as the merchant.
+- **Fix:** Oskar only picks collections of the same kind of product and may return none; approval messages name
+  collections (and categories) instead of showing their ids.
+
+## 10. Observation (not changed): generated scenes can show third-party marks
+- Iris's car cup-holder scene for the tumbler shows a car maker's emblem on the steering wheel. The product itself is
+  faithful (fidelity 1.0). Worth a prompt note ("no logos or brand marks in the scene") in a later pass.

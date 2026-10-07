@@ -136,15 +136,16 @@ def deliver_files(client: Sokosumi, task_id: str, manifest: dict, sent: list[str
 
 
 def category_names(task: dict, changeset: list[dict]) -> dict[str, str]:
-    """Readable names for taxonomy category ids in a change set (approvals show names, not gids)."""
+    """Readable names for the taxonomy categories and collections in a change set (approvals show names, not gids)."""
     ids = [op["fields"]["category"] for op in changeset if op["op"] == "product.update" and op["fields"].get("category")]
+    ids += [op["collection_id"] for op in changeset if op["op"] == "collection.add_products"]
     if not ids:
         return {}
     user_id, org_id = owner(task)
-    q = "query($ids: [ID!]!) { nodes(ids: $ids) { ... on TaxonomyCategory { id fullName } } }"
+    q = "query($ids: [ID!]!) { nodes(ids: $ids) { ... on TaxonomyCategory { id fullName } ... on Collection { id title } } }"
     nodes = gateway("/v1/read/graphql", {"user_id": user_id, "org_id": org_id, "query": q,
                                          "variables": {"ids": ids}})["nodes"]
-    return {n["id"]: n["fullName"] for n in nodes if n}
+    return {n["id"]: n.get("fullName") or n.get("title") for n in nodes if n}
 
 
 def describe_changes(changeset: list[dict], snapshot_product: dict | None, names: dict[str, str] | None = None) -> str:
@@ -167,7 +168,7 @@ def describe_changes(changeset: list[dict], snapshot_product: dict | None, names
         elif name == "metafields.set":
             lines.append(f"- **{', '.join(m['key'] for m in op['metafields'])}**: set")
         elif name == "collection.add_products":
-            lines.append(f"- **collections**: add to {op['collection_id'].split('/')[-1]}")
+            lines.append(f"- **collections**: add to “{(names or {}).get(op['collection_id'], op['collection_id'].split('/')[-1])}”")
         elif name == "collection.create":
             lines.append(f"- **new collection**: {op['input']['title']}")
         elif name == "media.add":

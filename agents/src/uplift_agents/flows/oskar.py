@@ -88,7 +88,9 @@ def run(inputs: dict, tracer) -> str:
         f"Product:\n{text}\nManual collections it is not in yet: {[(c['id'], c['title']) for c in manual]}\n"
         f"Collection strategy: {ctx.get('collection_strategy', 'existing')}\nKeyword clusters: "
         f"{sorted({k['cluster'] for k in kai['keywords']})[:15] if kai else '-'}\n"
-        "Pick collections the product clearly belongs to. If the strategy allows creating one and none fit, "
+        "Pick only collections of this same kind of product (a collection named after another product type, e.g. "
+        "bottles for a tumbler, is wrong even when they share a material). Return none if nothing fits. If the "
+        "strategy allows creating one and none fit, "
         "propose one category collection with an SEO title (≤60) and description (≤155).",
         {"type": "object", "properties": {
             "add_to": {"type": "array", "items": {"type": "string"}},
