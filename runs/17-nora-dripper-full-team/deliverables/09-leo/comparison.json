@@ -1,0 +1,132 @@
+{
+  "competitors": [
+    {
+      "domain": "hario-usa.com",
+      "url": "https://www.hario-usa.com/products/v60-ceramic-coffee-dripper-02-classic?srsltid=AU7gw4V6iSCxkQTV2BxXxGzTUuS2HrRlmnfKxRXWKtLhaUQGWKboOIMz"
+    },
+    {
+      "domain": "amazon.com",
+      "url": "https://www.amazon.com/clp/B000P4D5HG"
+    },
+    {
+      "domain": "vervecoffee.com",
+      "url": "https://www.vervecoffee.com/products/hario-v60-ceramic-coffee-dripper-white?srsltid=AU7gw4Ug6J5U9Gv4UIhwqlaextxD98amUksiJNKacrZIqcATmxe93jlA"
+    },
+    {
+      "domain": "prima-coffee.com",
+      "url": "https://prima-coffee.com/equipment/hario/v60-02?srsltid=AU7gw4ULuggUAXYyJbS3jdVYk7wdbJUezrGT8zlCbW-y8R5KoUVGOblj"
+    }
+  ],
+  "attributes": [
+    {
+      "attribute": "Product Name",
+      "ours": "Dripper D-02",
+      "competitors": [
+        {
+          "domain": "hario-usa.com",
+          "value": "V60 Ceramic Coffee Dripper 02 - Classic Colors"
+        },
+        {
+          "domain": "amazon.com",
+          "value": "HARIO V60 Ceramic Coffee Dripper, Size 02, White"
+        },
+        {
+          "domain": "vervecoffee.com",
+          "value": "Hario V60 Ceramic Coffee Dripper - White"
+        },
+        {
+          "domain": "prima-coffee.com",
+          "value": "Hario V60 Coffee Dripper Size 02"
+        }
+      ]
+    },
+    {
+      "attribute": "Material",
+      "ours": "ceramic",
+      "competitors": [
+        {
+          "domain": "hario-usa.com",
+          "value": "Arita-yaki ceramics"
+        },
+        {
+          "domain": "amazon.com",
+          "value": "Arita-yaki ceramics / porcelain"
+        },
+        {
+          "domain": "vervecoffee.com",
+          "value": "white porcelain"
+        },
+        {
+          "domain": "prima-coffee.com",
+          "value": "Not specified (implied ceramic)"
+        }
+      ]
+    },
+    {
+      "attribute": "Type",
+      "ours": "dripper",
+      "competitors": [
+        {
+          "domain": "hario-usa.com",
+          "value": "Coffee Dripper"
+        },
+        {
+          "domain": "amazon.com",
+          "value": "Coffee Dripper"
+        },
+        {
+          "domain": "vervecoffee.com",
+          "value": "Coffee Dripper"
+        },
+        {
+          "domain": "prima-coffee.com",
+          "value": "Coffee Dripper"
+        }
+      ]
+    },
+    {
+      "attribute": "Capacity",
+      "ours": "1-2 cups",
+      "competitors": [
+        {
+          "domain": "hario-usa.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "amazon.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "vervecoffee.com",
+          "value": "1 - 4 cup"
+        },
+        {
+          "domain": "prima-coffee.com",
+          "value": "Not specified"
+        }
+      ]
+    },
+    {
+      "attribute": "Brand",
+      "ours": "Not specified",
+      "competitors": [
+        {
+          "domain": "hario-usa.com",
+          "value": "Hario"
+        },
+        {
+          "domain": "amazon.com",
+          "value": "HARIO"
+        },
+        {
+          "domain": "vervecoffee.com",
+          "value": "Hario"
+        },
+        {
+          "domain": "prima-coffee.com",
+          "value": "Hario"
+        }
+      ]
+    }
+  ]
+}

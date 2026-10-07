@@ -117,11 +117,3 @@ Each entry: what happened, the evidence, the fix and where it landed. Times are 
   is 16 tUSDM = 1,600 credits, a Quinn audit 0.5 tUSDM = 50 credits. Amounts called "credits" earlier in this file are
   tUSDM.
 - **Fixed so far:** the landing page labels prices in tUSDM with the credit equivalent.
-
-## 18. "Store-search rank" measured the admin search, not what shoppers see
-- **Seen:** the /live rank card reported #1 for phrases where the merchant saw the product last. That admin list was
-  sorted by creation date; the card used the Admin API's relevance order. Neither is the shopper-facing search: the
-  test products were published to no sales channel. After publishing them to the Online Store, the Storefront API
-  search (sorted by relevance) ranks D-02 between #6 and #22 and LB-900 between #27 and #33 for the tracked phrases.
-- **Status:** products published; the rank checks still use the admin search until they are switched to storefront
-  search (pending the merchant's go-ahead).

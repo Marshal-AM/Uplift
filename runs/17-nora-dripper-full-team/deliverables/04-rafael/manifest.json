@@ -1,0 +1,77 @@
+{
+  "result_hash": "963ac78cc0db83500b34878b7107978ddd7ae842b6b7569a9bb738b6c4922221",
+  "at": "2026-10-07T12:49:15+00:00",
+  "agent": "Rafael",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "competitor_matrix.json",
+      "sha256": "10a92b551ae1e1236f0fbd673b31d9f4b7cfc77e5bedb7fe4075446d0efdfbd7",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/10a92b551ae1e1236f0fbd673b31d9f4b7cfc77e5bedb7fe4075446d0efdfbd7/competitor_matrix.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "competitor_matrix.csv",
+      "sha256": "dd57d8ea785f00dfabf606521c534ad2d7b0e109373d12d90e6cef4994bdec63",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/dd57d8ea785f00dfabf606521c534ad2d7b0e109373d12d90e6cef4994bdec63/competitor_matrix.csv"
+    },
+    {
+      "mime": "application/json",
+      "name": "price_bands.json",
+      "sha256": "329ec24d85b454d8f6598732139621d24600c10d2089ea44527a3d1c9f7d2fa1",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/329ec24d85b454d8f6598732139621d24600c10d2089ea44527a3d1c9f7d2fa1/price_bands.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "positioning.md",
+      "sha256": "fbd667e8a705bae177f5da9f72a380b51d15c351a01fd312f759eddb15e868f3",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/fbd667e8a705bae177f5da9f72a380b51d15c351a01fd312f759eddb15e868f3/positioning.md"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "gaps.md",
+      "sha256": "d47643781e8fe9eeded026812595c5fd8c35ab67d2dfb01b0ea49e716fd44390",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d47643781e8fe9eeded026812595c5fd8c35ab67d2dfb01b0ea49e716fd44390/gaps.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "competitor_set.json",
+      "sha256": "333d5da41218cee3e81167e1a8fb5280833291c5f029362f6eae2fc705105605",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/333d5da41218cee3e81167e1a8fb5280833291c5f029362f6eae2fc705105605/competitor_set.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [
+    {
+      "claim": "hario-usa.com price 30.5",
+      "excerpt": "V60 Ceramic Coffee Dripper 02 - Classic Colors",
+      "source_url": "https://www.hario-usa.com/products/v60-ceramic-coffee-dripper-02-classic?srsltid=AU7gw4V6iSCxkQTV2BxXxGzTUuS2HrRlmnfKxRXWKtLhaUQGWKboOIMz"
+    },
+    {
+      "claim": "amazon.com price 25",
+      "excerpt": "HARIO V60 Ceramic Coffee Dripper, Size 02, White | Handmade Porcelain Coffee Maker with Conical Shape and Spiral Ridges for Heavier Flavor",
+      "source_url": "https://www.amazon.com/clp/B000P4D5HG"
+    },
+    {
+      "claim": "vervecoffee.com price 25",
+      "excerpt": "Hario V60 Ceramic Coffee Dripper - White",
+      "source_url": "https://www.vervecoffee.com/products/hario-v60-ceramic-coffee-dripper-white?srsltid=AU7gw4Ug6J5U9Gv4UIhwqlaextxD98amUksiJNKacrZIqcATmxe93jlA"
+    },
+    {
+      "claim": "prima-coffee.com price 6.63",
+      "excerpt": "Hario V60 Coffee Dripper Size 02",
+      "source_url": "https://prima-coffee.com/equipment/hario/v60-02?srsltid=AU7gw4ULuggUAXYyJbS3jdVYk7wdbJUezrGT8zlCbW-y8R5KoUVGOblj"
+    }
+  ],
+  "input_hash": "6a86b18e45b5332535ff64d90bc80556f56524e378bd12c330cfbac89a7276c6",
+  "job_or_task_id": "01a11663-e114-73e8-bb4f-db0e5967eee9:rafael",
+  "profile": "rafael@5.0.0",
+  "role": "rafael",
+  "self_checks": {},
+  "summary_md": "**4 competitors** across 5 queries.\n\n**Price bands:** 6.63–35.00 (median 30.25)\n\n**Where to win:**\n- Price under $25 or aggressive bundle with filters/server to undercut Amazon and Verve while beating the cheap plastic-style $6.63 offer on perceived quality\n- Lean into unanswered PAA topics with comparison charts and beginner content to capture search traffic\n- Add video, more images, and social proof to close the content gap versus Amazon\n- Highlight any unique ridges, hole design, color variety, or insulation if superior to standard V60 claims",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "8fd09783a8a55827b7daa93d998248d8d32bbeb6cb8a3c7e0dd392e6ccfce622",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/8fd09783a8a55827b7daa93d998248d8d32bbeb6cb8a3c7e0dd392e6ccfce622/verification_bundle.json"
+  }
+}

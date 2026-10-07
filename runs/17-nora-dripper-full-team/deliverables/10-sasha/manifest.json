@@ -1,0 +1,50 @@
+{
+  "result_hash": "26bd791ff61f0ae8dd1453367b772b9d6ad04ac308b5d12b22ca44e790c976da",
+  "at": "2026-10-07T12:54:33+00:00",
+  "agent": "Sasha",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "unit_economics.json",
+      "sha256": "0d2605cf9a12321902178ae65a06d64b5ae427fb015d0e2f09f0c10801f87ca3",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/0d2605cf9a12321902178ae65a06d64b5ae427fb015d0e2f09f0c10801f87ca3/unit_economics.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "google_ads_editor.csv",
+      "sha256": "5ee051c53852e0a76d1cfda86213acd210bc98b37d3f215147679ca58aa989fe",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/5ee051c53852e0a76d1cfda86213acd210bc98b37d3f215147679ca58aa989fe/google_ads_editor.csv"
+    },
+    {
+      "mime": "application/json",
+      "name": "ad_copy.json",
+      "sha256": "90423925a1063345c35aaeedd1dd79da3ffbcc3b32db7d705575208f6ef6e5c3",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/90423925a1063345c35aaeedd1dd79da3ffbcc3b32db7d705575208f6ef6e5c3/ad_copy.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "ads_plan.md",
+      "sha256": "4b839c78cd4e61eca8dc484242ddc548cf8e4728a029fbc6ca13c93c27f2bd27",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/4b839c78cd4e61eca8dc484242ddc548cf8e4728a029fbc6ca13c93c27f2bd27/ads_plan.md"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "tracking_checklist.md",
+      "sha256": "07fc2b20972d502817d73d80b9e906b749c3e962cfa8b37d17c2fab5e0bfa146",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/07fc2b20972d502817d73d80b9e906b749c3e962cfa8b37d17c2fab5e0bfa146/tracking_checklist.md"
+    }
+  ],
+  "changeset": [],
+  "evidence": [],
+  "input_hash": "ba872f14cbf91695e7d02787ddc091829396b54af3c2eb2316845532bc865587",
+  "job_or_task_id": "01a11663-e114-73e8-bb4f-db0e5967eee9:sasha",
+  "profile": "sasha@5.0.0",
+  "role": "sasha",
+  "self_checks": {},
+  "summary_md": "**Break-even CPA** 21.00 · **max CPC** 0.29 · **budget** 1000.0/month\n\n- Uplift · Dripper D-02 · Search (19.73/day, paused)\n- Uplift · Dripper D-02 · Performance Max (13.16/day, paused)\n\n51 keywords, 119 negatives, 15 headlines. Import the CSV in Google Ads Editor; everything starts paused.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "9f878b0185472585c9053a9fbb6743cc2b52006b55b4769b16b378512889f04b",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/9f878b0185472585c9053a9fbb6743cc2b52006b55b4769b16b378512889f04b/verification_bundle.json"
+  }
+}

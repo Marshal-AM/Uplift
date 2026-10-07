@@ -1,0 +1,5 @@
+- Material comparison content answering 'ceramic vs plastic/glass/stainless' questions that dominate People Also Ask
+- Beginner guides on pour-over technique, 4-6 method, and grind/tamping best practices
+- Clear size differentiation between 01 and 02 filters and capacity visuals
+- Video demos and high review volume (Amazon has 12k reviews + video; most others have few images and no video)
+- Explicit insulation, heat retention, and easy-clean claims backed by tests

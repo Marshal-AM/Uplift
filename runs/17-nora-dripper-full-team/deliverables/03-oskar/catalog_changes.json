@@ -1,0 +1,31 @@
+{
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/hg-11-6-2-4",
+    "fullName": "Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories > Coffee Maker & Espresso Machine Accessories > Coffee Filters"
+  },
+  "product_type": "Coffee Dripper",
+  "recommended_attributes": {
+    "Material": "Ceramic",
+    "Capacity": "1-2 cups"
+  },
+  "tags": [
+    "ceramic",
+    "ceramic coffee dripper",
+    "ceramic pour over",
+    "coffee dripper",
+    "pour over",
+    "pour over coffee dripper",
+    "pour over dripper",
+    "size 02"
+  ],
+  "related": [
+    "gid://shopify/Product/8784309223585",
+    "gid://shopify/Product/8784309289121",
+    "gid://shopify/Product/8784309321889",
+    "gid://shopify/Product/8784309387425"
+  ],
+  "complementary": [
+    "gid://shopify/Product/8784309485729",
+    "gid://shopify/Product/8786043109537"
+  ]
+}

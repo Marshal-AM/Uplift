@@ -1,0 +1,38 @@
+{
+  "result_hash": "502d42c98ef17005c0bb7a2958065b25cdcfe0f07dca9fb63ee26d8b4062c445",
+  "at": "2026-10-07T12:46:21+00:00",
+  "agent": "Kai",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "keyword_map.json",
+      "sha256": "8128762fc7c45d066f5be6dc9a52997b1f4585e5b05130cc722a3f38005d2e41",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/8128762fc7c45d066f5be6dc9a52997b1f4585e5b05130cc722a3f38005d2e41/keyword_map.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "keyword_map.csv",
+      "sha256": "d70d2f6ea1932f65c8f7860b3dda8c85a11131340b9aab97f52aa0b65e9499d1",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d70d2f6ea1932f65c8f7860b3dda8c85a11131340b9aab97f52aa0b65e9499d1/keyword_map.csv"
+    },
+    {
+      "mime": "text/plain",
+      "name": "negatives.txt",
+      "sha256": "c5fec9c6805971c0ee1fed1690da18f0747d9e40bd184fcbdec2cedaf3a0c975",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/c5fec9c6805971c0ee1fed1690da18f0747d9e40bd184fcbdec2cedaf3a0c975/negatives.txt"
+    }
+  ],
+  "changeset": [],
+  "evidence": [],
+  "input_hash": "66abfee171f278de7b97dc22f4b1d6a84d2b34fc5842613775cd77eb41ca0af2",
+  "job_or_task_id": "01a11663-e114-73e8-bb4f-db0e5967eee9:kai",
+  "profile": "kai@5.0.0",
+  "role": "kai",
+  "self_checks": {},
+  "summary_md": "**Primary keyword:** d-02 coffee drippers (demand 50.0/100)\n\n**229 keywords** from Google autocomplete, related searches and questions, in 8 clusters for US.\n\n- Best ceramic pour-over reviews → blog\n- Ceramic drip coffee maker sets → description\n- Ceramic pour-over drippers 1-2 cup → seo_meta\n- D-02 exact product match → title\n- How to use pour-over instructions recipes → blog\n- Manual home pour-over drippers → description\n- Single serve dripper alternatives → ads_exact\n- Small 1-2 cup pour over makers → ads_phrase\n\n118 brand/irrelevant terms moved to negatives.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "08745deab327df97780968137382e468086ae58c32a5e255fc932f35b79a3f71",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/08745deab327df97780968137382e468086ae58c32a5e255fc932f35b79a3f71/verification_bundle.json"
+  }
+}

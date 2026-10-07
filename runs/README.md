@@ -12,6 +12,7 @@ Nora plans with a price ceiling, runs the specialists directly (each specialist'
 | [14-nora-full-team](14-nora-full-team/README.md) | Content and compliance for my glass bottle | COMPLETED | 16.0 | PURCHASED · on-chain ResultSubmitted | 928 s | PASS 95, PASS 100, PASS 99, PASS 91.1, PASS 98, PASS 90.1, PASS 76.5, PASS 83.8, PASS 100, PASS 100, PASS 99, PASS 95 |
 | [15-nora-bamboo-full-team](15-nora-bamboo-full-team/README.md) | Fully optimize my bamboo bottle listing | COMPLETED | 16.0 | PURCHASED · on-chain ResultSubmitted | 764 s | PASS 95, PASS 98, PASS 86.4, PASS 100, PASS 100, PASS 89.6, PASS 88, PASS 82.8, PASS 100, PASS 100, PASS 97.1, PASS 94 |
 | [16-clara-bamboo-traced](16-clara-bamboo-traced/README.md) | Rewrite my bamboo bottle product page | COMPLETED | 2.0 | PURCHASED · on-chain ResultSubmitted | 233 s | PASS 92.5 |
+| [17-nora-dripper-full-team](17-nora-dripper-full-team/README.md) | D-02 full US optimization | COMPLETED | 16.0 | PURCHASED · on-chain ResultSubmitted | 962 s | PASS 95, PASS 100, PASS 97, PASS 90.1, PASS 97, PASS 87.9, PASS 87, PASS 85.8, PASS 100, PASS 85, PASS 97, PASS 95 |
 
 ## The 12 specialists — individual Tasks on the travel tumbler (`travel-tumbler`)
 

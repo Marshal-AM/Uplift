@@ -1,0 +1,134 @@
+{
+  "result_hash": "e520ca3c6082e4dcafaa75b4ffc8fec4e03e78a12fca593c5fd6cf22ad97ad14",
+  "at": "2026-10-07T12:53:57+00:00",
+  "agent": "Iris",
+  "artifacts": [
+    {
+      "mime": "image/jpeg",
+      "name": "store.jpg",
+      "sha256": "19388fc92eae47ff42c370ea31720211062759d3f1d89adc7f3bc44197611a2b",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/19388fc92eae47ff42c370ea31720211062759d3f1d89adc7f3bc44197611a2b/store.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "google_shopping.jpg",
+      "sha256": "adb496f3a4096f137e8c7d78369948e9830d7875cf6247cccdfdea61ead89a7b",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/adb496f3a4096f137e8c7d78369948e9830d7875cf6247cccdfdea61ead89a7b/google_shopping.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "google_ads_square.jpg",
+      "sha256": "3a284d4079d24e5ebaf5d078dc449e9939fa131dbb507a00964b4d7ee429ba65",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/3a284d4079d24e5ebaf5d078dc449e9939fa131dbb507a00964b4d7ee429ba65/google_ads_square.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "google_ads_landscape.jpg",
+      "sha256": "9a98da55365734a8ef483dfb29b0693e6eb50d2cdd37af688cf6ce0903b6f7b6",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/9a98da55365734a8ef483dfb29b0693e6eb50d2cdd37af688cf6ce0903b6f7b6/google_ads_landscape.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "clean_hero.jpg",
+      "sha256": "c06b85eb0aa729cc03e896abe764948e075914d78f5afad5dfb20488dd1a1dd6",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/c06b85eb0aa729cc03e896abe764948e075914d78f5afad5dfb20488dd1a1dd6/clean_hero.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "scene_1.jpg",
+      "sha256": "b49b1d5df38ffc6ad6fd506634d57a98f884a683c9c881d74ee74372c6eac920",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/b49b1d5df38ffc6ad6fd506634d57a98f884a683c9c881d74ee74372c6eac920/scene_1.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "scene_2.jpg",
+      "sha256": "30fc400f44670979488bd34ed4f79c1681925d07019eaa1049bc7c8146fb6b42",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/30fc400f44670979488bd34ed4f79c1681925d07019eaa1049bc7c8146fb6b42/scene_2.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "scene_3.jpg",
+      "sha256": "21d97bbbfc1cc6a7844c0c62545c8bacff702d2441c31be349d35613600cc36a",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/21d97bbbfc1cc6a7844c0c62545c8bacff702d2441c31be349d35613600cc36a/scene_3.jpg"
+    },
+    {
+      "mime": "application/json",
+      "name": "visual_audit.json",
+      "sha256": "0c5f77c8bd9559269d14fab1de0e5d05bef3b88f1509d4a9e9e1f7ec99a947c0",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/0c5f77c8bd9559269d14fab1de0e5d05bef3b88f1509d4a9e9e1f7ec99a947c0/visual_audit.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "alt_text.json",
+      "sha256": "a0d28a60523293d3d3d9a37c1cdd068bafd88bf7df8b919d7b7642b45a8a9be0",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a0d28a60523293d3d3d9a37c1cdd068bafd88bf7df8b919d7b7642b45a8a9be0/alt_text.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "order.json",
+      "sha256": "c14e20efa1fb82674b01f68527107754a2b7d63249db01df8986a1de68c41240",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/c14e20efa1fb82674b01f68527107754a2b7d63249db01df8986a1de68c41240/order.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "fidelity.json",
+      "sha256": "87461d7f95dcdb21435aa583935497569fd4a9695652cd59be6db85fa7e13391",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/87461d7f95dcdb21435aa583935497569fd4a9695652cd59be6db85fa7e13391/fidelity.json"
+    }
+  ],
+  "changeset": [
+    {
+      "media": [
+        {
+          "alt": "White cone-shaped Dripper D-02 stacked on a gray mug against a white background.",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/c06b85eb0aa729cc03e896abe764948e075914d78f5afad5dfb20488dd1a1dd6/clean_hero.jpg"
+        },
+        {
+          "alt": "Dripper D-02 white pour-over cone rests on a white mug atop a rustic wooden table, with plants and a second mug nearby.",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/b49b1d5df38ffc6ad6fd506634d57a98f884a683c9c881d74ee74372c6eac920/scene_1.jpg"
+        },
+        {
+          "alt": "Dripper D-02 on gray mug beside glass server, surrounded by potted herbs on outdoor wooden table.",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/30fc400f44670979488bd34ed4f79c1681925d07019eaa1049bc7c8146fb6b42/scene_2.jpg"
+        },
+        {
+          "alt": "Dripper D-02 white ceramic cone atop a gray mug on a sunlit marble counter with coffee beans and cloth.",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/21d97bbbfc1cc6a7844c0c62545c8bacff702d2441c31be349d35613600cc36a/scene_3.jpg"
+        }
+      ],
+      "op": "media.add",
+      "product_id": "gid://shopify/Product/8786552979617"
+    },
+    {
+      "files": [
+        {
+          "alt": "White ceramic Dripper D-02 stacked on a gray mug atop a wooden counter, with a paper bag behind.",
+          "id": "gid://shopify/MediaImage/38187201167521"
+        }
+      ],
+      "op": "media.update_alt"
+    },
+    {
+      "moves": [
+        {
+          "id": "gid://shopify/MediaImage/38187201167521",
+          "newPosition": "2"
+        }
+      ],
+      "op": "media.reorder",
+      "product_id": "gid://shopify/Product/8786552979617"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "141f933f02dc7e7a7c6fb27889a7f64d9d2e99b11e468376ce9e8e213b40ad4f",
+  "job_or_task_id": "01a11663-e114-73e8-bb4f-db0e5967eee9:iris",
+  "profile": "iris@5.0.0",
+  "role": "iris",
+  "self_checks": {},
+  "summary_md": "Audited 1 images · missing shot types: hero, angle, detail, scale.\n\nAdded a clean white hero and 3 lifestyle scene(s), each checked against your original photo (fidelity ≥ 0.90). Exported 4 channel versions and wrote alt text for every image.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "ce560ecd87abf651b8538e68f933b058857172e50018ff725ef93ba018738cd9",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/ce560ecd87abf651b8538e68f933b058857172e50018ff725ef93ba018738cd9/verification_bundle.json"
+  }
+}

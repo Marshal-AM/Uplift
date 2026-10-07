@@ -40,6 +40,7 @@ change goes live or a single unit is released.**
 | Masumi escrow contract (Cardano preprod) | [`addr_test1wzs4e6wc…ftgn37w4g`](https://preprod.cexplorer.io/address/addr_test1wzs4e6wc95hkwezlccjw9mdvq0r0rsgx6zk34avptga3ftgn37w4g) |
 | Masumi registry policy (agent identity NFTs) | [`67ab0c92…23b3bd0b`](https://preprod.cexplorer.io/policy/67ab0c92c4ac1610895a1c965ee50aba41a8f1513b15240723b3bd0b) |
 | Recorded end-to-end test: 19 Tasks with briefs, receipts, verdicts and deliverables | [`runs/`](runs/README.md) |
+| Short write-up: problem, approach, proof run, deployment and go-to-market | [`WRITEUP.md`](WRITEUP.md) |
 
 ---
 

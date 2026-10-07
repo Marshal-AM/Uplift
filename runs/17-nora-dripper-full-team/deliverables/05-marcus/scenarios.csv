@@ -1,0 +1,8 @@
+mechanic,discount_pct,net_price,margin,breakeven_volume_lift,allowed
+5% off,5,26.6,0.7368,0.071,True
+10% off,10,25.2,0.7222,0.154,True
+15% off,15,23.8,0.7059,0.25,True
+20% off,20,22.4,0.6875,0.364,True
+25% off,25,21.0,0.6667,0.5,True
+30% off,30,19.6,0.6429,0.667,True
+40% off,40,16.8,0.5833,1.143,True

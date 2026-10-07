@@ -1,0 +1,129 @@
+{
+  "result_hash": "b24124de695c07e5408f6f872393e6aa455dd3717debdd72f94530c85410ca70",
+  "at": "2026-10-07T12:49:42+00:00",
+  "agent": "Marcus",
+  "artifacts": [
+    {
+      "mime": "text/markdown",
+      "name": "pricing_strategy.md",
+      "sha256": "3abdac3e50544cf839991972748886fcdd14822958b6d8079eb5dbbce8528387",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/3abdac3e50544cf839991972748886fcdd14822958b6d8079eb5dbbce8528387/pricing_strategy.md"
+    },
+    {
+      "mime": "text/csv",
+      "name": "scenarios.csv",
+      "sha256": "5f23ad75bc0c778c43edb5e161686c2439e4e381d66f555eb9a136eebdaeb077",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/5f23ad75bc0c778c43edb5e161686c2439e4e381d66f555eb9a136eebdaeb077/scenarios.csv"
+    },
+    {
+      "mime": "application/json",
+      "name": "promo_calendar.json",
+      "sha256": "719e78ccb0c06e516870807d4fc75cdeeb3675f449fbfaa41806b8cccedc6f0c",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/719e78ccb0c06e516870807d4fc75cdeeb3675f449fbfaa41806b8cccedc6f0c/promo_calendar.json"
+    },
+    {
+      "mime": "text/calendar",
+      "name": "promo_calendar.ics",
+      "sha256": "17fa628633c844e97f77629edd2da207398d85533e0e8abb858f3063dd4081b3",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/17fa628633c844e97f77629edd2da207398d85533e0e8abb858f3063dd4081b3/promo_calendar.ics"
+    },
+    {
+      "mime": "application/json",
+      "name": "discount_codes.json",
+      "sha256": "f52bb8e33ff469b7076896f99bf6d32d8885eb5cc5f0e1f95cd421c4a393f745",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f52bb8e33ff469b7076896f99bf6d32d8885eb5cc5f0e1f95cd421c4a393f745/discount_codes.json"
+    }
+  ],
+  "changeset": [
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "DRIPLAUNCH25",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8786552979617"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.25
+          }
+        },
+        "endsAt": "2026-11-10T23:59:00+00:00",
+        "startsAt": "2026-10-15T00:00:00+00:00",
+        "title": "Launch Special",
+        "usageLimit": 100
+      },
+      "op": "discount.create"
+    },
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "DRIP1111",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8786552979617"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.2
+          }
+        },
+        "endsAt": "2026-11-12T23:59:00+00:00",
+        "startsAt": "2026-11-11T00:00:00+00:00",
+        "title": "Singles Day Deal",
+        "usageLimit": 50
+      },
+      "op": "discount.create"
+    },
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "DRIPBF30",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8786552979617"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.3
+          }
+        },
+        "endsAt": "2026-11-30T23:59:00+00:00",
+        "startsAt": "2026-11-27T00:00:00+00:00",
+        "title": "Black Friday Offer",
+        "usageLimit": 75
+      },
+      "op": "discount.create"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "1078f42503391d81e2907158d5bb2d2fc6f14eb853b35965e05d588d68396d12",
+  "job_or_task_id": "01a11663-e114-73e8-bb4f-db0e5967eee9:marcus",
+  "profile": "marcus@5.0.0",
+  "role": "marcus",
+  "self_checks": {},
+  "summary_md": "**Positioning:** parity · price 28.0 vs market median 30.25\n\n**3 scheduled discount codes**, all above your 35% margin floor:\n- DRIPLAUNCH25: 25% · 2026-10-15 → 2026-11-10\n- DRIP1111: 20% · 2026-11-11 → 2026-11-12\n- DRIPBF30: 30% · 2026-11-27 → 2026-11-30",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "6635605fe17f6ac17402480d3f9673dba7245af3e5f79be1c7e63291bf961e73",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/6635605fe17f6ac17402480d3f9673dba7245af3e5f79be1c7e63291bf961e73/verification_bundle.json"
+  }
+}

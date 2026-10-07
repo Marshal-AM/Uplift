@@ -1,0 +1,1625 @@
+{
+  "market": "US",
+  "language": "en",
+  "primary": "d-02 coffee drippers",
+  "secondary": [
+    "pour over coffee dripper",
+    "ceramic coffee dripper",
+    "pour over dripper ceramic",
+    "ceramic pour over cone",
+    "manual coffee dripper",
+    "drip coffee maker ceramic",
+    "small ceramic coffee dripper",
+    "home pour over drippers",
+    "d-02 coffee dripper review",
+    "pour over coffee dripper ceramic",
+    "ceramic pour over coffee cone",
+    "hand coffee dripper"
+  ],
+  "demand_signal": "0–100, from Google autocomplete rank, related searches and People Also Ask",
+  "keywords": [
+    {
+      "keyword": "pour over coffee dripper",
+      "demand": 100.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "ceramic coffee dripper",
+      "demand": 65.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "pour over dripper ceramic",
+      "demand": 65.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "2 cup coffee dripper",
+      "demand": 65.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "ceramic pour over cone",
+      "demand": 65.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "manual coffee dripper",
+      "demand": 65.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "drip coffee maker ceramic",
+      "demand": 65.0,
+      "intent": "commercial",
+      "cluster": "Ceramic drip coffee maker sets",
+      "role": "description"
+    },
+    {
+      "keyword": "1 cup pour over coffee maker",
+      "demand": 60.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "1 2 cup drip coffee maker",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "d-02 coffee drippers",
+      "demand": 50.0,
+      "intent": "transactional",
+      "cluster": "D-02 exact product match",
+      "role": "title"
+    },
+    {
+      "keyword": "small ceramic coffee dripper",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "1 cup pour over coffee recipe",
+      "demand": 50.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "single cup dripper",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "home pour over drippers",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "what does 1 1/2 cup mean",
+      "demand": 45.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "d-02 coffee dripper review",
+      "demand": 45.0,
+      "intent": "transactional",
+      "cluster": "D-02 exact product match",
+      "role": "title"
+    },
+    {
+      "keyword": "pour over coffee dripper ceramic",
+      "demand": 45.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "cutwater 26 specs",
+      "demand": 45.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "1 cup pour over recipe",
+      "demand": 45.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "clever dripper 2 cup",
+      "demand": 45.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "2 cup coffee maker amazon",
+      "demand": 45.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic pour over coffee cone",
+      "demand": 45.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "hand coffee dripper",
+      "demand": 45.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "ovente drip coffee maker with ceramic mugs",
+      "demand": 45.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "single serve coffee dripper",
+      "demand": 45.0,
+      "intent": "commercial",
+      "cluster": "Single serve dripper alternatives",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "home pour over dripper recipe",
+      "demand": 45.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "1 2 dripper",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "ceramic coffee dripper set",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "d-02 coffee dripper instructions",
+      "demand": 40.0,
+      "intent": "transactional",
+      "cluster": "D-02 exact product match",
+      "role": "title"
+    },
+    {
+      "keyword": "ceramic pour over dripper nearby",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "hario glass coffee dripper",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best pour over coffee dripper",
+      "demand": 40.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "how to cut ceramic tube",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic pour over set",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "1 cup pour over",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "2 cup clever dripper recipe",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "2 cup coffee maker with grinder",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "melitta ceramic pour over cone",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "manual coffee drip",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "best ceramic drip coffee maker",
+      "demand": 40.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "single serve absinthe dripper",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "home pour over dripper machine",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "pour over coffee machine",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best automatic pour over coffee maker",
+      "demand": 40.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "1 cup drip coffee",
+      "demand": 35.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic coffee dripper near me",
+      "demand": 35.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "d-02 coffee dripper manual",
+      "demand": 35.0,
+      "intent": "transactional",
+      "cluster": "D-02 exact product match",
+      "role": "title"
+    },
+    {
+      "keyword": "best ceramic pour over dripper",
+      "demand": 35.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "small ceramic coffee filter",
+      "demand": 35.0,
+      "intent": "commercial",
+      "cluster": "Ceramic drip coffee maker sets",
+      "role": "description"
+    },
+    {
+      "keyword": "1 cup pour over coffee caffeine",
+      "demand": 35.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "2 cup coffee drip",
+      "demand": 35.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "ceramic pour over coffee cone nearby",
+      "demand": 35.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "manual coffee drip machine",
+      "demand": 35.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "ovente drip coffee maker with 2 ceramic mugs",
+      "demand": 35.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "oxo single serve dripper",
+      "demand": 35.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "home pour over dripper instructions",
+      "demand": 35.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "1 cup coffee dripper",
+      "demand": 30.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "ceramic coffee dripper uk",
+      "demand": 30.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "d-02 coffee dripper machine",
+      "demand": 30.0,
+      "intent": "transactional",
+      "cluster": "D-02 exact product match",
+      "role": "title"
+    },
+    {
+      "keyword": "hario ceramic pour over dripper",
+      "demand": 30.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "negative"
+    },
+    {
+      "keyword": "small coffee dripper",
+      "demand": 30.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "1 cup pour over coffee",
+      "demand": 30.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "which type of coffee dripper is better, ceramic or glass?",
+      "demand": 30.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "2 cup coffee maker",
+      "demand": 30.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "starbucks ceramic pour over cone",
+      "demand": 30.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "manual coffee maker",
+      "demand": 30.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "vintage ceramic drip coffee maker",
+      "demand": 30.0,
+      "intent": "commercial",
+      "cluster": "Ceramic drip coffee maker sets",
+      "role": "description"
+    },
+    {
+      "keyword": "single serve pour over dripper",
+      "demand": 30.0,
+      "intent": "commercial",
+      "cluster": "Single serve dripper alternatives",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "home pour over dripper pot",
+      "demand": 30.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "1 cup drip coffee pot",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic coffee dripper size 4",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "ceramic coffee dripper nearby",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "melitta ceramic pour over dripper",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic coffee dripper amazon",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "best ceramic pour over coffee cone",
+      "demand": 25.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "manual coffee filter",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "melitta ceramic drip coffee maker",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Ceramic drip coffee maker sets",
+      "role": "negative"
+    },
+    {
+      "keyword": "best single serve coffee dripper",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Single serve dripper alternatives",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "home pour over dripper holder",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic coffee dripper template",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how to use a pour over coffee dripper",
+      "demand": 20.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "large ceramic coffee dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic pour over dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "hario v60 ceramic coffee dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic coffee dripper for sale",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "which ceramic coffee dripper is the best?",
+      "demand": 20.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "pour of over of dripper of ceramic coffee maker",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "pour of over of dripper of ceramic cups",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic pour over",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "ceramic pour over handmade",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic pour over reddit",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic pour-over cone",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "which ceramic pour-over dripper is the best?",
+      "demand": 20.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "why are pourovers so expensive?",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "1 cup pour over ratio",
+      "demand": 20.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "hario v60 02 dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "hario alpha dripper 02",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "hario v60 switch dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "hario v60 ceramic 02",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "hario ran dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "hario v60 01 vs 02 vs 03",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "hario v60 ceramic switch dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "1 cup pour over machine",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "best 1 cup pour over",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "one cup pour over coffee ratio",
+      "demand": 20.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "1 cup pour over drip coffee maker",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "pour over coffee for beginners",
+      "demand": 20.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "pour over coffee ratio 2 cups",
+      "demand": 20.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "pour over coffee instructions",
+      "demand": 20.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "le creuset ceramic pour over coffee cone",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cafec flower dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "1 2 cup dripper for sale",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "cafec flower dripper 1 cup",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cafec flower dripper 01",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cafec flower dripper deep 27",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cafec dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cafec flower dripper review",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cafec flower dripper vs v60",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "etkin 2-cup coffee dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best 2 cup coffee dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "2 cup coffee dripper for sale",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "small 2 cup coffee maker",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "2 cup coffee maker with timer",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best 2 cup coffee maker",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "small ceramic dripper for sale",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "origami dripper ceramic",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "origami dripper - limited edition",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "small ceramic dripper origami",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "where to buy origami dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "origami resin dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "origami dripper ceramic m",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "origami dripper vs v60",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "manual coffee maker how to use",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how to make ceramic coffee dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic pour over cone diy",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best ceramic pour over cone",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "ceramic pour over cone reviews",
+      "demand": 20.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "ceramic pour over cone nearby",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic pour over coffee",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "le creuset pour over coffee cone",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "manual coffee dripper for home",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "best manual coffee dripper",
+      "demand": 20.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "manual coffee dripper nearby",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "manual coffee dripper keurig",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "clever coffee dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "manual coffee dripper for sale",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "large pour over coffee maker",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "single serve vs drip coffee maker",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "home pour over dripper how to use",
+      "demand": 20.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "drip coffee maker ceramic reviews",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Ceramic drip coffee maker sets",
+      "role": "description"
+    },
+    {
+      "keyword": "best drip coffee maker ceramic",
+      "demand": 20.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "drip coffee maker ceramic nearby",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic pour over coffee maker",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "pour over drip coffee maker",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "kitchenaid pour over coffee brewer",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "home pour over dripper reviews",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best home pour over dripper",
+      "demand": 20.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "best electric pour over coffee maker",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "pour over coffee set",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "single serve dripper reviews",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Single serve dripper alternatives",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "single serve dripper coffee maker",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Single serve dripper alternatives",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "best single serve coffee maker without pods",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "single serve drip coffee packets",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best single serve dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Single serve dripper alternatives",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "single-serve drip coffee maker",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "single cup coffee maker no pods",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "coffee dripper",
+      "demand": 20.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "1-2 cup dripper",
+      "demand": 15.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "d-02 coffee dripper",
+      "demand": 15.0,
+      "intent": "transactional",
+      "cluster": "D-02 exact product match",
+      "role": "title"
+    },
+    {
+      "keyword": "ceramic coffee dripper canada",
+      "demand": 15.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "is pour over better than drip",
+      "demand": 15.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "small ceramic dripper",
+      "demand": 15.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "1 cup pour over coffee brew cone",
+      "demand": 15.0,
+      "intent": "commercial",
+      "cluster": "Small 1-2 cup pour over makers",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "2 cup coffee maker walmart",
+      "demand": 15.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how to use pour over coffee cone",
+      "demand": 15.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "single serve dripper",
+      "demand": 15.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "manual coffee maker set",
+      "demand": 15.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "can you put boiling water in a drip coffee maker",
+      "demand": 15.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "home pour over dripper",
+      "demand": 15.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "drip tray specification",
+      "demand": 15.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "home pour over dripper for beginners",
+      "demand": 15.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "ceramic coffee dripper how to use",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "how to use a ceramic pour over coffee maker",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "is a ceramic dripper better than plastic?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "which type of coffee dripper is better, glass or ceramic?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is the healthiest drip coffee maker?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "why pour over instead of drip?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is a ceramic pour over?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "1 cup pour over filter",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "which coffee dripper is the best?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "why is v60 so hard?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how to use a coffee dripper?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "2 cup coffee filter",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how much coffee for 1 cup of pour over?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "how to make one cup pour over?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is a pour over a cup of coffee?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how long does it take to make a pour over a cup of coffee?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is cone in ceramics",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how much coffee do you use for 2 cups of drip?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best two-cup drip coffee maker?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best dripper for pour-over coffee?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "manual coffee maker types",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how often should you replace a drip coffee maker",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "is glass or ceramic better for pour-over?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "is ceramic pour-over better than stainless steel?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "are cone coffee filters better?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best manual drip coffee maker?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "how to make drip coffee manually?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "why did people stop using percolators?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the 15-15-15 coffee rule?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "single serve drip brewer",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Single serve dripper alternatives",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "home pour over dripper walmart",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "are there any drip coffee makers that don't use plastic?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "are there ceramic coffee makers?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best pour over dripper?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "Best ceramic pour-over reviews",
+      "role": "blog"
+    },
+    {
+      "keyword": "is pourover better than drip?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how to make a pourover at home?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "how to use single serve pour over?",
+      "demand": 10.0,
+      "intent": "informational",
+      "cluster": "How to use pour-over instructions recipes",
+      "role": "blog"
+    },
+    {
+      "keyword": "is pour over really better than drip?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best drip and single-serve coffee maker?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is a single-use pourover?",
+      "demand": 10.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "pour over coffee drip ceramic",
+      "demand": 5.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "1 cup pour over tm coffee brew cone",
+      "demand": 5.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "2 cup coffee filter papers",
+      "demand": 5.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "ceramic pour over sets",
+      "demand": 5.0,
+      "intent": "commercial",
+      "cluster": "Ceramic pour-over drippers 1-2 cup",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "manual coffee maker machine",
+      "demand": 5.0,
+      "intent": "commercial",
+      "cluster": "Manual home pour-over drippers",
+      "role": "description"
+    },
+    {
+      "keyword": "drip coffee ceramic",
+      "demand": 5.0,
+      "intent": "commercial",
+      "cluster": "Ceramic drip coffee maker sets",
+      "role": "description"
+    },
+    {
+      "keyword": "single serve drip coffee",
+      "demand": 5.0,
+      "intent": "commercial",
+      "cluster": "Single serve dripper alternatives",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "home pour over dripper set",
+      "demand": 5.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    }
+  ]
+}

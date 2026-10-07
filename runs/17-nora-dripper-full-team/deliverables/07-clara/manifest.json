@@ -1,0 +1,76 @@
+{
+  "result_hash": "b197777ac019ca87b5beb2a908cca5e5358bbc688699031d89f3bf22e106f3bc",
+  "at": "2026-10-07T12:52:52+00:00",
+  "agent": "Clara",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "copy_variants.json",
+      "sha256": "09cbc5bd7f078032a252db0c6ca5077d247ade6e3ec800995bc2445baaf877db",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/09cbc5bd7f078032a252db0c6ca5077d247ade6e3ec800995bc2445baaf877db/copy_variants.json"
+    },
+    {
+      "mime": "text/html",
+      "name": "selected_copy.html",
+      "sha256": "f230c5abaffc20fe93434adabcc1164ba843a4d5ba6be4e5063c85bc96e0cad0",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f230c5abaffc20fe93434adabcc1164ba843a4d5ba6be4e5063c85bc96e0cad0/selected_copy.html"
+    },
+    {
+      "mime": "application/json",
+      "name": "facts.json",
+      "sha256": "53cf0ee31f8838358a155551c2dcfe7b5dc00b0e61201a5959bca1befd42c838",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/53cf0ee31f8838358a155551c2dcfe7b5dc00b0e61201a5959bca1befd42c838/facts.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "rubric_scores.json",
+      "sha256": "7ab5ed5f4ba48cecf019ac25088c67b73f0622dc07d8949c8ab864ec8c7893e6",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/7ab5ed5f4ba48cecf019ac25088c67b73f0622dc07d8949c8ab864ec8c7893e6/rubric_scores.json"
+    }
+  ],
+  "changeset": [
+    {
+      "fields": {
+        "descriptionHtml": "<p>Meet the Dripper D-02, a ceramic dripper sized for 1-2 cups that brings warm, straightforward pour over coffee to your home.</p><h2>Why You Will Enjoy It</h2><ul><li>Ceramic material supports clean flavors in every brew.</li><li>Dripper design lets you control the pour for fresh coffee.</li><li>1-2 cup capacity fits daily personal servings.</li></ul><h2>Key Specs</h2><p>The Dripper D-02 is a ceramic dripper with capacity for 1-2 cups.</p><h2>Everyday Use Cases</h2><p>Use this ceramic dripper for morning pour over or quiet afternoon cups at home.</p><h2>Built For Steady Brewing</h2><p>The ceramic dripper form offers a simple workflow and accessible design for filters while delivering solid value for 1-2 cup sessions.</p><h2>Care And Guarantee</h2><p>Rinse the ceramic Dripper D-02 after each use to keep it ready for your next 1-2 cup brew.</p>",
+        "seo": {
+          "description": "Discover the Dripper D-02, a ceramic dripper for 1-2 cups of pour over coffee. Simple home brewing with clear design.",
+          "title": "D-02 Coffee Drippers Ceramic Pour Over"
+        },
+        "title": "D-02 Coffee Drippers Ceramic Dripper 1-2 Cups"
+      },
+      "op": "product.update",
+      "product_id": "gid://shopify/Product/8786552979617"
+    },
+    {
+      "op": "product.tags_add",
+      "product_id": "gid://shopify/Product/8786552979617",
+      "tags": [
+        "d-02 coffee drippers",
+        "pour over coffee dripper",
+        "ceramic coffee dripper",
+        "pour over dripper ceramic",
+        "ceramic pour over cone",
+        "manual coffee dripper",
+        "drip coffee maker ceramic",
+        "small ceramic coffee dripper",
+        "home pour over drippers",
+        "d-02 coffee dripper review"
+      ]
+    }
+  ],
+  "evidence": [],
+  "input_hash": "3a9e2fab954612ebb9b6c7c1c19f9b1b893c634e13ce9621cae09ae15b74c2b4",
+  "job_or_task_id": "01a11663-e114-73e8-bb4f-db0e5967eee9:clara",
+  "profile": "clara@5.0.0",
+  "role": "clara",
+  "self_checks": {
+    "grammar_issues": 2,
+    "rubric_total": 32
+  },
+  "summary_md": "**Title:** D-02 Coffee Drippers Ceramic Dripper 1-2 Cups\n\n**SEO title:** D-02 Coffee Drippers Ceramic Pour Over\n\n**Meta:** Discover the Dripper D-02, a ceramic dripper for 1-2 cups of pour over coffee. Simple home brewing with clear design.\n\nRubric 32.0/45 · 100% of claims grounded in 4 facts.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "1cc02841b3a9599b6eba0ed5e5c6db1ea7fb290848f7e3e557579948c4758268",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/1cc02841b3a9599b6eba0ed5e5c6db1ea7fb290848f7e3e557579948c4758268/verification_bundle.json"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "blocked": false,
+  "hits": [
+    {
+      "rule_id": "TM-001",
+      "pack": "trademarks",
+      "severity": "high",
+      "location": "metafield.comparison",
+      "excerpt": "HARIO",
+      "message": "Uses competitor mark 'HARIO'."
+    },
+    {
+      "rule_id": "TM-001",
+      "pack": "trademarks",
+      "severity": "high",
+      "location": "metafield.comparison",
+      "excerpt": "Hario",
+      "message": "Uses competitor mark 'Hario'."
+    },
+    {
+      "rule_id": "SUP-001",
+      "pack": "superlatives",
+      "severity": "medium",
+      "location": "article",
+      "excerpt": "0 for context. \n What Are the Best Coffee Drippers? \n The best c",
+      "message": "Superlative claim needs substantiation."
+    },
+    {
+      "rule_id": "SUP-001",
+      "pack": "superlatives",
+      "severity": "medium",
+      "location": "article",
+      "excerpt": "e Best Coffee Drippers? \n The best coffee drippers balance heat ",
+      "message": "Superlative claim needs substantiation."
+    },
+    {
+      "rule_id": "SUP-001",
+      "pack": "superlatives",
+      "severity": "medium",
+      "location": "article",
+      "excerpt": "e the Dripper D-02 offers the best of both worlds: stability and",
+      "message": "Superlative claim needs substantiation."
+    },
+    {
+      "rule_id": "SUP-001",
+      "pack": "superlatives",
+      "severity": "medium",
+      "location": "article",
+      "excerpt": " grind size—medium-fine works best for most beans. The ceramic d",
+      "message": "Superlative claim needs substantiation."
+    },
+    {
+      "rule_id": "TM-001",
+      "pack": "trademarks",
+      "severity": "high",
+      "location": "article",
+      "excerpt": "HARIO",
+      "message": "Uses competitor mark 'HARIO'."
+    },
+    {
+      "rule_id": "TM-001",
+      "pack": "trademarks",
+      "severity": "high",
+      "location": "article",
+      "excerpt": "Hario",
+      "message": "Uses competitor mark 'Hario'."
+    }
+  ],
+  "rewrites": [
+    {
+      "rule_id": "TM-001",
+      "location": "metafield.comparison",
+      "excerpt": "HARIO",
+      "rewrite": "a leading dripper maker",
+      "passes": true
+    },
+    {
+      "rule_id": "TM-001",
+      "location": "metafield.comparison",
+      "excerpt": "Hario",
+      "rewrite": "a leading dripper maker",
+      "passes": true
+    },
+    {
+      "rule_id": "SUP-001",
+      "location": "article",
+      "excerpt": "0 for context. \n What Are the Best Coffee Drippers? \n The best c",
+      "rewrite": "0 for context. \n What Are Strong Coffee Drippers? \n Strong c",
+      "passes": true
+    },
+    {
+      "rule_id": "SUP-001",
+      "location": "article",
+      "excerpt": "e Best Coffee Drippers? \n The best coffee drippers balance heat ",
+      "rewrite": "e Strong Coffee Drippers? \n Strong coffee drippers balance heat ",
+      "passes": true
+    },
+    {
+      "rule_id": "SUP-001",
+      "location": "article",
+      "excerpt": "e the Dripper D-02 offers the best of both worlds: stability and",
+      "rewrite": "e the Dripper D-02 offers strong stability and",
+      "passes": true
+    },
+    {
+      "rule_id": "SUP-001",
+      "location": "article",
+      "excerpt": " grind size—medium-fine works best for most beans. The ceramic d",
+      "rewrite": " grind size—medium-fine works well for most beans. The ceramic d",
+      "passes": true
+    },
+    {
+      "rule_id": "TM-001",
+      "location": "article",
+      "excerpt": "HARIO",
+      "rewrite": "a leading dripper maker",
+      "passes": true
+    },
+    {
+      "rule_id": "TM-001",
+      "location": "article",
+      "excerpt": "Hario",
+      "rewrite": "a leading dripper maker",
+      "passes": true
+    }
+  ],
+  "rules_version": "5.0.0"
+}

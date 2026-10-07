@@ -1,0 +1,38 @@
+{
+  "result_hash": "59cd0ccacc5c717c8dffe7dc6b4a68a082e21f84b3cdd75edc2bbe835e63663b",
+  "at": "2026-10-07T12:59:12+00:00",
+  "agent": "Quinn",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "audit_report.json",
+      "sha256": "7ac0be49cc72695dc0ae916bbe335eae91e1bb63779d409a4c994a64027ae987",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/7ac0be49cc72695dc0ae916bbe335eae91e1bb63779d409a4c994a64027ae987/audit_report.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "audit_report.md",
+      "sha256": "82b5ada142908be110248778ae0adb6ac926177fd83322b1edd951e5fa3b291e",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/82b5ada142908be110248778ae0adb6ac926177fd83322b1edd951e5fa3b291e/audit_report.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "fix_plan.json",
+      "sha256": "058d06daa3b14a59bcc19dca070609e1c95a59e62410ee6397edb2f551397ae3",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/058d06daa3b14a59bcc19dca070609e1c95a59e62410ee6397edb2f551397ae3/fix_plan.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [],
+  "input_hash": "37ef7e233c850c6d4480d8a0177a15d3d288a7363059bd1263b9736a7bf208d9",
+  "job_or_task_id": "01a11663-e114-73e8-bb4f-db0e5967eee9:quinn_after",
+  "profile": "quinn@5.0.0",
+  "role": "quinn",
+  "self_checks": {},
+  "summary_md": "**Listing score 77.3/100** (was 20.1)\n\n- [high] Optimize product catalog structure, collections, and feed attributes to improve organization and discoverability within categories. → oskar\n- [high] Enhance product copy and descriptions to better persuade customers and highlight benefits. → clara\n- [medium] Address trust signals by incorporating social proof and addressing potential customer concerns from reviews. → priya",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "008d3d7eaf599b40a1794dd0cca42aadfff747f6e9ccccd81b9ace62249d3d8f",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/008d3d7eaf599b40a1794dd0cca42aadfff747f6e9ccccd81b9ace62249d3d8f/verification_bundle.json"
+  }
+}

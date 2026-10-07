@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Launch Special",
+    "code": "DRIPLAUNCH25",
+    "percentage": 25,
+    "starts": "2026-10-15T00:00:00+00:00",
+    "ends": "2026-11-10T23:59:00+00:00",
+    "usage_limit": 100,
+    "once_per_customer": true,
+    "why": "Introductory discount to drive initial sales volume for launch, well under max 40%."
+  },
+  {
+    "name": "Singles Day Deal",
+    "code": "DRIP1111",
+    "percentage": 20,
+    "starts": "2026-11-11T00:00:00+00:00",
+    "ends": "2026-11-12T23:59:00+00:00",
+    "usage_limit": 50,
+    "once_per_customer": true,
+    "why": "Capitalize on Singles' Day event for visibility and sales boost."
+  },
+  {
+    "name": "Black Friday Offer",
+    "code": "DRIPBF30",
+    "percentage": 30,
+    "starts": "2026-11-27T00:00:00+00:00",
+    "ends": "2026-11-30T23:59:00+00:00",
+    "usage_limit": 75,
+    "once_per_customer": true,
+    "why": "Strong discount for Black Friday to compete in peak shopping period, margin remains healthy."
+  }
+]

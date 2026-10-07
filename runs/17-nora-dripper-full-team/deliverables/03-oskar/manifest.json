@@ -1,0 +1,91 @@
+{
+  "result_hash": "c6bad5eb348001189176208fb352cec85c12989b391543c1f71892b3682951c0",
+  "at": "2026-10-07T12:47:22+00:00",
+  "agent": "Oskar",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "catalog_changes.json",
+      "sha256": "d5259d4c91d8b4cbcbf026c3c164f6cf5f6a65287553024f67d8d0efe626afd6",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d5259d4c91d8b4cbcbf026c3c164f6cf5f6a65287553024f67d8d0efe626afd6/catalog_changes.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "collections_plan.md",
+      "sha256": "c65ba301a65086b208050965fa62189459ab09bc4aabe196a91c2a65839b3d80",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/c65ba301a65086b208050965fa62189459ab09bc4aabe196a91c2a65839b3d80/collections_plan.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "feed_report.json",
+      "sha256": "04d6c9e93876a453101b12da8f0cb352a6a4021ae763cd8ecb08f9bd3a1a87d1",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/04d6c9e93876a453101b12da8f0cb352a6a4021ae763cd8ecb08f9bd3a1a87d1/feed_report.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "google_supplemental.csv",
+      "sha256": "6c552a96d11006377c4efe10e498d8d87c161345a1a1720bfc1ecad312cb597d",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/6c552a96d11006377c4efe10e498d8d87c161345a1a1720bfc1ecad312cb597d/google_supplemental.csv"
+    },
+    {
+      "mime": "text/csv",
+      "name": "barcode_fixes.csv",
+      "sha256": "fb18d014798df1d35cfce28e676b7eb5b59a7f487628b2eae38f0a5a7a61b3ff",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/fb18d014798df1d35cfce28e676b7eb5b59a7f487628b2eae38f0a5a7a61b3ff/barcode_fixes.csv"
+    }
+  ],
+  "changeset": [
+    {
+      "fields": {
+        "category": "gid://shopify/TaxonomyCategory/hg-11-6-2-4",
+        "productType": "Coffee Dripper"
+      },
+      "op": "product.update",
+      "product_id": "gid://shopify/Product/8786552979617"
+    },
+    {
+      "op": "product.taxonomy_tags_add",
+      "product_id": "gid://shopify/Product/8786552979617",
+      "tags": [
+        "ceramic",
+        "ceramic coffee dripper",
+        "ceramic pour over",
+        "coffee dripper",
+        "pour over",
+        "pour over coffee dripper",
+        "pour over dripper",
+        "size 02"
+      ]
+    },
+    {
+      "metafields": [
+        {
+          "key": "related_products",
+          "namespace": "shopify--discovery--product_recommendation",
+          "type": "list.product_reference",
+          "value": "[\"gid://shopify/Product/8784309223585\", \"gid://shopify/Product/8784309289121\", \"gid://shopify/Product/8784309321889\", \"gid://shopify/Product/8784309387425\"]"
+        },
+        {
+          "key": "complementary_products",
+          "namespace": "shopify--discovery--product_recommendation",
+          "type": "list.product_reference",
+          "value": "[\"gid://shopify/Product/8784309485729\", \"gid://shopify/Product/8786043109537\"]"
+        }
+      ],
+      "op": "metafields.set",
+      "owner_id": "gid://shopify/Product/8786552979617"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "cccbddf64e8af116c52c5d7de4fef3fc6f9b9c2110597ad8f0ddd73ee6efa666",
+  "job_or_task_id": "01a11663-e114-73e8-bb4f-db0e5967eee9:oskar",
+  "profile": "oskar@5.0.0",
+  "role": "oskar",
+  "self_checks": {},
+  "summary_md": "**Category:** Home & Garden > Kitchen & Dining > Kitchen Appliance Accessories > Coffee Maker & Espresso Machine Accessories > Coffee Filters · **Type:** Coffee Dripper\n\n8 tags, 0 collections, 4 related and 2 complementary products linked. Google feed fields missing: gtin_or_mpn.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "7848530dfc89cd798150f4862313487acefeb08e3dd1d8557591ad93105fd758",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/7848530dfc89cd798150f4862313487acefeb08e3dd1d8557591ad93105fd758/verification_bundle.json"
+  }
+}

@@ -1,0 +1,420 @@
+[
+  {
+    "id": "love:taste",
+    "kind": "love",
+    "aspect": "taste",
+    "weighted_count": 23,
+    "quotes": [
+      {
+        "text": "This thing makes a really nice and clean cup. I like how simple this thing is as there's nothing difficult to clean and should last forever as long as I don't drop it. I like tinkering so this fits my need a lot better than the single serve function on my fellow aiden.",
+        "source_url": "https://www.hario-usa.com/products/v60-ceramic-coffee-dripper-02-classic?srsltid=AU7gw4V6iSCxkQTV2BxXxGzTUuS2HrRlmnfKxRXWKtLhaUQGWKboOIMz",
+        "rating": 5,
+        "date": "08/24/2026",
+        "review_id": "ef086fc218fb"
+      },
+      {
+        "text": "Not sure why the two posted reviews are so low for this classic. We love our ceramic v60 for how it can pair with cups narrow or wide and how reliably it produces excellent coffee, once the grind is adjusted properly. Delightful to have a choice of colors.",
+        "source_url": "https://www.hario-usa.com/products/v60-ceramic-coffee-dripper-02-classic?srsltid=AU7gw4V6iSCxkQTV2BxXxGzTUuS2HrRlmnfKxRXWKtLhaUQGWKboOIMz",
+        "rating": 5,
+        "date": "07/30/2026",
+        "review_id": "fd7c80176328"
+      },
+      {
+        "text": "I have made the switch from French press to pore-over several years ago with a dripper I got from World Market (pictured on right) and it was a noticeable difference in taste not to mention quicker cleanup. Recently I’ve seen drippers with three holes and thought it would be better as the original o",
+        "source_url": "https://www.amazon.com/clp/B000P4D5HG",
+        "rating": 5,
+        "date": "May 30, 2026",
+        "review_id": "d31bcf0a1765"
+      },
+      {
+        "text": "Wow. That's all I can say. A long time ago I started with a mid-priced coffee machine, figuring that a \"name brand\" like Cuisinart should be able to make a good cup of coffee. Was never that great. And when I used my Bialetti espresso maker with ground coffee, I found that the cheaper Bialetti using",
+        "source_url": "https://www.amazon.com/clp/B000P4D5HG",
+        "rating": 5,
+        "date": "April 2, 2023",
+        "review_id": "e64a1d17163c"
+      }
+    ]
+  },
+  {
+    "id": "love:flow rate",
+    "kind": "love",
+    "aspect": "flow rate",
+    "weighted_count": 14,
+    "quotes": [
+      {
+        "text": "I have made the switch from French press to pore-over several years ago with a dripper I got from World Market (pictured on right) and it was a noticeable difference in taste not to mention quicker cleanup. Recently I’ve seen drippers with three holes and thought it would be better as the original o",
+        "source_url": "https://www.amazon.com/clp/B000P4D5HG",
+        "rating": 5,
+        "date": "May 30, 2026",
+        "review_id": "d31bcf0a1765"
+      },
+      {
+        "text": "This is the best coffee dripper for pour over coffee. I love the whole in the bottom of it because your coffee is ready in no time. I have a stainless steel one that has three little holes and it takes a lot longer to make your coffee. But not with this one and it’s porcelain on top of that. It’s di",
+        "source_url": "https://www.amazon.com/clp/B000P4D5HG",
+        "rating": 5,
+        "date": "December 20, 2021",
+        "review_id": "d03bd15617f7"
+      },
+      {
+        "text": "I bought some Palati filters when Cafec Abaca was not available. They are as fast as the Abaca’s I really like them",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oinxb3/nobody_has_talked_about_this_dripper_palatti",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "4f00e4fb41c9"
+      },
+      {
+        "text": "That said, the brand’s 185 filters are totally flying under the radar. More consistent and slightly faster imo than Kalita, considerably less expensive, and as a nice touch come boxed.",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oinxb3/nobody_has_talked_about_this_dripper_palatti",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "2fdef277c6cf"
+      }
+    ]
+  },
+  {
+    "id": "love:design",
+    "kind": "love",
+    "aspect": "design",
+    "weighted_count": 12,
+    "quotes": [
+      {
+        "text": "I’ve seen them and the mix n match bit is slightly interesting but honestly just a gimmick, and they are attractive. Can’t see them as worth the price over more established alternatives, but if someone finds them compelling in some way they’ll do just fine at making coffee.",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oinxb3/nobody_has_talked_about_this_dripper_palatti",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "c11d66c78c1d"
+      },
+      {
+        "text": "This thing is gorgeous. The matte black feel of this ceramic dripper is so satisfying to touch, and the glossy “scales” that line the outside of the dripper make this thing look like an art piece.",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1pm1mkt/the_hario_alpha_snake_dripper",
+        "rating": null,
+        "date": "2025-12-11",
+        "review_id": "176db75fa143"
+      },
+      {
+        "text": "Holy fuck this is the most metal looking coffee accessory I've ever seen and I can't even express how much I need it in my life. Damn. Great score OP.",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1pm1mkt/the_hario_alpha_snake_dripper",
+        "rating": null,
+        "date": "2025-12-11",
+        "review_id": "4ee243305b77"
+      },
+      {
+        "text": "Where can I get one of these? It’s so cool! Can’t find it.",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1pm1mkt/the_hario_alpha_snake_dripper",
+        "rating": null,
+        "date": "2025-12-11",
+        "review_id": "3b03e367be70"
+      }
+    ]
+  },
+  {
+    "id": "love:dripper",
+    "kind": "love",
+    "aspect": "dripper",
+    "weighted_count": 10,
+    "quotes": [
+      {
+        "text": "It's a great dripper! Very underrated IMO. I think the type A filters are excellent too!",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "ebceb22f1ecd"
+      },
+      {
+        "text": "Sibarist Fast UFO papers have been amazing for me great dripper",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "5725030c76d2"
+      },
+      {
+        "text": "I own a ufo. I also love it. I just wish their filters could be a little bit more accessible online.",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "0e53ed96ae6e"
+      },
+      {
+        "text": "Big fan of the UFO as well!",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "fbf6b75183e1"
+      }
+    ]
+  },
+  {
+    "id": "love:durability",
+    "kind": "love",
+    "aspect": "durability",
+    "weighted_count": 5,
+    "quotes": [
+      {
+        "text": "This thing makes a really nice and clean cup. I like how simple this thing is as there's nothing difficult to clean and should last forever as long as I don't drop it. I like tinkering so this fits my need a lot better than the single serve function on my fellow aiden.",
+        "source_url": "https://www.hario-usa.com/products/v60-ceramic-coffee-dripper-02-classic?srsltid=AU7gw4V6iSCxkQTV2BxXxGzTUuS2HrRlmnfKxRXWKtLhaUQGWKboOIMz",
+        "rating": 5,
+        "date": "08/24/2026",
+        "review_id": "ef086fc218fb"
+      },
+      {
+        "text": "Just as described and perfect in design and use. This is how it supposed to be, and I purchased the ceramic vs plastic because plastic does get damaged over time with hot water and if using boiling water, which I like to use, I figured porcelain/ceramic is better and worth the price. Yes, I have to ",
+        "source_url": "https://www.amazon.com/clp/B000P4D5HG",
+        "rating": 5,
+        "date": "February 2, 2025",
+        "review_id": "71ba043bdfbc"
+      },
+      {
+        "text": "Love this in stainless. It is not breakable! I do wish the base was hard plastic, or stainless, instead of silicone.",
+        "source_url": "https://prima-coffee.com/equipment/hario/v60-02?srsltid=AU7gw4ULuggUAXYyJbS3jdVYk7wdbJUezrGT8zlCbW-y8R5KoUVGOblj",
+        "rating": 4,
+        "date": "11/22/25",
+        "review_id": "057909c896b2"
+      },
+      {
+        "text": "Origami is honestly hard to beat. I love my dwell also because I can bring it when I travel and not worry about it breaking since it’s made of BPA free silicone.",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oinxb3/nobody_has_talked_about_this_dripper_palatti",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "01c0858e167d"
+      }
+    ]
+  },
+  {
+    "id": "love:cleaning",
+    "kind": "love",
+    "aspect": "cleaning",
+    "weighted_count": 4,
+    "quotes": [
+      {
+        "text": "This thing makes a really nice and clean cup. I like how simple this thing is as there's nothing difficult to clean and should last forever as long as I don't drop it. I like tinkering so this fits my need a lot better than the single serve function on my fellow aiden.",
+        "source_url": "https://www.hario-usa.com/products/v60-ceramic-coffee-dripper-02-classic?srsltid=AU7gw4V6iSCxkQTV2BxXxGzTUuS2HrRlmnfKxRXWKtLhaUQGWKboOIMz",
+        "rating": 5,
+        "date": "08/24/2026",
+        "review_id": "ef086fc218fb"
+      },
+      {
+        "text": "I have made the switch from French press to pore-over several years ago with a dripper I got from World Market (pictured on right) and it was a noticeable difference in taste not to mention quicker cleanup. Recently I’ve seen drippers with three holes and thought it would be better as the original o",
+        "source_url": "https://www.amazon.com/clp/B000P4D5HG",
+        "rating": 5,
+        "date": "May 30, 2026",
+        "review_id": "d31bcf0a1765"
+      },
+      {
+        "text": "Wow. That's all I can say. A long time ago I started with a mid-priced coffee machine, figuring that a \"name brand\" like Cuisinart should be able to make a good cup of coffee. Was never that great. And when I used my Bialetti espresso maker with ground coffee, I found that the cheaper Bialetti using",
+        "source_url": "https://www.amazon.com/clp/B000P4D5HG",
+        "rating": 5,
+        "date": "April 2, 2023",
+        "review_id": "e64a1d17163c"
+      },
+      {
+        "text": "This is the best coffee dripper for pour over coffee. I love the whole in the bottom of it because your coffee is ready in no time. I have a stainless steel one that has three little holes and it takes a lot longer to make your coffee. But not with this one and it’s porcelain on top of that. It’s di",
+        "source_url": "https://www.amazon.com/clp/B000P4D5HG",
+        "rating": 5,
+        "date": "December 20, 2021",
+        "review_id": "d03bd15617f7"
+      }
+    ]
+  },
+  {
+    "id": "complaint:stability",
+    "kind": "complaint",
+    "aspect": "stability",
+    "weighted_count": 4,
+    "quotes": [
+      {
+        "text": "I had one and didn’t like the workflow. Without the handle and the base that isn’t connected, it’s difficult to swirl and isn’t super stable in the base. It’s an interesting concept to be able to switch things up, but honestly, I made better cups with a V60 so I stuck with old faithful",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oinxb3/nobody_has_talked_about_this_dripper_palatti",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "75bc82f083d4"
+      },
+      {
+        "text": "i have one and the only thing i dont like about it is there’s no base for the ceramic ufo to keep it stable",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "ab80674e1d7e"
+      }
+    ]
+  },
+  {
+    "id": "complaint:price/value",
+    "kind": "complaint",
+    "aspect": "price/value",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "I’ve seen them and the mix n match bit is slightly interesting but honestly just a gimmick, and they are attractive. Can’t see them as worth the price over more established alternatives, but if someone finds them compelling in some way they’ll do just fine at making coffee.",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oinxb3/nobody_has_talked_about_this_dripper_palatti",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "c11d66c78c1d"
+      }
+    ]
+  },
+  {
+    "id": "complaint:workflow",
+    "kind": "complaint",
+    "aspect": "workflow",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "I had one and didn’t like the workflow. Without the handle and the base that isn’t connected, it’s difficult to swirl and isn’t super stable in the base. It’s an interesting concept to be able to switch things up, but honestly, I made better cups with a V60 so I stuck with old faithful",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oinxb3/nobody_has_talked_about_this_dripper_palatti",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "75bc82f083d4"
+      }
+    ]
+  },
+  {
+    "id": "complaint:design",
+    "kind": "complaint",
+    "aspect": "design",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "Sounds like I’m in the minority on this one but that is tacky af looking 🤣",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1pm1mkt/the_hario_alpha_snake_dripper",
+        "rating": null,
+        "date": "2025-12-11",
+        "review_id": "15a39a8ebef0"
+      }
+    ]
+  },
+  {
+    "id": "complaint:filters accessibility",
+    "kind": "complaint",
+    "aspect": "filters accessibility",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "I own a ufo. I also love it. I just wish their filters could be a little bit more accessible online.",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "0e53ed96ae6e"
+      }
+    ]
+  },
+  {
+    "id": "complaint:shipping",
+    "kind": "complaint",
+    "aspect": "shipping",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "I really want to try them, it's just that shipping the filters to my country is expensive, but I will give it the opportunity in the future",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "acb67a6ac3ac"
+      }
+    ]
+  },
+  {
+    "id": "complaint:color",
+    "kind": "complaint",
+    "aspect": "color",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "It’s only the color…it’s definitely red, but my personal preference is a deeper red especially since the color lightens on the raised areas. I’m still very happy with the purchase. I adore Hario products!",
+        "source_url": "https://www.hario-usa.com/products/v60-ceramic-coffee-dripper-02-classic?srsltid=AU7gw4V6iSCxkQTV2BxXxGzTUuS2HrRlmnfKxRXWKtLhaUQGWKboOIMz",
+        "rating": 4,
+        "date": "08/15/2023",
+        "review_id": "d4cc751ed679"
+      }
+    ]
+  },
+  {
+    "id": "complaint:base",
+    "kind": "complaint",
+    "aspect": "base",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "Love this in stainless. It is not breakable! I do wish the base was hard plastic, or stainless, instead of silicone.",
+        "source_url": "https://prima-coffee.com/equipment/hario/v60-02?srsltid=AU7gw4ULuggUAXYyJbS3jdVYk7wdbJUezrGT8zlCbW-y8R5KoUVGOblj",
+        "rating": 4,
+        "date": "11/22/25",
+        "review_id": "057909c896b2"
+      }
+    ]
+  },
+  {
+    "id": "wish:durability",
+    "kind": "wish",
+    "aspect": "durability",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "Love this in stainless. It is not breakable! I do wish the base was hard plastic, or stainless, instead of silicone.",
+        "source_url": "https://prima-coffee.com/equipment/hario/v60-02?srsltid=AU7gw4ULuggUAXYyJbS3jdVYk7wdbJUezrGT8zlCbW-y8R5KoUVGOblj",
+        "rating": 4,
+        "date": "11/22/25",
+        "review_id": "057909c896b2"
+      }
+    ]
+  },
+  {
+    "id": "wish:base",
+    "kind": "wish",
+    "aspect": "base",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "Love this in stainless. It is not breakable! I do wish the base was hard plastic, or stainless, instead of silicone.",
+        "source_url": "https://prima-coffee.com/equipment/hario/v60-02?srsltid=AU7gw4ULuggUAXYyJbS3jdVYk7wdbJUezrGT8zlCbW-y8R5KoUVGOblj",
+        "rating": 4,
+        "date": "11/22/25",
+        "review_id": "057909c896b2"
+      }
+    ]
+  },
+  {
+    "id": "wish:dripper",
+    "kind": "wish",
+    "aspect": "dripper",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I own a ufo. I also love it. I just wish their filters could be a little bit more accessible online.",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "0e53ed96ae6e"
+      }
+    ]
+  },
+  {
+    "id": "wish:filters accessibility",
+    "kind": "wish",
+    "aspect": "filters accessibility",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I own a ufo. I also love it. I just wish their filters could be a little bit more accessible online.",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "0e53ed96ae6e"
+      }
+    ]
+  },
+  {
+    "id": "wish:shipping",
+    "kind": "wish",
+    "aspect": "shipping",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I really want to try them, it's just that shipping the filters to my country is expensive, but I will give it the opportunity in the future",
+        "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "acb67a6ac3ac"
+      }
+    ]
+  }
+]

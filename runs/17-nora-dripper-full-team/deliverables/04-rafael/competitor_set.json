@@ -1,0 +1,94 @@
+{
+  "products": [
+    {
+      "domain": "hario-usa.com",
+      "url": "https://www.hario-usa.com/products/v60-ceramic-coffee-dripper-02-classic?srsltid=AU7gw4V6iSCxkQTV2BxXxGzTUuS2HrRlmnfKxRXWKtLhaUQGWKboOIMz",
+      "title": "V60 Ceramic Coffee Dripper 02 - Classic Colors"
+    },
+    {
+      "domain": "amazon.com",
+      "url": "https://www.amazon.com/clp/B000P4D5HG",
+      "title": "HARIO V60 Ceramic Coffee Dripper, Size 02, White | Handmade Porcelain Coffee Maker with Conical Shape and Spiral Ridges for Heavier Flavor"
+    },
+    {
+      "domain": "vervecoffee.com",
+      "url": "https://www.vervecoffee.com/products/hario-v60-ceramic-coffee-dripper-white?srsltid=AU7gw4Ug6J5U9Gv4UIhwqlaextxD98amUksiJNKacrZIqcATmxe93jlA",
+      "title": "Hario V60 Ceramic Coffee Dripper - White"
+    },
+    {
+      "domain": "prima-coffee.com",
+      "url": "https://prima-coffee.com/equipment/hario/v60-02?srsltid=AU7gw4ULuggUAXYyJbS3jdVYk7wdbJUezrGT8zlCbW-y8R5KoUVGOblj",
+      "title": "Hario V60 Coffee Dripper Size 02"
+    }
+  ],
+  "google_shopping": [
+    {
+      "title": "Hario V60 Ceramic Coffee Dripper",
+      "product_id": "15093251498345732517",
+      "seller": "Espresso Parts",
+      "price": 33.0,
+      "rating": 4.8,
+      "rating_count": 1100
+    },
+    {
+      "title": "V60 Ceramic Coffee Dripper 02 — Mongo's Coffee",
+      "product_id": "7557069995445123775",
+      "seller": "Mongo's Coffee Roastery & Lounge",
+      "price": 30.0,
+      "rating": null,
+      "rating_count": null
+    },
+    {
+      "title": "Coffee Dripper 02 - Red Ceramic | Crimson Cup Coffee & Tea",
+      "product_id": "7136829838206950449",
+      "seller": "crimsoncup.com",
+      "price": 20.0,
+      "rating": null,
+      "rating_count": null
+    },
+    {
+      "title": "Hario V60 Ceramic Dripper 02",
+      "product_id": "3935592050945383188",
+      "seller": "Caffe Ladro - Ladro Roasting",
+      "price": 32.0,
+      "rating": 4.9,
+      "rating_count": 21
+    },
+    {
+      "title": "V60 Ceramic Coffee Dripper 02 New Colors Matte Pink / 02",
+      "product_id": "10355834397113056398",
+      "seller": "Domestique Coffee",
+      "price": 35.0,
+      "rating": null,
+      "rating_count": null
+    },
+    {
+      "title": "Hario V60-02 Dripper - Matte Black",
+      "product_id": "3405016843742790663",
+      "seller": "Myti",
+      "price": 33.0,
+      "rating": null,
+      "rating_count": null
+    },
+    {
+      "title": "Hario V60-02 Dripper - Canyon Ceramic",
+      "product_id": "15242263726157702956",
+      "seller": "Myti",
+      "price": 30.0,
+      "rating": null,
+      "rating_count": null
+    },
+    {
+      "title": "Hario V60 Ceramic White Dripper",
+      "product_id": "3661579834556362553",
+      "seller": "Metric Coffee",
+      "price": 30.5,
+      "rating": 4.9,
+      "rating_count": 95
+    }
+  ],
+  "brands": [
+    "HARIO",
+    "Hario"
+  ]
+}

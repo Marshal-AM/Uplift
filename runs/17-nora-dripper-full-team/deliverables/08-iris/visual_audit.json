@@ -1,0 +1,20 @@
+{
+  "audits": [
+    {
+      "shot_type": "lifestyle",
+      "has_text_overlay": false,
+      "issues": [
+        "Background props distract from the product"
+      ],
+      "width": 1856,
+      "height": 2304,
+      "duplicate_of": null
+    }
+  ],
+  "missing_shot_types": [
+    "hero",
+    "angle",
+    "detail",
+    "scale"
+  ]
+}
