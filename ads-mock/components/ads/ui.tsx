@@ -90,6 +90,18 @@ export function Table({ cols, rows, totals = [], empty }: { cols: Col[]; rows: R
   )
 }
 
+/** A campaign name that may be long: the start truncates, the type at the end (" · Search") always shows. */
+export function CampaignName({ name, max = 300, className = "" }: { name: string; max?: number; className?: string }) {
+  const parts = name.split(" · ")
+  const tail = parts.length > 1 ? parts.pop() : null
+  return (
+    <span title={name} className={`flex min-w-0 items-baseline ${className}`} style={{ maxWidth: max }}>
+      <span className="truncate">{parts.join(" · ")}</span>
+      {tail && <span className="shrink-0 whitespace-pre"> · {tail}</span>}
+    </span>
+  )
+}
+
 /** The standard Google Ads metric columns, with "—" where a ratio has no data yet. */
 export const METRIC_COLS: Col[] = [
   { label: "Impr.", right: true },

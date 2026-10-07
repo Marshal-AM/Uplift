@@ -2,9 +2,7 @@
 import { Camera, Mic, Search, X } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useMemo, useRef, useState } from "react"
-import { RELATED_SEARCHES, SUGGESTED_QUERIES } from "@/lib/data"
-
-const POOL = [...new Set([...SUGGESTED_QUERIES, ...RELATED_SEARCHES, "bamboo water bottle wholesale", "insulated water bottle"])]
+import { useDataset } from "@/lib/dataset"
 
 export function SearchBox({
   initial = "",
@@ -16,13 +14,19 @@ export function SearchBox({
   variant: "home" | "serp"
 }) {
   const router = useRouter()
+  const { ds } = useDataset()
+  const { SUGGESTED_QUERIES } = ds
+  const pool = useMemo(
+    () => [...new Set([...ds.SUGGESTED_QUERIES, ...ds.KEYWORDS.map((k) => k.text), ...ds.RELATED_SEARCHES])],
+    [ds],
+  )
   const [q, setQ] = useState(initial)
   const [open, setOpen] = useState(false)
   const input = useRef<HTMLInputElement>(null)
   const suggestions = useMemo(() => {
     const t = q.trim().toLowerCase()
-    return (t ? POOL.filter((s) => s.includes(t) && s !== t) : SUGGESTED_QUERIES).slice(0, 8)
-  }, [q])
+    return (t ? pool.filter((s) => s.includes(t) && s !== t) : SUGGESTED_QUERIES).slice(0, 8)
+  }, [q, pool, SUGGESTED_QUERIES])
 
   const go = (query: string) => {
     const v = query.trim()
@@ -96,7 +100,7 @@ export function SearchBox({
               </button>
             </li>
           ))}
-          <li className="px-4 pt-2 text-right text-[12px] text-[#70757a]">Suggestions are mock data</li>
+          <li className="px-4 pt-2 text-right text-[12px] text-[#70757a]">{ds.source === "demo" ? "Suggestions are mock data" : "Suggestions from the run's keyword research"}</li>
         </ul>
       )}
     </form>

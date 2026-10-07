@@ -1,7 +1,7 @@
-// Deterministic mock performance: the same 30 days every time. Raw (uncapped) traffic is generated once from
-// each keyword's demand, quality score and CTR; budgets are applied when totals are read, so raising a budget
-// in the mock genuinely lifts clicks on budget-limited days.
-import { ECONOMICS, KEYWORDS, OFFERS, PRODUCT, SEARCH_TERMS, type CampaignId } from "./data"
+// Deterministic mock performance: the same 30 days every time for a given dataset. Raw (uncapped) traffic comes from
+// each keyword's demand, quality score and expected CTR and from the run's own bid and conversion economics; budgets
+// are applied when totals are read, so raising a budget in the mock genuinely lifts clicks on budget-limited days.
+import type { CampaignId, Dataset } from "./data"
 
 export const DAYS = 30
 
@@ -17,8 +17,7 @@ function mulberry32(seed: number) {
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296
   }
 }
-const rand = mulberry32(20261007)
-const jitter = (lo: number, hi: number) => lo + (hi - lo) * rand()
+const seedOf = (s: string) => [...s].reduce((h, c) => (Math.imul(h, 31) + c.charCodeAt(0)) | 0, 20261007)
 
 /** Dates for the 30 simulated days, ending yesterday. */
 export function dayDates(now = new Date()): Date[] {
@@ -29,26 +28,36 @@ export function dayDates(now = new Date()): Date[] {
 const WEEKDAY = [1.12, 0.94, 0.97, 1, 0.98, 1.03, 1.15] // Sun..Sat
 const dates = dayDates()
 
-type Raw = Metrics
-const searchRaw: Record<string, Raw>[] = []
-const pmaxRaw: Raw[] = []
+type Raw = { search: Record<string, Metrics>[]; pmax: Metrics[] }
+const cache = new WeakMap<Dataset, Raw>()
 
-for (let d = 0; d < DAYS; d++) {
-  const learning = Math.min(1, 0.55 + d * 0.09)
-  const dow = WEEKDAY[dates[d].getDay()]
-  const row: Record<string, Raw> = {}
-  for (const k of KEYWORDS) {
-    const impressions = k.demand * 3.4 * learning * dow * jitter(0.85, 1.15)
-    const clicks = impressions * k.ctr * jitter(0.85, 1.15)
-    const cpc = ECONOMICS.maxCpc * (0.95 - k.qualityScore * 0.035) * jitter(0.9, 1.1)
-    const conversions = clicks * ECONOMICS.conversionRate * jitter(0.55, 1.45)
-    row[k.text] = { impressions, clicks, cost: clicks * cpc, conversions, value: conversions * PRODUCT.price }
+function raw(ds: Dataset): Raw {
+  const hit = cache.get(ds)
+  if (hit) return hit
+  const rand = mulberry32(seedOf(ds.id))
+  const jitter = (lo: number, hi: number) => lo + (hi - lo) * rand()
+  const { maxCpc, conversionRate } = ds.ECONOMICS
+  const price = ds.PRODUCT.price
+  const out: Raw = { search: [], pmax: [] }
+  for (let d = 0; d < DAYS; d++) {
+    const learning = Math.min(1, 0.55 + d * 0.09)
+    const dow = WEEKDAY[dates[d].getDay()]
+    const row: Record<string, Metrics> = {}
+    for (const k of ds.KEYWORDS) {
+      const impressions = k.demand * 3.4 * learning * dow * jitter(0.85, 1.15)
+      const clicks = impressions * k.ctr * jitter(0.85, 1.15)
+      const cpc = maxCpc * (0.95 - k.qualityScore * 0.035) * jitter(0.9, 1.1)
+      const conversions = clicks * conversionRate * jitter(0.55, 1.45)
+      row[k.text] = { impressions, clicks, cost: clicks * cpc, conversions, value: conversions * price }
+    }
+    out.search.push(row)
+    const impressions = 2600 * learning * dow * jitter(0.85, 1.15)
+    const clicks = impressions * 0.012 * jitter(0.85, 1.15)
+    const conversions = clicks * 0.022 * jitter(0.6, 1.4)
+    out.pmax.push({ impressions, clicks, cost: clicks * Math.max(0.15, maxCpc) * jitter(0.85, 1.05), conversions, value: conversions * price })
   }
-  searchRaw.push(row)
-  const impressions = 2600 * learning * dow * jitter(0.85, 1.15)
-  const clicks = impressions * 0.012 * jitter(0.85, 1.15)
-  const conversions = clicks * 0.022 * jitter(0.6, 1.4)
-  pmaxRaw.push({ impressions, clicks, cost: clicks * 0.33 * jitter(0.9, 1.1), conversions, value: conversions * PRODUCT.price })
+  cache.set(ds, out)
+  return out
 }
 
 const scale = (m: Metrics, f: number): Metrics => ({
@@ -63,8 +72,8 @@ const sum = (ms: Metrics[]) => ms.reduce(add, ZERO)
 export type SimInput = { day: number; enabled: Record<CampaignId, boolean>; budgets: Record<CampaignId, number> }
 
 /** One simulated day of the Search campaign, per keyword, with the daily budget applied. */
-function searchDay(d: number, budget: number) {
-  const row = searchRaw[d]
+function searchDay(ds: Dataset, d: number, budget: number) {
+  const row = raw(ds).search[d]
   const cost = Object.values(row).reduce((a, m) => a + m.cost, 0)
   const f = cost > budget ? budget / cost : 1
   const out: Record<string, Metrics> = {}
@@ -72,64 +81,65 @@ function searchDay(d: number, budget: number) {
   return { keywords: out, limited: f < 1, lostShare: 1 - f }
 }
 
-function pmaxDay(d: number, budget: number) {
-  const m = pmaxRaw[d]
+function pmaxDay(ds: Dataset, d: number, budget: number) {
+  const m = raw(ds).pmax[d]
   const f = m.cost > budget ? budget / m.cost : 1
   return { total: scale(m, f), limited: f < 1 }
 }
 
 const live = (s: SimInput, id: CampaignId, d: number) => s.enabled[id] && d < s.day
 
-export function keywordTotals(s: SimInput): Record<string, Metrics> {
-  const out: Record<string, Metrics> = Object.fromEntries(KEYWORDS.map((k) => [k.text, ZERO]))
+export function keywordTotals(ds: Dataset, s: SimInput): Record<string, Metrics> {
+  const out: Record<string, Metrics> = Object.fromEntries(ds.KEYWORDS.map((k) => [k.text, ZERO]))
   for (let d = 0; d < DAYS; d++) {
     if (!live(s, "search", d)) continue
-    const day = searchDay(d, s.budgets.search)
-    for (const k of KEYWORDS) out[k.text] = add(out[k.text], day.keywords[k.text])
+    const day = searchDay(ds, d, s.budgets.search)
+    for (const k of ds.KEYWORDS) out[k.text] = add(out[k.text], day.keywords[k.text])
   }
   return out
 }
 
-export function campaignTotals(s: SimInput): Record<CampaignId, Metrics> {
+export function campaignTotals(ds: Dataset, s: SimInput): Record<CampaignId, Metrics> {
   let pmax = ZERO
-  for (let d = 0; d < DAYS; d++) if (live(s, "pmax", d)) pmax = add(pmax, pmaxDay(d, s.budgets.pmax).total)
-  return { search: sum(Object.values(keywordTotals(s))), pmax }
+  for (let d = 0; d < DAYS; d++) if (live(s, "pmax", d)) pmax = add(pmax, pmaxDay(ds, d, s.budgets.pmax).total)
+  return { search: sum(Object.values(keywordTotals(ds, s))), pmax }
 }
 
 /** Share of recent simulated days on which a campaign hit its budget (drives "Limited by budget"). */
-export function limitedShare(s: SimInput, id: CampaignId): number {
+export function limitedShare(ds: Dataset, s: SimInput, id: CampaignId): number {
   const days = Array.from({ length: DAYS }, (_, d) => d).filter((d) => live(s, id, d)).slice(-7)
   if (!days.length) return 0
-  const hit = days.filter((d) => (id === "search" ? searchDay(d, s.budgets.search).limited : pmaxDay(d, s.budgets.pmax).limited))
+  const hit = days.filter((d) =>
+    id === "search" ? searchDay(ds, d, s.budgets.search).limited : pmaxDay(ds, d, s.budgets.pmax).limited)
   return hit.length / days.length
 }
 
-export function searchLostToBudget(s: SimInput): number {
+export function searchLostToBudget(ds: Dataset, s: SimInput): number {
   const days = Array.from({ length: DAYS }, (_, d) => d).filter((d) => live(s, "search", d))
   if (!days.length) return 0
-  return days.reduce((a, d) => a + searchDay(d, s.budgets.search).lostShare, 0) / days.length
+  return days.reduce((a, d) => a + searchDay(ds, d, s.budgets.search).lostShare, 0) / days.length
 }
 
 /** Account totals per day for the chart; days not yet simulated are null so the line grows as time passes. */
-export function dailySeries(s: SimInput) {
+export function dailySeries(ds: Dataset, s: SimInput) {
   return dates.map((date, d) => {
     if (d >= s.day || (!s.enabled.search && !s.enabled.pmax)) return { date, m: null as Metrics | null }
     let m = ZERO
-    if (s.enabled.search) m = add(m, sum(Object.values(searchDay(d, s.budgets.search).keywords)))
-    if (s.enabled.pmax) m = add(m, pmaxDay(d, s.budgets.pmax).total)
+    if (s.enabled.search) m = add(m, sum(Object.values(searchDay(ds, d, s.budgets.search).keywords)))
+    if (s.enabled.pmax) m = add(m, pmaxDay(ds, d, s.budgets.pmax).total)
     return { date, m }
   })
 }
 
-export function searchTermRows(s: SimInput) {
-  const kw = keywordTotals(s)
-  return SEARCH_TERMS.map((t) => ({ ...t, m: scale(kw[t.keyword], t.share) }))
+export function searchTermRows(ds: Dataset, s: SimInput) {
+  const kw = keywordTotals(ds, s)
+  return ds.SEARCH_TERMS.map((t) => ({ ...t, m: scale(kw[t.keyword] ?? ZERO, t.share) }))
 }
 
-export function adGroupTotals(s: SimInput): Record<string, Metrics> {
-  const kw = keywordTotals(s)
+export function adGroupTotals(ds: Dataset, s: SimInput): Record<string, Metrics> {
+  const kw = keywordTotals(ds, s)
   const out: Record<string, Metrics> = {}
-  for (const k of KEYWORDS) out[k.adGroup] = add(out[k.adGroup] ?? ZERO, kw[k.text])
+  for (const k of ds.KEYWORDS) out[k.adGroup] = add(out[k.adGroup] ?? ZERO, kw[k.text])
   return out
 }
 
@@ -142,8 +152,6 @@ export const PMAX_CHANNELS = [
   { name: "Gmail & Discover", share: 0.03 },
 ]
 export const pmaxChannel = (m: Metrics, share: number) => scale(m, share)
-
-export const ourOffer = OFFERS.find((o) => o.ours)!
 
 // Derived ratios, safe on zero.
 export const ctr = (m: Metrics) => (m.impressions ? m.clicks / m.impressions : 0)

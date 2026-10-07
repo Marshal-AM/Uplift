@@ -16,6 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from uplift_core import trace
 
 from . import db, nora, specialist
+from .ads_api import router as ads_router
 from .agent_api import router as agent_api_router
 from .chat import router as chat_router
 from .clients import Sokosumi
@@ -120,6 +121,7 @@ app = FastAPI(title="Uplift Worker", lifespan=lifespan)
 app.include_router(chat_router)
 app.include_router(agent_api_router)
 app.include_router(trace_router)
+app.include_router(ads_router)
 app.add_middleware(CORSMiddleware, allow_origins=settings().trace_origins.split(","), allow_methods=["GET"],
                    allow_headers=["Last-Event-ID"])
 

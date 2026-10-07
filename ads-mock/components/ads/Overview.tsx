@@ -2,9 +2,8 @@
 import Link from "next/link"
 import { useState } from "react"
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
-import { Card, PageHeader, SimBar, Table } from "@/components/ads/ui"
+import { CampaignName, Card, PageHeader, SimBar, Table } from "@/components/ads/ui"
 import { optimizationScore, useAccount } from "@/components/ads/useAccount"
-import { CAMPAIGNS } from "@/lib/data"
 import { count, decimal, money, pct, shortDate } from "@/lib/format"
 import { PMAX_CHANNELS, avgCpc, ctr, type Metrics } from "@/lib/sim"
 import { useHydrated } from "@/lib/store"
@@ -21,6 +20,7 @@ const COLORS = ["#1a73e8", "#d93025", "#f9ab00", "#188038"]
 
 export function Overview() {
   const a = useAccount()
+  const { CAMPAIGNS } = a.ds
   const hydrated = useHydrated()
   const [selected, setSelected] = useState(["clicks", "impressions"])
   const colorOf = (k: string) => COLORS[selected.indexOf(k)] ?? "transparent"
@@ -101,8 +101,8 @@ export function Overview() {
               return [
                 <span key="n" className="flex items-center gap-2">
                   <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${a.s.status[c.id] === "Enabled" ? "bg-[#1e8e3e]" : "bg-[#9aa0a6]"}`} />
-                  <Link href="/ads/campaigns/" className="max-w-[260px] truncate text-[#1a73e8] hover:underline">
-                    {c.name}
+                  <Link href="/ads/campaigns/" className="min-w-0 text-[#1a73e8] hover:underline">
+                    <CampaignName name={c.name} max={280} />
                   </Link>
                 </span>,
                 money(m.cost),

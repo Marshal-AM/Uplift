@@ -4,8 +4,15 @@ A standalone, static frontend that mocks **Google Search** and **Google Ads** fo
 campaigns Uplift builds would appear to shoppers and how they would perform in the advertiser's account, without
 Google Ads credentials.
 
-Everything is hardcoded mock data (`lib/data.ts`): the store, product, ads, keywords, competitors and results are
-fictional. Every page carries a **MOCK** strip, and nothing talks to Google or to the Uplift backend.
+It shows one of two things, named in the strip at the top of every page:
+
+- **A finished Uplift run.** The campaigns, ad groups, keywords, negatives, ad copy, bids and budgets come from the
+  run's verified Google Ads deliverable (Sasha's Google Ads Editor file and economics). Keyword demand and search
+  terms come from Kai, Google Shopping competitors and ranking pages from Rafael, "People also ask" from Leo's FAQ,
+  the product copy from Clara, and the product image from Iris.
+- **The demo store** (`lib/data.ts`): a fictional store, used when no run is connected.
+
+Either way the traffic numbers are simulated, nothing talks to Google, and every page carries a **MOCK** strip.
 
 ## What's in it
 
@@ -23,6 +30,24 @@ button, or the recommendation) plays a 30-day time-lapse. Daily traffic comes fr
 score and expected CTR, capped by the daily budget, so "Limited by budget" and the budget recommendation behave
 for real. The numbers are deterministic. State lives in the browser (localStorage); **Reset mock** in the top strip
 clears it.
+
+## Showing a run
+
+The data comes from the Worker's `/ads` API (`services/worker/src/uplift_worker/ads_api.py`):
+
+| Link | Shows |
+| --- | --- |
+| `/?key=<view key>` | The newest run with a passed Google Ads deliverable. The key is the `/live` page's `TRACE_VIEW_KEY`; it is remembered and removed from the address bar. The strip then offers a run picker, **Latest run** and **Use demo data**. |
+| `/ads/?task=<task id>&t=<token>` | One run, from the "Preview your Google Ads campaigns (mock)" link Nora posts when a Task finishes. The token opens that run only. |
+| `/` with neither | The demo store, with **Connect to Uplift runs** in the strip. |
+
+Configuration:
+
+- **Mock:** `NEXT_PUBLIC_UPLIFT_API`, the Worker's URL (defaults to the production Worker).
+- **Worker:** add the mock's URL to `TRACE_ORIGINS` (CORS) and set `ADS_MOCK_URL` to it so Nora's final comment links
+  each run. `http://localhost:3100` is allowed by default.
+
+Nothing is invented for a run: what no agent produces (competitor text ads, sitelinks, star ratings) is not shown.
 
 ## Run locally
 
@@ -49,5 +74,6 @@ with a 404.
 
 ## Editing the mock
 
-All content is in `lib/data.ts` (store, product, ad assets, keywords, negatives, competitors, results) and the
-traffic model in `lib/sim.ts`. Keep brands and domains fictional (`.example` domains) and keep the **Mock** labels.
+The demo store is in `lib/data.ts` (its `Dataset` type is the shape the Worker returns for a run), loading and
+switching runs in `lib/dataset.ts`, and the traffic model in `lib/sim.ts`. Keep demo brands and domains fictional
+(`.example` domains) and keep the **Mock** labels.

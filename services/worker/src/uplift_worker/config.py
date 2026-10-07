@@ -45,7 +45,8 @@ class Settings(BaseSettings):
     trace_key: str = ""  # agents post their trace events with this key
     trace_view_key: str = ""  # the /live page and e2e/trace.py read with this key
     shopify_api_version: str = "2026-10"  # display only: the Admin API version the gateway calls (rank card)
-    trace_origins: str = "https://uplift-landing.up.railway.app,http://localhost:3000"
+    trace_origins: str = "https://uplift-landing.up.railway.app,http://localhost:3000,http://localhost:3100"
+    ads_mock_url: str = ""  # the deployed ads-mock site; Nora links each finished run to its mock Google Ads account
 
     artifact_bucket: str = "uplift-artifacts-517207998460"
     aws_region: str = "us-east-1"

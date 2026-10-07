@@ -6,7 +6,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { AdsLogo } from "@/components/brand"
 import { MockStrip } from "@/components/MockStrip"
-import { ACCOUNT } from "@/lib/data"
+import { useDataset } from "@/lib/dataset"
 
 type NavItem = { label: string; href?: string }
 const MENU: { group?: string; items: NavItem[] }[] = [
@@ -44,6 +44,8 @@ const RAIL = [
 
 export function AdsShell({ children }: { children: React.ReactNode }) {
   const path = usePathname()
+  const { ds } = useDataset()
+  const ACCOUNT = ds.ACCOUNT
   const norm = (p: string) => (p.endsWith("/") ? p : p + "/")
   return (
     <div className="flex min-h-screen flex-col bg-[#f8f9fa] font-roboto text-[#202124]">

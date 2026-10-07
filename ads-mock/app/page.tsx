@@ -3,7 +3,7 @@ import Link from "next/link"
 import { GoogleLogo } from "@/components/brand"
 import { MockStrip } from "@/components/MockStrip"
 import { SearchBox } from "@/components/search/SearchBox"
-import { SUGGESTED_QUERIES } from "@/lib/data"
+import { FirstQueryLink, Suggestions } from "@/components/search/Suggestions"
 
 export default function Home() {
   return (
@@ -26,12 +26,9 @@ export default function Home() {
           <SearchBox variant="home" />
         </div>
         <div className="mt-7 flex gap-3">
-          <Link
-            href={`/search/?q=${encodeURIComponent(SUGGESTED_QUERIES[0])}`}
-            className="rounded border border-[#f8f9fa] bg-[#f8f9fa] px-4 py-2 text-[14px] text-[#3c4043] hover:border-[#dadce0] hover:shadow-sm"
-          >
+          <FirstQueryLink className="rounded border border-[#f8f9fa] bg-[#f8f9fa] px-4 py-2 text-[14px] text-[#3c4043] hover:border-[#dadce0] hover:shadow-sm">
             Google Search
-          </Link>
+          </FirstQueryLink>
           <Link
             href="/store/"
             className="rounded border border-[#f8f9fa] bg-[#f8f9fa] px-4 py-2 text-[14px] text-[#3c4043] hover:border-[#dadce0] hover:shadow-sm"
@@ -39,17 +36,7 @@ export default function Home() {
             I&apos;m Feeling Lucky
           </Link>
         </div>
-        <p className="mt-7 text-center text-[13px] text-[#4d5156]">
-          Mock demo · try{" "}
-          {SUGGESTED_QUERIES.map((q, i) => (
-            <span key={q}>
-              <Link href={`/search/?q=${encodeURIComponent(q)}`} className="text-[#1a0dab] hover:underline">
-                {q}
-              </Link>
-              {i < SUGGESTED_QUERIES.length - 1 ? " · " : ""}
-            </span>
-          ))}
-        </p>
+        <Suggestions />
       </main>
 
       <footer className="bg-[#f2f2f2] text-[14px] text-[#70757a]">

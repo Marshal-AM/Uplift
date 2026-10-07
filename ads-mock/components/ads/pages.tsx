@@ -5,18 +5,17 @@ import { useState } from "react"
 import { BottleArt, MockBadge } from "@/components/brand"
 import { ScoreRing } from "@/components/ads/Overview"
 import {
-  Card, METRIC_COLS, PageHeader, SimBar, StatusDot, StatusText, Table, Toolbar, metricCells, type Col,
+  CampaignName, Card, METRIC_COLS, PageHeader, SimBar, StatusDot, StatusText, Table, Toolbar, metricCells, type Col,
 } from "@/components/ads/ui"
 import { RECOMMENDATIONS, optimizationScore, useAccount } from "@/components/ads/useAccount"
-import {
-  AD_GROUPS, CALLOUTS, CAMPAIGNS, DESCRIPTIONS, DISPLAY_PATH, ECONOMICS, HEADLINES, KEYWORDS, NEGATIVES, PRODUCT,
-  SITELINKS, STORE, type Keyword,
-} from "@/lib/data"
+import type { Dataset, Keyword } from "@/lib/data"
+import { useDataset } from "@/lib/dataset"
 import { count, decimal, money, pct } from "@/lib/format"
 import { PMAX_CHANNELS, ZERO, add, costPerConv, ctr, pmaxChannel, roas } from "@/lib/sim"
 import { actions } from "@/lib/store"
 
-const searchName = CAMPAIGNS[0].name
+const searchNameOf = (ds: Dataset) =>
+  ds.CAMPAIGNS.find((c) => c.id === "search")?.name ?? ds.CAMPAIGNS[0]?.name ?? "Search campaign"
 const fmtKeyword = (k: Pick<Keyword, "text" | "match">) => (k.match === "Exact match" ? `[${k.text}]` : `"${k.text}"`)
 const Box = () => <input type="checkbox" aria-label="Select row" className="h-4 w-4 accent-[#1a73e8]" />
 
@@ -24,6 +23,8 @@ const Box = () => <input type="checkbox" aria-label="Select row" className="h-4 
 
 export function CampaignsPage() {
   const a = useAccount()
+  const { AD_GROUPS, CALLOUTS, CAMPAIGNS, DESCRIPTIONS, DISPLAY_PATH, ECONOMICS, HEADLINES, KEYWORDS, PRODUCT, SITELINKS, STORE } = a.ds
+  const searchName = searchNameOf(a.ds)
   const score = optimizationScore(a.s.applied, Object.values(a.s.status).includes("Enabled"))
   const cols: Col[] = [
     { label: "", width: "32px" }, { label: "", width: "48px" }, { label: "Campaign" }, { label: "Budget" }, { label: "Status" },
@@ -34,13 +35,19 @@ export function CampaignsPage() {
       <PageHeader title="Campaigns" />
       <SimBar />
       <Card>
-        <Toolbar />
+        <Toolbar>
+          {a.ds.editorCsvUrl && (
+            <a href={a.ds.editorCsvUrl} className="rounded px-3 py-1.5 text-[13px] font-medium text-[#1a73e8] hover:bg-[#f1f8ff]">
+              Download Editor file
+            </a>
+          )}
+        </Toolbar>
         <Table
           cols={cols}
           rows={CAMPAIGNS.map((c) => [
             <Box key="b" />,
             <StatusDot key="s" status={a.s.status[c.id]} onChange={(v) => actions.setStatus(c.id, v)} />,
-            <span key="n" title={`${c.name} · ${c.bidStrategy}`} className="block max-w-[300px] truncate font-medium text-[#1a73e8]">{c.name}</span>,
+            <CampaignName key="n" name={c.name} className="font-medium text-[#1a73e8]" />,
             <BudgetCell key="g" id={c.id} value={a.s.budgets[c.id]} limited={a.s.status[c.id] === "Enabled" && a.limited[c.id]} />,
             <StatusText key="t" status={a.s.status[c.id]} learning={a.learning} limited={a.limited[c.id]} />,
             <span key="o" className="text-[#1a73e8]">{(score - (c.id === "pmax" ? 2.3 : 0)).toFixed(1)}%</span>,
@@ -88,6 +95,8 @@ function BudgetCell({ id, value, limited }: { id: "search" | "pmax"; value: numb
 
 export function AdGroupsPage() {
   const a = useAccount()
+  const { AD_GROUPS, CALLOUTS, CAMPAIGNS, DESCRIPTIONS, DISPLAY_PATH, ECONOMICS, HEADLINES, KEYWORDS, PRODUCT, SITELINKS, STORE } = a.ds
+  const searchName = searchNameOf(a.ds)
   const status = a.s.status.search
   return (
     <>
@@ -125,6 +134,8 @@ const LABEL_STYLE: Record<string, string> = {
 
 export function AdsPage() {
   const a = useAccount()
+  const { AD_GROUPS, CALLOUTS, CAMPAIGNS, DESCRIPTIONS, DISPLAY_PATH, ECONOMICS, HEADLINES, KEYWORDS, PRODUCT, SITELINKS, STORE } = a.ds
+  const searchName = searchNameOf(a.ds)
   const [device, setDevice] = useState<"desktop" | "mobile">("desktop")
   const excellent = a.s.applied.includes("headlines")
   const hasData = a.s.day >= 7 && a.s.status.search === "Enabled"
@@ -143,10 +154,10 @@ export function AdsPage() {
             <StatusDot key="s" status="Enabled" />,
             <div key="ad" className="max-w-[300px] whitespace-normal py-1 font-serp">
               <div className="text-[12px] text-[#202124]">Sponsored · {STORE.domain}/{DISPLAY_PATH.join("/")}</div>
-              <div className="text-[14px] leading-[18px] text-[#1a0dab]">{HEADLINES[0].text} | {HEADLINES[1].text} | {HEADLINES[2].text}</div>
-              <div className="text-[12px] leading-[16px] text-[#4d5156]">{DESCRIPTIONS[0].text}</div>
+              <div className="text-[14px] leading-[18px] text-[#1a0dab]">{HEADLINES.slice(0, 3).map((h) => h.text).join(" | ")}</div>
+              <div className="text-[12px] leading-[16px] text-[#4d5156]">{DESCRIPTIONS[0]?.text}</div>
             </div>,
-            "All ad groups (3)",
+            `All ad groups (${AD_GROUPS.length})`,
             a.s.status.search === "Enabled" ? "Eligible" : <span key="p" className="text-[#5f6368]">Campaign paused</span>,
             "Responsive search ad",
             <AdStrength key="st" excellent={excellent} />,
@@ -179,11 +190,10 @@ export function AdsPage() {
               <div className="text-[14px] text-[#202124]">{STORE.name}</div>
               <div className="text-[12px] text-[#4d5156]">https://www.{STORE.domain} › {DISPLAY_PATH.join(" › ")}</div>
               <div className={`mt-1 text-[#1a0dab] ${device === "mobile" ? "text-[18px] leading-[24px]" : "text-[20px] leading-[26px]"}`}>
-                {HEADLINES[0].text} | {HEADLINES[1].text}
-                {device === "desktop" && ` | ${HEADLINES[2].text}`}
+                {HEADLINES.slice(0, device === "desktop" ? 3 : 2).map((h) => h.text).join(" | ")}
               </div>
               <div className="mt-1 text-[14px] leading-[22px] text-[#4d5156]">
-                {DESCRIPTIONS[0].text} {device === "desktop" && DESCRIPTIONS[1].text} {CALLOUTS[0]}
+                {DESCRIPTIONS[0]?.text} {device === "desktop" && DESCRIPTIONS[1]?.text} {CALLOUTS[0] ?? ""}
               </div>
               <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[14px] text-[#1a0dab]">
                 {SITELINKS.map((s) => <span key={s.title}>{s.title}</span>)}
@@ -237,6 +247,8 @@ const component = (qs: number, offset: number) => {
 
 export function KeywordsPage() {
   const a = useAccount()
+  const { AD_GROUPS, CALLOUTS, CAMPAIGNS, DESCRIPTIONS, DISPLAY_PATH, ECONOMICS, HEADLINES, KEYWORDS, PRODUCT, SITELINKS, STORE } = a.ds
+  const searchName = searchNameOf(a.ds)
   return (
     <>
       <PageHeader title="Search keywords" />
@@ -288,6 +300,8 @@ export function KeywordsPage() {
 
 export function SearchTermsPage() {
   const a = useAccount()
+  const { AD_GROUPS, CALLOUTS, CAMPAIGNS, DESCRIPTIONS, DISPLAY_PATH, ECONOMICS, HEADLINES, KEYWORDS, PRODUCT, SITELINKS, STORE } = a.ds
+  const searchName = searchNameOf(a.ds)
   const [picked, setPicked] = useState<string[]>([])
   const [note, setNote] = useState("")
   const toggle = (t: string) => setPicked((p) => (p.includes(t) ? p.filter((x) => x !== t) : [...p, t]))
@@ -341,6 +355,9 @@ export function SearchTermsPage() {
 // --- Negative keywords ------------------------------------------------------------------------------
 
 export function NegativeKeywordsPage() {
+  const { ds } = useDataset()
+  const { NEGATIVES } = ds
+  const searchName = searchNameOf(ds)
   return (
     <>
       <PageHeader title="Negative search keywords" />
@@ -362,6 +379,8 @@ export function NegativeKeywordsPage() {
 
 export function ProductsPage() {
   const a = useAccount()
+  const { AD_GROUPS, CALLOUTS, CAMPAIGNS, DESCRIPTIONS, DISPLAY_PATH, ECONOMICS, HEADLINES, KEYWORDS, PRODUCT, SITELINKS, STORE } = a.ds
+  const searchName = searchNameOf(a.ds)
   const m = a.campaigns.pmax
   const on = a.s.status.pmax === "Enabled"
   return (
@@ -378,7 +397,9 @@ export function ProductsPage() {
           ]}
           rows={[[
             <span key="p" className="flex items-center gap-3">
-              <span className="overflow-hidden rounded"><BottleArt color={PRODUCT.color} lid="#c8a46e" size={40} /></span>
+              <span className="overflow-hidden rounded">
+                {PRODUCT.image ? <img src={PRODUCT.image} alt="" width={40} height={40} className="h-10 w-10 object-cover" /> : <BottleArt color={PRODUCT.color} lid="#c8a46e" size={40} />}
+              </span>
               <span className="font-medium text-[#1a73e8]">{PRODUCT.title}</span>
             </span>,
             PRODUCT.id,
@@ -404,9 +425,12 @@ export function ProductsPage() {
 
 export function RecommendationsPage() {
   const a = useAccount()
+  const { AD_GROUPS, CALLOUTS, CAMPAIGNS, DESCRIPTIONS, DISPLAY_PATH, ECONOMICS, HEADLINES, KEYWORDS, PRODUCT, SITELINKS, STORE } = a.ds
+  const searchName = searchNameOf(a.ds)
   const enabled = Object.values(a.s.status).includes("Enabled")
   const score = optimizationScore(a.s.applied, enabled)
   const points = Object.fromEntries(RECOMMENDATIONS.map((r) => [r.id, r.points]))
+  const blocked = a.terms.filter((t) => t.excluded).map((t) => t.term).slice(0, 2)
   const weeklyGain = Math.round(a.campaigns.search.clicks * (a.lostToBudget / Math.max(0.01, 1 - a.lostToBudget)) * (7 / Math.max(1, a.s.day)))
   const cards = [
     {
@@ -433,7 +457,9 @@ export function RecommendationsPage() {
     },
     {
       id: "negatives", show: true, icon: Check, category: "Keywords & targeting", title: "Add negative keywords",
-      body: "2 search terms (“wholesale”, “kids”) don't match your product. Keep blocking them across new campaigns.",
+      body: blocked.length
+        ? `${blocked.length} search term${blocked.length > 1 ? "s" : ""} (${blocked.map((t) => `“${t}”`).join(", ")}) don't match your product. Keep blocking them across new campaigns.`
+        : "Keep your negative keyword list across new campaigns so irrelevant searches stay blocked.",
       impact: "− wasted spend", apply: () => actions.apply("negatives"), view: "/ads/negative-keywords/",
     },
   ].filter((c) => c.show)

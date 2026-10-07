@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation"
 import { useState } from "react"
 import { BottleArt, MockBadge } from "@/components/brand"
 import { MockStrip } from "@/components/MockStrip"
-import { PRODUCT, STORE } from "@/lib/data"
+import { useDataset } from "@/lib/dataset"
 
 const SOURCES: Record<string, string> = {
   "search-ad": "a Google Search ad",
@@ -13,14 +13,17 @@ const SOURCES: Record<string, string> = {
   organic: "an organic Google result",
 }
 
-const SHOTS = [
-  { color: PRODUCT.color, lid: "#c8a46e", bg: "#f4f1ea" },
-  { color: PRODUCT.color, lid: "#c8a46e", bg: "#e7efe9" },
+const shotsFor = (color: string) => [
+  { color, lid: "#c8a46e", bg: "#f4f1ea" },
+  { color, lid: "#c8a46e", bg: "#e7efe9" },
   { color: "#2f5d46", lid: "#b8935a", bg: "#f4f1ea" },
   { color: "#d9cfc1", lid: "#c8a46e", bg: "#f4f1ea" },
 ]
 
 export function Storefront() {
+  const { ds } = useDataset()
+  const { PRODUCT, STORE } = ds
+  const SHOTS = shotsFor(PRODUCT.color)
   const params = useSearchParams()
   const from = params.get("from") ?? ""
   const q = params.get("q") ?? ""
@@ -46,13 +49,12 @@ export function Storefront() {
           )}
         </div>
       )}
-      <div className="bg-[#2f5d46] py-2 text-center text-[13px] text-white">Free US shipping on orders over $40</div>
+      {ds.source === "demo" && <div className="bg-[#2f5d46] py-2 text-center text-[13px] text-white">Free US shipping on orders over $40</div>}
       <header className="flex items-center justify-between border-b border-[#e5e7eb] px-6 py-5">
         <nav className="hidden gap-6 text-[14px] md:flex">
-          <span>Bottles</span>
-          <span>Gift sets</span>
-          <span>Bottle care</span>
-          <span>Our story</span>
+          {(ds.source === "demo" ? ["Bottles", "Gift sets", "Bottle care", "Our story"] : ["Shop", "Collections", "About", "Contact"]).map((n) => (
+            <span key={n}>{n}</span>
+          ))}
         </nav>
         <span className="font-serif text-[22px] tracking-wide">{STORE.name}</span>
         <span className="flex gap-4">
@@ -65,9 +67,13 @@ export function Storefront() {
       <main className="mx-auto grid max-w-6xl gap-10 px-6 py-10 md:grid-cols-2">
         <div>
           <div className="overflow-hidden rounded-lg">
-            <BottleArt {...SHOTS[shot]} size={560} />
+            {PRODUCT.image ? (
+              <img src={PRODUCT.image} alt={PRODUCT.title} className="aspect-square w-full bg-white object-contain" />
+            ) : (
+              <BottleArt {...SHOTS[shot]} size={560} />
+            )}
           </div>
-          <div className="mt-3 grid grid-cols-4 gap-3">
+          <div className={`mt-3 grid grid-cols-4 gap-3 ${PRODUCT.image ? "hidden" : ""}`}>
             {SHOTS.map((s, i) => (
               <button
                 key={i}
@@ -82,15 +88,17 @@ export function Storefront() {
         <div>
           <p className="text-[12px] uppercase tracking-[0.15em] text-[#6b7280]">{STORE.name}</p>
           <h1 className="mt-2 font-serif text-[34px] leading-tight">{PRODUCT.title}</h1>
-          <div className="mt-3 flex items-center gap-2 text-[14px]">
-            <span className="flex">
-              {Array.from({ length: 5 }, (_, i) => (
-                <Star key={i} className="h-4 w-4" fill="#1f2421" stroke="none" />
-              ))}
-            </span>
-            {PRODUCT.rating} · {PRODUCT.reviews} reviews
-          </div>
-          <p className="mt-5 text-[24px]">${PRODUCT.price.toFixed(2)} USD</p>
+          {PRODUCT.rating != null && (
+            <div className="mt-3 flex items-center gap-2 text-[14px]">
+              <span className="flex">
+                {Array.from({ length: 5 }, (_, i) => (
+                  <Star key={i} className="h-4 w-4" fill="#1f2421" stroke="none" />
+                ))}
+              </span>
+              {PRODUCT.rating} · {PRODUCT.reviews} reviews
+            </div>
+          )}
+          <p className="mt-5 text-[24px]">${PRODUCT.price.toFixed(2)} {ds.ACCOUNT.currency}</p>
           <p className="mt-1 text-[13px] text-[#6b7280]">Taxes included. Shipping calculated at checkout.</p>
           <ul className="mt-6 space-y-2 text-[15px]">
             {PRODUCT.bullets.map((b) => (
@@ -122,11 +130,15 @@ export function Storefront() {
               would be the conversion Google Ads reports.
             </p>
           )}
-          <div className="mt-8 flex items-center gap-2 border-t border-[#e5e7eb] pt-6 text-[14px] text-[#4b5563]">
-            <Truck className="h-5 w-5" /> Ships in 1–2 business days · 30-day returns
-          </div>
+          {ds.source === "demo" && (
+            <div className="mt-8 flex items-center gap-2 border-t border-[#e5e7eb] pt-6 text-[14px] text-[#4b5563]">
+              <Truck className="h-5 w-5" /> Ships in 1–2 business days · 30-day returns
+            </div>
+          )}
           <p className="mt-6 text-[12px] text-[#9ca3af]">
-            Mock storefront for the Uplift demo. {STORE.name} is a fictional store.
+            {ds.source === "demo"
+              ? `Mock storefront for the Uplift demo. ${STORE.name} is a fictional store.`
+              : `Mock storefront for the Uplift demo, showing the product from an Uplift run on ${STORE.domain}. No orders are placed.`}
           </p>
         </div>
       </main>

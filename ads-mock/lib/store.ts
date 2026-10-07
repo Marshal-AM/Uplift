@@ -1,8 +1,9 @@
 "use client"
 // The mock account's state: campaign status, budgets, the simulation clock and applied recommendations. Kept in
-// localStorage so it survives page changes and reloads; every read and write tolerates storage being unavailable.
+// localStorage per dataset (the demo store, or one Uplift run), so it survives page changes and reloads and a run
+// never inherits another's state; every read and write tolerates storage being unavailable.
 import { useSyncExternalStore } from "react"
-import { CAMPAIGNS, type CampaignId } from "./data"
+import { DEMO, type CampaignId, type Dataset } from "./data"
 import { DAYS, type SimInput } from "./sim"
 
 export type Status = "Enabled" | "Paused"
@@ -15,47 +16,70 @@ export type MockState = {
   applied: string[]
 }
 
-const KEY = "uplift-ads-mock-v1"
+const KEY = "uplift-ads-mock-v2"
 const TICK_MS = 170
 
-export const DEFAULT_STATE: MockState = {
-  status: { search: "Paused", pmax: "Paused" },
-  budgets: Object.fromEntries(CAMPAIGNS.map((c) => [c.id, c.budget])) as Record<CampaignId, number>,
-  day: 0,
-  running: false,
-  applied: [],
+/** Campaigns arrive paused, as Uplift creates them, at the daily budgets its ads specialist set. */
+function defaults(ds: Dataset): MockState {
+  const budgets = { search: 0, pmax: 0 } as Record<CampaignId, number>
+  for (const c of ds.CAMPAIGNS) budgets[c.id] = c.budget
+  return { status: { search: "Paused", pmax: "Paused" }, budgets, day: 0, running: false, applied: [] }
 }
 
+export const DEFAULT_STATE = defaults(DEMO)
+
+let dsId = DEMO.id
+let present = new Set<CampaignId>(DEMO.CAMPAIGNS.map((c) => c.id))
+let fresh = DEFAULT_STATE
 let state: MockState = DEFAULT_STATE
 let loaded = false
 let timer: ReturnType<typeof setInterval> | null = null
 const listeners = new Set<() => void>()
 
 function load() {
-  if (loaded || typeof window === "undefined") return
+  if (typeof window === "undefined") return
   loaded = true
   try {
-    const raw = window.localStorage.getItem(KEY)
-    if (raw) state = { ...DEFAULT_STATE, ...JSON.parse(raw) }
+    const raw = window.localStorage.getItem(`${KEY}:${dsId}`)
+    state = raw ? { ...fresh, ...JSON.parse(raw) } : fresh
   } catch {
-    state = DEFAULT_STATE
+    state = fresh
   }
   sync()
 }
 
 function save() {
   try {
-    window.localStorage.setItem(KEY, JSON.stringify(state))
+    window.localStorage.setItem(`${KEY}:${dsId}`, JSON.stringify(state))
   } catch {
     // private mode or blocked storage: the mock still works for this page view
   }
+}
+
+function notify() {
+  listeners.forEach((l) => l())
 }
 
 function set(next: Partial<MockState>) {
   state = { ...state, ...next }
   save()
   sync()
-  listeners.forEach((l) => l())
+  notify()
+}
+
+/** Called when the dataset changes: switch to that dataset's saved state (or a fresh, paused account). */
+export function bindDataset(ds: Dataset) {
+  if (ds.id === dsId) return
+  dsId = ds.id
+  present = new Set(ds.CAMPAIGNS.map((c) => c.id))
+  fresh = defaults(ds)
+  state = { ...fresh, running: false }
+  if (timer) {
+    clearInterval(timer)
+    timer = null
+  }
+  if (loaded) load()
+  notify()
 }
 
 /** Start or stop the time-lapse ticker to match `state.running`. */
@@ -76,12 +100,13 @@ const anyEnabled = (s: Record<CampaignId, Status>) => Object.values(s).some((v) 
 export const actions = {
   /** Any status change restarts the 30-day simulation for the campaigns now enabled. */
   setStatus(id: CampaignId, value: Status) {
+    if (!present.has(id)) return
     const status = { ...state.status, [id]: value }
     set({ status, day: 0, running: anyEnabled(status) })
   },
   enableAll() {
-    const status = { search: "Enabled", pmax: "Enabled" } as Record<CampaignId, Status>
-    set({ status, day: 0, running: true })
+    const status = { search: present.has("search") ? "Enabled" : "Paused", pmax: present.has("pmax") ? "Enabled" : "Paused" } as Record<CampaignId, Status>
+    set({ status, day: 0, running: anyEnabled(status) })
   },
   setBudget(id: CampaignId, value: number) {
     set({ budgets: { ...state.budgets, [id]: value }, day: anyEnabled(state.status) ? 0 : state.day, running: anyEnabled(state.status) })
@@ -102,12 +127,12 @@ export const actions = {
     if (!state.applied.includes(id)) set({ applied: [...state.applied, id] })
   },
   reset() {
-    set({ ...DEFAULT_STATE })
+    set({ ...fresh })
   },
 }
 
 function subscribe(cb: () => void) {
-  load()
+  if (!loaded) load()
   listeners.add(cb)
   return () => listeners.delete(cb)
 }

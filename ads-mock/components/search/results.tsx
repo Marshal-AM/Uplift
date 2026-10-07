@@ -1,12 +1,10 @@
 "use client"
-import { CheckCircle2, ChevronDown, ChevronRight, CircleAlert, EllipsisVertical, Search, Star, XCircle } from "lucide-react"
+import { CheckCircle2, ChevronDown, ChevronRight, CircleAlert, EllipsisVertical, ImageIcon, Search, Star, XCircle } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import { BottleArt, Favicon, MockBadge } from "@/components/brand"
-import {
-  CALLOUTS, DESCRIPTIONS, DISPLAY_PATH, HEADLINES, PEOPLE_ALSO_ASK, PRODUCT, SITELINKS, STORE,
-  type Offer, type Organic, type TextAd,
-} from "@/lib/data"
+import type { Offer, Organic, TextAd } from "@/lib/data"
+import { useDataset } from "@/lib/dataset"
 import type { Diagnosis } from "@/lib/match"
 import { useMock } from "@/lib/store"
 
@@ -80,9 +78,11 @@ export function SponsoredHeader({ hidden, onToggle }: { hidden: boolean; onToggl
 
 /** The merchant's own responsive search ad, built from the Uplift ad assets. */
 export function OurAd({ query, top }: { query: string; top: boolean }) {
-  const combo = COMBOS[hash(query) % COMBOS.length]
-  const title = combo.map((i) => HEADLINES[i].text).join(" | ")
-  const desc = DESCRIPTIONS[hash(query + "d") % 2].text
+  const { ds } = useDataset()
+  const { HEADLINES, DESCRIPTIONS, STORE, DISPLAY_PATH, PRODUCT, CALLOUTS, SITELINKS } = ds
+  const picked = COMBOS[hash(query) % COMBOS.length].filter((i) => i < HEADLINES.length)
+  const title = (picked.length >= 2 ? picked : [0, 1, 2].filter((i) => i < HEADLINES.length)).map((i) => HEADLINES[i].text).join(" | ")
+  const desc = DESCRIPTIONS[hash(query + "d") % Math.max(1, Math.min(2, DESCRIPTIONS.length))]?.text ?? ""
   const href = "/store/?from=search-ad&q=" + encodeURIComponent(query)
   return (
     <div className="mb-7">
@@ -91,16 +91,17 @@ export function OurAd({ query, top }: { query: string; top: boolean }) {
         {title}
       </Link>
       <div className="mt-1 text-[14px] leading-[22px] text-[#4d5156]">
-        <Highlight text={desc} query={query} /> <span>{CALLOUTS.slice(0, 2).join(" · ")}</span>
+        <Highlight text={desc} query={query} />
+        {CALLOUTS.length > 0 && <span> {CALLOUTS.slice(0, 2).join(" · ")}</span>}
       </div>
-      <div className="mt-0.5 flex items-center gap-1 text-[14px] text-[#4d5156]">
-        <span>{PRODUCT.rating}</span>
-        <Stars value={PRODUCT.rating} />
-        <span>({PRODUCT.reviews})</span>
-        <span className="mx-1">·</span>
-        <span>Free shipping over $40</span>
-      </div>
-      {top ? (
+      {PRODUCT.rating != null && (
+        <div className="mt-0.5 flex items-center gap-1 text-[14px] text-[#4d5156]">
+          <span>{PRODUCT.rating}</span>
+          <Stars value={PRODUCT.rating} />
+          <span>({PRODUCT.reviews})</span>
+        </div>
+      )}
+      {SITELINKS.length === 0 ? null : top ? (
         <div className="mt-3 grid grid-cols-1 gap-x-8 gap-y-3 pl-[38px] sm:grid-cols-2">
           {SITELINKS.map((s) => (
             <div key={s.title}>
@@ -140,6 +141,7 @@ export function CompetitorAd({ ad, query }: { ad: TextAd; query: string }) {
 }
 
 export function OrganicResult({ r, query }: { r: Organic; query: string }) {
+  const { STORE, PRODUCT } = useDataset().ds
   const ours = r.domain === STORE.domain
   const title = ours ? (
     <Link href="/store/?from=organic" className="text-[20px] leading-[26px] text-[#1a0dab] hover:underline">
@@ -158,8 +160,12 @@ export function OrganicResult({ r, query }: { r: Organic; query: string }) {
       </div>
       {ours && (
         <div className="mt-1 flex items-center gap-1 text-[14px] text-[#70757a]">
-          <Stars value={PRODUCT.rating} /> Rating: {PRODUCT.rating} · {PRODUCT.reviews} reviews · ${PRODUCT.price.toFixed(2)} ·
-          In stock
+          {PRODUCT.rating != null && (
+            <>
+              <Stars value={PRODUCT.rating} /> Rating: {PRODUCT.rating} · {PRODUCT.reviews} reviews ·
+            </>
+          )}{" "}
+          ${PRODUCT.price.toFixed(2)} · In stock
         </div>
       )}
     </div>
@@ -169,9 +175,7 @@ export function OrganicResult({ r, query }: { r: Organic; query: string }) {
 export function OfferCard({ o, query, wide }: { o: Offer; query: string; wide?: boolean }) {
   const card = (
     <div className={`group ${wide ? "w-full" : "w-[160px] shrink-0"}`}>
-      <div className="overflow-hidden rounded-lg">
-        <BottleArt color={o.color} lid={o.lid} size={wide ? 220 : 160} bg="#f1f3f4" />
-      </div>
+      <OfferImage o={o} size={wide ? 220 : 160} />
       <div className="mt-2 line-clamp-2 text-[14px] leading-[20px] text-[#202124] group-hover:underline">{o.title}</div>
       <div className="mt-1 flex items-baseline gap-1.5">
         <span className="text-[16px] font-bold text-[#202124]">${o.price.toFixed(2)}</span>
@@ -181,18 +185,38 @@ export function OfferCard({ o, query, wide }: { o: Offer; query: string; wide?: 
         <Favicon name={o.seller} color={o.color} size={16} />
         <span className="truncate">{o.seller}</span>
       </div>
-      <div className="mt-0.5 flex items-center gap-1 text-[12px] text-[#4d5156]">
-        <span>{o.rating}</span>
-        <Star className="h-3 w-3" fill="#fbbc04" stroke="none" />
-        <span>({o.reviews >= 1000 ? `${(o.reviews / 1000).toFixed(1)}K` : o.reviews})</span>
-      </div>
-      <div className="mt-0.5 text-[12px] text-[#4d5156]">{o.shipping}</div>
+      {o.rating != null && (
+        <div className="mt-0.5 flex items-center gap-1 text-[12px] text-[#4d5156]">
+          <span>{o.rating}</span>
+          <Star className="h-3 w-3" fill="#fbbc04" stroke="none" />
+          {o.reviews > 0 && <span>({o.reviews >= 1000 ? `${(o.reviews / 1000).toFixed(1)}K` : o.reviews})</span>}
+        </div>
+      )}
+      {o.shipping && <div className="mt-0.5 text-[12px] text-[#4d5156]">{o.shipping}</div>}
     </div>
   )
   return o.ours ? (
     <Link href={`/store/?from=shopping-ad&q=${encodeURIComponent(query)}`}>{card}</Link>
   ) : (
     <div className="cursor-pointer">{card}</div>
+  )
+}
+
+/** The product photo: the agents' image when there is one, the demo's drawn bottle, or a neutral placeholder. */
+function OfferImage({ o, size }: { o: Offer; size: number }) {
+  const { ds } = useDataset()
+  return (
+    <div className="overflow-hidden rounded-lg bg-[#f1f3f4]" style={{ width: "100%", maxWidth: size, aspectRatio: "1 / 1" }}>
+      {o.image ? (
+        <img src={o.image} alt={o.title} className="h-full w-full object-contain" />
+      ) : ds.source === "demo" ? (
+        <BottleArt color={o.color} lid={o.lid} size={size} bg="#f1f3f4" />
+      ) : (
+        <div className="flex h-full w-full items-center justify-center">
+          <ImageIcon className="h-8 w-8 text-[#bdc1c6]" aria-label="No image" />
+        </div>
+      )}
+    </div>
   )
 }
 
@@ -220,7 +244,9 @@ export function ShoppingCarousel({ offers, query }: { offers: Offer[]; query: st
 }
 
 export function PeopleAlsoAsk() {
+  const { PEOPLE_ALSO_ASK } = useDataset().ds
   const [open, setOpen] = useState<number | null>(null)
+  if (!PEOPLE_ALSO_ASK.length) return null
   return (
     <section className="mb-8">
       <div className="mb-2 flex items-center justify-between">
@@ -272,6 +298,7 @@ export function RelatedSearches({ items, query }: { items: string[]; query: stri
 /** Like Google Ads' Ad preview and diagnosis tool: why the merchant's ads do or don't show for this search. */
 export function DiagnosisPanel({ query, search, shopping }: { query: string; search: Diagnosis; shopping: boolean }) {
   const s = useMock()
+  const { PRODUCT } = useDataset().ds
   const row = (ok: boolean, title: string, detail: React.ReactNode) => (
     <div className="flex gap-2.5 py-2.5">
       {ok ? <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#188038]" /> : <XCircle className="mt-0.5 h-5 w-5 shrink-0 text-[#d93025]" />}

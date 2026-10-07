@@ -165,8 +165,9 @@ export type Offer = {
   seller: string
   price: number
   was?: number
-  rating: number
+  rating: number | null
   reviews: number
+  image?: string | null
   shipping: string
   color: string
   lid: string
@@ -295,3 +296,46 @@ export const SUGGESTED_QUERIES = [
   "eco friendly water bottle",
   "plastic free water bottle",
 ]
+
+export type Label = "Best" | "Good" | "Low" | "Learning"
+
+/** Everything the mock shows. DEMO is the hardcoded store above; a finished Uplift run supplies the same shape. */
+export type Dataset = {
+  id: string
+  source: "demo" | "run"
+  run?: { task: string; title: string; coworker?: string | null; phase?: string | null; updated?: number }
+  ACCOUNT: { name: string; customerId: string; currency: string }
+  STORE: { name: string; domain: string; url: string }
+  PRODUCT: {
+    id: string; title: string; shortTitle: string; price: number; rating: number | null; reviews: number; color: string
+    bullets: string[]; image?: string | null
+  }
+  ECONOMICS: typeof ECONOMICS
+  CAMPAIGNS: typeof CAMPAIGNS
+  KEYWORDS: Keyword[]
+  AD_GROUPS: readonly string[]
+  NEGATIVES: string[]
+  HEADLINES: { text: string; label: Label }[]
+  DESCRIPTIONS: { text: string; label: Label }[]
+  DISPLAY_PATH: string[]
+  SITELINKS: { title: string; line: string }[]
+  CALLOUTS: string[]
+  COMPETITOR_ADS: TextAd[]
+  OFFERS: Offer[]
+  ORGANIC: Organic[]
+  PEOPLE_ALSO_ASK: { q: string; a: string }[]
+  SEARCH_TERMS: typeof SEARCH_TERMS
+  RELATED_SEARCHES: string[]
+  SUGGESTED_QUERIES: string[]
+  SHOPPING_TERMS: string[]
+  editorCsvUrl?: string | null
+}
+
+export const DEMO: Dataset = {
+  id: "demo",
+  source: "demo",
+  ACCOUNT, STORE, PRODUCT: { ...PRODUCT, image: null }, ECONOMICS, CAMPAIGNS, KEYWORDS, AD_GROUPS, NEGATIVES, HEADLINES,
+  DESCRIPTIONS, DISPLAY_PATH, SITELINKS, CALLOUTS, COMPETITOR_ADS, OFFERS, ORGANIC, PEOPLE_ALSO_ASK, SEARCH_TERMS,
+  RELATED_SEARCHES, SUGGESTED_QUERIES,
+  SHOPPING_TERMS: ["bottle", "flask", "tumbler"],
+}

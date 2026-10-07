@@ -24,6 +24,7 @@ from uplift_core.hashing import change_hash, result_hash, sha256_hex
 from uplift_core.score import score
 
 from . import cre, db, payments, ranks, runs
+from .ads_api import preview_link
 from .clients import FlowLost, Kodosumi, Sokosumi
 from .config import settings
 from .runs import manifest_from_store
@@ -590,4 +591,12 @@ def deliver(client: Sokosumi, task: dict, st: dict) -> None:
     client.event(task["id"], status="COMPLETED", comment=(
         (f"**Done.** Published {len(st['changeset'])} changes. " if st["changeset"] else "**Done.** ")
         + f"Core listing score now {st['publish'].get('after_score', '?')}/95.\n\n{report}\n\n"
-        "Everything is in `uplift-launch-pack.zip`."))
+        "Everything is in `uplift-launch-pack.zip`."
+        + (f"\n\n[Preview your Google Ads campaigns (mock)]({link})" if (link := _ads_link(st, task["id"])) else "")))
+
+
+def _ads_link(st: dict, task_id: str) -> str | None:
+    """The mock Google Ads account for this run, when Sasha's campaigns passed verification."""
+    if not any(n.get("role") == "sasha" and n.get("verdict") == "PASS" for n in st["nodes"].values()):
+        return None
+    return preview_link(task_id)
