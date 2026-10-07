@@ -2,6 +2,7 @@
 
 import "./live.css"
 
+import { EscrowCard, useEscrow } from "./escrow"
 import { RankCard, RankModal, useRanks } from "./rank"
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
@@ -604,6 +605,9 @@ export default function LivePage() {
   const rankDone = events.filter((e) => e.kind?.startsWith("rank.") && e.status !== "running").length
   const ranks = useRanks(API, selected, key, rankDone)
   useEffect(() => setRankOpen(false), [selected])
+  // re-read the escrow when the trace shows a payment step finishing
+  const payDone = events.filter((e) => (e.kind === "cardano.escrow" || e.kind?.startsWith("masumi.") || e.kind === "payment.charged") && e.status !== "running").length
+  const escrow = useEscrow(API, selected, key, payDone)
   const checkState = (kind: string): "none" | "running" | "failed" => {
     const last = events.filter((e) => e.kind === kind).slice(-1)[0]
     return !last ? "none" : last.status === "running" ? "running" : last.status === "error" ? "failed" : "none"
@@ -889,6 +893,7 @@ export default function LivePage() {
               {/* side */}
               <aside className="lv-side lv-scroll">
                 <RankCard ranks={ranks} startState={checkState("rank.start")} endState={checkState("rank.end")} finished={task.phase === "done"} onOpen={() => setRankOpen(true)} />
+                <EscrowCard escrow={escrow} now={now} />
                 <section className="lv-card">
                   <h3>{running.length ? <span className="lv-spin" style={{ width: 12, height: 12 }} /> : null} In progress</h3>
                   {running.length ? (

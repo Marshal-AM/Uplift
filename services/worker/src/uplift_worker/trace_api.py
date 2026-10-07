@@ -11,12 +11,14 @@ import hmac
 import json
 import time
 from datetime import UTC, datetime
+from typing import Any
 
 from fastapi import APIRouter, Header, HTTPException, Query, Request
 from fastapi.responses import StreamingResponse
 from uplift_core import trace
 
 from . import db
+from .clients import mps
 from .config import settings
 from .db import PHASES
 
@@ -86,6 +88,75 @@ def ranks(task: str, key: str = Query("")):
     rows = {r["stage"]: {"checked_at": r["checked_at"].timestamp() * 1000, **r["data"]}
             for r in db.all_("select stage, checked_at, data from rank_checks where task_id = %s", task)}
     return {"start": rows.get("start"), "end": rows.get("end")}
+
+
+ESCROW_LABELS = {"FundsLocked": "Funds locked in escrow", "ResultSubmitted": "Result submitted",
+                 "Withdrawn": "Paid out to Uplift", "RefundRequested": "Refund requested",
+                 "RefundWithdrawn": "Refunded to the buyer", "Disputed": "Disputed",
+                 "DisputedWithdrawn": "Dispute settled"}
+_escrow_cache: dict[str, tuple[float, dict]] = {}
+
+
+def _ms(value: Any) -> float | None:
+    if value in (None, ""):
+        return None
+    if isinstance(value, str) and not value.isdigit():
+        return datetime.fromisoformat(value.replace("Z", "+00:00")).timestamp() * 1000
+    return float(value)
+
+
+def _tx_time(t: dict) -> float | None:
+    """When the transaction made it into a block (block time, in s or ms), else when the node sent it."""
+    bt = t.get("blockTime")
+    if bt not in (None, "") and str(bt).isdigit():
+        return int(bt) * 1000 if int(bt) < 10**12 else int(bt)
+    return _ms(t.get("createdAt"))
+
+
+def escrow_view(p: dict, bid: str) -> dict:
+    """One payment node record, shaped for the /live escrow card."""
+    txs = [t for t in [*(p.get("TransactionHistory") or []), p.get("CurrentTransaction") or {}] if t.get("txHash")]
+    seen, steps = set(), []
+    for t in sorted(txs, key=lambda t: t.get("createdAt") or ""):
+        if t["txHash"] in seen:
+            continue
+        seen.add(t["txHash"])
+        steps.append({"state": t.get("newOnChainState"),
+                      "label": ESCROW_LABELS.get(t.get("newOnChainState"), t.get("newOnChainState")),
+                      "status": t.get("status"), "tx": t["txHash"], "block": t.get("blockHeight"), "at": _tx_time(t),
+                      "confirmations": t.get("confirmations"), "fee_lovelace": t.get("fees")})
+    return {"amount": sum(int(f["amount"]) for f in p.get("RequestedFunds") or []) / 1_000_000, "unit": "tUSDM",
+            "state": p.get("onChainState"),
+            "state_label": ESCROW_LABELS.get(p.get("onChainState"), p.get("onChainState") or "Waiting for the lock"),
+            "network": f"Cardano {settings().network.lower()}", "blockchain_id": f"{bid[:10]}…{bid[-10:]}",
+            "contract": (p.get("PaymentSource") or {}).get("smartContractAddress"),
+            "explorer": "https://preprod.cexplorer.io" if settings().network == "Preprod" else "https://cexplorer.io",
+            "created": _ms(p.get("createdAt")), "pay_by": _ms(p.get("payByTime")),
+            "result_by": _ms(p.get("submitResultTime")), "unlock": _ms(p.get("unlockTime")),
+            "dispute_until": _ms(p.get("externalDisputeUnlockTime")), "transactions": steps}
+
+
+@router.get("/escrow")
+def escrow(task: str, key: str = Query("")):
+    """The Task's Masumi escrow on Cardano: amount, state, deadlines and every on-chain transaction, read from the
+    Uplift payment node (cached 10 s). Null when the Task has no payment."""
+    _view(key)
+    run = db.get_run(task)
+    terms = ((run or {}).get("state") or {}).get("terms")
+    if not terms:
+        return {"escrow": None}
+    bid = terms["payment"]["blockchainIdentifier"]
+    cached = _escrow_cache.get(bid)
+    if cached and time.time() - cached[0] < 10:
+        return {"escrow": cached[1]}
+    try:
+        p = mps("/payment/resolve-blockchain-identifier", {"network": settings().network, "blockchainIdentifier": bid,
+                                                           "includeHistory": "true"})
+    except Exception as exc:  # the card says so; nothing else depends on it
+        return {"escrow": None, "error": str(exc)[:200]}
+    out = escrow_view(p, bid)
+    _escrow_cache[bid] = (time.time(), out)
+    return {"escrow": out}
 
 
 @router.get("/stream")
