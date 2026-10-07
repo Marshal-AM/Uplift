@@ -15,13 +15,13 @@ from dataclasses import dataclass, field
 from typing import Any
 
 import boto3
-import httpx
-from uplift_core import trace
+from uplift_core import resilience, trace
 from uplift_core.hashing import canonical, sha256_hex
 
 from . import tools
 
 BUCKET = os.environ.get("ARTIFACT_BUCKET", "uplift-artifacts-517207998460")
+DOWNLOAD = resilience.Policy("Amazon S3", attempt_timeout=30, attempts=3, budget=75)
 URL_TTL = 7 * 24 * 3600  # max presign lifetime for IAM-user credentials
 
 
@@ -84,7 +84,9 @@ class Context:
         art = next((a for a in manifest["artifacts"] if a["name"] == name), None)
         if not art:
             return None
-        raw = httpx.get(art["url"], timeout=60).content
+        resp = resilience.request("GET", art["url"], DOWNLOAD)
+        resp.raise_for_status()
+        raw = resp.content
         return json.loads(raw) if art["mime"] == "application/json" else raw
 
 

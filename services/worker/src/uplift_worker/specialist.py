@@ -14,7 +14,7 @@ from uplift_core import llm, trace
 from uplift_core.hashing import change_hash, result_hash
 
 from . import cre, db, payments, ranks, runs
-from .clients import FlowError, FlowLost, Kodosumi, ReauthRequired, Sokosumi
+from .clients import FlowError, FlowLost, Kodosumi, ReauthRequired, Sokosumi, transient
 from .config import settings
 from .trace_api import attach_trace
 
@@ -190,6 +190,10 @@ def advance(role: str, task_id: str) -> None:
                 elif "STORE_REAUTH_REQUIRED" in message or "STORE_CONNECTION_REQUIRED" in message:
                     runs.request_connection(client, task, "I need access to your store.")
                     phase = "auth_wait"
+                elif transient(message) and st.get("transient_retries", 0) < 1:
+                    st["transient_retries"] = st.get("transient_retries", 0) + 1  # run the agent once more
+                    trace.emit("Kodosumi", "The agent hit a temporary error — running it again", message[:200],
+                               status="wait", kind="kodosumi.retry")
                 else:
                     st["error"] = message[:500]
                     phase = "failed"

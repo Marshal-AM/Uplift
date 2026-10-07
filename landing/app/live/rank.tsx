@@ -189,6 +189,7 @@ export function RankModal({ ranks, onClose }: { ranks: Ranks; onClose: () => voi
         </div>
 
         <h3>Where it ranks in the store's own search</h3>
+        <div className="lv-table-wrap">
         <table className="lv-table">
           <thead>
             <tr>
@@ -216,6 +217,7 @@ export function RankModal({ ranks, onClose }: { ranks: Ranks; onClose: () => voi
             })}
           </tbody>
         </table>
+        </div>
         <div className="lv-summary">
           {s && <>At the start: <b>{s.found}/{s.total}</b> phrases find it, #1 for {s.top}. </>}
           {e ? <>After the run: <b>{e.found}/{e.total}</b> find it, #1 for {e.top}.</> : "The second check runs once the Task has ended."}

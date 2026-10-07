@@ -57,7 +57,8 @@ def tasks(key: str = Query(""), limit: int = Query(40, le=200)):
         """select t.task_id, min(t.at) as started, max(t.at) as last, count(*) as steps,
                   array_remove(array_agg(distinct t.agent), null) as agents,
                   (array_agg(t.meta order by t.id) filter (where t.kind = 'task.received'))[1] as info,
-                  sum(coalesce((t.meta->>'credits')::numeric, 0)) filter (where t.kind = 'payment.charged') as credits,
+                  sum(coalesce((t.meta->>'credits')::numeric, 0))
+                    filter (where t.kind = 'payment.charged' and t.status = 'ok') as credits,
                   r.phase, r.coworker
            from trace_events t left join runs r on r.task_id = t.task_id
            group by t.task_id, r.phase, r.coworker order by max(t.at) desc limit %s""", limit)

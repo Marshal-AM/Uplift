@@ -27,7 +27,8 @@ from .clients import _name
 from .config import settings
 
 log = logging.getLogger("uplift.worker")
-_compile = threading.Lock()  # a source build writes one shared temp file; the shipped WASM needs no lock
+_compile = threading.Lock()
+CALLBACK_S = 120  # a simulation has already posted its callback when it exits  # a source build writes one shared temp file; the shipped WASM needs no lock
 
 
 def _b64url(raw: bytes) -> str:
@@ -45,7 +46,9 @@ def _jwt(body: dict[str, Any]) -> str:
     return f"{header}.{payload}.{_b64url(bytes(signature))}"
 
 
-def trigger(action: str, payload: dict[str, Any], timeout_s: int = 600, agent: str | None = None) -> dict[str, Any]:
+def trigger(action: str, payload: dict[str, Any], timeout_s: int = 240, agent: str | None = None) -> dict[str, Any]:
+    """`timeout_s` bounds the workflow run (checks take 5–25 s); the result callback then has CALLBACK_S. A timeout
+    raises, and the caller's journal retries the step on its next pass."""
     """`agent`: who the live trace attributes a verify to (Nora's plan node); default the payload's role."""
     role = agent or payload.get("role") or payload.get("coworker")
     step = f"Verifying {_name(role)}'s work" if action == "verify" else "Publishing the approved changes to Shopify"
@@ -96,7 +99,7 @@ def _trigger(action: str, payload: dict[str, Any], timeout_s: int) -> dict[str, 
         if proc.returncode:
             raise RuntimeError(f"CRE simulation failed: {(proc.stderr or proc.stdout)[-800:]}")
     triggered = time.time()
-    deadline = triggered + timeout_s
+    deadline = triggered + (CALLBACK_S if not s.cre_trigger_url else timeout_s)
     while time.time() < deadline:
         row = db.one("select result from cre_results where request_id = %s", request_id)
         if row:

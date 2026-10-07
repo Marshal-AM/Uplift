@@ -1,5 +1,7 @@
 """Clients for Sokosumi Core (coworker runtime), Kodosumi (panel API), the Gateway and the Masumi payment node."""
 
+import contextlib
+import re
 import time
 from typing import Any
 
@@ -124,16 +126,20 @@ class Kodosumi:
                    span=f"run-{fid}", agent=label or role, kind="kodosumi.run", meta={"run": fid, "flow": f"/uplift/{role}"})
         return fid
 
-    def wait(self, fid: str, launched_at: float, timeout_s: int = 1800) -> str:
-        deadline = time.time() + timeout_s
-        while time.time() < deadline:
+    def wait(self, fid: str, launched_at: float) -> str:
+        """Until the run finishes; status() ends a run that outlives RUN_BUDGET_S (FlowStalled)."""
+        while True:
             state, text = self.status(fid, launched_at)
             if state == "finished":
                 return text
             if state == "error":
                 raise FlowError(text)
             time.sleep(2)
-        raise FlowError(f"flow {fid} timed out")
+
+    def kill(self, fid: str) -> None:
+        """Stop a run (Kodosumi kills an active execution and archives it). Best-effort."""
+        with contextlib.suppress(httpx.HTTPError):
+            self.http.delete(f"/outputs/{fid}", timeout=15)
 
     def status(self, fid: str, launched_at: float) -> tuple[str, str | None]:
         """Without blocking: ("running", None), ("finished", manifest text) or ("error", message). Kodosumi holds a
@@ -156,6 +162,13 @@ class Kodosumi:
             text = _final_text(status["final"])
             _close_run(fid, status["status"], text, launched_at)
             return status["status"], text
+        if time.time() - launched_at > RUN_BUDGET_S:  # watchdog: a run this old is stuck, not slow
+            self.kill(fid)
+            role = _runs.pop(fid, (None, 0))[0]
+            trace.emit("Kodosumi", f"Stopped a run that passed its {RUN_BUDGET_S // 60}-minute budget",
+                       f"run {fid} · it will be run again", status="wait", span=f"run-{fid}", agent=role,
+                       kind="kodosumi.run")
+            raise FlowStalled(f"run {fid} passed its {RUN_BUDGET_S // 60}-minute budget")
         return "running", None
 
     def input_schema(self, role: str) -> list[dict]:
@@ -184,6 +197,19 @@ class FlowError(Exception):
 
 class FlowLost(FlowError):
     """Kodosumi accepted the launch but the run never started (its status stays unknown); relaunch it."""
+
+
+class FlowStalled(FlowLost):
+    """The run outlived its budget and was stopped; relaunch it like a lost run."""
+
+
+RUN_BUDGET_S = 900  # one agent run; the longest seen took 2.5 min, and every outside call inside has its own deadline
+
+
+def transient(message: str) -> bool:
+    """An agent failure a fresh run can fix: a timeout, a dropped connection or a server error."""
+    return bool(re.search(r"Timeout|timed out|ConnectError|RemoteProtocolError|ReadError|no time left|"
+                          r"\b(429|500|502|503|504)\b", message))
 
 
 _runs: dict[str, tuple[str, float]] = {}  # fid → (role, launched) for the trace

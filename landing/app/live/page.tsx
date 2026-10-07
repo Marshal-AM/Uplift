@@ -12,6 +12,7 @@ import {
   CalendarDays,
   Check,
   ChevronDown,
+  Clock,
   Cpu,
   Database,
   Download,
@@ -238,7 +239,7 @@ function pipeline(events: Ev[], task: Task | undefined): Stage[] {
     label: "Escrow locked",
     icon: Link2,
     state: escrow?.status === "ok" ? "done" : escrow?.status === "running" ? "active" : "pending",
-    sub: escrow?.status === "ok" ? `Cardano · ${dur(escrow.ms)}` : escrow ? "settling on Cardano" : "Cardano",
+    sub: escrow?.status === "ok" ? (escrow.ms != null ? `Cardano · ${dur(escrow.ms)}` : "Cardano · locked") : escrow ? "settling on Cardano" : "Cardano",
   }
   const approval: Stage = {
     label: "Your approval",
@@ -335,6 +336,7 @@ function Chip({ service }: { service: string }) {
 
 function StatusIcon({ status }: { status: string }) {
   if (status === "running") return <span className="lv-spin" aria-label="running" />
+  if (status === "wait") return <Clock size={17} color="var(--wait)" strokeWidth={2.4} aria-label="retrying" />
   if (status === "error") return <X size={18} color="var(--bad)" strokeWidth={2.6} aria-label="error" />
   if (status === "fail") return <X size={18} color="var(--wait)" strokeWidth={2.6} aria-label="did not pass" />
   return <Check size={18} color="var(--ok)" strokeWidth={2.6} aria-label="done" />
@@ -399,7 +401,7 @@ function FragmentKV({ k, v }: { k: string; v: any }) {
 function Row({ ev, t0, now, multi, open, onToggle, fresh }: { ev: Ev; t0: number; now: number; multi: boolean; open: boolean; onToggle: () => void; fresh: boolean }) {
   const running = ev.status === "running"
   return (
-    <div className={`lv-row ${open ? "open" : ""} ${ev.status === "error" ? "error" : ""} ${ev.status === "fail" ? "fail" : ""} ${fresh ? "fresh" : ""}`} onClick={onToggle} role="button" aria-expanded={open}>
+    <div className={`lv-row ${open ? "open" : ""} ${ev.status === "error" ? "error" : ""} ${ev.status === "fail" || ev.status === "wait" ? "fail" : ""} ${fresh ? "fresh" : ""}`} onClick={onToggle} role="button" aria-expanded={open}>
       <span className="lv-time lv-mono" title={clock(ev.start)}>{offset(ev.start - t0)}</span>
       <span className="lv-ico"><StatusIcon status={ev.status} /></span>
       <div style={{ minWidth: 0 }}>
@@ -557,21 +559,36 @@ export default function LivePage() {
   const lastAt = events.length ? Math.max(...events.map((e) => e.start + (e.ms ?? 0))) : now
   const elapsed = (finished ? lastAt : now) - t0
 
+  // What the page shows: no error steps, and no step still "running" from an agent run that has already ended (a
+  // run that was lost or stopped never closes its open steps). The pipeline keeps reading every event.
+  const shown = useMemo(() => {
+    const ended = new Map<string, number>()
+    for (const e of events)
+      if (e.kind === "kodosumi.run" && e.status !== "running" && e.agent) ended.set(e.agent, Math.max(ended.get(e.agent) ?? 0, e.at))
+    return events.filter((e) => {
+      if (e.status === "error") return false
+      if (e.status !== "running") return true
+      if (finished) return false
+      const end = e.agent ? ended.get(e.agent) : undefined
+      return !(end && end > e.start && e.kind !== "kodosumi.run")
+    })
+  }, [events, finished])
+
   const agents = useMemo(() => {
     const by = new Map<string, number>()
-    for (const e of events) if (e.agent) by.set(e.agent, (by.get(e.agent) ?? 0) + 1)
+    for (const e of shown) if (e.agent) by.set(e.agent, (by.get(e.agent) ?? 0) + 1)
     return [...by.entries()]
-  }, [events])
+  }, [shown])
   const multi = agents.length > 1
 
-  const visible = useMemo(() => (agentFilter ? events.filter((e) => e.agent === agentFilter) : events), [events, agentFilter])
+  const visible = useMemo(() => (agentFilter ? shown.filter((e) => e.agent === agentFilter) : shown), [shown, agentFilter])
   const items = useMemo(() => build(visible), [visible])
   const stages = useMemo(() => pipeline(events, task), [events, task])
-  const running = useMemo(() => events.filter((e) => e.status === "running").sort((a, b) => b.start - a.start), [events])
+  const running = useMemo(() => shown.filter((e) => e.status === "running").sort((a, b) => b.start - a.start), [shown])
 
   const services = useMemo(() => {
     const by = new Map<string, { label: string; svc: Svc; calls: number; ms: number; active: boolean; first: number }>()
-    for (const e of events) {
+    for (const e of shown) {
       if (e.status === "stage") continue
       const s = svcOf(e.service)
       const cur = by.get(s.label) ?? { label: s.label, svc: s, calls: 0, ms: 0, active: false, first: e.start }
@@ -581,7 +598,7 @@ export default function LivePage() {
       by.set(s.label, cur)
     }
     return [...by.values()].sort((a, b) => a.first - b.first)
-  }, [events])
+  }, [shown])
 
   // re-read the rank checks as soon as the trace shows one finishing
   const rankDone = events.filter((e) => e.kind?.startsWith("rank.") && e.status !== "running").length
@@ -592,10 +609,10 @@ export default function LivePage() {
     return !last ? "none" : last.status === "running" ? "running" : last.status === "error" ? "failed" : "none"
   }
 
-  const verdicts = useMemo(() => events.filter((e) => e.kind === "cre.verify" && e.status !== "running"), [events])
+  const verdicts = useMemo(() => shown.filter((e) => e.kind === "cre.verify" && e.status !== "running"), [shown])
   const lastVerdict = verdicts[verdicts.length - 1]
 
-  const nowEv = running[0] ?? events[events.length - 1]
+  const nowEv = running[0] ?? shown[shown.length - 1]
 
   // fresh-row highlight: ids not seen before this render
   const fresh = useMemo(() => {
@@ -768,7 +785,7 @@ export default function LivePage() {
                 </div>
                 <div className="lv-stat"><div className="k">Elapsed</div><div className="v lv-mono">{offset(elapsed)}</div></div>
                 <div className="lv-stat"><div className="k">Credits</div><div className="v lv-mono">{task.credits ?? "—"}</div></div>
-                <div className="lv-stat"><div className="k">Steps</div><div className="v lv-mono">{events.filter((e) => e.status !== "stage").length}</div></div>
+                <div className="lv-stat"><div className="k">Steps</div><div className="v lv-mono">{shown.filter((e) => e.status !== "stage").length}</div></div>
                 <div className="lv-stat"><div className="k">Services</div><div className="v lv-mono">{services.length}</div></div>
                 {multi && <div className="lv-stat"><div className="k">Agents</div><div className="v lv-mono">{agents.length}</div></div>}
               </div>
@@ -803,7 +820,7 @@ export default function LivePage() {
                 {multi && (
                   <div className="lv-filters">
                     <button className="lv-fchip all" aria-pressed={!agentFilter} onClick={() => setAgentFilter(null)}>
-                      Everyone <span className="n">{events.length}</span>
+                      Everyone <span className="n">{shown.length}</span>
                     </button>
                     {agents.map(([a, n]) => (
                       <button key={a} className="lv-fchip" aria-pressed={agentFilter === a} onClick={() => setAgentFilter(agentFilter === a ? null : a)}>

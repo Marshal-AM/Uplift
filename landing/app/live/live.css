@@ -303,3 +303,22 @@
 .lv-source { margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--line-soft); font-size: 12.5px; color: var(--text-3); line-height: 1.6; overflow-wrap: anywhere; }
 .lv-source code { font-family: var(--font-geist-mono), ui-monospace, monospace; color: var(--text-2); font-size: 12px; }
 @media (max-width: 700px) { .lv-modal { padding: 18px 16px; } .lv-kv.wide { grid-template-columns: 1fr; } .lv-table .hide-sm { display: none; } }
+
+/* ---------- layout bounds: no column grows past its track ---------- */
+.lv-body > *, .lv-side > *, .lv-card, .lv-hero-main > *, .lv-stat { min-width: 0; }
+.lv-side { grid-template-columns: minmax(0, 1fr); }
+.lv-rank-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.lv-src .lv-mono, .lv-source code { word-break: break-all; }
+.lv-picker { flex: 0 1 auto; }
+.lv-picker-btn { width: 100%; }
+.lv-table-wrap { overflow-x: auto; }
+.lv img, .lv svg { max-width: 100%; }
+@media (max-width: 900px) {
+  .lv-pipe { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 16px 6px; overflow: visible; }
+  .lv-stage { min-width: 0; }
+  .lv-stage::before { display: none; }
+}
+@media (max-width: 700px) {
+  .lv-stat { flex: 1 1 calc(50% - 10px); min-width: 0; }
+  .lv-rank-cols { grid-template-columns: minmax(0, 1fr); }
+}

@@ -13,8 +13,21 @@ from typing import Any
 import httpx
 from PIL import Image
 from uplift_core import llm, trace
+from uplift_core.resilience import Policy
+from uplift_core.resilience import request as _call
 
-TIMEOUT = httpx.Timeout(60, connect=10)
+# Timeouts and retries per service (see uplift_core/resilience.py): each attempt's limit is a few times the slowest
+# answer seen from that service; the budget caps the call, retries included.
+SHOPIFY = Policy("Shopify", attempt_timeout=30, attempts=3, budget=75)
+SERPER = Policy("Serper · Google", attempt_timeout=30, attempts=4, budget=100)
+FIRECRAWL = Policy("Firecrawl", attempt_timeout=60, attempts=2, budget=130)
+BRIGHTDATA = Policy("Bright Data", attempt_timeout=60, attempts=3, budget=150)
+TAVILY = Policy("Tavily", attempt_timeout=90, attempts=3, budget=220)
+GEMINI = Policy("Google Gemini · Nano Banana 2.1", attempt_timeout=120, attempts=3, budget=300)
+WEB = Policy("Web", attempt_timeout=30, attempts=3, budget=75)
+MISC = Policy("Web", attempt_timeout=20, attempts=2, budget=45)
+PAGESPEED = Policy("Google PageSpeed", attempt_timeout=90, attempts=2, budget=190)
+BRIGHTDATA_WAIT_S = 360  # how long a review snapshot may take to build
 
 
 def _env(name: str) -> str:
@@ -29,8 +42,8 @@ def _env(name: str) -> str:
 def gateway(path: str, body: dict[str, Any], read_token: str, step: str = "Reading store data") -> dict[str, Any]:
     with trace.span("Shopify", step, "read-only, through the Uplift gateway", kind="shopify.read",
                     meta={"endpoint": path}):
-        resp = httpx.post(f"{_env('GATEWAY_URL')}{path}", json=body, timeout=TIMEOUT,
-                          headers={"Authorization": f"Bearer {read_token}"})
+        resp = _call("POST", f"{_env('GATEWAY_URL')}{path}", SHOPIFY, json=body,
+                     headers={"Authorization": f"Bearer {read_token}"})
         if resp.status_code == 409:
             raise RuntimeError("STORE_REAUTH_REQUIRED")
         resp.raise_for_status()
@@ -61,12 +74,8 @@ def _serper(endpoint: str, q: str, country: str, language: str, **extra: Any) ->
     body = {"q": q, "gl": country.lower(), "hl": language.lower(), **extra}
     with trace.span("Serper · Google", f"{SERPER_LABEL.get(endpoint, endpoint)}: “{q}”",
                     f"{country.upper()} · {language}", kind=f"serper.{endpoint}") as s:
-        for attempt in range(5):
-            resp = httpx.post(f"https://google.serper.dev/{endpoint}", json=body, timeout=TIMEOUT,
-                              headers={"X-API-KEY": _env("SERPER_API_KEY")})
-            if resp.status_code not in (429, 500, 502, 503, 504) or attempt == 4:
-                break
-            time.sleep(min(30, 2 ** attempt))
+        resp = _call("POST", f"https://google.serper.dev/{endpoint}", SERPER, json=body,
+                     headers={"X-API-KEY": _env("SERPER_API_KEY")})
         resp.raise_for_status()
         data = resp.json()
         found = data.get(SERPER_RESULTS.get(endpoint, ""), [])
@@ -104,7 +113,7 @@ def scrape(url: str, schema: dict | None = None, formats: list | None = None) ->
         fmts = [*fmts, {"type": "json", "schema": schema}]
     with trace.span("Firecrawl", f"Reading page {_short(url)}", "rendering and extracting" +
                     (" structured data" if schema else " text"), kind="firecrawl", meta={"url": url}) as s:
-        resp = _request("POST", "https://api.firecrawl.dev/v2/scrape", json={"url": url, "formats": fmts},
+        resp = _request("POST", "https://api.firecrawl.dev/v2/scrape", FIRECRAWL, json={"url": url, "formats": fmts},
                         headers={"Authorization": f"Bearer {_env('FIRECRAWL_API_KEY')}"})
         data = resp.json()["data"]
         s.detail = f"{len(data.get('markdown') or ''):,} characters read" + (" + structured fields" if schema else "")
@@ -121,8 +130,8 @@ def _short(url: str) -> str:
 
 def fetch_bytes(url: str) -> bytes:
     with trace.span("Web", f"Downloading {_short(url)}", kind="download") as s:
-        resp = httpx.get(url, timeout=TIMEOUT, follow_redirects=True,
-                         headers={"User-Agent": "Mozilla/5.0 (compatible; UpliftBot/1.0; +https://uplift.example)"})
+        resp = _call("GET", url, WEB, follow_redirects=True,
+                     headers={"User-Agent": "Mozilla/5.0 (compatible; UpliftBot/1.0; +https://uplift.example)"})
         resp.raise_for_status()
         s.detail = f"{len(resp.content) / 1024:,.0f} KB"
         return resp.content
@@ -137,17 +146,18 @@ def amazon_reviews(url: str, max_reviews: int = 300) -> list[dict[str, Any]]:
                     kind="brightdata", meta={"url": url}) as s:
         resp = _request("POST",
                         "https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_le8e811kzy4ggddlq&format=json",
-                        json=[{"url": url, "max_reviews": max_reviews}], headers=headers)
-        if resp.status_code == 202:  # still collecting: poll the snapshot
+                        BRIGHTDATA, json=[{"url": url, "max_reviews": max_reviews}], headers=headers)
+        if resp.status_code == 202:  # still collecting: poll the snapshot, within a fixed wait
             snapshot = resp.json()["snapshot_id"]
-            for _ in range(60):
+            until = time.monotonic() + BRIGHTDATA_WAIT_S
+            while True:
                 time.sleep(10)
                 resp = _request("GET", f"https://api.brightdata.com/datasets/v3/snapshot/{snapshot}?format=json",
-                                headers=headers)
+                                BRIGHTDATA, headers=headers)
                 if resp.status_code == 200:
                     break
-            else:
-                raise TimeoutError(f"Bright Data snapshot {snapshot} not ready")
+                if time.monotonic() > until:
+                    raise TimeoutError(f"Bright Data snapshot {snapshot} not ready after {BRIGHTDATA_WAIT_S} s")
         data = resp.json()
         s.detail = f"{len(data) if isinstance(data, list) else 0} reviews collected"
         return data
@@ -168,12 +178,8 @@ def _tavily(path: str, body: dict[str, Any]) -> dict[str, Any]:
     step = (f"Finding Reddit threads: “{body.get('query')}”" if path == "search"
             else f"Reading {len(body.get('urls', []))} Reddit threads")
     with trace.span("Tavily", step, kind=f"tavily.{path}") as s:
-        for attempt in range(3):
-            resp = httpx.post(f"https://api.tavily.com/{path}", json=body, timeout=httpx.Timeout(120),
-                              headers={"Authorization": f"Bearer {_env('TAVILY_API_KEY')}"})
-            if resp.status_code not in (429, 500, 502, 503, 504):
-                break
-            time.sleep(2 ** attempt * 3)
+        resp = _call("POST", f"https://api.tavily.com/{path}", TAVILY, json=body,
+                     headers={"Authorization": f"Bearer {_env('TAVILY_API_KEY')}"})
         resp.raise_for_status()
         data = resp.json()
         s.detail = f"{len(data.get('results', []))} {'threads found' if path == 'search' else 'threads read'}"
@@ -243,23 +249,11 @@ def grammar_issues(text: str, language: str = "en-US") -> list[dict[str, Any]]:
 
 # --- Images: Grok vision (reading, fidelity checks), Gemini Nano Banana 2.1 (studio shots, scenes) -------
 
-RETRYABLE = {429, 500, 502, 503, 504}
-
-
-def _request(method: str, url: str, **kwargs: Any) -> httpx.Response:
-    """HTTP call with exponential backoff on throttling and transient errors."""
-    for attempt in range(5):
-        try:
-            resp = httpx.request(method, url, timeout=httpx.Timeout(300, connect=10), **kwargs)
-        except httpx.TransportError:
-            if attempt == 4:
-                raise
-        else:
-            if resp.status_code not in RETRYABLE or attempt == 4:
-                resp.raise_for_status()
-                return resp
-        time.sleep(min(30, 2 ** attempt))
-    raise RuntimeError("unreachable")
+def _request(method: str, url: str, policy: Policy, **kwargs: Any) -> httpx.Response:
+    """A call under its service's timeout and retry policy; an error answer raises."""
+    resp = _call(method, url, policy, **kwargs)
+    resp.raise_for_status()
+    return resp
 
 
 def _shrink(image: bytes, max_pixels: int, fmt: str = "PNG") -> bytes:
@@ -286,7 +280,7 @@ def _gemini_image(instruction: str, photo: bytes, label: str = "Generating an im
     """Gemini Nano Banana 2.1 (Interactions API): an edited render of the merchant's product photo, 2K square JPEG."""
     with trace.span("Google Gemini · Nano Banana 2.1", label, "from the merchant's own product photo · 2K square",
                     kind="gemini.image", meta={"instruction": instruction}) as s:
-        resp = _request("POST", "https://generativelanguage.googleapis.com/v1beta/interactions",
+        resp = _request("POST", "https://generativelanguage.googleapis.com/v1beta/interactions", GEMINI,
                         headers={"x-goog-api-key": _env("GEMINI_API_KEY")}, json={
             "model": "gemini-nano-banana-2.1",
             "input": [{"type": "text", "text": instruction},
@@ -327,7 +321,7 @@ def scene_shot(photo: bytes, scene: str) -> bytes:
 
 def public_holidays(year: int, country: str) -> list[dict[str, Any]]:
     with trace.span("Nager.Date", f"Public holidays {year} · {country.upper()}", kind="holidays") as s:
-        resp = httpx.get(f"https://date.nager.at/api/v3/PublicHolidays/{year}/{country.upper()}", timeout=TIMEOUT)
+        resp = _call("GET", f"https://date.nager.at/api/v3/PublicHolidays/{year}/{country.upper()}", MISC)
         out = resp.json() if resp.status_code == 200 else []
         s.detail = f"{len(out)} holidays"
         return out
@@ -335,8 +329,8 @@ def public_holidays(year: int, country: str) -> list[dict[str, Any]]:
 
 def pagespeed(url: str) -> dict[str, Any]:
     with trace.span("Google PageSpeed", f"Mobile speed test of {_short(url)}", kind="pagespeed"):
-        resp = httpx.get("https://www.googleapis.com/pagespeedonline/v5/runPagespeed", timeout=httpx.Timeout(120),
-                         params={"url": url, "strategy": "mobile", "key": _env("GOOGLE_API_KEY")})
+        resp = _call("GET", "https://www.googleapis.com/pagespeedonline/v5/runPagespeed", PAGESPEED,
+                     params={"url": url, "strategy": "mobile", "key": _env("GOOGLE_API_KEY")})
         resp.raise_for_status()
     audits = resp.json()["lighthouseResult"]["audits"]
     return {
