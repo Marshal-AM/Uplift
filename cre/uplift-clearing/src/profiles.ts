@@ -385,7 +385,7 @@ const leo: Profile = {
       checks: [
         check("FAQ grounding", faq.length ? atLeast(ratio(faq.filter((f) => (f.fact_ids ?? []).some((i: string) => facts.has(i))).length, faq.length), 0.8) : 1, 20),
         check("Search-query coverage", faq.length ? atLeast(covered / 3, 1) : 1, 10),
-        check("Comparison sourcing", !comp || (comp.evidence ?? []).some((u: string) => isHttps(u)), 15),
+        check("Comparison sourcing", !comp || Object.values(comp.evidence ?? []).some((u) => isHttps(u as string)), 15),
         check("Article", !article || ((Math.abs(article.word_count - target) / target <= 0.4)
           && links.filter((l) => !l.startsWith("http") || !shop || norm(l).includes(shop)).length === links.length
           && (!articleOp || articleOp.input.isPublished === false)), 20),
