@@ -36,6 +36,25 @@ def margin(price: float, discount: float, cost: float, shipping: float) -> float
     return (net - cost - shipping) / net if net > 0 else -1.0
 
 
+CODES_QUERY = """{ codeDiscountNodes(first: 250) { nodes { codeDiscount {
+  ... on DiscountCodeBasic { codes(first: 10) { nodes { code } } } } } } }"""
+
+
+def existing_codes(ctx: Context) -> set[str]:
+    if not ctx.read_token:
+        return set()
+    nodes = tools.store_query(ctx.read_token, CODES_QUERY)["codeDiscountNodes"]["nodes"]
+    return {c["code"].upper() for n in nodes for c in ((n.get("codeDiscount") or {}).get("codes") or {}).get("nodes", [])}
+
+
+def unique_code(code: str, taken: set[str]) -> str:
+    """The code itself when free, else the first free CODE2, CODE3, …"""
+    candidate, n = code, 2
+    while candidate in taken:
+        candidate, n = f"{code[:18]}{n}", n + 1
+    return candidate
+
+
 def run(inputs: dict, tracer) -> str:
     ctx = Context.from_inputs(inputs)
     out = Deliverable("marcus", "Marcus", ctx)
@@ -77,6 +96,7 @@ def run(inputs: dict, tracer) -> str:
               for m, d, n in RETAIL_EVENTS if date(y, m, d) > today][:8]
     window = (ctx.get("promo_start"), ctx.get("promo_end"))
 
+    taken = existing_codes(ctx)  # Shopify discount codes are unique per store
     strategy = llm.structured(
         f"Product: {product.get('title') or ctx.get('product')}\nPrice {price}, unit cost {cost}, shipping {shipping}, "
         f"margin floor {floor:.0%}. Max allowed discount: {max_pct}%.\nMarket price bands: {bands}\n"
@@ -84,7 +104,8 @@ def run(inputs: dict, tracer) -> str:
         f"{[h['date'] + ' ' + h['localName'] for h in holidays if h['date'] > str(today)][:10]}\n"
         f"Goal: {ctx.get('goal', 'launch')}. Merchant window: {window}. Limits: {ctx.get('discount_limits', 'none')}\n"
         "Recommend positioning (premium/parity/value) with advisory list-price guidance, and 1–4 promotions. "
-        f"Each promotion's percentage MUST be ≤ {max_pct}. Dates must be in the future (YYYY-MM-DD).",
+        f"Each promotion's percentage MUST be ≤ {max_pct}. Dates must be in the future (YYYY-MM-DD). "
+        f"Codes already used in this store (do not reuse): {sorted(taken)[:50] or 'none'}.",
         {"type": "object", "properties": {
             "positioning": {"type": "string", "enum": ["premium", "parity", "value"]},
             "price_guidance": {"type": "string"}, "rationale": {"type": "string"},
@@ -103,7 +124,8 @@ def run(inputs: dict, tracer) -> str:
         pct = float(p["percentage"])
         if margin(price, price * pct / 100, cost, shipping) < floor or starts <= now or ends <= starts:
             continue  # never ship a code that breaks the floor or isn't schedulable
-        code = p["code"].upper().replace(" ", "")[:20]
+        code = unique_code(p["code"].upper().replace(" ", "")[:20], taken)
+        taken.add(code)
         codes.append({**p, "code": code, "starts": starts.isoformat(), "ends": ends.isoformat()})
         out.changeset.append({"op": "discount.create", "input": {
             "title": p["name"], "code": code, "startsAt": starts.isoformat(), "endsAt": ends.isoformat(),
