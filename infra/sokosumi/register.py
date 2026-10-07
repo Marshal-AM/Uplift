@@ -47,9 +47,8 @@ def listing_args(role: str, worker_url: str) -> list[str]:
     item = LISTINGS[role]
     caps = "tasks,chat" if role in CHAT else "tasks"
     args = ["--caption", item["caption"], "--description", item["description"], "--capability", caps]
-    for field, flag in (("company", "--company"), ("url", "--url"), ("image", "--image")):
-        if item.get(field):  # optional listing fields: company name, website, avatar URL
-            args += [flag, item[field]]
+    if item.get("url"):  # website; the avatar is uploaded separately (Core takes it as a file, not a field)
+        args += ["--url", item["url"]]
     if role in CHAT:
         args += ["--base-url", f"{worker_url.rstrip('/')}/v1"]
     return args
