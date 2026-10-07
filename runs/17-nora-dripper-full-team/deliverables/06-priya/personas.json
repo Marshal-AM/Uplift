@@ -1,0 +1,124 @@
+[
+  {
+    "name": "Taste-driven pour-over switcher",
+    "attributes": [
+      {
+        "attribute": "Prioritizes cleaner taste and faster cleanup vs French press or machines",
+        "review_ids": [
+          "ef086fc218fb",
+          "d31bcf0a1765",
+          "e64a1d17163c",
+          "d03bd15617f7"
+        ]
+      },
+      {
+        "attribute": "Values reliable excellent cup once grind is dialed",
+        "review_ids": [
+          "fd7c80176328",
+          "d31bcf0a1765",
+          "e64a1d17163c",
+          "2a2599056ac8"
+        ]
+      },
+      {
+        "attribute": "Likes simple, tinkerer-friendly workflow over single-serve",
+        "review_ids": [
+          "ef086fc218fb",
+          "d31bcf0a1765",
+          "fd7c80176328"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Flow-rate optimizer",
+    "attributes": [
+      {
+        "attribute": "Seeks single large hole for faster brew than multi-hole drippers",
+        "review_ids": [
+          "d31bcf0a1765",
+          "d03bd15617f7",
+          "4f00e4fb41c9",
+          "2fdef277c6cf"
+        ]
+      },
+      {
+        "attribute": "Pairs dripper choice with fast filters for consistency",
+        "review_ids": [
+          "4f00e4fb41c9",
+          "2fdef277c6cf",
+          "d90d01b342a5"
+        ]
+      },
+      {
+        "attribute": "Compares flow and taste favorably to Kalita or stainless multi-hole",
+        "review_ids": [
+          "d03bd15617f7",
+          "2fdef277c6cf",
+          "10889849482c"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Design and durability buyer",
+    "attributes": [
+      {
+        "attribute": "Drawn to distinctive ceramic look and tactile finish",
+        "review_ids": [
+          "176db75fa143",
+          "4ee243305b77",
+          "3b03e367be70",
+          "f3d332bb1903"
+        ]
+      },
+      {
+        "attribute": "Chooses ceramic or stainless so it lasts with hot water",
+        "review_ids": [
+          "ef086fc218fb",
+          "71ba043bdfbc",
+          "057909c896b2",
+          "01c0858e167d"
+        ]
+      },
+      {
+        "attribute": "Wants stable, non-gimmicky base and easy daily use",
+        "review_ids": [
+          "75bc82f083d4",
+          "ab80674e1d7e",
+          "057909c896b2"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Specialty dripper enthusiast",
+    "attributes": [
+      {
+        "attribute": "Loves underrated drippers like UFO when filters perform",
+        "review_ids": [
+          "ebceb22f1ecd",
+          "5725030c76d2",
+          "0e53ed96ae6e",
+          "fbf6b75183e1"
+        ]
+      },
+      {
+        "attribute": "Frustrated when filters or shipping are hard to get",
+        "review_ids": [
+          "0e53ed96ae6e",
+          "acb67a6ac3ac",
+          "b8b3d8c41738"
+        ]
+      },
+      {
+        "attribute": "Switches back to V60 if stability or cups suffer",
+        "review_ids": [
+          "75bc82f083d4",
+          "a255bda47f0f",
+          "a51a8ff349aa"
+        ]
+      }
+    ]
+  }
+]

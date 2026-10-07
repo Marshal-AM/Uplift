@@ -1,0 +1,36 @@
+{
+  "result_hash": "d6c3ebbdd0ef921a49427bae74f06c28ad01c903afd79f08a31a6503a16bdb33",
+  "at": "2026-10-07T12:54:59+00:00",
+  "agent": "Ruth",
+  "artifacts": [
+    {
+      "mime": "text/markdown",
+      "name": "compliance_report.md",
+      "sha256": "ff35f8ada162bf04f916d7c7afc6b232a4f51a08ac56b982f57883ed2bbb3718",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/ff35f8ada162bf04f916d7c7afc6b232a4f51a08ac56b982f57883ed2bbb3718/compliance_report.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "compliance_report.json",
+      "sha256": "7e3f79db67d87186c97d4f8297651b1d755c25acd9a05b566a937ba08a2b0ddf",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/7e3f79db67d87186c97d4f8297651b1d755c25acd9a05b566a937ba08a2b0ddf/compliance_report.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [],
+  "input_hash": "7d84fb936cce99a306330edc312d3bc517373301bebe07007004f326f70f8985",
+  "job_or_task_id": "01a11663-e114-73e8-bb4f-db0e5967eee9:ruth",
+  "profile": "ruth@5.0.0",
+  "role": "ruth",
+  "self_checks": {
+    "blocked": false,
+    "high": 4,
+    "unresolved": []
+  },
+  "summary_md": "**Pass** · 8 findings (4 high), 8 safe rewrites.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "3d4e72fe38b4c55b889c14371bc9f3a62faa24b32d6be79840f1555863ffe299",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/3d4e72fe38b4c55b889c14371bc9f3a62faa24b32d6be79840f1555863ffe299/verification_bundle.json"
+  }
+}

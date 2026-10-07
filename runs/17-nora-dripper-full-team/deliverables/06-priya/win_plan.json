@@ -1,0 +1,47 @@
+[
+  {
+    "finding_id": "love:taste",
+    "action_type": "listing claim",
+    "action": "Lead with clean, excellent pour-over taste once grind is set; show simple cleanup vs machines and French press."
+  },
+  {
+    "finding_id": "love:flow rate",
+    "action_type": "proof image",
+    "action": "Show brew-time comparison of single large hole vs multi-hole drippers with recommended fast filters."
+  },
+  {
+    "finding_id": "love:design",
+    "action_type": "ad angle",
+    "action": "Feature matte/gloss ceramic visuals and color options as a countertop piece that still brews well."
+  },
+  {
+    "finding_id": "love:durability",
+    "action_type": "listing claim",
+    "action": "Emphasize ceramic body that handles boiling water and lasts if not dropped."
+  },
+  {
+    "finding_id": "love:cleaning",
+    "action_type": "FAQ",
+    "action": "FAQ: rinse-only cleanup, no hard-to-reach parts, versus French press and multi-hole metal drippers."
+  },
+  {
+    "finding_id": "complaint:stability",
+    "action_type": "product improvement",
+    "action": "Ship a connected or weighted base and optional handle so swirl stays stable."
+  },
+  {
+    "finding_id": "complaint:price/value",
+    "action_type": "offer/guarantee",
+    "action": "Bundle common filters and a taste-guarantee window against established V60 alternatives."
+  },
+  {
+    "finding_id": "complaint:filters accessibility",
+    "action_type": "FAQ",
+    "action": "List compatible widely stocked filters and sell them in the same cart to cut shipping friction."
+  },
+  {
+    "finding_id": "wish:base",
+    "action_type": "product improvement",
+    "action": "Offer a hard plastic or stainless base option instead of silicone-only."
+  }
+]

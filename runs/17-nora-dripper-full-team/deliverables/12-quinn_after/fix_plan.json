@@ -1,0 +1,20 @@
+[
+  {
+    "fix": "Optimize product catalog structure, collections, and feed attributes to improve organization and discoverability within categories.",
+    "specialist": "oskar",
+    "impact": "high",
+    "price": 1.5
+  },
+  {
+    "fix": "Enhance product copy and descriptions to better persuade customers and highlight benefits.",
+    "specialist": "clara",
+    "impact": "high",
+    "price": 2.0
+  },
+  {
+    "fix": "Address trust signals by incorporating social proof and addressing potential customer concerns from reviews.",
+    "specialist": "priya",
+    "impact": "medium",
+    "price": 1.5
+  }
+]

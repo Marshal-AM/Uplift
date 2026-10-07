@@ -1,0 +1,146 @@
+{
+  "result_hash": "d9fbc234f16e37b9d7c0aa38bbc657fa1ac9b07061cae05856413d80a6aa7d0b",
+  "at": "2026-10-07T12:51:56+00:00",
+  "agent": "Priya",
+  "artifacts": [
+    {
+      "mime": "text/markdown",
+      "name": "competitor_sentiment_report.md",
+      "sha256": "7b1a9b097e3d10ba420c3f428d627a32c67c82d08af4480995567536bac60178",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/7b1a9b097e3d10ba420c3f428d627a32c67c82d08af4480995567536bac60178/competitor_sentiment_report.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "findings.json",
+      "sha256": "c270a58ad599d9cc066bfa2afdafd1d8a016381c1b4c334030f093d9deeb08d2",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/c270a58ad599d9cc066bfa2afdafd1d8a016381c1b4c334030f093d9deeb08d2/findings.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "coded_reviews.json",
+      "sha256": "050b7ab3dc15d93b469be0b6ed241d3f52b2c0ad38d0e7242d97203a1afca8bb",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/050b7ab3dc15d93b469be0b6ed241d3f52b2c0ad38d0e7242d97203a1afca8bb/coded_reviews.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "personas.json",
+      "sha256": "da9fe7054c5d3e4f0a85c50546e8f63b52edc32dd30fa10c30393d2c1463e48e",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/da9fe7054c5d3e4f0a85c50546e8f63b52edc32dd30fa10c30393d2c1463e48e/personas.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "win_plan.json",
+      "sha256": "96bd83a739de346b9b8098af110716a23168b99227cca1de59f48e681f62f367",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/96bd83a739de346b9b8098af110716a23168b99227cca1de59f48e681f62f367/win_plan.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [
+    {
+      "claim": "love: taste",
+      "excerpt": "This thing makes a really nice and clean cup. I like how simple this thing is as there's nothing difficult to clean and should last forever as long as I don't drop it. I like tinkering so this fits my need a lot better than the single serve function on my fellow aiden.",
+      "source_url": "https://www.hario-usa.com/products/v60-ceramic-coffee-dripper-02-classic?srsltid=AU7gw4V6iSCxkQTV2BxXxGzTUuS2HrRlmnfKxRXWKtLhaUQGWKboOIMz"
+    },
+    {
+      "claim": "love: flow rate",
+      "excerpt": "I have made the switch from French press to pore-over several years ago with a dripper I got from World Market (pictured on right) and it was a noticeable difference in taste not to mention quicker cleanup. Recently I’ve seen drippers with three holes and thought it would be better as the original o",
+      "source_url": "https://www.amazon.com/clp/B000P4D5HG"
+    },
+    {
+      "claim": "love: design",
+      "excerpt": "I’ve seen them and the mix n match bit is slightly interesting but honestly just a gimmick, and they are attractive. Can’t see them as worth the price over more established alternatives, but if someone finds them compelling in some way they’ll do just fine at making coffee.",
+      "source_url": "https://www.reddit.com/r/pourover/comments/1oinxb3/nobody_has_talked_about_this_dripper_palatti"
+    },
+    {
+      "claim": "love: dripper",
+      "excerpt": "It's a great dripper! Very underrated IMO. I think the type A filters are excellent too!",
+      "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion"
+    },
+    {
+      "claim": "love: durability",
+      "excerpt": "This thing makes a really nice and clean cup. I like how simple this thing is as there's nothing difficult to clean and should last forever as long as I don't drop it. I like tinkering so this fits my need a lot better than the single serve function on my fellow aiden.",
+      "source_url": "https://www.hario-usa.com/products/v60-ceramic-coffee-dripper-02-classic?srsltid=AU7gw4V6iSCxkQTV2BxXxGzTUuS2HrRlmnfKxRXWKtLhaUQGWKboOIMz"
+    },
+    {
+      "claim": "love: cleaning",
+      "excerpt": "This thing makes a really nice and clean cup. I like how simple this thing is as there's nothing difficult to clean and should last forever as long as I don't drop it. I like tinkering so this fits my need a lot better than the single serve function on my fellow aiden.",
+      "source_url": "https://www.hario-usa.com/products/v60-ceramic-coffee-dripper-02-classic?srsltid=AU7gw4V6iSCxkQTV2BxXxGzTUuS2HrRlmnfKxRXWKtLhaUQGWKboOIMz"
+    },
+    {
+      "claim": "complaint: stability",
+      "excerpt": "I had one and didn’t like the workflow. Without the handle and the base that isn’t connected, it’s difficult to swirl and isn’t super stable in the base. It’s an interesting concept to be able to switch things up, but honestly, I made better cups with a V60 so I stuck with old faithful",
+      "source_url": "https://www.reddit.com/r/pourover/comments/1oinxb3/nobody_has_talked_about_this_dripper_palatti"
+    },
+    {
+      "claim": "complaint: price/value",
+      "excerpt": "I’ve seen them and the mix n match bit is slightly interesting but honestly just a gimmick, and they are attractive. Can’t see them as worth the price over more established alternatives, but if someone finds them compelling in some way they’ll do just fine at making coffee.",
+      "source_url": "https://www.reddit.com/r/pourover/comments/1oinxb3/nobody_has_talked_about_this_dripper_palatti"
+    },
+    {
+      "claim": "complaint: workflow",
+      "excerpt": "I had one and didn’t like the workflow. Without the handle and the base that isn’t connected, it’s difficult to swirl and isn’t super stable in the base. It’s an interesting concept to be able to switch things up, but honestly, I made better cups with a V60 so I stuck with old faithful",
+      "source_url": "https://www.reddit.com/r/pourover/comments/1oinxb3/nobody_has_talked_about_this_dripper_palatti"
+    },
+    {
+      "claim": "complaint: design",
+      "excerpt": "Sounds like I’m in the minority on this one but that is tacky af looking 🤣",
+      "source_url": "https://www.reddit.com/r/pourover/comments/1pm1mkt/the_hario_alpha_snake_dripper"
+    },
+    {
+      "claim": "complaint: filters accessibility",
+      "excerpt": "I own a ufo. I also love it. I just wish their filters could be a little bit more accessible online.",
+      "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion"
+    },
+    {
+      "claim": "complaint: shipping",
+      "excerpt": "I really want to try them, it's just that shipping the filters to my country is expensive, but I will give it the opportunity in the future",
+      "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion"
+    },
+    {
+      "claim": "complaint: color",
+      "excerpt": "It’s only the color…it’s definitely red, but my personal preference is a deeper red especially since the color lightens on the raised areas. I’m still very happy with the purchase. I adore Hario products!",
+      "source_url": "https://www.hario-usa.com/products/v60-ceramic-coffee-dripper-02-classic?srsltid=AU7gw4V6iSCxkQTV2BxXxGzTUuS2HrRlmnfKxRXWKtLhaUQGWKboOIMz"
+    },
+    {
+      "claim": "complaint: base",
+      "excerpt": "Love this in stainless. It is not breakable! I do wish the base was hard plastic, or stainless, instead of silicone.",
+      "source_url": "https://prima-coffee.com/equipment/hario/v60-02?srsltid=AU7gw4ULuggUAXYyJbS3jdVYk7wdbJUezrGT8zlCbW-y8R5KoUVGOblj"
+    },
+    {
+      "claim": "wish: durability",
+      "excerpt": "Love this in stainless. It is not breakable! I do wish the base was hard plastic, or stainless, instead of silicone.",
+      "source_url": "https://prima-coffee.com/equipment/hario/v60-02?srsltid=AU7gw4ULuggUAXYyJbS3jdVYk7wdbJUezrGT8zlCbW-y8R5KoUVGOblj"
+    },
+    {
+      "claim": "wish: base",
+      "excerpt": "Love this in stainless. It is not breakable! I do wish the base was hard plastic, or stainless, instead of silicone.",
+      "source_url": "https://prima-coffee.com/equipment/hario/v60-02?srsltid=AU7gw4ULuggUAXYyJbS3jdVYk7wdbJUezrGT8zlCbW-y8R5KoUVGOblj"
+    },
+    {
+      "claim": "wish: dripper",
+      "excerpt": "I own a ufo. I also love it. I just wish their filters could be a little bit more accessible online.",
+      "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion"
+    },
+    {
+      "claim": "wish: filters accessibility",
+      "excerpt": "I own a ufo. I also love it. I just wish their filters could be a little bit more accessible online.",
+      "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion"
+    },
+    {
+      "claim": "wish: shipping",
+      "excerpt": "I really want to try them, it's just that shipping the filters to my country is expensive, but I will give it the opportunity in the future",
+      "source_url": "https://www.reddit.com/r/pourover/comments/1oz5ylo/i_love_ufo_dripper_its_worth_it_in_my_opinion"
+    }
+  ],
+  "input_hash": "d7a3c4fd717003e0e0d198ae49c20a9f8fb4a763eaafe8b56a2184342cf1d2da",
+  "job_or_task_id": "01a11663-e114-73e8-bb4f-db0e5967eee9:priya",
+  "profile": "priya@5.0.0",
+  "role": "priya",
+  "self_checks": {},
+  "summary_md": "**59 competitor reviews** analysed.\n\n**Top complaints to win on:**\n- stability\n- price/value\n- workflow\n- design\n- filters accessibility",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "9130606f8c972133212ecc2dd112b0d356342d85d93383b5fa8528e0287c3e5d",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/9130606f8c972133212ecc2dd112b0d356342d85d93383b5fa8528e0287c3e5d/verification_bundle.json"
+  }
+}

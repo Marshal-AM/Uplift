@@ -1,0 +1,52 @@
+[
+  {
+    "question": "What is the Dripper D-02?",
+    "answer": "The Dripper D-02 is a ceramic dripper with a capacity of 1-2 cups.",
+    "fact_ids": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ]
+  },
+  {
+    "question": "What material is the Dripper D-02 made from?",
+    "answer": "The Dripper D-02 is made of ceramic.",
+    "fact_ids": [
+      "F2"
+    ]
+  },
+  {
+    "question": "Is the Dripper D-02 a pour over dripper?",
+    "answer": "Yes, the Dripper D-02 is a dripper.",
+    "fact_ids": [
+      "F3"
+    ]
+  },
+  {
+    "question": "What is the capacity of the Dripper D-02?",
+    "answer": "The capacity of the Dripper D-02 is 1-2 cups.",
+    "fact_ids": [
+      "F4"
+    ]
+  },
+  {
+    "question": "Which ceramic coffee dripper holds 1-2 cups?",
+    "answer": "The Dripper D-02 is a ceramic dripper that holds 1-2 cups.",
+    "fact_ids": [
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ]
+  },
+  {
+    "question": "What type of dripper is the D-02?",
+    "answer": "The Dripper D-02 is a ceramic dripper.",
+    "fact_ids": [
+      "F1",
+      "F2",
+      "F3"
+    ]
+  }
+]

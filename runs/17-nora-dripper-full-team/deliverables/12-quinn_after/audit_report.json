@@ -1,0 +1,115 @@
+{
+  "mode": "before_after",
+  "score": 77.3,
+  "deterministic": 75.27,
+  "judge": 2.0,
+  "sections": {
+    "discoverability": 19.0,
+    "persuasion": 12.27,
+    "visuals": 15.0,
+    "trust": 11,
+    "catalog": 8,
+    "compliance": 10
+  },
+  "compliance_hits": [],
+  "rankings": [],
+  "store_search_ranks": [
+    {
+      "keyword": "ceramic coffee dripper",
+      "rank": 1,
+      "results": 8
+    },
+    {
+      "keyword": "pour over coffee maker",
+      "rank": 1,
+      "results": 5
+    },
+    {
+      "keyword": "pour over coffee dripper",
+      "rank": 1,
+      "results": 13
+    },
+    {
+      "keyword": "ceramic pour over",
+      "rank": 1,
+      "results": 5
+    },
+    {
+      "keyword": "single cup pour over",
+      "rank": null,
+      "results": 1
+    },
+    {
+      "keyword": "coffee dripper cone",
+      "rank": 1,
+      "results": 14
+    }
+  ],
+  "page_speed": null,
+  "sales": null,
+  "diagnosis": null,
+  "fixes": [
+    {
+      "fix": "Optimize product catalog structure, collections, and feed attributes to improve organization and discoverability within categories.",
+      "specialist": "oskar",
+      "impact": "high",
+      "price": 1.5
+    },
+    {
+      "fix": "Enhance product copy and descriptions to better persuade customers and highlight benefits.",
+      "specialist": "clara",
+      "impact": "high",
+      "price": 2.0
+    },
+    {
+      "fix": "Address trust signals by incorporating social proof and addressing potential customer concerns from reviews.",
+      "specialist": "priya",
+      "impact": "medium",
+      "price": 1.5
+    }
+  ],
+  "before": {
+    "score": 20.1,
+    "sections": {
+      "discoverability": 2.0,
+      "persuasion": 0.13,
+      "visuals": 6.0,
+      "trust": 0,
+      "catalog": 1,
+      "compliance": 10
+    },
+    "store_search_ranks": [
+      {
+        "keyword": "ceramic coffee dripper",
+        "rank": null,
+        "results": 7
+      },
+      {
+        "keyword": "pour over coffee maker",
+        "rank": null,
+        "results": 4
+      },
+      {
+        "keyword": "pour over coffee dripper",
+        "rank": null,
+        "results": 12
+      },
+      {
+        "keyword": "ceramic pour over",
+        "rank": null,
+        "results": 4
+      },
+      {
+        "keyword": "single cup pour over",
+        "rank": null,
+        "results": 1
+      },
+      {
+        "keyword": "coffee dripper cone",
+        "rank": null,
+        "results": 13
+      }
+    ]
+  },
+  "delta": 57.2
+}

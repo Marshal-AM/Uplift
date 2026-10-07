@@ -1,0 +1,389 @@
+[
+  {
+    "style": "benefit-led and concise",
+    "score": {
+      "items": {
+        "title_length": 5,
+        "seo_title_length": 4,
+        "seo_description_length": 4,
+        "primary_in_title": 5,
+        "primary_in_seo_title": 3,
+        "primary_in_first_100": 0,
+        "secondary_coverage": 0,
+        "objections_answered": 0,
+        "structure": 4,
+        "grounded": 7.0
+      },
+      "total": 32.0,
+      "grounded_ratio": 1.0
+    },
+    "title": "D-02 Coffee Drippers Ceramic Dripper 1-2 Cups",
+    "seo_title": "D-02 Coffee Drippers Ceramic Pour Over",
+    "seo_description": "Discover the Dripper D-02, a ceramic dripper for 1-2 cups of pour over coffee. Simple home brewing with clear design.",
+    "handle": "d-02-coffee-drippers-ceramic",
+    "tags": [
+      "d-02 coffee drippers",
+      "pour over coffee dripper",
+      "ceramic coffee dripper",
+      "pour over dripper ceramic",
+      "ceramic pour over cone",
+      "manual coffee dripper",
+      "drip coffee maker ceramic",
+      "small ceramic coffee dripper",
+      "home pour over drippers",
+      "d-02 coffee dripper review",
+      "pour over coffee dripper ceramic"
+    ],
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Meet the Dripper D-02, a ceramic dripper sized for 1-2 cups that brings warm, straightforward pour over coffee to your home.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F3",
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Why You Will Enjoy It",
+        "fact_ids": []
+      },
+      {
+        "type": "li",
+        "text": "Ceramic material supports clean flavors in every brew.",
+        "fact_ids": [
+          "F2"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Dripper design lets you control the pour for fresh coffee.",
+        "fact_ids": [
+          "F3"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "1-2 cup capacity fits daily personal servings.",
+        "fact_ids": [
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Key Specs",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "The Dripper D-02 is a ceramic dripper with capacity for 1-2 cups.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F3",
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Everyday Use Cases",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Use this ceramic dripper for morning pour over or quiet afternoon cups at home.",
+        "fact_ids": [
+          "F2",
+          "F3",
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Built For Steady Brewing",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "The ceramic dripper form offers a simple workflow and accessible design for filters while delivering solid value for 1-2 cup sessions.",
+        "fact_ids": [
+          "F2",
+          "F3",
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Care And Guarantee",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Rinse the ceramic Dripper D-02 after each use to keep it ready for your next 1-2 cup brew.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F4"
+        ]
+      }
+    ]
+  },
+  {
+    "style": "story-led and vivid",
+    "score": {
+      "items": {
+        "title_length": 5,
+        "seo_title_length": 4,
+        "seo_description_length": 4,
+        "primary_in_title": 5,
+        "primary_in_seo_title": 3,
+        "primary_in_first_100": 0,
+        "secondary_coverage": 0,
+        "objections_answered": 0,
+        "structure": 0,
+        "grounded": 7.0
+      },
+      "total": 28.0,
+      "grounded_ratio": 1.0
+    },
+    "title": "D-02 Coffee Drippers Ceramic Pour Over For 1-2 Cups",
+    "seo_title": "D-02 Coffee Drippers Ceramic 1-2 Cup Pour Over",
+    "seo_description": "Brew a warm cup with the Dripper D-02, a ceramic dripper sized for 1-2 cups. Simple pour over coffee at home, clear and inviting every morning.",
+    "handle": "d-02-coffee-drippers-ceramic",
+    "tags": [
+      "d-02 coffee drippers",
+      "pour over coffee dripper",
+      "ceramic coffee dripper",
+      "pour over dripper ceramic",
+      "ceramic pour over cone",
+      "manual coffee dripper",
+      "drip coffee maker ceramic",
+      "small ceramic coffee dripper",
+      "home pour over drippers",
+      "d-02 coffee dripper review",
+      "pour over coffee dripper ceramic"
+    ],
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Morning light finds the Dripper D-02 waiting on your counter, a ceramic dripper ready to turn quiet water into a small, fragrant cup.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F3"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Why This Ceramic Dripper Fits Your Morning",
+        "fact_ids": []
+      },
+      {
+        "type": "li",
+        "text": "The Dripper D-02 is a ceramic dripper made for slow, hands on pour over coffee.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F3"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Its 1-2 cup size keeps each brew personal and easy to finish while it is still warm.",
+        "fact_ids": [
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Specs At A Glance",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Product name: Dripper D-02. Material: ceramic. Type: dripper. Capacity: 1-2 cups.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F3",
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Where It Belongs In Your Day",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Use the Dripper D-02 when you want one or two cups of pour over coffee at home, from a quiet weekday start to a slow weekend pour.",
+        "fact_ids": [
+          "F1",
+          "F3",
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Steady, Simple, And Worth Keeping Close",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Ceramic construction gives the Dripper D-02 a solid, grounded feel so your pour stays steady. The 1-2 cup capacity keeps the workflow short and clear, and the simple dripper shape is easy to place and use with everyday filters.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F3",
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Care That Keeps It Ready",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Rinse the ceramic Dripper D-02 after each brew so it stays clean and ready for the next 1-2 cups.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F4"
+        ]
+      }
+    ]
+  },
+  {
+    "style": "spec-led and precise",
+    "score": {
+      "items": {
+        "title_length": 5,
+        "seo_title_length": 4,
+        "seo_description_length": 4,
+        "primary_in_title": 5,
+        "primary_in_seo_title": 3,
+        "primary_in_first_100": 0,
+        "secondary_coverage": 0,
+        "objections_answered": 0,
+        "structure": 0,
+        "grounded": 7.0
+      },
+      "total": 28.0,
+      "grounded_ratio": 1.0
+    },
+    "title": "D-02 Coffee Drippers Ceramic Dripper 1-2 Cups",
+    "seo_title": "D-02 Coffee Drippers Ceramic Pour Over",
+    "seo_description": "Shop the Dripper D-02 ceramic coffee dripper for 1-2 cups. A simple pour over dripper ceramic option for home use.",
+    "handle": "d-02-coffee-drippers-ceramic",
+    "tags": [
+      "d-02 coffee drippers",
+      "pour over coffee dripper",
+      "ceramic coffee dripper",
+      "pour over dripper ceramic",
+      "ceramic pour over cone",
+      "manual coffee dripper",
+      "drip coffee maker ceramic",
+      "small ceramic coffee dripper",
+      "home pour over drippers"
+    ],
+    "blocks": [
+      {
+        "type": "h2",
+        "text": "Meet the Dripper D-02",
+        "fact_ids": [
+          "F1",
+          "F3"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The Dripper D-02 is a ceramic dripper made for 1-2 cups of coffee.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F3",
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Key Benefits",
+        "fact_ids": []
+      },
+      {
+        "type": "li",
+        "text": "Ceramic material supports steady pour over brewing.",
+        "fact_ids": [
+          "F2",
+          "F3"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Sized for 1-2 cups so it fits small daily batches.",
+        "fact_ids": [
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Specs",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Product name Dripper D-02. Material ceramic. Type dripper. Capacity 1-2 cups.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F3",
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Everyday Use",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Use this ceramic dripper at home when you want 1-2 cups via pour over.",
+        "fact_ids": [
+          "F2",
+          "F3",
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Why Shoppers Choose It",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "The ceramic dripper design keeps the workflow simple for manual brewing of small cups.",
+        "fact_ids": [
+          "F2",
+          "F3",
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Care Notes",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Rinse the ceramic dripper after each 1-2 cup use.",
+        "fact_ids": [
+          "F2",
+          "F4"
+        ]
+      }
+    ]
+  }
+]

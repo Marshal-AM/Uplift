@@ -1,0 +1,105 @@
+[
+  {
+    "domain": "hario-usa.com",
+    "url": "https://www.hario-usa.com/products/v60-ceramic-coffee-dripper-02-classic?srsltid=AU7gw4V6iSCxkQTV2BxXxGzTUuS2HrRlmnfKxRXWKtLhaUQGWKboOIMz",
+    "title": "V60 Ceramic Coffee Dripper 02 - Classic Colors",
+    "price": 30.5,
+    "compare_at_price": 30.5,
+    "currency": "USD",
+    "claims": [
+      "Handmade from Arita-yaki ceramics",
+      "Conical shape allows for optimal coffee brewing"
+    ],
+    "guarantees": [
+      "Satisfaction guaranteed",
+      "Quality craftsmanship"
+    ],
+    "shipping_returns": "Shipping calculated at checkout. Returns accepted within 30 days.",
+    "bundle_offers": [
+      "Buy V60 Paper Filter for 02 Size Dripper for $6.50"
+    ],
+    "image_count": 3,
+    "has_video": false,
+    "review_count": 5,
+    "rating": 4,
+    "brand": "Hario"
+  },
+  {
+    "domain": "amazon.com",
+    "url": "https://www.amazon.com/clp/B000P4D5HG",
+    "title": "HARIO V60 Ceramic Coffee Dripper, Size 02, White | Handmade Porcelain Coffee Maker with Conical Shape and Spiral Ridges for Heavier Flavor",
+    "price": 25,
+    "compare_at_price": 30.5,
+    "currency": "$",
+    "claims": [
+      "CLASSIC CERAMIC DRIPPER: Specially designed to produce an evenly brewed cup of coffee.",
+      "POUR OVER EXCELLENCE: Specialty cone shape and unique spiral ridges allow for deeper layering of the coffee grounds, producing a deep, rich umami flavor.",
+      "POUR CONTROL: The V60 features a single large hole, improving pour flow and providing users the ultimate freedom.",
+      "TRADITIONAL MEETS MODERN: Our ceramic drippers are made from Arita-yaki, a traditional style of Japanese ceramics.",
+      "FOR BEST USE: Proper grind, amount, and tamping ensure great extraction."
+    ],
+    "guarantees": [
+      "FREE 30-day refund/replacement",
+      "Quick refund, usually issued within 24 hours."
+    ],
+    "shipping_returns": "FREE delivery on orders over $35. Free returns available at select locations within 30 days.",
+    "bundle_offers": [
+      "Buy with Hario V60 Paper Coffee Filter, Size 02, Natural, 100ct for $8.00",
+      "Pairs well with Hario, V60 Range Server Clear 600 Ml for $25.99."
+    ],
+    "image_count": 9,
+    "has_video": true,
+    "review_count": 12088,
+    "rating": 4.7,
+    "brand": "HARIO"
+  },
+  {
+    "domain": "vervecoffee.com",
+    "url": "https://www.vervecoffee.com/products/hario-v60-ceramic-coffee-dripper-white?srsltid=AU7gw4Ug6J5U9Gv4UIhwqlaextxD98amUksiJNKacrZIqcATmxe93jlA",
+    "title": "Hario V60 Ceramic Coffee Dripper - White",
+    "price": 25,
+    "compare_at_price": 0,
+    "currency": "USD",
+    "claims": [
+      "Made in Japan",
+      "Crafted in sleek white porcelain",
+      "Easy to clean",
+      "Easy to use",
+      "1 - 4 cup capacity",
+      "Dimensions: 3.875” H X 4.5” W X 4.5” D"
+    ],
+    "guarantees": [],
+    "shipping_returns": "Free Shipping on orders $35+",
+    "bundle_offers": [],
+    "image_count": 1,
+    "has_video": false,
+    "review_count": 6000,
+    "rating": 5,
+    "brand": "Hario"
+  },
+  {
+    "domain": "prima-coffee.com",
+    "url": "https://prima-coffee.com/equipment/hario/v60-02?srsltid=AU7gw4ULuggUAXYyJbS3jdVYk7wdbJUezrGT8zlCbW-y8R5KoUVGOblj",
+    "title": "Hario V60 Coffee Dripper Size 02",
+    "price": 6.63,
+    "compare_at_price": 13,
+    "currency": "USD",
+    "claims": [
+      "The V60 offers better insulation for improved temperature stability.",
+      "Variety of colors and styles available.",
+      "Ridged design encourages even extraction.",
+      "Made in Japan."
+    ],
+    "guarantees": [
+      "30-day return policy",
+      "Free shipping on orders over $50"
+    ],
+    "shipping_returns": "Ships next business day. Returns accepted within 30 days of purchase.",
+    "bundle_offers": [],
+    "image_count": 14,
+    "has_video": true,
+    "review_count": 114,
+    "rating": 4.9,
+    "brand": "Hario"
+  }
+]

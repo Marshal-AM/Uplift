@@ -1,0 +1,30 @@
+[
+  {
+    "name": "clean_hero",
+    "prompt": "white studio shot",
+    "fidelity": 1,
+    "differences": [],
+    "kept": true
+  },
+  {
+    "name": "scene_1",
+    "prompt": "Bright natural sunlight streaming through a window onto a rustic wooden table with fresh green leaves and a white ceramic mug nearby, soft shadows highlighting textures.",
+    "fidelity": 1,
+    "differences": [],
+    "kept": true
+  },
+  {
+    "name": "scene_2",
+    "prompt": "Sunny outdoor patio scene with light wooden deck, potted herbs in terracotta pots, and a clear glass carafe, vibrant daylight with gentle breeze implied.",
+    "fidelity": 1,
+    "differences": [],
+    "kept": true
+  },
+  {
+    "name": "scene_3",
+    "prompt": "Minimalist kitchen counter in warm morning light, pale marble surface, scattered coffee beans, and a linen cloth, airy and fresh atmosphere.",
+    "fidelity": 1,
+    "differences": [],
+    "kept": true
+  }
+]

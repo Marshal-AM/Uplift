@@ -1,0 +1,32 @@
+[
+  {
+    "fix": "Add trust signals like reviews, guarantees, and secure checkout badges to address zero trust score",
+    "specialist": "leo",
+    "impact": "high",
+    "price": 2.0
+  },
+  {
+    "fix": "Rewrite product descriptions and bullet points to boost persuasion from near-zero",
+    "specialist": "clara",
+    "impact": "high",
+    "price": 2.0
+  },
+  {
+    "fix": "Optimize title, backend keywords, and attributes for better discoverability",
+    "specialist": "kai",
+    "impact": "high",
+    "price": 1.25
+  },
+  {
+    "fix": "Improve catalog structure, collections, and feed completeness",
+    "specialist": "oskar",
+    "impact": "medium",
+    "price": 1.5
+  },
+  {
+    "fix": "Enhance main images, lifestyle shots, and infographics for higher visual score",
+    "specialist": "iris",
+    "impact": "medium",
+    "price": 2.5
+  }
+]
