@@ -146,7 +146,8 @@ class Kodosumi:
         if unknown:
             if time.time() - launched_at > LOST_AFTER_S:
                 role = _runs.pop(fid, (None, 0))[0]
-                trace.emit("Kodosumi", "Agent run never started — relaunching", f"run {fid}", status="error",
+                trace.emit("Kodosumi", "Kodosumi no longer knows this run — relaunching the agent", f"run {fid}",
+                           status="error",
                            span=f"run-{fid}", agent=role, kind="kodosumi.run")
                 raise FlowLost(f"run {fid} never started")
             return "running", None

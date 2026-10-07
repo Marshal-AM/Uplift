@@ -58,10 +58,15 @@ function Move({ from, to }: { from: number | null | undefined; to: number | null
   return null
 }
 
-export function RankCard({ ranks, checking, finished, onOpen }: { ranks: Ranks | null; checking: boolean; finished: boolean; onOpen: () => void }) {
+/** What the trace says about a check that has no stored result yet. */
+export type CheckState = "none" | "running" | "failed"
+
+const Spin = () => <span className="lv-spin" style={{ display: "inline-block", width: 12, height: 12, marginRight: 6 }} />
+
+export function RankCard({ ranks, startState, endState, finished, onOpen }: { ranks: Ranks | null; startState: CheckState; endState: CheckState; finished: boolean; onOpen: () => void }) {
   const start = ranks?.start
   const end = ranks?.end
-  if (!start && !end && !checking) return null
+  if (!start && !end && startState === "none" && endState === "none") return null
   const product = (end ?? start)?.product
   const s = start ? summary(start) : null
   const e = end ? summary(end) : null
@@ -90,7 +95,7 @@ export function RankCard({ ranks, checking, finished, onOpen }: { ranks: Ranks |
               <div className="sub">#1 for {s.top}</div>
             </>
           ) : (
-            <div className="big"><span className="lv-spin" style={{ display: "inline-block", width: 12, height: 12, marginRight: 6 }} />checking…</div>
+            <div className="big">{startState === "running" ? <><Spin />checking…</> : "not recorded"}</div>
           )}
         </div>
         <div className={`lv-rank-col ${e ? "" : "pending"}`}>
@@ -101,7 +106,9 @@ export function RankCard({ ranks, checking, finished, onOpen }: { ranks: Ranks |
               <div className="sub">#1 for {e.top}</div>
             </>
           ) : (
-            <div className="big">{finished ? <><span className="lv-spin" style={{ display: "inline-block", width: 12, height: 12, marginRight: 6 }} />checking…</> : "when it ends"}</div>
+            <div className="big">
+              {endState === "running" || (finished && endState === "none") ? <><Spin />checking…</> : endState === "failed" ? "not recorded" : "when it ends"}
+            </div>
           )}
         </div>
       </div>

@@ -587,7 +587,10 @@ export default function LivePage() {
   const rankDone = events.filter((e) => e.kind?.startsWith("rank.") && e.status !== "running").length
   const ranks = useRanks(API, selected, key, rankDone)
   useEffect(() => setRankOpen(false), [selected])
-  const rankChecking = events.some((e) => e.kind?.startsWith("rank.") && e.status === "running")
+  const checkState = (kind: string): "none" | "running" | "failed" => {
+    const last = events.filter((e) => e.kind === kind).slice(-1)[0]
+    return !last ? "none" : last.status === "running" ? "running" : last.status === "error" ? "failed" : "none"
+  }
 
   const verdicts = useMemo(() => events.filter((e) => e.kind === "cre.verify" && e.status !== "running"), [events])
   const lastVerdict = verdicts[verdicts.length - 1]
@@ -868,7 +871,7 @@ export default function LivePage() {
 
               {/* side */}
               <aside className="lv-side lv-scroll">
-                <RankCard ranks={ranks} checking={rankChecking} finished={task.phase === "done"} onOpen={() => setRankOpen(true)} />
+                <RankCard ranks={ranks} startState={checkState("rank.start")} endState={checkState("rank.end")} finished={task.phase === "done"} onOpen={() => setRankOpen(true)} />
                 <section className="lv-card">
                   <h3>{running.length ? <span className="lv-spin" style={{ width: 12, height: 12 }} /> : null} In progress</h3>
                   {running.length ? (
