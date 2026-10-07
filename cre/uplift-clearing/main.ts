@@ -45,8 +45,13 @@ function verify(runtime: Runtime<Config>, req: Json): Json {
     const job = soko(runtime, "nora", `/v1/jobs/${req.job_id}`)
     if (job.taskId !== req.task_id || !job.result || sha256Hex(job.result) !== req.result_hash)
       return { outcome: "FAIL", score: 0, reasons: ["Job result does not match the delivered manifest"], checks: [] }
+  }
+  if (req.plan_approval_event_id) {  // work done for Nora must be part of the plan the merchant approved
     const roles = planRoles(taskEvents(runtime, "nora", req.task_id), req.plan_approval_event_id)
-    if (!roles?.includes(req.role)) return refundAnd(runtime, req, { outcome: "FAIL", score: 0, reasons: ["Job is outside the approved plan"], checks: [] })
+    if (!roles?.includes(req.role)) {
+      const outside = { outcome: "FAIL", score: 0, reasons: ["Work is outside the approved plan"], checks: [] }
+      return req.mode === "job" ? refundAnd(runtime, req, outside) : outside
+    }
   }
 
   const checks: Check[] = [...local.checks, ...(profile.remote?.(runtime, local.probes) ?? [])]

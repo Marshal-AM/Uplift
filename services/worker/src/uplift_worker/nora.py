@@ -1,11 +1,13 @@
-"""Nora — Uplift Lead. Plans, quotes, hires specialists as escrowed Jobs, gates them through CRE, merges,
-asks for one approval and publishes.
+"""Nora — Uplift Lead. Plans with a price ceiling, runs the specialists, gates them through CRE, merges, bills the
+specialists used, asks for one approval and publishes.
 
-Phases: start → intake → [auth_wait | input_wait] → plan → quote_wait → pay → execute (needs Nora's escrow
-locked before it finishes) → merge → approval_wait → publish → report → deliver → done | failed
+Phases: start → intake → [auth_wait | input_wait] → plan → quote_wait → execute → merge → pay (the price: the
+specialists used) → propose → approval_wait → publish (after the escrow lock) → report → deliver → done | failed
+
+Nora runs each specialist's agent directly (Kodosumi, the same agents registered on Masumi); Chainlink verifies every
+deliverable against the approved plan. The merchant pays once, after the work, for the specialists used.
 """
 
-import contextlib
 import html
 import io
 import json
@@ -22,7 +24,7 @@ from uplift_core.hashing import change_hash, result_hash, sha256_hex
 from uplift_core.score import score
 
 from . import cre, db, payments, runs
-from .clients import Sokosumi
+from .clients import FlowLost, Kodosumi, Sokosumi
 from .config import settings
 from .runs import manifest_from_store
 
@@ -87,8 +89,9 @@ def plan(task: dict, answers: list[str]) -> dict[str, Any]:
 
 
 def quote(roles: list[str], locales: list[str]) -> tuple[list[dict], float]:
+    """The planned specialists and the most the Task can cost (Nora charges only for the ones she ends up using)."""
     prices = settings().prices
-    lines = [{"role": "nora", "units": 1, "credits": prices["nora"]}]
+    lines = []
     for r in roles:
         units = len(locales) if r == "yuki" else 2 if r == "quinn" else 1
         lines.append({"role": r, "units": units, "credits": round(prices[r] * units, 2)})
@@ -189,9 +192,10 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
                                     "total": total, "plan_hash": st["plan_hash"]})
             st["wait_event_id"] = client.event(task_id, status="APPROVAL_REQUIRED", comment=(
                 f"**Plan for {st['baseline_snapshot']['product']['title']}**\n\n{intent['goal']}\n\n"
-                f"| Specialist | Units | Credits |\n|---|---|---|\n{table}\n| **Total** | | **{total}** |\n\n"
-                "Every deliverable is scored and checked by Chainlink before it's paid; failed work is refunded. "
-                "Nothing changes in your store until you approve the final changes.\n\n"
+                f"| Specialist | Units | Credits |\n|---|---|---|\n{table}\n| **At most** | | **{total}** |\n\n"
+                "You pay only for the specialists whose work passes Chainlink's checks: I'll show the final price "
+                f"(at most **{total}** credits) when the work is done. Nothing changes in your store until you "
+                "approve the final changes.\n\n"
                 "Move this Task to **Ready** (or reply **approve**) to start, or reply with changes.\n\n"
                 f"```json\n{plan_json}\n```"))["id"]
             phase = "quote_wait"
@@ -211,19 +215,6 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
                 continue
             st["plan_approval_event_id"] = decision["id"]
             client.event(task_id, status="RUNNING", comment="Approved — starting the work.")
-            phase = "pay" if s.payments_enabled else "execute"
-            save(phase)
-
-        elif phase == "pay":
-            paid = payments.pay(client, task_id, st, "nora", task.get("description") or task.get("name"),
-                                s.prices["nora"], lambda: save("pay"))
-            # credits are debited on acceptance: hire now; the escrow lock is required before approval (below)
-            phase = "execute" if paid else "closed"  # out of credits: Sokosumi already shows OUT_OF_CREDITS
-            save(phase)
-
-        elif phase == "funds_wait":
-            if not payments.funds_locked(st["terms"]):
-                return
             phase = "execute"
             save(phase)
 
@@ -231,15 +222,29 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
             if not step_dag(client, task, st):
                 save(phase)
                 return
-            if st.get("terms") and not payments.funds_locked(st["terms"]):
-                save(phase)  # Nora's own escrow must be locked before anything is proposed for publishing
-                return
             log_timings(task, st)
             phase = "merge"
             save(phase)
 
         elif phase == "merge":
             merge(client, task, st)
+            phase = "pay" if s.payments_enabled else "propose"
+            save(phase)
+
+        elif phase == "pay":
+            # the work is done: reveal the price (the specialists used) and charge it in one Masumi payment; the
+            # escrow settles while the merchant reviews the changes, and publishing waits for it
+            st["bill"] = bill(st)
+            if not st.get("terms"):
+                client.event(task_id, comment=bill_md(st["bill"]))
+            paid = st["bill"]["total"] <= 0 or payments.pay(
+                client, task_id, st, "nora", task.get("description") or task.get("name"), st["bill"]["total"],
+                lambda: save("pay"), dynamic=True)
+            phase = "propose" if paid else "closed"  # out of credits: Sokosumi already shows OUT_OF_CREDITS
+            save(phase)
+
+        elif phase == "propose":
+            propose(client, task, st)
             phase = "approval_wait"
             save(phase)
             return
@@ -260,6 +265,8 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
             save(phase)
 
         elif phase == "publish":
+            if st.get("terms") and not payments.funds_locked(st["terms"]):
+                return  # nothing is published before the payment is locked in escrow
             user_id, org_id = runs.owner(task)
             st["publish"] = cre.trigger("publish", {
                 "task_id": task_id, "coworker": "nora", "user_id": user_id, "org_id": org_id,
@@ -309,15 +316,17 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
 # --- execution -------------------------------------------------------------------------------------
 
 def hire(client: Sokosumi, task: dict, st: dict, node: str, role: str, fields: dict, extra: dict | None = None) -> None:
+    """Run a specialist's agent directly (its Kodosumi flow, the same agent registered on Masumi) for this plan node.
+    No per-agent payment: the merchant pays Nora once, for the specialists used."""
     nodes = st.setdefault("nodes", {})
     n = nodes.setdefault(node, {"role": role, "attempts": 0})
     upstream = {r: v["result_hash"] for r, v in nodes.items() if v.get("result_hash") and v.get("verdict") == "PASS"}
     envelope = {"job_or_task_id": f"{task['id']}:{node}", "fields": fields, "read_token": runs.read_token(task),
                 "store_snapshot": runs.snapshot(task, st["product_id"]), "upstream": upstream,
                 "failure_reasons": n.get("failure_reasons", []), **(extra or {})}
-    job = client.hire(task["id"], settings().agent_ids[role], {**fields, "context": json.dumps(envelope)},
-                      settings().prices[role], f"{role.title()} · {node}")
-    n |= {"job_id": job["id"], "status": "hired", "attempts": n["attempts"] + 1, "node": node, "timeline": {}}
+    fid = Kodosumi().launch(role, {**fields, "context": json.dumps(envelope)})
+    n |= {"fid": fid, "fid_at": time.time(), "status": "hired", "attempts": n["attempts"] + 1, "node": node,
+          "timeline": {}}
     _mark(task, n, "hired")
 
 
@@ -329,12 +338,12 @@ def _mark(task: dict, n: dict, step: str) -> None:
         return
     since_last = now - max(timeline.values(), default=now)
     timeline[step] = now
-    log.info("timing task=%s node=%s attempt=%s job=%s %s +%.0fs (%.0fs since hire)", task["id"], n.get("node"),
-             n["attempts"], n["job_id"], step, since_last, now - timeline.get("hired", now))
+    log.info("timing task=%s node=%s attempt=%s run=%s %s +%.0fs (%.0fs since start)", task["id"], n.get("node"),
+             n["attempts"], n.get("fid"), step, since_last, now - timeline.get("hired", now))
 
 
 def log_timings(task: dict, st: dict) -> None:
-    """One line per Job: each step's offset from its hire (payment_pending → processing is the escrow wait)."""
+    """One line per specialist run: each step's offset from its start."""
     for node, n in st.get("nodes", {}).items():
         timeline = n.get("timeline") or {}
         if "hired" in timeline:
@@ -343,24 +352,28 @@ def log_timings(task: dict, st: dict) -> None:
 
 
 def _delivered(client: Sokosumi, task: dict, n: dict) -> bool:
-    """True once the node's Job has a result to verify; a failed Job is marked for retry (or given up) instead."""
-    job = client.job(n["job_id"])
-    _mark(task, n, f"job:{job['status']}")
-    if job["status"] in ("failed", "payment_failed"):
-        n["failure_reasons"] = [job.get("result") or job["status"]]
+    """True once the node's run has a result to verify; a failed run is marked for retry (or given up) instead."""
+    try:
+        state, text = Kodosumi().status(n["fid"], n.get("fid_at", time.time()))
+    except FlowLost as exc:
+        state, text = "error", str(exc)
+    _mark(task, n, f"run:{state}")
+    if state == "error":
+        n["failure_reasons"] = [(text or "error")[:500]]
         n["status"] = "blocked" if n["attempts"] >= 2 else "retry"
         return False
-    if job["status"] != "completed" or not job.get("result"):
+    if state != "finished":
         return False
-    n["result_hash"] = result_hash(job["result"])
+    n["result_hash"] = result_hash(text)
     return True
 
 
 def _verify(client: Sokosumi, task: dict, st: dict, n: dict, manifest_url: str) -> None:
-    """Gate a delivered Job through CRE: PASS releases it downstream, FAIL (refunded by CRE) is retried once."""
+    """Gate a delivered run through CRE (within the approved plan): PASS releases it downstream and is billed; a
+    FAIL is retried once and never billed."""
     user_id, org_id = runs.owner(task)
     _mark(task, n, "verify:start")
-    verdict = cre.trigger("verify", {"mode": "job", "role": n["role"], "task_id": task["id"], "job_id": n["job_id"],
+    verdict = cre.trigger("verify", {"mode": "task", "role": n["role"], "task_id": task["id"],
                                      "result_hash": n["result_hash"], "manifest_url": manifest_url,
                                      "user_id": user_id, "org_id": org_id,
                                      "plan_approval_event_id": st.get("plan_approval_event_id")})
@@ -369,7 +382,7 @@ def _verify(client: Sokosumi, task: dict, st: dict, n: dict, manifest_url: str) 
     _mark(task, n, f"verify:{verdict['outcome']}")
     client.event(task["id"], comment=f"{n['role'].title()} delivered · Chainlink: **{verdict['outcome']}** "
                                      f"{verdict['score']}/100" + ("" if verdict["outcome"] == "PASS" else
-                                                                  " · refunded, retrying once"))
+                                                                  " · not billed, retrying once"))
     if verdict["outcome"] == "PASS":
         n["status"] = "done"
         return
@@ -434,7 +447,7 @@ def _try(fn, *args) -> Exception | None:
 
 
 def merge(client: Sokosumi, task: dict, st: dict) -> None:
-    """Collect changesets from passing deliverables, run Ruth over them, project the score, ask for approval."""
+    """Collect changesets from passing deliverables, run Ruth over them and project the score."""
     changeset: list[dict] = []
     for n in st["nodes"].values():
         if n.get("verdict") == "PASS" and n["role"] not in ("quinn", "ruth"):
@@ -459,17 +472,41 @@ def merge(client: Sokosumi, task: dict, st: dict) -> None:
     changeset = [op for op in changeset if not _stale_translation(op, projected)]
     st["changeset"] = changeset
     st["change_hash"] = change_hash(changeset)
-    before = score(st["baseline_snapshot"]["product"])["deterministic"]
-    after = score(projected)["deterministic"]
+    st["projection"] = {"before": score(st["baseline_snapshot"]["product"])["deterministic"],
+                        "after": score(projected)["deterministic"], "held": held}
+
+
+def bill(st: dict) -> dict:
+    """The price: every specialist run whose work passed Chainlink, plus Quinn's after-report (it runs once the
+    changes are live). Failed or abandoned runs are not billed."""
+    prices = settings().prices
+    lines = [{"node": node, "role": n["role"], "credits": prices[n["role"]]}
+             for node, n in st["nodes"].items() if n.get("verdict") == "PASS"]
+    if "quinn" in st["plan"]["roles"]:
+        lines.append({"node": "quinn_after", "role": "quinn", "credits": prices["quinn"]})
+    return {"lines": lines, "total": round(sum(line["credits"] for line in lines), 2), "ceiling": st["plan"]["total"]}
+
+
+def bill_md(b: dict) -> str:
+    names = {"quinn": "Quinn (before audit)", "quinn_after": "Quinn (after report)"}
+    rows = "\n".join(f"| {names.get(line['node'], line['node'].replace(':', ' · ').title())} | {line['credits']} |"
+                     for line in b["lines"])
+    return (f"**The work is done.** Your price is the specialists I used:\n\n| Specialist | Credits |\n|---|---|\n{rows}\n"
+            f"| **Total** | **{b['total']}** |\n\n(Quoted at most {b['ceiling']}.)")
+
+
+def propose(client: Sokosumi, task: dict, st: dict) -> None:
+    """Ask the merchant to approve the change set (publishing waits for the payment's escrow lock)."""
+    changeset, p = st["changeset"], st["projection"]
     client.upload(task["id"], "changes.md", runs.changes_md(changeset), "text/markdown")
     blocked = [n["role"] for n in st["nodes"].values() if n["status"] == "blocked"]
     st["wait_event_id"] = client.event(task["id"], status="APPROVAL_REQUIRED", comment=(
-        f"**{len(changeset)} changes ready** (projected core listing score {before:.0f} → {after:.0f} of 95):\n\n"
-        + runs.describe_changes(changeset, st["baseline_snapshot"]["product"],
-                                 runs.category_names(task, changeset))
-        + (f"\n\nNot included (did not pass verification): {', '.join(blocked)}." if blocked else "")
-        + (f"\n\nNot included: the {', '.join(held)} translation, made from copy that is not being published."
-           if held else "")
+        f"**{len(changeset)} changes ready** (projected core listing score {p['before']:.0f} → {p['after']:.0f} of 95):"
+        "\n\n" + runs.describe_changes(changeset, st["baseline_snapshot"]["product"],
+                                        runs.category_names(task, changeset))
+        + (f"\n\nNot included (did not pass verification, not billed): {', '.join(blocked)}." if blocked else "")
+        + (f"\n\nNot included: the {', '.join(p['held'])} translation, made from copy that is not being published."
+           if p["held"] else "")
         + f"\n\nFull diff attached (`changes.md`, change hash `{st['change_hash'][:16]}`). "
         "Ads stay paused and the blog article stays unpublished.\n\n"
         "Move this Task to **Ready** (or reply **approve**) to publish."))["id"]
@@ -516,11 +553,6 @@ def deliver(client: Sokosumi, task: dict, st: dict) -> None:
     client.upload(task["id"], "uplift-launch-pack.zip", pack.getvalue(), "application/zip")
     after = st["nodes"]["quinn_after"]
     report = manifest_from_store(after["result_hash"])["summary_md"] if after.get("result_hash") else ""
-    user_id, org_id = runs.owner(task)
-    for n in st["nodes"].values():
-        if n.get("verdict") and n["status"] == "done":
-            with contextlib.suppress(Exception):  # ratings are best-effort
-                client.rate(settings().agent_ids[n["role"]], 5 if n["verdict"] == "PASS" else 2, (user_id, org_id))
     client.event(task["id"], status="COMPLETED", comment=(
         f"**Done.** Published {len(st['changeset'])} changes. Core listing score now "
         f"{st['publish'].get('after_score', '?')}/95.\n\n{report}\n\nEverything is in `uplift-launch-pack.zip`."))
