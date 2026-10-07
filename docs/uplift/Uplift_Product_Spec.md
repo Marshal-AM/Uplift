@@ -53,7 +53,7 @@ All merchant-facing wording, coworker listings and deliverables are platform-neu
 | "Sell this in Germany and Japan" | Localized listings, local keywords, compliance |
 | "Get my products into Google Shopping without errors" | Catalog and feed fixes, plus a Merchant Center issue report |
 | "Make my product photos convert better" | Image audit, cleanup, lifestyle scenes, channel crops, alt text |
-| Hire any single specialist | Each specialist works standalone as a Sokosumi Coworker, with its own inputs and deliverables |
+| Assign a Task to any single specialist | Each specialist works standalone as a Sokosumi Coworker, with its own inputs, deliverables and fixed price |
 
 ### 1.5 The merchant's journey (everything happens inside Sokosumi)
 1. **Ask.** The merchant does one of three things:
@@ -61,11 +61,12 @@ All merchant-facing wording, coworker listings and deliverables are platform-neu
    - assigns Nora a Task;
    - assigns a Task directly to one specialist.
 2. **Connect the store (once).** If the work needs store data, the Task moves to *Authentication required* with a link. The merchant signs in to their store platform (Shopify in v1) and approves Uplift's scopes. The ads and analytics connection (Google in v1) is optional and only requested when the work needs it.
-3. **Approve the plan and price.** Nora posts the plan as a Task comment: which specialists, in what order, what each delivers and what each costs. The Task moves to *Approval required*. The merchant approves by moving the Task to **Ready** with the status picker, or by replying "approve". Any other reply is a change request.
-4. **The work runs.** Specialists deliver in dependency order. Chainlink checks and scores each deliverable. Work that fails the check is refunded automatically and redone once, with the reasons attached.
-5. **Review the changes.** Nora posts the final change set as a Task comment: a plain-language before/after summary plus an attached diff file. The Task moves to *Approval required* again, and the merchant approves the same way.
-6. **Publish.** Chainlink confirms the approval and the scores, then publishes the approved changes to the store, and creates the ad campaigns in a paused state. It re-reads the store to confirm.
-7. **Report.** The merchant gets:
+3. **Approve the plan and price ceiling.** Nora posts the plan as a Task comment: which specialists, in what order, what each delivers and what each costs, with the total as a ceiling ("at most X credits"). The Task moves to *Approval required*. The merchant approves by moving the Task to **Ready** with the status picker, or by replying "approve". Any other reply is a change request.
+4. **The work runs.** Specialists deliver in dependency order. Chainlink checks and scores each deliverable. Work that fails the check is redone once, with the reasons attached, and failed work is never billed.
+5. **Pay once.** Nora reveals the price: the specialists whose work passed Chainlink, plus Quinn's after-report. It never exceeds the approved ceiling and is charged as one payment from the merchant's credits. A standalone specialist Task is charged its fixed price up front instead.
+6. **Review the changes.** Nora posts the final change set as a Task comment: a plain-language before/after summary plus an attached diff file. The Task moves to *Approval required* again, and the merchant approves the same way.
+7. **Publish.** Once the payment is locked in escrow, Chainlink confirms the approval and the scores, then publishes the approved changes to the store, and creates the ad campaigns in a paused state. It re-reads the store to confirm.
+8. **Report.** The merchant gets:
    - a before/after listing score;
    - what each specialist changed;
    - what each step cost;
@@ -80,7 +81,7 @@ All merchant-facing wording, coworker listings and deliverables are platform-neu
 | **Verified work** | Chainlink CRE independently re-checks and scores every deliverable. It re-fetches cited sources, recomputes the maths and scores, and runs the compliance rules. Only work that passes gets paid. |
 | **Gated execution** | No store change happens without the merchant's approval in Sokosumi and a passing Chainlink result. Agents never hold store credentials. |
 | **Modular** | All 12 specialists are full standalone coworkers. Nora combines any subset. |
-| **No double charge** | Each Job has one escrow at one fixed price. The approved quote caps spend, and Chainlink refunds any hire outside the quote. |
+| **One payment, only for passed work** | A standalone specialist Task is one escrow at its fixed price. A Nora Task is one escrow for the specialists whose work passed Chainlink, capped by the ceiling the merchant approved. Nora has no fee of her own, and Chainlink fails any work outside the approved plan. |
 
 ### 1.7 Scope boundaries (by design)
 - **One engagement, one result.** Each request ends with a published change set and a before/after report.
@@ -93,11 +94,15 @@ All merchant-facing wording, coworker listings and deliverables are platform-neu
 
 ## 2. The team
 
-1 lead and 12 specialists. All 13 are Sokosumi **Coworkers**. The 12 specialists, plus Nora's fee terms, are also **Masumi Agents**, so Nora can hire them as escrowed Jobs. Full details are in the [spec sheet](Uplift_Agent_Spec_Sheet.md).
+1 lead and 12 specialists. All 13 are Sokosumi **Coworkers** and **Masumi Agents**.
+- Each specialist is also a standalone Coworker: merchants assign it Tasks directly, paid through Masumi escrow at its fixed price.
+- Nora runs each specialist's agent directly — the same Kodosumi deployment registered on Masumi as that specialist — and has every run verified by Chainlink. She has no fee of her own: a Nora Task costs the specialists whose work passed.
 
-| # | Name | Sokosumi caption (role) | Core deliverable | Unit · fixed price (tUSDM = credits) |
+Full details are in the [spec sheet](Uplift_Agent_Spec_Sheet.md).
+
+| # | Name | Sokosumi caption (role) | Core deliverable | Unit · price (tUSDM = credits) |
 |---|---|---|---|---|
-| 0 | **Nora** | Uplift Lead · E-commerce Growth Manager | Plan and quote, orchestration, merged launch pack, publishing | Task fee 1.50, plus hired specialists |
+| 0 | **Nora** | Uplift Lead · E-commerce Growth Manager | Plan with a price ceiling, orchestration, merged launch pack, publishing | Dynamic: the specialists whose work passed, plus Quinn's after-report |
 | 1 | **Kai** | Search Demand Analyst | Keyword map with demand signal, intent and clusters, from Google autocomplete, related searches and questions | Per product or topic · 1.25 |
 | 2 | **Rafael** | Competitor & Market Analyst | Competitor matrix: who ranks, prices, claims, offers, gaps | Per product or category · 1.25 |
 | 3 | **Priya** | Competitor Review & Sentiment Analyst | Competitor customer sentiment: loves, complaints, unmet needs, quotes | Per competitor set (up to 5 products) · 1.50 |
@@ -131,38 +136,38 @@ Verified against `masumi-network/sokosumi` commit `5d6d6cf` (2026-10-06).
 | Asking the merchant something | Task event `status: INPUT_REQUIRED` with a comment | The merchant answers with a comment, and the coworker moves the Task on |
 | **Plan approval** and **change approval** | Task event `status: APPROVAL_REQUIRED` with the quote or change set as a comment (plus an attached diff file) | Only a coworker can set this status. The merchant approves by moving the Task to **Ready** (or **Running**) in the status picker — a person may set either status on an `APPROVAL_REQUIRED` Task — or by replying "approve". Either action is recorded as a user-authored Task event. |
 | Store connection | Task event `status: AUTHENTICATION_REQUIRED` with `authenticationUrl` (https) | For store-platform and ads/analytics connections (v1: Shopify, Google) |
-| Nora hiring specialists | `POST /v1/tasks/{taskId}/jobs {agentId, inputData, maxCredits, name}` | Coworker or Soko Bot authentication only, as the assigned collaborator. **Billed to the Task owner's credits.** Sokosumi's buyer wallet funds the Masumi escrow. Web "Hire" is off for users (ADR-0006/0024); this API is the supported route. |
-| Agent pricing for Jobs | Core starts Jobs only for **FREE / FIXED** pricing | Every Uplift Masumi registration uses **Fixed** tUSDM pricing |
-| Reading a Job's result | `GET /v1/jobs/{id}` | Returns status, `result`, `resultHash` and `inputHash` |
-| Refunding a failed Job | `POST /v1/jobs/{id}/refund` | Any collaborator on the Job may call it (Nora's coworker key with `X-Context-*` headers) |
-| Charging a standalone Task | Task event with `masumiPayment` (signed seller terms) | Coworker-only. The balance is checked first; insufficient credits set `OUT_OF_CREDITS`. |
+| Nora's specialist runs | None: the Uplift Worker runs each specialist's Kodosumi deployment directly (§3.3) | Not Sokosumi Jobs, so there is no per-agent escrow, refund or rating, and the specialists need no listing in Sokosumi's agent catalog for Nora to use them. Chainlink verifies every run (§5). |
+| Charging a Task (standalone or Nora) | Task event with `masumiPayment` (signed seller terms from `POST /payment`) | Coworker-only. Core debits the Task owner's credits when it accepts the payment; insufficient credits set `OUT_OF_CREDITS`. Specialists use **Fixed** terms; Nora's carry the revealed price as `RequestedFunds` (Dynamic). |
 | Delivering files | `POST /v1/tasks/{id}/files` | Coworkers may upload. Max 100 MB per file; no SVG. |
 | Acting on the merchant's behalf | `X-Context-User-Id` / `X-Context-Organization-Id` on the coworker key | Core enforces workspace grants |
 | Seller receipt | `GET /v1/tasks/{id}/receipt` (`sokosumi runtime receipt`) | `settled:true` and `txHash` once the Masumi escrow is withdrawn to the seller |
-| Ratings | `POST /v1/agents/{id}/ratings` | After a finished Job. Nora posts a rating consistent with the Chainlink result. |
 | Soko Bot discovery | Soko Bot fit-rates Agents (minimum 0.4) | Keyword-rich captions, descriptions and tags. `SOKO_BOT_ENABLED` defaults to false, so Uplift does not rely on it. |
 
 ### 3.2 Masumi
-- **Registry V2:** 13 registrations (12 specialists plus Nora). Each is a `Web3CardanoV2` source with `pricing: {pricingType: "Fixed"}` in tUSDM:
+- **Registry V2:** 13 registrations (12 specialists plus Nora), each a `Web3CardanoV2` source in tUSDM:
   - unit `16a55b2a349361ff88c03788f93e1e966e5d689605d044fef722ddde0014df10745553444d`;
-  - 6 decimals.
+  - 6 decimals; 1 credit = 1 tUSDM.
+  - **Specialists:** `pricing: {pricingType: "Fixed"}` at their list price.
+  - **Nora:** `supportedPaymentSources[].pricing = {"pricingType": "Dynamic"}`. Each `POST /payment` sets the amount with `RequestedFunds`. This is its own registration, because OpenApi agents cannot be updated on the MPS.
 - **Wallets:** one selling wallet per coworker, for clean per-coworker accounting.
   - Each keeps a collateral UTxO of at least 5 ADA.
   - All are seeded on one Uplift MPS node.
   - Collection address is **null**.
 - **Escrow:** Masumi's escrow (lock → result hash → refund window → withdraw), used as provided.
-- **One payment node** (MPS) for all Uplift selling wallets, with auto-withdraw and refund authorization for failed Jobs.
+- **One payment node** (MPS) for all Uplift selling wallets, with auto-withdraw.
+- **One escrow per Task:** a standalone Task at the specialist's fixed price, or a Nora Task at her revealed price.
 
 ### 3.3 Kodosumi (specialist runtime, Kodosumi 1.2.0 on Ray Serve)
 - **One Ray cluster.** Each specialist is one **Expose** item with a bootstrap YAML (pinned `py_modules` commit zip, pip dependencies, `num_cpus`), booted from Control > Expose.
 - **Sumi endpoints** (`/sumi/{expose}/…`) give each specialist a MIP-003 API:
   - `availability`, `input_schema`, `start_job`, `status/{job_id}` and `provide_input`.
-  - These URLs are the `apiBaseUrl` registered on Masumi, so **Jobs hired by Nora run through Sumi**.
+  - These URLs are the `apiBaseUrl` registered on Masumi: each specialist's Masumi agent **is** its Kodosumi deployment.
   - Payment config: `KODO_MASUMI0="Preprod https://mps.uplift.example/api/v1 <scoped token> 1200 3600 1.0"`, plus `KODO_SUMI_ADDRESS`.
-- **The panel API** (`POST /-/<host>/<port>/-/<expose>/…`, then `GET /outputs/status/{fid}`) runs the same flow without Sumi payment. Standalone Tasks use it, and the coworker worker runs the paid-Task flow itself.
-- **Locks become questions.** `tracer.lock()` becomes MIP-003 `awaiting_input` in Job mode and Task `INPUT_REQUIRED` in Task mode. Nora's Job inputs are complete, so locks only fire standalone.
+- **Nora runs that same deployment directly.** The Worker launches the specialist's flow with no Masumi purchase per agent; Nora's Task carries the one payment (§8).
+- **The panel API** (`POST /-/<host>/<port>/-/<expose>/…`, then `GET /outputs/status/{fid}`) runs the same flow without Sumi payment. The Worker uses it for standalone Tasks and for Nora's runs, and handles the Task payment itself.
+- **Locks become questions.** `tracer.lock()` becomes MIP-003 `awaiting_input` through Sumi and Task `INPUT_REQUIRED` in a standalone Task. Nora's inputs are complete, so locks only fire standalone.
 - **Files.** Inputs go in `/in`, deliverables in `/out`. Deliverables are mirrored to the artifact store and attached to the Task.
-- **Result-hash rule.** Every flow returns `final` as one string: the **RFC 8785 canonical JSON of the Deliverable Manifest** (§6.3). Kodosumi's `create_result_hash` gives `sha256_utf8(final_string)`, which becomes the Job's `resultHash`.
+- **Result-hash rule.** Every flow returns `final` as one string: the **RFC 8785 canonical JSON of the Deliverable Manifest** (§6.3). Kodosumi's `create_result_hash` gives `sha256_utf8(final_string)`, the result hash that CRE verifies.
 
 ### 3.4 Models (LLM on Amazon Bedrock; image generation on Gemini)
 - **LLM:** **Grok 4.7** via the bedrock-runtime **Chat Completions API** (OpenAI-compatible), inference profile `us.xai.grok-4.7` in `us-east-1` (one model, one region). It is used for:
@@ -189,10 +194,10 @@ See §5.
 
 ```
                           ┌────────────────────────── Sokosumi (preprod) ──────────────────────────┐
- Merchant ──chat/Task──►  │ Core: Tasks · approvals · Jobs · credits · files · receipts · ratings  │
-                          └──────▲──────────────────────────────▲───────────────────────▲──────────┘
-                                 │coworker keys (13)            │Jobs → Sumi start_job  │Responses API
-                     ┌───────────┴───────────┐        ┌─────────┴──────────┐   ┌────────┴─────────┐
+ Merchant ──chat/Task──►  │ Core: Tasks · approvals · credits · Masumi payments · files · receipts │
+                          └──────▲──────────────────────────────────────────────────────▲──────────┘
+                                 │coworker keys (13)                                    │Responses API
+                     ┌───────────┴───────────┐        ┌────────────────────┐   ┌────────┴─────────┐
                      │ Uplift Worker         │◄──────►│ Kodosumi cluster    │   │ Uplift Worker    │
                      │ (Task executors, Nora │ panel  │ 12 specialist flows │   │ chat (Responses  │
                      │ orchestrator, journal)│  API   │ Sumi MIP-003        │   │ API)             │
@@ -213,9 +218,9 @@ See §5.
 | Component | Tech | Responsibility | Holds secrets? |
 |---|---|---|---|
 | **Uplift Worker** | Python (asyncio) + PostgreSQL | One executor per coworker key. Polls events, runs standalone Tasks (paid-Task flow) and Nora's orchestration. Keeps a per-Task journal, writing each step **before** its side effect. Receives CRE result callbacks. | 13 coworker runtime keys, scoped MPS `ReadAndPay` token, CRE trigger key (Railway service variables) |
-| **Kodosumi cluster** | Ray 2.48 + Kodosumi 1.2 | Runs the 12 specialist flows, Sumi endpoints and Job payments | Data-API, Gemini and Bedrock API keys as service env vars |
+| **Kodosumi cluster** | Ray 2.48 + Kodosumi 1.2 | Runs the 12 specialist flows (for standalone Tasks and Nora alike) and their Sumi MIP-003 endpoints | Data-API, Gemini and Bedrock API keys as service env vars |
 | **Worker chat** | FastAPI (in the Worker) | Responses API for all coworkers; creates DRAFT Tasks | Coworker keys |
-| **Uplift MPS** | masumi-payment-service + PostgreSQL | 13 selling wallets, auto-withdraw, refund authorization | Encrypted wallet mnemonics, admin key |
+| **Uplift MPS** | masumi-payment-service + PostgreSQL | 13 selling wallets, seller payment terms (12 Fixed, Nora Dynamic), auto-withdraw | Encrypted wallet mnemonics, admin key |
 | **Uplift Connection Gateway** | Python (FastAPI) + PostgreSQL + AWS KMS | Platform adapters (v1: Shopify) for OAuth connect and reconnect, encrypted token storage and rotation; a **read API** for agents and CRE; a **write API only CRE can call** | All merchant tokens, envelope-encrypted |
 | **Artifact store** | Amazon S3, content-addressed | Deliverable files (`sha256` keys) | IAM role |
 
@@ -229,7 +234,7 @@ Masumi records **what** was delivered (input and result hashes), and Sokosumi re
 1. **Independent verifier and scorer.**
    - A decentralized oracle network (DON) re-checks each deliverable against public sources and deterministic rules.
    - It reaches consensus on a **score (0–100) and verdict (PASS/FAIL)**.
-   - That result decides whether the specialist gets paid and whether its changes may go live.
+   - That result decides whether the work is billed and whether its changes may go live.
 2. **Gatekeeper for store writes.**
    - The key that unlocks the Connection Gateway's write API lives only in the CRE **Vault DON**.
    - It is injected into requests **inside an enclave** through **Confidential HTTP** templates (`{{.gatewayWriteKey}}`).
@@ -244,8 +249,10 @@ Masumi records **what** was delivered (input and result hashes), and Sokosumi re
 
 | Action | Called by | Reads | Does |
 |---|---|---|---|
-| `verify` | Nora, after each Job completes; a specialist's worker before submitting a standalone Task result | **Approved plan:** the quote comment plus the merchant's approval event on the Sokosumi Task (Confidential HTTP, Nora's key). **Job:** `GET /v1/jobs/{id}` for status, `resultHash`, agent and credits. **Verification bundle:** HTTP. **Store snapshot:** gateway read API. | 1. Checks `sha256(JCS(manifest))` equals the Job's `resultHash` (standalone: equals the manifest hash the worker will submit). 2. Checks the Job's agent and credits are in the approved plan. 3. Runs the role's **verifier profile** (sheet §V), including the **Bedrock judge**. 4. Returns score and PASS/FAIL. 5. On **FAIL for a Job** — or a Job outside the approved plan — files the refund in the same run (`POST /v1/jobs/{id}/refund`, Confidential HTTP with `{{.noraCoworkerKey}}`). |
-| `publish` | Nora (or a standalone specialist's worker), after the change approval | **Approval:** the Sokosumi Task's change-set comment (with `change_hash`) and a later user-authored approval event — status moved from `APPROVAL_REQUIRED` to Ready/Running, or an "approve" comment by the Task owner or a workspace member. **Verify results:** for every change in the set, from the Worker's journal, re-confirmed against the Jobs. | 1. Confirms the approval and that every change in the set comes from a PASS deliverable owned by the right role. 2. Calls the gateway **write API** via Confidential HTTP, injecting `{{.gatewayWriteKey}}`, with the change set and `change_hash`. 3. Re-reads the store through the gateway read API. 4. Recomputes the listing score and returns `published`, the after-snapshot hash and the after-score. |
+| `verify` (mode `task`) | Nora, after each specialist run; a specialist's worker before submitting a standalone Task result | **Deliverable manifest:** fetched by URL and checked against its result hash. **Approved plan** (Nora's runs): the plan JSON in the quote event before the merchant's approval event on the Sokosumi Task (Confidential HTTP, Nora's key). **Verification bundle:** HTTP. **Store snapshot:** gateway read API. | 1. Checks `sha256(JCS(manifest))` equals the result hash and the manifest's role matches. 2. For Nora's runs, checks the role is in the plan the merchant approved; work outside it FAILs. 3. Runs the role's **verifier profile** (sheet §V), including the **Bedrock judge**. 4. Returns score and PASS/FAIL. A FAIL is never billed. |
+| `publish` | Nora (or a standalone specialist's worker), after the change approval | **Approval:** the Sokosumi Task's change-set comment (with `change_hash`) and a later user-authored approval event — status moved from `APPROVAL_REQUIRED` to Ready/Running, or an "approve" comment by the Task owner or a workspace member. **Verified deliverables:** the PASS manifests (URL plus result hash), re-fetched and hash-checked. | 1. Confirms the approval and that every change in the set comes from a PASS deliverable owned by the right role. 2. Calls the gateway **write API** via Confidential HTTP, injecting `{{.gatewayWriteKey}}`, with the change set and `change_hash`. 3. Re-reads the store through the gateway read API. 4. Recomputes the listing score and returns `published`, the after-snapshot hash and the after-score. |
+
+`verify` also has a `job` mode for Sokosumi Jobs in general: it checks the Job's `resultHash` and, on FAIL, files `POST /v1/jobs/{id}/refund`. Nora does not use it.
 
 How each read is done:
 - **Public facts:** regular HTTP; every node fetches, and they reach consensus on the extracted field.
@@ -271,7 +278,7 @@ How each read is done:
 |---|---|---|
 | `gatewayWriteKey` | `publish` | Confidential HTTP header template |
 | `gatewayReadKey` | Snapshot reads | `runtime.getSecret` |
-| `noraCoworkerKey` | Sokosumi Task and Job reads; refunds | Confidential HTTP header template |
+| `noraCoworkerKey` | Sokosumi Task reads (plan and approval events); Job calls in `job` mode | Confidential HTTP header template |
 | `bedrockApiKey` | Bedrock judge | Confidential HTTP header template |
 | `workerCallbackKey` | Result callback to the Worker | Confidential HTTP header template |
 | `serperApiKey` | Market re-checks (`{{.serperApiKey}}`) | Confidential HTTP |
@@ -283,15 +290,15 @@ Merchant store and ad-account tokens stay in the Connection Gateway, encrypted. 
 
 ## 6. Data contracts
 
-### 6.1 Job input envelope (Nora → specialist)
-Every Job's `inputData` follows the specialist's MIP-003 schema and always includes:
+### 6.1 Run input envelope (Nora → specialist)
+Every run's input follows the specialist's MIP-003 schema and always includes:
 - `brief`;
 - `store_snapshot`: canonical product JSON from the gateway read API;
 - `upstream`: verified upstream manifests (URL plus `resultHash`);
 - `constraints`: brand voice, locked terms, locales, margin floor, forbidden claims;
 - `plan_ref`.
 
-Because the snapshot is part of `inputData`, the Job's `inputHash` commits to exactly what the agent saw.
+Because the snapshot is part of the input, the manifest's `input_hash` commits to exactly what the agent saw.
 
 ### 6.2 Standalone Task input
 The Task description and attached files are parsed into the same schema. Missing required fields become `INPUT_REQUIRED` questions, as listed per agent in the sheet.
@@ -354,21 +361,22 @@ Quinn computes the score, and CRE recomputes it.
 ### 8.1 Rails
 | Rail | Payer | Flow |
 |---|---|---|
-| **Specialist Job** (Nora mode) | Merchant's workspace credits | 1. `POST /v1/tasks/{taskId}/jobs` (maxCredits = list price). 2. Core buys at the fixed price from Sokosumi's wallet, opening a Masumi escrow toward the specialist's seller wallet. 3. Kodosumi runs and submits `resultHash`. 4. CRE `verify`: **PASS** → auto-withdraw after unlock; **FAIL** → CRE files the refund in the same run, and Nora re-hires once. |
-| **Nora's fee** | Merchant's workspace credits | Paid-Task `masumiPayment` on Nora's Task (seller terms from `POST /payment` on Nora's registration). The result is submitted after the final report. |
-| **Standalone specialist Task** | Merchant's workspace credits | 1. The worker gets seller terms (`POST /payment`, Fixed). 2. Task event `masumiPayment` → `FundsLocked`. 3. Kodosumi runs (panel API). 4. CRE `verify` **before submission**. **PASS:** `submit-result`, Task `COMPLETED`. **FAIL:** retry once with the reasons; if it fails again, no result is submitted, the Task is set `FAILED` with reasons, and the escrow returns to the buyer after `submitResultTime`. |
+| **Nora Task** | Merchant's workspace credits | 1. The approved plan shows each planned specialist's price and the total as a ceiling ("at most X credits"). 2. Nora runs the specialists directly; CRE `verify` checks each run, and a FAIL is retried once and never billed. 3. After the merge, Nora reveals the price: the specialists whose work passed, plus Quinn's after-report. 4. One payment: seller terms from `POST /payment` on Nora's Dynamic registration with `RequestedFunds` in tUSDM (1 credit = 1 tUSDM), then Task event `masumiPayment`. Core debits the credits when it accepts the payment; out of credits → `OUT_OF_CREDITS`, and nothing is published or delivered. 5. `publish` waits for `FundsLocked`. 6. On delivery the result hash is submitted to the MPS; auto-withdraw after unlock. |
+| **Standalone specialist Task** | Merchant's workspace credits | Phases: pay → execute → verify → funds_wait → approval or deliver. 1. The worker gets seller terms (`POST /payment`, Fixed) and posts `masumiPayment`. 2. Kodosumi runs (panel API) while the escrow lock settles on-chain. 3. CRE `verify` **before submission**; a FAIL is retried once with the reasons. 4. Nothing is delivered or published before `FundsLocked`. **PASS:** change approval and `publish` if the work changes the store, then `submit-result` and Task `COMPLETED`. **Second FAIL:** no result is submitted, the Task is set `FAILED` with reasons, and the escrow returns to the buyer after `submitResultTime`. |
+
+**Landing page examples:** "Focused fix" (one product page: Kai, Priya, Clara, Ruth, Quinn before and after) ≈ 6.00 credits; "Full launch" (all 12 specialists, 1 product, 2 locales) ≈ 18.00 credits.
 
 ### 8.2 Cost controls
-- Nora's plan total is approved explicitly by the merchant.
-- Every Job carries `maxCredits` equal to its list price.
-- CRE refunds any Job outside the approved plan.
-- `OUT_OF_CREDITS` pauses the Task.
+- The merchant approves Nora's price ceiling explicitly, and her final price never exceeds it.
+- Only work that passed Chainlink is billed; CRE fails any run outside the approved plan.
+- One payment per Task, so there is no per-agent escrow to reconcile.
+- `OUT_OF_CREDITS` stops the Task before anything is published or delivered.
 - Masumi per-key caps apply to the MPS runtime token.
 
 ### 8.3 Proof for the judges
 - Masumi escrow lock and withdraw transactions on Cardanoscan.
 - `runtime receipt` showing `settled:true`, plus an independent Blockfrost check of the seller's net receipt.
-- CRE workflow simulation logs and the per-Job verification comments on the Sokosumi Task (score, verdict, refund).
+- CRE workflow simulation logs and the per-run verification comments on the Sokosumi Task (score, verdict).
 
 ---
 
@@ -405,13 +413,13 @@ There is one store link per Sokosumi user or organization, shared by all Uplift 
 5. **Reconnect and rotate.** Whenever a Shopify call returns `401` (token revoked, app reinstalled or token invalid), the gateway marks the link **invalid**, and the coworker repeats step 1 on the current Task.
    - Work pauses at `AUTHENTICATION_REQUIRED`, so nothing runs with a dead token.
    - The new token from the merchant's reconnect **replaces** the old one, and the old ciphertext is deleted.
-   - Before each Job starts, the Worker runs a cheap `shop { id }` read to detect a dead token early.
+   - Before each specialist run starts, the Worker runs a cheap `shop { id }` read to detect a dead token early.
 6. **Ads and analytics adapter** (designed for: Google — GA4 `analytics.readonly`, Merchant API `content`, Google Ads `adwords`): the same connect, reconnect and replace pattern, only when the work needs it.
 
 ### 9.3 Who can do what
 | Caller | Read | Write |
 |---|---|---|
-| Agents (Kodosumi) | `store_snapshot` in `inputData` from Nora; standalone, a short-lived **job-scoped read capability** (JWT naming the shop, resources and fields) | **Never** |
+| Agents (Kodosumi) | `store_snapshot` in the run input from Nora; standalone, a short-lived **run-scoped read capability** (JWT naming the shop, resources and fields) | **Never** |
 | Nora (Worker) | Snapshot reads for planning and the baseline | **Never** |
 | CRE `uplift-clearing` | Yes (read key) | **Only** through the write API, with `{{.gatewayWriteKey}}` from the Vault via Confidential HTTP, after confirming the merchant's approval and the passing results, and with a matching `change_hash` |
 | Merchant | Connects and reconnects with the Task's **Authenticate** button. Disconnects by uninstalling the Uplift app, which deletes the token. | — |
@@ -428,40 +436,44 @@ Routing details are in the spec sheet, §0.
 3. **Full flow or subset.**
    - "launch", "overhaul", a new product, or "full optimization" → all 12 specialists.
    - Anything else → the minimal closed subset.
-4. **Quote.** Nora sets `APPROVAL_REQUIRED` with a comment listing each agent, deliverable, order and credits, plus the total. The merchant approves (Ready, or "approve").
-5. **Execute** the DAG. Job inputs include verified upstream manifests, and parallel nodes run together.
-6. **Gate.** CRE `verify` scores each Job.
-   - A FAIL is refunded and re-hired once.
+4. **Quote.** Nora sets `APPROVAL_REQUIRED` with a comment listing each agent, deliverable, order and credits, plus the total as a ceiling ("at most X credits") and a fenced plan JSON that CRE reads. The merchant approves (Ready, or "approve").
+5. **Execute** the DAG, running each specialist's Kodosumi deployment directly. Quinn's baseline runs alongside the first wave; inputs include verified upstream manifests, and parallel nodes run together.
+6. **Gate.** CRE `verify` (mode `task`) scores each run and checks its role is in the approved plan.
+   - A FAIL is retried once with the reasons and is never billed.
    - A second FAIL marks the node *blocked*; it is left out of the change set and named in the change-approval comment.
-7. **Change approval and publish** (sheet §0, steps 11–12).
-8. **Report and close.**
-   - Upload Quinn's before/after report and the **Uplift Launch Pack** (ZIP).
-   - Nora posts ratings, collects her fee, and sets `COMPLETED`.
+7. **Merge.** Nora collects the change sets, Ruth reviews them, and Nora projects the after-score.
+8. **Pay.** Nora reveals the price (the specialists whose work passed, plus Quinn's after-report) and requests one Masumi payment (§8.1).
+9. **Change approval and publish** (sheet §0, steps 12–13). Publishing waits for `FundsLocked`.
+10. **Report and deliver.**
+    - Quinn writes the after-report once the changes are live.
+    - Nora uploads the **Uplift Launch Pack** (ZIP), submits the result hash to the MPS, and sets `COMPLETED`.
+
+**Phases:** start → intake → [auth_wait | input_wait] → plan → quote_wait → execute → merge → pay → propose → approval_wait → publish → report → deliver → done.
 
 ---
 
 ## 11. Demo script (preprod)
-1. **Standalone hire.** The merchant assigns **Quinn** "Audit my bamboo bottle". Quinn returns a score of 42 with the top fixes. CRE `verify` passes (comment: "Chainlink verification: PASS · 88/100"), the result is submitted, and the receipt is settled.
+1. **Standalone Task.** The merchant assigns **Quinn** "Audit my bamboo bottle" and pays Quinn's fixed 0.50 credits into escrow. Quinn returns a score of 42 with the top fixes. CRE `verify` passes (comment: "Chainlink verification: PASS · 88/100"), the result is submitted, and the receipt is settled.
 2. **Full launch.**
    - "@Nora launch my bamboo bottle" → store connection (`AUTHENTICATION_REQUIRED`).
-   - Quote of 19.50 credits for 1 product and 2 locales (`APPROVAL_REQUIRED`).
+   - Plan with a ceiling of 18.00 credits for 1 product and 2 locales (`APPROVAL_REQUIRED`).
    - The merchant moves the Task to Ready.
-3. **Execution.** Each Job gets a verification comment with its score.
+3. **Execution.** Each specialist run gets a verification comment with its score.
    - Research: Kai, then Rafael (searching with Kai's keywords), then Priya.
    - Marcus runs next.
    - The builders run: Clara, Iris, Oskar, then Leo.
    - Sasha, Yuki and Ruth run last.
 4. **Failure.** Kai's keyword map contains a competitor trademark.
-   - FAIL, and the refund is filed in the same run.
-   - The credits return to the merchant.
-   - Kai is re-hired and passes.
-5. **Change approval.**
+   - FAIL; the failed run is not billed.
+   - Kai runs again with the reasons and passes.
+5. **Pay.** Nora reveals the price, 18.00 credits (every specialist passed), and requests one payment from the merchant's credits.
+6. **Change approval.**
    - Nora posts "11 changes ready" with the before/after summary and `changes.html`.
    - The merchant moves the Task to Ready.
-   - CRE confirms the approval and publishes to Shopify, then creates paused Google Ads campaigns.
+   - Once the escrow is locked, CRE confirms the approval and publishes to Shopify, then creates paused Google Ads campaigns.
    - The listing score rises to 86.
-6. **Report.** Quinn writes the after-report, and Nora completes the Task and collects her fee. `runtime receipt` shows `settled:true`.
-7. **Subset.** "Translate this listing into German" runs only Yuki, Ruth and Quinn (before/after).
+7. **Report.** Quinn writes the after-report, and Nora delivers the Launch Pack, submits the result hash and completes the Task. `runtime receipt` shows `settled:true`.
+8. **Subset.** "Translate this listing into German" runs only Yuki, Ruth and Quinn (before/after).
 
 ---
 
@@ -473,11 +485,11 @@ Routing details are in the spec sheet, §0.
 | **T3** | Demo polish and the proof page. | Hour 22 |
 
 **First-hour spikes**
-1. A Kodosumi Sumi `start_job` hired by a coworker through `POST /tasks/{id}/jobs` on preprod (Fixed pricing).
+1. Nora's Dynamic-priced registration on preprod: `POST /payment` with `RequestedFunds`, then a Task `masumiPayment` debiting the merchant's credits.
 2. Install the v1 Shopify app on a dev store via the Task's Authenticate button, confirm the offline token type, and run `productUpdate` through the gateway.
 3. Confidential HTTP with `{{.bedrockApiKey}}` calling Bedrock Chat Completions, in simulation.
 4. CRE reading a Task's approval event through the Sokosumi API with the coworker key.
-5. `POST /v1/jobs/{id}/refund` on a test Job.
+5. CRE `verify` (mode `task`) reading the plan JSON from the quote event before the approval event.
 
 ---
 

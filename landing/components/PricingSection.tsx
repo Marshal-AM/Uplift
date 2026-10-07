@@ -22,12 +22,12 @@ const plans = [
   },
   {
     name: "Focused fix",
-    price: "≈ 7.50",
-    unit: "credits · 1 product page, incl. Nora's fee",
+    price: "≈ 6.00",
+    unit: "credits · 1 product page",
     example: "“Rewrite my product page” → Kai, Priya, Clara, Ruth, Quinn (before + after)",
     features: [
       "Nora picks only the specialists you need",
-      "Itemised quote, approved by you",
+      "Price ceiling up front, approved by you",
       "One change set to review",
       "Before/after listing score",
     ],
@@ -37,7 +37,7 @@ const plans = [
   },
   {
     name: "Full launch",
-    price: "≈ 19.50",
+    price: "≈ 18.00",
     unit: "credits · 1 product, 2 locales",
     example: "“Launch my bamboo bottle” → all 12 specialists",
     features: [
@@ -67,8 +67,8 @@ export const PricingSection = () => {
             Pay per job, not per month.
           </h2>
           <p className="mt-4 text-lg text-[#555]">
-            No retainer. You pay with your Sokosumi workspace credits; each hire has one fixed price in escrow, and the
-            quote you approve caps the total. Nora's task fee is 1.50 credits plus the specialists she hires.
+            No retainer. You pay with your Sokosumi workspace credits, once, after the work: Nora charges the sum of
+            the specialists she used, never more than the ceiling you approved. Work that fails verification is free.
           </p>
         </div>
 
@@ -120,8 +120,8 @@ export const PricingSection = () => {
           className="mt-6 text-[12px] text-[#8a8a8a]"
           style={{ fontFamily: "var(--font-geist-mono), ui-monospace, monospace" }}
         >
-          Credits are Sokosumi workspace credits (tUSDM on Cardano preprod for the hackathon). Prices are per the
-          specialist's fixed listing; example totals depend on the plan Nora proposes.
+          Credits are Sokosumi workspace credits (tUSDM on Cardano preprod for the hackathon). Each specialist has a
+          fixed price; example totals depend on the plan Nora proposes.
         </p>
       </div>
     </section>

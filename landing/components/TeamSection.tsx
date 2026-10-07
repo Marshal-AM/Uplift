@@ -25,7 +25,7 @@ const NORA: Member = {
   role: "Uplift Lead · E-commerce Growth Manager",
   deliverable:
     "Reads your request, picks all 12 specialists or just the ones it needs, quotes the price, runs the work in order, merges the launch pack and hands the approved changes to Chainlink to publish.",
-  price: "1.50 task fee + hired specialists",
+  price: "Sum of the specialists used",
   icon: Workflow,
 }
 
