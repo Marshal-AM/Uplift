@@ -38,7 +38,8 @@ export function call(runtime: Runtime<Config>, url: string, opts: CallOpts = {})
       request: httpRequest({
         url,
         method: opts.method ?? (body ? "POST" : "GET"),
-        headers: { "Content-Type": "application/json", Accept: "application/json", ...opts.headers },
+        // Content-Type only with a body: S3 presigned (SigV2) GET links sign it, so a stray one breaks them
+        headers: { ...(body ? { "Content-Type": "application/json" } : {}), Accept: "application/json", ...opts.headers },
         ...(body ? { body } : {}), // bytes: never parsed as a template, so payload text cannot collide with {{.x}}
         timeout: "60s",
       }),
