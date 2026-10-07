@@ -23,6 +23,16 @@ TRANSLATABLE = """query($id: ID!) { translatableResource(resourceId: $id) {
   translatableContent { key value digest locale } } }"""
 
 
+def clara_copy(ctx: Context) -> dict[str, str]:
+    """Clara's verified new copy, by translatable key, when Nora runs Yuki after her (empty otherwise)."""
+    manifest = ctx.upstream("clara")
+    fields = next((op["fields"] for op in (manifest or {}).get("changeset", []) if op["op"] == "product.update"), {})
+    seo = fields.get("seo") or {}
+    copy = {"title": fields.get("title"), "body_html": fields.get("descriptionHtml"),
+            "meta_title": seo.get("title"), "meta_description": seo.get("description")}
+    return {k: v for k, v in copy.items() if v}
+
+
 def run(inputs: dict, tracer) -> str:
     ctx = Context.from_inputs(inputs)
     out = Deliverable("yuki", "Yuki", ctx)
@@ -41,7 +51,14 @@ def run(inputs: dict, tracer) -> str:
         for item in content["translatableResource"]["translatableContent"]:
             if item["key"] in KEYS and item["value"]:
                 source[item["key"]] = {"value": item["value"], "digest": item["digest"]}
+        # translate the copy this run publishes, not the copy Clara replaces; its digest only exists once that copy
+        # is live, so the gateway reads it at publish (and checks the live text is this source)
+        from_clara = clara_copy(ctx)
+        source |= {k: {"value": v, "digest": None} for k, v in from_clara.items()}
+        if from_clara:
+            tracer.markdown_sync("Translating Clara's new copy")
     else:
+        from_clara = {}
         text = ctx.get("source_copy", "")
         title, _, body = text.partition("\n")
         source = {"title": {"value": title, "digest": None}, "body_html": {"value": body, "digest": None}}
@@ -87,8 +104,10 @@ def run(inputs: dict, tracer) -> str:
 
     if product:
         out.changeset.append({"op": "translations.register", "resource_id": product["id"], "translations": [
-            {"locale": locale, "key": k, "value": final[k], "translatableContentDigest": source[k]["digest"]}
-            for k in keys if source[k]["digest"]]})
+            {"locale": locale, "key": k, "value": final[k],
+             **({"source": source[k]["value"]} if k in from_clara else
+                {"translatableContentDigest": source[k]["digest"]})}
+            for k in keys if source[k]["digest"] or k in from_clara]})
     out.artifact(f"translations_{locale}.json", {k: final[k] for k in keys})
     out.artifact(f"local_keywords_{locale}.csv", "keyword\n" + "\n".join(local), "text/csv")
     out.artifact("qa_report.md", f"Back-translation drift: {', '.join(drift) or 'none'}", "text/markdown")

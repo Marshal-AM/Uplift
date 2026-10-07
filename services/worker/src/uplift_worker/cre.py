@@ -6,9 +6,12 @@ Either way the workflow posts its result to /hooks/cre, which lands in `cre_resu
 """
 
 import base64
+import contextlib
 import hashlib
 import json
+import logging
 import subprocess
+import threading
 import time
 import uuid
 from pathlib import Path
@@ -20,6 +23,9 @@ from eth_account.messages import encode_defunct
 
 from . import db
 from .config import settings
+
+log = logging.getLogger("uplift.worker")
+_compile = threading.Lock()  # a source build writes one shared temp file; the shipped WASM needs no lock
 
 
 def _b64url(raw: bytes) -> str:
@@ -40,6 +46,7 @@ def _jwt(body: dict[str, Any]) -> str:
 def trigger(action: str, payload: dict[str, Any], timeout_s: int = 600) -> dict[str, Any]:
     s = settings()
     request_id = str(uuid.uuid4())
+    started = time.time()
     workflow_input = {"action": action, "request_id": request_id,
                       "callback_url": f"{s.public_url}/hooks/cre", **payload}
     if s.cre_trigger_url:
@@ -54,15 +61,20 @@ def trigger(action: str, payload: dict[str, Any], timeout_s: int = 600) -> dict[
         project = (Path(__file__).resolve().parents[2] / s.cre_project_dir).resolve()
         prebuilt = ["--wasm", "./uplift-clearing.wasm"] if (project / "uplift-clearing" / "uplift-clearing.wasm").exists() \
             else []  # the Worker image ships the compiled workflow; a dev checkout compiles from source
-        proc = subprocess.run(["cre", "workflow", "simulate", "uplift-clearing", *prebuilt, "--non-interactive",
-                               "--trigger-index", "0", "--http-payload", json.dumps(workflow_input), "--target",
-                               "local-simulation"], cwd=project, timeout=timeout_s, capture_output=True, text=True)
+        with contextlib.nullcontext() if prebuilt else _compile:
+            proc = subprocess.run(["cre", "workflow", "simulate", "uplift-clearing", *prebuilt, "--non-interactive",
+                                   "--trigger-index", "0", "--http-payload", json.dumps(workflow_input), "--target",
+                                   "local-simulation"], cwd=project, timeout=timeout_s, capture_output=True, text=True)
         if proc.returncode:
             raise RuntimeError(f"CRE simulation failed: {(proc.stderr or proc.stdout)[-800:]}")
-    deadline = time.time() + timeout_s
+    triggered = time.time()
+    deadline = triggered + timeout_s
     while time.time() < deadline:
         row = db.one("select result from cre_results where request_id = %s", request_id)
         if row:
+            log.info("timing CRE %s role=%s task=%s: %.0fs to run, %.0fs more for the callback", action,
+                     payload.get("role") or payload.get("coworker"), payload.get("task_id"), triggered - started,
+                     time.time() - triggered)
             return row["result"]
         time.sleep(3)
     raise TimeoutError(f"CRE {action} produced no result")

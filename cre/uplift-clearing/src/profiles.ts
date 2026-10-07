@@ -331,8 +331,12 @@ const yuki: Profile = {
     const lengths = [len(tr.title) <= 75 * (cjk ? 2 : 1), len(tr.meta_title ?? "") <= 65 * (cjk ? 2 : 1),
       len(tr.meta_description ?? "") <= 165 * (cjk ? 2 : 1)]
     const changed = keys.filter((k) => tr[k] && tr[k] !== src[k]?.value).length
+    // an entry made from copy this change set publishes (Clara's) names its source; the gateway digests it at publish.
+    // The bundle keeps a 6000-character prefix of each source, so compare a normalized prefix.
+    const head = (s: string) => norm(plain(s ?? "")).slice(0, 1000)
     const opsFresh = (m.changeset ?? []).flatMap((o: Json) => o.translations ?? [])
-      .every((t: Json) => !t.translatableContentDigest || t.translatableContentDigest === src[t.key]?.digest)
+      .every((t: Json) => t.source != null ? head(t.source) === head(src[t.key]?.value)
+        : !t.translatableContentDigest || t.translatableContentDigest === src[t.key]?.digest)
     return {
       checks: [
         check("Digest freshness", opsFresh, 20),

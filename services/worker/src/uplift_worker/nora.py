@@ -6,10 +6,14 @@ merge → approval_wait → publish → report → deliver → done | failed
 """
 
 import contextlib
+import html
 import io
 import json
+import logging
+import re
 import time
 import zipfile
+from concurrent.futures import ThreadPoolExecutor
 from copy import deepcopy
 from typing import Any
 
@@ -22,15 +26,17 @@ from .clients import Sokosumi
 from .config import settings
 from .runs import manifest_from_store
 
+log = logging.getLogger("uplift.worker")
+
 CAPABILITIES = {
     "keywords": "kai", "competitors": "rafael", "reviews": "priya", "pricing": "marcus", "copy": "clara",
     "visuals": "iris", "catalog": "oskar", "localization": "yuki", "content": "leo", "email": "leo", "ads": "sasha",
     "compliance": "ruth", "audit": "quinn", "analytics": "quinn",
 }
 ORDER = ["quinn", "kai", "rafael", "priya", "marcus", "clara", "iris", "oskar", "leo", "sasha", "yuki"]
-DEPENDS = {"priya": ["rafael"], "marcus": ["rafael"], "clara": ["kai", "priya"], "iris": ["priya"],
-           "oskar": ["kai"], "leo": ["clara", "priya", "rafael", "kai", "marcus"], "sasha": ["marcus", "kai", "iris", "clara"],
-           "yuki": ["clara", "leo", "iris"]}
+DEPENDS = {"rafael": ["kai"], "priya": ["rafael"], "marcus": ["rafael"], "clara": ["kai", "priya"],
+           "iris": ["priya"], "oskar": ["kai"], "leo": ["clara", "priya", "rafael", "kai", "marcus"], "sasha": ["marcus", "kai", "iris", "clara"],
+           "yuki": ["kai", "clara"]}
 FULL_FLOW = ["kai", "rafael", "priya", "marcus", "clara", "iris", "oskar", "leo", "sasha", "yuki"]
 
 
@@ -121,6 +127,11 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
     s = settings()
 
     def save(next_phase: str) -> None:
+        clock = st.setdefault("clock", {"phase": phase, "since": time.time()})
+        if next_phase != clock["phase"]:  # how long each phase took, merchant waits included
+            log.info("timing task=%s nora %s → %s after %.0fs", task_id, clock["phase"], next_phase,
+                     time.time() - clock["since"])
+            clock |= {"phase": next_phase, "since": time.time()}
         db.save_run(task_id, "nora", next_phase, st)
 
     while True:
@@ -219,6 +230,7 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
             if not step_dag(client, task, st):
                 save(phase)
                 return
+            log_timings(task, st)
             phase = "merge"
             save(phase)
 
@@ -259,18 +271,21 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
             save(phase)
 
         elif phase == "report":
+            after_inputs = fields_for("quinn", st["plan"]["intent"], {}) | {"mode": "before_after"}
             if "after" not in st:
                 st["after"] = {"status": "pending"}
-                after_inputs = fields_for("quinn", st["plan"]["intent"], {}) | {"mode": "before_after"}
                 hire(client, task, st, "quinn_after", "quinn", after_inputs)
                 save(phase)
             if not poll_node(client, task, st, "quinn_after"):
+                if st["nodes"]["quinn_after"]["status"] == "retry":
+                    hire(client, task, st, "quinn_after", "quinn", after_inputs)
                 save(phase)
                 return
             phase = "deliver"
             save(phase)
 
         elif phase == "deliver":
+            log_timings(task, st)
             deliver(client, task, st)
             if s.payments_enabled:
                 payments.submit_result(st["terms"], result_hash(json.dumps(st["publish"], sort_keys=True)))
@@ -298,42 +313,80 @@ def hire(client: Sokosumi, task: dict, st: dict, node: str, role: str, fields: d
                 "failure_reasons": n.get("failure_reasons", []), **(extra or {})}
     job = client.hire(task["id"], settings().agent_ids[role], {**fields, "context": json.dumps(envelope)},
                       settings().prices[role], f"{role.title()} · {node}")
-    n |= {"job_id": job["id"], "status": "hired", "attempts": n["attempts"] + 1}
+    n |= {"job_id": job["id"], "status": "hired", "attempts": n["attempts"] + 1, "node": node, "timeline": {}}
+    _mark(task, n, "hired")
 
 
-def poll_node(client: Sokosumi, task: dict, st: dict, node: str) -> bool:
-    """True once the node is finished (PASS or given up)."""
-    n = st["nodes"][node]
-    if n["status"] in ("done", "blocked"):
-        return True
+def _mark(task: dict, n: dict, step: str) -> None:
+    """Journal when the node's current Job first reaches `step`, and log the time since its last step and its hire.
+    Job statuses are seen when Nora polls (every ~5 s), so each mark is accurate to one poll."""
+    timeline, now = n.setdefault("timeline", {}), round(time.time(), 1)
+    if step in timeline:
+        return
+    since_last = now - max(timeline.values(), default=now)
+    timeline[step] = now
+    log.info("timing task=%s node=%s attempt=%s job=%s %s +%.0fs (%.0fs since hire)", task["id"], n.get("node"),
+             n["attempts"], n["job_id"], step, since_last, now - timeline.get("hired", now))
+
+
+def log_timings(task: dict, st: dict) -> None:
+    """One line per Job: each step's offset from its hire (payment_pending → processing is the escrow wait)."""
+    for node, n in st.get("nodes", {}).items():
+        timeline = n.get("timeline") or {}
+        if "hired" in timeline:
+            steps = ", ".join(f"{k} +{v - timeline['hired']:.0f}s" for k, v in timeline.items() if k != "hired")
+            log.info("timing task=%s summary node=%s attempt=%s %s", task["id"], node, n["attempts"], steps)
+
+
+def _delivered(client: Sokosumi, task: dict, n: dict) -> bool:
+    """True once the node's Job has a result to verify; a failed Job is marked for retry (or given up) instead."""
     job = client.job(n["job_id"])
+    _mark(task, n, f"job:{job['status']}")
     if job["status"] in ("failed", "payment_failed"):
         n["failure_reasons"] = [job.get("result") or job["status"]]
         n["status"] = "blocked" if n["attempts"] >= 2 else "retry"
-        return n["status"] == "blocked"
+        return False
     if job["status"] != "completed" or not job.get("result"):
         return False
     n["result_hash"] = result_hash(job["result"])
+    return True
+
+
+def _verify(client: Sokosumi, task: dict, st: dict, n: dict, manifest_url: str) -> None:
+    """Gate a delivered Job through CRE: PASS releases it downstream, FAIL (refunded by CRE) is retried once."""
     user_id, org_id = runs.owner(task)
+    _mark(task, n, "verify:start")
     verdict = cre.trigger("verify", {"mode": "job", "role": n["role"], "task_id": task["id"], "job_id": n["job_id"],
-                                     "result_hash": n["result_hash"], "manifest_url": runs.manifest_ref(n["result_hash"])["url"],
+                                     "result_hash": n["result_hash"], "manifest_url": manifest_url,
                                      "user_id": user_id, "org_id": org_id,
                                      "plan_approval_event_id": st.get("plan_approval_event_id")})
     n["verdict"] = verdict["outcome"]
     n["score"] = verdict["score"]
+    _mark(task, n, f"verify:{verdict['outcome']}")
     client.event(task["id"], comment=f"{n['role'].title()} delivered · Chainlink: **{verdict['outcome']}** "
                                      f"{verdict['score']}/100" + ("" if verdict["outcome"] == "PASS" else
                                                                   " · refunded, retrying once"))
     if verdict["outcome"] == "PASS":
         n["status"] = "done"
-        return True
+        return
     n["failure_reasons"] = verdict.get("reasons", [])
     n["status"] = "blocked" if n["attempts"] >= 2 else "retry"
-    return n["status"] == "blocked"
+
+
+def poll_node(client: Sokosumi, task: dict, st: dict, node: str) -> bool:
+    """True once the node is finished (PASS or given up)."""
+    n = st["nodes"][node]
+    if n["status"] == "hired" and _delivered(client, task, n):
+        _verify(client, task, st, n, runs.manifest_ref(n["result_hash"])["url"])
+    return n["status"] in ("done", "blocked")
 
 
 def step_dag(client: Sokosumi, task: dict, st: dict) -> bool:
-    """Advance every node that can move. True when all nodes are finished."""
+    """Advance every node that can move. True when all nodes are finished.
+
+    Quinn's baseline runs alongside the first wave rather than ahead of it: only the after-report reads it, and the
+    store does not change before publish, so waiting for it would only add one more escrowed Job to the critical path.
+    """
     intent, roles = st["plan"]["intent"], st["plan"]["roles"]
     product = st["baseline_snapshot"]["product"]
     nodes = st.setdefault("nodes", {})
@@ -344,18 +397,36 @@ def step_dag(client: Sokosumi, task: dict, st: dict) -> bool:
             targets += [(f"yuki:{loc}", "yuki", loc) for loc in intent.get("locales", [])]
         else:
             targets.append((r, r, None))
+    # verify every delivered Job at once: CRE checks are independent, and one slow check must not hold back the
+    # others or the hires waiting on them
+    delivered = [nodes[node] for node, _, _ in targets
+                 if nodes.get(node, {}).get("status") == "hired" and _delivered(client, task, nodes[node])]
+    urls = [runs.manifest_ref(n["result_hash"])["url"] for n in delivered]  # boto3 clients are not thread-safe
+    if delivered:
+        with ThreadPoolExecutor(len(delivered)) as pool:
+            for n, failure in zip(delivered, pool.map(lambda n, url: _try(_verify, client, task, st, n, url),
+                                                      delivered, urls)):
+                if failure:  # stays "hired": verified again on the next pass, the other verdicts are kept
+                    log.warning("CRE verify for %s failed: %s", n["role"], failure)
     finished = True
     for node, role, locale in targets:
         n = nodes.get(node)
-        deps = [d for d in DEPENDS.get(role, []) if d in roles] + ([] if role == "quinn" else ["quinn"])
-        if not n or n.get("status") == "retry":
+        if not n or n["status"] == "retry":
+            deps = [d for d in DEPENDS.get(role, []) if d in roles]
             if all(nodes.get(d, {}).get("status") in ("done", "blocked") for d in deps):
                 hire(client, task, st, node, role, fields_for(role, intent, product, locale))
             finished = False
-            continue
-        if not poll_node(client, task, st, node):
+        elif n["status"] not in ("done", "blocked"):
             finished = False
     return finished
+
+
+def _try(fn, *args) -> Exception | None:
+    try:
+        fn(*args)
+    except Exception as exc:
+        return exc
+    return None
 
 
 def merge(client: Sokosumi, task: dict, st: dict) -> None:
@@ -365,21 +436,25 @@ def merge(client: Sokosumi, task: dict, st: dict) -> None:
         if n.get("verdict") == "PASS" and n["role"] not in ("quinn", "ruth"):
             changeset += manifest_from_store(n["result_hash"])["changeset"]
     if changeset and "ruth" in st["plan"]["roles"] and "ruth" not in st["nodes"]:
-        hire(client, task, st, "ruth", "ruth", fields_for("ruth", st["plan"]["intent"], {}),
-             extra={"review_changeset": changeset})
+        ruth_fields = fields_for("ruth", st["plan"]["intent"], {})
+        hire(client, task, st, "ruth", "ruth", ruth_fields, extra={"review_changeset": changeset})
         while not poll_node(client, task, st, "ruth"):
+            if st["nodes"]["ruth"]["status"] == "retry":  # failed once: re-hire with the reasons, as in the DAG
+                hire(client, task, st, "ruth", "ruth", ruth_fields, extra={"review_changeset": changeset})
             time.sleep(10)
         ruth = st["nodes"]["ruth"]
         if ruth.get("verdict") == "PASS":
             report = manifest_from_store(ruth["result_hash"])
             blocked_locations = {h["location"] for h in report.get("self_checks", {}).get("unresolved", [])}
             changeset = [op for op in changeset if not _touches(op, blocked_locations)]
-    st["changeset"] = changeset
-    st["change_hash"] = change_hash(changeset)
     projected = deepcopy(st["baseline_snapshot"]["product"])
     for op in changeset:
         if op["op"] == "product.update":
             projected |= op["fields"]
+    held = [op["translations"][0]["locale"] for op in changeset if _stale_translation(op, projected)]
+    changeset = [op for op in changeset if not _stale_translation(op, projected)]
+    st["changeset"] = changeset
+    st["change_hash"] = change_hash(changeset)
     before = score(st["baseline_snapshot"]["product"])["deterministic"]
     after = score(projected)["deterministic"]
     client.upload(task["id"], "changes.md", runs.changes_md(changeset), "text/markdown")
@@ -389,9 +464,28 @@ def merge(client: Sokosumi, task: dict, st: dict) -> None:
         + runs.describe_changes(changeset, st["baseline_snapshot"]["product"],
                                  runs.category_names(task, changeset))
         + (f"\n\nNot included (did not pass verification): {', '.join(blocked)}." if blocked else "")
+        + (f"\n\nNot included: the {', '.join(held)} translation, made from copy that is not being published."
+           if held else "")
         + f"\n\nFull diff attached (`changes.md`, change hash `{st['change_hash'][:16]}`). "
         "Ads stay paused and the blog article stays unpublished.\n\n"
         "Move this Task to **Ready** (or reply **approve**) to publish."))["id"]
+
+
+LIVE_COPY = {"title": lambda p: p.get("title"), "body_html": lambda p: p.get("descriptionHtml"),
+             "meta_title": lambda p: (p.get("seo") or {}).get("title"),
+             "meta_description": lambda p: (p.get("seo") or {}).get("description")}
+
+
+def _plain(text: str | None) -> str:
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", text or ""))).strip()
+
+
+def _stale_translation(op: dict, projected: dict) -> bool:
+    """A translation made from Clara's new copy that will not be live after publish (e.g. Ruth held back Clara's
+    update): the gateway would refuse it, so it is left out up front."""
+    return op["op"] == "translations.register" and any(
+        "source" in t and t["key"] in LIVE_COPY and _plain(t["source"]) != _plain(LIVE_COPY[t["key"]](projected))
+        for t in op["translations"])
 
 
 def _touches(op: dict, locations: set[str]) -> bool:

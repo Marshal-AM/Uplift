@@ -3,6 +3,7 @@
 import base64
 import hashlib
 import hmac
+import html
 import re
 from typing import Any
 from urllib.parse import urlencode
@@ -174,8 +175,40 @@ def _variables(op: dict[str, Any]) -> tuple[str, dict[str, Any]]:
     raise ValueError(f"unsupported op: {name}")
 
 
+TRANSLATABLE = """query($id: ID!) { translatableResource(resourceId: $id) { translatableContent { key value digest } } }"""
+
+
+def _plain(text: str) -> str:
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", text or ""))).strip()
+
+
+def _translations(shop: str, token: str, op: dict[str, Any]) -> list[dict[str, Any]]:
+    """TranslationInputs for a translations.register op. An entry translated from copy that this change set
+    publishes (Yuki working from Clara's new copy) carries that `source` instead of a digest: Shopify only digests the
+    copy once it is live, so the digest is read here, after the earlier ops ran, and only if the live text is that
+    source (compared as plain text, since Shopify may reformat the HTML)."""
+    if all("source" not in t for t in op["translations"]):
+        return op["translations"]
+    content = graphql(shop, token, TRANSLATABLE, {"id": op["resource_id"]})["translatableResource"]
+    live = {c["key"]: c for c in (content or {}).get("translatableContent", [])}
+    out = []
+    for t in op["translations"]:
+        t = dict(t)
+        source = t.pop("source", None)
+        if source is not None:
+            current = live.get(t["key"])
+            if not current or _plain(current["value"]) != _plain(source):
+                raise ShopifyError({"op": op["op"], "errors": [{"field": t["key"], "message":
+                                    "the live text is not the copy this translation was made from"}]})
+            t["translatableContentDigest"] = current["digest"]
+        out.append(t)
+    return out
+
+
 def apply_op(shop: str, token: str, op: dict[str, Any]) -> dict[str, Any]:
     mutation_key, variables = _variables(op)
+    if mutation_key == "translations.register":
+        variables["translations"] = _translations(shop, token, op)
     data = graphql(shop, token, _MUTATIONS[mutation_key], variables)
     payload = next(iter(data.values()))
     errors = payload.get("userErrors") or payload.get("mediaUserErrors") or []

@@ -127,16 +127,16 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Marcus | **Rafael** (price bands) |
 | Sasha | **Marcus** (margin), plus **Iris** if Performance Max is in scope (image assets) |
 | Leo together with Clara | Leo runs **after** Clara, to reuse her facts and voice |
-| Yuki | Runs after every copy producer in the plan (Clara, Leo, Iris alt text) |
+| Yuki | Runs after Kai (local seeds) and Clara, and translates Clara's new copy rather than the copy it replaces |
 | Any changeset to the store or ad account | **Ruth** |
 | Any listing change or diagnosis | **Quinn** (baseline and after) |
 
 ### §0.5 Full-flow DAG
-1. **Phase 0:** Quinn baseline.
-2. **Phase 1:** Kai and Rafael in parallel, then Priya. Priya also runs in parallel if competitors are known.
+1. **Phase 0:** Quinn baseline. It runs alongside Phase 1 rather than ahead of it: only the after-report reads it, and the store does not change before publish.
+2. **Phase 1:** Kai, then Rafael (he searches Google with Kai's real keywords), then Priya.
 3. **Phase 2:** Marcus.
 4. **Phase 3:** Clara, Iris and Oskar in parallel, then Leo, then Sasha.
-5. **Phase 4:** Yuki.
+5. **Phase 4:** Yuki, as soon as Clara has passed (alongside Leo and Sasha).
 6. **Phase 5:** Ruth.
 7. **Phase 6:** Quinn projection, then change approval, then publish.
 8. **Phase 7:** Quinn after-report, then close.
@@ -843,6 +843,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 ### W
 1. **Source content.**
    - Gateway `translatableResource`: `title`, `body_html`, `meta_title`, `meta_description` and `handle`, with their `translatableContentDigest`.
+   - When Clara is in the plan, her verified new copy replaces those fields: Yuki translates what will be published.
    - Media alt text and the FAQ metafield are included.
 2. **Locales.** Enabled shop locales (`read_locales`).
 3. **Local keywords.** `local_keywords` when given; otherwise Google autocomplete via Serper `/autocomplete` in the target market and language (`gl`/`hl`), seeded with source terms translated by Grok 4.7.
@@ -854,6 +855,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
    - HTML preserved.
 6. **Back-translation.** Grok 4.7 translates back to the source language and flags drift.
 7. **Changeset.** `translationsRegister` entries (`locale`, `key`, `value`, `translatableContentDigest`; optional `marketId`).
+   An entry made from Clara's copy carries `source` (that copy) instead of a digest: Shopify only digests the copy once it is live, so the Gateway reads the digest at publish, after Clara's update, and only if the live text is that source. Nora leaves the translation out if Clara's update is not published.
 
 ### O
 - `translations_<locale>.json`

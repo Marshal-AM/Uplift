@@ -447,7 +447,7 @@ Routing details are in the spec sheet, §0.
    - Quote of 19.50 credits for 1 product and 2 locales (`APPROVAL_REQUIRED`).
    - The merchant moves the Task to Ready.
 3. **Execution.** Each Job gets a verification comment with its score.
-   - Research runs in parallel: Kai and Rafael, then Priya.
+   - Research: Kai, then Rafael (searching with Kai's keywords), then Priya.
    - Marcus runs next.
    - The builders run: Clara, Iris, Oskar, then Leo.
    - Sasha, Yuki and Ruth run last.
