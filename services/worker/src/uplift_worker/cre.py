@@ -76,5 +76,5 @@ def trigger(action: str, payload: dict[str, Any], timeout_s: int = 600) -> dict[
                      payload.get("role") or payload.get("coworker"), payload.get("task_id"), triggered - started,
                      time.time() - triggered)
             return row["result"]
-        time.sleep(3)
+        time.sleep(1)
     raise TimeoutError(f"CRE {action} produced no result")

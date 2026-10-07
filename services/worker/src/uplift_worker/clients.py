@@ -94,16 +94,33 @@ class Kodosumi:
             raise FlowError(f"launch rejected: {body.get('errors') or body}")
         return body["result"]
 
-    def wait(self, fid: str, timeout_s: int = 1800) -> str:
+    def wait(self, fid: str, launched_at: float, timeout_s: int = 1800) -> str:
         deadline = time.time() + timeout_s
         while time.time() < deadline:
-            status = self.http.get(f"/outputs/status/{fid}?extended=true").json()
-            if status["status"] == "finished":
-                return _final_text(status["final"])
-            if status["status"] == "error":
-                raise FlowError(_final_text(status["final"]))
-            time.sleep(5)
+            state, text = self.status(fid, launched_at)
+            if state == "finished":
+                return text
+            if state == "error":
+                raise FlowError(text)
+            time.sleep(2)
         raise FlowError(f"flow {fid} timed out")
+
+    def status(self, fid: str, launched_at: float) -> tuple[str, str | None]:
+        """Without blocking: ("running", None), ("finished", manifest text) or ("error", message). Kodosumi holds a
+        status request for a run it does not know, so the request is short and an unknown run is FlowLost."""
+        try:
+            resp = self.http.get(f"/outputs/status/{fid}?extended=true", timeout=15)
+            unknown = resp.status_code >= 500  # the edge proxy answers 502 for a held request
+        except httpx.ReadTimeout:
+            unknown = True
+        if unknown:
+            if time.time() - launched_at > LOST_AFTER_S:
+                raise FlowLost(f"run {fid} never started")
+            return "running", None
+        status = resp.json()
+        if status["status"] in ("finished", "error"):
+            return status["status"], _final_text(status["final"])
+        return "running", None
 
     def input_schema(self, role: str) -> list[dict]:
         return self.http.get(f"/sumi/uplift/{role}/input_schema").json()["input_data"]
@@ -127,6 +144,13 @@ def _final_text(final: Any) -> str:
 
 class FlowError(Exception):
     pass
+
+
+class FlowLost(FlowError):
+    """Kodosumi accepted the launch but the run never started (its status stays unknown); relaunch it."""
+
+
+LOST_AFTER_S = 90  # a run Kodosumi still does not know this long after launch never started
 
 
 def gateway(path: str, body: dict) -> Any:

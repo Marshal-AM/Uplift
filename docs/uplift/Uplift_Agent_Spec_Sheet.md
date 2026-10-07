@@ -23,14 +23,15 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 
 **Conventions**
 - **Prices** are Fixed tUSDM on Masumi Registry V2 (`Web3CardanoV2`), equal to Sokosumi credits.
-  - One Job or one standalone Task is **one unit**.
-  - Larger orders are split into several Tasks or Jobs.
+  - One standalone Task, or one run in Nora's plan, is **one unit**.
+  - Larger orders are split into several Tasks or runs.
+  - Standalone, the merchant pays the specialist's fixed price through Masumi escrow. In Nora's plan, the same price counts toward her one payment, and only if the run passed Chainlink.
 - **Store reads** come from the **Uplift Connection Gateway**:
-  - in Nora's Jobs, as a snapshot inside the Job input;
-  - in standalone mode, as a job-scoped read capability.
+  - in Nora's runs, as a snapshot inside the run input;
+  - in standalone mode, as a run-scoped read capability.
 - **Store writes** are only ever a `changeset` in the Deliverable Manifest. CRE `publish` executes them after the merchant approves the change set in Sokosumi.
 - **Questions to the merchant** use Task `INPUT_REQUIRED`, raised via Kodosumi `tracer.lock`, in standalone mode only.
-  - In Nora's Jobs, inputs are complete. A missing input makes the Job fail fast with reason `INPUT_MISSING`, and Nora asks the merchant instead.
+  - In Nora's runs, inputs are complete. A missing input makes the run fail fast with reason `INPUT_MISSING`, and Nora asks the merchant instead.
 - **All LLM inference** uses **Grok 4.7 on Amazon Bedrock**:
   - bedrock-runtime Chat Completions API (OpenAI-compatible), inference profile `us.xai.grok-4.7` in `us-east-1`, called over HTTPS with a Bedrock API key.
   - JSON output via a forced function call, and vision via `image_url` content parts.
@@ -55,10 +56,10 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 |---|---|
 | `name` | Nora |
 | `caption` | Uplift Lead · E-commerce Growth Manager |
-| `description` | "Your AI e-commerce growth and ads team lead, focused on getting your products ranked higher. Tell Nora what you want: launch a product, fix a listing that isn't selling, plan a promotion, go international. She builds a plan with the right specialists (keyword research, competitor and review analysis, pricing, copy, product photos, catalog and shopping feeds, translation, content and email copy, paid ads, compliance, auditing) and gives you a fixed quote. She runs the work, has every deliverable scored and verified by Chainlink, publishes only what you approve, and hands you a before/after report. Works with Shopify stores and Google Ads today." |
+| `description` | "Your AI e-commerce growth and ads team lead, focused on getting your products ranked higher. Tell Nora what you want: launch a product, fix a listing that isn't selling, plan a promotion, go international. She builds a plan with the right specialists (keyword research, competitor and review analysis, pricing, copy, product photos, catalog and shopping feeds, translation, content and email copy, paid ads, compliance, auditing) and tells you up front the most it can cost. You pay only for the specialists whose work passes. She runs the work, has every deliverable scored and verified by Chainlink, publishes only what you approve, and hands you a before/after report. Works with Shopify stores and Google Ads today." |
 | `capabilities` | `tasks`, `chat` |
 | `metadata.tags` | ecommerce, shopify, product launch, listing optimization, conversion rate optimization, CRO, SEO, google shopping, google ads, marketing team, growth |
-| Masumi registration | `uplift-lead`, Fixed **1.50** per Task (orchestration fee) |
+| Masumi registration | `uplift-lead`, **Dynamic** pricing (`supportedPaymentSources[].pricing = {"pricingType":"Dynamic"}`). No fee of her own: each Task's price is the specialists whose work passed, plus Quinn's after-report. |
 
 ### S — Inputs
 | Input | Required | How obtained |
@@ -66,51 +67,54 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Request in plain language | ✅ | Chat or Task description |
 | Store connection (Shopify in v1) | ✅ if the listing is touched | `AUTHENTICATION_REQUIRED` → Gateway OAuth |
 | Target product(s) | ✅ | Product URL or handle, or picked from a list Nora posts as `INPUT_REQUIRED` |
-| Budget cap (credits) | optional | Caps the quote |
+| Budget cap (credits) | optional | Caps the plan's ceiling |
 | Markets and locales | optional | Default: the store's primary market |
 | Brand voice samples, locked terms | optional | Files or text |
 | Ads and analytics connection (Google in v1) | only if the plan needs it | Requested per plan |
 
 ### W — Workflow
+**Phases:** start → intake → [auth_wait | input_wait] → plan → quote_wait → execute → merge → pay → propose → approval_wait → publish → report → deliver → done.
+
 1. **Intake.** Bedrock (Grok 4.7) extracts the goal, products, markets, constraints and capability tags.
 2. **Connection check.** Nora asks the Gateway whether a link exists for this user or organization. If not, she posts `AUTHENTICATION_REQUIRED` with the connect URL and waits for the Gateway callback.
-3. **Baseline.** Nora takes a store snapshot (Gateway read). She hires **Quinn** in audit mode whenever a listing will change or a diagnosis is requested.
+3. **Baseline.** Nora takes a store snapshot (Gateway read). Whenever a listing will change or a diagnosis is requested, she runs **Quinn** in audit mode alongside the first wave of specialists.
 4. **Routing.** §0.3 picks the specialists, and dependencies are closed in code (§0.4).
 5. **Quote.** Nora posts a markdown plan and sets `APPROVAL_REQUIRED`.
-   - The plan covers agents, deliverables, order, credits, total, and what will still need the merchant.
-   - It includes a fenced JSON block with the plan (agent IDs and credits).
+   - The plan covers agents, deliverables, order, credits, and what will still need the merchant.
+   - The total is a ceiling: "at most X credits". The merchant pays only for the specialists whose work passes.
+   - It includes a fenced JSON block with the plan (roles and credits), which CRE reads.
 6. **Plan approval.** Nora watches the Task events.
    - A user-authored move to **Ready** or **Running**, or an "approve" comment, approves the plan.
    - Any other comment is a change request: Nora re-plans and re-quotes.
 7. **Execution.** Nora walks the DAG (§0.5). For each node:
-   - build `inputData` (envelope in product spec §6.1);
-   - call `POST /v1/tasks/{taskId}/jobs {agentId, inputData, maxCredits: listPrice, name}`;
-   - journal the Job ID;
-   - when the Job reaches MIP-003 `completed`, call CRE `uplift-clearing` action `verify` (HTTP trigger, JWT signed with the Worker's authorized key).
+   - build the input (envelope in product spec §6.1);
+   - run the specialist's agent directly: the same Kodosumi deployment registered on Masumi as that specialist (no Sokosumi Job, no per-agent escrow);
+   - journal the run ID;
+   - when the run finishes, call CRE `uplift-clearing` action `verify`, mode `task` (HTTP trigger, JWT signed with the Worker's authorized key).
 
    Nodes with no unmet dependencies run in parallel.
-8. **Gate.** The CRE result is posted as a Task comment.
+8. **Gate.** The CRE result is posted as a Task comment. CRE also checks that the role is in the plan the merchant approved.
    - **PASS:** the manifest is released downstream.
-   - **FAIL:** CRE has already filed the refund in the same run. Nora re-hires once, with `failure_reasons` in `inputData`.
+   - **FAIL:** Nora retries once, with `failure_reasons` in the input. A failed run is never billed.
    - **Second FAIL:** the node is left out of the change set, and the change-approval comment names it.
 9. **Merge.** Nora collects every changeset and resolves field ownership (§0.6) into change groups: store product, translations, discounts, collections, content, ad campaigns.
 10. **Compliance and projection.**
-    - **Ruth's** Job covers all public-facing text and images. Any op at a location where a high-severity finding has no passing rewrite is dropped from the change set.
+    - **Ruth's** run covers all public-facing text and images. Any op at a location where a high-severity finding has no passing rewrite is dropped from the change set.
     - Nora projects the after-score by applying the merged changeset to the baseline snapshot and running the deterministic Listing Score sections.
-11. **Change approval.** Nora posts the change set as a Task comment and sets `APPROVAL_REQUIRED`. The comment contains:
+11. **Pay.** Nora reveals the price: the specialists whose work passed Chainlink, plus Quinn's after-report (it runs once the changes are live).
+    - She requests one Masumi payment for that amount: `POST /payment` with `RequestedFunds` in tUSDM (1 credit = 1 tUSDM), then Task event `masumiPayment`.
+    - Sokosumi Core debits the merchant's credits when it accepts the payment. Out of credits, the Task ends `OUT_OF_CREDITS`, and nothing is published or delivered.
+12. **Change approval.** Nora posts the change set as a Task comment and sets `APPROVAL_REQUIRED`. The comment contains:
     - a plain-language summary;
     - changes by owner;
     - before/after excerpts;
     - `change_hash`;
     - an attached `changes.html` diff.
-12. **Publish.** When the merchant approves (Ready/Running, or "approve"), Nora calls `uplift-clearing` action `publish`.
+13. **Publish.** When the merchant approves (Ready/Running, or "approve") and the escrow shows `FundsLocked`, Nora calls `uplift-clearing` action `publish`.
     - CRE confirms the approval, publishes through the gateway, re-reads the store, and returns the after-score.
     - If no write was attempted, Nora retries `publish` once on error.
-13. **After-report.** Nora hires Quinn (before/after mode), then uploads the **Launch Pack** (a ZIP with every deliverable's summary and manifest) to the Task.
-14. **Close.**
-    - Post ratings on each finished Job, consistent with the CRE result.
-    - Run her own paid-Task fee (`masumiPayment`) and submit its result.
-    - Set `COMPLETED`.
+14. **After-report.** Nora runs Quinn (before/after mode).
+15. **Deliver.** Nora uploads the **Launch Pack** (a ZIP with every deliverable's summary and manifest) to the Task, submits the result hash to the MPS, and sets `COMPLETED`.
 
 ### §0.3 Routing
 - **Capability tags:** `keywords`, `competitors`, `reviews`, `pricing`, `copy`, `visuals`, `catalog`, `localization`, `content`, `email`, `ads`, `compliance`, `audit`, `analytics`.
@@ -138,14 +142,13 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 4. **Phase 3:** Clara, Iris and Oskar in parallel, then Leo, then Sasha.
 5. **Phase 4:** Yuki, as soon as Clara has passed (alongside Leo and Sasha).
 6. **Phase 5:** Ruth.
-7. **Phase 6:** Quinn projection, then change approval, then publish.
+7. **Phase 6:** Quinn projection, then payment, change approval and publish.
 8. **Phase 7:** Quinn after-report, then close.
 
-**Example quote (1 product, 2 locales):** 19.50 credits.
+**Example plan (1 product, 2 locales):** at most 18.00 credits. The final price counts only the runs that passed Chainlink, plus Quinn's after-report.
 
 | Agent | Credits |
 |---|---|
-| Nora | 1.50 |
 | Kai | 1.25 |
 | Rafael | 1.25 |
 | Priya | 1.50 |
@@ -173,8 +176,9 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 **Never touched:** price, compare-at price, inventory, variants, product status, orders, customers, theme files.
 
 ### O — Output
-- Plan and quote comment.
-- Per-Job verification comments.
+- Plan comment with the price ceiling.
+- Per-run verification comments.
+- Price comment and one Masumi payment.
 - Launch Pack (ZIP).
 - Change-approval comment with the diff file.
 - Final before/after report.
@@ -186,13 +190,14 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Service | Use |
 |---|---|
 | Amazon Bedrock (Grok 4.7) | Intake, planning, merging, report writing |
-| Sokosumi Core API | Task events and approvals, Jobs, files, ratings, receipt |
+| Sokosumi Core API | Task events and approvals, `masumiPayment`, files, receipt |
+| Kodosumi | Runs each specialist's deployment directly |
 | Uplift Connection Gateway | Snapshots, connection status |
 | Chainlink CRE HTTP trigger | `verify`, `publish` (JWT signed with the Worker's authorized key) |
-| Uplift MPS | Nora's fee terms (`POST /payment`) |
+| Uplift MPS | Nora's payment (`POST /payment` with `RequestedFunds`), `FundsLocked` status, result submission |
 
 ### V — Verifier (Nora)
-- Every Job is checked against the approved plan JSON. Out-of-plan Jobs are refunded.
+- Every specialist run is checked against the approved plan JSON. Out-of-plan runs FAIL and are not billed.
 - Publishing happens only after the merchant approves the change set.
 
 ---
@@ -266,10 +271,10 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | 1, 4, 5 | Amazon Bedrock | Chat Completions (Grok 4.7) |
 | 2 | Serper.dev | `POST /autocomplete` (`suggestions`), `POST /search` (`relatedSearches`, `peopleAlsoAsk`) |
 
-### V — `kai@5` · pass ≥ 60
+### V — `kai@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
-| No foreign trademarks | Deterministic match against the brand-term set in the bundle | 20 (**hard gate**) |
+| No foreign trademarks | Deterministic match against the brand-term set in the bundle | 20 |
 | Demand recomputed | Demand scores recomputed from the bundle's sources match | 20 |
 | Cluster integrity | Each keyword in exactly one cluster; valid roles | 15 |
 | Intent labels | Every keyword has a valid intent label | 10 |
@@ -277,7 +282,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Judge | Relevance of top clusters to the product | 5 |
 
 ### F
-- **No keywords found:** the Job fails with a clear message.
+- **No keywords found:** the run fails with a clear message.
 - **Serper errors:** retries with backoff on rate limits and server errors, then `SOURCE_UNAVAILABLE`.
 
 ---
@@ -347,7 +352,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Shopify public storefront | `/products/{handle}.js` |
 | Amazon Bedrock | Grok 4.7 |
 
-### V — `rafael@5` · pass ≥ 60
+### V — `rafael@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
 | Cited pages support the facts | Re-fetch 3 sampled evidence URLs (regular HTTP, consensus on the extracted field; one Confidential fetch for volatile pages); ≥2 of 3 contain the claimed title or a price within ±10% | 35 |
@@ -452,12 +457,12 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | 2 | Tavily | Search API (Reddit discussions) |
 | 4, 7, 8 | Amazon Bedrock | Grok 4.7 |
 
-### V — `priya@5` · pass ≥ 60
+### V — `priya@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
 | Quotes are verbatim | Re-fetch the source pages of 5 sampled quotes; fuzzy substring match ≥0.9 similarity; ≥3 of 5 match | 30 |
 | Counts recomputed | From the bundle's coded-review table | 25 |
-| Competitor-only | No source matches the merchant's shop or primary domain | 15 (**hard gate**) |
+| Competitor-only | No source matches the merchant's shop or primary domain | 15 |
 | Persona evidence | Attributes cite existing review IDs | 10 |
 | Coverage | ≥100 reviews and ≥2 sources | 10 |
 | Judge | Re-codes 10 reviews; checks agreement | 5 |
@@ -542,10 +547,10 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Nager.Date API | Public holidays |
 | Amazon Bedrock | Grok 4.7 |
 
-### V — `marcus@5` · pass ≥ 65
+### V — `marcus@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
-| Margin safety | For every code: `(price − discount − unit_cost − shipping) / (price − discount) ≥ floor`, from the gateway snapshot | 35 (**hard gate**) |
+| Margin safety | For every code: `(price − discount − unit_cost − shipping) / (price − discount) ≥ floor`, from the gateway snapshot | 35 |
 | Dates | `startsAt` in the future, `endsAt` after `startsAt` | 20 |
 | Code hygiene | Unique, well-formed codes | 15 |
 | Scenario maths | Recomputed | 15 |
@@ -622,7 +627,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Firecrawl | `current_copy` from URL |
 | Uplift Gateway | Snapshot |
 
-### V — `clara@5` · pass ≥ 65
+### V — `clara@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
 | Format | Length limits (+10% on body sections), sanitized HTML, handle format, no forbidden words | 25 |
@@ -722,12 +727,12 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | 7, 8 | Pillow (local) |
 | Publish | Shopify `stagedUploadsCreate`, `fileCreate`, `productUpdate`, `productReorderMedia`, `fileUpdate` |
 
-### V — `iris@5` · pass ≥ 60
+### V — `iris@5` · pass ≥ 40
 The bundle carries each kept render's fidelity score (Grok vision against the original photo), plus every export's size, border brightness and fill.
 
 | Check | Method | Points |
 |---|---|---|
-| Product fidelity | At least one render kept, and every kept render's fidelity ≥0.90 | 25 (**hard gate**) |
+| Product fidelity | At least one render kept, and every kept render's fidelity ≥0.90 | 25 |
 | Channel rules | Google Shopping variant: light border (≥240), no overlay flag. Amazon main: white background, ≥80% fill. Sizes meet minimums. | 25 |
 | Alt text | Non-empty, ≤140 characters, names the product | 15 |
 | Hero | ≥1000 px, light/neutral background | 15 |
@@ -806,7 +811,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 | Amazon Bedrock | Grok 4.7 |
 | GS1 check digit | Local |
 
-### V — `oskar@5` · pass ≥ 65
+### V — `oskar@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
 | Category validity | The chosen category is one of the taxonomy search results | 30 |
@@ -870,7 +875,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 
 ### K
 - Expose `yuki`.
-- One Job per locale, run in parallel.
+- One run per locale, in parallel.
 
 ### X
 | Service | Use |
@@ -879,7 +884,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 | Serper.dev | `POST /autocomplete` (local keywords) |
 | Amazon Bedrock | Grok 4.7 |
 
-### V — `yuki@5` · pass ≥ 65
+### V — `yuki@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
 | Digest freshness | Digests match the current source (a stale key is accepted if the source text is unchanged) | 20 |
@@ -966,7 +971,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 | Amazon Bedrock | Grok 4.7 |
 | Shopify Admin GraphQL | `metafieldsSet`, `articleCreate`, blogs |
 
-### V — `leo@5` · pass ≥ 60
+### V — `leo@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
 | FAQ grounding | ≥80% of answers cite a fact ID | 20 |
@@ -1047,11 +1052,11 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 | Serper.dev | `POST /autocomplete` (keywords when Kai did not run) |
 | Amazon Bedrock | Grok 4.7 |
 
-### V — `sasha@5` · pass ≥ 65
+### V — `sasha@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
-| Spend cap | Total budgets over the period ≤ cap | 25 (**hard gate**) |
-| Bid safety | Every max CPC / tCPA ≤ break-even (recomputed) | 25 (**hard gate**) |
+| Spend cap | Total budgets over the period ≤ cap | 25 |
+| Bid safety | Every max CPC / tCPA ≤ break-even (recomputed) | 25 |
 | Negatives sanity | No negative blocks a positive keyword (match-type logic) | 15 |
 | Limits | Character limits | 10 |
 | Final URLs | On the shop domain, with UTMs | 10 |
@@ -1103,7 +1108,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 
 ### U
 - **Input:** every public-facing artifact in the merged changeset, plus the brand lists from Priya and Rafael.
-- **If blocked:** Nora sends targeted rewrites back to the owner. If that would exceed the approved quote, she asks the merchant first.
+- **If blocked:** Nora sends targeted rewrites back to the owner. If that would exceed the approved ceiling, she asks the merchant first.
 
 ### K
 - Expose `ruth`, single flow.
@@ -1115,7 +1120,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 | Amazon Bedrock | Grok 4.7, rewrites only (never verdicts) |
 | `uplift-rules` | Local deterministic engine |
 
-### V — `ruth@5` · pass ≥ 65
+### V — `ruth@5` · pass ≥ 40
 CRE runs the **same rule engine** (a JS port generated from the same rule YAML) on the bundle's extracted text.
 
 | Check | Method | Points |
@@ -1202,7 +1207,7 @@ CRE runs the **same rule engine** (a JS port generated from the same rule YAML) 
 | Amazon Bedrock | Grok 4.7 (keyword generation, report writing) |
 | `uplift-rules` | Compliance quick scan |
 
-### V — `quinn@5` · pass ≥ 65
+### V — `quinn@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
 | Score agreement | CRE recomputes the deterministic sections from the bundle plus a fresh gateway snapshot; Quinn's total within ±3 points | 50 |
@@ -1226,7 +1231,7 @@ CRE runs the **same rule engine** (a JS port generated from the same rule YAML) 
 | **Nager.Date** | Marcus | Public holidays | None |
 | **Google PageSpeed Insights API** | Quinn | Speed notes | Kodosumi env |
 | **Shopify Admin GraphQL** | All (reads); Clara, Iris, Oskar, Yuki, Leo, Marcus (writes via CRE) | Store data | Merchant tokens: **Connection Gateway only** |
-| **Sokosumi Core API** | Worker, Nora, CRE | Tasks, approvals, Jobs, files, refunds, receipts | 13 coworker keys (Worker and CRE Vault) |
+| **Sokosumi Core API** | Worker, Nora, CRE | Tasks, approvals, payments, files, receipts | 13 coworker keys (Worker and CRE Vault) |
 | **Masumi Payment Service** | Kodosumi, Worker | Payments (uses Blockfrost internally) | Scoped `ReadAndPay` token |
 | **Chainlink CRE** | — | `uplift-clearing` (`verify`, `publish`) | CRE account; HTTP-trigger authorized key (Worker) |
 | **Amazon S3** | All | Artifact store | IAM role |

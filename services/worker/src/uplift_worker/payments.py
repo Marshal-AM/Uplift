@@ -20,7 +20,9 @@ def _iso(t: datetime) -> str:
     return t.astimezone(UTC).strftime("%Y-%m-%dT%H:%M:%S.") + f"{t.microsecond // 1000:03d}Z"
 
 
-def request_terms(role: str, input_text: str, task_id: str) -> dict[str, Any]:
+def request_terms(role: str, input_text: str, task_id: str, credits: float | None = None) -> dict[str, Any]:
+    """Signed seller terms. `credits` sets the amount for a Dynamic-priced registration (Nora: the specialists
+    used); Fixed registrations carry their own price."""
     s = settings()
     now = datetime.now(UTC)
     nonce = secrets.token_hex(10)
@@ -31,6 +33,8 @@ def request_terms(role: str, input_text: str, task_id: str) -> dict[str, Any]:
         "submitResultTime": _iso(now + timedelta(hours=6)),
         "metadata": f'{{"taskId":"{task_id}"}}',
     }
+    if credits is not None:  # 1 credit = 1 tUSDM (6 decimals)
+        body["RequestedFunds"] = [{"amount": str(round(credits * 1_000_000)), "unit": s.tusdm_unit}]
     payment = mps("/payment", body)
     return {"nonce": nonce, "payment": payment}
 
@@ -55,12 +59,13 @@ def charge(client: Sokosumi, task_id: str, terms: dict[str, Any], price: float) 
     client.event(task_id, comment=f"Payment requested: {price} credits.", masumiPayment=purchase_payload(terms))
 
 
-def pay(client: Sokosumi, task_id: str, st: dict, role: str, input_text: str, price: float, save) -> bool:
+def pay(client: Sokosumi, task_id: str, st: dict, role: str, input_text: str, price: float, save,
+        dynamic: bool = False) -> bool:
     """Request terms once and post the payment. The terms are journaled before the charge, so a retry reuses them
     (until their pay-by deadline) instead of creating another payment request. False: the workspace has no
     credits (Sokosumi then marks the Task OUT_OF_CREDITS), which no retry can fix."""
     if not st.get("terms") or int(st["terms"]["payment"]["payByTime"]) / 1000 < time.time() + 60:
-        st["terms"] = request_terms(role, input_text, task_id)
+        st["terms"] = request_terms(role, input_text, task_id, price if dynamic else None)
         save()
     try:
         charge(client, task_id, st["terms"], price)

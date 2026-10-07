@@ -1,18 +1,20 @@
 """Standalone Task runner for one specialist coworker (Kai … Quinn).
 
 Phases (journaled before each side effect):
-start → intake → [auth_wait | input_wait] → pay → funds_wait → execute → verify → [approval → approval_wait →
+start → intake → [auth_wait | input_wait] → pay → execute → verify → funds_wait → [approval → approval_wait →
 publish] → deliver → done | failed
+(the work runs while the escrow lock settles on-chain; nothing is delivered or published before it is locked)
 """
 
 import json
+import time
 from typing import Any
 
 from uplift_core import llm
 from uplift_core.hashing import change_hash, result_hash
 
 from . import cre, db, payments, runs
-from .clients import FlowError, Kodosumi, ReauthRequired, Sokosumi
+from .clients import FlowError, FlowLost, Kodosumi, ReauthRequired, Sokosumi
 from .config import settings
 
 NEEDS_STORE = {"oskar"}  # every other specialist also works from pasted copy, URLs or images
@@ -124,13 +126,15 @@ def advance(role: str, task_id: str) -> None:
         elif phase == "pay":
             paid = payments.pay(client, task_id, st, role, task.get("description") or task.get("name"),
                                 settings().prices[role], lambda: save("pay"))
-            phase = "funds_wait" if paid else "closed"  # out of credits: Sokosumi already shows OUT_OF_CREDITS
+            # Core debits the credits when it accepts the payment, so the work starts now; the escrow lock settles
+            # on-chain meanwhile and is required before anything is delivered or published (funds_wait)
+            phase = "execute" if paid else "closed"  # out of credits: Sokosumi already shows OUT_OF_CREDITS
             save(phase)
 
         elif phase == "funds_wait":
-            if not payments.funds_locked(st["terms"]):
+            if st.get("terms") and not payments.funds_locked(st["terms"]):
                 return
-            phase = "execute"
+            phase = st.pop("after_funds", "execute")
             save(phase)
 
         elif phase == "execute":
@@ -142,8 +146,17 @@ def advance(role: str, task_id: str) -> None:
             try:
                 if not st.get("fid"):  # journal the run id first so a restart resumes instead of relaunching
                     st["fid"] = kodo.launch(role, {**st["fields"], "context": json.dumps(envelope)})
+                    st["fid_at"] = time.time()
                     save(phase)
-                manifest_text = kodo.wait(st["fid"])
+                manifest_text = kodo.wait(st["fid"], st.setdefault("fid_at", time.time()))
+            except FlowLost:
+                st.pop("fid", None)
+                st["lost_runs"] = st.get("lost_runs", 0) + 1
+                if st["lost_runs"] > 2:
+                    st["error"] = "The agent could not be started; no charge was submitted."
+                    phase = "failed"
+                save(phase)
+                continue
             except ReauthRequired:
                 st.pop("fid", None)
                 runs.request_connection(client, task, "Your store connection expired.")
@@ -180,7 +193,8 @@ def advance(role: str, task_id: str) -> None:
             st.setdefault("verdicts", []).append(verdict)
             client.event(task_id, comment=f"Chainlink verification: **{verdict['outcome']}** · {verdict['score']}/100")
             if verdict["outcome"] == "PASS":
-                phase = "approval" if st["manifest"]["changeset"] else "deliver"
+                st["after_funds"] = "approval" if st["manifest"]["changeset"] else "deliver"
+                phase = "funds_wait"
             elif len(st["verdicts"]) < 2:
                 st["failure_reasons"] = verdict.get("reasons", [])
                 phase = "execute"
