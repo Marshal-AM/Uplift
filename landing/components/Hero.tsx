@@ -26,7 +26,7 @@ export const Hero = () => {
               style={{ fontFamily: "var(--font-geist-mono), ui-monospace, monospace" }}
             >
               <ShieldCheck className="w-4 h-4 text-[#156d95]" />
-              Powered on Cardano · Verified by Chainlink
+              Powered by Cardano · Verified by Chainlink
             </motion.span>
 
             <h1
