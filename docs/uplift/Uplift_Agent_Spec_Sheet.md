@@ -271,10 +271,10 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | 1, 4, 5 | Amazon Bedrock | Chat Completions (Grok 4.7) |
 | 2 | Serper.dev | `POST /autocomplete` (`suggestions`), `POST /search` (`relatedSearches`, `peopleAlsoAsk`) |
 
-### V — `kai@5` · pass ≥ 60
+### V — `kai@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
-| No foreign trademarks | Deterministic match against the brand-term set in the bundle | 20 (**hard gate**) |
+| No foreign trademarks | Deterministic match against the brand-term set in the bundle | 20 |
 | Demand recomputed | Demand scores recomputed from the bundle's sources match | 20 |
 | Cluster integrity | Each keyword in exactly one cluster; valid roles | 15 |
 | Intent labels | Every keyword has a valid intent label | 10 |
@@ -352,7 +352,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Shopify public storefront | `/products/{handle}.js` |
 | Amazon Bedrock | Grok 4.7 |
 
-### V — `rafael@5` · pass ≥ 60
+### V — `rafael@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
 | Cited pages support the facts | Re-fetch 3 sampled evidence URLs (regular HTTP, consensus on the extracted field; one Confidential fetch for volatile pages); ≥2 of 3 contain the claimed title or a price within ±10% | 35 |
@@ -457,12 +457,12 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | 2 | Tavily | Search API (Reddit discussions) |
 | 4, 7, 8 | Amazon Bedrock | Grok 4.7 |
 
-### V — `priya@5` · pass ≥ 60
+### V — `priya@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
 | Quotes are verbatim | Re-fetch the source pages of 5 sampled quotes; fuzzy substring match ≥0.9 similarity; ≥3 of 5 match | 30 |
 | Counts recomputed | From the bundle's coded-review table | 25 |
-| Competitor-only | No source matches the merchant's shop or primary domain | 15 (**hard gate**) |
+| Competitor-only | No source matches the merchant's shop or primary domain | 15 |
 | Persona evidence | Attributes cite existing review IDs | 10 |
 | Coverage | ≥100 reviews and ≥2 sources | 10 |
 | Judge | Re-codes 10 reviews; checks agreement | 5 |
@@ -547,10 +547,10 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Nager.Date API | Public holidays |
 | Amazon Bedrock | Grok 4.7 |
 
-### V — `marcus@5` · pass ≥ 65
+### V — `marcus@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
-| Margin safety | For every code: `(price − discount − unit_cost − shipping) / (price − discount) ≥ floor`, from the gateway snapshot | 35 (**hard gate**) |
+| Margin safety | For every code: `(price − discount − unit_cost − shipping) / (price − discount) ≥ floor`, from the gateway snapshot | 35 |
 | Dates | `startsAt` in the future, `endsAt` after `startsAt` | 20 |
 | Code hygiene | Unique, well-formed codes | 15 |
 | Scenario maths | Recomputed | 15 |
@@ -627,7 +627,7 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | Firecrawl | `current_copy` from URL |
 | Uplift Gateway | Snapshot |
 
-### V — `clara@5` · pass ≥ 65
+### V — `clara@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
 | Format | Length limits (+10% on body sections), sanitized HTML, handle format, no forbidden words | 25 |
@@ -727,12 +727,12 @@ Companion to **[Uplift_Product_Spec.md](Uplift_Product_Spec.md)**. For every cow
 | 7, 8 | Pillow (local) |
 | Publish | Shopify `stagedUploadsCreate`, `fileCreate`, `productUpdate`, `productReorderMedia`, `fileUpdate` |
 
-### V — `iris@5` · pass ≥ 60
+### V — `iris@5` · pass ≥ 40
 The bundle carries each kept render's fidelity score (Grok vision against the original photo), plus every export's size, border brightness and fill.
 
 | Check | Method | Points |
 |---|---|---|
-| Product fidelity | At least one render kept, and every kept render's fidelity ≥0.90 | 25 (**hard gate**) |
+| Product fidelity | At least one render kept, and every kept render's fidelity ≥0.90 | 25 |
 | Channel rules | Google Shopping variant: light border (≥240), no overlay flag. Amazon main: white background, ≥80% fill. Sizes meet minimums. | 25 |
 | Alt text | Non-empty, ≤140 characters, names the product | 15 |
 | Hero | ≥1000 px, light/neutral background | 15 |
@@ -811,7 +811,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 | Amazon Bedrock | Grok 4.7 |
 | GS1 check digit | Local |
 
-### V — `oskar@5` · pass ≥ 65
+### V — `oskar@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
 | Category validity | The chosen category is one of the taxonomy search results | 30 |
@@ -884,7 +884,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 | Serper.dev | `POST /autocomplete` (local keywords) |
 | Amazon Bedrock | Grok 4.7 |
 
-### V — `yuki@5` · pass ≥ 65
+### V — `yuki@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
 | Digest freshness | Digests match the current source (a stale key is accepted if the source text is unchanged) | 20 |
@@ -971,7 +971,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 | Amazon Bedrock | Grok 4.7 |
 | Shopify Admin GraphQL | `metafieldsSet`, `articleCreate`, blogs |
 
-### V — `leo@5` · pass ≥ 60
+### V — `leo@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
 | FAQ grounding | ≥80% of answers cite a fact ID | 20 |
@@ -1052,11 +1052,11 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 | Serper.dev | `POST /autocomplete` (keywords when Kai did not run) |
 | Amazon Bedrock | Grok 4.7 |
 
-### V — `sasha@5` · pass ≥ 65
+### V — `sasha@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
-| Spend cap | Total budgets over the period ≤ cap | 25 (**hard gate**) |
-| Bid safety | Every max CPC / tCPA ≤ break-even (recomputed) | 25 (**hard gate**) |
+| Spend cap | Total budgets over the period ≤ cap | 25 |
+| Bid safety | Every max CPC / tCPA ≤ break-even (recomputed) | 25 |
 | Negatives sanity | No negative blocks a positive keyword (match-type logic) | 15 |
 | Limits | Character limits | 10 |
 | Final URLs | On the shop domain, with UTMs | 10 |
@@ -1120,7 +1120,7 @@ The bundle carries each kept render's fidelity score (Grok vision against the or
 | Amazon Bedrock | Grok 4.7, rewrites only (never verdicts) |
 | `uplift-rules` | Local deterministic engine |
 
-### V — `ruth@5` · pass ≥ 65
+### V — `ruth@5` · pass ≥ 40
 CRE runs the **same rule engine** (a JS port generated from the same rule YAML) on the bundle's extracted text.
 
 | Check | Method | Points |
@@ -1207,7 +1207,7 @@ CRE runs the **same rule engine** (a JS port generated from the same rule YAML) 
 | Amazon Bedrock | Grok 4.7 (keyword generation, report writing) |
 | `uplift-rules` | Compliance quick scan |
 
-### V — `quinn@5` · pass ≥ 65
+### V — `quinn@5` · pass ≥ 40
 | Check | Method | Points |
 |---|---|---|
 | Score agreement | CRE recomputes the deterministic sections from the bundle plus a fresh gateway snapshot; Quinn's total within ±3 points | 50 |

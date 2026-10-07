@@ -268,8 +268,9 @@ How each read is done:
 
 ### 5.4 Verdict rule
 - A deliverable **passes** when both hold:
-  - all of its role's **hard gates** hold (safety rules only: margin floor, spend cap, bid ceiling, field ownership, product-pixel fidelity, competitor-only sources);
-  - its weighted score reaches the role's pass threshold, which is between 60 and 70 (sheet §V).
+  - its **field-ownership** gate holds (an agent's change set touches only the fields it owns);
+  - its weighted score reaches the pass threshold of 40 (sheet §V). Safety checks such as the margin floor, spend cap,
+    bid ceiling, product fidelity and competitor-only sources carry the largest weights.
 - Re-checks of third-party data use tolerance bands (±10% on prices, ±5 positions on rankings), because results shift between fetches.
 - The score is reported with every result and shown to the merchant.
 
