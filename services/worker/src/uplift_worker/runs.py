@@ -180,8 +180,9 @@ def describe_changes(changeset: list[dict], snapshot_product: dict | None, names
             lines.append(f"- **translation {op['translations'][0]['locale'] if op['translations'] else ''}**: "
                          f"{len(op['translations'])} fields")
         elif name == "discount.create":
+            scope = "this product only" if op["input"]["customerGets"]["items"].get("products") else "store-wide"
             lines.append(f"- **discount code** {op['input']['code']}: "
-                         f"{op['input']['customerGets']['value'].get('percentage', 0) * 100:.0f}% "
+                         f"{op['input']['customerGets']['value'].get('percentage', 0) * 100:.0f}% {scope} "
                          f"({op['input']['startsAt'][:10]} → {op['input'].get('endsAt', '')[:10]})")
         elif name == "article.create":
             lines.append(f"- **blog article** (unpublished): {op['input']['title']}")

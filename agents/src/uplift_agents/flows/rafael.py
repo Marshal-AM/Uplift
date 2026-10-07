@@ -46,11 +46,13 @@ def run(inputs: dict, tracer) -> str:
     country, lang = ctx.get("market_country", "US").upper(), ctx.get("language", "en")
     max_n = int(ctx.get("max_competitors", 8) or 8)
     product = ctx.product["title"] if ctx.product else ctx.get("product", "")
+    about = (product + "\n" + re.sub("<[^>]+>", " ", (ctx.product or {}).get("descriptionHtml") or "")).strip()[:1500]
     own_domain = _domain((ctx.snapshot or {}).get("shop", {}).get("primaryDomain", {}).get("url", "") or "x")
 
     kai = ctx.upstream_artifact("kai", "keyword_map.json")
     queries = ([kai["primary"], *kai["secondary"][:4]] if kai else llm.structured(
-        f"Product: {product}\nGive 5 head search queries shoppers use to find this product.",
+        f"Product: {about}\nGive 5 head search queries shoppers type to find this kind of product: product type, "
+        "material and key features, never model numbers or brand names.",
         {"type": "object", "properties": {"queries": {"type": "array", "items": {"type": "string"}}},
          "required": ["queries"]})["queries"][:5])
 
@@ -77,7 +79,7 @@ def run(inputs: dict, tracer) -> str:
         visibility[d] = visibility.get(d, 0) + 10
         if "/" in known.split("//")[-1]:
             urls[d] = known if "//" in known else f"https://{known}"
-    competitors = sorted(visibility, key=lambda d: -visibility[d])[:max_n]
+    competitors = sorted(visibility, key=lambda d: -visibility[d])[:max_n + 4]  # spares for the relevance filter
 
     tracer.markdown_sync(f"Reading {len(competitors)} competitor product pages")
 
@@ -90,8 +92,22 @@ def run(inputs: dict, tracer) -> str:
             return {"domain": domain, "url": url, "unavailable": str(exc)[:120]}
         return {"domain": domain, "url": url, **data}
 
-    with ThreadPoolExecutor(8) as pool:
+    with ThreadPoolExecutor(12) as pool:
         matrix = list(pool.map(read, competitors))
+
+    # search results also bring lab ware, wholesale lots, accessories and other product types: keep only what a
+    # shopper would compare with this product, so prices and positioning come from real competitors
+    titles = [f"page: {r.get('title') or r['domain']}" for r in matrix] + [f"offer: {o.get('title')}" for o in offers]
+    keep = set(llm.structured(
+        f"Our product:\n{about}\n\nWhich of these are the same kind of product a shopper would compare with ours? "
+        "Exclude wholesale or bulk lots, accessories, parts, unavailable listings and other product types.\n"
+        + "\n".join(f"{i}: {t}" for i, t in enumerate(titles)),
+        {"type": "object", "properties": {"keep": {"type": "array", "items": {"type": "integer"}}},
+         "required": ["keep"]})["keep"])
+    known = {_domain(k) for k in ctx.lines("known_competitors")}
+    matrix = [r for i, r in enumerate(matrix) if i in keep or r["domain"] in known][:max_n]
+    offers = [o for j, o in enumerate(offers) if len(titles) - len(offers) + j in keep]
+    competitors = [r["domain"] for r in matrix]
     for row in matrix:
         if row.get("price"):
             out.cite(f"{row['domain']} price {row['price']}", row["url"], row.get("title", ""))

@@ -58,15 +58,22 @@ def structured(
     max_tokens: int = 4000,
     images: list[bytes] | None = None,
 ) -> dict[str, Any]:
-    """Return JSON matching `schema` by forcing the model to call a single `respond` function."""
-    choice = _complete({
+    """Return JSON matching `schema` by forcing the model to call a single `respond` function. The model can omit a
+    required field now and then; such an answer is requested again (up to 3 attempts in all)."""
+    body = {
         "messages": _messages(prompt, system, images),
         "max_tokens": max_tokens,
         "tools": [{"type": "function", "function": {"name": "respond", "description": "Return the answer.",
                                                     "parameters": schema}}],
         "tool_choice": {"type": "function", "function": {"name": "respond"}},
-    })
-    calls = choice["message"].get("tool_calls") or []
-    if not calls:
-        raise RuntimeError(f"model returned no structured output (finish_reason={choice.get('finish_reason')})")
-    return json.loads(calls[0]["function"]["arguments"])
+    }
+    for _ in range(3):
+        choice = _complete(body)
+        calls = choice["message"].get("tool_calls") or []
+        if not calls:
+            raise RuntimeError(f"model returned no structured output (finish_reason={choice.get('finish_reason')})")
+        out = json.loads(calls[0]["function"]["arguments"])
+        missing = [k for k in schema.get("required", []) if k not in out]
+        if not missing:
+            return out
+    raise RuntimeError(f"model left out required fields {missing} three times")
