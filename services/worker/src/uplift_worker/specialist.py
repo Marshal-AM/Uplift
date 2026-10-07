@@ -23,6 +23,16 @@ def _required(schema: list[dict]) -> list[str]:
             and not any(v["validation"] == "optional" for v in f.get("validations") or [])]
 
 
+def form_values(schema: list[dict], values: dict[str, str]) -> dict[str, str]:
+    """Non-empty answers as Kodosumi form values, over the form's own defaults (so the merchant is not asked for a
+    market or language the form already defaults to); a checkbox counts as checked only with the value "on"."""
+    boolean = {f["id"] for f in schema if f["type"] == "boolean"}
+    out = {f["id"]: str(d) for f in schema if f["id"] not in boolean and (d := (f.get("data") or {}).get("default"))}
+    out |= {k: v for k, v in values.items() if v and k not in boolean}
+    out |= {k: "on" for k in boolean if str(values.get(k, "")).strip().lower() in ("true", "yes", "on", "1")}
+    return out
+
+
 def intake(task: dict, schema: list[dict], answers: list[str]) -> dict[str, Any]:
     fields = [{"id": f["id"], "label": f["name"], "type": f["type"], "options": (f.get("data") or {}).get("values")}
               for f in schema if f["type"] != "none" and f["id"] != "context"]
@@ -60,8 +70,10 @@ def advance(role: str, task_id: str) -> None:
         elif phase == "intake":
             schema = Kodosumi().input_schema(role)
             parsed = intake(task, schema, st.get("answers", []))
-            st["fields"] = {k: v for k, v in parsed["values"].items() if v}
-            uses_store = role in NEEDS_STORE or parsed["uses_connected_store"]
+            st["fields"] = form_values(schema, parsed["values"])
+            # naming a product in a connected store means "work on that product" (so changes can be published)
+            uses_store = role in NEEDS_STORE or parsed["uses_connected_store"] or (
+                bool(parsed.get("product_hint")) and runs.store_connected(task))
             if uses_store and not runs.store_connected(task):
                 runs.request_connection(client, task, "This needs your store data.")
                 phase = "auth_wait"
@@ -85,7 +97,8 @@ def advance(role: str, task_id: str) -> None:
                 phase = "input_wait"
                 save(phase)
                 return
-            phase = "pay" if settings().payments_enabled else "execute"
+            # a question asked mid-run (INPUT_MISSING) comes back through intake: never charge twice
+            phase = "pay" if settings().payments_enabled and not st.get("terms") else "execute"
             save(phase)
 
         elif phase == "auth_wait":
@@ -180,10 +193,10 @@ def advance(role: str, task_id: str) -> None:
             changeset = st["manifest"]["changeset"]
             st["change_hash"] = change_hash(changeset)
             product = (runs.snapshot(task, st["product_id"]) or {}).get("product") if st.get("product_id") else None
-            client.upload(task_id, "changes.html", runs.changes_html(changeset), "text/html")
+            client.upload(task_id, "changes.md", runs.changes_md(changeset), "text/markdown")
             st["wait_event_id"] = client.event(task_id, status="APPROVAL_REQUIRED", comment=(
-                "Ready to publish these changes:\n\n" + runs.describe_changes(changeset, product)
-                + f"\n\nFull diff attached (`changes.html`, change hash `{st['change_hash'][:16]}`).\n"
+                "Ready to publish these changes:\n\n" + runs.describe_changes(changeset, product, runs.category_names(task, changeset))
+                + f"\n\nFull diff attached (`changes.md`, change hash `{st['change_hash'][:16]}`).\n"
                 "Move this Task to **Ready** (or reply **approve**) to publish."))["id"]
             phase = "approval_wait"
             save(phase)
@@ -220,7 +233,7 @@ def advance(role: str, task_id: str) -> None:
             save(phase)
 
         elif phase == "deliver":
-            runs.deliver_files(client, task_id, st["manifest"])
+            runs.deliver_files(client, task_id, st["manifest"], st.setdefault("delivered", []), lambda: save("deliver"))
             if settings().payments_enabled:
                 payments.submit_result(st["terms"], st["result_hash"])
             after = (st.get("publish") or {}).get("after_score")

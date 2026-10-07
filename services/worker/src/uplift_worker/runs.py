@@ -1,10 +1,11 @@
 """Building blocks shared by standalone specialist runs and Nora's orchestration."""
 
-import html
+import io
 import json
 import re
 import secrets
 import time
+import zipfile
 from typing import Any
 
 import boto3
@@ -52,10 +53,17 @@ def snapshot(task: dict, product_id: str) -> dict:
 
 
 def find_products(task: dict, query: str = "") -> list[dict]:
+    """Products matching what the merchant wrote: an exact handle first (e.g. `bamboo-insulated-bottle` inside a
+    sentence), then Shopify's text search; no query lists the first products."""
     user_id, org_id = owner(task)
     q = "query($q: String) { products(first: 10, query: $q) { nodes { id title handle onlineStoreUrl } } }"
-    return gateway("/v1/read/graphql", {"user_id": user_id, "org_id": org_id, "query": q,
-                                        "variables": {"q": query or None}})["products"]["nodes"]
+    searches = [f"handle:{h}" for h in re.findall(r"[a-z0-9]+(?:-[a-z0-9]+)+", query.lower())] + [query]
+    for search in searches if query else [None]:
+        nodes = gateway("/v1/read/graphql", {"user_id": user_id, "org_id": org_id, "query": q,
+                                             "variables": {"q": search}})["products"]["nodes"]
+        if nodes:
+            return nodes
+    return []
 
 
 def user_replies(client: Sokosumi, task_id: str, after_event_id: str | None) -> list[dict]:
@@ -106,13 +114,40 @@ def changeset_url(changeset: list[dict]) -> str:
                                         Params={"Bucket": settings().artifact_bucket, "Key": key})
 
 
-def deliver_files(client: Sokosumi, task_id: str, manifest: dict, prefix: str = "") -> None:
+ACCEPTED = ("text/markdown", "text/csv", "text/plain", "application/json", "application/zip", "application/pdf",
+            "image/")  # what Sokosumi Task files accept (checked by type and by file extension)
+
+
+def deliver_files(client: Sokosumi, task_id: str, manifest: dict, sent: list[str], save) -> None:
+    """Upload each artifact once: `sent` is journaled (via `save`) so a retry does not upload duplicates."""
     for art in manifest["artifacts"]:
+        if art["name"] in sent:
+            continue
         data = httpx.get(art["url"], timeout=120).content
-        client.upload(task_id, f"{prefix}{art['name'].replace('/', '-')}", data, art["mime"])
+        name, mime = art["name"].replace("/", "-"), art["mime"]
+        if not mime.startswith(ACCEPTED):  # e.g. .html emails, .ics calendars: delivered intact inside a zip
+            buf = io.BytesIO()
+            with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+                z.writestr(name, data)
+            data, name, mime = buf.getvalue(), f"{name}.zip", "application/zip"
+        client.upload(task_id, name, data, mime)
+        sent.append(art["name"])
+        save()
 
 
-def describe_changes(changeset: list[dict], snapshot_product: dict | None) -> str:
+def category_names(task: dict, changeset: list[dict]) -> dict[str, str]:
+    """Readable names for taxonomy category ids in a change set (approvals show names, not gids)."""
+    ids = [op["fields"]["category"] for op in changeset if op["op"] == "product.update" and op["fields"].get("category")]
+    if not ids:
+        return {}
+    user_id, org_id = owner(task)
+    q = "query($ids: [ID!]!) { nodes(ids: $ids) { ... on TaxonomyCategory { id fullName } } }"
+    nodes = gateway("/v1/read/graphql", {"user_id": user_id, "org_id": org_id, "query": q,
+                                         "variables": {"ids": ids}})["nodes"]
+    return {n["id"]: n["fullName"] for n in nodes if n}
+
+
+def describe_changes(changeset: list[dict], snapshot_product: dict | None, names: dict[str, str] | None = None) -> str:
     """Plain-language list of changes for the approval comment."""
     lines = []
     for op in changeset:
@@ -120,7 +155,10 @@ def describe_changes(changeset: list[dict], snapshot_product: dict | None) -> st
         if name == "product.update":
             for field, after in op["fields"].items():
                 before = (snapshot_product or {}).get(field)
-                if isinstance(after, dict):
+                if field == "category":
+                    before = (before or {}).get("fullName") if isinstance(before, dict) else before
+                    after = (names or {}).get(after, after)
+                elif isinstance(after, dict):
                     after = " · ".join(f"{k}: {v}" for k, v in after.items())
                     before = " · ".join(f"{k}: {v}" for k, v in (before or {}).items()) if isinstance(before, dict) else before
                 lines.append(f"- **{field}**: {_short(before)} → {_short(after)}")
@@ -150,10 +188,11 @@ def describe_changes(changeset: list[dict], snapshot_product: dict | None) -> st
     return "\n".join(lines)
 
 
-def changes_html(changeset: list[dict]) -> bytes:
-    rows = "".join(f"<h3>{html.escape(op['op'])}</h3><pre>{html.escape(json.dumps(op, indent=2, ensure_ascii=False))}</pre>"
-                   for op in changeset)
-    return f"<!doctype html><meta charset=utf-8><title>Uplift changes</title><body>{rows}</body>".encode()
+def changes_md(changeset: list[dict]) -> bytes:
+    """The exact change set, one section per operation (attached to the approval request)."""
+    rows = "".join(f"## {i}. {op['op']}\n\n```json\n{json.dumps(op, indent=2, ensure_ascii=False)}\n```\n\n"
+                   for i, op in enumerate(changeset, 1))
+    return f"# Uplift changes\n\n{rows}".encode()
 
 
 def _short(value: Any, n: int = 90) -> str:

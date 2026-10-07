@@ -98,7 +98,7 @@ def fields_for(role: str, intent: dict, product: dict, locale: str | None = None
                 "competitor_domains": "\n".join(intent.get("competitors", []))},
         "rafael": {**base, "product": title, "known_competitors": "\n".join(intent.get("competitors", []))},
         "priya": {**base, "category": product.get("productType") or title, "my_product": title,
-                  "competitor_products": "\n".join(intent.get("competitors", []))},
+                  "competitor_products": "\n".join(intent.get("competitors", [])), "include_social": "on"},
         "marcus": {"market_country": market, "goal": "launch", "margin_floor_pct": "35", "product": title},
         "clara": {"locale": "en-US"},
         "iris": {"product_name": title, "category": product.get("productType") or "product",
@@ -382,13 +382,14 @@ def merge(client: Sokosumi, task: dict, st: dict) -> None:
             projected |= op["fields"]
     before = score(st["baseline_snapshot"]["product"])["deterministic"]
     after = score(projected)["deterministic"]
-    client.upload(task["id"], "changes.html", runs.changes_html(changeset), "text/html")
+    client.upload(task["id"], "changes.md", runs.changes_md(changeset), "text/markdown")
     blocked = [n["role"] for n in st["nodes"].values() if n["status"] == "blocked"]
     st["wait_event_id"] = client.event(task["id"], status="APPROVAL_REQUIRED", comment=(
         f"**{len(changeset)} changes ready** (projected core listing score {before:.0f} → {after:.0f} of 95):\n\n"
-        + runs.describe_changes(changeset, st["baseline_snapshot"]["product"])
+        + runs.describe_changes(changeset, st["baseline_snapshot"]["product"],
+                                 runs.category_names(task, changeset))
         + (f"\n\nNot included (did not pass verification): {', '.join(blocked)}." if blocked else "")
-        + f"\n\nFull diff attached (`changes.html`, change hash `{st['change_hash'][:16]}`). "
+        + f"\n\nFull diff attached (`changes.md`, change hash `{st['change_hash'][:16]}`). "
         "Ads stay paused and the blog article stays unpublished.\n\n"
         "Move this Task to **Ready** (or reply **approve**) to publish."))["id"]
 
