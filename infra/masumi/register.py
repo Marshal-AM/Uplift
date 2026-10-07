@@ -88,14 +88,14 @@ def _parses(text: str) -> bool:
 
 def register_nora(mps: httpx.Client, vkey: str) -> None:
     nora = LISTINGS["nora"]
-    if any(a["name"] == nora["name"] and _current_nora(a) for a in registry(mps)):
+    if any(a["name"] == nora["registry_name"] and _current_nora(a) for a in registry(mps)):
         print("nora    already registered (Standard, Dynamic)")
         return
     source = mps.get("/payment-source", params={"take": 10}).json()["data"]["PaymentSources"]
     address = next(s["smartContractAddress"] for s in source if s["paymentSourceType"] == "Web3CardanoV2"
                    and s["network"] == "Preprod")
     resp = mps.post("/registry", json={
-        "network": "Preprod", "type": "Standard", "sellingWalletVkey": vkey, "name": nora["name"],
+        "network": "Preprod", "type": "Standard", "sellingWalletVkey": vkey, "name": nora["registry_name"],
         "description": nora["caption"], "apiBaseUrl": f"{WORKER}/agents/nora",
         "Tags": nora["tags"][:15], "ExampleOutputs": [], "Capability": {"name": "grok-4.7", "version": "1"},
         "Author": {"name": "Uplift", "organization": "Uplift"},
@@ -107,11 +107,11 @@ def register_nora(mps: httpx.Client, vkey: str) -> None:
 
 
 def wait_confirmed(mps: httpx.Client, timeout_s: int = 1800) -> dict[str, str]:
-    names = {item["name"]: role for role, item in LISTINGS.items()}
+    names = {item["registry_name"]: role for role, item in LISTINGS.items()}  # on-chain names
     deadline = time.time() + timeout_s
     while True:
         assets = [a for a in registry(mps) if (a["name"] in names or any(a["name"].startswith(r.title()) for r in LISTINGS))
-                  and (a["name"] != LISTINGS["nora"]["name"] or _current_nora(a))]  # earlier Noras are superseded
+                  and (a["name"] != LISTINGS["nora"]["registry_name"] or _current_nora(a))]  # earlier Noras are superseded
         states = {a["name"]: a["state"] for a in assets}
         done = {a["name"]: a["agentIdentifier"] for a in assets if a["state"] in ("RegistrationConfirmed", "UpdateConfirmed")}
         failed = [n for n, s in states.items() if s in ("RegistrationFailed", "UpdateFailed")]

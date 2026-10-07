@@ -1,6 +1,6 @@
 {
   "nora": {
-    "name": "Nora · Uplift Lead",
+    "name": "Nora",
     "caption": "Uplift Lead · E-commerce Growth Manager",
     "description": "Your AI e-commerce growth and ads team lead, focused on getting your products ranked higher. Tell Nora what you want: launch a product, fix a listing that isn't selling, plan a promotion, go international. She builds a plan with the right specialists (keyword research, competitor and review analysis, pricing, copy, product photos, catalog and shopping feeds, translation, content and email copy, paid ads, compliance, auditing) and shows you the most it can cost. She runs the work, has every deliverable scored and verified by Chainlink, and then charges only for the specialists she actually used. She publishes only what you approve and hands you a before/after report. Works with Shopify stores and Google Ads today.",
     "tags": [
@@ -18,10 +18,12 @@
     ],
     "price": 1.5,
     "company": "Uplift",
-    "url": "https://uplift-landing.up.railway.app"
+    "url": "https://uplift-landing.up.railway.app",
+    "registry_name": "Nora · Uplift Lead",
+    "image": "https://uplift-landing.up.railway.app/avatars/nora.png"
   },
   "kai": {
-    "name": "Kai · Search Demand Analyst",
+    "name": "Kai",
     "caption": "Search Demand Analyst",
     "description": "Finds what your customers actually search for. Give Kai your product and market and get a clustered keyword map built from real Google autocomplete suggestions, related searches and shopper questions, with a demand signal for each keyword, buyer intent, and where to use each cluster: product title, description, blog or ads.",
     "tags": [
@@ -35,10 +37,12 @@
     ],
     "price": 1.25,
     "company": "Uplift",
-    "url": "https://uplift-landing.up.railway.app"
+    "url": "https://uplift-landing.up.railway.app",
+    "registry_name": "Kai · Search Demand Analyst",
+    "image": "https://uplift-landing.up.railway.app/avatars/kai.png"
   },
   "rafael": {
-    "name": "Rafael · Competitor & Market Analyst",
+    "name": "Rafael",
     "caption": "Competitor & Market Analyst",
     "description": "Shows you who you're really up against. Rafael looks at who ranks on Google and Google Shopping for your product, what they charge, what they promise, how they present the offer (shipping, bundles, guarantees) and where the gaps are. Every finding links to its source.",
     "tags": [
@@ -52,10 +56,12 @@
     ],
     "price": 1.25,
     "company": "Uplift",
-    "url": "https://uplift-landing.up.railway.app"
+    "url": "https://uplift-landing.up.railway.app",
+    "registry_name": "Rafael · Competitor & Market Analyst",
+    "image": "https://uplift-landing.up.railway.app/avatars/rafael.png"
   },
   "priya": {
-    "name": "Priya · Competitor Review & Sentiment Analyst",
+    "name": "Priya",
     "caption": "Competitor Review & Sentiment Analyst",
     "description": "Reads hundreds of your competitors' customer reviews (Amazon, brand stores, Trustpilot and Reddit) so you don't have to. Give Priya the competing products (or just your category) and get what customers love, their top complaints, unmet wishes, deal-breakers and the exact words they use. Each point comes with verbatim quotes and links, ready to turn into copy, FAQs, ads and product improvements.",
     "tags": [
@@ -70,10 +76,12 @@
     ],
     "price": 1.5,
     "company": "Uplift",
-    "url": "https://uplift-landing.up.railway.app"
+    "url": "https://uplift-landing.up.railway.app",
+    "registry_name": "Priya · Competitor Review & Sentiment Analyst",
+    "image": "https://uplift-landing.up.railway.app/avatars/priya.png"
   },
   "marcus": {
-    "name": "Marcus · Pricing & Promotions Strategist",
+    "name": "Marcus",
     "caption": "Pricing & Promotions Strategist",
     "description": "Prices and promotions that sell without killing your margin. Marcus benchmarks your price against the market, models discount scenarios against your real unit costs, plans a promotion calendar around holidays and retail events, and creates scheduled discount codes in your store that never go below your margin floor.",
     "tags": [
@@ -88,10 +96,12 @@
     ],
     "price": 1.25,
     "company": "Uplift",
-    "url": "https://uplift-landing.up.railway.app"
+    "url": "https://uplift-landing.up.railway.app",
+    "registry_name": "Marcus · Pricing & Promotions Strategist",
+    "image": "https://uplift-landing.up.railway.app/avatars/marcus.png"
   },
   "clara": {
-    "name": "Clara · Product Page Copywriter",
+    "name": "Clara",
     "caption": "Product Page Copywriter",
     "description": "Product pages that rank and convert. Clara writes your title, description, SEO title and meta description, and tags. Live product URLs are never changed. She uses real search terms, answers the objections buyers raise about competitors, and states only facts about your product. You get three variants scored against a 45-point rubric, with the best one selected.",
     "tags": [
@@ -105,10 +115,12 @@
     ],
     "price": 2.0,
     "company": "Uplift",
-    "url": "https://uplift-landing.up.railway.app"
+    "url": "https://uplift-landing.up.railway.app",
+    "registry_name": "Clara · Product Page Copywriter",
+    "image": "https://uplift-landing.up.railway.app/avatars/clara.png"
   },
   "iris": {
-    "name": "Iris · Product Visual Designer",
+    "name": "Iris",
     "caption": "Product Visual Designer",
     "description": "Product photos that sell on every channel. Upload your product images (or connect your store) and Iris audits them, re-shoots your product as a clean white studio photo, places it in realistic lifestyle scenes, and exports ready-to-use versions for your store, Google Shopping, Google Ads and Amazon. Every new image is checked against your original photo so the product stays true to life. She also writes the alt text and recommends the image order.",
     "tags": [
@@ -124,10 +136,12 @@
     ],
     "price": 2.5,
     "company": "Uplift",
-    "url": "https://uplift-landing.up.railway.app"
+    "url": "https://uplift-landing.up.railway.app",
+    "registry_name": "Iris · Product Visual Designer",
+    "image": "https://uplift-landing.up.railway.app/avatars/iris.png"
   },
   "oskar": {
-    "name": "Oskar · Catalog, Collections & Shopping Feed Specialist",
+    "name": "Oskar",
     "caption": "Catalog, Collections & Shopping Feed Specialist",
     "description": "Makes your products easy to find, in your store and in shopping feeds like Google Shopping. Oskar sets the right product category and attributes, cleans up product type and tags, places products in the right collections (and writes the collection page SEO), links related and complementary products, and checks your Google Shopping feed data (GTIN, required attributes), flagging what's missing before Google disapproves the product. Works with Shopify stores today.",
     "tags": [
@@ -142,10 +156,12 @@
     ],
     "price": 1.5,
     "company": "Uplift",
-    "url": "https://uplift-landing.up.railway.app"
+    "url": "https://uplift-landing.up.railway.app",
+    "registry_name": "Oskar · Catalog, Collections & Shopping Feed Specialist",
+    "image": "https://uplift-landing.up.railway.app/avatars/oskar.png"
   },
   "yuki": {
-    "name": "Yuki · Localization & Transcreation Specialist",
+    "name": "Yuki",
     "caption": "Localization & Transcreation Specialist",
     "description": "Sell in new countries with listings that read as if they were written there. Yuki adapts your title, description, SEO title and meta description to each market. She uses the local search terms people actually type, keeps your brand terms intact, converts units, and publishes straight into your store's translations.",
     "tags": [
@@ -162,10 +178,12 @@
     ],
     "price": 1.0,
     "company": "Uplift",
-    "url": "https://uplift-landing.up.railway.app"
+    "url": "https://uplift-landing.up.railway.app",
+    "registry_name": "Yuki · Localization & Transcreation Specialist",
+    "image": "https://uplift-landing.up.railway.app/avatars/yuki.png"
   },
   "leo": {
-    "name": "Leo · Content & Email Marketer",
+    "name": "Leo",
     "caption": "Content & Email Marketer",
     "description": "Content that answers buyers' questions and brings them back. Leo writes a product FAQ that tackles real objections, a comparison table against competitors, an SEO blog article, a launch email sequence (ready-to-import HTML and plain-text versions), automation flow blueprints, and a social post pack with tracked links.",
     "tags": [
@@ -180,10 +198,12 @@
     ],
     "price": 2.0,
     "company": "Uplift",
-    "url": "https://uplift-landing.up.railway.app"
+    "url": "https://uplift-landing.up.railway.app",
+    "registry_name": "Leo · Content & Email Marketer",
+    "image": "https://uplift-landing.up.railway.app/avatars/leo.png"
   },
   "sasha": {
-    "name": "Sasha · Paid Ads Strategist",
+    "name": "Sasha",
     "caption": "Paid Ads Strategist",
     "description": "Ad campaigns that can't lose money by design. Sasha builds search and shopping campaigns around your break-even numbers: bids and budgets capped by your margin, keyword and negative lists, ad copy and a tracking checklist. You get a ready-to-import Google Ads Editor file with every campaign paused, ready for you to review and switch on. Supports Google Ads (Search and Shopping/Performance Max) today.",
     "tags": [
@@ -199,10 +219,12 @@
     ],
     "price": 1.5,
     "company": "Uplift",
-    "url": "https://uplift-landing.up.railway.app"
+    "url": "https://uplift-landing.up.railway.app",
+    "registry_name": "Sasha · Paid Ads Strategist",
+    "image": "https://uplift-landing.up.railway.app/avatars/sasha.png"
   },
   "ruth": {
-    "name": "Ruth · Claims & Compliance Reviewer",
+    "name": "Ruth",
     "caption": "Claims & Compliance Reviewer",
     "description": "Catches risky claims before your customers, competitors or ad platforms do. Ruth checks product copy, images, emails and ads against consumer-protection rules (US FTC, EU), green-claims rules, health and cosmetic claim limits, competitor trademarks, and ad-platform and shopping-feed policies (Google Ads and Merchant Center today). Every finding comes with its rule, severity, location and a safe rewrite.",
     "tags": [
@@ -218,10 +240,12 @@
     ],
     "price": 0.25,
     "company": "Uplift",
-    "url": "https://uplift-landing.up.railway.app"
+    "url": "https://uplift-landing.up.railway.app",
+    "registry_name": "Ruth · Claims & Compliance Reviewer",
+    "image": "https://uplift-landing.up.railway.app/avatars/ruth.png"
   },
   "quinn": {
-    "name": "Quinn · Store Auditor & Performance Analyst",
+    "name": "Quinn",
     "caption": "Store Auditor & Performance Analyst",
     "description": "Finds out why a product isn't ranking or selling. Quinn checks where your product ranks on Google and in your own store's search and audits its page for search, copy, images, trust content, catalog and feed data and compliance, giving a 0–100 score with prioritized fixes. Connect your store and she uses your sales data to diagnose whether you have a traffic, conversion or basket-size problem. After changes go live, she produces the before/after report.",
     "tags": [
@@ -235,6 +259,8 @@
     ],
     "price": 0.5,
     "company": "Uplift",
-    "url": "https://uplift-landing.up.railway.app"
+    "url": "https://uplift-landing.up.railway.app",
+    "registry_name": "Quinn · Store Auditor & Performance Analyst",
+    "image": "https://uplift-landing.up.railway.app/avatars/quinn.png"
   }
 }

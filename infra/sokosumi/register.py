@@ -61,14 +61,15 @@ def register(worker_url: str, workspace_id: str | None) -> None:
         raise SystemExit("No Vendor you administer. Create one: sokosumi --preprod vendors create --name Uplift "
                          "--slug uplift-<suffix> (needs membership in an organization workspace).")
     vendor_id = (vendors[0].get("vendor") or vendors[0]).get("id")
-    owned = {c["name"]: c for c in soko("coworkers", "list", "--scope", "owned")["coworkers"]}
     secrets = load_secrets()
+    owned = {c["id"]: c for c in soko("coworkers", "list", "--scope", "owned")["coworkers"]}
     target = ["--workspace-id", workspace_id] if workspace_id else ["--personal"]
 
     for role, item in LISTINGS.items():
-        existing = owned.get(item["name"])
+        existing = owned.get(secrets.get(role, {}).get("id"))  # by id: the display name can change
         if existing:
-            coworker = soko("coworkers", "update", existing["id"], *listing_args(role, worker_url))["coworker"]
+            coworker = soko("coworkers", "update", existing["id"], "--name", item["name"],
+                            *listing_args(role, worker_url))["coworker"]
             action = "synced"
         else:
             coworker = soko("coworkers", "register", "--vendor-id", vendor_id, "--name", item["name"],
