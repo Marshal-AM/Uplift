@@ -1,0 +1,11 @@
+{
+  "$schema": "https://railway.com/railway.schema.json",
+  "build": {
+    "watchPatterns": ["/ads-mock/**"]
+  },
+  "deploy": {
+    "startCommand": "npx --yes serve@14 out -l tcp://0.0.0.0:$PORT",
+    "healthcheckPath": "/",
+    "healthcheckTimeout": 120
+  }
+}

@@ -65,6 +65,9 @@ npm run preview    # serve out/ on http://localhost:3100
 
 `out/` is a plain static site, so it can be hosted anywhere:
 
+- **Railway (live):** service `ads-mock`, Root Directory `/ads-mock`, deployed on every push that touches
+  `ads-mock/` (`railway.json` serves `out/` on `$PORT`), at https://ads-mock-production.up.railway.app.
+  `NEXT_PUBLIC_UPLIFT_API` is set on the service; the Worker has the URL in `TRACE_ORIGINS` and `ADS_MOCK_URL`.
 - **Vercel:** import the repo, set **Root Directory** to `ads-mock`. The defaults (`npm run build`, Next.js) work.
 - **Netlify / Cloudflare Pages / S3:** build command `npm run build`, publish directory `ads-mock/out`.
 
