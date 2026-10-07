@@ -73,6 +73,9 @@ description), next to 25 competing coffee listings. Nora ran the full team on it
 | Every step of the run (661 events: agent, service, timing) | [trace.json](https://github.com/SamFelix03/Uplift/blob/main/runs/17-nora-dripper-full-team/trace.json) |
 | Escrow locked on Cardano (16 tUSDM, FundsLocked) | [`a3c1b746…`](https://preprod.cexplorer.io/tx/a3c1b746a4b66af13a9431026d04609b53a2a2606b9c0a1c8ec5d87dd9a309f5) |
 | Verified result hash written on-chain (ResultSubmitted) | [`01dfd76d…`](https://preprod.cexplorer.io/tx/01dfd76d3c13780e3d402d54e17c27204d02978b7e9344fa8be2968a07ed2ab1) |
+| This run's payout to Uplift | Unlocks at 00:55 UTC on 2026-10-08 (12 h after the payment request), then collected automatically |
+| Payouts already made to Uplift: 36 escrows, 47 tUSDM, in 20 Cardano transactions | [Payout list](https://github.com/SamFelix03/Uplift/blob/main/README.md#3-payouts-to-uplifts-selling-wallet) · example [`e829b5c3…`](https://preprod.cexplorer.io/tx/e829b5c321e754ef4eb1fc4f51d61c682bb36181e0180d88cc4d52088cfa8865) (4 escrows, 7 tUSDM) |
+| Uplift's selling wallet (receives the payouts) | [`addr_test1qrsepqrq…6hgrv`](https://preprod.cexplorer.io/address/addr_test1qrsepqrqv32h56cr2tva5aa6ehy0nz55r908zq7t0ag9s08lg89063dkz5ujz9gjf3d4ghtfxrh0hkwxm4dcds6f3vzqw6hgrv) |
 | Masumi escrow contract | [`addr_test1wzs4e6wc…ftgn37w4g`](https://preprod.cexplorer.io/address/addr_test1wzs4e6wc95hkwezlccjw9mdvq0r0rsgx6zk34avptga3ftgn37w4g) |
 | The run's Google Ads campaigns, previewed | [Google Ads mock](https://ads-mock-production.up.railway.app/ads/?task=01a11663-e114-73e8-bb4f-db0e5967eee9&t=958178c83aec89ed88744edfc700c991) |
 

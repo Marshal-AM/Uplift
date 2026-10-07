@@ -59,6 +59,7 @@ Uplift's own Masumi payment node with [`e2e/payments.py`](e2e/payments.py), whic
 | Paid Tasks escrowed on Cardano | **43** escrows in **45** unique transactions |
 | Escrows settled with an on-chain result hash (`ResultSubmitted`) | **35**, for **96 tUSDM** of work |
 | Escrows refunded on-chain to the buyer (`RefundWithdrawn`) | **8**, for **13.5 tUSDM**: declined or duplicate work, never charged |
+| Escrows already paid out to Uplift (`Withdrawn`) | **36**, for **47 tUSDM** in **20** withdrawal transactions ([list](#3-payouts-to-uplifts-selling-wallet)) |
 | Escrow locks batched into one transaction | **43 locks → 16 transactions** (Masumi batches escrows) |
 | Settlement token | tUSDM, unit `16a55b2a349361ff88c03788f93e1e966e5d689605d044fef722ddde` + `0014df10745553444d` (Sokosumi charges 100 workspace credits per tUSDM) |
 
@@ -150,12 +151,38 @@ Tasks marked with a link have a full recorded run in [`runs/`](runs/README.md).
 
 Escrowed funds unlock for the seller after the escrow's `unlockTime`: 12 hours after the payment request, inside a
 dispute window that closes 6 hours later. Uplift's payment node runs with `AUTO_WITHDRAW_PAYMENTS=true`, so it collects
-each one automatically. The first escrows unlock at **13:58 UTC on 2026-10-07**. Run
-`uv run --with httpx python e2e/payments.py` afterwards and the `Withdrawn` transactions appear.
+each one automatically once it unlocks, and batches several escrows into one withdrawal transaction.
 
-| Withdrawal (payout) tx | Task | tUSDM |
-|---|---|---|
-| _(add link)_ | |  |
+**36 escrows have been paid out to Uplift: 47 tUSDM in 20 Cardano transactions** (as of
+2026-10-07 15:10 UTC). Each withdrawal spends the escrow outputs at the Masumi contract (one Plutus validation per
+escrow) and pays the tUSDM to Uplift's selling wallet
+[`addr_test1qrsepqrq…6hgrv`](https://preprod.cexplorer.io/address/addr_test1qrsepqrqv32h56cr2tva5aa6ehy0nz55r908zq7t0ag9s08lg89063dkz5ujz9gjf3d4ghtfxrh0hkwxm4dcds6f3vzqw6hgrv). For example,
+[`e829b5c3…`](https://preprod.cexplorer.io/tx/e829b5c321e754ef4eb1fc4f51d61c682bb36181e0180d88cc4d52088cfa8865)
+releases 4 escrows (7 tUSDM) in one transaction. The other 22 escrows (92.25 tUSDM, including the settled runs recorded in `runs/`) unlock between 15:23 UTC on
+2026-10-07 and 00:55 UTC on 2026-10-08 and are collected the same way; re-run `uv run --with httpx python e2e/payments.py` to see their `Withdrawn` transactions.
+
+| # | Paid out (UTC) | Withdrawal tx | Escrows | tUSDM | Tasks paid (title · tUSDM) |
+|---|---|---|---|---|---|
+| 1 | 10-07 05:37 | [`814939464833…`](https://preprod.cexplorer.io/tx/8149394648339ed36c99beba44c4921200b8ac8eabc3e2bd04ae2853c00847a1) | 2 | 0.5 | Paid claims review: dripper ad copy · 0.25<br>Paid claims review: dripper ad copy · 0.25 |
+| 2 | 10-07 07:02 | [`c9ce2fee1d1d…`](https://preprod.cexplorer.io/tx/c9ce2fee1d1d15aceaf2a35360d841204d00939c35e19e8330d377472796a696) | 2 | 0.75 | Compliance check for my dripper listing · 0.25<br>Audit my bamboo bottle listing · 0.5 |
+| 3 | 10-07 07:11 | [`3ba2559548c2…`](https://preprod.cexplorer.io/tx/3ba2559548c2421d6c48422566db122b30d68bad103f9726595be03641e0bf28) | 2 | 2.75 | Keyword research for my bamboo bottle · 1.25<br>What do shoppers hate about rival bottles? · 1.5 |
+| 4 | 10-07 07:17 | [`fc0e9df24f82…`](https://preprod.cexplorer.io/tx/fc0e9df24f82d13e904954cf56b4b19b4791a59a5d223b2fc584e1d949f0b365) | 1 | 1.25 | Competitor scan for my bamboo bottle · 1.25 |
+| 5 | 10-07 07:34 | [`991420331127…`](https://preprod.cexplorer.io/tx/9914203311279287a7a823f5dd0e52bf7c1362498bfe8d4d2bfebf72c5ad315a) | 1 | 1.5 | Competitor review analysis, take two · 1.5 |
+| 6 | 10-07 07:36 | [`061b5ee46adc…`](https://preprod.cexplorer.io/tx/061b5ee46adca99bcc653a6e1360d378438a5ba1744ef22e2f3b082da863d32c) | 1 | 1.25 | Launch promos for my bamboo bottle (retry) · 1.25 |
+| 7 | 10-07 07:51 | [`509685a1d374…`](https://preprod.cexplorer.io/tx/509685a1d3744a6466ebf89b9b2107439e62debfd0e530d7d63f0606b43a28e5) | 3 | 5 | FAQ and launch content for my bamboo bottle · 2<br>Google Ads plan for my bamboo bottle · 1.5<br>Catalog setup for my bamboo bottle · 1.5 |
+| 8 | 10-07 07:53 | [`723f2d7d9ceb…`](https://preprod.cexplorer.io/tx/723f2d7d9ceb274de36e65ad86afb66beff31c3a5d0e5cbf2b2ff984e329ddd3) | 1 | 2.5 | Product photos for my bamboo bottle · 2.5 |
+| 9 | 10-07 08:06 | [`efe52eb3e1dc…`](https://preprod.cexplorer.io/tx/efe52eb3e1dcfd44be2ea737a4adeb8c113a963d1d1501b9d9abbc3260fd8ad5) | 4 | 7 | Rewrite my bamboo bottle product page (v2) · 2<br>Fix the category of my bamboo bottle · 1.5<br>FAQ for my bamboo bottle product page · 2<br>Google Ads plan for my bamboo bottle (v2) · 1.5 |
+| 10 | 10-07 08:10 | [`7b2c0fb7d5ea…`](https://preprod.cexplorer.io/tx/7b2c0fb7d5ea46c530ec5a0a6f4746f4cbe73a7f746bab3c61b1e1be3ea74fcf) | 2 | 1.25 | German version of my bamboo bottle page · 1<br>Compliance check of my bamboo bottle page · 0.25 |
+| 11 | 10-07 08:19 | [`b97fcedea4f9…`](https://preprod.cexplorer.io/tx/b97fcedea4f9943a77d59472755da90c936394d48cad1a5d336b430f3cc43bfa) | 1 | 2 | Remove eco claims from my bamboo bottle page · 2 |
+| 12 | 10-07 08:24 | [`6d401f5052be…`](https://preprod.cexplorer.io/tx/6d401f5052be89841495b20dd6379a9a6ac9617671a0dee35a751acf9f1221c5) | 1 | 0.5 | Re-audit my bamboo bottle listing · 0.5 |
+| 13 | 10-07 08:28 | [`f17f4f5a4eec…`](https://preprod.cexplorer.io/tx/f17f4f5a4eec2e977bc79d63f83ff6ea92e159e701ac98d147ac91bb826c25c6) | 1 | 1 | Update the German version of my bamboo bottle page · 1 |
+| 14 | 10-07 14:09 | [`bf7792df9cba…`](https://preprod.cexplorer.io/tx/bf7792df9cba5e7321e825d1a3ee02cd7e7156e59e2d5102ccef4215e9554c89) | 1 | 0.25 | Compliance review: bamboo bottle copy · 0.25 |
+| 15 | 10-07 14:16 | [`72352f30e544…`](https://preprod.cexplorer.io/tx/72352f30e54448a6264a722e6a1854c7f0f6dc2aaa66ec9e396182922fc8b9a0) | 3 | 3 | Audit my glass bottle listing · 0.5<br>Keyword research for my glass bottle · 1.25<br>Launch pricing for my glass bottle · 1.25 |
+| 16 | 10-07 14:17 | [`bf69839be6e3…`](https://preprod.cexplorer.io/tx/bf69839be6e32065ac9dd623fe1e87a6367046b3a490bafa06eb8d06b51ca4fe) | 2 | 3.25 | Competitor scan for my glass bottle · 1.25<br>Polish the headings on my bamboo bottle page · 2 |
+| 17 | 10-07 14:19 | [`cc1c9325e9a3…`](https://preprod.cexplorer.io/tx/cc1c9325e9a3df7f079c3cc10ab3f020246d4d89dcf6182377c882bb728310ee) | 1 | 1 | Update the German version of my bamboo bottle page · 1 |
+| 18 | 10-07 14:30 | [`f1954ca2352e…`](https://preprod.cexplorer.io/tx/f1954ca2352e11ae486fe491371cd6a2dacd3b645a3eede3d8fa054f864514e7) | 2 | 2.75 | Competitor scan for my glass bottle (v2) · 1.25<br>Rival glass bottle reviews (v2) · 1.5 |
+| 19 | 10-07 14:31 | [`b6504b15b596…`](https://preprod.cexplorer.io/tx/b6504b15b596fc11fa9fffd71a2896318ee1701541d5f5b752ada4d24685cb01) | 1 | 2.5 | Product photos for my glass bottle · 2.5 |
+| 20 | 10-07 14:32 | [`e829b5c321e7…`](https://preprod.cexplorer.io/tx/e829b5c321e754ef4eb1fc4f51d61c682bb36181e0180d88cc4d52088cfa8865) | 4 | 7 | Google Ads plan for my glass bottle · 1.5<br>Catalog setup for my glass bottle · 1.5<br>Rewrite my glass bottle product page · 2<br>FAQ and launch content for my glass bottle · 2 |
 
 ---
 
