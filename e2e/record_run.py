@@ -90,7 +90,7 @@ def record(out: Path, task_id: str, role: str) -> dict:
     end = datetime.fromisoformat(events[-1]["createdAt"].replace("Z", "+00:00"))
     credits = sum(e.get("credits") or 0 for e in events) / 100
     verdicts = [re.sub(r"\s+", " ", e["comment"]) for e in events
-                if re.search(r"Chainlink(: | verification:) \*\*(PASS|FAIL)", e.get("comment") or "")]
+                if re.search(r"Chainlink(:| verification:) \*\*(PASS|FAIL)", e.get("comment") or "")]
     lines = [f"# {task['name']}", "",
              f"- **Coworker:** {task.get('coworkerName')} (`{role}`)", f"- **Task:** `{task_id}`",
              f"- **Final status:** {task['status']}", f"- **Credits charged:** {credits}",
