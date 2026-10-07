@@ -96,32 +96,92 @@ description), next to 25 competing coffee listings. Nora ran the full team on it
 - A **Connection Gateway** holds the store's Shopify OAuth tokens (encrypted with AWS KMS). Agents get read-only
   access; only the CRE workflow has the write key.
 
-### What each coworker uses
+### What each coworker uses, and why
 
-All coworkers use Grok 4.7 on Amazon Bedrock for reasoning and writing, store their deliverables in S3, and are
-verified by Chainlink CRE.
+Shared by every coworker:
+- **Kodosumi (on Ray)**: runs the agent as a flow and exposes it as a Masumi-registrable API.
+- **Grok 4.7 on Amazon Bedrock**: reasoning, writing and structured output (JSON that matches a schema).
+- **Amazon S3**: stores every deliverable under the SHA-256 of its content, so its hash can be checked later.
+- **Chainlink CRE**: re-checks the deliverable's hash and scores it before it can be billed or published.
 
-- **Quinn:** Shopify store data (listing score), Serper for Google rankings, Google PageSpeed for page speed.
-- **Kai:** Serper for Google autocomplete, related searches and "People also ask"; Grok to detect brand terms and
-  cluster keywords by intent.
-- **Rafael:** Serper for Google and Google Shopping results; Firecrawl to read competitor pages (with a second API key
-  as failover); Grok to filter the competitor set and write positioning.
-- **Priya:** Bright Data for Amazon reviews, Firecrawl for storefront and Trustpilot reviews, Tavily for Reddit
-  threads; quotes are kept only if they appear word for word on the source page.
-- **Marcus:** the store's price, unit cost and existing discount codes; Rafael's price bands; Nager.Date for public
-  holidays; drops any discount below the 35% margin floor.
-- **Clara:** a facts ledger built from the brief and listing, Kai's keywords and Priya's objections; writes three
-  variants and keeps the best by a scoring rubric.
-- **Iris:** Grok vision to audit images; Gemini Nano Banana 2.1 to render a studio shot and scenes from the merchant's
-  photo; a fidelity check rejects any render that does not match the original product.
-- **Oskar:** the Shopify product taxonomy and collections through the gateway; GTIN checksums; a Google supplemental
-  feed.
-- **Leo:** Serper "People also ask" questions, Clara's facts and Rafael's competitors for the FAQ, comparison table,
-  an unpublished blog article and emails.
-- **Sasha:** break-even maths from price and margin, Kai's keywords, Rafael's brands as negatives, Clara's facts for ad
-  copy; outputs a Google Ads Editor file with every campaign paused.
-- **Yuki:** Grok to translate, adapt and back-translate; Serper for local keywords; writes Shopify translations.
-- **Ruth:** a shared rules engine (13 rules) on all text and, through Grok vision, on text inside images.
+**Quinn**, Store Auditor
+- **Shopify Admin API** (through the Uplift gateway): reads the listing to compute the listing score and checks where
+  the product ranks in the store's product search.
+- **Serper (Google search)**: finds where the store's page ranks on Google for the main phrases.
+- **Google PageSpeed**: measures the mobile speed of the live product page.
+- **Grok**: rates how persuasive the copy is and writes the fix plan.
+
+**Kai**, Search Demand Analyst
+- **Serper (Google autocomplete, related searches, "People also ask")**: collects the phrases real shoppers type, which
+  are the raw material for the keyword map and its demand scores.
+- **Grok**: proposes seed terms, detects brand and competitor names (moved to negatives) and clusters keywords by intent.
+- **Firecrawl** (when the merchant gives a product URL): reads the current product page for seed terms.
+
+**Rafael**, Competitor & Market Analyst
+- **Serper (Google search and Google Shopping)**: finds who ranks and who sells the same kind of product, with prices.
+- **Firecrawl**: reads each competitor's product page into structured data (price, claims, features). A second API key
+  takes over when the first hits its rate limit.
+- **Grok**: removes results that are not real competitors and writes the positioning and gaps.
+
+**Priya**, Review & Sentiment Analyst
+- **Serper (Google search)** (when no competitors are given): finds competing product pages, including Amazon
+  listings, to collect reviews from.
+- **Bright Data**: collects Amazon reviews of competing products.
+- **Firecrawl**: reads reviews on competitors' own stores and on Trustpilot.
+- **Tavily**: finds and reads Reddit threads about the product category; a quote is kept only if it appears word for
+  word on the page.
+- **Grok**: codes every review by aspect and sentiment, and builds personas and the win plan.
+
+**Marcus**, Pricing & Promotions
+- **Shopify Admin API**: reads the product's price, unit cost and the store's existing discount codes, so new codes
+  never collide with old ones.
+- **Serper (Google Shopping)** (only when Rafael's price bands are not available): checks current market prices.
+- **Nager.Date**: lists public holidays in the market, used to schedule promotions.
+- **Grok**: proposes price scenarios and discount codes; any code below the 35% margin floor is dropped.
+
+**Clara**, Product Page Copywriter
+- **Grok**: builds the facts ledger, writes three copy variants, scores them with a rubric and checks grammar.
+- **Serper (Google autocomplete)** (only when Kai has not run): a quick keyword pass so the copy targets real searches.
+- **Firecrawl** (when the merchant gives a product URL instead of a connected store): reads the current page.
+
+**Iris**, Product Visual Designer
+- **Gemini Nano Banana 2.1**: renders a white-background studio shot and lifestyle scenes from the merchant's own photo.
+- **Grok vision**: audits the existing images and checks that each render still looks like the real product; a render
+  that does not match is thrown away.
+- **Web download** (Shopify CDN): fetches the merchant's original product photos.
+
+**Oskar**, Catalog & Shopping Feed
+- **Shopify Admin API**: reads the Shopify product taxonomy, the store's collections and related products.
+- **Grok**: picks the category, cleans tags and chooses which collections the product belongs in.
+
+**Leo**, Content & Email Marketer
+- **Serper ("People also ask")**: collects the questions shoppers actually ask, which become the FAQ.
+- **Shopify Admin API**: reads store data such as the blog the article is saved to (unpublished).
+- **Grok**: writes the FAQ, comparison table, blog article, emails and social posts from verified facts.
+
+**Sasha**, Paid Ads Strategist
+- **Grok**: writes the ad headlines and descriptions from Clara's facts and Priya's win plan.
+- **Serper (Google autocomplete)** (only when no keywords are given): finds generic phrases to bid on.
+- Bids, budgets and break-even cost are computed in code from the store's price and margin, not by the model.
+
+**Yuki**, Localization
+- **Grok**: translates, adapts and back-translates the copy to catch meaning drift.
+- **Serper (Google autocomplete, local market)**: finds the phrases shoppers use in that language.
+- **Shopify Admin API**: reads which languages the store has enabled and the content to translate.
+
+**Ruth**, Claims & Compliance
+- **Grok**: decides whether each flagged claim is backed by the facts and writes a safe rewrite; Grok vision reads
+  text inside images.
+- **Firecrawl and web download** (when the merchant gives URLs): read the pages and images to review.
+- The 13 compliance rules run in code (the same rules file Chainlink uses), so the checks are repeatable.
+
+**Nora**, Lead
+- **Sokosumi**: receives the Task, posts the plan, the bill and the change approval, and delivers the results.
+- **Grok**: maps the request to the specialists it needs.
+- **Kodosumi**: launches each specialist's run and tracks its status.
+- **Shopify Admin API**: reads the product snapshot the specialists work from.
+- **Masumi and Cardano**: creates the payment request and waits for the escrow lock before publishing.
+- **Chainlink CRE**: verifies every specialist's result and publishes the approved changes to the store.
 
 ### Nora: an example workflow
 
