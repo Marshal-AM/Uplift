@@ -29,8 +29,14 @@ BUCKET = ENV["ARTIFACT_BUCKET"]
 
 
 def soko(*args: str) -> dict:
-    out = subprocess.run([*CLI, *args, "--json"], capture_output=True, text=True, check=True).stdout
-    return json.loads(out)
+    for attempt in range(3):  # the CLI occasionally returns an empty or partial body; ask again
+        out = subprocess.run([*CLI, *args, "--json"], capture_output=True, text=True).stdout
+        try:
+            return json.loads(out)
+        except json.JSONDecodeError:
+            if attempt == 2:
+                raise
+    raise RuntimeError("unreachable")
 
 
 def unsign(value):
@@ -77,8 +83,14 @@ def record(out: Path, task_id: str, role: str) -> dict:
     task = soko("tasks", "get", task_id)
     task = task.get("task", task)
     events = soko("tasks", "events", task_id)["events"]
-    receipt = httpx.get(f"{API}/v1/tasks/{task_id}/receipt", timeout=30,
-                        headers={"Authorization": f"Bearer {KEYS[role]['key']}"}).json().get("data")
+    receipt = None
+    for _ in range(3):  # the receipt endpoint occasionally answers with an empty body
+        try:
+            receipt = httpx.get(f"{API}/v1/tasks/{task_id}/receipt", timeout=30,
+                                headers={"Authorization": f"Bearer {KEYS[role]['key']}"}).json().get("data")
+            break
+        except ValueError:
+            continue
     (out / "events.json").write_text(json.dumps(events, indent=2, ensure_ascii=False))
     (out / "receipt.json").write_text(json.dumps(receipt, indent=2))
     t0 = datetime.fromisoformat(task["createdAt"].replace("Z", "+00:00"))

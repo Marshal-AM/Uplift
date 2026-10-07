@@ -62,8 +62,10 @@ def plan(task: dict, answers: list[str]) -> dict[str, Any]:
     brief = f"{task.get('name')}\n{task.get('description')}\nFollow-ups: {answers}"
     intent = llm.structured(
         f"A merchant asked their e-commerce growth team:\n{brief}\n"
-        f"Which capabilities are needed? Options: {sorted(set(CAPABILITIES))}. full_flow means launch/overhaul/"
-        "new product/full optimization. Extract product hint, target market (country code), locales for "
+        f"Which capabilities are needed? Options: {sorted(set(CAPABILITIES))}. Choose only the capabilities whose "
+        "deliverables the merchant asked for. full_flow is true only when they ask to launch, overhaul or fully "
+        "optimize a product; a request for specific deliverables (e.g. an FAQ and a compliance check) is not "
+        "full_flow. Extract product hint, target market (country code), locales for "
         "translation, keywords and competitors if the merchant gave them, a credit budget if stated, and a "
         "one-paragraph goal.",
         {"type": "object", "properties": {
@@ -79,7 +81,7 @@ def plan(task: dict, answers: list[str]) -> dict[str, Any]:
          "required": ["capabilities", "full_flow", "goal"]})
     chosen = {CAPABILITIES[c] for c in intent["capabilities"] if c in CAPABILITIES
               and (intent.get("fit") or {}).get(c, 1) >= 0.4}
-    roles = set(FULL_FLOW) if intent["full_flow"] or len(intent["capabilities"]) >= 6 else chosen
+    roles = set(FULL_FLOW) if intent["full_flow"] else chosen
     roles = close(roles, bool(intent.get("keywords")), bool(intent.get("competitors")))
     roles.add("ruth")
     roles.add("quinn")  # baseline + after-report for any listing change
