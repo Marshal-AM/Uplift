@@ -58,6 +58,12 @@ def run(inputs: dict, tracer) -> str:
     segments += segments_from_changeset(ctx.envelope.get("review_changeset", []))
     if ctx.get("assets"):
         segments.append({"location": "assets", "text": re.sub("<[^>]+>", " ", ctx.get("assets")), "kind": "copy"})
+    product = ctx.product or {}
+    if not segments and product:  # nothing pasted: review the live listing from the connected store
+        seo = product.get("seo") or {}
+        segments += [{"location": f"product.{k}", "text": re.sub("<[^>]+>", " ", v), "kind": "copy"}
+                     for k, v in (("title", product.get("title")), ("descriptionHtml", product.get("descriptionHtml")),
+                                  ("seo.title", seo.get("title")), ("seo.description", seo.get("description"))) if v]
 
     tracer.markdown_sync("**Ruth** · extracting text from pages and images")
     for url in ctx.lines("asset_urls"):

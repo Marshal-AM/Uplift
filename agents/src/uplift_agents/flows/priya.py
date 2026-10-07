@@ -3,6 +3,7 @@
 import hashlib
 import json
 import re
+import sys
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import UTC, datetime, timedelta
@@ -110,9 +111,12 @@ def discover(category: str, country: str, language: str) -> list[str]:
 
 
 def _safe(fn, *args) -> list:
+    """One unreadable source must not sink the analysis; it is logged and skipped."""
     try:
         return fn(*args)
-    except Exception:
+    except Exception as exc:
+        print(f"source skipped: {fn.__name__}({str(args[0])[:120]}): {type(exc).__name__}: {str(exc)[:200]}",
+              file=sys.stderr)
         return []
 
 

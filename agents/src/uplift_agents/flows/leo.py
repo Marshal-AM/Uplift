@@ -181,5 +181,8 @@ def run(inputs: dict, tracer) -> str:
     out.bundle |= {"campaign": campaign, "shop_url": shop_url, "paa": paa[:10], "question_keywords": questions,
                    "facts": facts, "objections": objections}
     done = [d for d in ("faq", "comparison", "blog", "email", "social") if d in wanted]
-    return out.finalize(f"Delivered: {', '.join(done)}. All links carry `utm_campaign={campaign}`; the blog article is "
-                        "saved unpublished and emails are ready to import.")
+    notes = ["the blog article is saved unpublished" if "blog" in done else "",
+             "emails are ready to import" if "email" in done else "",
+             "the FAQ goes on the product page once you approve" if out.changeset else ""]
+    return out.finalize(f"Delivered: {', '.join(done)}. All links carry `utm_campaign={campaign}`"
+                        + "".join(f"; {n}" for n in notes if n) + ".")

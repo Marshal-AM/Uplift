@@ -43,7 +43,9 @@ def run(inputs: dict, tracer) -> str:
            f"Extra attributes: {ctx.get('attributes', '')}"
 
     tracer.markdown_sync("**Oskar** · finding the right product category")
-    terms = llm.structured(f"Product:\n{text}\nGive 3 short search terms for its product category.",
+    terms = llm.structured(f"Product:\n{text}\nGive 3 short search terms for its product category, starting with the "
+                           "plain generic name of the product (e.g. 'water bottle', 'sofa', 'running shoes') without "
+                           "materials or features.",
                            {"type": "object", "properties": {"terms": {"type": "array", "items": {"type": "string"}}},
                             "required": ["terms"]})["terms"][:3]
     candidates = []

@@ -115,12 +115,18 @@ def run(inputs: dict, tracer) -> str:
         f"Product:\n{text[:1500]}\n\nGroup these search terms into clusters of the same shopper need (usually "
         f"8–25 clusters). Put every id in exactly one cluster. Name each cluster and give its best use. "
         f"Roles: {', '.join(ROLES)}. Use 'negative' for intent the product does not serve. Give each cluster's "
-        f"search intent.\n{listing}",
-        {"type": "object", "properties": {"clusters": {"type": "array", "items": {"type": "object", "properties": {
-            "name": {"type": "string"}, "role": {"type": "string", "enum": ROLES},
-            "intent": {"type": "string", "enum": INTENTS},
-            "ids": {"type": "array", "items": {"type": "integer"}}}, "required": ["name", "role", "intent", "ids"]}}},
-         "required": ["clusters"]}, max_tokens=8000)["clusters"]
+        f"search intent. Also list in off_target_ids every term this product page cannot serve: other languages "
+        f"than '{lang}' or markets than {country}, wholesale/bulk, 'near me'/local, word definitions or "
+        f"translations, and other product types.\n{listing}",
+        {"type": "object", "properties": {
+            "clusters": {"type": "array", "items": {"type": "object", "properties": {
+                "name": {"type": "string"}, "role": {"type": "string", "enum": ROLES},
+                "intent": {"type": "string", "enum": INTENTS},
+                "ids": {"type": "array", "items": {"type": "integer"}}}, "required": ["name", "role", "intent", "ids"]}},
+            "off_target_ids": {"type": "array", "items": {"type": "integer"}}},
+         "required": ["clusters", "off_target_ids"]}, max_tokens=8000)
+    off_target = set(groups["off_target_ids"])
+    groups = groups["clusters"]
     for g in groups:
         for i in g["ids"]:
             if 0 <= i < len(keywords) and "cluster" not in keywords[i]:
@@ -129,7 +135,8 @@ def run(inputs: dict, tracer) -> str:
         k.setdefault("cluster", "Other")
         k.setdefault("role", "description")
         k.setdefault("intent", "commercial")
-        if k["brand"]:
+    for i, k in enumerate(keywords):
+        if k["brand"] or i in off_target:
             k["role"] = "negative"
 
     primary = next((k for k in keywords if k["role"] == "title"), keywords[0])

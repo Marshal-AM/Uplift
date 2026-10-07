@@ -78,9 +78,8 @@ def scrape(url: str, schema: dict | None = None, formats: list | None = None) ->
     fmts: list[Any] = formats or ["markdown"]
     if schema:
         fmts = [*fmts, {"type": "json", "schema": schema}]
-    resp = httpx.post("https://api.firecrawl.dev/v2/scrape", json={"url": url, "formats": fmts},
-                      headers={"Authorization": f"Bearer {_env('FIRECRAWL_API_KEY')}"}, timeout=httpx.Timeout(120))
-    resp.raise_for_status()
+    resp = _request("POST", "https://api.firecrawl.dev/v2/scrape", json={"url": url, "formats": fmts},
+                    headers={"Authorization": f"Bearer {_env('FIRECRAWL_API_KEY')}"})
     return resp.json()["data"]
 
 
@@ -96,19 +95,18 @@ def fetch_bytes(url: str) -> bytes:
 def amazon_reviews(url: str, max_reviews: int = 300) -> list[dict[str, Any]]:
     """Bright Data Amazon Reviews scraper (dataset gd_le8e811kzy4ggddlq)."""
     headers = {"Authorization": f"Bearer {_env('BRIGHTDATA_API_KEY')}"}
-    resp = httpx.post(
-        "https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_le8e811kzy4ggddlq&format=json",
-        json=[{"url": url, "max_reviews": max_reviews}], headers=headers, timeout=httpx.Timeout(90),
-    )
-    if resp.status_code == 202:
+    resp = _request("POST", "https://api.brightdata.com/datasets/v3/scrape?dataset_id=gd_le8e811kzy4ggddlq&format=json",
+                    json=[{"url": url, "max_reviews": max_reviews}], headers=headers)
+    if resp.status_code == 202:  # still collecting: poll the snapshot
         snapshot = resp.json()["snapshot_id"]
         for _ in range(60):
             time.sleep(10)
-            resp = httpx.get(f"https://api.brightdata.com/datasets/v3/snapshot/{snapshot}?format=json",
-                             headers=headers, timeout=TIMEOUT)
+            resp = _request("GET", f"https://api.brightdata.com/datasets/v3/snapshot/{snapshot}?format=json",
+                            headers=headers)
             if resp.status_code == 200:
                 break
-    resp.raise_for_status()
+        else:
+            raise TimeoutError(f"Bright Data snapshot {snapshot} not ready")
     return resp.json()
 
 

@@ -1,4 +1,4 @@
-"""Clara — Product Page Copywriter: title, description, SEO title/meta, handle, tags. Facts only."""
+"""Clara — Product Page Copywriter: title, description, SEO title/meta, tags (and a handle for new copy). Facts only."""
 
 import html
 import re
@@ -117,23 +117,24 @@ def run(inputs: dict, tracer) -> str:
         f"Buyer objections to answer (from competitor reviews): {', '.join(objections) or 'none'}\n"
         f"Audience: {ctx.get('audience', 'general shoppers')}\nBrand voice: {ctx.get('brand_voice', 'clear, warm')}\n"
         f"Never use: {', '.join(forbidden) or '-'}\n"
-        "Rules: title ≤70 chars starting with the primary keyword; SEO title ≤60; SEO description 70–155; "
+        "Rules: title ≤70 chars in Title Case, leading with the primary keyword and naming the product type, key "
+        "material and size (a product name, not a slogan); SEO title ≤60; SEO description 70–155; "
         "handle lowercase-hyphenated ≤60; structure hook → benefits (li) → specs → use cases → objection answers → "
-        "care & guarantee; every p/li block lists the fact ids it relies on.")
+        "care & guarantee, with h2 headings written for shoppers (e.g. 'Why it lasts', not 'Objection answers'); "
+        "every p/li block lists the fact ids it relies on.")
     styles = ["benefit-led and concise", "story-led and vivid", "spec-led and precise"]
     with ThreadPoolExecutor(3) as pool:
         variants = list(pool.map(lambda st: llm.structured(f"{prompt}\nStyle: {st}", VARIANT_SCHEMA,
-                                                           max_tokens=4000), styles))
+                                                           max_tokens=8000), styles))
     scored = [(rubric(v, primary.lower(), secondary, objections, facts, forbidden), v) for v in variants]
     best_score, best = max(scored, key=lambda x: x[0]["total"])
     description = to_html(best["blocks"])
     grammar = tools.grammar_issues(re.sub("<[^>]+>", " ", description), ctx.get("locale", "en-US"))
 
-    handle = re.sub(r"[^a-z0-9]+", "-", best["handle"].lower()).strip("-")[:60]
+    # a live product keeps its handle (changing it moves the URL and loses links); new copy proposes one
+    handle = product.get("handle") or re.sub(r"[^a-z0-9]+", "-", best["handle"].lower()).strip("-")[:60]
     fields = {"title": best["title"][:70], "descriptionHtml": description,
               "seo": {"title": best["seo_title"][:70], "description": best["seo_description"][:320]}}
-    if product.get("handle") and handle and handle != product["handle"]:
-        fields["handle"] = handle
     if product.get("id"):
         out.changeset.append({"op": "product.update", "product_id": product["id"], "fields": fields})
         new_tags = [t for t in best["tags"] if t not in product.get("tags", [])][:10]

@@ -19,6 +19,7 @@ FIELDS = [
     F.InputNumber(label="Margin % (if not computed by Marcus)", name="margin_pct"),
     F.InputNumber(label="Product page conversion rate % (optional)", name="conversion_rate"),
     F.InputText(label="Market (country code)", name="market_country", value="US", required=True),
+    F.InputArea(label="Keywords to target (optional, one per line, e.g. from Kai)", name="keywords"),
 ]
 
 DEFAULT_CVR = 0.02  # used only when neither GA4 nor the merchant gives one; flagged in the plan
@@ -68,10 +69,15 @@ def run(inputs: dict, tracer) -> str:
     if kai:
         kws = [k for k in kai["keywords"] if k["role"] in ("ads_exact", "ads_phrase", "title", "description")]
         negatives = [k["keyword"] for k in kai["keywords"] if k["role"] == "negative"]
-    else:
-        seed = product.get("title") or ctx.get("product_facts", "")[:80]
-        kws = [{"keyword": k, "cluster": "core", "role": "ads_phrase"}
-               for k in tools.google_autocomplete(seed, country, "en")]
+    else:  # merchant's keywords, else what shoppers type for this kind of product (Google autocomplete)
+        seeds = ctx.lines("keywords") or llm.structured(
+            f"Product: {product.get('title', '')}\n{ctx.get('product_facts', '')[:1500]}\nGive 3 generic 2–4 word phrases "
+            "a shopper would type into Google to buy this kind of product (no brand or model names).",
+            {"type": "object", "properties": {"phrases": {"type": "array", "items": {"type": "string"}}},
+             "required": ["phrases"]})["phrases"][:3]
+        found = seeds if ctx.lines("keywords") else [*seeds, *(k for seed in seeds
+                                                              for k in tools.google_autocomplete(seed, country, "en"))]
+        kws = [{"keyword": k.lower(), "cluster": "core", "role": "ads_phrase"} for k in dict.fromkeys(found) if k]
         negatives = []
     affordable = kws[:60]  # every keyword is bid at max_cpc, which is capped by break-even economics
     competitor_brands = (ctx.upstream_artifact("rafael", "competitor_set.json") or {}).get("brands", [])

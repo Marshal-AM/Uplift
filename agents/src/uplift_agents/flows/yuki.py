@@ -1,5 +1,6 @@
 """Yuki — Localization & Transcreation Specialist: one locale per run."""
 
+import json
 import re
 
 from kodosumi.core import forms as F
@@ -56,6 +57,13 @@ def run(inputs: dict, tracer) -> str:
         local = list(dict.fromkeys(s for seed in seeds_local[:3]
                                    for s in tools.google_autocomplete(seed, market, locale.split("-")[0])))[:10] \
             or seeds_local
+        # autocomplete also suggests variants this product is not (e.g. "… mit Strohhalm"): keep only true ones
+        facts = re.sub("<[^>]+>", " ", " ".join(v["value"] for v in source.values()))[:4000]
+        fit = llm.structured(
+            f"Product copy:\n{facts}\n\nWhich of these {locale} search terms describe THIS product truthfully? Drop any "
+            f"that imply a feature, size, material or audience the copy does not state.\n{json.dumps(local, ensure_ascii=False)}",
+            {"type": "object", "properties": {"keep": {"type": "array", "items": {"type": "string"}}}, "required": ["keep"]})
+        local = [k for k in local if k in fit["keep"]] or seeds_local
     primary_local = local[0]
 
     tracer.markdown_sync("Transcreating")
@@ -63,7 +71,9 @@ def run(inputs: dict, tracer) -> str:
     final = llm.structured(
         f"Transcreate this product copy for {market} shoppers in '{locale}'. Keep these terms exactly: {locked}. "
         f"Use the local primary keyword '{primary_local}' in the title, meta title/description and first paragraph; "
-        f"weave in: {local[1:6]}. Convert units/date formats. Keep HTML structure. Notes: {ctx.get('market_notes', '-')}.\n"
+        f"weave in: {local[1:6]}. Each keyword at most once per field, inflected and capitalised as correct "
+        f"{locale} grammar requires; never add a feature, accessory or claim the source does not make. "
+        f"Convert units/date formats. Keep HTML structure. Notes: {ctx.get('market_notes', '-')}.\n"
         "Limits: title ≤70, meta_title ≤60, meta_description ≤155 characters.\n"
         + "\n".join(f"[{k}] SOURCE: {source[k]['value'][:6000]}" for k in keys),
         {"type": "object", "properties": {k: {"type": "string"} for k in keys}, "required": keys}, max_tokens=6000)
