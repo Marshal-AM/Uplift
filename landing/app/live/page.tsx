@@ -2,6 +2,8 @@
 
 import "./live.css"
 
+import { RankCard, RankModal, useRanks } from "./rank"
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import type { LucideIcon } from "lucide-react"
 import {
@@ -471,6 +473,7 @@ export default function LivePage() {
   const [briefOpen, setBriefOpen] = useState(false)
   const [now, setNow] = useState(() => Date.now())
   const [atBottom, setAtBottom] = useState(true)
+  const [rankOpen, setRankOpen] = useState(false)
   const scroller = useRef<HTMLDivElement | null>(null)
   const seenIds = useRef<Set<number>>(new Set())
 
@@ -579,6 +582,12 @@ export default function LivePage() {
     }
     return [...by.values()].sort((a, b) => a.first - b.first)
   }, [events])
+
+  // re-read the rank checks as soon as the trace shows one finishing
+  const rankDone = events.filter((e) => e.kind?.startsWith("rank.") && e.status !== "running").length
+  const ranks = useRanks(API, selected, key, rankDone)
+  useEffect(() => setRankOpen(false), [selected])
+  const rankChecking = events.some((e) => e.kind?.startsWith("rank.") && e.status === "running")
 
   const verdicts = useMemo(() => events.filter((e) => e.kind === "cre.verify" && e.status !== "running"), [events])
   const lastVerdict = verdicts[verdicts.length - 1]
@@ -859,6 +868,7 @@ export default function LivePage() {
 
               {/* side */}
               <aside className="lv-side lv-scroll">
+                <RankCard ranks={ranks} checking={rankChecking} finished={task.phase === "done"} onOpen={() => setRankOpen(true)} />
                 <section className="lv-card">
                   <h3>{running.length ? <span className="lv-spin" style={{ width: 12, height: 12 }} /> : null} In progress</h3>
                   {running.length ? (
@@ -935,6 +945,7 @@ export default function LivePage() {
           </>
         )}
       </div>
+      {rankOpen && ranks && (ranks.start || ranks.end) && <RankModal ranks={ranks} onClose={() => setRankOpen(false)} />}
       {task && !atBottom && (
         <button className="lv-jump" onClick={jump}>
           <ArrowDown size={16} /> Latest step

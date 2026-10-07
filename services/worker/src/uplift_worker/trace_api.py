@@ -78,6 +78,15 @@ def events(task: str, key: str = Query(""), after: int = Query(0), limit: int = 
     return {"events": [_row(r) for r in db.all_(EVENTS, task, after, limit)]}
 
 
+@router.get("/ranks")
+def ranks(task: str, key: str = Query("")):
+    """The Task product's store-search ranks at the start and after the end of the run (null until checked)."""
+    _view(key)
+    rows = {r["stage"]: {"checked_at": r["checked_at"].timestamp() * 1000, **r["data"]}
+            for r in db.all_("select stage, checked_at, data from rank_checks where task_id = %s", task)}
+    return {"start": rows.get("start"), "end": rows.get("end")}
+
+
 @router.get("/stream")
 async def stream(request: Request, task: str, key: str = Query(""), after: int = Query(0),
                  last_event_id: str | None = Header(None)):

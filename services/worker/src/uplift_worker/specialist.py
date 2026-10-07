@@ -13,7 +13,7 @@ from typing import Any
 from uplift_core import llm, trace
 from uplift_core.hashing import change_hash, result_hash
 
-from . import cre, db, payments, runs
+from . import cre, db, payments, ranks, runs
 from .clients import FlowError, FlowLost, Kodosumi, ReauthRequired, Sokosumi
 from .config import settings
 from .trace_api import attach_trace
@@ -70,6 +70,7 @@ def advance(role: str, task_id: str) -> None:
     phase, st = run["phase"], run["state"]
 
     def save(next_phase: str) -> None:
+        ranks.track(task, role, st, next_phase)  # background store-search rank checks for /live; never raises
         db.save_run(task_id, role, next_phase, st)
 
     while True:

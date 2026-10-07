@@ -260,3 +260,46 @@
   .lv-more { grid-column: 1 / 4; }
   .lv-now, .lv-filters { padding-left: 16px; padding-right: 16px; }
 }
+
+/* ---------- rank card + modal ---------- */
+.lv-rank { cursor: pointer; transition: border-color 0.15s, transform 0.15s; text-align: left; width: 100%; }
+.lv-rank:hover { border-color: var(--brand); }
+.lv-rank:focus-visible, .lv-modal-close:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.lv-rank-head { display: flex; align-items: baseline; gap: 8px; }
+.lv-rank-head .open { margin-left: auto; font-size: 13px; color: var(--brand); font-weight: 600; text-transform: none; letter-spacing: 0; }
+.lv-rank-product { font-size: 15px; font-weight: 600; margin: -4px 0 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lv-rank-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.lv-rank-col { border: 1px solid var(--line-soft); border-radius: 12px; padding: 10px 12px; background: var(--panel-2); }
+.lv-rank-col .k { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); font-weight: 700; }
+.lv-rank-col .big { font-size: 24px; font-weight: 800; margin-top: 2px; line-height: 1.15; }
+.lv-rank-col .big small { font-size: 14px; font-weight: 600; color: var(--text-3); }
+.lv-rank-col .sub { font-size: 13px; color: var(--text-2); margin-top: 2px; }
+.lv-rank-col.pending .big { font-size: 15px; font-weight: 600; color: var(--text-3); padding-top: 6px; }
+.lv-rank-list { display: grid; gap: 6px; margin-top: 12px; }
+.lv-rank-li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; font-size: 14px; align-items: center; }
+.lv-rank-li .p { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-2); }
+.lv-rank-li .r { font-size: 13px; white-space: nowrap; }
+.lv-up { color: var(--ok); font-weight: 700; }
+.lv-down { color: var(--bad); font-weight: 700; }
+.lv-src { margin-top: 12px; font-size: 11.5px; color: var(--text-3); line-height: 1.45; overflow-wrap: anywhere; }
+.lv-src b { font-weight: 600; color: var(--text-2); }
+
+.lv-backdrop { position: fixed; inset: 0; z-index: 60; background: rgba(4, 7, 11, 0.62); backdrop-filter: blur(3px); display: grid; place-items: center; padding: 24px; }
+.lv-modal { width: min(1000px, 100%); max-height: calc(100vh - 48px); overflow-y: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); padding: 24px 26px 20px; }
+.lv-modal-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+.lv-modal-top h2 { margin: 0; font-size: 22px; line-height: 1.25; }
+.lv-modal-top .s { color: var(--text-3); font-size: 14px; margin-top: 2px; }
+.lv-modal-close { margin-left: auto; width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line) !important; display: grid; place-items: center; flex: none; }
+.lv-modal h3 { font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); font-weight: 700; margin: 22px 0 10px; }
+.lv-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.lv-table th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-3); font-weight: 700; padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.lv-table td { padding: 10px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+.lv-table td.c { text-align: center; white-space: nowrap; }
+.lv-table td.dim { color: var(--text-3); font-size: 13.5px; }
+.lv-summary { margin-top: 12px; font-size: 14.5px; color: var(--text-2); }
+.lv-kv.wide { grid-template-columns: 160px minmax(0, 1fr); font-size: 14.5px; gap: 8px 18px; }
+.lv-was { display: block; font-size: 13px; color: var(--text-3); margin-top: 2px; }
+.lv-was::before { content: "was: "; }
+.lv-source { margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--line-soft); font-size: 12.5px; color: var(--text-3); line-height: 1.6; overflow-wrap: anywhere; }
+.lv-source code { font-family: var(--font-geist-mono), ui-monospace, monospace; color: var(--text-2); font-size: 12px; }
+@media (max-width: 700px) { .lv-modal { padding: 18px 16px; } .lv-kv.wide { grid-template-columns: 1fr; } .lv-table .hide-sm { display: none; } }

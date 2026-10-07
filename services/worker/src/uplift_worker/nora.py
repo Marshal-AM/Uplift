@@ -23,7 +23,7 @@ from uplift_core import llm, trace
 from uplift_core.hashing import change_hash, result_hash, sha256_hex
 from uplift_core.score import score
 
-from . import cre, db, payments, runs
+from . import cre, db, payments, ranks, runs
 from .clients import FlowLost, Kodosumi, Sokosumi
 from .config import settings
 from .runs import manifest_from_store
@@ -144,6 +144,7 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
             log.info("timing task=%s nora %s → %s after %.0fs", task_id, clock["phase"], next_phase,
                      time.time() - clock["since"])
             clock |= {"phase": next_phase, "since": time.time()}
+        ranks.track(task, "nora", st, next_phase)  # background store-search rank checks for /live; never raises
         db.save_run(task_id, "nora", next_phase, st)
 
     while True:
