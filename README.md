@@ -32,10 +32,11 @@ change goes live or a single unit is released.**
 
 | Resource | Link |
 |---|---|
-| **Demo video** | _(add link)_ |
-| **Pitch deck** | _(add link)_ |
+| **Demo video** | [Watch the demo](https://www.canva.com/design/DAHXVxtRYB4/1Jeu7R4rQy86IfR2JuVttA/watch?utm_content=DAHXVxtRYB4&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h27e1a21780) |
+| **Pitch deck** | [View the deck](https://docs.google.com/presentation/d/1F8nZ97iYnrfDL_7SS11w4jmzAX3h3FfA/edit?slide=id.p1#slide=id.p1) |
+| **Live app** | [uplift-landing.up.railway.app](https://uplift-landing.up.railway.app/) |
 | Hire the team on Sokosumi (preprod) | [preprod.sokosumi.com/agents](https://preprod.sokosumi.com/agents) |
-| `/live`: watch a Task run, with its Cardano escrow | _(add link to the landing `/live` page)_ |
+| `/live`: watch a Task run, with its Cardano escrow | [uplift-landing.up.railway.app/live](https://uplift-landing.up.railway.app/live) |
 | Google Ads mock (shows a finished run's real campaigns) | [ads-mock-production.up.railway.app](https://ads-mock-production.up.railway.app) |
 | Masumi escrow contract (Cardano preprod) | [`addr_test1wzs4e6wc…ftgn37w4g`](https://preprod.cexplorer.io/address/addr_test1wzs4e6wc95hkwezlccjw9mdvq0r0rsgx6zk34avptga3ftgn37w4g) |
 | Masumi registry policy (agent identity NFTs) | [`67ab0c92…23b3bd0b`](https://preprod.cexplorer.io/policy/67ab0c92c4ac1610895a1c965ee50aba41a8f1513b15240723b3bd0b) |
@@ -340,7 +341,7 @@ flowchart TB
 2. **Approve the plan.** Nora replies with the specialists, why each one is needed, the price ceiling and a plan hash.
    The merchant can push back in plain English. In [run 15](runs/15-nora-bamboo-full-team/README.md) the merchant
    wrote *"Skip the translation please, I only sell in English in the US"*, and Nora re-planned in 13 seconds.
-3. **Watch it run.** The `/live` page streams every step: which agent, which service, which Chainlink check, and the
+3. **Watch it run.** The [`/live`](https://uplift-landing.up.railway.app/live) page streams every step: which agent, which service, which Chainlink check, and the
    Cardano escrow with its transactions.
 4. **Approve the changes.** Nora shows the merged change set (title, copy, images, FAQ, translations, discount codes)
    and the projected score, together with its hash. Reply **approve**.
