@@ -89,7 +89,8 @@ def capture(task: dict, role: str, product_id: str, stage: str) -> dict:
     with trace.span("Shopify", f"Checking store-search rank {label}", "Admin API products search, sorted by relevance",
                     task=task["id"], agent=role, kind=f"rank.{stage}") as s:
         product, shop = _details(task, product_id)
-        start = db.one("select phrases from rank_checks where task_id = %s and stage = 'start'", task["id"])
+        start = db.one("select data->'phrases' as phrases from rank_checks where task_id = %s and stage = 'start'",
+                       task["id"])
         phrases = start["phrases"] if start else _phrases(task, product)
         rows = _ranks(task, product["handle"], phrases)
         endpoint = f"POST https://{shop}/admin/api/{settings().shopify_api_version}/graphql.json"
