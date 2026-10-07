@@ -79,7 +79,7 @@ def run(inputs: dict, tracer) -> str:
         fit = llm.structured(
             f"Product copy:\n{facts}\n\nWhich of these {locale} search terms describe THIS product truthfully? Drop any "
             f"that imply a feature, size, material or audience the copy does not state.\n{json.dumps(local, ensure_ascii=False)}",
-            {"type": "object", "properties": {"keep": {"type": "array", "items": {"type": "string"}}}, "required": ["keep"]})
+            {"type": "object", "properties": {"keep": {"type": "array", "items": {"type": "string"}}}, "required": ["keep"]}, purpose="Keeping only truthful local search terms")
         local = [k for k in local if k in fit["keep"]] or seeds_local
     primary_local = local[0]
 

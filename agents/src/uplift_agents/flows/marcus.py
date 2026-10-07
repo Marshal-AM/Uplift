@@ -114,7 +114,7 @@ def run(inputs: dict, tracer) -> str:
                 "starts": {"type": "string"}, "ends": {"type": "string"}, "usage_limit": {"type": "integer"},
                 "once_per_customer": {"type": "boolean"}, "why": {"type": "string"}},
                 "required": ["name", "code", "percentage", "starts", "ends"]}}},
-         "required": ["positioning", "price_guidance", "promotions"]}, max_tokens=3000)
+         "required": ["positioning", "price_guidance", "promotions"]}, max_tokens=3000, purpose="Planning promotions and discount codes within the margin floor")
 
     now = datetime.now(UTC)
     codes = []

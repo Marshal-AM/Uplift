@@ -1,0 +1,30 @@
+[
+  {
+    "name": "clean_hero",
+    "prompt": "white studio shot",
+    "fidelity": 1,
+    "differences": [],
+    "kept": true
+  },
+  {
+    "name": "scene_1",
+    "prompt": "Bright sunlit bamboo grove clearing with soft moss and dappled natural light on a wooden stump",
+    "fidelity": 1,
+    "differences": [],
+    "kept": true
+  },
+  {
+    "name": "scene_2",
+    "prompt": "Airy outdoor picnic setup on pale wood table under clear sky with fresh green leaves and water droplets nearby",
+    "fidelity": 1,
+    "differences": [],
+    "kept": true
+  },
+  {
+    "name": "scene_3",
+    "prompt": "Minimal bright studio corner with light oak surface, white backdrop, and gentle daylight from a window",
+    "fidelity": 1,
+    "differences": [],
+    "kept": true
+  }
+]

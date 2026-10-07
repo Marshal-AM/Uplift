@@ -1,0 +1,19 @@
+{
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/hg-11-3-11",
+    "fullName": "Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Water Bottles"
+  },
+  "product_type": "Insulated Water Bottle",
+  "recommended_attributes": {
+    "Capacity": "500 ml",
+    "Material": "Stainless Steel",
+    "Lid Material": "Bamboo",
+    "Insulation": "Double Wall Vacuum",
+    "Features": "Leak Proof, BPA Free"
+  },
+  "tags": [],
+  "related": [],
+  "complementary": [
+    "gid://shopify/Product/8786043109537"
+  ]
+}

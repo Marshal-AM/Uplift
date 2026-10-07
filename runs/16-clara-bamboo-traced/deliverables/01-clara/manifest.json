@@ -1,0 +1,69 @@
+{
+  "result_hash": "97028d8f60cb9b5f64690e7b7a1cae451531752a82717bd620c338d233f3d2a2",
+  "at": "2026-10-07T07:57:33+00:00",
+  "agent": "Clara",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "copy_variants.json",
+      "sha256": "4ecbbe58aee6159e1830dd82fc95c32327a377997441037b2852f5e52cd4bb3a",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/4ecbbe58aee6159e1830dd82fc95c32327a377997441037b2852f5e52cd4bb3a/copy_variants.json"
+    },
+    {
+      "mime": "text/html",
+      "name": "selected_copy.html",
+      "sha256": "4d4ecbacffb3d12bc815eda27659189a10497a2be20f43e9c2c2d5196058b259",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/4d4ecbacffb3d12bc815eda27659189a10497a2be20f43e9c2c2d5196058b259/selected_copy.html"
+    },
+    {
+      "mime": "application/json",
+      "name": "facts.json",
+      "sha256": "7d7bd4620504ed6a41c15203266fd56758244be3b93a3b5969d9817dc935e185",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/7d7bd4620504ed6a41c15203266fd56758244be3b93a3b5969d9817dc935e185/facts.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "rubric_scores.json",
+      "sha256": "5fa5d79ba2e6fef6fd779e71f99ffac8127a183eb14ab0147d3db81bd7a18359",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/5fa5d79ba2e6fef6fd779e71f99ffac8127a183eb14ab0147d3db81bd7a18359/rubric_scores.json"
+    }
+  ],
+  "changeset": [
+    {
+      "fields": {
+        "descriptionHtml": "<p>Carry a reliable bamboo water bottle 500ml stainless steel insulated water bottle that holds your drink through the commute and the gym.</p><h2>Why It Keeps Up With Your Day</h2><ul><li>Double wall vacuum insulation keeps drinks cold for 24 hours or hot for 12 hours.</li><li>Natural bamboo lid with a leak proof silicone seal.</li><li>BPA free 18/8 stainless steel body that fits most car cup holders.</li></ul><h2>What You Get</h2><p>500 ml capacity in a BPA free 18/8 stainless steel body topped with a natural bamboo lid.</p><h2>Made For Commutes And Workouts</h2><p>The size fits most car cup holders so it stays secure on the drive, then travels easily into the gym.</p><h2>Care And Guarantee</h2><p>Hand wash the lid. The bottle is covered by a 1 year warranty.</p>",
+        "seo": {
+          "description": "A 500 ml bamboo water bottle with stainless steel insulation keeps drinks cold 24 hours or hot 12 hours, with a leak proof seal for commutes and workouts.",
+          "title": "Bamboo Water Bottle 500ml Insulated Stainless Steel"
+        },
+        "title": "Bamboo Water Bottle 500ml Stainless Steel Insulated Water Bottle"
+      },
+      "op": "product.update",
+      "product_id": "gid://shopify/Product/8785172234401"
+    },
+    {
+      "op": "product.tags_add",
+      "product_id": "gid://shopify/Product/8785172234401",
+      "tags": [
+        "insulated bottle",
+        "commuter",
+        "gym"
+      ]
+    }
+  ],
+  "evidence": [],
+  "input_hash": "63250cf88c84cd0c34387343eebf1bb06dd7a4c7a882c290a472d50eb53ca0a8",
+  "job_or_task_id": "01a1155c-e028-761d-920a-413e2a0a11a8",
+  "profile": "clara@5.0.0",
+  "role": "clara",
+  "self_checks": {
+    "grammar_issues": 5,
+    "rubric_total": 37
+  },
+  "summary_md": "**Title:** Bamboo Water Bottle 500ml Stainless Steel Insulated Water Bottle\n\n**SEO title:** Bamboo Water Bottle 500ml Insulated Stainless Steel\n\n**Meta:** A 500 ml bamboo water bottle with stainless steel insulation keeps drinks cold 24 hours or hot 12 hours, with a leak proof seal for commutes and workouts.\n\nRubric 37.0/45 · 100% of claims grounded in 8 facts.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "679a5727085b58c6b676f7c82abade4054bdf9e58229730642678c71ce52c269",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/679a5727085b58c6b676f7c82abade4054bdf9e58229730642678c71ce52c269/verification_bundle.json"
+  }
+}

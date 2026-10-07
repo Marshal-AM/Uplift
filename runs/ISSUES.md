@@ -83,3 +83,21 @@ Each entry: what happened, the evidence, the fix and where it landed. Times are 
   `tumbler/duplicates/`.
 - **Lesson:** test chains stop on the first failed step (`set -e`), and Task launches check for an open Task with the
   same brief first.
+
+## 14. Nora planned a translation the merchant did not ask for (handled by re-plan; prompt fix pending)
+- **Seen:** 2026-10-07, bamboo bottle full-team Task `01a11567-…`: "fully optimize … for US shoppers" made the
+  planner list Yuki (1 unit) — it read the US market as a locale to translate into.
+- **Handled:** the merchant replied "Skip the translation please"; Nora re-planned without Yuki (17.0 → 16.0).
+- **Fix:** the planner should list only languages the merchant explicitly asks to translate into, other than the
+  store's own.
+
+## 15. Found through the live trace (bamboo full-team run `01a11567-…`, 647 steps, 16 services)
+- **Oskar ran out of output tokens once:** one model call took 940 tokens in and ran to the 4,000-token cap
+  (`finish_reason=length`, a runaway answer). Nora's automatic retry ran Oskar again and it passed 100/100; billed once.
+- **Rafael's page reads hit Firecrawl limits:** 403 on Facebook, Reddit and Serious Eats pages, 429 (rate limit) on
+  thermos.com and yeti.com. Rafael continued with the pages he could read and passed 86.4/100.
+- **Clara's title read "500 Ml"** (issue 12 again). **Fixed:** units keep their lowercase symbols (ml, oz, cm…), in
+  the prompt and in a post-pass on the title and SEO title.
+- **Trace readability:** 20 model calls were labelled by their data header ("Product:", "Our product:") and Quinn's
+  heading read "Before_after"; 20 Task updates from Nora's parallel verifications had no agent. **Fixed:** explicit
+  purposes on those calls, readable Quinn mode headings, and updates attributed to the posting coworker.

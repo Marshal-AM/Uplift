@@ -1,0 +1,76 @@
+[
+  {
+    "domain": "amazon.com",
+    "url": "https://www.amazon.com/bamboo-water-bottles/s?k=bamboo+water+bottles",
+    "title": "Bambaw 24 oz Metal Water Bottle, Insulated Stainless Steel Water Bottle, Great for Travel, Wide Mouth for Easy Cleaning, Reusable & Durable, Rust-Resistant & Sturdy (Natural Steel)",
+    "price": 16.99,
+    "compare_at_price": 24.99,
+    "currency": "USD",
+    "claims": [
+      "Insulated stainless steel",
+      "Wide mouth for easy cleaning",
+      "Rust-resistant and sturdy",
+      "Reusable and durable"
+    ],
+    "guarantees": [
+      "Money-back guarantee",
+      "Free delivery for Prime members"
+    ],
+    "shipping_returns": "Join Prime to get FREE delivery Tomorrow, Oct 7. Non-members get FREE delivery on $35 of items shipped by Amazon.",
+    "bundle_offers": [],
+    "image_count": 1,
+    "has_video": false,
+    "review_count": 5000,
+    "rating": 4.4,
+    "brand": "Bambaw"
+  },
+  {
+    "domain": "kinto-usa.com",
+    "url": "https://kinto-usa.com/products/20131",
+    "title": "KINTO WATER BOTTLE 500ML 17OZ",
+    "price": 17.4,
+    "compare_at_price": 0,
+    "currency": "USD",
+    "claims": [
+      "BPA free",
+      "Made with over 50% certified recycled content"
+    ],
+    "guarantees": [
+      "Free shipping on orders over $100"
+    ],
+    "shipping_returns": "We currently ship to U.S. addresses including Alaska, Hawaii and U.S. Territories. KINTO USA offers free delivery for all Domestic orders of $100 and plus, before taxes. Orders can take up to 2 business days to be processed and shipped out.",
+    "bundle_offers": [],
+    "image_count": 30,
+    "has_video": false,
+    "review_count": 0,
+    "rating": 0,
+    "brand": "KINTO"
+  },
+  {
+    "domain": "elementalbottles.com",
+    "url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3",
+    "title": "20oz Iconic Bamboo Water Bottle",
+    "price": 29.99,
+    "compare_at_price": 0,
+    "currency": "USD",
+    "claims": [
+      "Ideal for daily grind, morning hikes, or camping",
+      "Featuring internal strainer for fruit infusion and tea brewing",
+      "Detachable silicone strap for easy attachment",
+      "Silicone bottom for protection and minimal noise",
+      "Crafted with TrueBarrier™ technology to keep beverages cold for up to 24 hours or hot for up to 12 hours"
+    ],
+    "guarantees": [
+      "Limited Lifetime Warranty covering defects",
+      "Replacement for damaged lids or caps",
+      "Warranty against loss of insulating properties"
+    ],
+    "shipping_returns": "Orders processed in 1-2 business days; returns accepted within 30 days for non-customized items.",
+    "bundle_offers": [],
+    "image_count": 41,
+    "has_video": false,
+    "review_count": 84,
+    "rating": 4.9,
+    "brand": "Elemental"
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "result_hash": "04aa56234d8570511582566343041270fc2321de8cdcaa3ef0848a39291413c2",
+  "at": "2026-10-07T08:08:55+00:00",
+  "agent": "Quinn",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "audit_report.json",
+      "sha256": "aabca7a26b28dfa1968c773fd4005a75f3a386fddf83671e963c1e9953bba40c",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/aabca7a26b28dfa1968c773fd4005a75f3a386fddf83671e963c1e9953bba40c/audit_report.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "audit_report.md",
+      "sha256": "910e84bd73d630cbcfa7fb66b81ff44d7c9664b09e438eaf8a423257ce862491",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/910e84bd73d630cbcfa7fb66b81ff44d7c9664b09e438eaf8a423257ce862491/audit_report.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "fix_plan.json",
+      "sha256": "8656b5a9ce52ac12cb73b7aa01115a84e372ce18395e5c663d17d316ec7e39bf",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/8656b5a9ce52ac12cb73b7aa01115a84e372ce18395e5c663d17d316ec7e39bf/fix_plan.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [],
+  "input_hash": "73df7da0f55fb59d47edff726b1f232955a288f2ced7692d3230461350f120ac",
+  "job_or_task_id": "01a11567-4101-77a1-93f5-dfbf947b9ad1:quinn",
+  "profile": "quinn@5.0.0",
+  "role": "quinn",
+  "self_checks": {},
+  "summary_md": "**Listing score 75.2/100**\n\n- [high] Strengthen trust signals with guarantees, reviews display, and social proof elements to address the critically low trust score. → leo\n- [high] Rewrite product descriptions and bullet points for stronger persuasion and benefit-focused messaging. → clara\n- [medium] Optimize catalog structure, collections, and product feed for better organization and discoverability within categories. → oskar\n- [low] Enhance keyword targeting slightly to close the remaining discoverability gap. → kai",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "b095f37e07526a8e3c1a653a96281d4612b65124a994d20432b74999db9caf23",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/b095f37e07526a8e3c1a653a96281d4612b65124a994d20432b74999db9caf23/verification_bundle.json"
+  }
+}

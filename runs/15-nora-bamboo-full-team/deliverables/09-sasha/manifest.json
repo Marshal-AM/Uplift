@@ -1,0 +1,50 @@
+{
+  "result_hash": "8cd05fa70dea32a4ce3cc6295899b825b959efb58c989f2af21935bb45f6b92c",
+  "at": "2026-10-07T08:16:06+00:00",
+  "agent": "Sasha",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "unit_economics.json",
+      "sha256": "aa7010f0ea1713789b606ca43d4743a48f72d96b05b5c29a27fa07d3104590d0",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/aa7010f0ea1713789b606ca43d4743a48f72d96b05b5c29a27fa07d3104590d0/unit_economics.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "google_ads_editor.csv",
+      "sha256": "79f0462300c7392c0c6ce5c71e98834e1d42f05c529161befb4975e2b35ae03c",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/79f0462300c7392c0c6ce5c71e98834e1d42f05c529161befb4975e2b35ae03c/google_ads_editor.csv"
+    },
+    {
+      "mime": "application/json",
+      "name": "ad_copy.json",
+      "sha256": "23aa8ec28ec591fa266d3566b8ae85c69d8a2c96c84426ddb60433b0ca0230b9",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/23aa8ec28ec591fa266d3566b8ae85c69d8a2c96c84426ddb60433b0ca0230b9/ad_copy.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "ads_plan.md",
+      "sha256": "71d5763872814c6d199545017e8741de7463d14e127d84b30eafe8453e5f1b65",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/71d5763872814c6d199545017e8741de7463d14e127d84b30eafe8453e5f1b65/ads_plan.md"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "tracking_checklist.md",
+      "sha256": "07fc2b20972d502817d73d80b9e906b749c3e962cfa8b37d17c2fab5e0bfa146",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/07fc2b20972d502817d73d80b9e906b749c3e962cfa8b37d17c2fab5e0bfa146/tracking_checklist.md"
+    }
+  ],
+  "changeset": [],
+  "evidence": [],
+  "input_hash": "ba872f14cbf91695e7d02787ddc091829396b54af3c2eb2316845532bc865587",
+  "job_or_task_id": "01a11567-4101-77a1-93f5-dfbf947b9ad1:sasha",
+  "profile": "sasha@5.0.0",
+  "role": "sasha",
+  "self_checks": {},
+  "summary_md": "**Break-even CPA** 23.00 · **max CPC** 0.32 · **budget** 1000.0/month\n\n- Uplift · Bamboo Water Bottle 500ml Stainless Steel Insulated Water Bottle · Search (19.73/day, paused)\n- Uplift · Bamboo Water Bottle 500ml Stainless Steel Insulated Water Bottle · Performance Max (13.16/day, paused)\n\n52 keywords, 157 negatives, 15 headlines. Import the CSV in Google Ads Editor; everything starts paused.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "b5e2382b4c7c088dbf7d981bb9fd396f2b1ef2d6f1bd320645a673c52013c0f7",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/b5e2382b4c7c088dbf7d981bb9fd396f2b1ef2d6f1bd320645a673c52013c0f7/verification_bundle.json"
+  }
+}

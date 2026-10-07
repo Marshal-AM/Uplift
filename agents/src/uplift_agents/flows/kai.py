@@ -65,7 +65,7 @@ def run(inputs: dict, tracer) -> str:
             "attributes": {"type": "array", "items": {"type": "string"}},
             "use_cases": {"type": "array", "items": {"type": "string"}},
             "seeds": {"type": "array", "items": {"type": "string"}}}, "required": ["seeds"]},
-    )["seeds"] + ctx.lines("seed_keywords")
+    purpose="Listing seed search terms from the product")["seeds"] + ctx.lines("seed_keywords")
     seeds = list(dict.fromkeys(s.lower().strip() for s in seeds if s.strip()))[:12]
 
     tracer.markdown_sync(f"Expanding {len(seeds)} seeds with Google autocomplete, related searches and questions")
@@ -124,7 +124,7 @@ def run(inputs: dict, tracer) -> str:
                 "intent": {"type": "string", "enum": INTENTS},
                 "ids": {"type": "array", "items": {"type": "integer"}}}, "required": ["name", "role", "intent", "ids"]}},
             "off_target_ids": {"type": "array", "items": {"type": "integer"}}},
-         "required": ["clusters", "off_target_ids"]}, max_tokens=8000)
+         "required": ["clusters", "off_target_ids"]}, max_tokens=8000, purpose="Clustering search terms by shopper need")
     off_target = set(groups["off_target_ids"])
     groups = groups["clusters"]
     for g in groups:

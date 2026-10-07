@@ -34,6 +34,10 @@ class Sokosumi:
             raise SokosumiError(resp.status_code, resp.text[:500])
         return resp.json() if resp.content else None
 
+    def _agent(self) -> str:
+        """Who posts, for the live trace: the bound agent, or this coworker (Nora's parallel verifications)."""
+        return (trace.current() or {}).get("agent") or self.role
+
     # tasks
     def events(self, cursor: str | None) -> tuple[list[dict], str | None]:
         q = f"?limit=100&cursor={cursor}" if cursor else "?limit=100"
@@ -51,13 +55,14 @@ class Sokosumi:
             return self.request("POST", f"/v1/tasks/{task_id}/events", body)["data"]
         status = body.get("status")
         step = f"Task status → {STATUS_LABEL.get(status, status)}" if status else "Posted an update to the Task"
-        with trace.span("Sokosumi", step, _first_line(body.get("comment")), task=task_id, kind="sokosumi.event",
+        with trace.span("Sokosumi", step, _first_line(body.get("comment")), task=task_id, agent=self._agent(),
+                        kind="sokosumi.event",
                         meta={"status": status, "message": body.get("comment")} if body.get("comment") else None):
             return self.request("POST", f"/v1/tasks/{task_id}/events", body)["data"]
 
     def upload(self, task_id: str, filename: str, data: bytes, content_type: str) -> None:
         with trace.span("Sokosumi", f"Attached {filename} to the Task", f"{len(data) / 1024:,.1f} KB · {content_type}",
-                        task=task_id, kind="sokosumi.file"):
+                        task=task_id, agent=self._agent(), kind="sokosumi.file"):
             session = self.request("POST", f"/v1/tasks/{task_id}/files",
                                    {"filename": filename, "contentType": content_type, "size": len(data)})["data"]
             httpx.put(session["uploadUrl"], content=data,

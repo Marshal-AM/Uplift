@@ -1,0 +1,126 @@
+{
+  "competitors": [
+    {
+      "domain": "amazon.com",
+      "url": "https://www.amazon.com/bamboo-water-bottles/s?k=bamboo+water+bottles"
+    },
+    {
+      "domain": "kinto-usa.com",
+      "url": "https://kinto-usa.com/products/20131"
+    },
+    {
+      "domain": "elementalbottles.com",
+      "url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3"
+    }
+  ],
+  "attributes": [
+    {
+      "attribute": "Capacity",
+      "ours": "500 ml",
+      "competitors": [
+        {
+          "domain": "amazon.com",
+          "value": "24 oz"
+        },
+        {
+          "domain": "kinto-usa.com",
+          "value": "500 ml / 17 oz"
+        },
+        {
+          "domain": "elementalbottles.com",
+          "value": "20 oz"
+        }
+      ]
+    },
+    {
+      "attribute": "Cold retention",
+      "ours": "24 hours (double wall vacuum)",
+      "competitors": [
+        {
+          "domain": "amazon.com",
+          "value": "Insulated stainless steel (duration not specified)"
+        },
+        {
+          "domain": "kinto-usa.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "elementalbottles.com",
+          "value": "Up to 24 hours (TrueBarrier™)"
+        }
+      ]
+    },
+    {
+      "attribute": "Hot retention",
+      "ours": "12 hours (double wall vacuum)",
+      "competitors": [
+        {
+          "domain": "amazon.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "kinto-usa.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "elementalbottles.com",
+          "value": "Up to 12 hours (TrueBarrier™)"
+        }
+      ]
+    },
+    {
+      "attribute": "Body material",
+      "ours": "BPA-free 18/8 stainless steel",
+      "competitors": [
+        {
+          "domain": "amazon.com",
+          "value": "Insulated stainless steel, rust-resistant"
+        },
+        {
+          "domain": "kinto-usa.com",
+          "value": "BPA-free, >50% certified recycled content"
+        },
+        {
+          "domain": "elementalbottles.com",
+          "value": "Not specified"
+        }
+      ]
+    },
+    {
+      "attribute": "Lid",
+      "ours": "Natural bamboo with leak-proof silicone seal",
+      "competitors": [
+        {
+          "domain": "amazon.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "kinto-usa.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "elementalbottles.com",
+          "value": "Detachable silicone strap, silicone bottom"
+        }
+      ]
+    },
+    {
+      "attribute": "Warranty",
+      "ours": "1 year",
+      "competitors": [
+        {
+          "domain": "amazon.com",
+          "value": "Money-back guarantee"
+        },
+        {
+          "domain": "kinto-usa.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "elementalbottles.com",
+          "value": "Limited lifetime (defects, lids, insulation)"
+        }
+      ]
+    }
+  ]
+}

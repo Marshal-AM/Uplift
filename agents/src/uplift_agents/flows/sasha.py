@@ -74,7 +74,7 @@ def run(inputs: dict, tracer) -> str:
             f"Product: {product.get('title', '')}\n{ctx.get('product_facts', '')[:1500]}\nGive 3 generic 2–4 word phrases "
             "a shopper would type into Google to buy this kind of product (no brand or model names).",
             {"type": "object", "properties": {"phrases": {"type": "array", "items": {"type": "string"}}},
-             "required": ["phrases"]})["phrases"][:3]
+             "required": ["phrases"]}, purpose="Seed keywords for the ads")["phrases"][:3]
         found = seeds if ctx.lines("keywords") else [*seeds, *(k for seed in seeds
                                                               for k in tools.google_autocomplete(seed, country, "en"))]
         kws = [{"keyword": k.lower(), "cluster": "core", "role": "ads_phrase"} for k in dict.fromkeys(found) if k]
@@ -95,7 +95,7 @@ def run(inputs: dict, tracer) -> str:
         {"type": "object", "properties": {"headlines": {"type": "array", "items": {"type": "string"}},
                                           "descriptions": {"type": "array", "items": {"type": "string"}},
                                           "long_headline": {"type": "string"}},
-         "required": ["headlines", "descriptions", "long_headline"]})
+         "required": ["headlines", "descriptions", "long_headline"]}, purpose="Writing ad copy")
     headlines = [h for h in copy["headlines"] if len(h) <= 30][:15]
     descriptions = [d for d in copy["descriptions"] if len(d) <= 90][:4]
 

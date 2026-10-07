@@ -1,0 +1,155 @@
+{
+  "result_hash": "fdecd5c55a13bd0028088661008b132d1b505023aa84d2490a19280461316ab5",
+  "at": "2026-10-07T08:11:12+00:00",
+  "agent": "Marcus",
+  "artifacts": [
+    {
+      "mime": "text/markdown",
+      "name": "pricing_strategy.md",
+      "sha256": "d1cd227bcab913745cb9364b345b63a0785af41d8c3c26c5777ac57de532f114",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d1cd227bcab913745cb9364b345b63a0785af41d8c3c26c5777ac57de532f114/pricing_strategy.md"
+    },
+    {
+      "mime": "text/csv",
+      "name": "scenarios.csv",
+      "sha256": "3936c12b6d1fe23fd1387ef2dca94e30d2d49f07b540ac6297e0b57854f32e7a",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/3936c12b6d1fe23fd1387ef2dca94e30d2d49f07b540ac6297e0b57854f32e7a/scenarios.csv"
+    },
+    {
+      "mime": "application/json",
+      "name": "promo_calendar.json",
+      "sha256": "1e8a856ca14cd179db7222449007baf6b19cea2f4747075ba3887fea2db62648",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/1e8a856ca14cd179db7222449007baf6b19cea2f4747075ba3887fea2db62648/promo_calendar.json"
+    },
+    {
+      "mime": "text/calendar",
+      "name": "promo_calendar.ics",
+      "sha256": "f42476df83ef14fdb78ba2612c491fd5d1af9a7c3ad8eb82c3c50b5ae545464e",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f42476df83ef14fdb78ba2612c491fd5d1af9a7c3ad8eb82c3c50b5ae545464e/promo_calendar.ics"
+    },
+    {
+      "mime": "application/json",
+      "name": "discount_codes.json",
+      "sha256": "b5ecfeb76fc116c53c77ac2a0cdfa64cd917caae76ee6d79501a8cc9deb2ba37",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/b5ecfeb76fc116c53c77ac2a0cdfa64cd917caae76ee6d79501a8cc9deb2ba37/discount_codes.json"
+    }
+  ],
+  "changeset": [
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "BAMBOOLAUNCH20",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8785172234401"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.2
+          }
+        },
+        "endsAt": "2026-11-10T23:59:00+00:00",
+        "startsAt": "2026-10-15T00:00:00+00:00",
+        "title": "Launch Special",
+        "usageLimit": 200
+      },
+      "op": "discount.create"
+    },
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "BAMBOO1111",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8785172234401"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.25
+          }
+        },
+        "endsAt": "2026-11-12T23:59:00+00:00",
+        "startsAt": "2026-11-11T00:00:00+00:00",
+        "title": "Singles Day Eco Deal",
+        "usageLimit": 150
+      },
+      "op": "discount.create"
+    },
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "BFBAMBOO30",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8785172234401"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.3
+          }
+        },
+        "endsAt": "2026-11-30T23:59:00+00:00",
+        "startsAt": "2026-11-27T00:00:00+00:00",
+        "title": "Black Friday Premium",
+        "usageLimit": 300
+      },
+      "op": "discount.create"
+    },
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "GIFTBAMBOO25",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8785172234401"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.25
+          }
+        },
+        "endsAt": "2026-12-24T23:59:00+00:00",
+        "startsAt": "2026-12-15T00:00:00+00:00",
+        "title": "Holiday Gift",
+        "usageLimit": 100
+      },
+      "op": "discount.create"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "cd6cc140b97756394856c184342dd7815e340cd2449a38c84671d3b9a45ec8d0",
+  "job_or_task_id": "01a11567-4101-77a1-93f5-dfbf947b9ad1:marcus",
+  "profile": "marcus@5.0.0",
+  "role": "marcus",
+  "self_checks": {},
+  "summary_md": "**Positioning:** premium · price 34.0 vs market median 19.465\n\n**4 scheduled discount codes**, all above your 35% margin floor:\n- BAMBOOLAUNCH20: 20% · 2026-10-15 → 2026-11-10\n- BAMBOO1111: 25% · 2026-11-11 → 2026-11-12\n- BFBAMBOO30: 30% · 2026-11-27 → 2026-11-30\n- GIFTBAMBOO25: 25% · 2026-12-15 → 2026-12-24",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "2e7c9f70e3d7f6e8570659655464310f5c7c8ed27043f1f23161952d147114eb",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/2e7c9f70e3d7f6e8570659655464310f5c7c8ed27043f1f23161952d147114eb/verification_bundle.json"
+  }
+}

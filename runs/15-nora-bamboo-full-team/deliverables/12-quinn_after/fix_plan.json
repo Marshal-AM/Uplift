@@ -1,0 +1,20 @@
+[
+  {
+    "fix": "Improve product copy and persuasive elements to boost conversion messaging",
+    "specialist": "clara",
+    "impact": "high",
+    "price": 2.0
+  },
+  {
+    "fix": "Enhance trust signals with better reviews integration, guarantees, and social proof",
+    "specialist": "leo",
+    "impact": "high",
+    "price": 2.0
+  },
+  {
+    "fix": "Optimize catalog structure, collections, and product feed for better organization",
+    "specialist": "oskar",
+    "impact": "medium",
+    "price": 1.5
+  }
+]

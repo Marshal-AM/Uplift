@@ -1,0 +1,70 @@
+{
+  "result_hash": "9f7bf521dd505daab9a45d35880ca186021ecb9b3532a1074a58799e397d5c3b",
+  "at": "2026-10-07T08:14:24+00:00",
+  "agent": "Clara",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "copy_variants.json",
+      "sha256": "b96abea5d463ebb4010526cb9e9c28fd8f7108307d8ffd02f55643f65f771194",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/b96abea5d463ebb4010526cb9e9c28fd8f7108307d8ffd02f55643f65f771194/copy_variants.json"
+    },
+    {
+      "mime": "text/html",
+      "name": "selected_copy.html",
+      "sha256": "6862036c05bf9e6ea8f691fda56804d5bb22148eaa4258c5ea378bf623152fc1",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/6862036c05bf9e6ea8f691fda56804d5bb22148eaa4258c5ea378bf623152fc1/selected_copy.html"
+    },
+    {
+      "mime": "application/json",
+      "name": "facts.json",
+      "sha256": "0600360940a281fc774776eab9d2f60f542454fb25b5c0d1dc23a00fd92fa153",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/0600360940a281fc774776eab9d2f60f542454fb25b5c0d1dc23a00fd92fa153/facts.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "rubric_scores.json",
+      "sha256": "ed878d33613d1187fffa674836b2e032280a69d7edbbc87d48cf11ed6ca2f8db",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/ed878d33613d1187fffa674836b2e032280a69d7edbbc87d48cf11ed6ca2f8db/rubric_scores.json"
+    }
+  ],
+  "changeset": [
+    {
+      "fields": {
+        "descriptionHtml": "<p>This bamboo water bottle keeps drinks cold for a full day or hot through the morning so you always have the perfect sip.</p><h2>Benefits You Can Count On</h2><ul><li>Double wall vacuum insulation holds cold drinks for 24 hours.</li><li>The same insulation keeps hot drinks ready for 12 hours.</li><li>Natural bamboo lid with leak proof silicone seal stays secure.</li><li>BPA free 18/8 stainless steel body supports clean taste.</li><li>Slim shape fits most car cup holders for easy travel.</li></ul><h2>Full Specs</h2><p>Capacity is 500 ml. Double wall vacuum insulation. Natural bamboo lid with leak proof silicone seal. BPA free 18/8 stainless steel body. Fits most car cup holders.</p><h2>Great For Your Day</h2><p>The bottle fits most car cup holders so it rides along easily on commutes and drives.</p><h2>Why You Can Trust It</h2><p>BPA free 18/8 stainless steel protects water quality and food safety. The leak proof silicone seal stops spills. Vacuum insulation and solid steel construction add durability you can rely on.</p><h2>Simple Care And Guarantee</h2><p>Hand wash the lid to keep it fresh. The bottle is covered by a 1 year warranty.</p>",
+        "seo": {
+          "description": "Keep drinks cold 24 hours or hot 12 hours in this leak proof bamboo water bottle with BPA free stainless steel body that fits car holders.",
+          "title": "Bamboo Water Bottle 500 Ml Stainless Steel"
+        },
+        "title": "Bamboo Water Bottle 500 Ml Stainless Steel Insulated"
+      },
+      "op": "product.update",
+      "product_id": "gid://shopify/Product/8785172234401"
+    },
+    {
+      "op": "product.tags_add",
+      "product_id": "gid://shopify/Product/8785172234401",
+      "tags": [
+        "stainless steel bottle",
+        "500ml water bottle",
+        "hot cold bottle",
+        "bpa free bottle"
+      ]
+    }
+  ],
+  "evidence": [],
+  "input_hash": "3a9e2fab954612ebb9b6c7c1c19f9b1b893c634e13ce9621cae09ae15b74c2b4",
+  "job_or_task_id": "01a11567-4101-77a1-93f5-dfbf947b9ad1:clara",
+  "profile": "clara@5.0.0",
+  "role": "clara",
+  "self_checks": {
+    "grammar_issues": 5,
+    "rubric_total": 40
+  },
+  "summary_md": "**Title:** Bamboo Water Bottle 500 Ml Stainless Steel Insulated\n\n**SEO title:** Bamboo Water Bottle 500 Ml Stainless Steel\n\n**Meta:** Keep drinks cold 24 hours or hot 12 hours in this leak proof bamboo water bottle with BPA free stainless steel body that fits car holders.\n\nRubric 40.0/45 · 100% of claims grounded in 8 facts.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "f462300ffcae9e6632d6de60a5981c9abc9f3174b315318b1184cd1a558372d4",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f462300ffcae9e6632d6de60a5981c9abc9f3174b315318b1184cd1a558372d4/verification_bundle.json"
+  }
+}

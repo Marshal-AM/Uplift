@@ -1,0 +1,105 @@
+{
+  "mode": "before_after",
+  "score": 82.0,
+  "deterministic": 78.0,
+  "judge": 4.0,
+  "sections": {
+    "discoverability": 19.0,
+    "persuasion": 13,
+    "visuals": 15.0,
+    "trust": 11,
+    "catalog": 10,
+    "compliance": 10
+  },
+  "compliance_hits": [],
+  "rankings": [],
+  "store_search_ranks": [
+    {
+      "keyword": "bamboo water bottle",
+      "rank": 1,
+      "results": 2
+    },
+    {
+      "keyword": "stainless steel bottle",
+      "rank": 1,
+      "results": 4
+    },
+    {
+      "keyword": "insulated water bottle",
+      "rank": 1,
+      "results": 3
+    },
+    {
+      "keyword": "500ml water bottle",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "leak proof bottle",
+      "rank": 1,
+      "results": 3
+    }
+  ],
+  "page_speed": null,
+  "sales": null,
+  "diagnosis": "Persuasion and trust scores are the weakest relative to maximums, limiting conversion potential despite strong visuals and compliance; catalog also needs work. No sales data for traffic/conversion diagnosis.\"",
+  "fixes": [
+    {
+      "fix": "Improve product copy and persuasive elements to boost conversion messaging",
+      "specialist": "clara",
+      "impact": "high",
+      "price": 2.0
+    },
+    {
+      "fix": "Enhance trust signals with better reviews integration, guarantees, and social proof",
+      "specialist": "leo",
+      "impact": "high",
+      "price": 2.0
+    },
+    {
+      "fix": "Optimize catalog structure, collections, and product feed for better organization",
+      "specialist": "oskar",
+      "impact": "medium",
+      "price": 1.5
+    }
+  ],
+  "before": {
+    "score": 75.2,
+    "sections": {
+      "discoverability": 19.0,
+      "persuasion": 12.2,
+      "visuals": 14.0,
+      "trust": 7,
+      "catalog": 10,
+      "compliance": 10
+    },
+    "store_search_ranks": [
+      {
+        "keyword": "bamboo water bottle",
+        "rank": 1,
+        "results": 2
+      },
+      {
+        "keyword": "500ml insulated water bottle",
+        "rank": 1,
+        "results": 1
+      },
+      {
+        "keyword": "stainless steel bamboo bottle",
+        "rank": 1,
+        "results": 2
+      },
+      {
+        "keyword": "insulated bamboo water bottle 500ml",
+        "rank": 1,
+        "results": 1
+      },
+      {
+        "keyword": "eco friendly stainless steel bottle",
+        "rank": 1,
+        "results": 1
+      }
+    ]
+  },
+  "delta": 6.8
+}

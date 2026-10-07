@@ -1,0 +1,125 @@
+{
+  "result_hash": "e6741b25dcfc038cbb79d2a9442bfb9c945142833e977635ca95c320e23819d6",
+  "at": "2026-10-07T08:16:39+00:00",
+  "agent": "Leo",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "faq.json",
+      "sha256": "6a74bed65b13594e1884801e42ddc398b4b7ca273dc2b35cfc783d31fc8c1fd4",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/6a74bed65b13594e1884801e42ddc398b4b7ca273dc2b35cfc783d31fc8c1fd4/faq.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "comparison.json",
+      "sha256": "c3d6810a1a6445853fdcc8969d6c4e7ecdf40ef5f231b9fae0cf0d90f7ed5da3",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/c3d6810a1a6445853fdcc8969d6c4e7ecdf40ef5f231b9fae0cf0d90f7ed5da3/comparison.json"
+    },
+    {
+      "mime": "text/html",
+      "name": "blog_article.html",
+      "sha256": "ef9c143a6039aaca669d236f150b70278c08298e5bb4e03584a30483ced59b62",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/ef9c143a6039aaca669d236f150b70278c08298e5bb4e03584a30483ced59b62/blog_article.html"
+    },
+    {
+      "mime": "text/html",
+      "name": "emails/1-launch-announcement.html",
+      "sha256": "f75d2efbe23e47bbb02cdf52d8db907c1af339cac536643e5abdadff0eca73ec",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f75d2efbe23e47bbb02cdf52d8db907c1af339cac536643e5abdadff0eca73ec/emails/1-launch-announcement.html"
+    },
+    {
+      "mime": "text/plain",
+      "name": "emails/1.txt",
+      "sha256": "f53f59ba10f28fe45adda909b1bbf2745b13c1f67fe5c1a48bc7abd0d0082521",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f53f59ba10f28fe45adda909b1bbf2745b13c1f67fe5c1a48bc7abd0d0082521/emails/1.txt"
+    },
+    {
+      "mime": "text/html",
+      "name": "emails/2-launch-reminder.html",
+      "sha256": "e47e3ce9051bea81849889cd583dfc5878e491635eb31762db04bbc8a0e5d254",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/e47e3ce9051bea81849889cd583dfc5878e491635eb31762db04bbc8a0e5d254/emails/2-launch-reminder.html"
+    },
+    {
+      "mime": "text/plain",
+      "name": "emails/2.txt",
+      "sha256": "a0183099f3f191a74b1502b61e4bf0ec6ad679000739429a9640c6ef71a67ccc",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a0183099f3f191a74b1502b61e4bf0ec6ad679000739429a9640c6ef71a67ccc/emails/2.txt"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "flow_blueprints.md",
+      "sha256": "909a212e67497d2bd0374cc3411b0738020fb0b476730b35b86fbfefcff93929",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/909a212e67497d2bd0374cc3411b0738020fb0b476730b35b86fbfefcff93929/flow_blueprints.md"
+    },
+    {
+      "mime": "text/plain",
+      "name": "sms.txt",
+      "sha256": "50e2d088d8c216f60ae1309ed3b928683a82c90bfed84b70d49fd5ca545b1a99",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/50e2d088d8c216f60ae1309ed3b928683a82c90bfed84b70d49fd5ca545b1a99/sms.txt"
+    },
+    {
+      "mime": "text/csv",
+      "name": "social_pack.csv",
+      "sha256": "9c87bbb234463f5444557c2bf00dc90509b24176b2234fa787a080de94a191a2",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/9c87bbb234463f5444557c2bf00dc90509b24176b2234fa787a080de94a191a2/social_pack.csv"
+    }
+  ],
+  "changeset": [
+    {
+      "metafields": [
+        {
+          "key": "faq",
+          "namespace": "custom",
+          "type": "json",
+          "value": "[{\"q\": \"Is this a BPA-free stainless steel water bottle?\", \"a\": \"Yes, it features a BPA-free 18/8 stainless steel body.\"}, {\"q\": \"Does this insulated bottle keep water cold for 24 hours?\", \"a\": \"Yes, the double wall vacuum insulation keeps drinks cold for 24 hours.\"}, {\"q\": \"How long does it keep hot drinks hot?\", \"a\": \"It keeps drinks hot for 12 hours with double wall vacuum insulation.\"}, {\"q\": \"Is the bamboo lid leak-proof?\", \"a\": \"Yes, the natural bamboo lid includes a leak-proof silicone seal.\"}, {\"q\": \"What is the bottle capacity?\", \"a\": \"The capacity is 500 ml.\"}, {\"q\": \"Does it fit in car cup holders?\", \"a\": \"Yes, it fits most car cup holders.\"}, {\"q\": \"Is the bottle covered by a warranty?\", \"a\": \"Yes, it is covered by a 1 year warranty.\"}, {\"q\": \"How do I clean the lid?\", \"a\": \"Hand wash the lid.\"}]"
+        }
+      ],
+      "op": "metafields.set",
+      "owner_id": "gid://shopify/Product/8785172234401"
+    },
+    {
+      "metafields": [
+        {
+          "key": "comparison",
+          "namespace": "custom",
+          "type": "json",
+          "value": "{\"competitors\": [{\"domain\": \"amazon.com\", \"url\": \"https://www.amazon.com/bamboo-water-bottles/s?k=bamboo+water+bottles\"}, {\"domain\": \"kinto-usa.com\", \"url\": \"https://kinto-usa.com/products/20131\"}, {\"domain\": \"elementalbottles.com\", \"url\": \"https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3\"}], \"attributes\": [{\"attribute\": \"Capacity\", \"ours\": \"500 ml\", \"competitors\": [{\"domain\": \"amazon.com\", \"value\": \"24 oz\"}, {\"domain\": \"kinto-usa.com\", \"value\": \"500 ml / 17 oz\"}, {\"domain\": \"elementalbottles.com\", \"value\": \"20 oz\"}]}, {\"attribute\": \"Cold retention\", \"ours\": \"24 hours (double wall vacuum)\", \"competitors\": [{\"domain\": \"amazon.com\", \"value\": \"Insulated stainless steel (duration not specified)\"}, {\"domain\": \"kinto-usa.com\", \"value\": \"Not specified\"}, {\"domain\": \"elementalbottles.com\", \"value\": \"Up to 24 hours (TrueBarrier\\u2122)\"}]}, {\"attribute\": \"Hot retention\", \"ours\": \"12 hours (double wall vacuum)\", \"competitors\": [{\"domain\": \"amazon.com\", \"value\": \"Not specified\"}, {\"domain\": \"kinto-usa.com\", \"value\": \"Not specified\"}, {\"domain\": \"elementalbottles.com\", \"value\": \"Up to 12 hours (TrueBarrier\\u2122)\"}]}, {\"attribute\": \"Body material\", \"ours\": \"BPA-free 18/8 stainless steel\", \"competitors\": [{\"domain\": \"amazon.com\", \"value\": \"Insulated stainless steel, rust-resistant\"}, {\"domain\": \"kinto-usa.com\", \"value\": \"BPA-free, >50% certified recycled content\"}, {\"domain\": \"elementalbottles.com\", \"value\": \"Not specified\"}]}, {\"attribute\": \"Lid\", \"ours\": \"Natural bamboo with leak-proof silicone seal\", \"competitors\": [{\"domain\": \"amazon.com\", \"value\": \"Not specified\"}, {\"domain\": \"kinto-usa.com\", \"value\": \"Not specified\"}, {\"domain\": \"elementalbottles.com\", \"value\": \"Detachable silicone strap, silicone bottom\"}]}, {\"attribute\": \"Warranty\", \"ours\": \"1 year\", \"competitors\": [{\"domain\": \"amazon.com\", \"value\": \"Money-back guarantee\"}, {\"domain\": \"kinto-usa.com\", \"value\": \"Not specified\"}, {\"domain\": \"elementalbottles.com\", \"value\": \"Limited lifetime (defects, lids, insulation)\"}]}]}"
+        }
+      ],
+      "op": "metafields.set",
+      "owner_id": "gid://shopify/Product/8785172234401"
+    },
+    {
+      "input": {
+        "author": {
+          "name": "Uplift"
+        },
+        "blogId": "gid://shopify/Blog/98788868257",
+        "body": "<h1>Bamboo Water Bottle: The Perfect Blend of Nature and Performance</h1><p>A bamboo water bottle offers a stylish, sustainable way to stay hydrated while reducing plastic waste. In the first few sips of your day, this natural material brings warmth and reliability that plastic simply cannot match. Our 500ml stainless steel insulated bamboo water bottle combines the beauty of bamboo with modern vacuum technology so your drinks stay exactly as you like them.</p><h2>Why Choose a Bamboo Water Bottle?</h2><p>People love bamboo water bottles because they feel good in the hand and look elegant on any desk or in a gym bag. The natural bamboo lid gives a soft, organic touch while the stainless steel body delivers durability. Unlike single-use plastic, a quality bamboo water bottle can last for years, making it a true zero-waste companion.</p><h3>Is it good to drink water in a bamboo bottle?</h3><p>Yes, drinking from a well-made bamboo water bottle is excellent. The bamboo lid stays dry and pleasant, and the stainless steel interior never imparts flavors or chemicals. You get pure-tasting water every time, plus the satisfaction of using a renewable material.</p><h2>Health and Safety of Bamboo Water Bottles</h2><p>Many people ask about the health aspects of bamboo. The answers are reassuring when you choose a properly constructed bottle.</p><h3>What is the healthiest water bottle material?</h3><p>Stainless steel ranks among the healthiest materials because it is inert, durable, and free from BPA and other plastics. Pairing it with a natural bamboo lid, as in our design, gives you the best of both worlds: a non-reactive interior and an eco-friendly exterior accent. Our bottle uses BPA-free 18/8 stainless steel, so nothing leaches into your drink.</p><h3>Is it safe to drink water from bamboo?</h3><p>Absolutely. Food-grade bamboo, sealed properly, is completely safe. Our natural bamboo lid includes a leak-proof silicone seal that keeps everything secure without introducing harmful substances. You can confidently sip throughout the day.</p><h3>How healthy is bamboo water?</h3><p>Bamboo itself does not add minerals or change the water’s chemistry in a sealed bottle. The health benefit comes from consistent hydration and avoiding plastic chemicals. With double-wall vacuum insulation, your water stays cold for 24 hours or hot for 12 hours, encouraging you to drink more.</p><h2>Features That Make This Bamboo Water Bottle Stand Out</h2><p>Capacity is a practical 500 ml—enough for a morning commute or a workout without feeling bulky. The double-wall vacuum insulation is the star: cold drinks remain icy for a full 24 hours, and hot beverages stay steaming for 12 hours. That means your morning coffee is still warm at lunch, and your iced tea survives a summer afternoon.</p><p>The natural bamboo lid features a leak-proof silicone seal, so you can toss the bottle in a bag without worry. It fits most car cup holders, making road trips effortless. Cleaning is simple: hand wash the lid to preserve the bamboo’s beauty, while the stainless steel body rinses clean easily. Every bottle is covered by a 1-year warranty for peace of mind.</p><h2>Everyday Use and Care Tips</h2><p>Start your day by filling the bamboo water bottle with ice water or hot tea. Because of the insulation, you rarely need a refill before evening. At the office or trail, the bamboo lid feels pleasant against your lips and never gets uncomfortably hot or cold. After use, a quick hand wash of the lid keeps the natural material looking fresh for years.</p><h2>Make the Switch Today</h2><p>Ready to enjoy better hydration with style? Explore our Bamboo Water Bottle 500ml Stainless Steel Insulated Water Bottle at https://uplift-d8k3b2rn.myshopify.com/products/bamboo-insulated-bottle?utm_source=blog&utm_medium=content&utm_campaign=uplift-01a11567-410&utm_content=article. Use code BAMBOOLAUNCH20 at checkout for a special launch discount. Your body, the planet, and your daily routine will thank you.</p>",
+        "isPublished": false,
+        "summary": "Discover why a bamboo water bottle is a smart, eco-friendly choice for daily hydration. Learn about safety, health benefits, insulation performance, and how our 500ml stainless steel model with bamboo lid keeps drinks perfect all day.",
+        "tags": [
+          "bamboo water bottle",
+          "eco-friendly hydration",
+          "stainless steel bottle",
+          "insulated water bottle",
+          "sustainable living"
+        ],
+        "title": "Bamboo Water Bottle Guide: Benefits, Safety & Our 500ml Insulated Pick"
+      },
+      "op": "article.create"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "d6518148689059b1e893f98915b961b94b7c4f197b7b5392823b4ad4dd90d17e",
+  "job_or_task_id": "01a11567-4101-77a1-93f5-dfbf947b9ad1:leo",
+  "profile": "leo@5.0.0",
+  "role": "leo",
+  "self_checks": {},
+  "summary_md": "Delivered: faq, comparison, blog, email, social. All links carry `utm_campaign=uplift-01a11567-410`; the blog article is saved unpublished; emails are ready to import; the FAQ goes on the product page once you approve.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "254569cf74fed132b07a587c2ffb7cb62513b605e097713a365b1175b2b515b1",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/254569cf74fed132b07a587c2ffb7cb62513b605e097713a365b1175b2b515b1/verification_bundle.json"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "audits": [
+    {
+      "shot_type": "hero",
+      "has_text_overlay": false,
+      "issues": [],
+      "width": 2048,
+      "height": 2048,
+      "duplicate_of": null
+    },
+    {
+      "shot_type": "lifestyle",
+      "has_text_overlay": false,
+      "issues": [
+        "distracting background"
+      ],
+      "background": "car interior",
+      "lighting_ok": true,
+      "sharp": true,
+      "has_watermark": false,
+      "width": 2048,
+      "height": 2048,
+      "duplicate_of": null
+    },
+    {
+      "shot_type": "lifestyle",
+      "issues": [
+        "background intentionally blurred"
+      ],
+      "has_text_overlay": false,
+      "width": 1856,
+      "height": 2304,
+      "duplicate_of": null
+    },
+    {
+      "shot_type": "lifestyle",
+      "has_text_overlay": false,
+      "issues": [
+        "Product appears small in the frame",
+        "No clear scale reference"
+      ],
+      "width": 2048,
+      "height": 2048,
+      "duplicate_of": null
+    }
+  ],
+  "missing_shot_types": [
+    "angle",
+    "detail",
+    "scale"
+  ]
+}

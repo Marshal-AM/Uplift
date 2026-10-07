@@ -67,8 +67,9 @@ def plan(task: dict, answers: list[str]) -> dict[str, Any]:
         f"Which capabilities are needed? Options: {sorted(set(CAPABILITIES))}. Choose only the capabilities whose "
         "deliverables the merchant asked for. full_flow is true only when they ask to launch, overhaul or fully "
         "optimize a product; a request for specific deliverables (e.g. an FAQ and a compliance check) is not "
-        "full_flow. Extract product hint, target market (country code), locales for "
-        "translation, keywords and competitors if the merchant gave them, a credit budget if stated, and a "
+        "full_flow. Extract product hint, target market (country code), locales to translate into (only languages "
+        "the merchant explicitly asks to translate into or sell in, never the store's own language; a target market "
+        "alone is not a translation request), keywords and competitors if the merchant gave them, a credit budget if stated, and a "
         "one-paragraph goal.",
         {"type": "object", "properties": {
             "capabilities": {"type": "array", "items": {"type": "string"}}, "full_flow": {"type": "boolean"},

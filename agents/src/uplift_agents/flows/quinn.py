@@ -82,13 +82,15 @@ def store_search_ranks(read_token: str, handle: str, keywords: list[str]) -> lis
     return rows
 
 
+MODES = {"audit": "Auditing the listing", "before_after": "Comparing the listing before and after"}
+
 def run(inputs: dict, tracer) -> str:
     ctx = Context.from_inputs(inputs)
     out = Deliverable("quinn", "Quinn", ctx)
     mode = ctx.get("mode", "audit")
     country = ctx.get("market_country", "US").upper()
 
-    tracer.markdown_sync(f"**Quinn** · {mode}")
+    tracer.markdown_sync(f"**Quinn** · {MODES.get(mode, mode)}")
     product = ctx.product or (_from_page(ctx.get("product_url")) if ctx.get("product_url") else None)
     if not product:
         raise RuntimeError("INPUT_MISSING: give a product URL or connect your store")
@@ -137,7 +139,7 @@ def run(inputs: dict, tracer) -> str:
                 "fix": {"type": "string"}, "specialist": {"type": "string", "enum": list(PRICES)},
                 "impact": {"type": "string", "enum": ["high", "medium", "low"]}}, "required": ["fix", "specialist",
                                                                                               "impact"]}}},
-         "required": ["fixes"]}, max_tokens=3000)
+         "required": ["fixes"]}, max_tokens=3000, purpose="Writing the prioritized fix plan")
     fixes = [{**f, "price": PRICES[f["specialist"]]} for f in plan["fixes"]]
 
     report = {"mode": mode, "score": total, "deterministic": result["deterministic"], "judge": judge,

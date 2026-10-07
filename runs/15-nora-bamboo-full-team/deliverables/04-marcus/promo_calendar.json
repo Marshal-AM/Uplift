@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Launch Special",
+    "code": "BAMBOOLAUNCH20",
+    "percentage": 20,
+    "starts": "2026-10-15T00:00:00+00:00",
+    "ends": "2026-11-10T23:59:00+00:00",
+    "usage_limit": 200,
+    "once_per_customer": true,
+    "why": "Drive initial velocity for new premium SKU without eroding brand."
+  },
+  {
+    "name": "Singles Day Eco Deal",
+    "code": "BAMBOO1111",
+    "percentage": 25,
+    "starts": "2026-11-11T00:00:00+00:00",
+    "ends": "2026-11-12T23:59:00+00:00",
+    "usage_limit": 150,
+    "once_per_customer": true,
+    "why": "Capture Singles' Day traffic with a timed premium discount."
+  },
+  {
+    "name": "Black Friday Premium",
+    "code": "BFBAMBOO30",
+    "percentage": 30,
+    "starts": "2026-11-27T00:00:00+00:00",
+    "ends": "2026-11-30T23:59:00+00:00",
+    "usage_limit": 300,
+    "once_per_customer": true,
+    "why": "Compete on Black Friday while staying under 40% cap and above margin floor."
+  },
+  {
+    "name": "Holiday Gift",
+    "code": "GIFTBAMBOO25",
+    "percentage": 25,
+    "starts": "2026-12-15T00:00:00+00:00",
+    "ends": "2026-12-24T23:59:00+00:00",
+    "usage_limit": 100,
+    "once_per_customer": true,
+    "why": "Boost gifting sales ahead of Christmas with a controlled offer."
+  }
+]

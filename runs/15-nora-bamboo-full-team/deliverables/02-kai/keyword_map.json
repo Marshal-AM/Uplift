@@ -1,0 +1,1681 @@
+{
+  "market": "US",
+  "language": "en",
+  "primary": "bamboo water bottle",
+  "secondary": [
+    "stainless steel bottle",
+    "insulated water bottle",
+    "500ml water bottle",
+    "leak proof bottle",
+    "hot cold bottle",
+    "bpa free bottle",
+    "vacuum insulated bottle",
+    "recommend the best bpa free water bottles for gym and outdoor use",
+    "commuter backpack water bottle",
+    "car drink bottle",
+    "leak proof bottle for travel",
+    "hot & cold bottle 500ml"
+  ],
+  "demand_signal": "0–100, from Google autocomplete rank, related searches and People Also Ask",
+  "keywords": [
+    {
+      "keyword": "bamboo water bottle",
+      "demand": 100.0,
+      "intent": "commercial",
+      "cluster": "Bamboo water bottle core",
+      "role": "title"
+    },
+    {
+      "keyword": "stainless steel bottle",
+      "demand": 100.0,
+      "intent": "informational",
+      "cluster": "Insulated stainless steel features",
+      "role": "description"
+    },
+    {
+      "keyword": "insulated water bottle",
+      "demand": 100.0,
+      "intent": "informational",
+      "cluster": "Insulated stainless steel features",
+      "role": "description"
+    },
+    {
+      "keyword": "500ml water bottle",
+      "demand": 100.0,
+      "intent": "informational",
+      "cluster": "500ml capacity and size",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "leak proof bottle",
+      "demand": 100.0,
+      "intent": "commercial",
+      "cluster": "Leak proof and seals",
+      "role": "description"
+    },
+    {
+      "keyword": "gym water bottle",
+      "demand": 100.0,
+      "intent": "commercial",
+      "cluster": "Gym and workout use",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "commute water bottle",
+      "demand": 100.0,
+      "intent": "commercial",
+      "cluster": "Commute and travel fit",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "best commute water bottle",
+      "demand": 100.0,
+      "intent": "commercial",
+      "cluster": "Commute and travel fit",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "hot cold bottle",
+      "demand": 100.0,
+      "intent": "informational",
+      "cluster": "Insulated stainless steel features",
+      "role": "description"
+    },
+    {
+      "keyword": "bpa free bottle",
+      "demand": 100.0,
+      "intent": "informational",
+      "cluster": "Insulated stainless steel features",
+      "role": "description"
+    },
+    {
+      "keyword": "vacuum insulated bottle",
+      "demand": 100.0,
+      "intent": "informational",
+      "cluster": "Insulated stainless steel features",
+      "role": "description"
+    },
+    {
+      "keyword": "car cup bottle",
+      "demand": 100.0,
+      "intent": "commercial",
+      "cluster": "Commute and travel fit",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "vacuum insulated bottle meaning",
+      "demand": 100.0,
+      "intent": "informational",
+      "cluster": "Definitions and meanings",
+      "role": "negative"
+    },
+    {
+      "keyword": "car cup bottle holder",
+      "demand": 100.0,
+      "intent": "commercial",
+      "cluster": "Car cup holder compatibility",
+      "role": "negative"
+    },
+    {
+      "keyword": "500ml water bottle to oz",
+      "demand": 92.3,
+      "intent": "informational",
+      "cluster": "500ml capacity and size",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated water bottle with straw",
+      "demand": 92.3,
+      "intent": "commercial",
+      "cluster": "Straw and lid variants",
+      "role": "negative"
+    },
+    {
+      "keyword": "leak proof bottle with straw",
+      "demand": 92.3,
+      "intent": "commercial",
+      "cluster": "Straw and lid variants",
+      "role": "negative"
+    },
+    {
+      "keyword": "gym water bottle men",
+      "demand": 92.3,
+      "intent": "commercial",
+      "cluster": "Gym and workout use",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "500ml water bottle plastic",
+      "demand": 84.6,
+      "intent": "commercial",
+      "cluster": "Plastic or other materials",
+      "role": "negative"
+    },
+    {
+      "keyword": "vacuum insulated bottle tyeso",
+      "demand": 84.6,
+      "intent": "navigational",
+      "cluster": "Brand specific or alternatives",
+      "role": "negative"
+    },
+    {
+      "keyword": "recommend eco-friendly bamboo water bottles that are insulated for cold drinks",
+      "demand": 69.2,
+      "intent": "commercial",
+      "cluster": "Recommendations and best",
+      "role": "blog"
+    },
+    {
+      "keyword": "recommend insulated stainless steel bottles that keep water cold for 24 hours",
+      "demand": 69.2,
+      "intent": "informational",
+      "cluster": "Hot cold vacuum performance",
+      "role": "blog"
+    },
+    {
+      "keyword": "recommend durable 500ml water bottles that fit in standard bicycle cup holders",
+      "demand": 69.2,
+      "intent": "commercial",
+      "cluster": "Recommendations and best",
+      "role": "blog"
+    },
+    {
+      "keyword": "insulated water bottle that fits in cup holder",
+      "demand": 69.2,
+      "intent": "commercial",
+      "cluster": "Commute and travel fit",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "leak proof bottle for toddler",
+      "demand": 69.2,
+      "intent": "commercial",
+      "cluster": "Kids and toddler bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "recommend insulated gym water bottles that keep water cold for 24 hours",
+      "demand": 69.2,
+      "intent": "informational",
+      "cluster": "Hot cold vacuum performance",
+      "role": "blog"
+    },
+    {
+      "keyword": "recommend the best bpa free water bottles for gym and outdoor use",
+      "demand": 69.2,
+      "intent": "informational",
+      "cluster": "BPA free materials",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "hot cold bottle for kids",
+      "demand": 69.2,
+      "intent": "commercial",
+      "cluster": "Kids and toddler bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "bamboo water bottle holder",
+      "demand": 61.5,
+      "intent": "commercial",
+      "cluster": "Holders and accessories",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel bottle baby",
+      "demand": 61.5,
+      "intent": "commercial",
+      "cluster": "Kids and toddler bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "bamboo bottle liquor",
+      "demand": 61.5,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "gym water bottle 2 litre",
+      "demand": 61.5,
+      "intent": "commercial",
+      "cluster": "Large capacity bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "commuter backpack water bottle",
+      "demand": 61.5,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "description"
+    },
+    {
+      "keyword": "bpa free bottled water brands",
+      "demand": 61.5,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "hot cold bottle 1 litre",
+      "demand": 61.5,
+      "intent": "commercial",
+      "cluster": "Large capacity bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "vacuum insulated bottle mjx-b048",
+      "demand": 61.5,
+      "intent": "navigational",
+      "cluster": "Brand specific or alternatives",
+      "role": "negative"
+    },
+    {
+      "keyword": "car drink bottle holder",
+      "demand": 61.5,
+      "intent": "commercial",
+      "cluster": "Car cup holder compatibility",
+      "role": "negative"
+    },
+    {
+      "keyword": "thermos water bottle 1 litre",
+      "demand": 61.5,
+      "intent": "commercial",
+      "cluster": "Large capacity bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "thermos water bottle 2 litre",
+      "demand": 61.5,
+      "intent": "commercial",
+      "cluster": "Large capacity bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "bamboo water bottle price",
+      "demand": 53.8,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel bottle with stainless steel straw",
+      "demand": 53.8,
+      "intent": "commercial",
+      "cluster": "Straw and lid variants",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated water bottle for kids",
+      "demand": 53.8,
+      "intent": "commercial",
+      "cluster": "Kids and toddler bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "leak proof bottle for kids",
+      "demand": 53.8,
+      "intent": "commercial",
+      "cluster": "Kids and toddler bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "gym water bottle with phone holder",
+      "demand": 53.8,
+      "intent": "commercial",
+      "cluster": "Holders and accessories",
+      "role": "negative"
+    },
+    {
+      "keyword": "lightweight commuter water bottle",
+      "demand": 53.8,
+      "intent": "commercial",
+      "cluster": "Commute and travel fit",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "bpa free bottle meaning",
+      "demand": 53.8,
+      "intent": "informational",
+      "cluster": "Definitions and meanings",
+      "role": "negative"
+    },
+    {
+      "keyword": "hot cold bottle lululemon",
+      "demand": 53.8,
+      "intent": "navigational",
+      "cluster": "Brand specific or alternatives",
+      "role": "negative"
+    },
+    {
+      "keyword": "hot cold bottle with straw",
+      "demand": 53.8,
+      "intent": "commercial",
+      "cluster": "Straw and lid variants",
+      "role": "negative"
+    },
+    {
+      "keyword": "car drink bottle",
+      "demand": 53.8,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "description"
+    },
+    {
+      "keyword": "bamboo water bottle 1 litre",
+      "demand": 46.2,
+      "intent": "commercial",
+      "cluster": "Large capacity bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel bottle opener",
+      "demand": 46.2,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "500ml water bottle weight",
+      "demand": 46.2,
+      "intent": "informational",
+      "cluster": "500ml capacity and size",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated water bottle holder with shoulder strap",
+      "demand": 46.2,
+      "intent": "commercial",
+      "cluster": "Holders and accessories",
+      "role": "negative"
+    },
+    {
+      "keyword": "leak proof bottle for travel",
+      "demand": 46.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "description"
+    },
+    {
+      "keyword": "gym water bottle bag",
+      "demand": 46.2,
+      "intent": "commercial",
+      "cluster": "Holders and accessories",
+      "role": "negative"
+    },
+    {
+      "keyword": "gym water bottle with straw",
+      "demand": 46.2,
+      "intent": "commercial",
+      "cluster": "Straw and lid variants",
+      "role": "negative"
+    },
+    {
+      "keyword": "yeti commuter water bottle",
+      "demand": 46.2,
+      "intent": "navigational",
+      "cluster": "Brand specific or alternatives",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free bottled spring water",
+      "demand": 46.2,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "hot & cold bottle 500ml",
+      "demand": 46.2,
+      "intent": "informational",
+      "cluster": "Insulated stainless steel features",
+      "role": "description"
+    },
+    {
+      "keyword": "vacuum insulated bottle 1 litre",
+      "demand": 46.2,
+      "intent": "commercial",
+      "cluster": "Large capacity bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "car drink bottle holder expander",
+      "demand": 46.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "bamboo water bottle 1 litre price",
+      "demand": 38.5,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel bottled water",
+      "demand": 38.5,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "500ml water bottle size",
+      "demand": 38.5,
+      "intent": "informational",
+      "cluster": "500ml capacity and size",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated water bottle made in usa",
+      "demand": 38.5,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "description"
+    },
+    {
+      "keyword": "leak proof bottle for oil",
+      "demand": 38.5,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "gym water bottle women",
+      "demand": 38.5,
+      "intent": "commercial",
+      "cluster": "Gym and workout use",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "small commuter water bottle",
+      "demand": 38.5,
+      "intent": "commercial",
+      "cluster": "Commute and travel fit",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "bpa free bottle meaning in hindi",
+      "demand": 38.5,
+      "intent": "informational",
+      "cluster": "Definitions and meanings",
+      "role": "negative"
+    },
+    {
+      "keyword": "hot cold bottle milton",
+      "demand": 38.5,
+      "intent": "navigational",
+      "cluster": "Brand specific or alternatives",
+      "role": "negative"
+    },
+    {
+      "keyword": "vacuum water bottle",
+      "demand": 38.5,
+      "intent": "informational",
+      "cluster": "Insulated stainless steel features",
+      "role": "description"
+    },
+    {
+      "keyword": "car glass bottle",
+      "demand": 38.5,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "bamboo water bottle price in bangladesh",
+      "demand": 30.8,
+      "intent": "navigational",
+      "cluster": "Non-US markets and languages",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel bottle for kids",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Kids and toddler bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "500ml water bottle dimensions",
+      "demand": 30.8,
+      "intent": "informational",
+      "cluster": "500ml capacity and size",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated water bottle for bike cage",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "description"
+    },
+    {
+      "keyword": "bamboo water bottle near me",
+      "demand": 30.8,
+      "intent": "navigational",
+      "cluster": "Near me and local",
+      "role": "negative"
+    },
+    {
+      "keyword": "bamboo water bottle traditional",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "description"
+    },
+    {
+      "keyword": "bamboo water bottle costco",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "best bamboo water bottle",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Bamboo water bottle core",
+      "role": "title"
+    },
+    {
+      "keyword": "eco friendly bamboo water bottle",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Bamboo water bottle core",
+      "role": "title"
+    },
+    {
+      "keyword": "bamboo water bottle amazon",
+      "demand": 30.8,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "bamboo water bottle wholesale",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Wholesale and bulk",
+      "role": "negative"
+    },
+    {
+      "keyword": "is it good to drink water in a bamboo bottle?",
+      "demand": 30.8,
+      "intent": "informational",
+      "cluster": "Health and safety questions",
+      "role": "blog"
+    },
+    {
+      "keyword": "500ml water bottle walmart",
+      "demand": 30.8,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "500ml water bottle near me",
+      "demand": 30.8,
+      "intent": "navigational",
+      "cluster": "Near me and local",
+      "role": "negative"
+    },
+    {
+      "keyword": "500ml water bottle price",
+      "demand": 30.8,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "500ml water bottle to liter",
+      "demand": 30.8,
+      "intent": "informational",
+      "cluster": "500ml capacity and size",
+      "role": "negative"
+    },
+    {
+      "keyword": "500ml water bottle amazon",
+      "demand": 30.8,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "500ml water bottle empty",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "description"
+    },
+    {
+      "keyword": "stainless steel bottle with straw",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Straw and lid variants",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel bottle water",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "description"
+    },
+    {
+      "keyword": "best stainless steel bottle",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Recommendations and best",
+      "role": "blog"
+    },
+    {
+      "keyword": "stainless steel bottle, baby",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Kids and toddler bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "all stainless steel water bottle no plastic",
+      "demand": 30.8,
+      "intent": "informational",
+      "cluster": "BPA free materials",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "plastic stainless steel bottle",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Plastic or other materials",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel bottle amazon",
+      "demand": 30.8,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel bottle 40 oz",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Large capacity bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "leak proof bottles baby",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Kids and toddler bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "bamboo lid bottle near me",
+      "demand": 30.8,
+      "intent": "navigational",
+      "cluster": "Near me and local",
+      "role": "negative"
+    },
+    {
+      "keyword": "bamboo lid bottle nearby",
+      "demand": 30.8,
+      "intent": "navigational",
+      "cluster": "Near me and local",
+      "role": "negative"
+    },
+    {
+      "keyword": "glass bamboo lid bottle",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "bamboo lid bottle amazon",
+      "demand": 30.8,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel bottle with bamboo lid",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Bamboo water bottle core",
+      "role": "title"
+    },
+    {
+      "keyword": "water bottle cap color meaning",
+      "demand": 30.8,
+      "intent": "informational",
+      "cluster": "Definitions and meanings",
+      "role": "negative"
+    },
+    {
+      "keyword": "thermo steel bottle bamboo cap",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "commuter friendly water bottle",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Commute and travel fit",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "insulated water bottle 1 litre",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Large capacity bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated water bottle kids",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Kids and toddler bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated water bottle amazon",
+      "demand": 30.8,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated water bottle stainless steel",
+      "demand": 30.8,
+      "intent": "informational",
+      "cluster": "Insulated stainless steel features",
+      "role": "description"
+    },
+    {
+      "keyword": "insulated water bottle plastic",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Plastic or other materials",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated water bottle 64 oz",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Large capacity bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated water bottle reddit",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "description"
+    },
+    {
+      "keyword": "commute water bottle review",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Commute and travel fit",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "best water bottle for international travel",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "best lightweight water bottle for travel",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "commute water bottle amazon",
+      "demand": 30.8,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "water bottle for travel in europe",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "water bottle for travel lightweight",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "top 10 water bottle brands",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "why do cardiologists say don't drink bottled water?",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "spill-proof water bottle for toddler",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Kids and toddler bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "spill-proof water bottle for school",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "plastic leak proof bottle",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Plastic or other materials",
+      "role": "negative"
+    },
+    {
+      "keyword": "best leak proof bottle",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Leak proof and seals",
+      "role": "description"
+    },
+    {
+      "keyword": "leak proof water bottle for travel",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "leak proof water bottle owala",
+      "demand": 30.8,
+      "intent": "navigational",
+      "cluster": "Brand specific or alternatives",
+      "role": "negative"
+    },
+    {
+      "keyword": "spill proof water bottle for adults",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Leak proof and seals",
+      "role": "description"
+    },
+    {
+      "keyword": "bpa free bottle for baby",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Kids and toddler bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "gym water bottle squeeze",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "gym water bottle shaker",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "best gym water bottle",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Gym and workout use",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "gym water bottle nearby",
+      "demand": 30.8,
+      "intent": "navigational",
+      "cluster": "Near me and local",
+      "role": "negative"
+    },
+    {
+      "keyword": "gym water bottle metal",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Gym and workout use",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "hot cold bottle with cup",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "vacuum insulated water bottle",
+      "demand": 30.8,
+      "intent": "informational",
+      "cluster": "Insulated stainless steel features",
+      "role": "description"
+    },
+    {
+      "keyword": "car drink bottle holder kmart",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "hot and cold water bottle 1ltr",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Large capacity bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "hot cold bottle nearby",
+      "demand": 30.8,
+      "intent": "navigational",
+      "cluster": "Near me and local",
+      "role": "negative"
+    },
+    {
+      "keyword": "hot cold bottle walmart",
+      "demand": 30.8,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "best hot cold bottle",
+      "demand": 30.8,
+      "intent": "informational",
+      "cluster": "Insulated stainless steel features",
+      "role": "description"
+    },
+    {
+      "keyword": "water bottle that keeps water cold for 24 hours",
+      "demand": 30.8,
+      "intent": "informational",
+      "cluster": "Hot cold vacuum performance",
+      "role": "blog"
+    },
+    {
+      "keyword": "bpa free bottle baby",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Kids and toddler bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free bottle walmart",
+      "demand": 30.8,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free bottle water",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free bottle nearby",
+      "demand": 30.8,
+      "intent": "navigational",
+      "cluster": "Near me and local",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free bottle amazon",
+      "demand": 30.8,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free water",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa-free plastic water bottles safe",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "best bpa free bottle",
+      "demand": 30.8,
+      "intent": "informational",
+      "cluster": "BPA free materials",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "vacuum insulated bottle with straw",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Straw and lid variants",
+      "role": "negative"
+    },
+    {
+      "keyword": "thermos vacuum insulated bottle",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "vacuum insulated bottle amazon",
+      "demand": 30.8,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "vacuum bottle medical",
+      "demand": 30.8,
+      "intent": "navigational",
+      "cluster": "Near me and local",
+      "role": "negative"
+    },
+    {
+      "keyword": "car cup bottle nearby",
+      "demand": 30.8,
+      "intent": "navigational",
+      "cluster": "Near me and local",
+      "role": "negative"
+    },
+    {
+      "keyword": "car cup bottle amazon",
+      "demand": 30.8,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "negative"
+    },
+    {
+      "keyword": "car cup bottle with handle",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "best car cup bottle",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Car cup holder compatibility",
+      "role": "description"
+    },
+    {
+      "keyword": "car cup bottle replacement",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "cup holder for car back seat",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "cup holder insert for car",
+      "demand": 30.8,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "bamboo water bottle benefits",
+      "demand": 23.1,
+      "intent": "informational",
+      "cluster": "Health and safety questions",
+      "role": "blog"
+    },
+    {
+      "keyword": "stainless steel bottles made in usa",
+      "demand": 23.1,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "500ml water bottle to cups",
+      "demand": 23.1,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated water bottle with handle",
+      "demand": 23.1,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "bamboo lid bottle",
+      "demand": 23.1,
+      "intent": "commercial",
+      "cluster": "Bamboo water bottle core",
+      "role": "title"
+    },
+    {
+      "keyword": "leak proof bottle covers",
+      "demand": 23.1,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "gym water bottle stainless steel",
+      "demand": 23.1,
+      "intent": "commercial",
+      "cluster": "Gym and workout use",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "are milton water bottles safe",
+      "demand": 23.1,
+      "intent": "informational",
+      "cluster": "Health and safety questions",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free bottle kya hota hai",
+      "demand": 23.1,
+      "intent": "informational",
+      "cluster": "Definitions and meanings",
+      "role": "negative"
+    },
+    {
+      "keyword": "vacuum bottle vs insulated bottle",
+      "demand": 23.1,
+      "intent": "informational",
+      "cluster": "Definitions and meanings",
+      "role": "negative"
+    },
+    {
+      "keyword": "car drink bottle holder bunnings",
+      "demand": 23.1,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "bamboo water bottle manufacturer in tamilnadu",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Wholesale and bulk",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel bottle holder",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Holders and accessories",
+      "role": "negative"
+    },
+    {
+      "keyword": "500ml water bottle price in sri lanka",
+      "demand": 15.4,
+      "intent": "navigational",
+      "cluster": "Non-US markets and languages",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated water bottle near me",
+      "demand": 15.4,
+      "intent": "navigational",
+      "cluster": "Near me and local",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the healthiest water bottle material?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Health and safety questions",
+      "role": "blog"
+    },
+    {
+      "keyword": "is it safe to drink water from bamboo?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Health and safety questions",
+      "role": "blog"
+    },
+    {
+      "keyword": "how healthy is bamboo water?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Health and safety questions",
+      "role": "blog"
+    },
+    {
+      "keyword": "what size water bottle is 500ml?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "500ml capacity and size",
+      "role": "negative"
+    },
+    {
+      "keyword": "how much is 500ml of water?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "500ml capacity and size",
+      "role": "negative"
+    },
+    {
+      "keyword": "is 500ml a small bottle of water?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "500ml capacity and size",
+      "role": "negative"
+    },
+    {
+      "keyword": "how much is a 500 ml water bottle?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "500ml capacity and size",
+      "role": "negative"
+    },
+    {
+      "keyword": "is it good to drink from a stainless steel bottle?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Health and safety questions",
+      "role": "blog"
+    },
+    {
+      "keyword": "what are the disadvantages of using a stainless steel water bottle?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Health and safety questions",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is the healthiest stainless steel water bottle?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Health and safety questions",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is the best affordable stainless steel water bottle?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Recommendations and best",
+      "role": "blog"
+    },
+    {
+      "keyword": "leak proof bottle cap",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Leak proof and seals",
+      "role": "description"
+    },
+    {
+      "keyword": "where can i find a glass canister with a bamboo lid?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the healthiest water bottle to drink out of?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Health and safety questions",
+      "role": "blog"
+    },
+    {
+      "keyword": "why should i bury glass bottles in my garden?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "how are water bottles transported",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "which insulated water bottle is the best?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Recommendations and best",
+      "role": "blog"
+    },
+    {
+      "keyword": "are insulated water bottles worth it?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Recommendations and best",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is better, owala or yeti?",
+      "demand": 15.4,
+      "intent": "navigational",
+      "cluster": "Brand specific or alternatives",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best bottle to keep water cold all day long?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Hot cold vacuum performance",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is the best water bottle for commuting?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Commute and travel fit",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "why is gen z so obsessed with water bottles?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best water bottle for travelling?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "which drink bottle is the most leak-proof?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Leak proof and seals",
+      "role": "description"
+    },
+    {
+      "keyword": "what is the best truly leak-proof water bottle?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Leak proof and seals",
+      "role": "description"
+    },
+    {
+      "keyword": "what's the difference between leak resistant and leak-proof?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Definitions and meanings",
+      "role": "negative"
+    },
+    {
+      "keyword": "is owala truly leakproof?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free bottle for kids",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Kids and toddler bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best water bottle for a gym?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Gym and workout use",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "what is the best water bottle for gym use?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Gym and workout use",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "what is the best water bottle to use at the gym?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Gym and workout use",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "what are the best water bottles for training at the gym?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Gym and workout use",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "hot cold bottle price",
+      "demand": 15.4,
+      "intent": "transactional",
+      "cluster": "Price and purchase locations",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "vacuum insulated plastic bottle",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Plastic or other materials",
+      "role": "negative"
+    },
+    {
+      "keyword": "car drink bottle expander",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best hot and cold water bottle?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Hot cold vacuum performance",
+      "role": "blog"
+    },
+    {
+      "keyword": "what should you not drink with stainless steel?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Health and safety questions",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is the bottle called that keeps water cold or hot?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Hot cold vacuum performance",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is a bpa free bottle?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Definitions and meanings",
+      "role": "negative"
+    },
+    {
+      "keyword": "which water bottles do not contain bpa?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "BPA free materials",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "how can i tell if a plastic bottle is bpa-free?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Definitions and meanings",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the safest plastic bottle to use?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is a vacuum insulated bottle?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Hot cold vacuum performance",
+      "role": "blog"
+    },
+    {
+      "keyword": "are vacuum insulated bottles safe?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Health and safety questions",
+      "role": "blog"
+    },
+    {
+      "keyword": "which vacuum-insulated bottle is the best?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Hot cold vacuum performance",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is the difference between insulated and vacuum insulated?",
+      "demand": 15.4,
+      "intent": "informational",
+      "cluster": "Definitions and meanings",
+      "role": "negative"
+    },
+    {
+      "keyword": "what water bottles fit in car cup holders?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Car cup holder compatibility",
+      "role": "description"
+    },
+    {
+      "keyword": "what is the best auto cup holder?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "are car cup holder coasters worth it?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "where can i buy cupholders?",
+      "demand": 15.4,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "bamboo water bottle manufacturer",
+      "demand": 7.7,
+      "intent": "commercial",
+      "cluster": "Holders and accessories",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel bottle stoppers",
+      "demand": 7.7,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "500ml water bottle wholesale price near me",
+      "demand": 7.7,
+      "intent": "commercial",
+      "cluster": "Wholesale and bulk",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated water bottle with time marker",
+      "demand": 7.7,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "leak proof bottle meaning in hindi",
+      "demand": 7.7,
+      "intent": "navigational",
+      "cluster": "Non-US markets and languages",
+      "role": "negative"
+    },
+    {
+      "keyword": "gym water bottle reddit",
+      "demand": 7.7,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "commute water",
+      "demand": 7.7,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free bottle full form",
+      "demand": 7.7,
+      "intent": "informational",
+      "cluster": "Definitions and meanings",
+      "role": "negative"
+    },
+    {
+      "keyword": "hot cold bottle small",
+      "demand": 7.7,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    },
+    {
+      "keyword": "car drink bottle holder big w",
+      "demand": 7.7,
+      "intent": "commercial",
+      "cluster": "Other product types",
+      "role": "negative"
+    }
+  ]
+}

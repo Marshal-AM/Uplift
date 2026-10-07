@@ -1,0 +1,466 @@
+[
+  {
+    "id": "love:durability",
+    "kind": "love",
+    "aspect": "durability",
+    "weighted_count": 3,
+    "quotes": [
+      {
+        "text": "veegoal 25 Oz Borosilicate Glass Water Bottles with Bamboo Lid, very stylish and durable.",
+        "source_url": "https://www.amazon.com/bamboo-water-bottles/s?k=bamboo+water+bottles",
+        "rating": 4.3,
+        "date": "2023-09-26",
+        "review_id": "78da7c5019c3"
+      },
+      {
+        "text": "Great quality! I love the transparency and how it feels like glass but is so durable.",
+        "source_url": "https://kinto-usa.com/products/20131",
+        "rating": 4,
+        "date": "2023-09-15",
+        "review_id": "cdfabe33997f"
+      },
+      {
+        "text": "Thats cool and all but I'll keep using my 6 y/o stainless bottle",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/hda16u/someone_is_thinking_in_the_right_direction",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "d7fbd54e61f7"
+      }
+    ]
+  },
+  {
+    "id": "love:style",
+    "kind": "love",
+    "aspect": "style",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "veegoal 25 Oz Borosilicate Glass Water Bottles with Bamboo Lid, very stylish and durable.",
+        "source_url": "https://www.amazon.com/bamboo-water-bottles/s?k=bamboo+water+bottles",
+        "rating": 4.3,
+        "date": "2023-09-26",
+        "review_id": "78da7c5019c3"
+      },
+      {
+        "text": "Elemental Classic Stainless Steel Water Bottle, leak proof and stylish.",
+        "source_url": "https://www.amazon.com/bamboo-water-bottles/s?k=bamboo+water+bottles",
+        "rating": 4.4,
+        "date": "2023-09-25",
+        "review_id": "38752941f004"
+      }
+    ]
+  },
+  {
+    "id": "love:design",
+    "kind": "love",
+    "aspect": "design",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "Lightweight and perfect for everyday carry. The design is sleek and it fits in cup holders easily.",
+        "source_url": "https://kinto-usa.com/products/20131",
+        "rating": 5,
+        "date": "2023-10-01",
+        "review_id": "007bddfdfe8c"
+      },
+      {
+        "text": "My son loves this bottle. He is using it and takes it to school. But honestly, I also love its design and quality.",
+        "source_url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3",
+        "rating": 5,
+        "date": "2023-10-02",
+        "review_id": "a10ccfdecd9c"
+      }
+    ]
+  },
+  {
+    "id": "love:size",
+    "kind": "love",
+    "aspect": "size",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "Lightweight and perfect for everyday carry. The design is sleek and it fits in cup holders easily.",
+        "source_url": "https://kinto-usa.com/products/20131",
+        "rating": 5,
+        "date": "2023-10-01",
+        "review_id": "007bddfdfe8c"
+      },
+      {
+        "text": "This bottle is the best fit I found for my small Fjallraven Kanken side pockets. Now I can carry my favorite backpack and water bottles easily when I hike. The metal keeps my water cold and I love how the tea strainer helps slow down the flow and not dump the water down my chin when I drink. Plus, t",
+        "source_url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3",
+        "rating": 5,
+        "date": "2023-10-05",
+        "review_id": "608a4e49d3f1"
+      }
+    ]
+  },
+  {
+    "id": "love:quality",
+    "kind": "love",
+    "aspect": "quality",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "Great quality! I love the transparency and how it feels like glass but is so durable.",
+        "source_url": "https://kinto-usa.com/products/20131",
+        "rating": 4,
+        "date": "2023-09-15",
+        "review_id": "cdfabe33997f"
+      },
+      {
+        "text": "My son loves this bottle. He is using it and takes it to school. But honestly, I also love its design and quality.",
+        "source_url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3",
+        "rating": 5,
+        "date": "2023-10-02",
+        "review_id": "a10ccfdecd9c"
+      }
+    ]
+  },
+  {
+    "id": "love:handle",
+    "kind": "love",
+    "aspect": "handle",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "The handle is very comfortable and easy to hold. Perfect for hikes!",
+        "source_url": "https://kinto-usa.com/products/20131",
+        "rating": 5,
+        "date": "2023-08-20",
+        "review_id": "ed7db8e7a98f"
+      },
+      {
+        "text": "Love the handle on the bottle. Still need to try the straw lid. Still also trying to do more infusions. Worked fine, but feel like I need to infuse in something else and then pour in bottle, as feel so minimal when letting fruit infuse in bottle.",
+        "source_url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3",
+        "rating": 4,
+        "date": "2023-10-06",
+        "review_id": "0a9b16f6c3b0"
+      }
+    ]
+  },
+  {
+    "id": "complaint:price/value",
+    "kind": "complaint",
+    "aspect": "price/value",
+    "weighted_count": 5,
+    "quotes": [
+      {
+        "text": "A bit pricey for a water bottle, but the look and feel justify the cost. Would recommend!",
+        "source_url": "https://kinto-usa.com/products/20131",
+        "rating": 4,
+        "date": "2023-08-05",
+        "review_id": "8cf7cd46a264"
+      },
+      {
+        "text": "It only tastes better if you know how expensive it was.",
+        "source_url": "https://www.reddit.com/r/Wellthatsucks/comments/1ngwnni/til_that_voss_water_bottles_are_not_glass",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "5ab9231c8918"
+      },
+      {
+        "text": "The continued existence of “Premium” water tells me that this so called cost of living crisis in the West isn’t bad enough yet.",
+        "source_url": "https://www.reddit.com/r/Wellthatsucks/comments/1ngwnni/til_that_voss_water_bottles_are_not_glass",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "f89e6e635196"
+      }
+    ]
+  },
+  {
+    "id": "complaint:food safety",
+    "kind": "complaint",
+    "aspect": "food safety",
+    "weighted_count": 4,
+    "quotes": [
+      {
+        "text": "In general FDM and SLA printing is generally not food safe. FDM has layer lines and microscopic voids that can harbor bacteria and SLA can leech chemicals that could be harmful.",
+        "source_url": "https://www.reddit.com/r/Ultralight/comments/1co5zdg/looking_for_a_new_28_mm_sport_bottle_cap",
+        "rating": null,
+        "date": "2024-10-07",
+        "review_id": "78282ea8c82f"
+      },
+      {
+        "text": "Bamboo products are actually pretty terrible for both the environment and food safety. The process to make anything out of them involves a lot of chemicals including formaldehyde.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/hda16u/someone_is_thinking_in_the_right_direction",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "ba73ba5196bd"
+      },
+      {
+        "text": "oh FUCK i've used my bamboo mug for hot coffee for over a year now!",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/hda16u/someone_is_thinking_in_the_right_direction",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "a2c4522e5e1a"
+      },
+      {
+        "text": "I have a bamboo reusable coffee cup, but someone on Reddit once linked me an article about how cups made from bamboo are bad for one's health due to the fact that they make them with formaldehyde.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/hda16u/someone_is_thinking_in_the_right_direction",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "749b3cae1f72"
+      }
+    ]
+  },
+  {
+    "id": "complaint:durability",
+    "kind": "complaint",
+    "aspect": "durability",
+    "weighted_count": 3,
+    "quotes": [
+      {
+        "text": "Been using sport caps for a bit but they are finicky and leak after a while.",
+        "source_url": "https://www.reddit.com/r/Ultralight/comments/1co5zdg/looking_for_a_new_28_mm_sport_bottle_cap",
+        "rating": null,
+        "date": "2024-10-07",
+        "review_id": "82f4f2e442fb"
+      },
+      {
+        "text": "They could’ve given away better plastic bottles. I feel like giving the impoverished water bottles that will degrade isn’t a great solution, because they will use them beyond the best by date. And worse, with a fibrous, porous material like bamboo I worry about mold growth.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/hda16u/someone_is_thinking_in_the_right_direction",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "d1178b4ef352"
+      },
+      {
+        "text": "I have used one and the problem is the bamboo absorbs the water and swells up which causes cracks in the body. Better use stainless steel bottles.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/hda16u/someone_is_thinking_in_the_right_direction",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "4b059880db5a"
+      }
+    ]
+  },
+  {
+    "id": "complaint:leaks",
+    "kind": "complaint",
+    "aspect": "leaks",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "Had a few issues with leaks, but customer service was responsive and replaced it quickly.",
+        "source_url": "https://kinto-usa.com/products/20131",
+        "rating": 3,
+        "date": "2023-09-10",
+        "review_id": "c910973ae075"
+      },
+      {
+        "text": "Been using sport caps for a bit but they are finicky and leak after a while.",
+        "source_url": "https://www.reddit.com/r/Ultralight/comments/1co5zdg/looking_for_a_new_28_mm_sport_bottle_cap",
+        "rating": null,
+        "date": "2024-10-07",
+        "review_id": "82f4f2e442fb"
+      }
+    ]
+  },
+  {
+    "id": "complaint:water quality",
+    "kind": "complaint",
+    "aspect": "water quality",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "I bought one because of the glass bottle and then I looked at the specifications for the water and figured out that the quality sucks. My tap water is of higher standard",
+        "source_url": "https://www.reddit.com/r/Wellthatsucks/comments/1ngwnni/til_that_voss_water_bottles_are_not_glass",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "ab92cba667c9"
+      }
+    ]
+  },
+  {
+    "id": "complaint:infusion",
+    "kind": "complaint",
+    "aspect": "infusion",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "Love the handle on the bottle. Still need to try the straw lid. Still also trying to do more infusions. Worked fine, but feel like I need to infuse in something else and then pour in bottle, as feel so minimal when letting fruit infuse in bottle.",
+        "source_url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3",
+        "rating": 4,
+        "date": "2023-10-06",
+        "review_id": "0a9b16f6c3b0"
+      }
+    ]
+  },
+  {
+    "id": "complaint:hot_drinks",
+    "kind": "complaint",
+    "aspect": "hot_drinks",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I truly like your product, and have purchased three in the past. However, your current product does not serve me as well because it seems to be geared more for colder drinks than for hot drinks. Otherwise, they are easy to use maintain and transport.",
+        "source_url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3",
+        "rating": 3,
+        "date": "2023-10-04",
+        "review_id": "41370ef85ae5"
+      }
+    ]
+  },
+  {
+    "id": "complaint:size",
+    "kind": "complaint",
+    "aspect": "size",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I really love the way this bottle looks and how it keeps things cool for extended periods of time. However, I have two issues with it. 1) I really wish it was a 24 oz bottle. You don't think it'd make a big difference but it does seem to. And because the bottle is so thin, it would be very easy to a",
+        "source_url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3",
+        "rating": 4,
+        "date": "2023-10-03",
+        "review_id": "7f9a5408c5d7"
+      }
+    ]
+  },
+  {
+    "id": "wish:look",
+    "kind": "wish",
+    "aspect": "look",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I really love the way this bottle looks and how it keeps things cool for extended periods of time. However, I have two issues with it. 1) I really wish it was a 24 oz bottle. You don't think it'd make a big difference but it does seem to. And because the bottle is so thin, it would be very easy to a",
+        "source_url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3",
+        "rating": 4,
+        "date": "2023-10-03",
+        "review_id": "7f9a5408c5d7"
+      }
+    ]
+  },
+  {
+    "id": "wish:insulation",
+    "kind": "wish",
+    "aspect": "insulation",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I really love the way this bottle looks and how it keeps things cool for extended periods of time. However, I have two issues with it. 1) I really wish it was a 24 oz bottle. You don't think it'd make a big difference but it does seem to. And because the bottle is so thin, it would be very easy to a",
+        "source_url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3",
+        "rating": 4,
+        "date": "2023-10-03",
+        "review_id": "7f9a5408c5d7"
+      }
+    ]
+  },
+  {
+    "id": "wish:size",
+    "kind": "wish",
+    "aspect": "size",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I really love the way this bottle looks and how it keeps things cool for extended periods of time. However, I have two issues with it. 1) I really wish it was a 24 oz bottle. You don't think it'd make a big difference but it does seem to. And because the bottle is so thin, it would be very easy to a",
+        "source_url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3",
+        "rating": 4,
+        "date": "2023-10-03",
+        "review_id": "7f9a5408c5d7"
+      }
+    ]
+  },
+  {
+    "id": "wish:straw",
+    "kind": "wish",
+    "aspect": "straw",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I really love the way this bottle looks and how it keeps things cool for extended periods of time. However, I have two issues with it. 1) I really wish it was a 24 oz bottle. You don't think it'd make a big difference but it does seem to. And because the bottle is so thin, it would be very easy to a",
+        "source_url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3",
+        "rating": 4,
+        "date": "2023-10-03",
+        "review_id": "7f9a5408c5d7"
+      }
+    ]
+  },
+  {
+    "id": "wish:cap retention",
+    "kind": "wish",
+    "aspect": "cap retention",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I have a bad track record with losing caps when I take them off to filter water. A lightweight cap that is easy to drink from AND is tethered to the bottle would be awesome.",
+        "source_url": "https://www.reddit.com/r/Ultralight/comments/1co5zdg/looking_for_a_new_28_mm_sport_bottle_cap",
+        "rating": null,
+        "date": "2024-10-07",
+        "review_id": "0d738ffa7c63"
+      }
+    ]
+  },
+  {
+    "id": "dealbreaker:food safety",
+    "kind": "dealbreaker",
+    "aspect": "food safety",
+    "weighted_count": 3,
+    "quotes": [
+      {
+        "text": "In general FDM and SLA printing is generally not food safe. FDM has layer lines and microscopic voids that can harbor bacteria and SLA can leech chemicals that could be harmful.",
+        "source_url": "https://www.reddit.com/r/Ultralight/comments/1co5zdg/looking_for_a_new_28_mm_sport_bottle_cap",
+        "rating": null,
+        "date": "2024-10-07",
+        "review_id": "78282ea8c82f"
+      },
+      {
+        "text": "Bamboo products are actually pretty terrible for both the environment and food safety. The process to make anything out of them involves a lot of chemicals including formaldehyde.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/hda16u/someone_is_thinking_in_the_right_direction",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "ba73ba5196bd"
+      },
+      {
+        "text": "I have a bamboo reusable coffee cup, but someone on Reddit once linked me an article about how cups made from bamboo are bad for one's health due to the fact that they make them with formaldehyde.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/hda16u/someone_is_thinking_in_the_right_direction",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "749b3cae1f72"
+      }
+    ]
+  },
+  {
+    "id": "dealbreaker:water quality",
+    "kind": "dealbreaker",
+    "aspect": "water quality",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I bought one because of the glass bottle and then I looked at the specifications for the water and figured out that the quality sucks. My tap water is of higher standard",
+        "source_url": "https://www.reddit.com/r/Wellthatsucks/comments/1ngwnni/til_that_voss_water_bottles_are_not_glass",
+        "rating": null,
+        "date": "2025-10-07",
+        "review_id": "ab92cba667c9"
+      }
+    ]
+  },
+  {
+    "id": "dealbreaker:environment",
+    "kind": "dealbreaker",
+    "aspect": "environment",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "Bamboo products are actually pretty terrible for both the environment and food safety. The process to make anything out of them involves a lot of chemicals including formaldehyde.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/hda16u/someone_is_thinking_in_the_right_direction",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "ba73ba5196bd"
+      }
+    ]
+  },
+  {
+    "id": "dealbreaker:durability",
+    "kind": "dealbreaker",
+    "aspect": "durability",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I have used one and the problem is the bamboo absorbs the water and swells up which causes cracks in the body. Better use stainless steel bottles.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/hda16u/someone_is_thinking_in_the_right_direction",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "4b059880db5a"
+      }
+    ]
+  }
+]

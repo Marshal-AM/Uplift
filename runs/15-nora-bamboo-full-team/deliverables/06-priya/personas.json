@@ -1,0 +1,83 @@
+[
+  {
+    "name": "Eco-conscious Outdoor User",
+    "attributes": [
+      {
+        "attribute": "values durable stainless alternatives over bamboo swelling/cracking",
+        "review_ids": [
+          "d7fbd54e61f7",
+          "4b059880db5a",
+          "d1178b4ef352"
+        ]
+      },
+      {
+        "attribute": "seeks leak-proof caps and tethered designs for hikes/filtering",
+        "review_ids": [
+          "82f4f2e442fb",
+          "0d738ffa7c63",
+          "ed7db8e7a98f"
+        ]
+      },
+      {
+        "attribute": "prioritizes food-safe materials free of chemicals",
+        "review_ids": [
+          "ba73ba5196bd",
+          "749b3cae1f72",
+          "78282ea8c82f"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Style-focused Everyday Carrier",
+    "attributes": [
+      {
+        "attribute": "loves sleek stylish designs that fit daily use and cup holders",
+        "review_ids": [
+          "78da7c5019c3",
+          "007bddfdfe8c",
+          "38752941f004",
+          "a10ccfdecd9c"
+        ]
+      },
+      {
+        "attribute": "appreciates quality feel and insulation but notes size/price tradeoffs",
+        "review_ids": [
+          "cdfabe33997f",
+          "608a4e49d3f1",
+          "8cf7cd46a264",
+          "7f9a5408c5d7"
+        ]
+      },
+      {
+        "attribute": "uses for school/gym/everyday carry with handle comfort",
+        "review_ids": [
+          "a10ccfdecd9c",
+          "ed7db8e7a98f",
+          "5f724e8f4e3c"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Value-sensitive Refiller",
+    "attributes": [
+      {
+        "attribute": "complains high price doesn't justify premium claims",
+        "review_ids": [
+          "8cf7cd46a264",
+          "5ab9231c8918",
+          "f89e6e635196"
+        ]
+      },
+      {
+        "attribute": "switches due to poor durability or water quality",
+        "review_ids": [
+          "4b059880db5a",
+          "ab92cba667c9",
+          "d1178b4ef352"
+        ]
+      }
+    ]
+  }
+]

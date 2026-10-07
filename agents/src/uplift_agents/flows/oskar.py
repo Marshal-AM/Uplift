@@ -47,7 +47,7 @@ def run(inputs: dict, tracer) -> str:
                            "plain generic name of the product (e.g. 'water bottle', 'sofa', 'running shoes') without "
                            "materials or features.",
                            {"type": "object", "properties": {"terms": {"type": "array", "items": {"type": "string"}}},
-                            "required": ["terms"]})["terms"][:3]
+                            "required": ["terms"]}, purpose="Search terms for the product's category")["terms"][:3]
     candidates = []
     for term in terms:
         found = tools.store_query(token, "query($q: String!) { taxonomy { categories(search: $q, first: 10) "
@@ -60,7 +60,7 @@ def run(inputs: dict, tracer) -> str:
         + "\nAlso recommend attribute values (name → value) for this category and a concise product type.",
         {"type": "object", "properties": {"category_id": {"type": "string"}, "product_type": {"type": "string"},
                                           "attributes": {"type": "object", "additionalProperties": {"type": "string"}}},
-         "required": ["category_id", "product_type"]})
+         "required": ["category_id", "product_type"]}, purpose="Choosing the Google product category")
     category = next((c for c in candidates if c["id"] == pick["category_id"]), candidates[0] if candidates else None)
 
     tracer.markdown_sync("Reviewing tags, identifiers and collections")
@@ -70,7 +70,7 @@ def run(inputs: dict, tracer) -> str:
         f"Product:\n{text}\nKeyword clusters: {sorted({k['cluster'] for k in kai['keywords']})[:20] if kai else '-'}\n"
         f"Existing store tags: {vocab}\nSuggest up to 8 taxonomy/merchandising tags. Reuse existing tags exactly "
         "when they fit; avoid case or plural variants of existing tags.",
-        {"type": "object", "properties": {"tags": {"type": "array", "items": {"type": "string"}}}, "required": ["tags"]})
+        {"type": "object", "properties": {"tags": {"type": "array", "items": {"type": "string"}}}, "required": ["tags"]}, purpose="Suggesting merchandising tags")
     lower_vocab = {t.lower(): t for t in vocab}
     tags = [lower_vocab.get(t.lower(), t) for t in tag_pick["tags"]]
     tags = [t for t in dict.fromkeys(tags) if t not in product.get("tags", [])][:8]
@@ -97,7 +97,7 @@ def run(inputs: dict, tracer) -> str:
             "create": {"type": "object", "properties": {"title": {"type": "string"}, "seo_title": {"type": "string"},
                                                         "seo_description": {"type": "string"},
                                                         "description_html": {"type": "string"}}}},
-         "required": ["add_to"]})
+         "required": ["add_to"]}, purpose="Choosing collections to add the product to")
     add_to = [cid for cid in plan["add_to"] if cid in {c["id"] for c in manual}]
 
     tracer.markdown_sync("Linking related and complementary products")
@@ -109,7 +109,7 @@ def run(inputs: dict, tracer) -> str:
         "Pick up to 4 related (alternatives) and up to 4 complementary (bought together) products by id.",
         {"type": "object", "properties": {"related": {"type": "array", "items": {"type": "string"}},
                                           "complementary": {"type": "array", "items": {"type": "string"}}},
-         "required": ["related", "complementary"]})
+         "required": ["related", "complementary"]}, purpose="Picking related and complementary products")
     ids = {p["id"] for p in catalog}
     related = [i for i in links["related"] if i in ids][:4]
     complementary = [i for i in links["complementary"] if i in ids][:4]

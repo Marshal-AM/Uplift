@@ -54,7 +54,7 @@ def run(inputs: dict, tracer) -> str:
         f"Product: {about}\nGive 5 head search queries shoppers type to find this kind of product: product type, "
         "material and key features, never model numbers or brand names.",
         {"type": "object", "properties": {"queries": {"type": "array", "items": {"type": "string"}}},
-         "required": ["queries"]})["queries"][:5])
+         "required": ["queries"]}, purpose="Head search queries for finding competitors")["queries"][:5])
 
     tracer.markdown_sync(f"**Rafael** · reading Google results for {len(queries)} queries")
     serp_rows, paa = [], set()
@@ -103,7 +103,7 @@ def run(inputs: dict, tracer) -> str:
         "Exclude wholesale or bulk lots, accessories, parts, unavailable listings and other product types.\n"
         + "\n".join(f"{i}: {t}" for i, t in enumerate(titles)),
         {"type": "object", "properties": {"keep": {"type": "array", "items": {"type": "integer"}}},
-         "required": ["keep"]})["keep"])
+         "required": ["keep"]}, purpose="Keeping only results a shopper would compare")["keep"])
     known = {_domain(k) for k in ctx.lines("known_competitors")}
     matrix = [r for i, r in enumerate(matrix) if i in keep or r["domain"] in known][:max_n]
     offers = [o for j, o in enumerate(offers) if len(titles) - len(offers) + j in keep]
@@ -133,7 +133,7 @@ def run(inputs: dict, tracer) -> str:
             "positioning": {"type": "string"}, "offer_patterns": {"type": "array", "items": {"type": "string"}},
             "content_gaps": {"type": "array", "items": {"type": "string"}},
             "opportunities": {"type": "array", "items": {"type": "string"}}},
-         "required": ["positioning", "content_gaps", "opportunities"]}, max_tokens=3000)
+         "required": ["positioning", "content_gaps", "opportunities"]}, max_tokens=3000, purpose="Writing the positioning analysis")
 
     buf = io.StringIO()
     cols = ["domain", "url", "title", "price", "currency", "rating", "review_count", "image_count", "has_video",

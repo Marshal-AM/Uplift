@@ -1,0 +1,1 @@
+Mid-market insulated stainless steel bottle (target ~$18-22) positioned as an eco-bamboo aesthetic alternative to pure SS options. Sits between value Amazon listings (~$17 with high volume reviews) and premium feature-rich brands (~$30 with warranties). Differentiation via bamboo branding/health angle rather than pure performance or price.

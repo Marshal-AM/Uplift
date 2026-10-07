@@ -1,0 +1,70 @@
+{
+  "result_hash": "b05b1b12515f3e9a14c9fff17b79ed1994c766ccc182ca01b6f4e67e8e26dbca",
+  "at": "2026-10-07T08:11:28+00:00",
+  "agent": "Oskar",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "catalog_changes.json",
+      "sha256": "0ced574c1b3780bf21149792819794c4069720befadc54c4cb70c7f4a2d07fd0",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/0ced574c1b3780bf21149792819794c4069720befadc54c4cb70c7f4a2d07fd0/catalog_changes.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "collections_plan.md",
+      "sha256": "c65ba301a65086b208050965fa62189459ab09bc4aabe196a91c2a65839b3d80",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/c65ba301a65086b208050965fa62189459ab09bc4aabe196a91c2a65839b3d80/collections_plan.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "feed_report.json",
+      "sha256": "3591f63df903d53ec1e08929e6a2259db3b2fbb3812921ca424f694d455bade4",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/3591f63df903d53ec1e08929e6a2259db3b2fbb3812921ca424f694d455bade4/feed_report.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "google_supplemental.csv",
+      "sha256": "34c8a0194fd428b50dc6288ab03213e5dd793a742cc46311e765e880f4a3af31",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/34c8a0194fd428b50dc6288ab03213e5dd793a742cc46311e765e880f4a3af31/google_supplemental.csv"
+    },
+    {
+      "mime": "text/csv",
+      "name": "barcode_fixes.csv",
+      "sha256": "261782ee501429dd01655106559f7c8e78797db55ffe4a1a4176b6b11b42f287",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/261782ee501429dd01655106559f7c8e78797db55ffe4a1a4176b6b11b42f287/barcode_fixes.csv"
+    }
+  ],
+  "changeset": [
+    {
+      "fields": {
+        "productType": "Insulated Water Bottle"
+      },
+      "op": "product.update",
+      "product_id": "gid://shopify/Product/8785172234401"
+    },
+    {
+      "metafields": [
+        {
+          "key": "complementary_products",
+          "namespace": "shopify--discovery--product_recommendation",
+          "type": "list.product_reference",
+          "value": "[\"gid://shopify/Product/8786043109537\"]"
+        }
+      ],
+      "op": "metafields.set",
+      "owner_id": "gid://shopify/Product/8785172234401"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "cccbddf64e8af116c52c5d7de4fef3fc6f9b9c2110597ad8f0ddd73ee6efa666",
+  "job_or_task_id": "01a11567-4101-77a1-93f5-dfbf947b9ad1:oskar",
+  "profile": "oskar@5.0.0",
+  "role": "oskar",
+  "self_checks": {},
+  "summary_md": "**Category:** Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Water Bottles · **Type:** Insulated Water Bottle\n\n0 tags, 0 collections, 0 related and 1 complementary products linked. Google feed fields missing: gtin_or_mpn.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "d61b1702ca5776fd347e8d5a672ea4944640e8bfd9ca4835911ecffda4ffb5e8",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d61b1702ca5776fd347e8d5a672ea4944640e8bfd9ca4835911ecffda4ffb5e8/verification_bundle.json"
+  }
+}

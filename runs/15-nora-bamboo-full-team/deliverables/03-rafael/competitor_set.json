@@ -1,0 +1,106 @@
+{
+  "products": [
+    {
+      "domain": "amazon.com",
+      "url": "https://www.amazon.com/bamboo-water-bottles/s?k=bamboo+water+bottles",
+      "title": "Bambaw 24 oz Metal Water Bottle, Insulated Stainless Steel Water Bottle, Great for Travel, Wide Mouth for Easy Cleaning, Reusable & Durable, Rust-Resistant & Sturdy (Natural Steel)"
+    },
+    {
+      "domain": "kinto-usa.com",
+      "url": "https://kinto-usa.com/products/20131",
+      "title": "KINTO WATER BOTTLE 500ML 17OZ"
+    },
+    {
+      "domain": "elementalbottles.com",
+      "url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3",
+      "title": "20oz Iconic Bamboo Water Bottle"
+    }
+  ],
+  "google_shopping": [
+    {
+      "title": "BAMBOO Water Bottle & Infuser",
+      "product_id": "5715805474764474066",
+      "seller": "saaka sportswear",
+      "price": 13.99,
+      "rating": null,
+      "rating_count": null
+    },
+    {
+      "title": "Bamboo Water Bottle",
+      "product_id": "12585338585808861354",
+      "seller": "Tinsel & Twig",
+      "price": 22.0,
+      "rating": null,
+      "rating_count": null
+    },
+    {
+      "title": "Bambaw Insulated Stainless Steel Bottle",
+      "product_id": "9955271370500828278",
+      "seller": "ecco-verde.com",
+      "price": 18.08,
+      "rating": 4.8,
+      "rating_count": 539
+    },
+    {
+      "title": "Bamboo Water Bottle 16 oz",
+      "product_id": "12758995964105667611",
+      "seller": "eBay",
+      "price": 19.95,
+      "rating": null,
+      "rating_count": null
+    },
+    {
+      "title": "Customized Vacuum Sealed Eco Bamboo Water Bottle (Tan) | Custom Insulated Water Bottles | Steel | Promotional",
+      "product_id": "13240656208677764757",
+      "seller": "Quality Logo Products",
+      "price": 18.9,
+      "rating": null,
+      "rating_count": null
+    },
+    {
+      "title": "Laken Stainless Steel Bottle Basic Steel Bamboo",
+      "product_id": "8949209795220615157",
+      "seller": "tradeinn.com/traininn",
+      "price": 17.95,
+      "rating": 4.5,
+      "rating_count": 19
+    },
+    {
+      "title": "Bamboo Reusable Water Bottle",
+      "product_id": "14971231239005844532",
+      "seller": "CaroQuilla",
+      "price": 15.0,
+      "rating": null,
+      "rating_count": null
+    },
+    {
+      "title": "Insulated Bamboo & Stainless Steel Eco-Bottle | 550ml",
+      "product_id": "12873099700965486810",
+      "seller": "WearWood",
+      "price": 18.0,
+      "rating": null,
+      "rating_count": null
+    },
+    {
+      "title": "Onsen bamboo insulated bottle",
+      "product_id": "18264103207728307332",
+      "seller": "Baladéo",
+      "price": 35.99,
+      "rating": 5,
+      "rating_count": 2
+    },
+    {
+      "title": "Rumi Earth Lota Narrow Insulated Bamboo",
+      "product_id": "13155564118368535276",
+      "seller": "Rumi Earth",
+      "price": 17.0,
+      "rating": null,
+      "rating_count": null
+    }
+  ],
+  "brands": [
+    "Bambaw",
+    "Elemental",
+    "KINTO"
+  ]
+}

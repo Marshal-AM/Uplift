@@ -141,7 +141,7 @@ def run(inputs: dict, tracer) -> str:
             f"Must show: {ctx.get('must_show', '-')}. Proof ideas: {[w['action'] for w in win if 'image' in w['action_type'].lower()]}\n"
             f"Write {count - len(briefs)} short photographic background scene prompts (no people, product stays as is).",
             {"type": "object", "properties": {"scenes": {"type": "array", "items": {"type": "string"}}},
-             "required": ["scenes"]})["scenes"]
+             "required": ["scenes"]}, purpose="Writing lifestyle scene ideas for the product")["scenes"]
     briefs = briefs[:count]
 
     tracer.markdown_sync(f"Placing the product in {len(briefs)} lifestyle scenes")

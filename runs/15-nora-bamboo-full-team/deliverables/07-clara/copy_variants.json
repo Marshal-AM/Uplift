@@ -1,0 +1,419 @@
+[
+  {
+    "style": "benefit-led and concise",
+    "score": {
+      "items": {
+        "title_length": 5,
+        "seo_title_length": 4,
+        "seo_description_length": 4,
+        "primary_in_title": 5,
+        "primary_in_seo_title": 3,
+        "primary_in_first_100": 3,
+        "secondary_coverage": 0,
+        "objections_answered": 5,
+        "structure": 4,
+        "grounded": 7.0
+      },
+      "total": 40.0,
+      "grounded_ratio": 1.0
+    },
+    "title": "Bamboo Water Bottle 500 Ml Stainless Steel Insulated",
+    "seo_title": "Bamboo Water Bottle 500 Ml Stainless Steel",
+    "seo_description": "Keep drinks cold 24 hours or hot 12 hours in this leak proof bamboo water bottle with BPA free stainless steel body that fits car holders.",
+    "handle": "bamboo-water-bottle-500ml-stainless-steel",
+    "tags": [
+      "bamboo water bottle",
+      "stainless steel bottle",
+      "insulated water bottle",
+      "500ml water bottle",
+      "leak proof bottle",
+      "hot cold bottle",
+      "bpa free bottle",
+      "vacuum insulated bottle"
+    ],
+    "blocks": [
+      {
+        "type": "p",
+        "text": "This bamboo water bottle keeps drinks cold for a full day or hot through the morning so you always have the perfect sip.",
+        "fact_ids": [
+          "F2",
+          "F3"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Benefits You Can Count On",
+        "fact_ids": []
+      },
+      {
+        "type": "li",
+        "text": "Double wall vacuum insulation holds cold drinks for 24 hours.",
+        "fact_ids": [
+          "F2"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "The same insulation keeps hot drinks ready for 12 hours.",
+        "fact_ids": [
+          "F3"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Natural bamboo lid with leak proof silicone seal stays secure.",
+        "fact_ids": [
+          "F4"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "BPA free 18/8 stainless steel body supports clean taste.",
+        "fact_ids": [
+          "F5"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Slim shape fits most car cup holders for easy travel.",
+        "fact_ids": [
+          "F6"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Full Specs",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Capacity is 500 ml. Double wall vacuum insulation. Natural bamboo lid with leak proof silicone seal. BPA free 18/8 stainless steel body. Fits most car cup holders.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F3",
+          "F4",
+          "F5",
+          "F6"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Great For Your Day",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "The bottle fits most car cup holders so it rides along easily on commutes and drives.",
+        "fact_ids": [
+          "F6"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Why You Can Trust It",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "BPA free 18/8 stainless steel protects water quality and food safety. The leak proof silicone seal stops spills. Vacuum insulation and solid steel construction add durability you can rely on.",
+        "fact_ids": [
+          "F4",
+          "F5",
+          "F2"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Simple Care And Guarantee",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Hand wash the lid to keep it fresh. The bottle is covered by a 1 year warranty.",
+        "fact_ids": [
+          "F7",
+          "F8"
+        ]
+      }
+    ]
+  },
+  {
+    "style": "story-led and vivid",
+    "score": {
+      "items": {
+        "title_length": 5,
+        "seo_title_length": 4,
+        "seo_description_length": 0,
+        "primary_in_title": 5,
+        "primary_in_seo_title": 3,
+        "primary_in_first_100": 0,
+        "secondary_coverage": 0,
+        "objections_answered": 5,
+        "structure": 4,
+        "grounded": 7.0
+      },
+      "total": 33.0,
+      "grounded_ratio": 1.0
+    },
+    "title": "Bamboo Water Bottle 500ml Stainless Steel Insulated",
+    "seo_title": "Bamboo Water Bottle 500ml Vacuum Insulated",
+    "seo_description": "Stay refreshed with this bamboo water bottle. Double wall vacuum insulation keeps drinks cold 24 hours or hot 12 hours in a BPA free stainless body with leak proof lid.",
+    "handle": "bamboo-water-bottle-500ml-stainless-steel",
+    "tags": [
+      "bamboo water bottle",
+      "stainless steel bottle",
+      "insulated water bottle",
+      "500ml water bottle",
+      "leak proof bottle",
+      "hot cold bottle",
+      "bpa free bottle",
+      "vacuum insulated bottle"
+    ],
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Imagine starting your day with a sip that stays perfectly chilled through a long commute or a warm trail hike, all from a bottle that feels natural in your hand.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F6"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Why You Will Love It",
+        "fact_ids": []
+      },
+      {
+        "type": "li",
+        "text": "Keeps drinks cold for 24 hours thanks to double wall vacuum insulation.",
+        "fact_ids": [
+          "F2"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Holds heat for 12 hours so your coffee stays ready.",
+        "fact_ids": [
+          "F3"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Natural bamboo lid seals tight with leak proof silicone.",
+        "fact_ids": [
+          "F4"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Fits most car cup holders for easy travel.",
+        "fact_ids": [
+          "F6"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What It Is Made Of",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "The 500 ml body uses BPA free 18/8 stainless steel with double wall vacuum insulation and a natural bamboo lid.",
+        "fact_ids": [
+          "F1",
+          "F4",
+          "F5"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Perfect For Everyday Adventures",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Slide it into a commuter backpack or gym bag and enjoy hot or cold drinks on the go, or keep it handy as your car drink bottle.",
+        "fact_ids": [
+          "F2",
+          "F3",
+          "F6"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Built To Reassure You",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Food safety comes from the BPA free stainless steel that protects water quality without unwanted tastes.",
+        "fact_ids": [
+          "F5"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Durability shows in the sturdy body and the leak proof seal that prevents spills during active use.",
+        "fact_ids": [
+          "F4",
+          "F5"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Great value arrives with reliable temperature control and a full year of coverage.",
+        "fact_ids": [
+          "F2",
+          "F3",
+          "F8"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Simple Care And Peace Of Mind",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Hand wash the lid to keep the seal fresh, and enjoy coverage under a 1 year warranty.",
+        "fact_ids": [
+          "F7",
+          "F8"
+        ]
+      }
+    ]
+  },
+  {
+    "style": "spec-led and precise",
+    "score": {
+      "items": {
+        "title_length": 5,
+        "seo_title_length": 4,
+        "seo_description_length": 4,
+        "primary_in_title": 5,
+        "primary_in_seo_title": 3,
+        "primary_in_first_100": 3,
+        "secondary_coverage": 0,
+        "objections_answered": 5,
+        "structure": 4,
+        "grounded": 7.0
+      },
+      "total": 40.0,
+      "grounded_ratio": 1.0
+    },
+    "title": "Bamboo Water Bottle 500ml Stainless Steel",
+    "seo_title": "Bamboo Water Bottle 500ml Stainless Steel Insulated",
+    "seo_description": "Keep drinks cold 24 hours or hot 12 hours in this 500 ml BPA free stainless steel bamboo water bottle with leak proof lid that fits car holders.",
+    "handle": "bamboo-water-bottle-500ml-stainless-steel",
+    "tags": [
+      "bamboo water bottle",
+      "stainless steel bottle",
+      "insulated water bottle",
+      "500ml water bottle",
+      "leak proof bottle",
+      "hot cold bottle",
+      "bpa free bottle",
+      "vacuum insulated bottle"
+    ],
+    "blocks": [
+      {
+        "type": "p",
+        "text": "This bamboo water bottle holds 500 ml of your favorite drink and uses double wall vacuum insulation to stay cold for 24 hours or hot for 12 hours.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F3"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Everyday Benefits",
+        "fact_ids": []
+      },
+      {
+        "type": "li",
+        "text": "Double wall vacuum insulation keeps cold drinks cold for a full 24 hours.",
+        "fact_ids": [
+          "F2"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "The same insulation keeps hot drinks hot for 12 hours.",
+        "fact_ids": [
+          "F3"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Natural bamboo lid seals tight with a leak proof silicone seal.",
+        "fact_ids": [
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Key Specs",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Capacity is 500 ml in a BPA free 18/8 stainless steel body topped by a natural bamboo lid.",
+        "fact_ids": [
+          "F1",
+          "F4",
+          "F5"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The bottle fits most car cup holders.",
+        "fact_ids": [
+          "F6"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Great For Daily Use",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Take this insulated water bottle to the gym, outdoors, or as a commuter backpack water bottle and car drink bottle.",
+        "fact_ids": [
+          "F2",
+          "F3",
+          "F6"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Safe and Reliable Choice",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "BPA free 18/8 stainless steel protects water quality and food safety while the leak proof seal and durable build answer common concerns about leaks and lasting value.",
+        "fact_ids": [
+          "F4",
+          "F5"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Simple Care and Coverage",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Hand wash the lid and enjoy coverage under a 1 year warranty.",
+        "fact_ids": [
+          "F7",
+          "F8"
+        ]
+      }
+    ]
+  }
+]

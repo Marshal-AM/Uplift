@@ -1,0 +1,72 @@
+{
+  "mode": "audit",
+  "score": 75.2,
+  "deterministic": 72.2,
+  "judge": 3.0,
+  "sections": {
+    "discoverability": 19.0,
+    "persuasion": 12.2,
+    "visuals": 14.0,
+    "trust": 7,
+    "catalog": 10,
+    "compliance": 10
+  },
+  "compliance_hits": [],
+  "rankings": [],
+  "store_search_ranks": [
+    {
+      "keyword": "bamboo water bottle",
+      "rank": 1,
+      "results": 2
+    },
+    {
+      "keyword": "500ml insulated water bottle",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "stainless steel bamboo bottle",
+      "rank": 1,
+      "results": 2
+    },
+    {
+      "keyword": "insulated bamboo water bottle 500ml",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "eco friendly stainless steel bottle",
+      "rank": 1,
+      "results": 1
+    }
+  ],
+  "page_speed": null,
+  "sales": null,
+  "diagnosis": null,
+  "fixes": [
+    {
+      "fix": "Strengthen trust signals with guarantees, reviews display, and social proof elements to address the critically low trust score.",
+      "specialist": "leo",
+      "impact": "high",
+      "price": 2.0
+    },
+    {
+      "fix": "Rewrite product descriptions and bullet points for stronger persuasion and benefit-focused messaging.",
+      "specialist": "clara",
+      "impact": "high",
+      "price": 2.0
+    },
+    {
+      "fix": "Optimize catalog structure, collections, and product feed for better organization and discoverability within categories.",
+      "specialist": "oskar",
+      "impact": "medium",
+      "price": 1.5
+    },
+    {
+      "fix": "Enhance keyword targeting slightly to close the remaining discoverability gap.",
+      "specialist": "kai",
+      "impact": "low",
+      "price": 1.25
+    }
+  ]
+}

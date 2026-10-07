@@ -1,0 +1,38 @@
+{
+  "result_hash": "9994a936801d7a0f4eee428002e271da1a835f63ec5d02b2cfaa3886de4a6131",
+  "at": "2026-10-07T08:09:09+00:00",
+  "agent": "Kai",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "keyword_map.json",
+      "sha256": "614724998b0ef07b1af10f63547df41f3022d190d6909f69de68cb851ae65654",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/614724998b0ef07b1af10f63547df41f3022d190d6909f69de68cb851ae65654/keyword_map.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "keyword_map.csv",
+      "sha256": "2359840a0c2aee747d7e525f04567fa40b7cf0eff70c74c6049289c62f87c011",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/2359840a0c2aee747d7e525f04567fa40b7cf0eff70c74c6049289c62f87c011/keyword_map.csv"
+    },
+    {
+      "mime": "text/plain",
+      "name": "negatives.txt",
+      "sha256": "33d88a1503714468fb31c0078b2efaa7c1c21524f5cfea4c018ce67441ba5ad4",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/33d88a1503714468fb31c0078b2efaa7c1c21524f5cfea4c018ce67441ba5ad4/negatives.txt"
+    }
+  ],
+  "changeset": [],
+  "evidence": [],
+  "input_hash": "69cd8fdb2303ced3e0915d41724aaf0f3e07656a39d6a1f413d2f90d4dfeea0c",
+  "job_or_task_id": "01a11567-4101-77a1-93f5-dfbf947b9ad1:kai",
+  "profile": "kai@5.0.0",
+  "role": "kai",
+  "self_checks": {},
+  "summary_md": "**Primary keyword:** bamboo water bottle (demand 100.0/100)\n\n**237 keywords** from Google autocomplete, related searches and questions, in 13 clusters for US.\n\n- 500ml capacity and size → seo_meta\n- BPA free materials → seo_meta\n- Bamboo water bottle core → title\n- Car cup holder compatibility → description\n- Commute and travel fit → ads_exact\n- Gym and workout use → ads_phrase\n- Health and safety questions → blog\n- Hot cold vacuum performance → blog\n- Insulated stainless steel features → description\n- Leak proof and seals → description\n- Other → description\n- Price and purchase locations → ads_phrase\n- Recommendations and best → blog\n\n155 brand/irrelevant terms moved to negatives.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "a3df5ba3a2929e89edd01990d157c7f7413d7e20b82d2f3fb1786000e41019d1",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a3df5ba3a2929e89edd01990d157c7f7413d7e20b82d2f3fb1786000e41019d1/verification_bundle.json"
+  }
+}

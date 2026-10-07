@@ -1,0 +1,58 @@
+[
+  {
+    "question": "Is this a BPA-free stainless steel water bottle?",
+    "answer": "Yes, it features a BPA-free 18/8 stainless steel body.",
+    "fact_ids": [
+      "F5"
+    ]
+  },
+  {
+    "question": "Does this insulated bottle keep water cold for 24 hours?",
+    "answer": "Yes, the double wall vacuum insulation keeps drinks cold for 24 hours.",
+    "fact_ids": [
+      "F2"
+    ]
+  },
+  {
+    "question": "How long does it keep hot drinks hot?",
+    "answer": "It keeps drinks hot for 12 hours with double wall vacuum insulation.",
+    "fact_ids": [
+      "F3"
+    ]
+  },
+  {
+    "question": "Is the bamboo lid leak-proof?",
+    "answer": "Yes, the natural bamboo lid includes a leak-proof silicone seal.",
+    "fact_ids": [
+      "F4"
+    ]
+  },
+  {
+    "question": "What is the bottle capacity?",
+    "answer": "The capacity is 500 ml.",
+    "fact_ids": [
+      "F1"
+    ]
+  },
+  {
+    "question": "Does it fit in car cup holders?",
+    "answer": "Yes, it fits most car cup holders.",
+    "fact_ids": [
+      "F6"
+    ]
+  },
+  {
+    "question": "Is the bottle covered by a warranty?",
+    "answer": "Yes, it is covered by a 1 year warranty.",
+    "fact_ids": [
+      "F8"
+    ]
+  },
+  {
+    "question": "How do I clean the lid?",
+    "answer": "Hand wash the lid.",
+    "fact_ids": [
+      "F7"
+    ]
+  }
+]

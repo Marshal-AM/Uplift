@@ -212,7 +212,7 @@ def run(inputs: dict, tracer) -> str:
             "win_plan": {"type": "array", "items": {"type": "object", "properties": {
                 "finding_id": {"type": "string"}, "action_type": {"type": "string"}, "action": {"type": "string"}},
                 "required": ["finding_id", "action_type", "action"]}}},
-         "required": ["personas", "win_plan"]}, max_tokens=6000)
+         "required": ["personas", "win_plan"]}, max_tokens=6000, purpose="Summarising what to fix from the review findings")
 
     report = ["# Competitor customer sentiment", f"{len(reviews)} reviews from {len({r['source'] for r in reviews})} "
               "sources. Your own reviews are not included.", ""]

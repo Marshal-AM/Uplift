@@ -1,0 +1,158 @@
+{
+  "result_hash": "88b4bb587eb2ebaa66beeff01c54d01a7b2eb603122bf5e6223aeb71c85e96a7",
+  "at": "2026-10-07T08:15:40+00:00",
+  "agent": "Iris",
+  "artifacts": [
+    {
+      "mime": "image/jpeg",
+      "name": "store.jpg",
+      "sha256": "1bc5df248b0237944bf9e15b98ede4630aa0afdfbbf1a9bba0c88d4b3d55e919",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/1bc5df248b0237944bf9e15b98ede4630aa0afdfbbf1a9bba0c88d4b3d55e919/store.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "google_shopping.jpg",
+      "sha256": "72239a2c82fdc0fb1fd0cda6442c712f442e5d93b92c947dcda68ddc1d79ee15",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/72239a2c82fdc0fb1fd0cda6442c712f442e5d93b92c947dcda68ddc1d79ee15/google_shopping.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "google_ads_square.jpg",
+      "sha256": "8028e216180f5f16e03a77dbb20124ec6fce2c526bee89de317172115d269268",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/8028e216180f5f16e03a77dbb20124ec6fce2c526bee89de317172115d269268/google_ads_square.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "google_ads_landscape.jpg",
+      "sha256": "a1d1b240592bc1a91c3db378147f1c90cddd8b5347fde0a8c61a711aa71f602b",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a1d1b240592bc1a91c3db378147f1c90cddd8b5347fde0a8c61a711aa71f602b/google_ads_landscape.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "clean_hero.jpg",
+      "sha256": "cddf1e18382b61f019ff2635e997d8583a2c878037d4a63850a6e0f74513252b",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/cddf1e18382b61f019ff2635e997d8583a2c878037d4a63850a6e0f74513252b/clean_hero.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "scene_1.jpg",
+      "sha256": "26b9c81e24968326845ad616abad90c861bc5661660725ac84d42b55cfb234aa",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/26b9c81e24968326845ad616abad90c861bc5661660725ac84d42b55cfb234aa/scene_1.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "scene_2.jpg",
+      "sha256": "3edcc654b52912ea2486701f49c0820accf483ef3e3f4fa73168a2b80ed0b9cd",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/3edcc654b52912ea2486701f49c0820accf483ef3e3f4fa73168a2b80ed0b9cd/scene_2.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "scene_3.jpg",
+      "sha256": "561c7791db1c6c198ca619eb0063a834c95bb4bb838ceaf763c830b69c52338a",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/561c7791db1c6c198ca619eb0063a834c95bb4bb838ceaf763c830b69c52338a/scene_3.jpg"
+    },
+    {
+      "mime": "application/json",
+      "name": "visual_audit.json",
+      "sha256": "bc47aa4468daa0fd3d66f99ddfc9b1d0b75fd90915b67d939833019ecf749324",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/bc47aa4468daa0fd3d66f99ddfc9b1d0b75fd90915b67d939833019ecf749324/visual_audit.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "alt_text.json",
+      "sha256": "07e091d6ced502390260d15bce258349d752dde64e563b5a8eea0af40e6fcec3",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/07e091d6ced502390260d15bce258349d752dde64e563b5a8eea0af40e6fcec3/alt_text.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "order.json",
+      "sha256": "136e63508a086d6a0a699fe25bfc98e587ced48a43e881672eec03086f0d7714",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/136e63508a086d6a0a699fe25bfc98e587ced48a43e881672eec03086f0d7714/order.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "fidelity.json",
+      "sha256": "aaab73a1c9588c94ac96820cf77d1c895eb29eae4fb8e8d54c9d64e7f9bd8762",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/aaab73a1c9588c94ac96820cf77d1c895eb29eae4fb8e8d54c9d64e7f9bd8762/fidelity.json"
+    }
+  ],
+  "changeset": [
+    {
+      "media": [
+        {
+          "alt": "Bamboo Water Bottle 500ml Stainless Steel Insulated Water Bottle: sage green matte bottle with bamboo lid and metal loops.",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/cddf1e18382b61f019ff2635e997d8583a2c878037d4a63850a6e0f74513252b/clean_hero.jpg"
+        },
+        {
+          "alt": "Sage green Bamboo Water Bottle 500ml Stainless Steel Insulated Water Bottle with bamboo cap on mossy stump in forest.",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/26b9c81e24968326845ad616abad90c861bc5661660725ac84d42b55cfb234aa/scene_1.jpg"
+        },
+        {
+          "alt": "Bamboo Water Bottle 500ml Stainless Steel Insulated Water Bottle on a picnic table with fruit and greenery.",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/3edcc654b52912ea2486701f49c0820accf483ef3e3f4fa73168a2b80ed0b9cd/scene_2.jpg"
+        },
+        {
+          "alt": "Sage green 500ml stainless steel insulated bamboo water bottle with bamboo lid and metal loop on wooden table",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/561c7791db1c6c198ca619eb0063a834c95bb4bb838ceaf763c830b69c52338a/scene_3.jpg"
+        }
+      ],
+      "op": "media.add",
+      "product_id": "gid://shopify/Product/8785172234401"
+    },
+    {
+      "files": [
+        {
+          "alt": "Sage green 500ml stainless steel insulated bamboo water bottle with wooden lid and metal loop, on white background.",
+          "id": "gid://shopify/MediaImage/38173118365857"
+        },
+        {
+          "alt": "Bamboo Water Bottle 500ml Stainless Steel Insulated Water Bottle upright in a car cup holder",
+          "id": "gid://shopify/MediaImage/38173118398625"
+        },
+        {
+          "alt": "Sage green 500ml stainless steel insulated water bottle with bamboo lid on wooden table",
+          "id": "gid://shopify/MediaImage/38172448260257"
+        },
+        {
+          "alt": "Sage-green Bamboo Water Bottle 500ml Stainless Steel Insulated Water Bottle with bamboo lid stands on a gym floor by a bench.",
+          "id": "gid://shopify/MediaImage/38173118431393"
+        }
+      ],
+      "op": "media.update_alt"
+    },
+    {
+      "moves": [
+        {
+          "id": "gid://shopify/MediaImage/38173118398625",
+          "newPosition": "1"
+        },
+        {
+          "id": "gid://shopify/MediaImage/38173118365857",
+          "newPosition": "2"
+        },
+        {
+          "id": "gid://shopify/MediaImage/38172448260257",
+          "newPosition": "4"
+        },
+        {
+          "id": "gid://shopify/MediaImage/38173118431393",
+          "newPosition": "7"
+        }
+      ],
+      "op": "media.reorder",
+      "product_id": "gid://shopify/Product/8785172234401"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "c641c5778b03bdb64603013e280ee9404eaf008a69de0a5d044502226eb68c24",
+  "job_or_task_id": "01a11567-4101-77a1-93f5-dfbf947b9ad1:iris",
+  "profile": "iris@5.0.0",
+  "role": "iris",
+  "self_checks": {},
+  "summary_md": "Audited 4 images · missing shot types: angle, detail, scale.\n\nAdded a clean white hero and 3 lifestyle scene(s), each checked against your original photo (fidelity ≥ 0.90). Exported 4 channel versions and wrote alt text for every image.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "dacdc40143d59d0a3b0574235e94d46c1d5b03e88e6a2f6c709086f84b2ba6d0",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/dacdc40143d59d0a3b0574235e94d46c1d5b03e88e6a2f6c709086f84b2ba6d0/verification_bundle.json"
+  }
+}

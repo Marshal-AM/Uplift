@@ -1,0 +1,98 @@
+{
+  "blocked": false,
+  "hits": [
+    {
+      "rule_id": "GUA-001",
+      "pack": "guarantees",
+      "severity": "low",
+      "location": "metafield.comparison",
+      "excerpt": "ain\": \"amazon.com\", \"value\": \"Money-back guarantee\"}, {\"domain\": \"kinto-usa.com\"",
+      "message": "Guarantee claim must match the store's actual policy."
+    },
+    {
+      "rule_id": "TM-001",
+      "pack": "trademarks",
+      "severity": "high",
+      "location": "metafield.comparison",
+      "excerpt": "KINTO",
+      "message": "Uses competitor mark 'KINTO'."
+    },
+    {
+      "rule_id": "SUP-001",
+      "pack": "superlatives",
+      "severity": "medium",
+      "location": "article",
+      "excerpt": " in our design, gives you the best of both worlds: a non-reactiv",
+      "message": "Superlative claim needs substantiation."
+    },
+    {
+      "rule_id": "ENV-001",
+      "pack": "environmental",
+      "severity": "high",
+      "location": "article",
+      "excerpt": "ater bottle offers a stylish, sustainable way to stay hydrated while re",
+      "message": "Generic environmental claim (EU ban on unsubstantiated generic claims; FTC Green Guides)."
+    },
+    {
+      "rule_id": "ENV-001",
+      "pack": "environmental",
+      "severity": "high",
+      "location": "article",
+      "excerpt": " non-reactive interior and an eco-friendly exterior accent. Our bottle u",
+      "message": "Generic environmental claim (EU ban on unsubstantiated generic claims; FTC Green Guides)."
+    },
+    {
+      "rule_id": "HLT-003",
+      "pack": "health",
+      "severity": "medium",
+      "location": "article",
+      "excerpt": "e bamboo, sealed properly, is completely safe. Our natural bamboo lid inclu",
+      "message": "Absolute safety claim."
+    }
+  ],
+  "rewrites": [
+    {
+      "rule_id": "GUA-001",
+      "location": "metafield.comparison",
+      "excerpt": "ain\": \"amazon.com\", \"value\": \"Money-back guarantee\"}, {\"domain\": \"kinto-usa.com\"",
+      "rewrite": "ain\", \"amazon.com\", \"value\": \"Satisfaction policy\"}, {\"domain\": \"kinto-usa.com\"",
+      "passes": false
+    },
+    {
+      "rule_id": "TM-001",
+      "location": "metafield.comparison",
+      "excerpt": "KINTO",
+      "rewrite": "our brand",
+      "passes": true
+    },
+    {
+      "rule_id": "SUP-001",
+      "location": "article",
+      "excerpt": " in our design, gives you the best of both worlds: a non-reactiv",
+      "rewrite": " in our design, combines two features: a non-reactiv",
+      "passes": true
+    },
+    {
+      "rule_id": "ENV-001",
+      "location": "article",
+      "excerpt": "ater bottle offers a stylish, sustainable way to stay hydrated while re",
+      "rewrite": "ater bottle offers a stylish way to stay hydrated while re",
+      "passes": true
+    },
+    {
+      "rule_id": "ENV-001",
+      "location": "article",
+      "excerpt": " non-reactive interior and an eco-friendly exterior accent. Our bottle u",
+      "rewrite": " non-reactive interior and a bamboo exterior accent. Our bottle u",
+      "passes": true
+    },
+    {
+      "rule_id": "HLT-003",
+      "location": "article",
+      "excerpt": "e bamboo, sealed properly, is completely safe. Our natural bamboo lid inclu",
+      "rewrite": "e bamboo, sealed properly, meets food-contact standards. Our natural bamboo lid inclu",
+      "passes": true
+    }
+  ],
+  "rules_version": "5.0.0"
+}

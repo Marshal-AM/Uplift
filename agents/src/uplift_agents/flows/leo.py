@@ -61,7 +61,7 @@ def run(inputs: dict, tracer) -> str:
     tracer.markdown_sync("**Leo** · researching what people ask")
     head = kai["primary"] if kai else llm.text(
         f"Product: {title}\nFacts:\n{facts_text}\nReply with only the generic 3–6 word phrase a shopper would type into "
-        "Google to find this kind of product (no brand or model names).", max_tokens=400).strip().strip('"')
+        "Google to find this kind of product (no brand or model names).", max_tokens=400, purpose="Finding the phrase shoppers use for this kind of product").strip().strip('"')
     paa: list[str] = []
     outline: list[str] = []
     serp = tools.google_search(head, "US", "en")
@@ -79,7 +79,7 @@ def run(inputs: dict, tracer) -> str:
             {"type": "object", "properties": {"faq": {"type": "array", "items": {"type": "object", "properties": {
                 "question": {"type": "string"}, "answer": {"type": "string"},
                 "fact_ids": {"type": "array", "items": {"type": "string"}}},
-                "required": ["question", "answer", "fact_ids"]}}}, "required": ["faq"]})["faq"]
+                "required": ["question", "answer", "fact_ids"]}}}, "required": ["faq"]}, purpose="Writing the FAQ from the facts and shopper questions")["faq"]
         out.artifact("faq.json", faq)
         out.bundle["faq"] = faq
         if product.get("id"):
@@ -99,7 +99,7 @@ def run(inputs: dict, tracer) -> str:
                                    "competitors": {"type": "array", "items": {"type": "object", "properties": {
                                        "domain": {"type": "string"}, "value": {"type": "string"}},
                                        "required": ["domain", "value"]}}},
-                    "required": ["attribute", "ours", "competitors"]}}}, "required": ["attributes"]})
+                    "required": ["attribute", "ours", "competitors"]}}}, "required": ["attributes"]}, purpose="Writing the comparison table")
             evidence = {r["domain"]: r["url"] for r in rows}
             table = {"competitors": [{"domain": r["domain"], "url": r["url"]} for r in rows], **comp}
             out.artifact("comparison.json", table)

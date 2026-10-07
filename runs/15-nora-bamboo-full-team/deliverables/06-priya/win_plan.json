@@ -1,0 +1,42 @@
+[
+  {
+    "finding_id": "love:durability",
+    "action_type": "listing claim",
+    "action": "Highlight stainless steel insulation for long-term durability without bamboo swelling."
+  },
+  {
+    "finding_id": "complaint:food safety",
+    "action_type": "FAQ",
+    "action": "Add FAQ confirming food-grade stainless steel with no formaldehyde or chemical leaching."
+  },
+  {
+    "finding_id": "complaint:price/value",
+    "action_type": "offer/guarantee",
+    "action": "Offer bundle discount or 30-day satisfaction guarantee to offset perceived premium pricing."
+  },
+  {
+    "finding_id": "complaint:leaks",
+    "action_type": "proof image",
+    "action": "Show leak-test video/image of sealed bamboo lid on stainless body."
+  },
+  {
+    "finding_id": "wish:cap retention",
+    "action_type": "product improvement",
+    "action": "Develop tethered cap option for outdoor users."
+  },
+  {
+    "finding_id": "dealbreaker:food safety",
+    "action_type": "ad angle",
+    "action": "Ads emphasizing pure stainless construction vs. chemical-laden bamboo composites."
+  },
+  {
+    "finding_id": "love:style",
+    "action_type": "listing claim",
+    "action": "Feature bamboo lid aesthetic with modern stainless body for stylish everyday appeal."
+  },
+  {
+    "finding_id": "complaint:durability",
+    "action_type": "proof image",
+    "action": "Include drop-test and longevity comparison photos vs. pure bamboo bottles."
+  }
+]

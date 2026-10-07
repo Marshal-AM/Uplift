@@ -2,14 +2,16 @@
 
 Every Task below was created from the merchant's Sokosumi account (preprod, personal workspace), paid in Sokosumi credits through Masumi escrow on Cardano preprod, run by the Uplift coworker, checked by the Chainlink CRE workflow `uplift-clearing`, and — where it changes the store — approved in Sokosumi and published by Chainlink. Each folder holds the exact brief, every Task event with timestamps, the payment receipt, the cost, the Chainlink verdicts and the full deliverables (manifest, artifacts, verification bundle). Problems found during the test and how they were fixed: [ISSUES.md](ISSUES.md).
 
-## Nora (lead) — orchestrated runs on the glass bottle (`glass-cork-bottle`)
+## Nora (lead) runs, and runs with the live trace
 
-Nora plans with a price ceiling, runs the specialists directly (each specialist's agent, verified by Chainlink), then charges once for the specialists whose work passed.
+Nora plans with a price ceiling, runs the specialists directly (each specialist's agent, verified by Chainlink), then charges once for the specialists whose work passed. 00 and 14 ran on the glass bottle (`glass-cork-bottle`); 15 (the full team) and 16 (Clara) on the bamboo bottle (`bamboo-insulated-bottle`) with the live trace on — their folders also hold `trace.json`, every step with the agent and the service it used, as the /live page showed it.
 
 | Run | Task | Status | Credits | Payment | Elapsed | Chainlink |
 |---|---|---|---|---|---|---|
 | [00-nora-glass-bottle](00-nora-glass-bottle/README.md) | Polish my glass bottle page | COMPLETED | 7.25 | PURCHASED · on-chain ResultSubmitted | 846 s | PASS 95, PASS 100, PASS 82.6, PASS 93, PASS 89, FAIL 0, FAIL 0, PASS 95, PASS 95 |
 | [14-nora-full-team](14-nora-full-team/README.md) | Content and compliance for my glass bottle | COMPLETED | 16.0 | PURCHASED · on-chain ResultSubmitted | 928 s | PASS 95, PASS 100, PASS 99, PASS 91.1, PASS 98, PASS 90.1, PASS 76.5, PASS 83.8, PASS 100, PASS 100, PASS 99, PASS 95 |
+| [15-nora-bamboo-full-team](15-nora-bamboo-full-team/README.md) | Fully optimize my bamboo bottle listing | COMPLETED | 16.0 | PURCHASED · on-chain ResultSubmitted | 764 s | PASS 95, PASS 98, PASS 86.4, PASS 100, PASS 100, PASS 89.6, PASS 88, PASS 82.8, PASS 100, PASS 100, PASS 97.1, PASS 94 |
+| [16-clara-bamboo-traced](16-clara-bamboo-traced/README.md) | Rewrite my bamboo bottle product page | COMPLETED | 2.0 | PURCHASED · on-chain ResultSubmitted | 233 s | PASS 92.5 |
 
 ## The 12 specialists — individual Tasks on the travel tumbler (`travel-tumbler`)
 

@@ -1,0 +1,72 @@
+{
+  "result_hash": "c6232f189708712ea044a453ee0773681267a67554d560ffc1e5a97e24290535",
+  "at": "2026-10-07T08:10:33+00:00",
+  "agent": "Rafael",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "competitor_matrix.json",
+      "sha256": "132a683ab043e82e1c1e5e3f86246f8719bd6d091585fcffb004e66860d04023",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/132a683ab043e82e1c1e5e3f86246f8719bd6d091585fcffb004e66860d04023/competitor_matrix.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "competitor_matrix.csv",
+      "sha256": "ef145eab316ee5fe822ef2576f950f7280dd2af6fae508cba4f7408830a26aa1",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/ef145eab316ee5fe822ef2576f950f7280dd2af6fae508cba4f7408830a26aa1/competitor_matrix.csv"
+    },
+    {
+      "mime": "application/json",
+      "name": "price_bands.json",
+      "sha256": "5b0816d689a542ebe6955112c4c2994f6a3411a4c5adb45177118c3c442065e4",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/5b0816d689a542ebe6955112c4c2994f6a3411a4c5adb45177118c3c442065e4/price_bands.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "positioning.md",
+      "sha256": "98e0ed16572697805455e5ac574699051a626f507e06caf277bd070fa443bcc2",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/98e0ed16572697805455e5ac574699051a626f507e06caf277bd070fa443bcc2/positioning.md"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "gaps.md",
+      "sha256": "48f869e1bc0358066a5acd5479e429822a0a4d18b4ddefd1c3f1ac4121377e98",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/48f869e1bc0358066a5acd5479e429822a0a4d18b4ddefd1c3f1ac4121377e98/gaps.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "competitor_set.json",
+      "sha256": "d4b7dabf29fdbb2e715d1e0109eee37be1ce705c72a3571f63b9306099c88171",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d4b7dabf29fdbb2e715d1e0109eee37be1ce705c72a3571f63b9306099c88171/competitor_set.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [
+    {
+      "claim": "amazon.com price 16.99",
+      "excerpt": "Bambaw 24 oz Metal Water Bottle, Insulated Stainless Steel Water Bottle, Great for Travel, Wide Mouth for Easy Cleaning, Reusable & Durable, Rust-Resistant & Sturdy (Natural Steel)",
+      "source_url": "https://www.amazon.com/bamboo-water-bottles/s?k=bamboo+water+bottles"
+    },
+    {
+      "claim": "kinto-usa.com price 17.4",
+      "excerpt": "KINTO WATER BOTTLE 500ML 17OZ",
+      "source_url": "https://kinto-usa.com/products/20131"
+    },
+    {
+      "claim": "elementalbottles.com price 29.99",
+      "excerpt": "20oz Iconic Bamboo Water Bottle",
+      "source_url": "https://elementalbottles.com/products/iconic-bamboo-water-bottle?srsltid=AU7gw4VKiwGwWsaek9Gv5MQKZldvwWaIOx6aW8kG7BW6CpRm0eg2A2I3"
+    }
+  ],
+  "input_hash": "6ed87db443d01fb25b47df3bc9c21204251923238b036b676423a2ccbdd91304",
+  "job_or_task_id": "01a11567-4101-77a1-93f5-dfbf947b9ad1:rafael",
+  "profile": "rafael@5.0.0",
+  "role": "rafael",
+  "self_checks": {},
+  "summary_md": "**3 competitors** across 5 queries.\n\n**Price bands:** 10.93–44.95 (median 19.46)\n\n**Where to win:**\n- Own 'healthiest bamboo-insulated' positioning by answering PAA health/safety queries with material science\n- Win on leak-proof + 24hr cold claims backed by simple tests or guarantees at median price\n- Bundle strainer/strap or eco-certifications to match premium features without $30 price\n- Leverage high-image + video content and review seeding to close trust gap vs Amazon leaders\n- Target outdoor/daily grind users with bamboo aesthetic + SS performance hybrid messaging",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "46b50d6a1da0cdafc35daf63795ccf19c83bf65947fd8ec1ec01fef0c99c3c90",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/46b50d6a1da0cdafc35daf63795ccf19c83bf65947fd8ec1ec01fef0c99c3c90/verification_bundle.json"
+  }
+}

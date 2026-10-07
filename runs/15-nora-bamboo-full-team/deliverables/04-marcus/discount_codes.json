@@ -1,0 +1,94 @@
+[
+  {
+    "title": "Launch Special",
+    "code": "BAMBOOLAUNCH20",
+    "startsAt": "2026-10-15T00:00:00+00:00",
+    "endsAt": "2026-11-10T23:59:00+00:00",
+    "customerGets": {
+      "value": {
+        "percentage": 0.2
+      },
+      "items": {
+        "products": {
+          "productsToAdd": [
+            "gid://shopify/Product/8785172234401"
+          ]
+        }
+      }
+    },
+    "context": {
+      "all": "ALL"
+    },
+    "appliesOncePerCustomer": true,
+    "usageLimit": 200
+  },
+  {
+    "title": "Singles Day Eco Deal",
+    "code": "BAMBOO1111",
+    "startsAt": "2026-11-11T00:00:00+00:00",
+    "endsAt": "2026-11-12T23:59:00+00:00",
+    "customerGets": {
+      "value": {
+        "percentage": 0.25
+      },
+      "items": {
+        "products": {
+          "productsToAdd": [
+            "gid://shopify/Product/8785172234401"
+          ]
+        }
+      }
+    },
+    "context": {
+      "all": "ALL"
+    },
+    "appliesOncePerCustomer": true,
+    "usageLimit": 150
+  },
+  {
+    "title": "Black Friday Premium",
+    "code": "BFBAMBOO30",
+    "startsAt": "2026-11-27T00:00:00+00:00",
+    "endsAt": "2026-11-30T23:59:00+00:00",
+    "customerGets": {
+      "value": {
+        "percentage": 0.3
+      },
+      "items": {
+        "products": {
+          "productsToAdd": [
+            "gid://shopify/Product/8785172234401"
+          ]
+        }
+      }
+    },
+    "context": {
+      "all": "ALL"
+    },
+    "appliesOncePerCustomer": true,
+    "usageLimit": 300
+  },
+  {
+    "title": "Holiday Gift",
+    "code": "GIFTBAMBOO25",
+    "startsAt": "2026-12-15T00:00:00+00:00",
+    "endsAt": "2026-12-24T23:59:00+00:00",
+    "customerGets": {
+      "value": {
+        "percentage": 0.25
+      },
+      "items": {
+        "products": {
+          "productsToAdd": [
+            "gid://shopify/Product/8785172234401"
+          ]
+        }
+      }
+    },
+    "context": {
+      "all": "ALL"
+    },
+    "appliesOncePerCustomer": true,
+    "usageLimit": 100
+  }
+]

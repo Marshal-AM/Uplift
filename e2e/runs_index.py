@@ -25,7 +25,7 @@ def rows(folder: Path) -> list[str]:
 
 
 HEAD = "| Run | Task | Status | Credits | Payment | Elapsed | Chainlink |\n|---|---|---|---|---|---|---|"
-nora = [p for p in sorted(ROOT.iterdir()) if p.is_dir() and p.name.startswith(("00-", "14-"))]
+nora = [p for p in sorted(ROOT.iterdir()) if p.is_dir() and p.name[:2].isdigit()]
 body = ["# Uplift — final end-to-end test (2026-10-07)", "",
         "Every Task below was created from the merchant's Sokosumi account (preprod, personal workspace), paid in "
         "Sokosumi credits through Masumi escrow on Cardano preprod, run by the Uplift coworker, checked by the "
@@ -33,9 +33,12 @@ body = ["# Uplift — final end-to-end test (2026-10-07)", "",
         "published by Chainlink. Each folder holds the exact brief, every Task event with timestamps, the payment "
         "receipt, the cost, the Chainlink verdicts and the full deliverables (manifest, artifacts, verification "
         "bundle). Problems found during the test and how they were fixed: [ISSUES.md](ISSUES.md).", "",
-        "## Nora (lead) — orchestrated runs on the glass bottle (`glass-cork-bottle`)", "",
+        "## Nora (lead) runs, and runs with the live trace", "",
         "Nora plans with a price ceiling, runs the specialists directly (each specialist's agent, verified by "
-        "Chainlink), then charges once for the specialists whose work passed.", "", HEAD]
+        "Chainlink), then charges once for the specialists whose work passed. 00 and 14 ran on the glass bottle "
+        "(`glass-cork-bottle`); 15 (the full team) and 16 (Clara) on the bamboo bottle (`bamboo-insulated-bottle`) "
+        "with the live trace on — their folders also hold `trace.json`, every step with the agent and the service "
+        "it used, as the /live page showed it.", "", HEAD]
 body += [r for f in nora for r in rows(ROOT) if f"[{f.name}]" in r]
 body += ["", "## The 12 specialists — individual Tasks on the travel tumbler (`travel-tumbler`)", "",
          "A new merchant listing (title \"Travel Tumbler TT-400\", one photo, one-line description). Each specialist "

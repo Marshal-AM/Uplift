@@ -73,6 +73,14 @@ def rubric(v: dict, primary: str, secondary: list[str], objections: list[str], f
     return {"items": s, "total": round(sum(s.values()), 2), "grounded_ratio": grounded / len(claims) if claims else 0}
 
 
+UNIT = re.compile(r"(\d)(\s?)(Ml|ML|Oz|OZ|Cl|CL|Mm|MM|Cm|CM|Kg|KG)\b")
+
+
+def units(text: str) -> str:
+    """Title Case capitalises units ("500 Ml"); measurements keep their lowercase symbols."""
+    return UNIT.sub(lambda m: m.group(1) + m.group(2) + m.group(3).lower(), text)
+
+
 def run(inputs: dict, tracer) -> str:
     ctx = Context.from_inputs(inputs)
     out = Deliverable("clara", "Clara", ctx)
@@ -117,7 +125,7 @@ def run(inputs: dict, tracer) -> str:
         f"Buyer objections to answer (from competitor reviews): {', '.join(objections) or 'none'}\n"
         f"Audience: {ctx.get('audience', 'general shoppers')}\nBrand voice: {ctx.get('brand_voice', 'clear, warm')}\n"
         f"Never use: {', '.join(forbidden) or '-'}\n"
-        "Rules: title ≤70 chars in Title Case, leading with the primary keyword and naming the product type, key "
+        "Rules: title ≤70 chars in Title Case (units stay lowercase: ml, oz, cm), leading with the primary keyword and naming the product type, key "
         "material and size (a product name, not a slogan); SEO title ≤60; SEO description 70–155; "
         "handle lowercase-hyphenated ≤60; structure hook → benefits (li) → specs → use cases → objection answers → "
         "care & guarantee, with h2 headings written for shoppers (e.g. 'Why it lasts', not 'Objection answers'); "
@@ -133,8 +141,8 @@ def run(inputs: dict, tracer) -> str:
 
     # a live product keeps its handle (changing it moves the URL and loses links); new copy proposes one
     handle = product.get("handle") or re.sub(r"[^a-z0-9]+", "-", best["handle"].lower()).strip("-")[:60]
-    fields = {"title": best["title"][:70], "descriptionHtml": description,
-              "seo": {"title": best["seo_title"][:70], "description": best["seo_description"][:320]}}
+    fields = {"title": units(best["title"])[:70], "descriptionHtml": description,
+              "seo": {"title": units(best["seo_title"])[:70], "description": best["seo_description"][:320]}}
     if product.get("id"):
         out.changeset.append({"op": "product.update", "product_id": product["id"], "fields": fields})
         new_tags = [t for t in best["tags"] if t not in product.get("tags", [])][:10]

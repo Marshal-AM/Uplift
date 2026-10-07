@@ -1,0 +1,5 @@
+- No competitor addresses bamboo-specific health/safety questions (microplastics vs bamboo, healthiest material)
+- Leak-proof vs leak-resistant distinction and all-day cold retention proof missing from mid-tier
+- Limited emphasis on 500ml/16oz sizing practicality or daily use scenarios
+- Few lifetime warranties or easy-clean wide-mouth proofs outside one premium player
+- Zero video content; sparse guarantees on value options
