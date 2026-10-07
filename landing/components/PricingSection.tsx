@@ -8,8 +8,8 @@ const plans = [
   {
     name: "One specialist",
     price: "from 0.25",
-    unit: "credits per job",
-    example: "“Audit my bamboo bottle” → Quinn, 0.50",
+    unit: "tUSDM per job · 25 credits",
+    example: "“Audit my bamboo bottle” → Quinn, 0.50 tUSDM",
     features: [
       "Assign a Task to any of the 12 specialists",
       "Fixed price, paid into escrow",
@@ -23,7 +23,7 @@ const plans = [
   {
     name: "Focused fix",
     price: "≈ 6.00",
-    unit: "credits · 1 product page",
+    unit: "tUSDM · 600 credits · 1 product page",
     example: "“Rewrite my product page” → Kai, Priya, Clara, Ruth, Quinn (before + after)",
     features: [
       "Nora picks only the specialists you need",
@@ -38,7 +38,7 @@ const plans = [
   {
     name: "Full launch",
     price: "≈ 18.00",
-    unit: "credits · 1 product, 2 locales",
+    unit: "tUSDM · 1,800 credits · 1 product, 2 locales",
     example: "“Launch my bamboo bottle” → all 12 specialists",
     features: [
       "Research, listing, visuals, catalog and feed",
@@ -67,7 +67,7 @@ export const PricingSection = () => {
             Pay per job, not per month.
           </h2>
           <p className="mt-4 text-lg text-[#555]">
-            No retainer. You pay with your Sokosumi workspace credits, once, after the work: Nora charges the sum of
+            No retainer. You pay with your Sokosumi workspace credits (100 credits per tUSDM), once, after the work: Nora charges the sum of
             the specialists she used, never more than the ceiling you approved. Work that fails verification is free.
           </p>
         </div>
@@ -120,8 +120,9 @@ export const PricingSection = () => {
           className="mt-6 text-[12px] text-[#8a8a8a]"
           style={{ fontFamily: "var(--font-geist-mono), ui-monospace, monospace" }}
         >
-          Credits are Sokosumi workspace credits (tUSDM on Cardano preprod for the hackathon). Each specialist has a
-          fixed price; example totals depend on the plan Nora proposes.
+          Prices are in tUSDM, the test USD stablecoin the Masumi escrow holds on Cardano preprod. Sokosumi charges 100
+          workspace credits per 1 tUSDM (a 6.00 tUSDM job uses 600 credits). Each specialist has a fixed price; example
+          totals depend on the plan Nora proposes.
         </p>
       </div>
     </section>

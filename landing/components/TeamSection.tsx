@@ -126,7 +126,7 @@ export const TeamSection = () => {
                 style={{ fontFamily: "var(--font-geist-mono), ui-monospace, monospace" }}
               >
                 <span>fixed price</span>
-                <span className="text-[#146e96]">{m.price} credits</span>
+                <span className="text-[#146e96]">{m.price.replace(/^([\d.]+)/, "$1 tUSDM")}</span>
               </div>
             </motion.div>
           ))}
