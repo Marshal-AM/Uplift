@@ -1,0 +1,71 @@
+[
+  {
+    "title": "Singles' Day Launch",
+    "code": "TTSD20",
+    "startsAt": "2026-11-09T00:00:00+00:00",
+    "endsAt": "2026-11-12T23:59:00+00:00",
+    "customerGets": {
+      "value": {
+        "percentage": 0.2
+      },
+      "items": {
+        "products": {
+          "productsToAdd": [
+            "gid://shopify/Product/8785736237217"
+          ]
+        }
+      }
+    },
+    "context": {
+      "all": "ALL"
+    },
+    "appliesOncePerCustomer": true,
+    "usageLimit": 500
+  },
+  {
+    "title": "Black Friday Tumbler Deal",
+    "code": "TTBF30",
+    "startsAt": "2026-11-26T00:00:00+00:00",
+    "endsAt": "2026-11-30T23:59:00+00:00",
+    "customerGets": {
+      "value": {
+        "percentage": 0.25
+      },
+      "items": {
+        "products": {
+          "productsToAdd": [
+            "gid://shopify/Product/8785736237217"
+          ]
+        }
+      }
+    },
+    "context": {
+      "all": "ALL"
+    },
+    "appliesOncePerCustomer": true,
+    "usageLimit": 300
+  },
+  {
+    "title": "Holiday Gift Special",
+    "code": "TTXMAS15",
+    "startsAt": "2026-12-15T00:00:00+00:00",
+    "endsAt": "2026-12-24T23:59:00+00:00",
+    "customerGets": {
+      "value": {
+        "percentage": 0.15
+      },
+      "items": {
+        "products": {
+          "productsToAdd": [
+            "gid://shopify/Product/8785736237217"
+          ]
+        }
+      }
+    },
+    "context": {
+      "all": "ALL"
+    },
+    "appliesOncePerCustomer": true,
+    "usageLimit": 400
+  }
+]

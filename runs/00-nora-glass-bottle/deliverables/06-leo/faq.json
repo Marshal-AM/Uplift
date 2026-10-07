@@ -1,0 +1,62 @@
+[
+  {
+    "question": "Is this glass water bottle BPA-free?",
+    "answer": "Yes, it is made with BPA-free materials.",
+    "fact_ids": [
+      "F5"
+    ]
+  },
+  {
+    "question": "Can the bottle go in the dishwasher?",
+    "answer": "The glass is dishwasher-safe, but the cork stopper requires hand-washing.",
+    "fact_ids": [
+      "F7",
+      "F8"
+    ]
+  },
+  {
+    "question": "What is the capacity of this bottle?",
+    "answer": "It has a 550 ml capacity.",
+    "fact_ids": [
+      "F1"
+    ]
+  },
+  {
+    "question": "What is this bottle made of?",
+    "answer": "It is made of borosilicate glass with a natural cork stopper and grey silicone sleeve.",
+    "fact_ids": [
+      "F2",
+      "F3",
+      "F4"
+    ]
+  },
+  {
+    "question": "How much does this water bottle cost?",
+    "answer": "It is priced at 28 USD.",
+    "fact_ids": [
+      "F6"
+    ]
+  },
+  {
+    "question": "Can I use it for hot or carbonated drinks?",
+    "answer": "No, it is not suitable for hot drinks or carbonated drinks.",
+    "fact_ids": [
+      "F9"
+    ]
+  },
+  {
+    "question": "Is this a reusable water bottle?",
+    "answer": "Yes, it is a reusable glass water bottle.",
+    "fact_ids": [
+      "F10"
+    ]
+  },
+  {
+    "question": "Is the size suitable for office or commute use?",
+    "answer": "Yes, the 550 ml capacity makes it a compact reusable option.",
+    "fact_ids": [
+      "F1",
+      "F10"
+    ]
+  }
+]

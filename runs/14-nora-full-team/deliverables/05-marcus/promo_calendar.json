@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Launch Welcome",
+    "code": "LAUNCHGLASS20",
+    "percentage": 20,
+    "starts": "2026-10-15T00:00:00+00:00",
+    "ends": "2026-11-10T23:59:00+00:00",
+    "usage_limit": 500,
+    "once_per_customer": true,
+    "why": "Early-adopter discount to drive first sales before Singles' Day without eroding margin."
+  },
+  {
+    "name": "Singles Day Special",
+    "code": "GLASS11",
+    "percentage": 25,
+    "starts": "2026-11-11T00:00:00+00:00",
+    "ends": "2026-11-12T23:59:00+00:00",
+    "usage_limit": 300,
+    "once_per_customer": true,
+    "why": "Capture Singles' Day traffic with a deeper but still safe discount."
+  },
+  {
+    "name": "Holiday Gift",
+    "code": "CORKGIFT15",
+    "percentage": 15,
+    "starts": "2026-12-01T00:00:00+00:00",
+    "ends": "2026-12-24T23:59:00+00:00",
+    "usage_limit": 400,
+    "once_per_customer": true,
+    "why": "Gentle holiday gifting incentive that maintains premium feel."
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "result_hash": "71e51f6b592366f7fb4d7b97798a80075d82233537c44553cc5a74c27b309933",
+  "at": "2026-10-07T04:16:01+00:00",
+  "agent": "Clara",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "copy_variants.json",
+      "sha256": "86e9b2dfdbd528951b978f4464e9abe655c7a47ef9edd85e73901c314a77793a",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/86e9b2dfdbd528951b978f4464e9abe655c7a47ef9edd85e73901c314a77793a/copy_variants.json"
+    },
+    {
+      "mime": "text/html",
+      "name": "selected_copy.html",
+      "sha256": "d4310108830bfd3c252e21ef0dbbef80e8b698ffbf6b7a587edcaec8790469f8",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d4310108830bfd3c252e21ef0dbbef80e8b698ffbf6b7a587edcaec8790469f8/selected_copy.html"
+    },
+    {
+      "mime": "application/json",
+      "name": "facts.json",
+      "sha256": "2624402b0ec9e91c851d033e6bb386b18384c43a2391613c93bd9428895da245",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/2624402b0ec9e91c851d033e6bb386b18384c43a2391613c93bd9428895da245/facts.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "rubric_scores.json",
+      "sha256": "ed878d33613d1187fffa674836b2e032280a69d7edbbc87d48cf11ed6ca2f8db",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/ed878d33613d1187fffa674836b2e032280a69d7edbbc87d48cf11ed6ca2f8db/rubric_scores.json"
+    }
+  ],
+  "changeset": [
+    {
+      "fields": {
+        "descriptionHtml": "<p>A reliable travel coffee tumbler that keeps your drink ready from the first sip to the last, wherever your day takes you.</p><h2>Why You’ll Reach for It</h2><ul><li>Double-wall vacuum insulation holds coffee hot for 6 hours and cold drinks for 12 hours.</li><li>Ceramic-coated interior keeps flavors clean without any metallic taste.</li><li>Natural bamboo lid with slide closure stays secure and easy to sip from on the move.</li><li>400 ml size fits most car cup holders for smooth commuting.</li></ul><h2>Built to Last</h2><p>Crafted from 18/8 stainless steel with double-wall vacuum insulation and a ceramic-coated interior for lasting performance.</p><h2>Made for Your Day</h2><p>Ideal for US commuters and remote workers who need hot coffee or cold drinks that stay ready between home, office, and the road.</p><h2>Answers You Can Trust</h2><p>The bamboo slide lid seals tightly so it won’t leak or crack, while the ceramic coating and vacuum insulation stop metallic taste and rapid heat loss.</p><h2>Simple Care</h2><p>Hand-wash only to keep the finish and lid in top shape. Priced at 26 USD.</p>",
+        "seo": {
+          "description": "Insulated travel coffee tumbler in 18/8 stainless steel with ceramic interior and bamboo lid. Keeps coffee hot 6 hours and fits car cup holders.",
+          "title": "Travel Coffee Tumbler 400ml Insulated Steel"
+        },
+        "title": "Travel Coffee Tumbler 400ml Stainless Steel"
+      },
+      "op": "product.update",
+      "product_id": "gid://shopify/Product/8785736237217"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "903cad79b391ea57fa7f33f4439ca40de90597dc89fe02919ee86d6b95808f0e",
+  "job_or_task_id": "01a11492-5649-7488-a805-89976f4e4c32",
+  "profile": "clara@5.0.0",
+  "role": "clara",
+  "self_checks": {
+    "grammar_issues": 2,
+    "rubric_total": 40
+  },
+  "summary_md": "**Title:** Travel Coffee Tumbler 400ml Stainless Steel\n\n**SEO title:** Travel Coffee Tumbler 400ml Insulated Steel\n\n**Meta:** Insulated travel coffee tumbler in 18/8 stainless steel with ceramic interior and bamboo lid. Keeps coffee hot 6 hours and fits car cup holders.\n\nRubric 40.0/45 · 100% of claims grounded in 10 facts.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "4aa1a51cf34931e496b5a994d67a9549af43cdf9863efdd9a53ba48b6c3e2096",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/4aa1a51cf34931e496b5a994d67a9549af43cdf9863efdd9a53ba48b6c3e2096/verification_bundle.json"
+  }
+}

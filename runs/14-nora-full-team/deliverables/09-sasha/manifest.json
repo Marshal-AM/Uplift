@@ -1,0 +1,50 @@
+{
+  "result_hash": "16a5223b9d5d5d22ae7117553f678d5ebd2c9e74890ce1860e12502dbdd9887a",
+  "at": "2026-10-07T04:10:55+00:00",
+  "agent": "Sasha",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "unit_economics.json",
+      "sha256": "8d6b060ff81f16277ab70aeafe26f0e7d0fcf3245f2694acb27f8251178e0456",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/8d6b060ff81f16277ab70aeafe26f0e7d0fcf3245f2694acb27f8251178e0456/unit_economics.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "google_ads_editor.csv",
+      "sha256": "a659c85098580e8ef5173f1b4caaca109f6ffdf6b4f014614a79cca7c0c6b659",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a659c85098580e8ef5173f1b4caaca109f6ffdf6b4f014614a79cca7c0c6b659/google_ads_editor.csv"
+    },
+    {
+      "mime": "application/json",
+      "name": "ad_copy.json",
+      "sha256": "36d6d0e6faccae63f1396d89b07a0a20f4f56a05d3ded7842435be9291786069",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/36d6d0e6faccae63f1396d89b07a0a20f4f56a05d3ded7842435be9291786069/ad_copy.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "ads_plan.md",
+      "sha256": "5d7927e38e4db2d2daeffb946a46cf714de088dae5c2d7324db3425051f642c8",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/5d7927e38e4db2d2daeffb946a46cf714de088dae5c2d7324db3425051f642c8/ads_plan.md"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "tracking_checklist.md",
+      "sha256": "07fc2b20972d502817d73d80b9e906b749c3e962cfa8b37d17c2fab5e0bfa146",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/07fc2b20972d502817d73d80b9e906b749c3e962cfa8b37d17c2fab5e0bfa146/tracking_checklist.md"
+    }
+  ],
+  "changeset": [],
+  "evidence": [],
+  "input_hash": "ba872f14cbf91695e7d02787ddc091829396b54af3c2eb2316845532bc865587",
+  "job_or_task_id": "01a11487-7371-70fa-8db1-bdb027e2a383:sasha",
+  "profile": "sasha@5.0.0",
+  "role": "sasha",
+  "self_checks": {},
+  "summary_md": "**Break-even CPA** 20.00 · **max CPC** 0.28 · **budget** 1000.0/month\n\n- Uplift · Glass Water Bottle Borosilicate 550ml Cork Stopper · Search (19.73/day, paused)\n- Uplift · Glass Water Bottle Borosilicate 550ml Cork Stopper · Performance Max (13.16/day, paused)\n\n58 keywords, 167 negatives, 15 headlines. Import the CSV in Google Ads Editor; everything starts paused.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "e9358b0880eb1d4ab29a95d11c7988dd6bced5f35b8458da0ffb343df333e06b",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/e9358b0880eb1d4ab29a95d11c7988dd6bced5f35b8458da0ffb343df333e06b/verification_bundle.json"
+  }
+}

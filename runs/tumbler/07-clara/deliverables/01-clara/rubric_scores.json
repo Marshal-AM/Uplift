@@ -1,0 +1,16 @@
+{
+  "items": {
+    "title_length": 5,
+    "seo_title_length": 4,
+    "seo_description_length": 4,
+    "primary_in_title": 5,
+    "primary_in_seo_title": 3,
+    "primary_in_first_100": 0,
+    "secondary_coverage": 0,
+    "objections_answered": 5,
+    "structure": 4,
+    "grounded": 7.0
+  },
+  "total": 37.0,
+  "grounded_ratio": 1.0
+}

@@ -1,0 +1,80 @@
+{
+  "result_hash": "cea72dacd47bdc4734d80513e20d37f1927ea7d1b99bb9ed7c48d1080a935efb",
+  "at": "2026-10-07T03:53:31+00:00",
+  "agent": "Oskar",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "catalog_changes.json",
+      "sha256": "659b60eb357acfeb069009f928d4599abdd7fc1280765fac3052f8a6e6dd3add",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/659b60eb357acfeb069009f928d4599abdd7fc1280765fac3052f8a6e6dd3add/catalog_changes.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "collections_plan.md",
+      "sha256": "206ffffcd0c3341414dd7a1103137b71ebcf3f4576e639a8d48ad4a462d142c4",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/206ffffcd0c3341414dd7a1103137b71ebcf3f4576e639a8d48ad4a462d142c4/collections_plan.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "feed_report.json",
+      "sha256": "70d29beebecb1cc0b7f74984dd69d3cf3426c32198fe8d76f98c278b653f2acd",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/70d29beebecb1cc0b7f74984dd69d3cf3426c32198fe8d76f98c278b653f2acd/feed_report.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "google_supplemental.csv",
+      "sha256": "8c7095d679ae4b9376860601356934db70fe978aa05594ab50cefc69fd8c93e4",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/8c7095d679ae4b9376860601356934db70fe978aa05594ab50cefc69fd8c93e4/google_supplemental.csv"
+    },
+    {
+      "mime": "text/csv",
+      "name": "barcode_fixes.csv",
+      "sha256": "bcedd7d13cfb5069cbf84c7ab47760a1709e040331ca05e8b483642b3c01096d",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/bcedd7d13cfb5069cbf84c7ab47760a1709e040331ca05e8b483642b3c01096d/barcode_fixes.csv"
+    }
+  ],
+  "changeset": [
+    {
+      "fields": {
+        "category": "gid://shopify/TaxonomyCategory/hg-11-3-14",
+        "productType": "Travel Tumbler"
+      },
+      "op": "product.update",
+      "product_id": "gid://shopify/Product/8785736237217"
+    },
+    {
+      "op": "product.taxonomy_tags_add",
+      "product_id": "gid://shopify/Product/8785736237217",
+      "tags": [
+        "insulated",
+        "bamboo",
+        "stainless steel",
+        "travel mug",
+        "reusable",
+        "eco",
+        "sustainable",
+        "bpa free"
+      ]
+    },
+    {
+      "collection_id": "gid://shopify/Collection/333623328929",
+      "op": "collection.add_products",
+      "product_ids": [
+        "gid://shopify/Product/8785736237217"
+      ]
+    }
+  ],
+  "evidence": [],
+  "input_hash": "1099adbebbdbc6809d1553ff1eec83cacf4bcdd00910124f69ef1c52f0ab60f1",
+  "job_or_task_id": "01a1147d-df75-7021-8306-1cf9ceef396a",
+  "profile": "oskar@5.0.0",
+  "role": "oskar",
+  "self_checks": {},
+  "summary_md": "**Category:** Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Travel Mugs · **Type:** Travel Tumbler\n\n8 tags, 1 collections, 0 related and 0 complementary products linked. Google feed fields missing: gtin_or_mpn.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "623591429f59e684e332cee0cbbf7e8e5d60e65ff8754dd9340bda05e99c780e",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/623591429f59e684e332cee0cbbf7e8e5d60e65ff8754dd9340bda05e99c780e/verification_bundle.json"
+  }
+}

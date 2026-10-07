@@ -1,0 +1,20 @@
+[
+  {
+    "fix": "Add prominent trust elements: guarantees, return policy highlights, social proof and review summaries above the fold",
+    "specialist": "leo",
+    "impact": "high",
+    "price": 2.0
+  },
+  {
+    "fix": "Rewrite product description and bullet points to emphasize benefits, urgency and emotional triggers",
+    "specialist": "clara",
+    "impact": "high",
+    "price": 2.0
+  },
+  {
+    "fix": "Complete and optimize catalog attributes, collections and feed data for better merchandising",
+    "specialist": "oskar",
+    "impact": "medium",
+    "price": 1.5
+  }
+]

@@ -1,0 +1,112 @@
+{
+  "competitors": [
+    {
+      "domain": "boroux.com",
+      "url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii"
+    },
+    {
+      "domain": "wondrwood.com",
+      "url": "https://wondrwood.com/products/reusable-glass-water-bottle-550ml?srsltid=AU7gw4U65XB2AzlxW2AF2vcOQhaUo-b_ZdI7Wuei3xIArDCkqmyyhbEQ"
+    }
+  ],
+  "attributes": [
+    {
+      "attribute": "Capacity",
+      "ours": "550 ml",
+      "competitors": [
+        {
+          "domain": "boroux.com",
+          "value": "33 oz"
+        },
+        {
+          "domain": "wondrwood.com",
+          "value": "550ml"
+        }
+      ]
+    },
+    {
+      "attribute": "Material",
+      "ours": "Borosilicate glass",
+      "competitors": [
+        {
+          "domain": "boroux.com",
+          "value": "Durable borosilicate design"
+        },
+        {
+          "domain": "wondrwood.com",
+          "value": "Lab-Grade Glass"
+        }
+      ]
+    },
+    {
+      "attribute": "Lid type",
+      "ours": "Natural cork stopper",
+      "competitors": [
+        {
+          "domain": "boroux.com",
+          "value": "Leak-free stainless steel cap"
+        },
+        {
+          "domain": "wondrwood.com",
+          "value": "Not specified"
+        }
+      ]
+    },
+    {
+      "attribute": "Price",
+      "ours": "28 USD",
+      "competitors": [
+        {
+          "domain": "boroux.com",
+          "value": "25 USD"
+        },
+        {
+          "domain": "wondrwood.com",
+          "value": "42.9 USD"
+        }
+      ]
+    },
+    {
+      "attribute": "Dishwasher safe",
+      "ours": "Glass is dishwasher-safe (cork requires hand-wash)",
+      "competitors": [
+        {
+          "domain": "boroux.com",
+          "value": "Dishwasher safe"
+        },
+        {
+          "domain": "wondrwood.com",
+          "value": "Not specified"
+        }
+      ]
+    },
+    {
+      "attribute": "BPA-free",
+      "ours": "BPA-free materials",
+      "competitors": [
+        {
+          "domain": "boroux.com",
+          "value": "BPA/BPS-free"
+        },
+        {
+          "domain": "wondrwood.com",
+          "value": "BPA-free"
+        }
+      ]
+    },
+    {
+      "attribute": "Suitability",
+      "ours": "Not suitable for hot drinks or carbonated drinks",
+      "competitors": [
+        {
+          "domain": "boroux.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "wondrwood.com",
+          "value": "Not specified"
+        }
+      ]
+    }
+  ]
+}

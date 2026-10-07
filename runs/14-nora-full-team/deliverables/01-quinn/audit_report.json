@@ -1,0 +1,66 @@
+{
+  "mode": "audit",
+  "score": 76.0,
+  "deterministic": 72.0,
+  "judge": 4.0,
+  "sections": {
+    "discoverability": 22.0,
+    "persuasion": 13,
+    "visuals": 14.0,
+    "trust": 5,
+    "catalog": 8,
+    "compliance": 10
+  },
+  "compliance_hits": [],
+  "rankings": [],
+  "store_search_ranks": [
+    {
+      "keyword": "borosilicate glass water bottle 550ml cork",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "glass water bottle cork stopper 550ml",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "550ml borosilicate bottle with cork lid",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "reusable borosilicate glass bottle cork",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "glass bottle cork stopper 550 ml water bottle",
+      "rank": 1,
+      "results": 1
+    }
+  ],
+  "page_speed": null,
+  "sales": null,
+  "diagnosis": "Trust signals critically weak (5/18) and persuasion lagging (13/20), with catalog incomplete (8/15); discoverability, visuals and compliance already maxed. No sales data to classify traffic vs conversion.",
+  "fixes": [
+    {
+      "fix": "Add prominent trust elements: guarantees, return policy highlights, social proof and review summaries above the fold",
+      "specialist": "leo",
+      "impact": "high",
+      "price": 2.0
+    },
+    {
+      "fix": "Rewrite product description and bullet points to emphasize benefits, urgency and emotional triggers",
+      "specialist": "clara",
+      "impact": "high",
+      "price": 2.0
+    },
+    {
+      "fix": "Complete and optimize catalog attributes, collections and feed data for better merchandising",
+      "specialist": "oskar",
+      "impact": "medium",
+      "price": 1.5
+    }
+  ]
+}

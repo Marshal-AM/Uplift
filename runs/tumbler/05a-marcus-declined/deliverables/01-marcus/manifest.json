@@ -1,0 +1,129 @@
+{
+  "result_hash": "ec128f19dc2ac68d4cb5c8d3ceb668cfb3d2ad67875729258383d27b0f16908e",
+  "at": "2026-10-07T03:44:24+00:00",
+  "agent": "Marcus",
+  "artifacts": [
+    {
+      "mime": "text/markdown",
+      "name": "pricing_strategy.md",
+      "sha256": "423cf5aab9112b7611c19a2052a50fa27e914c0de023ec109598c210fef5eac5",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/423cf5aab9112b7611c19a2052a50fa27e914c0de023ec109598c210fef5eac5/pricing_strategy.md"
+    },
+    {
+      "mime": "text/csv",
+      "name": "scenarios.csv",
+      "sha256": "783b3c78d678bcf3c0e6bd07b4d7e00ae13d1c7983267619aa1a2b85c1360f79",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/783b3c78d678bcf3c0e6bd07b4d7e00ae13d1c7983267619aa1a2b85c1360f79/scenarios.csv"
+    },
+    {
+      "mime": "application/json",
+      "name": "promo_calendar.json",
+      "sha256": "395c5180f041144f1711e26eacac18c09a3d9c90945784700a1f5b683e2b9b62",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/395c5180f041144f1711e26eacac18c09a3d9c90945784700a1f5b683e2b9b62/promo_calendar.json"
+    },
+    {
+      "mime": "text/calendar",
+      "name": "promo_calendar.ics",
+      "sha256": "85595628497062857c45bab9f5b5dc0068fc86e698964cf422c4e96d6290af24",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/85595628497062857c45bab9f5b5dc0068fc86e698964cf422c4e96d6290af24/promo_calendar.ics"
+    },
+    {
+      "mime": "application/json",
+      "name": "discount_codes.json",
+      "sha256": "cb8225edfaa56fd2d73fc3f6123afd3245666571e9c47631c190a07c122ae31a",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/cb8225edfaa56fd2d73fc3f6123afd3245666571e9c47631c190a07c122ae31a/discount_codes.json"
+    }
+  ],
+  "changeset": [
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "SINGLES11",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8785736237217"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.15
+          }
+        },
+        "endsAt": "2026-11-12T23:59:00+00:00",
+        "startsAt": "2026-11-11T00:00:00+00:00",
+        "title": "Singles' Day Launch Special",
+        "usageLimit": 500
+      },
+      "op": "discount.create"
+    },
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "BFTT400",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8785736237217"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.25
+          }
+        },
+        "endsAt": "2026-11-30T23:59:00+00:00",
+        "startsAt": "2026-11-27T00:00:00+00:00",
+        "title": "Black Friday Tumbler Deal",
+        "usageLimit": 1000
+      },
+      "op": "discount.create"
+    },
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "GIFT24",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8785736237217"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.2
+          }
+        },
+        "endsAt": "2026-12-24T23:59:00+00:00",
+        "startsAt": "2026-12-15T00:00:00+00:00",
+        "title": "Holiday Gifting Offer",
+        "usageLimit": 800
+      },
+      "op": "discount.create"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "e3ccb11db02e2230c00ef44a7dd3d8ef50be0f3b6bcc01fc719f04efe732d0a4",
+  "job_or_task_id": "01a11475-e5df-70c3-9e78-3d6f998213fd",
+  "profile": "marcus@5.0.0",
+  "role": "marcus",
+  "self_checks": {},
+  "summary_md": "**Positioning:** parity · price 26.0 vs market median 28.99\n\n**3 scheduled discount codes**, all above your 35% margin floor:\n- SINGLES11: 15% · 2026-11-11 → 2026-11-12\n- BFTT400: 25% · 2026-11-27 → 2026-11-30\n- GIFT24: 20% · 2026-12-15 → 2026-12-24",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "8b6acf388867099a243c238d7d8a0f449d96da720ca61a069ceef1a634a4ff25",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/8b6acf388867099a243c238d7d8a0f449d96da720ca61a069ceef1a634a4ff25/verification_bundle.json"
+  }
+}

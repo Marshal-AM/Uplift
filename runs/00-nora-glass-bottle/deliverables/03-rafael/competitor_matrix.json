@@ -1,0 +1,55 @@
+[
+  {
+    "domain": "boroux.com",
+    "url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii",
+    "title": "Glass Water Bottle - 33 oz",
+    "price": 25,
+    "compare_at_price": 27,
+    "currency": "USD",
+    "claims": [
+      "Durable borosilicate design",
+      "Leak-free stainless steel cap",
+      "Dishwasher safe",
+      "BPA/BPS-free"
+    ],
+    "guarantees": [
+      "60-Day Satisfaction Guarantee",
+      "Free US shipping over $60"
+    ],
+    "shipping_returns": "Free shipping on all orders over $60 to the U.S. Returns accepted within 60 days in new or used condition.",
+    "bundle_offers": [],
+    "image_count": 8,
+    "has_video": false,
+    "review_count": 23,
+    "rating": 4.83,
+    "brand": "Boroux"
+  },
+  {
+    "domain": "wondrwood.com",
+    "url": "https://wondrwood.com/products/reusable-glass-water-bottle-550ml?srsltid=AU7gw4U65XB2AzlxW2AF2vcOQhaUo-b_ZdI7Wuei3xIArDCkqmyyhbEQ",
+    "title": "Keep Vessel | 550ml Glass Bottle",
+    "price": 42.9,
+    "compare_at_price": 31.9,
+    "currency": "USD",
+    "claims": [
+      "Lab-Grade Glass",
+      "BPA-free",
+      "Phthalate-free",
+      "Lead-free",
+      "Durable & Repairable"
+    ],
+    "guarantees": [
+      "Lifetime Guarantee",
+      "Satisfied, Refunded or Replaced"
+    ],
+    "shipping_returns": "Free, fast worldwide shipping on all orders over $99 with 24-hour customer service.",
+    "bundle_offers": [
+      "Bundle 3 or more items to save 15%"
+    ],
+    "image_count": 5,
+    "has_video": false,
+    "review_count": 6,
+    "rating": 5,
+    "brand": "Wondrwood"
+  }
+]

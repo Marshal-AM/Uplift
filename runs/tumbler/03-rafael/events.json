@@ -1,0 +1,190 @@
+[
+  {
+    "id": "01a11475-e6df-750b-964d-08a7fa0b914a",
+    "taskId": "01a11475-e6d9-702b-8968-5ea47a685918",
+    "createdAt": "2026-10-07T03:43:53.560Z",
+    "updatedAt": "2026-10-07T03:43:53.561Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "CREATED"
+  },
+  {
+    "id": "01a11475-e6df-750b-964d-0e8e3219bedc",
+    "taskId": "01a11475-e6d9-702b-8968-5ea47a685918",
+    "createdAt": "2026-10-07T03:43:53.561Z",
+    "updatedAt": "2026-10-07T03:43:53.561Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "READY"
+  },
+  {
+    "id": "01a11475-f5d2-7382-899e-b593295db943",
+    "taskId": "01a11475-e6d9-702b-8968-5ea47a685918",
+    "createdAt": "2026-10-07T03:43:57.394Z",
+    "updatedAt": "2026-10-07T03:43:57.394Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+      "coworker": {
+        "id": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+        "name": "Rafael",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-a86f-759d-9ab5-75e186b45c2d/image-rafael-lhpjFCaj07UtyctemwSnMqYBFVb9c6.png",
+        "slug": "rafael-competitor-and-market-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+    "coworker": {
+      "id": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+      "name": "Rafael",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-a86f-759d-9ab5-75e186b45c2d/image-rafael-lhpjFCaj07UtyctemwSnMqYBFVb9c6.png",
+      "slug": "rafael-competitor-and-market-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "On it.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11476-1cda-73ab-99c6-422631b2919b",
+    "taskId": "01a11475-e6d9-702b-8968-5ea47a685918",
+    "createdAt": "2026-10-07T03:44:07.386Z",
+    "updatedAt": "2026-10-07T03:44:07.386Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+      "coworker": {
+        "id": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+        "name": "Rafael",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-a86f-759d-9ab5-75e186b45c2d/image-rafael-lhpjFCaj07UtyctemwSnMqYBFVb9c6.png",
+        "slug": "rafael-competitor-and-market-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+    "coworker": {
+      "id": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+      "name": "Rafael",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-a86f-759d-9ab5-75e186b45c2d/image-rafael-lhpjFCaj07UtyctemwSnMqYBFVb9c6.png",
+      "slug": "rafael-competitor-and-market-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": "01a11476-1cd5-771b-8d50-2a81d1524966",
+    "credits": 125,
+    "comment": "Payment requested: 1.25 credits.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11477-5ca8-756c-a957-2a2fe9c5544d",
+    "taskId": "01a11475-e6d9-702b-8968-5ea47a685918",
+    "createdAt": "2026-10-07T03:45:29.256Z",
+    "updatedAt": "2026-10-07T03:45:29.256Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+      "coworker": {
+        "id": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+        "name": "Rafael",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-a86f-759d-9ab5-75e186b45c2d/image-rafael-lhpjFCaj07UtyctemwSnMqYBFVb9c6.png",
+        "slug": "rafael-competitor-and-market-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+    "coworker": {
+      "id": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+      "name": "Rafael",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-a86f-759d-9ab5-75e186b45c2d/image-rafael-lhpjFCaj07UtyctemwSnMqYBFVb9c6.png",
+      "slug": "rafael-competitor-and-market-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Chainlink verification: **PASS** · 86.4/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11478-0b1c-77b8-bc20-dffacb98d290",
+    "taskId": "01a11475-e6d9-702b-8968-5ea47a685918",
+    "createdAt": "2026-10-07T03:46:13.916Z",
+    "updatedAt": "2026-10-07T03:46:13.916Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+      "coworker": {
+        "id": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+        "name": "Rafael",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-a86f-759d-9ab5-75e186b45c2d/image-rafael-lhpjFCaj07UtyctemwSnMqYBFVb9c6.png",
+        "slug": "rafael-competitor-and-market-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+    "coworker": {
+      "id": "01a11127-a86f-759d-9ab5-75e186b45c2d",
+      "name": "Rafael",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-a86f-759d-9ab5-75e186b45c2d/image-rafael-lhpjFCaj07UtyctemwSnMqYBFVb9c6.png",
+      "slug": "rafael-competitor-and-market-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "**3 competitors** across 5 queries.\n\n**Price bands:** 9.27–40.00 (median 11.98)\n\n**Where to win:**\n- Own ‘best leak-proof 400ml under $30’ with tested spill and heat-retention data\n- Highlight dishwasher-safe + sweat-free grip for daily commute use cases\n- Add comparison content: 400ml ≈ 1.7 cups, ideal one-coffee size vs oversized tumblers\n- Offer simple 2-pack or gift bundle to close the value gap vs $10 options and Corkcicle multi-buy\n- Publish short video + more lifestyle images to match content depth of higher-priced rivals",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "COMPLETED"
+  }
+]

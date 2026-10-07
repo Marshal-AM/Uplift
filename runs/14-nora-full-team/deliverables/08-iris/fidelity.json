@@ -1,0 +1,35 @@
+[
+  {
+    "name": "clean_hero",
+    "prompt": "white studio shot",
+    "fidelity": 1,
+    "differences": [],
+    "kept": true
+  },
+  {
+    "name": "scene_1",
+    "prompt": "Sunlit wooden desk by a large window with soft natural light, blurred green plants in background, bright airy atmosphere",
+    "fidelity": 1,
+    "differences": [],
+    "kept": true
+  },
+  {
+    "name": "scene_2",
+    "prompt": "Outdoor wooden picnic table in a lush park under dappled sunlight, vibrant greenery surrounding, bright daylight",
+    "fidelity": 0.86,
+    "differences": [
+      "The bottle is proportionally shorter and wider, with a reduced glass-to-sleeve height ratio.",
+      "The silicone sleeve is a lighter grey."
+    ],
+    "kept": false
+  },
+  {
+    "name": "scene_3",
+    "prompt": "Bright marble kitchen counter with natural window light, fresh wildflowers nearby, clean premium natural setting",
+    "fidelity": 0.92,
+    "differences": [
+      "The grey sleeve appears slightly lighter, likely due to lighting and viewpoint rather than a visible product change."
+    ],
+    "kept": true
+  }
+]

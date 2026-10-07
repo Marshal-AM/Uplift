@@ -1,0 +1,252 @@
+[
+  {
+    "id": "01a11492-566c-733e-8d0c-84cc33325b9e",
+    "taskId": "01a11492-5666-7460-847c-0b4ca2f73579",
+    "createdAt": "2026-10-07T04:14:57.125Z",
+    "updatedAt": "2026-10-07T04:14:57.126Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "CREATED"
+  },
+  {
+    "id": "01a11492-566c-733e-8d0c-897022235c73",
+    "taskId": "01a11492-5666-7460-847c-0b4ca2f73579",
+    "createdAt": "2026-10-07T04:14:57.126Z",
+    "updatedAt": "2026-10-07T04:14:57.126Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "READY"
+  },
+  {
+    "id": "01a11492-63d6-76ef-b206-1475339dd072",
+    "taskId": "01a11492-5666-7460-847c-0b4ca2f73579",
+    "createdAt": "2026-10-07T04:15:00.566Z",
+    "updatedAt": "2026-10-07T04:15:00.566Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+      "coworker": {
+        "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+        "name": "Marcus",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-bcdc-751a-b374-e54bbbecaed1/image-marcus-s4wcQPRZ5tjLMusS6bEmuKcO6Ur1WH.png",
+        "slug": "marcus-pricing-and-promotions-strategist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+    "coworker": {
+      "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+      "name": "Marcus",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-bcdc-751a-b374-e54bbbecaed1/image-marcus-s4wcQPRZ5tjLMusS6bEmuKcO6Ur1WH.png",
+      "slug": "marcus-pricing-and-promotions-strategist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "On it.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11492-7fc5-741f-8b5d-86788daf9c6d",
+    "taskId": "01a11492-5666-7460-847c-0b4ca2f73579",
+    "createdAt": "2026-10-07T04:15:07.717Z",
+    "updatedAt": "2026-10-07T04:15:07.717Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+      "coworker": {
+        "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+        "name": "Marcus",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-bcdc-751a-b374-e54bbbecaed1/image-marcus-s4wcQPRZ5tjLMusS6bEmuKcO6Ur1WH.png",
+        "slug": "marcus-pricing-and-promotions-strategist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+    "coworker": {
+      "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+      "name": "Marcus",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-bcdc-751a-b374-e54bbbecaed1/image-marcus-s4wcQPRZ5tjLMusS6bEmuKcO6Ur1WH.png",
+      "slug": "marcus-pricing-and-promotions-strategist"
+    },
+    "sokoBotId": null,
+    "transactionId": "01a11492-7fbc-7160-8c74-152d5f2829eb",
+    "credits": 125,
+    "comment": "Payment requested: 1.25 credits.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11493-0a65-75c3-8d10-15b182c80da0",
+    "taskId": "01a11492-5666-7460-847c-0b4ca2f73579",
+    "createdAt": "2026-10-07T04:15:43.205Z",
+    "updatedAt": "2026-10-07T04:15:43.205Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+      "coworker": {
+        "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+        "name": "Marcus",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-bcdc-751a-b374-e54bbbecaed1/image-marcus-s4wcQPRZ5tjLMusS6bEmuKcO6Ur1WH.png",
+        "slug": "marcus-pricing-and-promotions-strategist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+    "coworker": {
+      "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+      "name": "Marcus",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-bcdc-751a-b374-e54bbbecaed1/image-marcus-s4wcQPRZ5tjLMusS6bEmuKcO6Ur1WH.png",
+      "slug": "marcus-pricing-and-promotions-strategist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Chainlink verification: **PASS** · 96/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11494-df4f-7558-942c-521a9a8e97bf",
+    "taskId": "01a11492-5666-7460-847c-0b4ca2f73579",
+    "createdAt": "2026-10-07T04:17:43.247Z",
+    "updatedAt": "2026-10-07T04:17:43.247Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+      "coworker": {
+        "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+        "name": "Marcus",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-bcdc-751a-b374-e54bbbecaed1/image-marcus-s4wcQPRZ5tjLMusS6bEmuKcO6Ur1WH.png",
+        "slug": "marcus-pricing-and-promotions-strategist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+    "coworker": {
+      "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+      "name": "Marcus",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-bcdc-751a-b374-e54bbbecaed1/image-marcus-s4wcQPRZ5tjLMusS6bEmuKcO6Ur1WH.png",
+      "slug": "marcus-pricing-and-promotions-strategist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Ready to publish these changes:\n\n- **discount code** TTSD20: 20% this product only (2026-11-09 → 2026-11-12)\n- **discount code** TTBF30: 25% this product only (2026-11-26 → 2026-11-30)\n- **discount code** TTXMAS15: 15% this product only (2026-12-15 → 2026-12-24)\n\nFull diff attached (`changes.md`, change hash `c5deb901c6f2b659`).\nMove this Task to **Ready** (or reply **approve**) to publish.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "APPROVAL_REQUIRED"
+  },
+  {
+    "id": "01a11495-63af-772a-a7c1-25804717c095",
+    "taskId": "01a11492-5666-7460-847c-0b4ca2f73579",
+    "createdAt": "2026-10-07T04:18:17.135Z",
+    "updatedAt": "2026-10-07T04:18:17.135Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Decline: this Task was created twice by mistake. I don't want these changes.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11495-6a56-7720-9cf9-ba07df670257",
+    "taskId": "01a11492-5666-7460-847c-0b4ca2f73579",
+    "createdAt": "2026-10-07T04:18:18.838Z",
+    "updatedAt": "2026-10-07T04:18:18.838Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+      "coworker": {
+        "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+        "name": "Marcus",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-bcdc-751a-b374-e54bbbecaed1/image-marcus-s4wcQPRZ5tjLMusS6bEmuKcO6Ur1WH.png",
+        "slug": "marcus-pricing-and-promotions-strategist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+    "coworker": {
+      "id": "01a11127-bcdc-751a-b374-e54bbbecaed1",
+      "name": "Marcus",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-bcdc-751a-b374-e54bbbecaed1/image-marcus-s4wcQPRZ5tjLMusS6bEmuKcO6Ur1WH.png",
+      "slug": "marcus-pricing-and-promotions-strategist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Noted. Reply **approve** to publish, or cancel the Task to keep your store unchanged.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  }
+]

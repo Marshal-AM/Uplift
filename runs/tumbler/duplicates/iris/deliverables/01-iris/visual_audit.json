@@ -1,0 +1,47 @@
+{
+  "audits": [
+    {
+      "shot_type": "hero",
+      "has_text_overlay": false,
+      "issues": [],
+      "width": 2048,
+      "height": 2048,
+      "duplicate_of": null
+    },
+    {
+      "shot_type": "lifestyle",
+      "has_text_overlay": false,
+      "issues": [
+        "Busy background slightly competes with product"
+      ],
+      "width": 2048,
+      "height": 2048,
+      "duplicate_of": null
+    },
+    {
+      "shot_type": "lifestyle",
+      "has_text_overlay": false,
+      "issues": [],
+      "width": 1856,
+      "height": 2304,
+      "duplicate_of": null
+    },
+    {
+      "shot_type": "lifestyle",
+      "has_text_overlay": false,
+      "issues": [],
+      "background": "wooden desk with laptop, notebook, plant, and mouse in a bright indoor workspace",
+      "lighting_ok": true,
+      "sharp": true,
+      "has_watermark": false,
+      "width": 2048,
+      "height": 2048,
+      "duplicate_of": null
+    }
+  ],
+  "missing_shot_types": [
+    "angle",
+    "detail",
+    "scale"
+  ]
+}

@@ -1,0 +1,762 @@
+[
+  {
+    "id": "01a11487-7375-74f8-a7fb-645a024373d8",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:03:03.665Z",
+    "updatedAt": "2026-10-07T04:03:03.665Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "CREATED"
+  },
+  {
+    "id": "01a11487-7375-74f8-a7fb-6ba9241b9bea",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:03:03.666Z",
+    "updatedAt": "2026-10-07T04:03:03.665Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "READY"
+  },
+  {
+    "id": "01a11487-7a8e-75ee-b193-5a986e122726",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:03:05.486Z",
+    "updatedAt": "2026-10-07T04:03:05.486Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Hi, I'm Nora. Reading your request…",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11487-9cca-7349-a5c0-79eda5f7aead",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:03:14.250Z",
+    "updatedAt": "2026-10-07T04:03:14.250Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "**Plan for Glass Water Bottle Borosilicate 550ml Cork Stopper**\n\nCreate launch content for the GB-550 glass bottle aimed at US shoppers, including a product-page FAQ, a comparison versus rival glass bottles, and a blog article, then run a compliance check before publishing. Key facts: 550 ml borosilicate glass, natural cork stopper, grey silicone sleeve, BPA-free, dishwasher-safe glass (hand-wash cork), not for hot or carbonated drinks, priced at 28 USD.\n\n| Specialist | Units | Credits |\n|---|---|---|\n| Quinn | 2 | 1.0 |\n| Kai | 1 | 1.25 |\n| Rafael | 1 | 1.25 |\n| Priya | 1 | 1.5 |\n| Marcus | 1 | 1.25 |\n| Clara | 1 | 2.0 |\n| Iris | 1 | 2.5 |\n| Oskar | 1 | 1.5 |\n| Leo | 1 | 2.0 |\n| Sasha | 1 | 1.5 |\n| Ruth | 1 | 0.25 |\n| **At most** | | **16.0** |\n\nYou pay only for the specialists whose work passes Chainlink's checks: I'll show the final price (at most **16.0** credits) when the work is done. Nothing changes in your store until you approve the final changes.\n\nMove this Task to **Ready** (or reply **approve**) to start, or reply with changes.\n\n```json\n{\"agents\": [{\"role\": \"quinn\", \"credits\": 1.0}, {\"role\": \"kai\", \"credits\": 1.25}, {\"role\": \"rafael\", \"credits\": 1.25}, {\"role\": \"priya\", \"credits\": 1.5}, {\"role\": \"marcus\", \"credits\": 1.25}, {\"role\": \"clara\", \"credits\": 2.0}, {\"role\": \"iris\", \"credits\": 2.5}, {\"role\": \"oskar\", \"credits\": 1.5}, {\"role\": \"leo\", \"credits\": 2.0}, {\"role\": \"sasha\", \"credits\": 1.5}, {\"role\": \"ruth\", \"credits\": 0.25}], \"total\": 16.0, \"plan_hash\": \"d736c6cb8ba7e9f2301db0fce2b794374d0e0ef2dd167d332e3ed853df8fc6dc\"}\n```",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "APPROVAL_REQUIRED"
+  },
+  {
+    "id": "01a11488-72b6-775b-bd4f-85f24ba3ac90",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:04:09.015Z",
+    "updatedAt": "2026-10-07T04:04:09.015Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "approve",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11488-773d-729d-a6e8-9b7dd0e31925",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:04:10.173Z",
+    "updatedAt": "2026-10-07T04:04:10.173Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Approved — starting the work.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11489-1bc8-759f-bbb1-d9348b206386",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:04:52.296Z",
+    "updatedAt": "2026-10-07T04:04:52.296Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Quinn delivered · Chainlink: **PASS** 95/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11489-567f-725e-bafa-d508d931a97a",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:05:07.327Z",
+    "updatedAt": "2026-10-07T04:05:07.327Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Kai delivered · Chainlink: **PASS** 100/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a1148a-09e3-7309-bae4-89b3141a24ae",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:05:53.251Z",
+    "updatedAt": "2026-10-07T04:05:53.251Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Oskar delivered · Chainlink: **PASS** 99/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a1148a-9a47-768d-8c72-6af2fce53424",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:06:30.215Z",
+    "updatedAt": "2026-10-07T04:06:30.215Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Rafael delivered · Chainlink: **PASS** 91.1/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a1148b-0ab1-766a-8cbd-3dd01f427cc1",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:06:58.993Z",
+    "updatedAt": "2026-10-07T04:06:58.993Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Marcus delivered · Chainlink: **PASS** 98/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a1148c-b4ed-746d-abf5-c0c875012ce8",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:08:48.109Z",
+    "updatedAt": "2026-10-07T04:08:48.109Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Priya delivered · Chainlink: **PASS** 90.1/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a1148d-f5aa-731b-b062-a4cbfe8cf315",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:10:10.218Z",
+    "updatedAt": "2026-10-07T04:10:10.218Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Clara delivered · Chainlink: **PASS** 76.5/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a1148e-4bc1-7378-8a96-95d978953d0c",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:10:32.257Z",
+    "updatedAt": "2026-10-07T04:10:32.257Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Iris delivered · Chainlink: **PASS** 83.8/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a1148e-d25b-748e-ac26-183a2c5d4461",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:11:06.716Z",
+    "updatedAt": "2026-10-07T04:11:06.716Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Sasha delivered · Chainlink: **PASS** 100/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11492-87d4-73fb-a307-34bc93586610",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:15:09.780Z",
+    "updatedAt": "2026-10-07T04:15:09.780Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Leo delivered · Chainlink: **PASS** 100/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11492-e817-74cb-bfa6-fcc2d4cbc235",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:15:34.423Z",
+    "updatedAt": "2026-10-07T04:15:34.423Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Ruth delivered · Chainlink: **PASS** 99/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11492-ea00-768e-bd8f-0f1b11632fd8",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:15:34.912Z",
+    "updatedAt": "2026-10-07T04:15:34.912Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "**The work is done.** Your price is the specialists I used:\n\n| Specialist | Credits |\n|---|---|\n| Kai | 1.25 |\n| Leo | 2.0 |\n| Iris | 2.5 |\n| Clara | 2.0 |\n| Oskar | 1.5 |\n| Priya | 1.5 |\n| Quinn (before audit) | 0.5 |\n| Sasha | 1.5 |\n| Marcus | 1.25 |\n| Rafael | 1.25 |\n| Ruth | 0.25 |\n| Quinn (after report) | 0.5 |\n| **Total** | **16.0** |\n\n(Quoted at most 16.0.)",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11492-ecf7-77bf-9d36-2bc45c628819",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:15:35.671Z",
+    "updatedAt": "2026-10-07T04:15:35.671Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": "01a11492-ecf0-75eb-a985-75d8d7e663fa",
+    "credits": 1600,
+    "comment": "Payment requested: 16.0 credits.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11492-f083-71cc-88a5-571a93235ec1",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:15:36.579Z",
+    "updatedAt": "2026-10-07T04:15:36.579Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "**12 changes ready** (projected core listing score 72 → 72 of 95):\n\n- **faq**: set\n- **comparison**: set\n- **blog article** (unpublished): Reusable Glass Water Bottles: Why the Borosilicate 550ml Cork Stopper Stands Out\n- **images**: add 3\n- **alt text**: update 4 images\n- **images**: reorder\n- **descriptionHtml**: “Imagine filling a clear glass water bottle that feels cool in your hand and keeps every si…” → “Imagine reaching for clear water that tastes exactly as it should, carried in a reusable g…”\n- **seo**: “title: Glass Water Bottle Borosilicate 550ml Cork · description: Carry a clear 550ml boros…” → “description: Reusable glass water bottles in 550 ml borosilicate glass with natural cork a…”\n- **title**: “Glass Water Bottle Borosilicate 550ml Cork Stopper” → “Reusable Glass Water Bottles 550 Ml Borosilicate Glass”\n- **tags**: add reusable glass water bottles, cork stopper water bottle, bpa free glass bottle, pure taste water bottle, natural cork bottle\n- **tags**: add bpa free water bottle\n- **discount code** LAUNCHGLASS20: 20% this product only (2026-10-15 → 2026-11-10)\n- **discount code** GLASS11: 25% this product only (2026-11-11 → 2026-11-12)\n- **discount code** CORKGIFT15: 15% this product only (2026-12-01 → 2026-12-24)\n\nFull diff attached (`changes.md`, change hash `ed46acfd932883d9`). Ads stay paused and the blog article stays unpublished.\n\nMove this Task to **Ready** (or reply **approve**) to publish.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "APPROVAL_REQUIRED"
+  },
+  {
+    "id": "01a11493-4deb-71df-8449-936ff5110f48",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:16:00.492Z",
+    "updatedAt": "2026-10-07T04:16:00.492Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "approve",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11493-51b2-725f-b64e-5a7d1d577375",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:16:01.458Z",
+    "updatedAt": "2026-10-07T04:16:01.458Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Approved — Chainlink is publishing your changes.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11495-9164-7718-ad49-3060b791d7dd",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:18:28.839Z",
+    "updatedAt": "2026-10-07T04:18:28.839Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Quinn delivered · Chainlink: **PASS** 95/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11495-9aac-76bc-a203-b090335b1c2c",
+    "taskId": "01a11487-7371-70fa-8db1-bdb027e2a383",
+    "createdAt": "2026-10-07T04:18:31.212Z",
+    "updatedAt": "2026-10-07T04:18:31.212Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "coworker": {
+        "id": "01a11127-9340-73e7-b726-71e826317a4c",
+        "name": "Nora",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+        "slug": "nora-uplift-lead"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9340-73e7-b726-71e826317a4c",
+    "coworker": {
+      "id": "01a11127-9340-73e7-b726-71e826317a4c",
+      "name": "Nora",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9340-73e7-b726-71e826317a4c/image-nora-TMpC20DNahE0jclMhw5w1BZZ6HHcIY.png",
+      "slug": "nora-uplift-lead"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "**Done.** Published 12 changes. Core listing score now 77/95.\n\n**Listing score 78.0/100** (was 76.0)\n\n- [high] Rebuild trust signals with guarantees, reviews integration, and social proof sections → leo\n- [high] Restructure catalog feed, collections, and product groupings for better navigation → oskar\n- [medium] Rewrite key product copy and CTAs to strengthen persuasion and benefits → clara\n\nEverything is in `uplift-launch-pack.zip`.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "COMPLETED"
+  }
+]

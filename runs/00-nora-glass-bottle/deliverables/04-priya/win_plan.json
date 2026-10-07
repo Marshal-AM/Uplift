@@ -1,0 +1,27 @@
+[
+  {
+    "finding_id": "love:material",
+    "action_type": "listing claim",
+    "action": "Highlight borosilicate glass for pure taste and no plastic, ideal for fridge storage."
+  },
+  {
+    "finding_id": "complaint:durability",
+    "action_type": "proof image",
+    "action": "Show drop-test photos of borosilicate with protective sleeve or cork base."
+  },
+  {
+    "finding_id": "love:taste",
+    "action_type": "ad angle",
+    "action": "Ads emphasizing water tastes fresher from glass vs steel metallic aftertaste."
+  },
+  {
+    "finding_id": "wish:insulation",
+    "action_type": "product improvement",
+    "action": "Consider optional insulated sleeve since full double-wall not native."
+  },
+  {
+    "finding_id": "complaint:condensation",
+    "action_type": "FAQ",
+    "action": "FAQ: Pair with sleeve to reduce sweating on cold water."
+  }
+]

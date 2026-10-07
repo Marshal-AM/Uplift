@@ -1,0 +1,439 @@
+[
+  {
+    "style": "benefit-led and concise",
+    "score": {
+      "items": {
+        "title_length": 5,
+        "seo_title_length": 4,
+        "seo_description_length": 0,
+        "primary_in_title": 5,
+        "primary_in_seo_title": 3,
+        "primary_in_first_100": 0,
+        "secondary_coverage": 0,
+        "objections_answered": 0,
+        "structure": 4,
+        "grounded": 7.0
+      },
+      "total": 28.0,
+      "grounded_ratio": 1.0
+    },
+    "title": "Reusable Glass Water Bottles Borosilicate 550 Ml Cork",
+    "seo_title": "Reusable Glass Water Bottles 550 Ml Borosilicate",
+    "seo_description": "Reusable glass water bottles in borosilicate glass hold 550 ml of pure tasting water. Natural cork stopper and grey silicone sleeve keep it simple and BPA free.",
+    "handle": "reusable-glass-water-bottles-borosilicate-550ml",
+    "tags": [
+      "reusable glass water bottles",
+      "borosilicate glass bottle",
+      "cork stopper water bottle",
+      "550ml glass bottle",
+      "bpa free glass bottle",
+      "pure taste water bottle",
+      "borosilicate glass bottles with lids",
+      "natural cork bottle",
+      "reusable glass water bottle with silicone sleeve",
+      "clear glass bottle stopper",
+      "natural cork bottle stopper"
+    ],
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Enjoy clean pure taste every day with this reusable glass water bottle made for everyday carrying.",
+        "fact_ids": [
+          "F10",
+          "F2",
+          "F5"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Why You Will Love It",
+        "fact_ids": []
+      },
+      {
+        "type": "li",
+        "text": "Borosilicate glass delivers clear pure taste without plastic flavors.",
+        "fact_ids": [
+          "F2",
+          "F5",
+          "F10"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Natural cork stopper seals simply and stays free of extra materials.",
+        "fact_ids": [
+          "F3",
+          "F5"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Grey silicone sleeve adds grip and protection for daily use.",
+        "fact_ids": [
+          "F4"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "550 ml size fits most bags so you can bring water anywhere.",
+        "fact_ids": [
+          "F1",
+          "F11"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Simple Specs",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Capacity is 550 ml. Material is borosilicate glass with a natural cork stopper and grey silicone sleeve. All materials are BPA free. Price is 28 USD.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F3",
+          "F4",
+          "F5",
+          "F6"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Everyday Uses",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Carry this reusable glass water bottle for work, walks, or trips since the 550 ml size fits most bags.",
+        "fact_ids": [
+          "F10",
+          "F1",
+          "F11"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Why It Feels Safe And Solid",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Borosilicate glass and BPA free materials support everyday safety and a pure taste. The grey silicone sleeve helps durability during normal handling.",
+        "fact_ids": [
+          "F2",
+          "F5",
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Easy Care",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "The glass is dishwasher safe. Hand wash the cork. Avoid hot drinks or carbonated drinks.",
+        "fact_ids": [
+          "F7",
+          "F8",
+          "F9"
+        ]
+      }
+    ]
+  },
+  {
+    "style": "story-led and vivid",
+    "score": {
+      "items": {
+        "title_length": 5,
+        "seo_title_length": 4,
+        "seo_description_length": 4,
+        "primary_in_title": 5,
+        "primary_in_seo_title": 3,
+        "primary_in_first_100": 0,
+        "secondary_coverage": 0,
+        "objections_answered": 0,
+        "structure": 4,
+        "grounded": 7.0
+      },
+      "total": 32.0,
+      "grounded_ratio": 1.0
+    },
+    "title": "Reusable Glass Water Bottles 550 Ml Borosilicate Glass",
+    "seo_title": "Reusable Glass Water Bottles 550ml Borosilicate",
+    "seo_description": "Reusable glass water bottles in 550 ml borosilicate glass with natural cork and grey silicone sleeve. BPA free for pure taste. Glass dishwasher safe.",
+    "handle": "reusable-glass-water-bottles-550ml-borosilicate",
+    "tags": [
+      "reusable glass water bottles",
+      "borosilicate glass bottle",
+      "cork stopper water bottle",
+      "550ml glass bottle",
+      "bpa free glass bottle",
+      "pure taste water bottle",
+      "natural cork bottle"
+    ],
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Imagine reaching for clear water that tastes exactly as it should, carried in a reusable glass water bottle that slips easily into your day.",
+        "fact_ids": [
+          "F10",
+          "F5",
+          "F1"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Why You Will Love Carrying It",
+        "fact_ids": []
+      },
+      {
+        "type": "li",
+        "text": "Borosilicate glass keeps every sip pure and free of unwanted flavors.",
+        "fact_ids": [
+          "F2",
+          "F5"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Natural cork stopper seals simply while the grey silicone sleeve adds a soft grip.",
+        "fact_ids": [
+          "F3",
+          "F4"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "The 550 ml size fits most bags so you stay hydrated without extra bulk.",
+        "fact_ids": [
+          "F1",
+          "F11"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What Is Inside",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "This reusable glass water bottle holds 550 ml of borosilicate glass, finished with a natural cork stopper and grey silicone sleeve, all BPA free, priced at 28 USD.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F3",
+          "F4",
+          "F5",
+          "F6",
+          "F10"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Everyday Moments It Suits",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Take it to the office, on walks, or wherever a clear glass bottle with stopper belongs, remembering it is not for hot drinks or carbonated drinks.",
+        "fact_ids": [
+          "F9",
+          "F10",
+          "F11"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Why It Feels Safe And Solid",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "BPA free materials and sturdy borosilicate glass support everyday reuse, while the compact 550 ml design travels well in most bags.",
+        "fact_ids": [
+          "F5",
+          "F2",
+          "F1",
+          "F11"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Simple Care That Lasts",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "The glass is dishwasher safe and you hand wash the cork to keep everything ready for the next fill.",
+        "fact_ids": [
+          "F7",
+          "F8"
+        ]
+      }
+    ]
+  },
+  {
+    "style": "spec-led and precise",
+    "score": {
+      "items": {
+        "title_length": 5,
+        "seo_title_length": 4,
+        "seo_description_length": 0,
+        "primary_in_title": 5,
+        "primary_in_seo_title": 3,
+        "primary_in_first_100": 0,
+        "secondary_coverage": 0,
+        "objections_answered": 0,
+        "structure": 4,
+        "grounded": 7.0
+      },
+      "total": 28.0,
+      "grounded_ratio": 1.0
+    },
+    "title": "Reusable Glass Water Bottles 550 Ml Borosilicate Glass",
+    "seo_title": "Reusable Glass Water Bottles 550 Ml Borosilicate",
+    "seo_description": "Shop this 550 ml reusable glass water bottle in borosilicate glass with natural cork stopper and grey silicone sleeve. BPA free for pure taste that fits most bags.",
+    "handle": "reusable-glass-water-bottles-550-ml-borosilicate",
+    "tags": [
+      "reusable glass water bottles",
+      "borosilicate glass bottle",
+      "cork stopper water bottle",
+      "550ml glass bottle",
+      "bpa free glass bottle",
+      "pure taste water bottle",
+      "borosilicate glass bottles with lids",
+      "natural cork bottle",
+      "reusable glass water bottle with silicone sleeve",
+      "clear glass bottle stopper",
+      "natural cork bottle stopper"
+    ],
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Enjoy pure taste from this reusable glass water bottle in 550 ml borosilicate glass finished with a natural cork stopper and grey silicone sleeve.",
+        "fact_ids": [
+          "F10",
+          "F1",
+          "F2",
+          "F3",
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Key Benefits",
+        "fact_ids": []
+      },
+      {
+        "type": "li",
+        "text": "550 ml capacity fits most bags for convenient daily use.",
+        "fact_ids": [
+          "F1",
+          "F11"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Borosilicate glass delivers clear pure taste.",
+        "fact_ids": [
+          "F2"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Natural cork stopper seals simply and authentically.",
+        "fact_ids": [
+          "F3"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Grey silicone sleeve adds grip and protection.",
+        "fact_ids": [
+          "F4"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "BPA free materials keep water clean.",
+        "fact_ids": [
+          "F5"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Exact Specs",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Capacity is 550 ml. Material is borosilicate glass. Stopper is natural cork. Sleeve is grey silicone. Materials are BPA free. Price is 28 USD.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F3",
+          "F4",
+          "F5",
+          "F6"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Everyday Use",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "This reusable glass water bottle in the 550 ml size fits most bags so you can carry water anywhere.",
+        "fact_ids": [
+          "F10",
+          "F1",
+          "F11"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Why You Can Trust It",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Borosilicate glass and BPA free materials support safety and authentic pure taste. The natural cork stopper and dishwasher safe glass add durability you can rely on.",
+        "fact_ids": [
+          "F2",
+          "F5",
+          "F3",
+          "F7"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Simple Care",
+        "fact_ids": []
+      },
+      {
+        "type": "li",
+        "text": "Glass is dishwasher safe.",
+        "fact_ids": [
+          "F7"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Hand wash the cork.",
+        "fact_ids": [
+          "F8"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Avoid hot drinks or carbonated drinks.",
+        "fact_ids": [
+          "F9"
+        ]
+      }
+    ]
+  }
+]

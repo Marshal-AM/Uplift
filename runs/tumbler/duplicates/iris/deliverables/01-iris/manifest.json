@@ -1,0 +1,136 @@
+{
+  "result_hash": "b2371481e12b66c1f2a667939c31ef9e7bbbaf8fbb7fcb7d7a509196f5891dde",
+  "at": "2026-10-07T04:16:21+00:00",
+  "agent": "Iris",
+  "artifacts": [
+    {
+      "mime": "image/jpeg",
+      "name": "store.jpg",
+      "sha256": "5e530b71d0599743353c322d7606cd252be2af568a402c8d55f8b699d4ea4571",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/5e530b71d0599743353c322d7606cd252be2af568a402c8d55f8b699d4ea4571/store.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "google_shopping.jpg",
+      "sha256": "d4b7f138758de2b082cbd4365bf853ffd76020a24836d6d213d0ed37d1e3c29b",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d4b7f138758de2b082cbd4365bf853ffd76020a24836d6d213d0ed37d1e3c29b/google_shopping.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "clean_hero.jpg",
+      "sha256": "8cdf106f756297d7685ca33e2e00c7540eecb5c85f1bb2f914bf70a36406fbaa",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/8cdf106f756297d7685ca33e2e00c7540eecb5c85f1bb2f914bf70a36406fbaa/clean_hero.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "scene_1.jpg",
+      "sha256": "4f26254dda408ec511dabcd83ab54218c6da54c25287012fd78ee176dd1545d9",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/4f26254dda408ec511dabcd83ab54218c6da54c25287012fd78ee176dd1545d9/scene_1.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "scene_2.jpg",
+      "sha256": "625e529b5115e366d44518a1419621984f01a4e4027f9e52bfc8a5078838e777",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/625e529b5115e366d44518a1419621984f01a4e4027f9e52bfc8a5078838e777/scene_2.jpg"
+    },
+    {
+      "mime": "application/json",
+      "name": "visual_audit.json",
+      "sha256": "32f1b5531ee88524ea30c23d66083677df20c43d961c0d0feb795c6bd78db231",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/32f1b5531ee88524ea30c23d66083677df20c43d961c0d0feb795c6bd78db231/visual_audit.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "alt_text.json",
+      "sha256": "ca3c0e109a50c40d8a0eb731ee60f2ecec4c73709835c11dfe32408d82b7590a",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/ca3c0e109a50c40d8a0eb731ee60f2ecec4c73709835c11dfe32408d82b7590a/alt_text.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "order.json",
+      "sha256": "a3a0707f52c643d1149ea5c979cf97ba5d43cd560aa9bd22234a6f4d32b1750b",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a3a0707f52c643d1149ea5c979cf97ba5d43cd560aa9bd22234a6f4d32b1750b/order.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "fidelity.json",
+      "sha256": "0ba42b6d8aaaaf2bfbfa4e9aac11dc118719505a0dbc53136e1a36b37a2806cd",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/0ba42b6d8aaaaf2bfbfa4e9aac11dc118719505a0dbc53136e1a36b37a2806cd/fidelity.json"
+    }
+  ],
+  "changeset": [
+    {
+      "media": [
+        {
+          "alt": "Matte black Travel Coffee Tumbler: 400ml Stainless Steel TT-400 with light bamboo lid and black slide spout on white backgrou",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/8cdf106f756297d7685ca33e2e00c7540eecb5c85f1bb2f914bf70a36406fbaa/clean_hero.jpg"
+        },
+        {
+          "alt": "Travel Coffee Tumbler TT-400, black 400ml stainless steel cup with wood lid, in car cup holder.",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/4f26254dda408ec511dabcd83ab54218c6da54c25287012fd78ee176dd1545d9/scene_1.jpg"
+        },
+        {
+          "alt": "Black matte Travel Coffee Tumbler: 400ml Stainless Steel TT-400 with wood lid on a wooden desk beside an open laptop.",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/625e529b5115e366d44518a1419621984f01a4e4027f9e52bfc8a5078838e777/scene_2.jpg"
+        }
+      ],
+      "op": "media.add",
+      "product_id": "gid://shopify/Product/8785736237217"
+    },
+    {
+      "files": [
+        {
+          "alt": "Black matte 400ml stainless steel travel coffee tumbler TT-400 with bamboo lid and black slider on white background",
+          "id": "gid://shopify/MediaImage/38179565928609"
+        },
+        {
+          "alt": "Travel Coffee Tumbler: 400ml Stainless Steel TT-400 in a car cup holder amid dashboard and traffic.",
+          "id": "gid://shopify/MediaImage/38179565961377"
+        },
+        {
+          "alt": "Matte black 400ml stainless steel travel coffee tumbler TT-400 with wooden lid on a wooden counter beside coffee beans",
+          "id": "gid://shopify/MediaImage/38179171532961"
+        },
+        {
+          "alt": "Travel Coffee Tumbler: 400ml Stainless Steel TT-400, black matte cup with wood lid, on a wooden desk beside a laptop and note",
+          "id": "gid://shopify/MediaImage/38179565994145"
+        }
+      ],
+      "op": "media.update_alt"
+    },
+    {
+      "moves": [
+        {
+          "id": "gid://shopify/MediaImage/38179171532961",
+          "newPosition": "2"
+        },
+        {
+          "id": "gid://shopify/MediaImage/38179565928609",
+          "newPosition": "4"
+        },
+        {
+          "id": "gid://shopify/MediaImage/38179565961377",
+          "newPosition": "5"
+        },
+        {
+          "id": "gid://shopify/MediaImage/38179565994145",
+          "newPosition": "6"
+        }
+      ],
+      "op": "media.reorder",
+      "product_id": "gid://shopify/Product/8785736237217"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "87317151b50bc9816a40be3537df2fa93e2288497f8b902b1e9cb312844c1ee0",
+  "job_or_task_id": "01a11492-566d-712f-ba08-7c735fe8f150",
+  "profile": "iris@5.0.0",
+  "role": "iris",
+  "self_checks": {},
+  "summary_md": "Audited 4 images · missing shot types: angle, detail, scale.\n\nAdded a clean white hero and 2 lifestyle scene(s), each checked against your original photo (fidelity ≥ 0.90). Exported 2 channel versions and wrote alt text for every image.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "97b5cf63858fe4d96f32a3b8d78d1b5b37e3a0169e58e0dcecf91b526896dc43",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/97b5cf63858fe4d96f32a3b8d78d1b5b37e3a0169e58e0dcecf91b526896dc43/verification_bundle.json"
+  }
+}

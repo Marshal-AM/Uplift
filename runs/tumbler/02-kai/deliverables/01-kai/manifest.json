@@ -1,0 +1,38 @@
+{
+  "result_hash": "0eff316b6600b7420fdb4d7f019fdcebea63b26f77f790860d6c444bcd2b6142",
+  "at": "2026-10-07T03:44:56+00:00",
+  "agent": "Kai",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "keyword_map.json",
+      "sha256": "f2de04a5ce2446992195cc57246fac6fa927b4e0cfa3ca7217e64365e1f976ee",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f2de04a5ce2446992195cc57246fac6fa927b4e0cfa3ca7217e64365e1f976ee/keyword_map.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "keyword_map.csv",
+      "sha256": "f1f8d16cfc7195469f7c174dd64228657cf396f94ca09b52a9e57303239c0ae0",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f1f8d16cfc7195469f7c174dd64228657cf396f94ca09b52a9e57303239c0ae0/keyword_map.csv"
+    },
+    {
+      "mime": "text/plain",
+      "name": "negatives.txt",
+      "sha256": "fb6f05f3cd5b297f5ec883d812654ef2f9e164cf8597ec591e74a5e7dface575",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/fb6f05f3cd5b297f5ec883d812654ef2f9e164cf8597ec591e74a5e7dface575/negatives.txt"
+    }
+  ],
+  "changeset": [],
+  "evidence": [],
+  "input_hash": "34d435006e8b1560135e693492a4e0a8856c10c4ac4472ea95654f9a8d7f4976",
+  "job_or_task_id": "01a11475-e632-75aa-99c7-a981b62ca517",
+  "profile": "kai@5.0.0",
+  "role": "kai",
+  "self_checks": {},
+  "summary_md": "**Primary keyword:** 400ml coffee tumbler (demand 54.2/100)\n\n**222 keywords** from Google autocomplete, related searches and questions, in 6 clusters for US.\n\n- 400ml capacity coffee tumblers → title\n- best recommendations for hot retention → blog\n- commuter and office coffee mugs → description\n- insulated travel coffee tumblers → seo_meta\n- leakproof spill proof coffee cups → ads_phrase\n- portable travel coffee tumblers with handle → ads_exact\n\n121 brand/irrelevant terms moved to negatives.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "9606f2e75a0fdc6ec5f8d8e9996b4e5712121116a30440ed4ec2409bfbc5acd3",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/9606f2e75a0fdc6ec5f8d8e9996b4e5712121116a30440ed4ec2409bfbc5acd3/verification_bundle.json"
+  }
+}

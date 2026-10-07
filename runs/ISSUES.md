@@ -61,3 +61,25 @@ Each entry: what happened, the evidence, the fix and where it landed. Times are 
 ## 10. Observation (not changed): generated scenes can show third-party marks
 - Iris's car cup-holder scene for the tumbler shows a car maker's emblem on the steering wheel. The product itself is
   faithful (fidelity 1.0). Worth a prompt note ("no logos or brand marks in the scene") in a later pass.
+
+## 11. Nora planned the whole team for a content-and-compliance request
+- **Seen:** Nora Task (final run, glass bottle) asked for "an FAQ, a comparison, a blog article, plus a compliance
+  check"; Nora planned all 11 specialists (ceiling 16.0 credits) instead of Leo and Ruth (plus Quinn). The plan was
+  approved before review, so the run went ahead as a complete all-specialist Nora flow.
+- **Cause:** the planner switches to the full flow when the request names many capabilities.
+- **Fix:** the planner chooses only the capabilities whose deliverables were asked for; `full_flow` only for launch /
+  overhaul / full optimization requests (the "6+ capabilities means everyone" shortcut is removed).
+
+## 12. Observation (not changed): Clara's title in the final Nora run
+- Clara's proposed title "Reusable Glass Water Bottles 550 Ml Borosilicate Glass" leads with a plural keyword and
+  Title Case turned "ml" into "Ml". It passed Chainlink (76.5) and was approved so the full flow could complete;
+  worth a follow-up so units keep their case and the title names the single product.
+
+## 13. Operator error: a duplicate wave B was launched (declined, nothing published)
+- **Seen:** a chained test command kept going after a failed `git pull --rebase` and, once its deploy wait timed
+  out, created a second set of wave B Tasks (Clara, Iris, Oskar, Leo, Marcus — `01a11492-…`, 9.25 credits).
+- **Handled:** all five were declined at their approval step, so no duplicate changes reached the store; no result
+  was submitted for them, so their escrow returns to the buyer after the deadline. Recorded under
+  `tumbler/duplicates/`.
+- **Lesson:** test chains stop on the first failed step (`set -e`), and Task launches check for an open Task with the
+  same brief first.

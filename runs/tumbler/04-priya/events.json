@@ -1,0 +1,190 @@
+[
+  {
+    "id": "01a11475-e649-762e-ac41-3e6011c66bb3",
+    "taskId": "01a11475-e641-70e4-b338-d6d60129fb48",
+    "createdAt": "2026-10-07T03:43:53.408Z",
+    "updatedAt": "2026-10-07T03:43:53.409Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "CREATED"
+  },
+  {
+    "id": "01a11475-e649-762e-ac41-414cc8e49b99",
+    "taskId": "01a11475-e641-70e4-b338-d6d60129fb48",
+    "createdAt": "2026-10-07T03:43:53.409Z",
+    "updatedAt": "2026-10-07T03:43:53.409Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "READY"
+  },
+  {
+    "id": "01a11475-f762-73f9-9bd2-3153ffc15f0a",
+    "taskId": "01a11475-e641-70e4-b338-d6d60129fb48",
+    "createdAt": "2026-10-07T03:43:57.794Z",
+    "updatedAt": "2026-10-07T03:43:57.794Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+      "coworker": {
+        "id": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+        "name": "Priya",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-b29a-75fc-b3fb-4e46be9a59a2/image-priya-golIJ5mmCJkhsevCPhsuUl1B0tR4we.png",
+        "slug": "priya-competitor-review-and-sentiment-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+    "coworker": {
+      "id": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+      "name": "Priya",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-b29a-75fc-b3fb-4e46be9a59a2/image-priya-golIJ5mmCJkhsevCPhsuUl1B0tR4we.png",
+      "slug": "priya-competitor-review-and-sentiment-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "On it.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11476-1434-75fe-addd-e5fbded9e302",
+    "taskId": "01a11475-e641-70e4-b338-d6d60129fb48",
+    "createdAt": "2026-10-07T03:44:05.172Z",
+    "updatedAt": "2026-10-07T03:44:05.172Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+      "coworker": {
+        "id": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+        "name": "Priya",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-b29a-75fc-b3fb-4e46be9a59a2/image-priya-golIJ5mmCJkhsevCPhsuUl1B0tR4we.png",
+        "slug": "priya-competitor-review-and-sentiment-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+    "coworker": {
+      "id": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+      "name": "Priya",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-b29a-75fc-b3fb-4e46be9a59a2/image-priya-golIJ5mmCJkhsevCPhsuUl1B0tR4we.png",
+      "slug": "priya-competitor-review-and-sentiment-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": "01a11476-142c-7713-bcab-36e44c70dbac",
+    "credits": 150,
+    "comment": "Payment requested: 1.5 credits.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a1147b-81f5-71bc-9b13-fb5605fea6ee",
+    "taskId": "01a11475-e641-70e4-b338-d6d60129fb48",
+    "createdAt": "2026-10-07T03:50:00.949Z",
+    "updatedAt": "2026-10-07T03:50:00.949Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+      "coworker": {
+        "id": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+        "name": "Priya",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-b29a-75fc-b3fb-4e46be9a59a2/image-priya-golIJ5mmCJkhsevCPhsuUl1B0tR4we.png",
+        "slug": "priya-competitor-review-and-sentiment-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+    "coworker": {
+      "id": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+      "name": "Priya",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-b29a-75fc-b3fb-4e46be9a59a2/image-priya-golIJ5mmCJkhsevCPhsuUl1B0tR4we.png",
+      "slug": "priya-competitor-review-and-sentiment-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Chainlink verification: **PASS** · 92/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a1147b-971f-70c4-b393-f6284935866b",
+    "taskId": "01a11475-e641-70e4-b338-d6d60129fb48",
+    "createdAt": "2026-10-07T03:50:06.367Z",
+    "updatedAt": "2026-10-07T03:50:06.367Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+      "coworker": {
+        "id": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+        "name": "Priya",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-b29a-75fc-b3fb-4e46be9a59a2/image-priya-golIJ5mmCJkhsevCPhsuUl1B0tR4we.png",
+        "slug": "priya-competitor-review-and-sentiment-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+    "coworker": {
+      "id": "01a11127-b29a-75fc-b3fb-4e46be9a59a2",
+      "name": "Priya",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-b29a-75fc-b3fb-4e46be9a59a2/image-priya-golIJ5mmCJkhsevCPhsuUl1B0tR4we.png",
+      "slug": "priya-competitor-review-and-sentiment-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "**530 competitor reviews** analysed.\n\n**Top complaints to win on:**\n- cleaning\n- lid\n- durability\n- insulation\n- leaks",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "COMPLETED"
+  }
+]

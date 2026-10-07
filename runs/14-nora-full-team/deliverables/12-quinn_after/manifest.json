@@ -1,0 +1,38 @@
+{
+  "result_hash": "f4a068eb98fe1476477cec8a18eb4fa42fdf34e979c55896e2d5b6c2b23e2366",
+  "at": "2026-10-07T04:18:15+00:00",
+  "agent": "Quinn",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "audit_report.json",
+      "sha256": "cfe6bc883e1dc7fc38d96bc376f7d58108adad690086b7405572de0b02002b58",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/cfe6bc883e1dc7fc38d96bc376f7d58108adad690086b7405572de0b02002b58/audit_report.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "audit_report.md",
+      "sha256": "41498dbbb7af874963a6542a01e417a340d1f9ba06187b46b093b186040c3f80",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/41498dbbb7af874963a6542a01e417a340d1f9ba06187b46b093b186040c3f80/audit_report.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "fix_plan.json",
+      "sha256": "476b80aee280a5ee773a0d5464b98a656add42b89510210ba9be7c97e579b5d4",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/476b80aee280a5ee773a0d5464b98a656add42b89510210ba9be7c97e579b5d4/fix_plan.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [],
+  "input_hash": "0ecf4e64ebdcb62c4036e5fa29d2251a6fa02e210234ee57ade9ec3ed63c794a",
+  "job_or_task_id": "01a11487-7371-70fa-8db1-bdb027e2a383:quinn_after",
+  "profile": "quinn@5.0.0",
+  "role": "quinn",
+  "self_checks": {},
+  "summary_md": "**Listing score 78.0/100** (was 76.0)\n\n- [high] Rebuild trust signals with guarantees, reviews integration, and social proof sections → leo\n- [high] Restructure catalog feed, collections, and product groupings for better navigation → oskar\n- [medium] Rewrite key product copy and CTAs to strengthen persuasion and benefits → clara",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "4fd0f4f3b621d3bed0e2295748ee899deb694d2719b983258054f2dfe420a76e",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/4fd0f4f3b621d3bed0e2295748ee899deb694d2719b983258054f2dfe420a76e/verification_bundle.json"
+  }
+}

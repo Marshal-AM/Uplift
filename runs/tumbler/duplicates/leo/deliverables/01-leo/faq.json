@@ -1,0 +1,67 @@
+[
+  {
+    "question": "What is the capacity of the Travel Coffee Tumbler TT-400?",
+    "answer": "The Travel Coffee Tumbler TT-400 holds 400 ml.",
+    "fact_ids": [
+      "f1"
+    ]
+  },
+  {
+    "question": "What material is the Travel Coffee Tumbler made from?",
+    "answer": "It is made of double-wall vacuum-insulated 18/8 stainless steel.",
+    "fact_ids": [
+      "f2"
+    ]
+  },
+  {
+    "question": "Does the tumbler affect the taste of coffee?",
+    "answer": "No, the ceramic-coated interior ensures coffee keeps its taste.",
+    "fact_ids": [
+      "f3"
+    ]
+  },
+  {
+    "question": "What kind of lid does the tumbler have?",
+    "answer": "It has a natural bamboo lid with a slide closure.",
+    "fact_ids": [
+      "f4"
+    ]
+  },
+  {
+    "question": "How long does the tumbler keep drinks hot or cold?",
+    "answer": "It keeps coffee hot for 6 hours and drinks cold for 12 hours.",
+    "fact_ids": [
+      "f5"
+    ]
+  },
+  {
+    "question": "Does the tumbler fit in car cup holders?",
+    "answer": "Yes, it fits most car cup holders.",
+    "fact_ids": [
+      "f6"
+    ]
+  },
+  {
+    "question": "How should I clean the Travel Coffee Tumbler?",
+    "answer": "It is hand-wash only.",
+    "fact_ids": [
+      "f7"
+    ]
+  },
+  {
+    "question": "How much does the Travel Coffee Tumbler cost?",
+    "answer": "The tumbler costs 26 USD.",
+    "fact_ids": [
+      "f8"
+    ]
+  },
+  {
+    "question": "Are stainless steel tumblers good for coffee?",
+    "answer": "Yes, this stainless steel tumbler has a ceramic-coated interior so coffee keeps its taste and vacuum insulation to maintain temperature.",
+    "fact_ids": [
+      "f2",
+      "f3",
+      "f5"
+    ]
+  }
+]

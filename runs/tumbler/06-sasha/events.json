@@ -1,0 +1,190 @@
+[
+  {
+    "id": "01a11475-e663-7399-bd75-de934628f0d2",
+    "taskId": "01a11475-e656-739e-9fbb-b05134106d2b",
+    "createdAt": "2026-10-07T03:43:53.429Z",
+    "updatedAt": "2026-10-07T03:43:53.430Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "CREATED"
+  },
+  {
+    "id": "01a11475-e664-713f-8ace-5b6f01ae4506",
+    "taskId": "01a11475-e656-739e-9fbb-b05134106d2b",
+    "createdAt": "2026-10-07T03:43:53.430Z",
+    "updatedAt": "2026-10-07T03:43:53.430Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "READY"
+  },
+  {
+    "id": "01a11475-f321-7393-acd8-b5b610ca26f0",
+    "taskId": "01a11475-e656-739e-9fbb-b05134106d2b",
+    "createdAt": "2026-10-07T03:43:56.705Z",
+    "updatedAt": "2026-10-07T03:43:56.705Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+      "coworker": {
+        "id": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+        "name": "Sasha",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-fb87-77b5-8c96-94cf98d44c35/image-sasha-a0dCME8SXTn4IW6dNJ6CHZsFyvWwid.png",
+        "slug": "sasha-paid-ads-strategist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+    "coworker": {
+      "id": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+      "name": "Sasha",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-fb87-77b5-8c96-94cf98d44c35/image-sasha-a0dCME8SXTn4IW6dNJ6CHZsFyvWwid.png",
+      "slug": "sasha-paid-ads-strategist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "On it.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11476-1e0d-724a-a91b-b3e625bdd287",
+    "taskId": "01a11475-e656-739e-9fbb-b05134106d2b",
+    "createdAt": "2026-10-07T03:44:07.693Z",
+    "updatedAt": "2026-10-07T03:44:07.693Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+      "coworker": {
+        "id": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+        "name": "Sasha",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-fb87-77b5-8c96-94cf98d44c35/image-sasha-a0dCME8SXTn4IW6dNJ6CHZsFyvWwid.png",
+        "slug": "sasha-paid-ads-strategist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+    "coworker": {
+      "id": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+      "name": "Sasha",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-fb87-77b5-8c96-94cf98d44c35/image-sasha-a0dCME8SXTn4IW6dNJ6CHZsFyvWwid.png",
+      "slug": "sasha-paid-ads-strategist"
+    },
+    "sokoBotId": null,
+    "transactionId": "01a11476-1dfe-710e-a1e8-8b37fdb9e6d7",
+    "credits": 150,
+    "comment": "Payment requested: 1.5 credits.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11476-7f42-7218-a632-b3af27793eed",
+    "taskId": "01a11475-e656-739e-9fbb-b05134106d2b",
+    "createdAt": "2026-10-07T03:44:32.578Z",
+    "updatedAt": "2026-10-07T03:44:32.578Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+      "coworker": {
+        "id": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+        "name": "Sasha",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-fb87-77b5-8c96-94cf98d44c35/image-sasha-a0dCME8SXTn4IW6dNJ6CHZsFyvWwid.png",
+        "slug": "sasha-paid-ads-strategist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+    "coworker": {
+      "id": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+      "name": "Sasha",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-fb87-77b5-8c96-94cf98d44c35/image-sasha-a0dCME8SXTn4IW6dNJ6CHZsFyvWwid.png",
+      "slug": "sasha-paid-ads-strategist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Chainlink verification: **PASS** · 99/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11478-08ba-707c-85f1-b828a4e72397",
+    "taskId": "01a11475-e656-739e-9fbb-b05134106d2b",
+    "createdAt": "2026-10-07T03:46:13.307Z",
+    "updatedAt": "2026-10-07T03:46:13.307Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+      "coworker": {
+        "id": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+        "name": "Sasha",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-fb87-77b5-8c96-94cf98d44c35/image-sasha-a0dCME8SXTn4IW6dNJ6CHZsFyvWwid.png",
+        "slug": "sasha-paid-ads-strategist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+    "coworker": {
+      "id": "01a11127-fb87-77b5-8c96-94cf98d44c35",
+      "name": "Sasha",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-fb87-77b5-8c96-94cf98d44c35/image-sasha-a0dCME8SXTn4IW6dNJ6CHZsFyvWwid.png",
+      "slug": "sasha-paid-ads-strategist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "**Break-even CPA** 15.08 · **max CPC** 0.21 · **budget** 250.0/month\n\n\n\n6 keywords, 0 negatives, 15 headlines. Import the CSV in Google Ads Editor; everything starts paused.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "COMPLETED"
+  }
+]

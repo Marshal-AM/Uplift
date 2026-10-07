@@ -1,0 +1,112 @@
+{
+  "products": [
+    {
+      "domain": "mybkr.com",
+      "url": "https://mybkr.com/?srsltid=AU7gw4WlUczzdPh6A8pDxMT4i8upMgF5X9IBf7KUJLIAZs6gOScFJafo",
+      "title": "bkr Glass Water Bottle"
+    },
+    {
+      "domain": "boroux.com",
+      "url": "https://boroux.com/products/glass-water-bottle-16oz?srsltid=AU7gw4VopnoLYowvaLYhQ5v1ASqQTKPS1ztCT8uRirhUuJQYvs3XN52E",
+      "title": "Glass Water Bottle - 16 oz"
+    },
+    {
+      "domain": "wondrwood.com",
+      "url": "https://wondrwood.com/products/reusable-glass-water-bottle-550ml?srsltid=AU7gw4XzQ4ZuGonYMy7b1k9eSXBczFulk4hc0rty5DbTE3zAjqvB78jy",
+      "title": "Keep Vessel | 550ml Glass Bottle"
+    },
+    {
+      "domain": "swell.com",
+      "url": "https://www.swell.com/pages/glass-original-bottle?srsltid=AU7gw4VPUiXVHxumvVWytj6JtFvNmbOhnNULJxQ4JXLO3tS4kpScqGPy",
+      "title": "Glass Original Bottle | 18oz"
+    }
+  ],
+  "google_shopping": [
+    {
+      "title": "Bink 27oz Day Water Bottle Flip Cap",
+      "product_id": "14108752654918550195",
+      "seller": "Target",
+      "price": 26.0,
+      "rating": 4.8,
+      "rating_count": 51
+    },
+    {
+      "title": "Ello Clara 20oz Glass Water Bottle",
+      "product_id": "14650870089793329787",
+      "seller": "Walmart",
+      "price": 14.97,
+      "rating": 4.5,
+      "rating_count": 73
+    },
+    {
+      "title": "Archive Oceans Glass Water Bottle",
+      "product_id": "14042543194108439138",
+      "seller": "Barnes & Noble",
+      "price": 29.99,
+      "rating": null,
+      "rating_count": null
+    },
+    {
+      "title": "Real Simple Reusable Glass Carry Bottle 32oz with Silicone Base",
+      "product_id": "10030090981578631419",
+      "seller": "At Home",
+      "price": 24.99,
+      "rating": 4.5,
+      "rating_count": 2
+    },
+    {
+      "title": "Manna Pumpkin Push 32-oz. Glass Water Bottle, Pink",
+      "product_id": "4897187372382327839",
+      "seller": "Kohl's",
+      "price": 14.99,
+      "rating": null,
+      "rating_count": null
+    },
+    {
+      "title": "Bink Day Bottle",
+      "product_id": "14967867398975115171",
+      "seller": "Target",
+      "price": 26.0,
+      "rating": 4.8,
+      "rating_count": 225
+    },
+    {
+      "title": "Tal 24oz Glass Willow Water Bottle with Flip-up Straw and Handle",
+      "product_id": "5017187876633959455",
+      "seller": "Walmart",
+      "price": 12.97,
+      "rating": 4.7,
+      "rating_count": 21
+    },
+    {
+      "title": "Soma Glass Water Bottle",
+      "product_id": "3592267278571076126",
+      "seller": "Tarzian West for Housewares",
+      "price": 34.99,
+      "rating": 4.3,
+      "rating_count": 190
+    },
+    {
+      "title": "Enchante 20-oz. Glass Water Bottle with Decorative Topper & Silicone Boot, Green",
+      "product_id": "10906160924578429078",
+      "seller": "Kohl's",
+      "price": 14.99,
+      "rating": null,
+      "rating_count": null
+    },
+    {
+      "title": "Bink 21oz Day Water Bottle Carry Cap",
+      "product_id": "929904195484248074",
+      "seller": "Target",
+      "price": 22.0,
+      "rating": 4.2,
+      "rating_count": 13
+    }
+  ],
+  "brands": [
+    "BOROUX",
+    "S'well",
+    "Wondrwood",
+    "bkr"
+  ]
+}

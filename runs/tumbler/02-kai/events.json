@@ -1,0 +1,190 @@
+[
+  {
+    "id": "01a11475-e639-7159-9437-1861e7e2e60f",
+    "taskId": "01a11475-e632-75aa-99c7-a981b62ca517",
+    "createdAt": "2026-10-07T03:43:53.394Z",
+    "updatedAt": "2026-10-07T03:43:53.394Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "CREATED"
+  },
+  {
+    "id": "01a11475-e639-7159-9437-1edb6975eb8b",
+    "taskId": "01a11475-e632-75aa-99c7-a981b62ca517",
+    "createdAt": "2026-10-07T03:43:53.395Z",
+    "updatedAt": "2026-10-07T03:43:53.394Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "READY"
+  },
+  {
+    "id": "01a11475-f68a-76f5-9da6-da68bd419883",
+    "taskId": "01a11475-e632-75aa-99c7-a981b62ca517",
+    "createdAt": "2026-10-07T03:43:57.578Z",
+    "updatedAt": "2026-10-07T03:43:57.578Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+      "coworker": {
+        "id": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+        "name": "Kai",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9e4f-73d0-85cd-842aa3d279ed/image-kai-xwaYmzyfZxyBqKMhGqhoUtWjxPoG2x.png",
+        "slug": "kai-search-demand-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+    "coworker": {
+      "id": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+      "name": "Kai",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9e4f-73d0-85cd-842aa3d279ed/image-kai-xwaYmzyfZxyBqKMhGqhoUtWjxPoG2x.png",
+      "slug": "kai-search-demand-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "On it.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11476-1501-76dc-bdc8-f8d1a03f6f8d",
+    "taskId": "01a11475-e632-75aa-99c7-a981b62ca517",
+    "createdAt": "2026-10-07T03:44:05.377Z",
+    "updatedAt": "2026-10-07T03:44:05.377Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+      "coworker": {
+        "id": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+        "name": "Kai",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9e4f-73d0-85cd-842aa3d279ed/image-kai-xwaYmzyfZxyBqKMhGqhoUtWjxPoG2x.png",
+        "slug": "kai-search-demand-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+    "coworker": {
+      "id": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+      "name": "Kai",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9e4f-73d0-85cd-842aa3d279ed/image-kai-xwaYmzyfZxyBqKMhGqhoUtWjxPoG2x.png",
+      "slug": "kai-search-demand-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": "01a11476-14f9-755d-b5d7-ba37336ec367",
+    "credits": 125,
+    "comment": "Payment requested: 1.25 credits.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11477-1045-7609-b161-26fabe8d1810",
+    "taskId": "01a11475-e632-75aa-99c7-a981b62ca517",
+    "createdAt": "2026-10-07T03:45:09.701Z",
+    "updatedAt": "2026-10-07T03:45:09.701Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+      "coworker": {
+        "id": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+        "name": "Kai",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9e4f-73d0-85cd-842aa3d279ed/image-kai-xwaYmzyfZxyBqKMhGqhoUtWjxPoG2x.png",
+        "slug": "kai-search-demand-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+    "coworker": {
+      "id": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+      "name": "Kai",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9e4f-73d0-85cd-842aa3d279ed/image-kai-xwaYmzyfZxyBqKMhGqhoUtWjxPoG2x.png",
+      "slug": "kai-search-demand-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Chainlink verification: **PASS** · 100/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11478-0003-7512-8f1f-3f6ebdf4baf3",
+    "taskId": "01a11475-e632-75aa-99c7-a981b62ca517",
+    "createdAt": "2026-10-07T03:46:11.075Z",
+    "updatedAt": "2026-10-07T03:46:11.075Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+      "coworker": {
+        "id": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+        "name": "Kai",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9e4f-73d0-85cd-842aa3d279ed/image-kai-xwaYmzyfZxyBqKMhGqhoUtWjxPoG2x.png",
+        "slug": "kai-search-demand-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+    "coworker": {
+      "id": "01a11127-9e4f-73d0-85cd-842aa3d279ed",
+      "name": "Kai",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-9e4f-73d0-85cd-842aa3d279ed/image-kai-xwaYmzyfZxyBqKMhGqhoUtWjxPoG2x.png",
+      "slug": "kai-search-demand-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "**Primary keyword:** 400ml coffee tumbler (demand 54.2/100)\n\n**222 keywords** from Google autocomplete, related searches and questions, in 6 clusters for US.\n\n- 400ml capacity coffee tumblers → title\n- best recommendations for hot retention → blog\n- commuter and office coffee mugs → description\n- insulated travel coffee tumblers → seo_meta\n- leakproof spill proof coffee cups → ads_phrase\n- portable travel coffee tumblers with handle → ads_exact\n\n121 brand/irrelevant terms moved to negatives.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "COMPLETED"
+  }
+]

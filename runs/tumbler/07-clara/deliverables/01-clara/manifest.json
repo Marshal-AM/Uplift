@@ -1,0 +1,74 @@
+{
+  "result_hash": "ff78d5477e2dade1c1b4847676c5c2e0bd1848b3793cfcc647cdf10ea85b6519",
+  "at": "2026-10-07T03:53:49+00:00",
+  "agent": "Clara",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "copy_variants.json",
+      "sha256": "8daa40363ee069b2e7a66375a07b816bbddfb56f3d340566d9ed72195a94b2df",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/8daa40363ee069b2e7a66375a07b816bbddfb56f3d340566d9ed72195a94b2df/copy_variants.json"
+    },
+    {
+      "mime": "text/html",
+      "name": "selected_copy.html",
+      "sha256": "3fa7556f68220bed3caa8a20d73b517530216f5127510064e2c7561a634f7752",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/3fa7556f68220bed3caa8a20d73b517530216f5127510064e2c7561a634f7752/selected_copy.html"
+    },
+    {
+      "mime": "application/json",
+      "name": "facts.json",
+      "sha256": "b49a56aa7d4566b237adf7b6bdd5898ab05b4d9391680311d8a452635b7de159",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/b49a56aa7d4566b237adf7b6bdd5898ab05b4d9391680311d8a452635b7de159/facts.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "rubric_scores.json",
+      "sha256": "1e6c262b3ae54e4a816ef09dab577abaa36b0bf8e41ab99b997eaa7b2a28baab",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/1e6c262b3ae54e4a816ef09dab577abaa36b0bf8e41ab99b997eaa7b2a28baab/rubric_scores.json"
+    }
+  ],
+  "changeset": [
+    {
+      "fields": {
+        "descriptionHtml": "<p>The Travel Tumbler TT-400 is a double-wall vacuum-insulated coffee tumbler made for US commuters and remote workers who need reliable heat on the go.</p><h2>Why It Keeps Coffee Better</h2><ul><li>Ceramic-coated interior preserves coffee taste without metallic notes.</li><li>Keeps coffee hot for 6 hours and drinks cold for 12 hours.</li><li>Natural bamboo lid with slide closure stays secure and fits most car cup holders.</li></ul><h2>Key Specs</h2><p>400 ml capacity in 18/8 stainless steel, double-wall vacuum-insulated construction, priced at 26 USD.</p><h2>Perfect for Your Day</h2><p>Ideal for US commuters and remote workers drinking coffee while traveling or working away from a desk.</p><h2>Answers to Everyday Tumbler Frustrations</h2><p>The ceramic coating and vacuum insulation address metallic taste and rapid heat loss, while the bamboo slide lid and cup-holder fit solve leaking lids and poor vehicle compatibility.</p><h2>Simple Care</h2><p>Hand-wash only to keep the finish and lid in top condition.</p>",
+        "seo": {
+          "description": "Insulated travel coffee tumbler in 18/8 stainless steel with ceramic coating and bamboo lid. Keeps coffee hot 6 hours, cold 12 hours, fits cup holders.",
+          "title": "Travel Coffee Tumbler 400ml Stainless Steel"
+        },
+        "title": "Travel Coffee Tumbler: 400ml Stainless Steel TT-400"
+      },
+      "op": "product.update",
+      "product_id": "gid://shopify/Product/8785736237217"
+    },
+    {
+      "op": "product.tags_add",
+      "product_id": "gid://shopify/Product/8785736237217",
+      "tags": [
+        "travel coffee tumbler",
+        "insulated coffee tumbler",
+        "stainless steel tumbler with bamboo lid",
+        "travel mug",
+        "coffee tumbler 400ml",
+        "insulated travel mug",
+        "ceramic coated tumbler",
+        "coffee tumbler with lid"
+      ]
+    }
+  ],
+  "evidence": [],
+  "input_hash": "b0c8803155d47124f9a8925cf02ab431a54f42c9dfd04359877b364fd48adda2",
+  "job_or_task_id": "01a1147d-df78-7761-b69d-ab166705a18c",
+  "profile": "clara@5.0.0",
+  "role": "clara",
+  "self_checks": {
+    "grammar_issues": 1,
+    "rubric_total": 37
+  },
+  "summary_md": "**Title:** Travel Coffee Tumbler: 400ml Stainless Steel TT-400\n\n**SEO title:** Travel Coffee Tumbler 400ml Stainless Steel\n\n**Meta:** Insulated travel coffee tumbler in 18/8 stainless steel with ceramic coating and bamboo lid. Keeps coffee hot 6 hours, cold 12 hours, fits cup holders.\n\nRubric 37.0/45 · 100% of claims grounded in 12 facts.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "1e7627d4229227d2b26e66a541701879061d99512396682e1f46dc1cf0329dc6",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/1e7627d4229227d2b26e66a541701879061d99512396682e1f46dc1cf0329dc6/verification_bundle.json"
+  }
+}

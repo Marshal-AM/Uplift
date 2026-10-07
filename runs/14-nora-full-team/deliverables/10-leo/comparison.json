@@ -1,0 +1,154 @@
+{
+  "competitors": [
+    {
+      "domain": "mybkr.com",
+      "url": "https://mybkr.com/?srsltid=AU7gw4WlUczzdPh6A8pDxMT4i8upMgF5X9IBf7KUJLIAZs6gOScFJafo"
+    },
+    {
+      "domain": "boroux.com",
+      "url": "https://boroux.com/products/glass-water-bottle-16oz?srsltid=AU7gw4VopnoLYowvaLYhQ5v1ASqQTKPS1ztCT8uRirhUuJQYvs3XN52E"
+    },
+    {
+      "domain": "wondrwood.com",
+      "url": "https://wondrwood.com/products/reusable-glass-water-bottle-550ml?srsltid=AU7gw4XzQ4ZuGonYMy7b1k9eSXBczFulk4hc0rty5DbTE3zAjqvB78jy"
+    },
+    {
+      "domain": "swell.com",
+      "url": "https://www.swell.com/pages/glass-original-bottle?srsltid=AU7gw4VPUiXVHxumvVWytj6JtFvNmbOhnNULJxQ4JXLO3tS4kpScqGPy"
+    }
+  ],
+  "attributes": [
+    {
+      "attribute": "Price",
+      "ours": "28 USD",
+      "competitors": [
+        {
+          "domain": "mybkr.com",
+          "value": "52 USD"
+        },
+        {
+          "domain": "boroux.com",
+          "value": "12 USD"
+        },
+        {
+          "domain": "wondrwood.com",
+          "value": "42.9 USD"
+        },
+        {
+          "domain": "swell.com",
+          "value": "39 USD"
+        }
+      ]
+    },
+    {
+      "attribute": "Capacity",
+      "ours": "550 ml",
+      "competitors": [
+        {
+          "domain": "mybkr.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "boroux.com",
+          "value": "16 oz"
+        },
+        {
+          "domain": "wondrwood.com",
+          "value": "550 ml"
+        },
+        {
+          "domain": "swell.com",
+          "value": "18 oz"
+        }
+      ]
+    },
+    {
+      "attribute": "Material",
+      "ours": "Borosilicate glass",
+      "competitors": [
+        {
+          "domain": "mybkr.com",
+          "value": "Glass"
+        },
+        {
+          "domain": "boroux.com",
+          "value": "Borosilicate Glass"
+        },
+        {
+          "domain": "wondrwood.com",
+          "value": "Lab-Grade Glass"
+        },
+        {
+          "domain": "swell.com",
+          "value": "Pure Glass"
+        }
+      ]
+    },
+    {
+      "attribute": "BPA Free",
+      "ours": "Yes",
+      "competitors": [
+        {
+          "domain": "mybkr.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "boroux.com",
+          "value": "Yes"
+        },
+        {
+          "domain": "wondrwood.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "swell.com",
+          "value": "Zero Plastic"
+        }
+      ]
+    },
+    {
+      "attribute": "Dishwasher Safe",
+      "ours": "Glass yes, cork hand wash",
+      "competitors": [
+        {
+          "domain": "mybkr.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "boroux.com",
+          "value": "Yes"
+        },
+        {
+          "domain": "wondrwood.com",
+          "value": "Yes"
+        },
+        {
+          "domain": "swell.com",
+          "value": "Not specified"
+        }
+      ]
+    },
+    {
+      "attribute": "Stopper/Cap",
+      "ours": "Natural cork",
+      "competitors": [
+        {
+          "domain": "mybkr.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "boroux.com",
+          "value": "Stainless Steel Leak-proof Cap with Silicone Seal"
+        },
+        {
+          "domain": "wondrwood.com",
+          "value": "Not specified"
+        },
+        {
+          "domain": "swell.com",
+          "value": "Not specified"
+        }
+      ]
+    }
+  ]
+}

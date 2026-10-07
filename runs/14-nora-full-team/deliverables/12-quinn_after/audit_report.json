@@ -1,0 +1,105 @@
+{
+  "mode": "before_after",
+  "score": 78.0,
+  "deterministic": 74.0,
+  "judge": 4.0,
+  "sections": {
+    "discoverability": 19.0,
+    "persuasion": 13,
+    "visuals": 15.0,
+    "trust": 9,
+    "catalog": 8,
+    "compliance": 10
+  },
+  "compliance_hits": [],
+  "rankings": [],
+  "store_search_ranks": [
+    {
+      "keyword": "reusable glass water bottles",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "borosilicate glass bottle",
+      "rank": 2,
+      "results": 2
+    },
+    {
+      "keyword": "cork stopper water bottle",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "550ml glass bottle",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "bpa free glass bottle",
+      "rank": 1,
+      "results": 1
+    }
+  ],
+  "page_speed": null,
+  "sales": null,
+  "diagnosis": null,
+  "fixes": [
+    {
+      "fix": "Rebuild trust signals with guarantees, reviews integration, and social proof sections",
+      "specialist": "leo",
+      "impact": "high",
+      "price": 2.0
+    },
+    {
+      "fix": "Restructure catalog feed, collections, and product groupings for better navigation",
+      "specialist": "oskar",
+      "impact": "high",
+      "price": 1.5
+    },
+    {
+      "fix": "Rewrite key product copy and CTAs to strengthen persuasion and benefits",
+      "specialist": "clara",
+      "impact": "medium",
+      "price": 2.0
+    }
+  ],
+  "before": {
+    "score": 76.0,
+    "sections": {
+      "discoverability": 22.0,
+      "persuasion": 13,
+      "visuals": 14.0,
+      "trust": 5,
+      "catalog": 8,
+      "compliance": 10
+    },
+    "store_search_ranks": [
+      {
+        "keyword": "borosilicate glass water bottle 550ml cork",
+        "rank": 1,
+        "results": 1
+      },
+      {
+        "keyword": "glass water bottle cork stopper 550ml",
+        "rank": 1,
+        "results": 1
+      },
+      {
+        "keyword": "550ml borosilicate bottle with cork lid",
+        "rank": 1,
+        "results": 1
+      },
+      {
+        "keyword": "reusable borosilicate glass bottle cork",
+        "rank": 1,
+        "results": 1
+      },
+      {
+        "keyword": "glass bottle cork stopper 550 ml water bottle",
+        "rank": 1,
+        "results": 1
+      }
+    ]
+  },
+  "delta": 2.0
+}

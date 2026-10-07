@@ -1,0 +1,1 @@
+Mid-premium 400ml stainless travel tumbler at $26, above budget Amazon/Walmart options ($9–12) but below Corkcicle ($40). Position as reliable everyday commuter mug that balances insulation, leak resistance, and value—stronger durability and finish than cheap no-name units without the lifestyle premium of Corkcicle.

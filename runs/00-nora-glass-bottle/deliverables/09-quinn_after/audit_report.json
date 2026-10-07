@@ -1,0 +1,71 @@
+{
+  "mode": "before_after",
+  "score": 72.5,
+  "deterministic": 69.0,
+  "judge": 3.5,
+  "sections": {
+    "discoverability": 19.0,
+    "persuasion": 13,
+    "visuals": 14.0,
+    "trust": 5,
+    "catalog": 8,
+    "compliance": 10
+  },
+  "compliance_hits": [],
+  "rankings": [],
+  "store_search_ranks": [
+    {
+      "keyword": "glass water bottle",
+      "rank": 2,
+      "results": 2
+    }
+  ],
+  "page_speed": null,
+  "sales": null,
+  "diagnosis": null,
+  "fixes": [
+    {
+      "fix": "Add trust-building elements like detailed guarantees, certifications, customer testimonials, and transparent policies to the listing description and bullet points.",
+      "specialist": "clara",
+      "impact": "high",
+      "price": 2.0
+    },
+    {
+      "fix": "Restructure the product catalog feed and collections to improve attribute completeness, variant grouping, and category accuracy for better visibility.",
+      "specialist": "oskar",
+      "impact": "high",
+      "price": 1.5
+    },
+    {
+      "fix": "Rewrite persuasive copy focusing on benefits, emotional triggers, and clear CTAs to lift conversion potential.",
+      "specialist": "clara",
+      "impact": "medium",
+      "price": 2.0
+    },
+    {
+      "fix": "Expand FAQ and supporting content sections to address common objections and build buyer confidence.",
+      "specialist": "leo",
+      "impact": "medium",
+      "price": 2.0
+    }
+  ],
+  "before": {
+    "score": 76.0,
+    "sections": {
+      "discoverability": 22.0,
+      "persuasion": 13,
+      "visuals": 14.0,
+      "trust": 5,
+      "catalog": 8,
+      "compliance": 10
+    },
+    "store_search_ranks": [
+      {
+        "keyword": "glass water bottle",
+        "rank": 2,
+        "results": 2
+      }
+    ]
+  },
+  "delta": -3.5
+}

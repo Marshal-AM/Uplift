@@ -1,0 +1,129 @@
+{
+  "result_hash": "f5fc8a5489dc71117d4b87e19bb348edc4294e43fc0827682f8439b64175b416",
+  "at": "2026-10-07T04:06:43+00:00",
+  "agent": "Marcus",
+  "artifacts": [
+    {
+      "mime": "text/markdown",
+      "name": "pricing_strategy.md",
+      "sha256": "57705761b7062847e80abff998e31f3fa908c6ac01cd22a7f432110963592e12",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/57705761b7062847e80abff998e31f3fa908c6ac01cd22a7f432110963592e12/pricing_strategy.md"
+    },
+    {
+      "mime": "text/csv",
+      "name": "scenarios.csv",
+      "sha256": "316c73f0c74db9f9f1ebff65428eb853ac9eb360ede62ab35136e6f3550c7006",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/316c73f0c74db9f9f1ebff65428eb853ac9eb360ede62ab35136e6f3550c7006/scenarios.csv"
+    },
+    {
+      "mime": "application/json",
+      "name": "promo_calendar.json",
+      "sha256": "3a75c3d08cd80b8b905d2406472352e514f6a55fe3f063aa027969013f75bb34",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/3a75c3d08cd80b8b905d2406472352e514f6a55fe3f063aa027969013f75bb34/promo_calendar.json"
+    },
+    {
+      "mime": "text/calendar",
+      "name": "promo_calendar.ics",
+      "sha256": "fe59c353162e68bfd6ddba7cd5c7589f8fd8104e91f87cab3b4613a8201aa2f9",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/fe59c353162e68bfd6ddba7cd5c7589f8fd8104e91f87cab3b4613a8201aa2f9/promo_calendar.ics"
+    },
+    {
+      "mime": "application/json",
+      "name": "discount_codes.json",
+      "sha256": "d1f7de057d14a5e3f01c17d4ea7753559ed17930034c55e17c9d1abfd78bec75",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d1f7de057d14a5e3f01c17d4ea7753559ed17930034c55e17c9d1abfd78bec75/discount_codes.json"
+    }
+  ],
+  "changeset": [
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "LAUNCHGLASS20",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8785648550049"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.2
+          }
+        },
+        "endsAt": "2026-11-10T23:59:00+00:00",
+        "startsAt": "2026-10-15T00:00:00+00:00",
+        "title": "Launch Welcome",
+        "usageLimit": 500
+      },
+      "op": "discount.create"
+    },
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "GLASS11",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8785648550049"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.25
+          }
+        },
+        "endsAt": "2026-11-12T23:59:00+00:00",
+        "startsAt": "2026-11-11T00:00:00+00:00",
+        "title": "Singles Day Special",
+        "usageLimit": 300
+      },
+      "op": "discount.create"
+    },
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "CORKGIFT15",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8785648550049"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.15
+          }
+        },
+        "endsAt": "2026-12-24T23:59:00+00:00",
+        "startsAt": "2026-12-01T00:00:00+00:00",
+        "title": "Holiday Gift",
+        "usageLimit": 400
+      },
+      "op": "discount.create"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "af1d7a3bd19e3acef6ca9e4d82191b557b9c2483fc2b736c49d231dc822df233",
+  "job_or_task_id": "01a11487-7371-70fa-8db1-bdb027e2a383:marcus",
+  "profile": "marcus@5.0.0",
+  "role": "marcus",
+  "self_checks": {},
+  "summary_md": "**Positioning:** parity · price 28.0 vs market median 25.0\n\n**3 scheduled discount codes**, all above your 35% margin floor:\n- LAUNCHGLASS20: 20% · 2026-10-15 → 2026-11-10\n- GLASS11: 25% · 2026-11-11 → 2026-11-12\n- CORKGIFT15: 15% · 2026-12-01 → 2026-12-24",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "3216e7961a0ff50933498d2596b70b7722571a14c0c760f680fcfe7f5e9bbf52",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/3216e7961a0ff50933498d2596b70b7722571a14c0c760f680fcfe7f5e9bbf52/verification_bundle.json"
+  }
+}

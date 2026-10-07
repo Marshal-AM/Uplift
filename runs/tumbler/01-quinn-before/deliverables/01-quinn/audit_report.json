@@ -1,0 +1,83 @@
+{
+  "mode": "audit",
+  "score": 27.1,
+  "deterministic": 26.13,
+  "judge": 1.0,
+  "sections": {
+    "discoverability": 6.0,
+    "persuasion": 3.13,
+    "visuals": 6.0,
+    "trust": 0,
+    "catalog": 1,
+    "compliance": 10
+  },
+  "compliance_hits": [],
+  "rankings": [],
+  "store_search_ranks": [
+    {
+      "keyword": "travel coffee tumbler",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "insulated coffee tumbler",
+      "rank": null,
+      "results": 0
+    },
+    {
+      "keyword": "stainless steel tumbler with bamboo lid",
+      "rank": null,
+      "results": 0
+    },
+    {
+      "keyword": "travel mug",
+      "rank": null,
+      "results": 1
+    },
+    {
+      "keyword": "coffee tumbler 400ml",
+      "rank": null,
+      "results": 0
+    },
+    {
+      "keyword": "insulated travel mug",
+      "rank": null,
+      "results": 1
+    }
+  ],
+  "page_speed": null,
+  "sales": null,
+  "diagnosis": null,
+  "fixes": [
+    {
+      "fix": "Add trust signals: guarantees, certifications, review highlights and social proof blocks to the listing.",
+      "specialist": "leo",
+      "impact": "high",
+      "price": 2.0
+    },
+    {
+      "fix": "Rebuild catalog structure, collections and product feed completeness so variants and attributes are fully indexed.",
+      "specialist": "oskar",
+      "impact": "high",
+      "price": 1.5
+    },
+    {
+      "fix": "Rewrite title, bullets and description for stronger benefit-led persuasion and clearer value props.",
+      "specialist": "clara",
+      "impact": "high",
+      "price": 2.0
+    },
+    {
+      "fix": "Expand keyword coverage in titles, backend and attributes to lift discoverability.",
+      "specialist": "kai",
+      "impact": "medium",
+      "price": 1.25
+    },
+    {
+      "fix": "Upgrade main and lifestyle images plus infographics for higher visual conversion.",
+      "specialist": "iris",
+      "impact": "medium",
+      "price": 2.5
+    }
+  ]
+}

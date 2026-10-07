@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "domain": "amazon.com",
+      "url": "https://www.amazon.com/clp/B091PPPZ6J",
+      "title": "Bidponds 13.5oz / 400ml Double Walled Coffee Mug, Stainless Steel Tea Cups, Travel Camping Mugs"
+    },
+    {
+      "domain": "walmart.com",
+      "url": "https://www.walmart.com/ip/Insulated-Coffee-Mug-Cup-Handle-Double-Wall-Vacuum-Tumbler-400ml-Camping-Stainless-Steel-Travel-Flip-Lid-Trave-Mugs/18980255915?classType=undefined&variantFieldId=actual_color",
+      "title": "Insulated Coffee Mug Cup with Handle, Double Wall Vacuum Coffee Tumbler 400ml"
+    },
+    {
+      "domain": "corkcicle.com",
+      "url": "https://corkcicle.com/collections/commuter-cup",
+      "title": "Commuter Cup"
+    }
+  ],
+  "google_shopping": [],
+  "brands": [
+    "Bidponds",
+    "Corkcicle",
+    "bfogop"
+  ]
+}

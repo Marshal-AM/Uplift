@@ -1,0 +1,89 @@
+[
+  {
+    "name": "Home Fridge Glass Lover",
+    "attributes": [
+      {
+        "attribute": "loves pure glass material and taste for fridge storage",
+        "review_ids": [
+          "c247233e07e1",
+          "405b7e3cc374",
+          "f68646af98f7"
+        ]
+      },
+      {
+        "attribute": "values easy cleaning and visibility",
+        "review_ids": [
+          "83c35affd600",
+          "cee04266b248",
+          "96d588194d93"
+        ]
+      },
+      {
+        "attribute": "worried about breakage and condensation",
+        "review_ids": [
+          "088d454da66b",
+          "25f102e72b08",
+          "cf93a6d09fea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Durable Daily Carrier",
+    "attributes": [
+      {
+        "attribute": "prioritizes drop-proof durability over glass",
+        "review_ids": [
+          "c5f3e07e8a76",
+          "088d454da66b",
+          "cf51441e2e32"
+        ]
+      },
+      {
+        "attribute": "wants insulation for cold drinks",
+        "review_ids": [
+          "c5f3e07e8a76",
+          "e8a17e036567",
+          "60edb74f4415"
+        ]
+      },
+      {
+        "attribute": "dislikes metallic taste",
+        "review_ids": [
+          "cf51441e2e32",
+          "2e68508117b0",
+          "985aed28432a"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Eco Switcher from Plastic",
+    "attributes": [
+      {
+        "attribute": "avoids plastic for health and environment",
+        "review_ids": [
+          "c247233e07e1",
+          "9a814bbca1d4",
+          "34c5d8079e91"
+        ]
+      },
+      {
+        "attribute": "seeks trusted non-Amazon glass options",
+        "review_ids": [
+          "c247233e07e1",
+          "405b7e3cc374",
+          "abe707dc5048"
+        ]
+      },
+      {
+        "attribute": "needs practical size and cap",
+        "review_ids": [
+          "83c35affd600",
+          "c247233e07e1",
+          "88f8dfd087f2"
+        ]
+      }
+    ]
+  }
+]

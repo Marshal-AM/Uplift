@@ -1,0 +1,71 @@
+{
+  "result_hash": "0b38e8c24e79e81d337c9944b8570178320f9718ab737ce479da6f44cb8f2d9a",
+  "at": "2026-10-07T04:09:55+00:00",
+  "agent": "Clara",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "copy_variants.json",
+      "sha256": "49c64531d6d1a3e3fed951522cba1f1c8a12631c1e202fdb8afea67b177f06ba",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/49c64531d6d1a3e3fed951522cba1f1c8a12631c1e202fdb8afea67b177f06ba/copy_variants.json"
+    },
+    {
+      "mime": "text/html",
+      "name": "selected_copy.html",
+      "sha256": "b1e67ba5cfb319660ff9c9cb052877a9f031699e7f5810a9b1cfe0b6e0b3d69c",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/b1e67ba5cfb319660ff9c9cb052877a9f031699e7f5810a9b1cfe0b6e0b3d69c/selected_copy.html"
+    },
+    {
+      "mime": "application/json",
+      "name": "facts.json",
+      "sha256": "ca24da899b65630bb27d862c9325093dc9689ccfacdfe25753dcc2ddd6dd8ac9",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/ca24da899b65630bb27d862c9325093dc9689ccfacdfe25753dcc2ddd6dd8ac9/facts.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "rubric_scores.json",
+      "sha256": "7ab5ed5f4ba48cecf019ac25088c67b73f0622dc07d8949c8ab864ec8c7893e6",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/7ab5ed5f4ba48cecf019ac25088c67b73f0622dc07d8949c8ab864ec8c7893e6/rubric_scores.json"
+    }
+  ],
+  "changeset": [
+    {
+      "fields": {
+        "descriptionHtml": "<p>Imagine reaching for clear water that tastes exactly as it should, carried in a reusable glass water bottle that slips easily into your day.</p><h2>Why You Will Love Carrying It</h2><ul><li>Borosilicate glass keeps every sip pure and free of unwanted flavors.</li><li>Natural cork stopper seals simply while the grey silicone sleeve adds a soft grip.</li><li>The 550 ml size fits most bags so you stay hydrated without extra bulk.</li></ul><h2>What Is Inside</h2><p>This reusable glass water bottle holds 550 ml of borosilicate glass, finished with a natural cork stopper and grey silicone sleeve, all BPA free, priced at 28 USD.</p><h2>Everyday Moments It Suits</h2><p>Take it to the office, on walks, or wherever a clear glass bottle with stopper belongs, remembering it is not for hot drinks or carbonated drinks.</p><h2>Why It Feels Safe And Solid</h2><p>BPA free materials and sturdy borosilicate glass support everyday reuse, while the compact 550 ml design travels well in most bags.</p><h2>Simple Care That Lasts</h2><p>The glass is dishwasher safe and you hand wash the cork to keep everything ready for the next fill.</p>",
+        "seo": {
+          "description": "Reusable glass water bottles in 550 ml borosilicate glass with natural cork and grey silicone sleeve. BPA free for pure taste. Glass dishwasher safe.",
+          "title": "Reusable Glass Water Bottles 550ml Borosilicate"
+        },
+        "title": "Reusable Glass Water Bottles 550 Ml Borosilicate Glass"
+      },
+      "op": "product.update",
+      "product_id": "gid://shopify/Product/8785648550049"
+    },
+    {
+      "op": "product.tags_add",
+      "product_id": "gid://shopify/Product/8785648550049",
+      "tags": [
+        "reusable glass water bottles",
+        "cork stopper water bottle",
+        "bpa free glass bottle",
+        "pure taste water bottle",
+        "natural cork bottle"
+      ]
+    }
+  ],
+  "evidence": [],
+  "input_hash": "3a9e2fab954612ebb9b6c7c1c19f9b1b893c634e13ce9621cae09ae15b74c2b4",
+  "job_or_task_id": "01a11487-7371-70fa-8db1-bdb027e2a383:clara",
+  "profile": "clara@5.0.0",
+  "role": "clara",
+  "self_checks": {
+    "grammar_issues": 8,
+    "rubric_total": 32
+  },
+  "summary_md": "**Title:** Reusable Glass Water Bottles 550 Ml Borosilicate Glass\n\n**SEO title:** Reusable Glass Water Bottles 550ml Borosilicate\n\n**Meta:** Reusable glass water bottles in 550 ml borosilicate glass with natural cork and grey silicone sleeve. BPA free for pure taste. Glass dishwasher safe.\n\nRubric 32.0/45 · 100% of claims grounded in 11 facts.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "32f5e546d39472d475f5708b90a5c064f67eb941b65b0ffd044c556bf9c2fb58",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/32f5e546d39472d475f5708b90a5c064f67eb941b65b0ffd044c556bf9c2fb58/verification_bundle.json"
+  }
+}

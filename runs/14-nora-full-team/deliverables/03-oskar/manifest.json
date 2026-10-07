@@ -1,0 +1,58 @@
+{
+  "result_hash": "ebeffcc558d4c7627e6ce819a390f126c69ee3a8f282b34c2c44ff7aa6f98c66",
+  "at": "2026-10-07T04:05:43+00:00",
+  "agent": "Oskar",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "catalog_changes.json",
+      "sha256": "a6f843e302fe936487e97ac1db89580cfcef65ecaa50b78341132047c16c4952",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a6f843e302fe936487e97ac1db89580cfcef65ecaa50b78341132047c16c4952/catalog_changes.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "collections_plan.md",
+      "sha256": "c65ba301a65086b208050965fa62189459ab09bc4aabe196a91c2a65839b3d80",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/c65ba301a65086b208050965fa62189459ab09bc4aabe196a91c2a65839b3d80/collections_plan.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "feed_report.json",
+      "sha256": "b6abb412470a03634b09db6d27dcd50cbab08895a57ff99c392397134d84d094",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/b6abb412470a03634b09db6d27dcd50cbab08895a57ff99c392397134d84d094/feed_report.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "google_supplemental.csv",
+      "sha256": "485c3709ea2e84fe697639b75caabfeea4131387b75cf5597a2e01add5c38854",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/485c3709ea2e84fe697639b75caabfeea4131387b75cf5597a2e01add5c38854/google_supplemental.csv"
+    },
+    {
+      "mime": "text/csv",
+      "name": "barcode_fixes.csv",
+      "sha256": "0afc7a9ddc4a69953d343d97795a986ac203f0c0441768f9020c514d2798a47d",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/0afc7a9ddc4a69953d343d97795a986ac203f0c0441768f9020c514d2798a47d/barcode_fixes.csv"
+    }
+  ],
+  "changeset": [
+    {
+      "op": "product.taxonomy_tags_add",
+      "product_id": "gid://shopify/Product/8785648550049",
+      "tags": [
+        "bpa free water bottle"
+      ]
+    }
+  ],
+  "evidence": [],
+  "input_hash": "cccbddf64e8af116c52c5d7de4fef3fc6f9b9c2110597ad8f0ddd73ee6efa666",
+  "job_or_task_id": "01a11487-7371-70fa-8db1-bdb027e2a383:oskar",
+  "profile": "oskar@5.0.0",
+  "role": "oskar",
+  "self_checks": {},
+  "summary_md": "**Category:** Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Water Bottles · **Type:** Glass Water Bottle\n\n1 tags, 0 collections, 0 related and 0 complementary products linked. Google feed fields missing: gtin_or_mpn.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "556a41cccc5fcc1732277710c8cfb5681fe3b3f94e4fef3bbeeca2937d95d66b",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/556a41cccc5fcc1732277710c8cfb5681fe3b3f94e4fef3bbeeca2937d95d66b/verification_bundle.json"
+  }
+}

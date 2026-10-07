@@ -1,0 +1,83 @@
+{
+  "blocked": false,
+  "hits": [
+    {
+      "rule_id": "TM-001",
+      "pack": "trademarks",
+      "severity": "high",
+      "location": "metafield.comparison",
+      "excerpt": "BOROUX",
+      "message": "Uses competitor mark 'BOROUX'."
+    },
+    {
+      "rule_id": "TM-001",
+      "pack": "trademarks",
+      "severity": "high",
+      "location": "metafield.comparison",
+      "excerpt": "Wondrwood",
+      "message": "Uses competitor mark 'Wondrwood'."
+    },
+    {
+      "rule_id": "SUP-001",
+      "pack": "superlatives",
+      "severity": "medium",
+      "location": "article",
+      "excerpt": "th lids, and round-ups of the best glass water bottles. Those pa",
+      "message": "Superlative claim needs substantiation."
+    },
+    {
+      "rule_id": "SUP-001",
+      "pack": "superlatives",
+      "severity": "medium",
+      "location": "article",
+      "excerpt": " reusable water bottle is the best?”, look for borosilicate cons",
+      "message": "Superlative claim needs substantiation."
+    },
+    {
+      "rule_id": "SUP-001",
+      "pack": "superlatives",
+      "severity": "medium",
+      "location": "article",
+      "excerpt": "recommendations found across “best of” lists and community threa",
+      "message": "Superlative claim needs substantiation."
+    }
+  ],
+  "rewrites": [
+    {
+      "rule_id": "TM-001",
+      "location": "metafield.comparison",
+      "excerpt": "BOROUX",
+      "rewrite": "premium glass bottle",
+      "passes": true
+    },
+    {
+      "rule_id": "TM-001",
+      "location": "metafield.comparison",
+      "excerpt": "Wondrwood",
+      "rewrite": "wooden-accent bottle",
+      "passes": true
+    },
+    {
+      "rule_id": "SUP-001",
+      "location": "article",
+      "excerpt": "th lids, and round-ups of the best glass water bottles. Those pa",
+      "rewrite": "lids, and round-ups of glass water bottles. Those pa",
+      "passes": true
+    },
+    {
+      "rule_id": "SUP-001",
+      "location": "article",
+      "excerpt": " reusable water bottle is the best?”, look for borosilicate cons",
+      "rewrite": "reusable water bottle suits you?”, look for borosilicate cons",
+      "passes": true
+    },
+    {
+      "rule_id": "SUP-001",
+      "location": "article",
+      "excerpt": "recommendations found across “best of” lists and community threa",
+      "rewrite": "recommendations found across lists and community threa",
+      "passes": true
+    }
+  ],
+  "rules_version": "5.0.0"
+}

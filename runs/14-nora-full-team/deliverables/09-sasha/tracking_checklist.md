@@ -1,0 +1,3 @@
+- GA4 purchase conversion imported into Google Ads
+- Auto-tagging on (gclid)
+- UTM campaign matches the plan

@@ -1,0 +1,1576 @@
+{
+  "market": "US",
+  "language": "en",
+  "primary": "400ml coffee tumbler",
+  "secondary": [
+    "travel mugs that keep coffee hot",
+    "insulated travel tumbler",
+    "hot coffee tumbler",
+    "commuter coffee mug",
+    "office coffee tumbler",
+    "hot coffee tumbler with lid",
+    "insulated travel tumbler with handle",
+    "best commuter coffee mug",
+    "400 ml coffee cup",
+    "travel coffee tumbler with lid",
+    "400ml travel tumbler",
+    "commuter travel mug"
+  ],
+  "demand_signal": "0–100, from Google autocomplete rank, related searches and People Also Ask",
+  "keywords": [
+    {
+      "keyword": "insulated coffee mug with handle and lid",
+      "demand": 100.0,
+      "intent": "transactional",
+      "cluster": "portable travel coffee tumblers with handle",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "travel mugs that keep coffee hot",
+      "demand": 66.7,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "travel coffee tumbler",
+      "demand": 54.2,
+      "intent": "transactional",
+      "cluster": "portable travel coffee tumblers with handle",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "400ml coffee tumbler",
+      "demand": 54.2,
+      "intent": "commercial",
+      "cluster": "400ml capacity coffee tumblers",
+      "role": "title"
+    },
+    {
+      "keyword": "insulated travel tumbler",
+      "demand": 54.2,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "leakproof coffee cup",
+      "demand": 54.2,
+      "intent": "commercial",
+      "cluster": "leakproof spill proof coffee cups",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "portable coffee tumbler",
+      "demand": 54.2,
+      "intent": "transactional",
+      "cluster": "portable travel coffee tumblers with handle",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "hot coffee tumbler",
+      "demand": 54.2,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "commuter coffee mug",
+      "demand": 54.2,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "office coffee tumbler",
+      "demand": 54.2,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "stainless steel tumbler",
+      "demand": 54.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "spill proof tumbler",
+      "demand": 54.2,
+      "intent": "commercial",
+      "cluster": "leakproof spill proof coffee cups",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "coffee travel mug with handle",
+      "demand": 50.0,
+      "intent": "transactional",
+      "cluster": "portable travel coffee tumblers with handle",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "best leak proof travel mug",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "leakproof spill proof coffee cups",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "hot coffee tumbler with lid",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "spill proof tumbler with straw",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated travel tumbler with handle",
+      "demand": 45.8,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "best commuter coffee mug",
+      "demand": 45.8,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "travel coffee tumbler with handle",
+      "demand": 41.7,
+      "intent": "transactional",
+      "cluster": "portable travel coffee tumblers with handle",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "coffee travel mugs",
+      "demand": 41.7,
+      "intent": "transactional",
+      "cluster": "portable travel coffee tumblers with handle",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "coffee travel mug leak proof",
+      "demand": 41.7,
+      "intent": "commercial",
+      "cluster": "leakproof spill proof coffee cups",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "400 ml coffee cup",
+      "demand": 41.7,
+      "intent": "commercial",
+      "cluster": "400ml capacity coffee tumblers",
+      "role": "title"
+    },
+    {
+      "keyword": "spill proof tumbler for coffee",
+      "demand": 41.7,
+      "intent": "commercial",
+      "cluster": "leakproof spill proof coffee cups",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "travel coffee tumbler with lid",
+      "demand": 37.5,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "recommend the best insulated travel tumblers based on ice retention and prices",
+      "demand": 37.5,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "400ml travel tumbler",
+      "demand": 37.5,
+      "intent": "commercial",
+      "cluster": "400ml capacity coffee tumblers",
+      "role": "title"
+    },
+    {
+      "keyword": "recommend leak-proof coffee travel mugs that keep drinks hot for six hours",
+      "demand": 37.5,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "leakproof coffee cup with straw",
+      "demand": 37.5,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "portable coffee cup",
+      "demand": 37.5,
+      "intent": "transactional",
+      "cluster": "portable travel coffee tumblers with handle",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "recommend spill-proof hot coffee tumblers that keep drinks hot for six hours",
+      "demand": 37.5,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "commuter travel mug",
+      "demand": 37.5,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "office coffee mug",
+      "demand": 37.5,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "stainless steel tumbler with handle",
+      "demand": 37.5,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "400 ml travel mug",
+      "demand": 37.5,
+      "intent": "commercial",
+      "cluster": "400ml capacity coffee tumblers",
+      "role": "title"
+    },
+    {
+      "keyword": "recommend the best spill proof tumblers for commuter travel",
+      "demand": 37.5,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "travel coffee tumbler with straw",
+      "demand": 33.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated travel tumbler with straw",
+      "demand": 33.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "400ml coffee mug",
+      "demand": 33.3,
+      "intent": "commercial",
+      "cluster": "400ml capacity coffee tumblers",
+      "role": "title"
+    },
+    {
+      "keyword": "travel coffee mug with handle",
+      "demand": 33.3,
+      "intent": "transactional",
+      "cluster": "portable travel coffee tumblers with handle",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "zojirushi travel mug",
+      "demand": 33.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "leakproof coffee cup australia",
+      "demand": 33.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "leakproof coffee cup with handle",
+      "demand": 33.3,
+      "intent": "commercial",
+      "cluster": "leakproof spill proof coffee cups",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "portable coffee mug",
+      "demand": 33.3,
+      "intent": "transactional",
+      "cluster": "portable travel coffee tumblers with handle",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "hot coffee tumbler with handle",
+      "demand": 33.3,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "stanley travel mug with handle",
+      "demand": 33.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "commuter coffee cup",
+      "demand": 33.3,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "office coffee cup",
+      "demand": 33.3,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "stainless steel tumbler with straw",
+      "demand": 33.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "400 ml coffee mug",
+      "demand": 33.3,
+      "intent": "commercial",
+      "cluster": "400ml capacity coffee tumblers",
+      "role": "title"
+    },
+    {
+      "keyword": "travel coffee tumbler leak proof",
+      "demand": 29.2,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "400ml coffee cup",
+      "demand": 29.2,
+      "intent": "commercial",
+      "cluster": "400ml capacity coffee tumblers",
+      "role": "title"
+    },
+    {
+      "keyword": "coffee travel mug with lid",
+      "demand": 29.2,
+      "intent": "transactional",
+      "cluster": "portable travel coffee tumblers with handle",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "leakproof coffee cup yeti",
+      "demand": 29.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "portable coffee mug warmer",
+      "demand": 29.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "hot coffee tumbler with straw",
+      "demand": 29.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "office coffee mug with lid",
+      "demand": 29.2,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "stainless steel tumbler with stainless steel lid",
+      "demand": 29.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "400 ml insulated mug",
+      "demand": 29.2,
+      "intent": "commercial",
+      "cluster": "400ml capacity coffee tumblers",
+      "role": "title"
+    },
+    {
+      "keyword": "spill proof tumbler for kids",
+      "demand": 29.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated travel tumbler black blum",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "400ml coffee mug le creuset",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "coffee travel mugs starbucks",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "leakproof coffee cup travel",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "portable coffee thermos",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "hot coffee tumbler starbucks",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how many calories in a mug of coffee",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "office coffee mug for men",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "stainless steel tumbler with straw and handle",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "400 ml coffee travel mug",
+      "demand": 25.0,
+      "intent": "commercial",
+      "cluster": "400ml capacity coffee tumblers",
+      "role": "title"
+    },
+    {
+      "keyword": "travel coffee tumbler ceramic",
+      "demand": 20.8,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated tumbler travel cup",
+      "demand": 20.8,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "400ml coffee mug set",
+      "demand": 20.8,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "coffee travel mug easy to clean",
+      "demand": 20.8,
+      "intent": "transactional",
+      "cluster": "portable travel coffee tumblers with handle",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "leakproof coffee cup reddit",
+      "demand": 20.8,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "portable coffee cup with straw",
+      "demand": 20.8,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "hot coffee tumbler leak proof",
+      "demand": 20.8,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "how much caffeine in a mug of coffee",
+      "demand": 20.8,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "office coffee thermos",
+      "demand": 20.8,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how many cups 400 ml",
+      "demand": 20.8,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "spill proof tumbler for toddlers",
+      "demand": 20.8,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "spill proof tumbler with handle",
+      "demand": 20.8,
+      "intent": "commercial",
+      "cluster": "leakproof spill proof coffee cups",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "travel coffee tumbler glass",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated coffee tumbler",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "verso 400ml coffee tumbler & straw",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "coffee travel mug without plastic lid",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated travel tumbler bulk",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated travel tumbler wholesale",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best insulated travel tumbler",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "thermos travel mug stainless steel",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best insulated tumbler for cold drinks",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "400ml coffee tumbler with handle",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "400ml capacity coffee tumblers",
+      "role": "title"
+    },
+    {
+      "keyword": "400ml coffee tumbler amazon",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "glass coffee tumbler with lid",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "glass iced coffee cup with lid",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "blue polar duluth",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "iced coffee tumbler with straw",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "glass iced coffee cup with sip lid",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "glass iced coffee cup with lid and straw",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how big is a 400 ml mug?",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best travel coffee tumbler",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "owala coffee travel mug",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best travel coffee tumbler?",
+      "demand": 16.7,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "portable coffee cup warmer",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best coffee travel mug",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "coffee travel mug set",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "coffee travel mug amazon",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "thermos coffee mug with handle",
+      "demand": 16.7,
+      "intent": "transactional",
+      "cluster": "portable travel coffee tumblers with handle",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "commuter coffee",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "leakproof coffee cup for travel",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "best leakproof coffee cup",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "leakproof spill proof coffee cups",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "best leak proof travel mug with handle",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "leakproof spill proof coffee cups",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "leak proof coffee tumbler with straw",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best hot coffee tumbler",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "hot coffee tumbler wholesale",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "hot coffee tumbler amazon",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "thermos coffee tumbler",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "office coffee cup with lid",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "stainless steel tumblers bulk",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "400 ml equals cups",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "commuter coffee mug with handle",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "zojirushi coffee mug",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel tumbler 40 oz",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel tumbler bulk",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel tumblers with straws",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel tumbler 16 oz",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best stainless steel tumbler",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel tumbler 30 oz",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel tumbler stanley",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "400 ml travel cup with handle",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "400ml capacity coffee tumblers",
+      "role": "title"
+    },
+    {
+      "keyword": "400 ml travel cup amazon",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "brambly hedge travel mug",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "brambly hedge dvd",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "brambly hedge party",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "brambly hedge book",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "brambly hedge seasons",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "brambly hedge for sale",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "office coffee tumbler with handle",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "best office coffee tumbler",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "stanley coffee tumbler",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "office coffee tumbler amazon",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "stanley coffee mug 12 oz",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "stanley camp mug 24 oz",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "stanley coffee tumbler 20 oz",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "spill proof tumbler lid",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "leakproof spill proof coffee cups",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "spill proof tumbler kids",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "spill-proof tumbler toddler",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "spill-proof tumbler glass",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best spill proof tumbler",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "leakproof spill proof coffee cups",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "spill proof tumbler nespresso",
+      "demand": 16.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "coffee travel mug",
+      "demand": 12.5,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "travel coffee tumbler starbucks",
+      "demand": 12.5,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated coffee tumbler with straw",
+      "demand": 12.5,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what are the best coffee tumblers",
+      "demand": 12.5,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "coffee travel mugs nearby",
+      "demand": 12.5,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "leakproof coffee cup nz",
+      "demand": 12.5,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "portable coffee mug with handle",
+      "demand": 12.5,
+      "intent": "transactional",
+      "cluster": "portable travel coffee tumblers with handle",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "hot coffee tumbler stanley",
+      "demand": 12.5,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "office coffee cup warmer",
+      "demand": 12.5,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel tumbler made in usa",
+      "demand": 12.5,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "400 ml travel cup",
+      "demand": 12.5,
+      "intent": "commercial",
+      "cluster": "400ml capacity coffee tumblers",
+      "role": "title"
+    },
+    {
+      "keyword": "400 ml cup",
+      "demand": 12.5,
+      "intent": "commercial",
+      "cluster": "400ml capacity coffee tumblers",
+      "role": "title"
+    },
+    {
+      "keyword": "spill proof tumbler for carbonated drinks",
+      "demand": 12.5,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "travel coffee tumbler insulated",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "insulated coffee tumbler with handle",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "are tumblers good for coffee",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best insulated travel tumbler?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "does tsa allow tumblers?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what insulated tumbler keeps ice the longest?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best insulated travel mug?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is a standard coffee tumbler size?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "is 1 cup 400 ml?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what does 400 ml look like?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "which is the best travel coffee cup?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "what are the best insulated travel coffee mugs?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is the best thermal coffee travel mug?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "leakproof coffee cup small",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "portable coffee cups with lids",
+      "demand": 8.3,
+      "intent": "transactional",
+      "cluster": "portable travel coffee tumblers with handle",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "hot coffee tumbler cute",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best travel coffee mug?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is the best brand of coffee travel mug?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is the best travel mug that keeps coffee hot?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "which is the best coffee travel cup?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is the best coffee cup that doesn't leak?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "what coffee cups are leak proof?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "how to stop coffee cup from leaking?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what are the best leak-proof cups for adults?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best tumbler for hot coffee?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "can hot coffee go in a tumbler?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "is there a coffee cup that will keep your coffee hot?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is the best insulated coffee mug to keep coffee hot?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "office coffee cup set",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel tumbler cups",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what are the best portable coffee cups?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "what are those portable coffee cups called?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the viral coffee tumbler?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "400 ml to cup milk",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best coffee mug for commuting?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "what is the best travel mug for commuting?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "commuter and office coffee mugs",
+      "role": "description"
+    },
+    {
+      "keyword": "what brand of mug keeps coffee hot the longest?",
+      "demand": 8.3,
+      "intent": "informational",
+      "cluster": "best recommendations for hot retention",
+      "role": "blog"
+    },
+    {
+      "keyword": "what is a travel coffee mug called?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "is it safe to drink from stainless steel tumblers?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best brand of stainless steel tumbler?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "are stainless steel tumblers better?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "is there a better tumbler than yeti?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what does 400ml look like?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how many cups are in 400 ml of water?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what size mug is best for travel coffee?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "spill proof tumbler meaning",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the best spill proof tumbler?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "leakproof spill proof coffee cups",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "is there a 40-ounce tumbler that doesn't leak?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is a spill proof tumbler?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "which tumbler is leak-proof?",
+      "demand": 8.3,
+      "intent": "commercial",
+      "cluster": "leakproof spill proof coffee cups",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "travel coffee tumbler small",
+      "demand": 4.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated coffee tumbler with lid",
+      "demand": 4.2,
+      "intent": "commercial",
+      "cluster": "insulated travel coffee tumblers",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "how many ml in a tumbler",
+      "demand": 4.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "coffee travel mugs amazon",
+      "demand": 4.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "leakproof coffee cup with lid",
+      "demand": 4.2,
+      "intent": "commercial",
+      "cluster": "leakproof spill proof coffee cups",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "portable coffee cup holder",
+      "demand": 4.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "hot coffee tumbler owala",
+      "demand": 4.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "office coffee cup holder",
+      "demand": 4.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "stainless steel tumbler for kids",
+      "demand": 4.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "400 ml to cup conversion",
+      "demand": 4.2,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    }
+  ]
+}

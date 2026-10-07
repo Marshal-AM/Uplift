@@ -1,0 +1,284 @@
+[
+  {
+    "id": "01a11483-4856-7652-8d15-3a765fb16fab",
+    "taskId": "01a11483-4850-7405-9192-c4e8e46079d2",
+    "createdAt": "2026-10-07T03:58:30.477Z",
+    "updatedAt": "2026-10-07T03:58:30.480Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "CREATED"
+  },
+  {
+    "id": "01a11483-4856-7652-8d15-3f4b9aecb585",
+    "taskId": "01a11483-4850-7405-9192-c4e8e46079d2",
+    "createdAt": "2026-10-07T03:58:30.478Z",
+    "updatedAt": "2026-10-07T03:58:30.480Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "READY"
+  },
+  {
+    "id": "01a11483-560c-718a-9cbf-96dfc6782bcb",
+    "taskId": "01a11483-4850-7405-9192-c4e8e46079d2",
+    "createdAt": "2026-10-07T03:58:33.996Z",
+    "updatedAt": "2026-10-07T03:58:33.996Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+      "coworker": {
+        "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+        "name": "Yuki",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-e6b8-7583-8551-8a9f8c39b271/image-yuki-hwXkhjQuuPE9AOnw2jC1PPbUDojd1z.png",
+        "slug": "yuki-localization-and-transcreation-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+    "coworker": {
+      "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+      "name": "Yuki",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-e6b8-7583-8551-8a9f8c39b271/image-yuki-hwXkhjQuuPE9AOnw2jC1PPbUDojd1z.png",
+      "slug": "yuki-localization-and-transcreation-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "On it.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11483-70bd-73bb-9543-45496bfe8fee",
+    "taskId": "01a11483-4850-7405-9192-c4e8e46079d2",
+    "createdAt": "2026-10-07T03:58:40.829Z",
+    "updatedAt": "2026-10-07T03:58:40.829Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+      "coworker": {
+        "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+        "name": "Yuki",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-e6b8-7583-8551-8a9f8c39b271/image-yuki-hwXkhjQuuPE9AOnw2jC1PPbUDojd1z.png",
+        "slug": "yuki-localization-and-transcreation-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+    "coworker": {
+      "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+      "name": "Yuki",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-e6b8-7583-8551-8a9f8c39b271/image-yuki-hwXkhjQuuPE9AOnw2jC1PPbUDojd1z.png",
+      "slug": "yuki-localization-and-transcreation-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": "01a11483-70b0-77b9-bc19-59404c3d1170",
+    "credits": 100,
+    "comment": "Payment requested: 1.0 credits.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11484-e527-710c-b747-a50b3b2e14b2",
+    "taskId": "01a11483-4850-7405-9192-c4e8e46079d2",
+    "createdAt": "2026-10-07T04:00:16.167Z",
+    "updatedAt": "2026-10-07T04:00:16.167Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+      "coworker": {
+        "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+        "name": "Yuki",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-e6b8-7583-8551-8a9f8c39b271/image-yuki-hwXkhjQuuPE9AOnw2jC1PPbUDojd1z.png",
+        "slug": "yuki-localization-and-transcreation-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+    "coworker": {
+      "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+      "name": "Yuki",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-e6b8-7583-8551-8a9f8c39b271/image-yuki-hwXkhjQuuPE9AOnw2jC1PPbUDojd1z.png",
+      "slug": "yuki-localization-and-transcreation-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Chainlink verification: **PASS** · 99/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11486-8e0c-71ef-818b-9658bc600541",
+    "taskId": "01a11483-4850-7405-9192-c4e8e46079d2",
+    "createdAt": "2026-10-07T04:02:04.940Z",
+    "updatedAt": "2026-10-07T04:02:04.940Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+      "coworker": {
+        "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+        "name": "Yuki",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-e6b8-7583-8551-8a9f8c39b271/image-yuki-hwXkhjQuuPE9AOnw2jC1PPbUDojd1z.png",
+        "slug": "yuki-localization-and-transcreation-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+    "coworker": {
+      "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+      "name": "Yuki",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-e6b8-7583-8551-8a9f8c39b271/image-yuki-hwXkhjQuuPE9AOnw2jC1PPbUDojd1z.png",
+      "slug": "yuki-localization-and-transcreation-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Ready to publish these changes:\n\n- **translation de**: 4 fields\n\nFull diff attached (`changes.md`, change hash `69e49de05348beb2`).\nMove this Task to **Ready** (or reply **approve**) to publish.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "APPROVAL_REQUIRED"
+  },
+  {
+    "id": "01a11487-1d73-71cc-a2d7-2d26183eb0fe",
+    "taskId": "01a11483-4850-7405-9192-c4e8e46079d2",
+    "createdAt": "2026-10-07T04:02:41.652Z",
+    "updatedAt": "2026-10-07T04:02:41.652Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "approve",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11487-3066-7167-a07a-cdba019044b8",
+    "taskId": "01a11483-4850-7405-9192-c4e8e46079d2",
+    "createdAt": "2026-10-07T04:02:46.502Z",
+    "updatedAt": "2026-10-07T04:02:46.502Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+      "coworker": {
+        "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+        "name": "Yuki",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-e6b8-7583-8551-8a9f8c39b271/image-yuki-hwXkhjQuuPE9AOnw2jC1PPbUDojd1z.png",
+        "slug": "yuki-localization-and-transcreation-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+    "coworker": {
+      "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+      "name": "Yuki",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-e6b8-7583-8551-8a9f8c39b271/image-yuki-hwXkhjQuuPE9AOnw2jC1PPbUDojd1z.png",
+      "slug": "yuki-localization-and-transcreation-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Approved — publishing.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11487-47db-7480-a644-a3df32f0b3d7",
+    "taskId": "01a11483-4850-7405-9192-c4e8e46079d2",
+    "createdAt": "2026-10-07T04:02:52.507Z",
+    "updatedAt": "2026-10-07T04:02:52.507Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+      "coworker": {
+        "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+        "name": "Yuki",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-e6b8-7583-8551-8a9f8c39b271/image-yuki-hwXkhjQuuPE9AOnw2jC1PPbUDojd1z.png",
+        "slug": "yuki-localization-and-transcreation-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+    "coworker": {
+      "id": "01a11127-e6b8-7583-8551-8a9f8c39b271",
+      "name": "Yuki",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-e6b8-7583-8551-8a9f8c39b271/image-yuki-hwXkhjQuuPE9AOnw2jC1PPbUDojd1z.png",
+      "slug": "yuki-localization-and-transcreation-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "**DE title:** Reisebecher aus Edelstahl TT-400 400 ml\n\n Der Reisebecher aus Edelstahl TT-400 ist ein doppelwandig vakuumisolierter Kaffeebecher für Pendler und Remote-Arbeiter, die unterwegs zuverlässige Wärme benöt…\n\nLocal primary keyword: **reisebecher aus edelstahl** · drift flags: none\n\nPublished to your store. Core listing score now 68.87/95.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "COMPLETED"
+  }
+]

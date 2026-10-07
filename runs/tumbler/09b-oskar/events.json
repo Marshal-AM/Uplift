@@ -1,0 +1,284 @@
+[
+  {
+    "id": "01a11483-47b9-726d-8531-a0723c8b7300",
+    "taskId": "01a11483-47b4-710e-8cd6-a8dcb96a7bde",
+    "createdAt": "2026-10-07T03:58:30.297Z",
+    "updatedAt": "2026-10-07T03:58:30.324Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "CREATED"
+  },
+  {
+    "id": "01a11483-47b9-726d-8531-a48b66993ae1",
+    "taskId": "01a11483-47b4-710e-8cd6-a8dcb96a7bde",
+    "createdAt": "2026-10-07T03:58:30.298Z",
+    "updatedAt": "2026-10-07T03:58:30.324Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "READY"
+  },
+  {
+    "id": "01a11483-569f-77e1-b854-782bdfd77a7d",
+    "taskId": "01a11483-47b4-710e-8cd6-a8dcb96a7bde",
+    "createdAt": "2026-10-07T03:58:34.143Z",
+    "updatedAt": "2026-10-07T03:58:34.143Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "coworker": {
+        "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+        "name": "Oskar",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+        "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+    "coworker": {
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "name": "Oskar",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+      "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "On it.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11483-77dc-714c-88aa-dde0a1e55046",
+    "taskId": "01a11483-47b4-710e-8cd6-a8dcb96a7bde",
+    "createdAt": "2026-10-07T03:58:42.652Z",
+    "updatedAt": "2026-10-07T03:58:42.652Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "coworker": {
+        "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+        "name": "Oskar",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+        "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+    "coworker": {
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "name": "Oskar",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+      "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": "01a11483-77d5-73cd-8ad1-68a2d98bd901",
+    "credits": 150,
+    "comment": "Payment requested: 1.5 credits.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11484-0f4e-72b2-a1c7-128635ee21ef",
+    "taskId": "01a11483-47b4-710e-8cd6-a8dcb96a7bde",
+    "createdAt": "2026-10-07T03:59:21.423Z",
+    "updatedAt": "2026-10-07T03:59:21.423Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "coworker": {
+        "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+        "name": "Oskar",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+        "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+    "coworker": {
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "name": "Oskar",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+      "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Chainlink verification: **PASS** · 100/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11486-8bd2-72bb-9a6d-582610a07cd5",
+    "taskId": "01a11483-47b4-710e-8cd6-a8dcb96a7bde",
+    "createdAt": "2026-10-07T04:02:04.370Z",
+    "updatedAt": "2026-10-07T04:02:04.370Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "coworker": {
+        "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+        "name": "Oskar",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+        "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+    "coworker": {
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "name": "Oskar",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+      "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Ready to publish these changes:\n\n- **category**: “—” → “Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Travel Mugs”\n- **productType**: “—” → “Travel Coffee Tumbler”\n- **tags**: add vacuum insulated bottle\n\nFull diff attached (`changes.md`, change hash `fb94c0f14529d0af`).\nMove this Task to **Ready** (or reply **approve**) to publish.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "APPROVAL_REQUIRED"
+  },
+  {
+    "id": "01a11486-dd0d-7329-8b28-dbc18931275f",
+    "taskId": "01a11483-47b4-710e-8cd6-a8dcb96a7bde",
+    "createdAt": "2026-10-07T04:02:25.165Z",
+    "updatedAt": "2026-10-07T04:02:25.165Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "approve",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11486-effc-72f8-bbbd-031d6d18437b",
+    "taskId": "01a11483-47b4-710e-8cd6-a8dcb96a7bde",
+    "createdAt": "2026-10-07T04:02:30.013Z",
+    "updatedAt": "2026-10-07T04:02:30.013Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "coworker": {
+        "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+        "name": "Oskar",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+        "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+    "coworker": {
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "name": "Oskar",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+      "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Approved — publishing.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11487-1003-7358-9034-656917f099a7",
+    "taskId": "01a11483-47b4-710e-8cd6-a8dcb96a7bde",
+    "createdAt": "2026-10-07T04:02:38.211Z",
+    "updatedAt": "2026-10-07T04:02:38.211Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "coworker": {
+        "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+        "name": "Oskar",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+        "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+    "coworker": {
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "name": "Oskar",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+      "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "**Category:** Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Travel Mugs · **Type:** Travel Coffee Tumbler\n\n1 tags, 0 collections, 0 related and 0 complementary products linked. Google feed fields missing: gtin_or_mpn.\n\nPublished to your store. Core listing score now 68.87/95.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "COMPLETED"
+  }
+]

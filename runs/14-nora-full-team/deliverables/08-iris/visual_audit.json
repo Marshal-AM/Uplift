@@ -1,0 +1,47 @@
+{
+  "audits": [
+    {
+      "shot_type": "hero",
+      "has_text_overlay": false,
+      "issues": [],
+      "width": 2048,
+      "height": 2048,
+      "duplicate_of": null
+    },
+    {
+      "shot_type": "lifestyle",
+      "has_text_overlay": false,
+      "issues": [
+        "busy background slightly competes with product"
+      ],
+      "width": 2048,
+      "height": 2048,
+      "duplicate_of": null
+    },
+    {
+      "shot_type": "lifestyle",
+      "has_text_overlay": false,
+      "issues": [
+        "busy background distracts from product"
+      ],
+      "width": 2048,
+      "height": 2048,
+      "duplicate_of": null
+    },
+    {
+      "shot_type": "lifestyle",
+      "has_text_overlay": false,
+      "issues": [
+        "Gray sleeve covers much of the lower bottle"
+      ],
+      "width": 1856,
+      "height": 2304,
+      "duplicate_of": null
+    }
+  ],
+  "missing_shot_types": [
+    "angle",
+    "detail",
+    "scale"
+  ]
+}

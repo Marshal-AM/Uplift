@@ -1,0 +1,13 @@
+{
+  "missing_google_fields": [
+    "gtin_or_mpn"
+  ],
+  "barcodes": [
+    {
+      "variant_id": "gid://shopify/ProductVariant/48022755147937",
+      "sku": null,
+      "barcode": "",
+      "valid": false
+    }
+  ]
+}

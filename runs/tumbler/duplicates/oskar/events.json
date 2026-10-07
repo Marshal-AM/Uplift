@@ -1,0 +1,252 @@
+[
+  {
+    "id": "01a11492-56c0-71ca-af49-d38b82542de4",
+    "taskId": "01a11492-56b9-7214-b1ba-6268fc34c888",
+    "createdAt": "2026-10-07T04:14:57.201Z",
+    "updatedAt": "2026-10-07T04:14:57.209Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "CREATED"
+  },
+  {
+    "id": "01a11492-56c0-71ca-af49-d5f89edddd94",
+    "taskId": "01a11492-56b9-7214-b1ba-6268fc34c888",
+    "createdAt": "2026-10-07T04:14:57.202Z",
+    "updatedAt": "2026-10-07T04:14:57.209Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "READY"
+  },
+  {
+    "id": "01a11492-6728-71ad-92a8-a530407b1991",
+    "taskId": "01a11492-56b9-7214-b1ba-6268fc34c888",
+    "createdAt": "2026-10-07T04:15:01.416Z",
+    "updatedAt": "2026-10-07T04:15:01.416Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "coworker": {
+        "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+        "name": "Oskar",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+        "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+    "coworker": {
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "name": "Oskar",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+      "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "On it.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11492-88f3-7278-931b-4601111f154b",
+    "taskId": "01a11492-56b9-7214-b1ba-6268fc34c888",
+    "createdAt": "2026-10-07T04:15:10.068Z",
+    "updatedAt": "2026-10-07T04:15:10.068Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "coworker": {
+        "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+        "name": "Oskar",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+        "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+    "coworker": {
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "name": "Oskar",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+      "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": "01a11492-88ec-711f-a592-f6c03a67a0cc",
+    "credits": 150,
+    "comment": "Payment requested: 1.5 credits.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11493-2285-7308-b5e5-13bf5d524635",
+    "taskId": "01a11492-56b9-7214-b1ba-6268fc34c888",
+    "createdAt": "2026-10-07T04:15:49.381Z",
+    "updatedAt": "2026-10-07T04:15:49.381Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "coworker": {
+        "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+        "name": "Oskar",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+        "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+    "coworker": {
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "name": "Oskar",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+      "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Chainlink verification: **PASS** · 99/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11494-eb9a-717a-84a1-c3584505fe53",
+    "taskId": "01a11492-56b9-7214-b1ba-6268fc34c888",
+    "createdAt": "2026-10-07T04:17:46.394Z",
+    "updatedAt": "2026-10-07T04:17:46.394Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "coworker": {
+        "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+        "name": "Oskar",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+        "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+    "coworker": {
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "name": "Oskar",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+      "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Ready to publish these changes:\n\n- **productType**: “Travel Coffee Tumbler” → “Travel Tumbler”\n- **tags**: add bamboo\n\nFull diff attached (`changes.md`, change hash `adf3bc9970454643`).\nMove this Task to **Ready** (or reply **approve**) to publish.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "APPROVAL_REQUIRED"
+  },
+  {
+    "id": "01a11495-5803-7371-b058-b18cacb4bda3",
+    "taskId": "01a11492-56b9-7214-b1ba-6268fc34c888",
+    "createdAt": "2026-10-07T04:18:14.147Z",
+    "updatedAt": "2026-10-07T04:18:14.147Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Decline: this Task was created twice by mistake. I don't want these changes.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11495-60e0-77c1-abc1-014f08554b90",
+    "taskId": "01a11492-56b9-7214-b1ba-6268fc34c888",
+    "createdAt": "2026-10-07T04:18:16.416Z",
+    "updatedAt": "2026-10-07T04:18:16.416Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "coworker": {
+        "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+        "name": "Oskar",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+        "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+    "coworker": {
+      "id": "01a11127-dc68-732e-89f2-7f6da58eff9c",
+      "name": "Oskar",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-dc68-732e-89f2-7f6da58eff9c/image-oskar-zwnQ21kl6jwBMYfoZ3zUnpIE6T0lE2.png",
+      "slug": "oskar-catalog-collections-and-shopping-feed-specialist"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Noted. Reply **approve** to publish, or cancel the Task to keep your store unchanged.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  }
+]

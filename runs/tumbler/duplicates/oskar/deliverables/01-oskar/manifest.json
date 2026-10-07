@@ -1,0 +1,65 @@
+{
+  "result_hash": "7f508737cc7bf8cd538ef44a0b898e0a7fd0bdb2ebdf9b245a8538c08229c618",
+  "at": "2026-10-07T04:15:41+00:00",
+  "agent": "Oskar",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "catalog_changes.json",
+      "sha256": "079adefc399c8262a02a448270eb82a6127479395722d8d6aef0c69d928260ec",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/079adefc399c8262a02a448270eb82a6127479395722d8d6aef0c69d928260ec/catalog_changes.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "collections_plan.md",
+      "sha256": "c65ba301a65086b208050965fa62189459ab09bc4aabe196a91c2a65839b3d80",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/c65ba301a65086b208050965fa62189459ab09bc4aabe196a91c2a65839b3d80/collections_plan.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "feed_report.json",
+      "sha256": "70d29beebecb1cc0b7f74984dd69d3cf3426c32198fe8d76f98c278b653f2acd",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/70d29beebecb1cc0b7f74984dd69d3cf3426c32198fe8d76f98c278b653f2acd/feed_report.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "google_supplemental.csv",
+      "sha256": "461fb9d7387502a162ed1af8d1814621c404c88efe5788eee08fd037d1bbdd70",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/461fb9d7387502a162ed1af8d1814621c404c88efe5788eee08fd037d1bbdd70/google_supplemental.csv"
+    },
+    {
+      "mime": "text/csv",
+      "name": "barcode_fixes.csv",
+      "sha256": "bcedd7d13cfb5069cbf84c7ab47760a1709e040331ca05e8b483642b3c01096d",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/bcedd7d13cfb5069cbf84c7ab47760a1709e040331ca05e8b483642b3c01096d/barcode_fixes.csv"
+    }
+  ],
+  "changeset": [
+    {
+      "fields": {
+        "productType": "Travel Tumbler"
+      },
+      "op": "product.update",
+      "product_id": "gid://shopify/Product/8785736237217"
+    },
+    {
+      "op": "product.taxonomy_tags_add",
+      "product_id": "gid://shopify/Product/8785736237217",
+      "tags": [
+        "bamboo"
+      ]
+    }
+  ],
+  "evidence": [],
+  "input_hash": "4f4704ccc02d9e1e5e8f283276e6343c4932e1d02a35f5309ee3d28ed517c6a1",
+  "job_or_task_id": "01a11492-56b9-7214-b1ba-6268fc34c888",
+  "profile": "oskar@5.0.0",
+  "role": "oskar",
+  "self_checks": {},
+  "summary_md": "**Category:** Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Travel Mugs · **Type:** Travel Tumbler\n\n1 tags, 0 collections, 0 related and 0 complementary products linked. Google feed fields missing: gtin_or_mpn.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "7cf3cbe73bb4070f7ccdc41619412dfb24639de4f7211136b30de126b000743e",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/7cf3cbe73bb4070f7ccdc41619412dfb24639de4f7211136b30de126b000743e/verification_bundle.json"
+  }
+}

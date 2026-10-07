@@ -1,0 +1,72 @@
+{
+  "result_hash": "5f549fb798d72654216485e39567034a6b6c935b44a9df104198cc28a8e387e0",
+  "at": "2026-10-07T03:45:19+00:00",
+  "agent": "Rafael",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "competitor_matrix.json",
+      "sha256": "3fc0fd2bf527162f03c05cce3d04d5d46108f94a52e3341f5b47d05e12bce4b6",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/3fc0fd2bf527162f03c05cce3d04d5d46108f94a52e3341f5b47d05e12bce4b6/competitor_matrix.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "competitor_matrix.csv",
+      "sha256": "d6554c0be43f52d19162856184e6d92ffbc6870ea6a8e278deab9a226443b79c",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d6554c0be43f52d19162856184e6d92ffbc6870ea6a8e278deab9a226443b79c/competitor_matrix.csv"
+    },
+    {
+      "mime": "application/json",
+      "name": "price_bands.json",
+      "sha256": "978228e19d26166a086596a33234fdb291e344ba8d67117805819b9549a7e55f",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/978228e19d26166a086596a33234fdb291e344ba8d67117805819b9549a7e55f/price_bands.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "positioning.md",
+      "sha256": "3c225d3f724d804c37e3e4d32cc3d12a5e00218ece4d145a62eb0341df943e6e",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/3c225d3f724d804c37e3e4d32cc3d12a5e00218ece4d145a62eb0341df943e6e/positioning.md"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "gaps.md",
+      "sha256": "d240a17abbbe14e77542b43a9c73b62037a1fc6b44c3fa01bd4fed144188b007",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d240a17abbbe14e77542b43a9c73b62037a1fc6b44c3fa01bd4fed144188b007/gaps.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "competitor_set.json",
+      "sha256": "5b3517202df473280b3fd9798b80d53ca166d823c3412b0407390d722522a88e",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/5b3517202df473280b3fd9798b80d53ca166d823c3412b0407390d722522a88e/competitor_set.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [
+    {
+      "claim": "amazon.com price 11.98",
+      "excerpt": "Bidponds 13.5oz / 400ml Double Walled Coffee Mug, Stainless Steel Tea Cups, Travel Camping Mugs",
+      "source_url": "https://www.amazon.com/clp/B091PPPZ6J"
+    },
+    {
+      "claim": "walmart.com price 9.27",
+      "excerpt": "Insulated Coffee Mug Cup with Handle, Double Wall Vacuum Coffee Tumbler 400ml",
+      "source_url": "https://www.walmart.com/ip/Insulated-Coffee-Mug-Cup-Handle-Double-Wall-Vacuum-Tumbler-400ml-Camping-Stainless-Steel-Travel-Flip-Lid-Trave-Mugs/18980255915?classType=undefined&variantFieldId=actual_color"
+    },
+    {
+      "claim": "corkcicle.com price 40",
+      "excerpt": "Commuter Cup",
+      "source_url": "https://corkcicle.com/collections/commuter-cup"
+    }
+  ],
+  "input_hash": "f6b25d0f10d0aea3161b6393a11bd13a69ca8414e6f4b7ba5876cf6f63759db6",
+  "job_or_task_id": "01a11475-e6d9-702b-8968-5ea47a685918",
+  "profile": "rafael@5.0.0",
+  "role": "rafael",
+  "self_checks": {},
+  "summary_md": "**3 competitors** across 5 queries.\n\n**Price bands:** 9.27–40.00 (median 11.98)\n\n**Where to win:**\n- Own ‘best leak-proof 400ml under $30’ with tested spill and heat-retention data\n- Highlight dishwasher-safe + sweat-free grip for daily commute use cases\n- Add comparison content: 400ml ≈ 1.7 cups, ideal one-coffee size vs oversized tumblers\n- Offer simple 2-pack or gift bundle to close the value gap vs $10 options and Corkcicle multi-buy\n- Publish short video + more lifestyle images to match content depth of higher-priced rivals",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "fb58db90f90aca2ae33ec2725947373eaf3358766c9159487f509ebedd64c23e",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/fb58db90f90aca2ae33ec2725947373eaf3358766c9159487f509ebedd64c23e/verification_bundle.json"
+  }
+}

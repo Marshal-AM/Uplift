@@ -1,0 +1,166 @@
+{
+  "result_hash": "b675794f75646406485b360266b82d90653e9f2d097cd3c77e4cefb3ecbaf346",
+  "at": "2026-10-07T03:49:48+00:00",
+  "agent": "Priya",
+  "artifacts": [
+    {
+      "mime": "text/markdown",
+      "name": "competitor_sentiment_report.md",
+      "sha256": "837c0ec9e019c375ee15d72984c4eb5abc23e0311564e7cc6369dd7e9a4394fc",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/837c0ec9e019c375ee15d72984c4eb5abc23e0311564e7cc6369dd7e9a4394fc/competitor_sentiment_report.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "findings.json",
+      "sha256": "d639e2336bf6c1997593dc092cb5698d5da2a1e5fc636ca7448fd7214f7b9454",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d639e2336bf6c1997593dc092cb5698d5da2a1e5fc636ca7448fd7214f7b9454/findings.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "coded_reviews.json",
+      "sha256": "0610c78bacf5dd4edccb913e786a9d802c72fe2c921632b9e16236ce6d6529c8",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/0610c78bacf5dd4edccb913e786a9d802c72fe2c921632b9e16236ce6d6529c8/coded_reviews.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "personas.json",
+      "sha256": "f093a0ebb9770af9c63883292ff5d9874f75e59169f77872cadf7dc3e427e90d",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f093a0ebb9770af9c63883292ff5d9874f75e59169f77872cadf7dc3e427e90d/personas.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "win_plan.json",
+      "sha256": "c7114d0b38efea97c4b003b666788524f7653e552818699ff7f50b3e077346d1",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/c7114d0b38efea97c4b003b666788524f7653e552818699ff7f50b3e077346d1/win_plan.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [
+    {
+      "claim": "love: insulation",
+      "excerpt": "Updated review: I love this cup more today than I did when I first got it. I absolutely love this cup. I use it for hot coffee and I use it for cold beverage. Keeps the hot hot, and keeps the cold cold. Works wonderful either way! The best cup ever. I just LOVE this cup. The first thing I did was fi",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    },
+    {
+      "claim": "love: leaks",
+      "excerpt": "Updated review: I love this cup more today than I did when I first got it. I absolutely love this cup. I use it for hot coffee and I use it for cold beverage. Keeps the hot hot, and keeps the cold cold. Works wonderful either way! The best cup ever. I just LOVE this cup. The first thing I did was fi",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    },
+    {
+      "claim": "love: cleaning",
+      "excerpt": "I love this mug, cup whatever you want to call it. It keeps things cool and hot for a decent amount of time. I like the lid because I have big happy dog that likes to knock over my drinks with his tail. It’s great for the car and fits steady in the cup holder without being that weird shape at the bo",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    },
+    {
+      "claim": "love: size",
+      "excerpt": "I love this mug, cup whatever you want to call it. It keeps things cool and hot for a decent amount of time. I like the lid because I have big happy dog that likes to knock over my drinks with his tail. It’s great for the car and fits steady in the cup holder without being that weird shape at the bo",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    },
+    {
+      "claim": "love: usability",
+      "excerpt": "I love the simple modern voyager 16 oz. It is leakproof and then to drink from it. You press in the middle so you can drink it from any angle and it is dishwasher safe.",
+      "source_url": "https://www.reddit.com/r/BuyItForLife/comments/1ngfvks/leakproof_coffee_mug_24oz_for_travel"
+    },
+    {
+      "claim": "love: price/value",
+      "excerpt": "I bought these to replace a leaky metal tumbler that I couldn’t get the (overtightened because it was leaking) lid off. I’d had enough, decided to try a 2-pack of these. These weren’t expensive, either, but appeared to be well made. I was very surprised to discover that the lids of these just push o",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    },
+    {
+      "claim": "complaint: cleaning",
+      "excerpt": "I love these overall, my drink stays hot for hours, and I love that the lids slide closed and vacuum seal it shut. As mentioned in other reviews, the lids are a hassle to take apart for cleaning. I had originally tried what one reviewer said and put it into the closed position then used the handle o",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    },
+    {
+      "claim": "complaint: lid",
+      "excerpt": "NOTE: I added one star and an edit to my original review, after I found an easy way to pop off the slider to clean the lid properly (more on that later). I’ll get straight to the point about these tumblers/travel mugs: PROS 1. Does a great job keeping hot drinks hot and cold drinks cold. 2. I love t",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    },
+    {
+      "claim": "complaint: durability",
+      "excerpt": "This was a nice mug while I had it. A few negatives right off bat would be that it can be a little hard to grip... which is what lead to it breaking. It isn't particularly heavy, the top is just rather wide and apparently a little cheap; as it completely cracked from a small drop. HOWEVER, this mug ",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    },
+    {
+      "claim": "complaint: insulation",
+      "excerpt": "It’s extremely difficult to keep the lid clean because there is an air pocket where the mouthpiece opens. This allows for liquid to get INSIDE the lid, and it’s nearly impossible to get out. I’ve had the mugs for over a year now and I don’t use them often because I just get grossed out. I do not hav",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    },
+    {
+      "claim": "complaint: leaks",
+      "excerpt": "I like the size, it fits under my keurig but I make my coffee at home and bring it work and the lid is constantly popping up and leaking from the slider. otherwise great cup keeps my drink hot and fits in my cup holders",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    },
+    {
+      "claim": "complaint: flow",
+      "excerpt": "Basic travel cup. I had this same one a couple years ago and upgraded to the yeti and the yeti was way better, but i lost the yeti and didn’t want to shell out for another one so went back to this one. I can tell the difference as it doesn’t keep hot for very long and not much comes out when you try",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    },
+    {
+      "claim": "complaint: handle_durability",
+      "excerpt": "This was my favorite travel cup until today. I picked it up off the counter and realized that the handle was broken. I bought it in May and it's never been dropped or battered around. That's far too fast for this to snap with no impact. It's too bad because I have several travel mugs and this one wa",
+      "source_url": "https://www.amazon.com/ALOUFEA-Insulated-Tumbler-Stainless-Thermal/dp/B0C74C5T2L"
+    },
+    {
+      "claim": "complaint: size",
+      "excerpt": "Beautiful colour, can’t use it though as it is too big to fit in the car holder Should revise the size of the bottom of the tumbler",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    },
+    {
+      "claim": "wish: insulation",
+      "excerpt": "I was looking for a tumbler I could use for my coffee at work & found this. Perfect size for a single up. Great seal, love the color variety, & love the size too. The only thing I would change is if did kept your drinks hot/cold for a longer period of time. Other than that I definitely will purchase",
+      "source_url": "https://www.amazon.com/Puraville-Insulated-Tumblers-Stainless-Reusable/dp/B0CMD6G16W"
+    },
+    {
+      "claim": "wish: size",
+      "excerpt": "I was looking for a tumbler I could use for my coffee at work & found this. Perfect size for a single up. Great seal, love the color variety, & love the size too. The only thing I would change is if did kept your drinks hot/cold for a longer period of time. Other than that I definitely will purchase",
+      "source_url": "https://www.amazon.com/Puraville-Insulated-Tumblers-Stainless-Reusable/dp/B0CMD6G16W"
+    },
+    {
+      "claim": "wish: leaks",
+      "excerpt": "Keeps my drinks cold in summer and hot drinks hot. No 🫗 spills. Wish I could order replacement part. The rubber gasket in lid came off because my sister's puppy got a hold of my lid and broke it.",
+      "source_url": "https://www.amazon.com/ALOUFEA-Insulated-Tumbler-Stainless-Thermal/dp/B0C74C5T2L"
+    },
+    {
+      "claim": "wish: seal",
+      "excerpt": "I was looking for a tumbler I could use for my coffee at work & found this. Perfect size for a single up. Great seal, love the color variety, & love the size too. The only thing I would change is if did kept your drinks hot/cold for a longer period of time. Other than that I definitely will purchase",
+      "source_url": "https://www.amazon.com/Puraville-Insulated-Tumblers-Stainless-Reusable/dp/B0CMD6G16W"
+    },
+    {
+      "claim": "wish: color",
+      "excerpt": "I was looking for a tumbler I could use for my coffee at work & found this. Perfect size for a single up. Great seal, love the color variety, & love the size too. The only thing I would change is if did kept your drinks hot/cold for a longer period of time. Other than that I definitely will purchase",
+      "source_url": "https://www.amazon.com/Puraville-Insulated-Tumblers-Stainless-Reusable/dp/B0CMD6G16W"
+    },
+    {
+      "claim": "dealbreaker: cleaning",
+      "excerpt": "Great cup, would be 5 stars if the kid could be cleaned. See photos, there’s a section of it that got moldy and I can’t get the stains out no matter what I try. I wash it by hand per the instructions but cannot get at the area that has the stain. Keeps drink hot for hours, easy to clean, easy to hol",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    },
+    {
+      "claim": "dealbreaker: insulation",
+      "excerpt": "The cup is very cute! What made me return this cup was that it leaks and it doesn’t keep my coffee warm. No matter how tight I seal it, it leaks. Also where it flips to open, it’s sooooo hard! Then whenever you do open it, the drink spills out. There’s a little vented hole where it also leaks out of",
+      "source_url": "https://www.amazon.com/Puraville-Insulated-Tumblers-Stainless-Reusable/dp/B0CMD6G16W"
+    },
+    {
+      "claim": "dealbreaker: flow",
+      "excerpt": "Almost impossible clean lid. Must soak in bleach water😒as slider will not come off. Also there is no little hole at top of lid for easy flow of drinking.Do not recommended and would never order again.",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    },
+    {
+      "claim": "dealbreaker: mold",
+      "excerpt": "So the sliders on the lids started to form mold inside of them. You can't take out the little pieces to wash them, so I ended up completely snapping them both off of the lids. The cups are good, keeps drinks warm and whatnot. Now they will just have to be gas station like lids. If you buy these, jus",
+      "source_url": "https://www.amazon.com/SUNWILL-Tumbler-Stainless-Insulated-Durable/dp/B07MV6Z896"
+    }
+  ],
+  "input_hash": "5ccd27ec0ce2cc91d1096ac4be9c3814913c3db063ccca2a26df9555716deca0",
+  "job_or_task_id": "01a11475-e641-70e4-b338-d6d60129fb48",
+  "profile": "priya@5.0.0",
+  "role": "priya",
+  "self_checks": {},
+  "summary_md": "**530 competitor reviews** analysed.\n\n**Top complaints to win on:**\n- cleaning\n- lid\n- durability\n- insulation\n- leaks",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "871a22d9d024c189772e244c1421e1e94ead359c6f2df5806403bba733d2cab5",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/871a22d9d024c189772e244c1421e1e94ead359c6f2df5806403bba733d2cab5/verification_bundle.json"
+  }
+}

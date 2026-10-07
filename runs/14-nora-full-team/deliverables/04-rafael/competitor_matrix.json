@@ -1,0 +1,108 @@
+[
+  {
+    "domain": "mybkr.com",
+    "url": "https://mybkr.com/?srsltid=AU7gw4WlUczzdPh6A8pDxMT4i8upMgF5X9IBf7KUJLIAZs6gOScFJafo",
+    "title": "bkr Glass Water Bottle",
+    "price": 52,
+    "compare_at_price": 0,
+    "currency": "USD",
+    "claims": [
+      "Free shipping in the contiguous US on orders of $75+.",
+      "Easy returns if you aren't obsessed."
+    ],
+    "guarantees": [
+      "Satisfaction guarantee",
+      "Durability guarantee"
+    ],
+    "shipping_returns": "Our current processing time is a little longer than usual. We’re working through orders as quickly as possible.",
+    "bundle_offers": [
+      "Bundle with a lip balm for 10% off",
+      "Buy two water bottles, get a straw cap free"
+    ],
+    "image_count": 5,
+    "has_video": false,
+    "review_count": 50,
+    "rating": 4.8,
+    "brand": "bkr"
+  },
+  {
+    "domain": "boroux.com",
+    "url": "https://boroux.com/products/glass-water-bottle-16oz?srsltid=AU7gw4VopnoLYowvaLYhQ5v1ASqQTKPS1ztCT8uRirhUuJQYvs3XN52E",
+    "title": "Glass Water Bottle - 16 oz",
+    "price": 12,
+    "compare_at_price": 15,
+    "currency": "USD",
+    "claims": [
+      "BPA/BPS-free Borosilicate Glass",
+      "Thermal Shock Resistant",
+      "Wide Mouth for Easy Cleaning",
+      "Stainless Steel Leak-proof Cap with Silicone Seal",
+      "Dishwasher Safe"
+    ],
+    "guarantees": [
+      "60-Day Satisfaction Guarantee"
+    ],
+    "shipping_returns": "Free US shipping over $60. Returns accepted within 60 days of receiving the product in new or used condition.",
+    "bundle_offers": [
+      "1 Bottle: $12",
+      "2 Bottles: $24",
+      "4 Bottles: $48",
+      "6 Bottles: $72"
+    ],
+    "image_count": 8,
+    "has_video": false,
+    "review_count": 174,
+    "rating": 4.91,
+    "brand": "BOROUX"
+  },
+  {
+    "domain": "wondrwood.com",
+    "url": "https://wondrwood.com/products/reusable-glass-water-bottle-550ml?srsltid=AU7gw4XzQ4ZuGonYMy7b1k9eSXBczFulk4hc0rty5DbTE3zAjqvB78jy",
+    "title": "Keep Vessel | 550ml Glass Bottle",
+    "price": 42.9,
+    "compare_at_price": 0,
+    "currency": "USD",
+    "claims": [
+      "Lab-Grade Glass",
+      "Your Last Water Bottle",
+      "Dishwasher Safe",
+      "Best Seller"
+    ],
+    "guarantees": [
+      "Free Worldwide Shipping Over $99",
+      "Satisfied, Refunded or Replaced",
+      "Lifetime Guarantee"
+    ],
+    "shipping_returns": "Delivered in: 7-12 business days",
+    "bundle_offers": [
+      "Bundle 3 or more items to save 15%"
+    ],
+    "image_count": 5,
+    "has_video": false,
+    "review_count": 6,
+    "rating": 4.5,
+    "brand": "Wondrwood"
+  },
+  {
+    "domain": "swell.com",
+    "url": "https://www.swell.com/pages/glass-original-bottle?srsltid=AU7gw4VPUiXVHxumvVWytj6JtFvNmbOhnNULJxQ4JXLO3tS4kpScqGPy",
+    "title": "Glass Original Bottle | 18oz",
+    "price": 39,
+    "compare_at_price": 0,
+    "currency": "USD",
+    "claims": [
+      "Zero Plastic",
+      "Pure Glass",
+      "Easy to Clean",
+      "Perfect Taste"
+    ],
+    "guarantees": [],
+    "shipping_returns": "Check the store for shipping and returns policy.",
+    "bundle_offers": [],
+    "image_count": 39,
+    "has_video": true,
+    "review_count": 76,
+    "rating": 4.5,
+    "brand": "S'well"
+  }
+]

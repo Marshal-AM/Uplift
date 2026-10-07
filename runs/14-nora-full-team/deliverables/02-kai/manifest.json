@@ -1,0 +1,38 @@
+{
+  "result_hash": "dd4e9375bd0a123fdc943298f9c74018df867539b45276ccef5b27c2e95fe1d1",
+  "at": "2026-10-07T04:04:48+00:00",
+  "agent": "Kai",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "keyword_map.json",
+      "sha256": "aa317215fa3ae5df5a95db28e2804b148c36bc619067e05fb7b15c47ea9677f3",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/aa317215fa3ae5df5a95db28e2804b148c36bc619067e05fb7b15c47ea9677f3/keyword_map.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "keyword_map.csv",
+      "sha256": "ca71f38b808fec74d74d1592435b42d9a5688a4cd1f88c0cd408c90fcd3c9e09",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/ca71f38b808fec74d74d1592435b42d9a5688a4cd1f88c0cd408c90fcd3c9e09/keyword_map.csv"
+    },
+    {
+      "mime": "text/plain",
+      "name": "negatives.txt",
+      "sha256": "f4093a60c177050d6cdfeb85641a841f39b62eafde3bd722656bdeef0d97bd64",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f4093a60c177050d6cdfeb85641a841f39b62eafde3bd722656bdeef0d97bd64/negatives.txt"
+    }
+  ],
+  "changeset": [],
+  "evidence": [],
+  "input_hash": "adaf627e422b4f75d8ef3742a2bdade725deac77c68f71b69184c59dc45b22de",
+  "job_or_task_id": "01a11487-7371-70fa-8db1-bdb027e2a383:kai",
+  "profile": "kai@5.0.0",
+  "role": "kai",
+  "self_checks": {},
+  "summary_md": "**Primary keyword:** reusable glass water bottles (demand 100.0/100)\n\n**238 keywords** from Google autocomplete, related searches and questions, in 9 clusters for US.\n\n- 550ml capacity bottles → title\n- BPA free glass bottles → seo_meta\n- Cork stopper glass bottles → description\n- Dishwasher safe bottles → blog\n- Lightweight travel bottles → ads_exact\n- Pure taste glass bottles → description\n- Recommendations for durable bottles → blog\n- Reusable borosilicate glass water bottles → title\n- Silicone sleeve protection → ads_phrase\n\n163 brand/irrelevant terms moved to negatives.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "e4a7a3784bb74b0ef983164e1051d4e04b6dc76c732d4b74fef0da6bc7a97fd3",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/e4a7a3784bb74b0ef983164e1051d4e04b6dc76c732d4b74fef0da6bc7a97fd3/verification_bundle.json"
+  }
+}

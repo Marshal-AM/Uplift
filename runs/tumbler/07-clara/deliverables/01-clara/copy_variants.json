@@ -1,0 +1,419 @@
+[
+  {
+    "style": "benefit-led and concise",
+    "score": {
+      "items": {
+        "title_length": 5,
+        "seo_title_length": 4,
+        "seo_description_length": 4,
+        "primary_in_title": 5,
+        "primary_in_seo_title": 3,
+        "primary_in_first_100": 0,
+        "secondary_coverage": 0,
+        "objections_answered": 5,
+        "structure": 4,
+        "grounded": 7.0
+      },
+      "total": 37.0,
+      "grounded_ratio": 1.0
+    },
+    "title": "Travel Coffee Tumbler: 400ml Stainless Steel TT-400",
+    "seo_title": "Travel Coffee Tumbler 400ml Stainless Steel",
+    "seo_description": "Insulated travel coffee tumbler in 18/8 stainless steel with ceramic coating and bamboo lid. Keeps coffee hot 6 hours, cold 12 hours, fits cup holders.",
+    "handle": "travel-coffee-tumbler-tt-400",
+    "tags": [
+      "travel coffee tumbler",
+      "insulated coffee tumbler",
+      "stainless steel tumbler with bamboo lid",
+      "travel mug",
+      "coffee tumbler 400ml",
+      "insulated travel mug",
+      "ceramic coated tumbler",
+      "coffee tumbler with lid"
+    ],
+    "blocks": [
+      {
+        "type": "p",
+        "text": "The Travel Tumbler TT-400 is a double-wall vacuum-insulated coffee tumbler made for US commuters and remote workers who need reliable heat on the go.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F4"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Why It Keeps Coffee Better",
+        "fact_ids": []
+      },
+      {
+        "type": "li",
+        "text": "Ceramic-coated interior preserves coffee taste without metallic notes.",
+        "fact_ids": [
+          "F6"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Keeps coffee hot for 6 hours and drinks cold for 12 hours.",
+        "fact_ids": [
+          "F8",
+          "F9"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Natural bamboo lid with slide closure stays secure and fits most car cup holders.",
+        "fact_ids": [
+          "F7",
+          "F10"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Key Specs",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "400 ml capacity in 18/8 stainless steel, double-wall vacuum-insulated construction, priced at 26 USD.",
+        "fact_ids": [
+          "F3",
+          "F5",
+          "F4",
+          "F12"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Perfect for Your Day",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Ideal for US commuters and remote workers drinking coffee while traveling or working away from a desk.",
+        "fact_ids": [
+          "F2"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Answers to Everyday Tumbler Frustrations",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "The ceramic coating and vacuum insulation address metallic taste and rapid heat loss, while the bamboo slide lid and cup-holder fit solve leaking lids and poor vehicle compatibility.",
+        "fact_ids": [
+          "F6",
+          "F4",
+          "F8",
+          "F7",
+          "F10"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Simple Care",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Hand-wash only to keep the finish and lid in top condition.",
+        "fact_ids": [
+          "F11"
+        ]
+      }
+    ]
+  },
+  {
+    "style": "story-led and vivid",
+    "score": {
+      "items": {
+        "title_length": 5,
+        "seo_title_length": 4,
+        "seo_description_length": 0,
+        "primary_in_title": 5,
+        "primary_in_seo_title": 3,
+        "primary_in_first_100": 0,
+        "secondary_coverage": 0,
+        "objections_answered": 5,
+        "structure": 4,
+        "grounded": 7.0
+      },
+      "total": 33.0,
+      "grounded_ratio": 1.0
+    },
+    "title": "Travel Coffee Tumbler Stainless Steel 400 Ml TT-400",
+    "seo_title": "Travel Coffee Tumbler 400ml Stainless Steel",
+    "seo_description": "The Travel Tumbler TT-400 is a 400 ml double-wall vacuum-insulated 18/8 stainless steel coffee tumbler with ceramic coating and bamboo lid that keeps drinks hot 6 hours or cold 12 hours and fits car cup holders.",
+    "handle": "travel-coffee-tumbler-tt-400",
+    "tags": [
+      "travel coffee tumbler",
+      "insulated coffee tumbler",
+      "stainless steel tumbler with bamboo lid",
+      "travel mug",
+      "coffee tumbler 400ml",
+      "insulated travel mug",
+      "ceramic coated tumbler",
+      "coffee tumbler with lid"
+    ],
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Picture your early drive or desk shift with coffee that still tastes bright hours later in the Travel Tumbler TT-400, a coffee tumbler built to stay with you.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F6",
+          "F8"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Why Your Coffee Stays Better",
+        "fact_ids": []
+      },
+      {
+        "type": "li",
+        "text": "Double-wall vacuum insulation keeps coffee hot for 6 hours and drinks cold for 12 hours.",
+        "fact_ids": [
+          "F4",
+          "F8",
+          "F9"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Ceramic-coated interior preserves coffee taste instead of letting metal flavor creep in.",
+        "fact_ids": [
+          "F6"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Natural bamboo lid with slide closure stays secure on the go.",
+        "fact_ids": [
+          "F7"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Fits most car cup holders so it rides steady beside you.",
+        "fact_ids": [
+          "F10"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What You Get",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "The Travel Tumbler TT-400 holds 400 ml of 18/8 stainless steel with double-wall vacuum construction, a ceramic-coated interior, and a natural bamboo lid with slide closure, priced at 26 USD.",
+        "fact_ids": [
+          "F1",
+          "F3",
+          "F4",
+          "F5",
+          "F6",
+          "F7",
+          "F12"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Made for Your Day",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "US commuters and remote workers can carry this coffee tumbler from the car cup holder to the desk without losing heat or cold.",
+        "fact_ids": [
+          "F2",
+          "F8",
+          "F9",
+          "F10"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Answers to Everyday Worries",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "The bamboo slide lid stays put, the ceramic coating keeps coffee from tasting metallic, vacuum insulation holds heat for 6 hours, and the shape fits most car cup holders.",
+        "fact_ids": [
+          "F4",
+          "F6",
+          "F7",
+          "F8",
+          "F10"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Simple Care",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Hand-wash only to keep the Travel Tumbler TT-400 performing.",
+        "fact_ids": [
+          "F1",
+          "F11"
+        ]
+      }
+    ]
+  },
+  {
+    "style": "spec-led and precise",
+    "score": {
+      "items": {
+        "title_length": 5,
+        "seo_title_length": 4,
+        "seo_description_length": 0,
+        "primary_in_title": 5,
+        "primary_in_seo_title": 3,
+        "primary_in_first_100": 0,
+        "secondary_coverage": 0,
+        "objections_answered": 5,
+        "structure": 4,
+        "grounded": 7.0
+      },
+      "total": 33.0,
+      "grounded_ratio": 1.0
+    },
+    "title": "Travel Coffee Tumbler 400ml 18/8 Stainless Steel",
+    "seo_title": "Travel Coffee Tumbler 400ml Stainless Steel",
+    "seo_description": "Travel coffee tumbler in 18/8 stainless steel holds 400 ml. Double-wall vacuum insulation keeps coffee hot 6 hours or cold 12 hours. Bamboo lid and ceramic coat. Fits cup holders. $26.",
+    "handle": "travel-coffee-tumbler-400ml-stainless-steel",
+    "tags": [
+      "travel coffee tumbler",
+      "insulated coffee tumbler",
+      "stainless steel tumbler with bamboo lid",
+      "travel mug",
+      "coffee tumbler 400ml",
+      "insulated travel mug",
+      "ceramic coated tumbler",
+      "coffee tumbler with lid"
+    ],
+    "blocks": [
+      {
+        "type": "p",
+        "text": "The Travel Tumbler TT-400 is a 400 ml coffee tumbler built for US commuters and remote workers who need reliable heat and a clean taste on the go.",
+        "fact_ids": [
+          "F1",
+          "F2",
+          "F3"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Why You Will Like It",
+        "fact_ids": []
+      },
+      {
+        "type": "li",
+        "text": "Double-wall vacuum insulation keeps coffee hot for 6 hours and drinks cold for 12 hours.",
+        "fact_ids": [
+          "F4",
+          "F8",
+          "F9"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Ceramic-coated interior helps preserve coffee taste without a metallic note.",
+        "fact_ids": [
+          "F6"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Natural bamboo lid with slide closure stays secure in most car cup holders.",
+        "fact_ids": [
+          "F7",
+          "F10"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Key Specs",
+        "fact_ids": []
+      },
+      {
+        "type": "li",
+        "text": "Capacity: 400 ml",
+        "fact_ids": [
+          "F3"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Construction: double-wall vacuum-insulated 18/8 stainless steel",
+        "fact_ids": [
+          "F4",
+          "F5"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Lid: natural bamboo with slide closure",
+        "fact_ids": [
+          "F7"
+        ]
+      },
+      {
+        "type": "li",
+        "text": "Price: 26 USD",
+        "fact_ids": [
+          "F12"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Everyday Use",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Take it in the car or to your desk. It fits most cup holders and holds a full 400 ml of coffee.",
+        "fact_ids": [
+          "F3",
+          "F10"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Built to Answer Common Complaints",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "The bamboo slide lid resists cracking and leaking, the ceramic coat avoids metallic taste, vacuum walls hold heat for 6 hours, and the shape fits most car cup holders.",
+        "fact_ids": [
+          "F4",
+          "F6",
+          "F7",
+          "F8",
+          "F10"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Care",
+        "fact_ids": []
+      },
+      {
+        "type": "p",
+        "text": "Hand-wash only to keep the finish and seal in top condition.",
+        "fact_ids": [
+          "F11"
+        ]
+      }
+    ]
+  }
+]

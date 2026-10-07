@@ -1,0 +1,38 @@
+{
+  "result_hash": "ff52b0decf3c1a04fdd36a4977d0f6c9c9f010424979ab5540b3ad32b2cc0fe6",
+  "at": "2026-10-07T03:42:16+00:00",
+  "agent": "Quinn",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "audit_report.json",
+      "sha256": "428bd41010b62533e684aebe6a77d4b92b259cdf1a20a1c82c2b21fbf7a4dce5",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/428bd41010b62533e684aebe6a77d4b92b259cdf1a20a1c82c2b21fbf7a4dce5/audit_report.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "audit_report.md",
+      "sha256": "ee001e1b7b693e7d226eda65ce766d2f612e54b2cf60efe4aa9de2336a8962e6",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/ee001e1b7b693e7d226eda65ce766d2f612e54b2cf60efe4aa9de2336a8962e6/audit_report.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "fix_plan.json",
+      "sha256": "dd6ad4458a27699fc0ed6f2d6b3ca967b5f45c613632148fc5797da10bd36e0f",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/dd6ad4458a27699fc0ed6f2d6b3ca967b5f45c613632148fc5797da10bd36e0f/fix_plan.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [],
+  "input_hash": "5dfc745df12f3ae01afb7f8ccac2cea9e6242d5955f48b1145fb3a647ee5ffbe",
+  "job_or_task_id": "01a11467-b6c1-7301-8ae8-119e5fa2cd28:quinn_after",
+  "profile": "quinn@5.0.0",
+  "role": "quinn",
+  "self_checks": {},
+  "summary_md": "**Listing score 72.5/100** (was 76.0)\n\n- [high] Add trust-building elements like detailed guarantees, certifications, customer testimonials, and transparent policies to the listing description and bullet points. → clara\n- [high] Restructure the product catalog feed and collections to improve attribute completeness, variant grouping, and category accuracy for better visibility. → oskar\n- [medium] Rewrite persuasive copy focusing on benefits, emotional triggers, and clear CTAs to lift conversion potential. → clara\n- [medium] Expand FAQ and supporting content sections to address common objections and build buyer confidence. → leo",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "ed5eb07838d64cc099a8496bfabd9ffa5d070dcf25825ede4a5f925eed97ec74",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/ed5eb07838d64cc099a8496bfabd9ffa5d070dcf25825ede4a5f925eed97ec74/verification_bundle.json"
+  }
+}

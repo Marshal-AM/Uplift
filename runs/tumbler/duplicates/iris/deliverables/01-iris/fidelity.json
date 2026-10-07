@@ -1,0 +1,23 @@
+[
+  {
+    "name": "clean_hero",
+    "prompt": "white studio shot",
+    "fidelity": 1,
+    "differences": [],
+    "kept": true
+  },
+  {
+    "name": "scene_1",
+    "prompt": "a car cup holder on a morning commute",
+    "fidelity": 1,
+    "differences": [],
+    "kept": true
+  },
+  {
+    "name": "scene_2",
+    "prompt": "a desk next to a laptop",
+    "fidelity": 1,
+    "differences": [],
+    "kept": true
+  }
+]

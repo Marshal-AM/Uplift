@@ -1,0 +1,52 @@
+[
+  {
+    "finding_id": "love:insulation",
+    "action_type": "listing claim",
+    "action": "Lead with supported claim: double-wall vacuum keeps coffee hot 6 hours and cold drinks cold 12 hours, with ceramic interior that does not change coffee taste."
+  },
+  {
+    "finding_id": "love:leaks",
+    "action_type": "proof image",
+    "action": "Show an upside-down sealed tumbler photo plus a short car-cup-holder clip proving the bamboo slide lid stays closed."
+  },
+  {
+    "finding_id": "love:size",
+    "action_type": "listing claim",
+    "action": "State 400 ml capacity and that it fits most car cup holders, aimed at single-serve commute coffee."
+  },
+  {
+    "finding_id": "love:price/value",
+    "action_type": "ad angle",
+    "action": "Position TT-400 at $26 as the commute tumbler that delivers multi-hour heat without Yeti pricing."
+  },
+  {
+    "finding_id": "complaint:cleaning",
+    "action_type": "FAQ",
+    "action": "FAQ: hand-wash only; explain how to slide and rinse the bamboo closure, and warn against dishwasher use that damages coatings on competitors."
+  },
+  {
+    "finding_id": "complaint:lid",
+    "action_type": "product improvement",
+    "action": "Make the bamboo slide removable without tools so the seal can be cleaned, addressing trapped-residue complaints."
+  },
+  {
+    "finding_id": "complaint:flow",
+    "action_type": "product improvement",
+    "action": "Add a small vent path in the slide so liquid pours without the trickle users report on sealed slider lids."
+  },
+  {
+    "finding_id": "complaint:durability",
+    "action_type": "offer/guarantee",
+    "action": "Offer a finish-and-handle warranty covering peeling and breakage, since coating and handle failures drive returns on competitors."
+  },
+  {
+    "finding_id": "complaint:handle_durability",
+    "action_type": "proof image",
+    "action": "Publish a drop/handle stress photo of the travel handle, since broken handles are a distinct complaint on handled tumblers."
+  },
+  {
+    "finding_id": "wish:insulation",
+    "action_type": "listing claim",
+    "action": "Call out the 6-hour hot / 12-hour cold spec next to the ceramic-coated interior so longer hold is a concrete claim, not a wish."
+  }
+]

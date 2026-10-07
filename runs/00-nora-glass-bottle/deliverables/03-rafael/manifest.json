@@ -1,0 +1,67 @@
+{
+  "result_hash": "97b2e8cdbc394ae1ef4af75df98257e4c3a18d4a7573dfac20753857313c5b85",
+  "at": "2026-10-07T03:30:56+00:00",
+  "agent": "Rafael",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "competitor_matrix.json",
+      "sha256": "3f096c97b96b3f7eba0d7064e97d0be34601ac20fb13d511c4ea20ba5bda6faf",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/3f096c97b96b3f7eba0d7064e97d0be34601ac20fb13d511c4ea20ba5bda6faf/competitor_matrix.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "competitor_matrix.csv",
+      "sha256": "5989cf408822bcba50ac975c2e47867a66b7ea60da70c21278bedfd488230331",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/5989cf408822bcba50ac975c2e47867a66b7ea60da70c21278bedfd488230331/competitor_matrix.csv"
+    },
+    {
+      "mime": "application/json",
+      "name": "price_bands.json",
+      "sha256": "8e597791d2db687ae495a374f5c8b15c1b85d1f3e634be8923060a0efcf83b4c",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/8e597791d2db687ae495a374f5c8b15c1b85d1f3e634be8923060a0efcf83b4c/price_bands.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "positioning.md",
+      "sha256": "f6a93884f6b0bdffc4292319116e8ece0be07a552bb659a236e1ac3264ba4087",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f6a93884f6b0bdffc4292319116e8ece0be07a552bb659a236e1ac3264ba4087/positioning.md"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "gaps.md",
+      "sha256": "2d6a377d9dd80104b138f5bfcd2e8e0a80acf4136270b0ba787e011e2d0ef7ba",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/2d6a377d9dd80104b138f5bfcd2e8e0a80acf4136270b0ba787e011e2d0ef7ba/gaps.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "competitor_set.json",
+      "sha256": "f7998368a8d3532eced7b9006b8944a6babec8c3aa9fe11a32bfb621eec204f4",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f7998368a8d3532eced7b9006b8944a6babec8c3aa9fe11a32bfb621eec204f4/competitor_set.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [
+    {
+      "claim": "boroux.com price 25",
+      "excerpt": "Glass Water Bottle - 33 oz",
+      "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii"
+    },
+    {
+      "claim": "wondrwood.com price 42.9",
+      "excerpt": "Keep Vessel | 550ml Glass Bottle",
+      "source_url": "https://wondrwood.com/products/reusable-glass-water-bottle-550ml?srsltid=AU7gw4U65XB2AzlxW2AF2vcOQhaUo-b_ZdI7Wuei3xIArDCkqmyyhbEQ"
+    }
+  ],
+  "input_hash": "afa5906ce3e29b3743e5e87cbe3368afd74ce860f636637469f59817bc45a046",
+  "job_or_task_id": "01a11467-b6c1-7301-8ae8-119e5fa2cd28:rafael",
+  "profile": "rafael@5.0.0",
+  "role": "rafael",
+  "self_checks": {},
+  "summary_md": "**2 competitors** across 5 queries.\n\n**Price bands:** 11.99–122.49 (median 24.99)\n\n**Where to win:**\n- Win on cork as unique natural, chemical-free seal vs metal caps—tie to PAA health/safety queries\n- Price near median ($25) with lifetime guarantee and free shipping over $50 to undercut Wondrwood\n- Create comparison content and short videos addressing borosilicate advantages, cork history, and dishwasher/boil safety\n- Bundle with sleeves or cleaning kits; highlight exact 550ml match and repairability for eco-conscious buyers",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "289be781294e1c940a3f519221fc437baf8a0f79d2c636cc7248c172cbcfb5a7",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/289be781294e1c940a3f519221fc437baf8a0f79d2c636cc7248c172cbcfb5a7/verification_bundle.json"
+  }
+}

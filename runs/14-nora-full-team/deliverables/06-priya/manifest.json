@@ -1,0 +1,121 @@
+{
+  "result_hash": "ca775ca3497f1bab43c9e91aeedbba14f732fa3958669d2265f6a0c72d20493d",
+  "at": "2026-10-07T04:08:40+00:00",
+  "agent": "Priya",
+  "artifacts": [
+    {
+      "mime": "text/markdown",
+      "name": "competitor_sentiment_report.md",
+      "sha256": "a0234eacb8daca8638feb92b466a1d8f2a881f8516749da351b5e8f562d5e967",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a0234eacb8daca8638feb92b466a1d8f2a881f8516749da351b5e8f562d5e967/competitor_sentiment_report.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "findings.json",
+      "sha256": "72b9ce5e517e9eac02d048118ac2aad7282b292bc973308a31f0586113b0c060",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/72b9ce5e517e9eac02d048118ac2aad7282b292bc973308a31f0586113b0c060/findings.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "coded_reviews.json",
+      "sha256": "e8f389bbedf2d8b79120884ed67c49523c18519593e1a3ce6c07923c7a4573c6",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/e8f389bbedf2d8b79120884ed67c49523c18519593e1a3ce6c07923c7a4573c6/coded_reviews.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "personas.json",
+      "sha256": "9b1cebd8f2f74c91e8476d755b225fa982c6149e4ae24bf5dafd8788132af55f",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/9b1cebd8f2f74c91e8476d755b225fa982c6149e4ae24bf5dafd8788132af55f/personas.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "win_plan.json",
+      "sha256": "4d17fa151deb963ab2568992d4840a9594d92fb427fb86febf4a33f0689b1571",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/4d17fa151deb963ab2568992d4840a9594d92fb427fb86febf4a33f0689b1571/win_plan.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [
+    {
+      "claim": "love: durability",
+      "excerpt": "I bought 2 with the stainless sleeves so long ago I can't remember when. I worked in auto assembly. A very tough environment so I bought extra bottles without sleeves to cover breakage. I can't count the number of times they hit the floor in the sleeves and never even chipped. First break yesterday.",
+      "source_url": "https://boroux.com/products/glass-water-bottle-16oz?srsltid=AU7gw4VopnoLYowvaLYhQ5v1ASqQTKPS1ztCT8uRirhUuJQYvs3XN52E"
+    },
+    {
+      "claim": "love: cleaning",
+      "excerpt": "Love this water bottle. Not only is it gorgeous but it’s easy to clean.",
+      "source_url": "https://mybkr.com/?srsltid=AU7gw4WlUczzdPh6A8pDxMT4i8upMgF5X9IBf7KUJLIAZs6gOScFJafo"
+    },
+    {
+      "claim": "love: appearance",
+      "excerpt": "Love this water bottle. Not only is it gorgeous but it’s easy to clean.",
+      "source_url": "https://mybkr.com/?srsltid=AU7gw4WlUczzdPh6A8pDxMT4i8upMgF5X9IBf7KUJLIAZs6gOScFJafo"
+    },
+    {
+      "claim": "love: insulation",
+      "excerpt": "Best thing about this is that you can wash and they actually get clean in dishwasher. Keep very cold in fridge.",
+      "source_url": "https://boroux.com/products/glass-water-bottle-16oz?srsltid=AU7gw4VopnoLYowvaLYhQ5v1ASqQTKPS1ztCT8uRirhUuJQYvs3XN52E"
+    },
+    {
+      "claim": "love: price/value",
+      "excerpt": "So much care and thought has gone into the design and production of this bottle. It's rare to purchase something and think 'Damn, this is worth every bloody cent.'",
+      "source_url": "https://mybkr.com/?srsltid=AU7gw4WlUczzdPh6A8pDxMT4i8upMgF5X9IBf7KUJLIAZs6gOScFJafo"
+    },
+    {
+      "claim": "love: size",
+      "excerpt": "Perfect for a short mac!",
+      "source_url": "https://wondrwood.com/products/reusable-glass-water-bottle-550ml?srsltid=AU7gw4XzQ4ZuGonYMy7b1k9eSXBczFulk4hc0rty5DbTE3zAjqvB78jy"
+    },
+    {
+      "claim": "complaint: safety",
+      "excerpt": "I think those caps shed micro plastics",
+      "source_url": "https://www.reddit.com/r/PlasticFreeLiving/comments/1r85fn6/looking_for_a_everyday_widemouthed_glass_water"
+    },
+    {
+      "claim": "complaint: authenticity",
+      "excerpt": "Swell is a reputable brand and a good option. Be cautious purchasing from Amazon because they do occasionally sell fakes.",
+      "source_url": "https://www.reddit.com/r/PlasticFreeLiving/comments/1r85fn6/looking_for_a_everyday_widemouthed_glass_water"
+    },
+    {
+      "claim": "complaint: durability",
+      "excerpt": "Hydroflask - I like how it has no rubber gasket seal part so it's easy to wash. It does dent very easily though, so maybe also consider buying a bottle boot. If it's dented at the bottom sometimes it won't be able to stand anymore.",
+      "source_url": "https://www.reddit.com/r/BuyItForLife/comments/174pcof/looking_for_a_quality_water_bottle"
+    },
+    {
+      "claim": "complaint: weight",
+      "excerpt": "The glass is a bit heavy but the taste is unbeatable!",
+      "source_url": "https://www.swell.com/pages/glass-original-bottle?srsltid=AU7gw4VPUiXVHxumvVWytj6JtFvNmbOhnNULJxQ4JXLO3tS4kpScqGPy"
+    },
+    {
+      "claim": "complaint: shipping",
+      "excerpt": "Buying elsewhere 😣 I’ve had to avoid Amazon altogether for anything that is used for feeding because risking a fake is not worth the convenience of quick shipping.",
+      "source_url": "https://www.reddit.com/r/PlasticFreeLiving/comments/1r85fn6/looking_for_a_everyday_widemouthed_glass_water"
+    },
+    {
+      "claim": "complaint: sleeve",
+      "excerpt": "I like Life Factory glass bottles, and I have a cheapo Amazon off brand one too. My issue with glass is that the silicone sleeves makes it nearly impossible to slide in/out of backpack sleeve.",
+      "source_url": "https://www.reddit.com/r/PlasticFreeLiving/comments/1r85fn6/looking_for_a_everyday_widemouthed_glass_water"
+    },
+    {
+      "claim": "complaint: lid",
+      "excerpt": "Glass peanut butter jar you like, or jam but the lids are not as good",
+      "source_url": "https://www.reddit.com/r/PlasticFreeLiving/comments/1r85fn6/looking_for_a_everyday_widemouthed_glass_water"
+    },
+    {
+      "claim": "complaint: service",
+      "excerpt": "This is what happens when you dismantle safety regulations. Purchased this bottle from QuikTrip by Carowinds in SC. Coca-Cola customer service AI told me I have to wait to contact someone till Monday. 🤡",
+      "source_url": "https://www.reddit.com/r/mildlyinfuriating/comments/1wkt9ki/literal_glass_from_a_brand_new_bottle_of_smart"
+    }
+  ],
+  "input_hash": "927f0cee53760aeb51497e91444296dd83ae48b1482bcdf86065a3e3f71a3ecb",
+  "job_or_task_id": "01a11487-7371-70fa-8db1-bdb027e2a383:priya",
+  "profile": "priya@5.0.0",
+  "role": "priya",
+  "self_checks": {},
+  "summary_md": "**81 competitor reviews** analysed.\n\n**Top complaints to win on:**\n- safety\n- authenticity\n- durability\n- weight\n- shipping",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "315d0418ae80636018db4a0c38e9e20db9c40ebd740f26f83a5bfbb019e608f0",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/315d0418ae80636018db4a0c38e9e20db9c40ebd740f26f83a5bfbb019e608f0/verification_bundle.json"
+  }
+}

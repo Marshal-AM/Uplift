@@ -1,0 +1,5 @@
+- No explicit leak-proof or hours-hot performance claims (high PAA demand)
+- Missing health/safety proof points beyond generic 304 steel (BPA-free, no metallic taste)
+- No size context vs standard travel cups or cup equivalents
+- Weak visual/social proof vs Amazon’s 286 reviews and Corkcicle’s 15 images
+- No bundle or multi-buy incentive unlike Corkcicle

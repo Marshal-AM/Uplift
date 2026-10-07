@@ -1,0 +1,70 @@
+[
+  {
+    "name": "Rugged Daily User",
+    "attributes": [
+      {
+        "attribute": "values extreme drop and impact resistance over years of hard use",
+        "review_ids": [
+          "74562141f770",
+          "b265d0bf7352",
+          "e3dc12579447",
+          "f007404c9b9f"
+        ]
+      },
+      {
+        "attribute": "accepts protective sleeves for real-world toughness",
+        "review_ids": [
+          "74562141f770",
+          "5b175bbf8392",
+          "23f721099690"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Easy-Clean Minimalist",
+    "attributes": [
+      {
+        "attribute": "prioritizes simple washing and dishwasher results",
+        "review_ids": [
+          "fe687b66c3ee",
+          "81aef63f5d84",
+          "705c9719c4dd",
+          "9e67568f8747"
+        ]
+      },
+      {
+        "attribute": "likes attractive glass that stays looking good",
+        "review_ids": [
+          "fe687b66c3ee",
+          "16c1478a0308",
+          "7205f806eb9d",
+          "b359d3290773"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Value-Conscious Insulator",
+    "attributes": [
+      {
+        "attribute": "wants long-lasting cold or heat retention without premium price",
+        "review_ids": [
+          "81aef63f5d84",
+          "586d62bdb5e2",
+          "0b73bf9898e7",
+          "4a7699a37293"
+        ]
+      },
+      {
+        "attribute": "compares brands for better price-to-performance",
+        "review_ids": [
+          "586d62bdb5e2",
+          "bcb6a1fdcbca",
+          "7c2a725be001",
+          "81cada013164"
+        ]
+      }
+    ]
+  }
+]

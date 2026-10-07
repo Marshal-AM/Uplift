@@ -1,0 +1,555 @@
+[
+  {
+    "id": "love:durability",
+    "kind": "love",
+    "aspect": "durability",
+    "weighted_count": 30,
+    "quotes": [
+      {
+        "text": "Love These Water Bottles. I drink tons of water, and I like to keep water in bottles in the fridge to keep it cold without ice, and I naturally don't like doing it in plastic at all. It is hard to find 1L glass water bottles from a trusted company (i.e. not Amazon) that are nice and won't break the ",
+        "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii",
+        "rating": 5,
+        "date": "08/31/2026",
+        "review_id": "c247233e07e1"
+      },
+      {
+        "text": "I currently have the non-insulated version; you might not want this one if condensation on the bottle exterior bothers you, however, I like mine in spite of that because it's a very sturdy bottle.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle",
+        "rating": null,
+        "date": "2018-10-09",
+        "review_id": "cf93a6d09fea"
+      },
+      {
+        "text": "Hydroflask or yeti rambler. They are both made of insulated steel so they keep drinks cold for a really long time and are very durable even if you drop them, plus the wide mouth makes cleaning easy.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle",
+        "rating": null,
+        "date": "2018-10-09",
+        "review_id": "c5f3e07e8a76"
+      },
+      {
+        "text": "For me, nothing can beat a CamelBak Podium even if it's made of plastic. Glass and metal aren't durable for my needs. I'll break it in a day.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle",
+        "rating": null,
+        "date": "2018-10-09",
+        "review_id": "9a814bbca1d4"
+      }
+    ]
+  },
+  {
+    "id": "love:material",
+    "kind": "love",
+    "aspect": "material",
+    "weighted_count": 19,
+    "quotes": [
+      {
+        "text": "I wanted a glass water jar and this fits the bill",
+        "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii",
+        "rating": 5,
+        "date": "09/23/2026",
+        "review_id": "405b7e3cc374"
+      },
+      {
+        "text": "Love These Water Bottles. I drink tons of water, and I like to keep water in bottles in the fridge to keep it cold without ice, and I naturally don't like doing it in plastic at all. It is hard to find 1L glass water bottles from a trusted company (i.e. not Amazon) that are nice and won't break the ",
+        "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii",
+        "rating": 5,
+        "date": "08/31/2026",
+        "review_id": "c247233e07e1"
+      },
+      {
+        "text": "Hydroflask with a wide mouth lid or a life factory “cafe collection” bottle. Unfortunately they stopped making them, but you can still find them on amazon. It’s borosilicate glass and can be used for hot or cold beverages.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle",
+        "rating": null,
+        "date": "2018-10-09",
+        "review_id": "abe707dc5048"
+      },
+      {
+        "text": "I LOVE my stainless steel insulated camelback chute.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle",
+        "rating": null,
+        "date": "2018-10-09",
+        "review_id": "60edb74f4415"
+      }
+    ]
+  },
+  {
+    "id": "love:insulation",
+    "kind": "love",
+    "aspect": "insulation",
+    "weighted_count": 8,
+    "quotes": [
+      {
+        "text": "Pleasantly surprised with this cup, it's well made and it's true about the wood insulating the heat.",
+        "source_url": "https://wondrwood.com/products/reusable-glass-water-bottle-550ml?srsltid=AU7gw4U65XB2AzlxW2AF2vcOQhaUo-b_ZdI7Wuei3xIArDCkqmyyhbEQ",
+        "rating": 4,
+        "date": "Edinburgh, UK",
+        "review_id": "4a7699a37293"
+      },
+      {
+        "text": "I just got an insulated Klean Kanteen bottle and I love it! I've had regular Klean Kanteens in the past and they're great, the cap is plastic with a hook on it so you can kind of hold it with a finger but I think they sell metal/bamboo caps too.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle",
+        "rating": null,
+        "date": "2018-10-09",
+        "review_id": "e8a17e036567"
+      },
+      {
+        "text": "Hydroflask or yeti rambler. They are both made of insulated steel so they keep drinks cold for a really long time and are very durable even if you drop them, plus the wide mouth makes cleaning easy.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle",
+        "rating": null,
+        "date": "2018-10-09",
+        "review_id": "c5f3e07e8a76"
+      },
+      {
+        "text": "I LOVE my stainless steel insulated camelback chute.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle",
+        "rating": null,
+        "date": "2018-10-09",
+        "review_id": "60edb74f4415"
+      }
+    ]
+  },
+  {
+    "id": "love:taste",
+    "kind": "love",
+    "aspect": "taste",
+    "weighted_count": 8,
+    "quotes": [
+      {
+        "text": "I use both, and while the stainless steel is obviously easier water tastes better out of glass.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles",
+        "rating": null,
+        "date": "2019-10-09",
+        "review_id": "f68646af98f7"
+      },
+      {
+        "text": "Aluminum and stainless steel is actually a lot more recyclable than glass. As long as you don't buy a cheap Chinese knockoff you can't taste the steel. There's no aluminum or metallic taste in your water.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles",
+        "rating": null,
+        "date": "2019-10-09",
+        "review_id": "d034604655a7"
+      },
+      {
+        "text": "The _ZULU_ bottle runs on the heavier side but every gulp of water taste so fresh 'n' so clean, clean.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles",
+        "rating": null,
+        "date": "2019-10-09",
+        "review_id": "11578fce60f7"
+      },
+      {
+        "text": "How about a Purist or other bottles like it? Stainless steel on the outside and a glass coating on the inside. I use one and really happy with how the water tastes.",
+        "source_url": "https://www.reddit.com/r/BuyItForLife/comments/1bnm69j/shatterproof_big_glass_water_bottle",
+        "rating": null,
+        "date": "2023-10-08",
+        "review_id": "aa272b7a3857"
+      }
+    ]
+  },
+  {
+    "id": "love:cleaning",
+    "kind": "love",
+    "aspect": "cleaning",
+    "weighted_count": 6,
+    "quotes": [
+      {
+        "text": "I love this bottle! I wish they had a double wall insulated one and a heavier feel cap but otherwise it’s a great size and easy to clean. Love it and would buy again!",
+        "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii",
+        "rating": 4,
+        "date": "09/09/2026",
+        "review_id": "83c35affd600"
+      },
+      {
+        "text": "Hydroflask or yeti rambler. They are both made of insulated steel so they keep drinks cold for a really long time and are very durable even if you drop them, plus the wide mouth makes cleaning easy.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle",
+        "rating": null,
+        "date": "2018-10-09",
+        "review_id": "c5f3e07e8a76"
+      },
+      {
+        "text": "Stainless steel will have much more durability, and you could take it hiking without worrying about broken glass. As long as you clean it fairly regularly and let it dry out sometimes, the stainless steel is great. Glass is easier to clean overall and you can see if it's 100% clean more easily.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles",
+        "rating": null,
+        "date": "2019-10-09",
+        "review_id": "cee04266b248"
+      },
+      {
+        "text": "They wash beautifully in dishwasher and gasket is simple to pop out and push back in.",
+        "source_url": "https://www.reddit.com/r/BuyItForLife/comments/166dspg/looking_for_a_maybe_glass_water_bottle",
+        "rating": null,
+        "date": "2023-10-08",
+        "review_id": "96d588194d93"
+      }
+    ]
+  },
+  {
+    "id": "love:size",
+    "kind": "love",
+    "aspect": "size",
+    "weighted_count": 5,
+    "quotes": [
+      {
+        "text": "I wanted a glass water jar and this fits the bill",
+        "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii",
+        "rating": 5,
+        "date": "09/23/2026",
+        "review_id": "405b7e3cc374"
+      },
+      {
+        "text": "I love this bottle! I wish they had a double wall insulated one and a heavier feel cap but otherwise it’s a great size and easy to clean. Love it and would buy again!",
+        "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii",
+        "rating": 4,
+        "date": "09/09/2026",
+        "review_id": "83c35affd600"
+      },
+      {
+        "text": "Love These Water Bottles. I drink tons of water, and I like to keep water in bottles in the fridge to keep it cold without ice, and I naturally don't like doing it in plastic at all. It is hard to find 1L glass water bottles from a trusted company (i.e. not Amazon) that are nice and won't break the ",
+        "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii",
+        "rating": 5,
+        "date": "08/31/2026",
+        "review_id": "c247233e07e1"
+      },
+      {
+        "text": "Perfect for a short mac!",
+        "source_url": "https://wondrwood.com/products/reusable-glass-water-bottle-550ml?srsltid=AU7gw4U65XB2AzlxW2AF2vcOQhaUo-b_ZdI7Wuei3xIArDCkqmyyhbEQ",
+        "rating": 5,
+        "date": "Bundaberg, AU",
+        "review_id": "88f8dfd087f2"
+      }
+    ]
+  },
+  {
+    "id": "complaint:durability",
+    "kind": "complaint",
+    "aspect": "durability",
+    "weighted_count": 14,
+    "quotes": [
+      {
+        "text": "I bought two glass bottles and shattered them both within a month of purchasing them by dropping them... Now I have a stainless steel one that is quite dented but still holding strong after over a year. Also I like that this one holds more water than I've seen for glass bottles (it's 32 oz) So if yo",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles",
+        "rating": null,
+        "date": "2019-10-09",
+        "review_id": "088d454da66b"
+      },
+      {
+        "text": "I second this, I had a glass one and it shattered to smithereens",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles",
+        "rating": null,
+        "date": "2019-10-09",
+        "review_id": "d606fad5d277"
+      },
+      {
+        "text": "I am WAY too clumsy for glass (it would shatter within a week) and do not like the aftertaste that water in a stainless steel bottle leaves. I've found the product that works for me and I like it.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles",
+        "rating": null,
+        "date": "2019-10-09",
+        "review_id": "cf51441e2e32"
+      },
+      {
+        "text": "I like stainless steel but I use the brand hydro flask - glass would break in my job field",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles",
+        "rating": null,
+        "date": "2019-10-09",
+        "review_id": "0788b4702c04"
+      }
+    ]
+  },
+  {
+    "id": "complaint:taste",
+    "kind": "complaint",
+    "aspect": "taste",
+    "weighted_count": 4,
+    "quotes": [
+      {
+        "text": "I am WAY too clumsy for glass (it would shatter within a week) and do not like the aftertaste that water in a stainless steel bottle leaves. I've found the product that works for me and I like it.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles",
+        "rating": null,
+        "date": "2019-10-09",
+        "review_id": "cf51441e2e32"
+      },
+      {
+        "text": "I enjoy the sturdiness of stainless steel containers but I haven't been able to get over the metallic taste.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles",
+        "rating": null,
+        "date": "2019-10-09",
+        "review_id": "2e68508117b0"
+      },
+      {
+        "text": "I have a glass water bottle with a silicone sleeve and wooden lid for home, but a collapsible silicone water bottle for when I travel/go out. It's not my favorite bc it gives the water a taste after a while, but I don't have to worry about it breaking or not being allowed somewhere.",
+        "source_url": "https://www.reddit.com/r/Anticonsumption/comments/15rozdq/recommendation_for_full_glass_reusable_water",
+        "rating": null,
+        "date": "2023-10-08",
+        "review_id": "43524bd327a3"
+      },
+      {
+        "text": "I don't love the stainless steel ones because they leave a lingering metallic taste in the water. Why is there so much hype around the stainless steel ones",
+        "source_url": "https://www.reddit.com/r/Anticonsumption/comments/15rozdq/recommendation_for_full_glass_reusable_water",
+        "rating": null,
+        "date": "2023-10-08",
+        "review_id": "985aed28432a"
+      }
+    ]
+  },
+  {
+    "id": "complaint:weight",
+    "kind": "complaint",
+    "aspect": "weight",
+    "weighted_count": 3,
+    "quotes": [
+      {
+        "text": "I have a contigo glass water bottle with a silicone cover to protect it if dropped. It’s fairly heavy when full but I’ve been using it for about 6 months and it’s been great!",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles",
+        "rating": null,
+        "date": "2019-10-09",
+        "review_id": "965881d8e5e0"
+      },
+      {
+        "text": "The _ZULU_ bottle runs on the heavier side but every gulp of water taste so fresh 'n' so clean, clean.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles",
+        "rating": null,
+        "date": "2019-10-09",
+        "review_id": "11578fce60f7"
+      },
+      {
+        "text": "Kleen kanteen: it’s heavy, and the narrow mouth version isn’t easy to clean.",
+        "source_url": "https://www.reddit.com/r/onebag/comments/m84q3o/best_waterbottle",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "80d1ead53611"
+      }
+    ]
+  },
+  {
+    "id": "complaint:cleaning",
+    "kind": "complaint",
+    "aspect": "cleaning",
+    "weighted_count": 3,
+    "quotes": [
+      {
+        "text": "The boroux bottles are excellent, but the gasket is a bit of a challenge to remove and the mouth opening is like is big to drink out of in a car... But the glass is outstanding.",
+        "source_url": "https://www.reddit.com/r/BuyItForLife/comments/166dspg/looking_for_a_maybe_glass_water_bottle",
+        "rating": null,
+        "date": "2023-10-08",
+        "review_id": "34e847566498"
+      },
+      {
+        "text": "I've been using the camelback chute mag and it was great for awhile until the rubber gaskets around the lid started getting mildew.",
+        "source_url": "https://www.reddit.com/r/onebag/comments/m84q3o/best_waterbottle",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "0ee51710415e"
+      },
+      {
+        "text": "Kleen kanteen: it’s heavy, and the narrow mouth version isn’t easy to clean.",
+        "source_url": "https://www.reddit.com/r/onebag/comments/m84q3o/best_waterbottle",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "80d1ead53611"
+      }
+    ]
+  },
+  {
+    "id": "complaint:size",
+    "kind": "complaint",
+    "aspect": "size",
+    "weighted_count": 3,
+    "quotes": [
+      {
+        "text": "The boroux bottles are excellent, but the gasket is a bit of a challenge to remove and the mouth opening is like is big to drink out of in a car... But the glass is outstanding.",
+        "source_url": "https://www.reddit.com/r/BuyItForLife/comments/166dspg/looking_for_a_maybe_glass_water_bottle",
+        "rating": null,
+        "date": "2023-10-08",
+        "review_id": "34e847566498"
+      },
+      {
+        "text": "My first choice was just a plain glass bottle but I couldn’t find any wide mouthed ones I like that weren’t paper thin.",
+        "source_url": "https://www.reddit.com/r/onebag/comments/m84q3o/best_waterbottle",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "820823037ee1"
+      },
+      {
+        "text": "I also used a nalgene for a long time but it's so wide it rarely fits in most cupholders.",
+        "source_url": "https://www.reddit.com/r/onebag/comments/m84q3o/best_waterbottle",
+        "rating": null,
+        "date": "2020-10-08",
+        "review_id": "e82a087bd641"
+      }
+    ]
+  },
+  {
+    "id": "complaint:insulation",
+    "kind": "complaint",
+    "aspect": "insulation",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "I love this bottle! I wish they had a double wall insulated one and a heavier feel cap but otherwise it’s a great size and easy to clean. Love it and would buy again!",
+        "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii",
+        "rating": 4,
+        "date": "09/09/2026",
+        "review_id": "83c35affd600"
+      },
+      {
+        "text": "(Don't bother with the corkscicle hybrid... So clumsy and still doesn't keep water cold.)",
+        "source_url": "https://www.reddit.com/r/BuyItForLife/comments/166dspg/looking_for_a_maybe_glass_water_bottle",
+        "rating": null,
+        "date": "2023-10-08",
+        "review_id": "b36e2ce3e3a7"
+      }
+    ]
+  },
+  {
+    "id": "complaint:condensation",
+    "kind": "complaint",
+    "aspect": "condensation",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "Quality Product. Quick Delivery. Have been happy with the product. I will state if you put cold water in it and your water bottle sweating bothers you get a sleeve because it’s definitely gonna happen :)",
+        "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii",
+        "rating": 4,
+        "date": "08/14/2026",
+        "review_id": "25f102e72b08"
+      },
+      {
+        "text": "I currently have the non-insulated version; you might not want this one if condensation on the bottle exterior bothers you, however, I like mine in spite of that because it's a very sturdy bottle.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle",
+        "rating": null,
+        "date": "2018-10-09",
+        "review_id": "cf93a6d09fea"
+      }
+    ]
+  },
+  {
+    "id": "complaint:material",
+    "kind": "complaint",
+    "aspect": "material",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "For me, nothing can beat a CamelBak Podium even if it's made of plastic. Glass and metal aren't durable for my needs. I'll break it in a day.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle",
+        "rating": null,
+        "date": "2018-10-09",
+        "review_id": "9a814bbca1d4"
+      },
+      {
+        "text": "I love my (plastic) Camelbak Eddy. Looks like they make a glass version as well. It has a silicone shell to protect it from drops, so if your sole motivation behind a glass bottle is to reduce plastic production (rather than taste/cleanliness/lifespan/etc), then that silicone shell probably breaks t",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle",
+        "rating": null,
+        "date": "2018-10-09",
+        "review_id": "34c5d8079e91"
+      }
+    ]
+  },
+  {
+    "id": "wish:size",
+    "kind": "wish",
+    "aspect": "size",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I love this bottle! I wish they had a double wall insulated one and a heavier feel cap but otherwise it’s a great size and easy to clean. Love it and would buy again!",
+        "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii",
+        "rating": 4,
+        "date": "09/09/2026",
+        "review_id": "83c35affd600"
+      }
+    ]
+  },
+  {
+    "id": "wish:cleaning",
+    "kind": "wish",
+    "aspect": "cleaning",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I love this bottle! I wish they had a double wall insulated one and a heavier feel cap but otherwise it’s a great size and easy to clean. Love it and would buy again!",
+        "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii",
+        "rating": 4,
+        "date": "09/09/2026",
+        "review_id": "83c35affd600"
+      }
+    ]
+  },
+  {
+    "id": "wish:insulation",
+    "kind": "wish",
+    "aspect": "insulation",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I love this bottle! I wish they had a double wall insulated one and a heavier feel cap but otherwise it’s a great size and easy to clean. Love it and would buy again!",
+        "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii",
+        "rating": 4,
+        "date": "09/09/2026",
+        "review_id": "83c35affd600"
+      }
+    ]
+  },
+  {
+    "id": "wish:cap",
+    "kind": "wish",
+    "aspect": "cap",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I love this bottle! I wish they had a double wall insulated one and a heavier feel cap but otherwise it’s a great size and easy to clean. Love it and would buy again!",
+        "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii",
+        "rating": 4,
+        "date": "09/09/2026",
+        "review_id": "83c35affd600"
+      }
+    ]
+  },
+  {
+    "id": "dealbreaker:material",
+    "kind": "dealbreaker",
+    "aspect": "material",
+    "weighted_count": 2,
+    "quotes": [
+      {
+        "text": "For me, nothing can beat a CamelBak Podium even if it's made of plastic. Glass and metal aren't durable for my needs. I'll break it in a day.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle",
+        "rating": null,
+        "date": "2018-10-09",
+        "review_id": "9a814bbca1d4"
+      },
+      {
+        "text": "I love my (plastic) Camelbak Eddy. Looks like they make a glass version as well. It has a silicone shell to protect it from drops, so if your sole motivation behind a glass bottle is to reduce plastic production (rather than taste/cleanliness/lifespan/etc), then that silicone shell probably breaks t",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle",
+        "rating": null,
+        "date": "2018-10-09",
+        "review_id": "34c5d8079e91"
+      }
+    ]
+  },
+  {
+    "id": "dealbreaker:durability",
+    "kind": "dealbreaker",
+    "aspect": "durability",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I am WAY too clumsy for glass (it would shatter within a week) and do not like the aftertaste that water in a stainless steel bottle leaves. I've found the product that works for me and I like it.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles",
+        "rating": null,
+        "date": "2019-10-09",
+        "review_id": "cf51441e2e32"
+      }
+    ]
+  },
+  {
+    "id": "dealbreaker:taste",
+    "kind": "dealbreaker",
+    "aspect": "taste",
+    "weighted_count": 1,
+    "quotes": [
+      {
+        "text": "I am WAY too clumsy for glass (it would shatter within a week) and do not like the aftertaste that water in a stainless steel bottle leaves. I've found the product that works for me and I like it.",
+        "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles",
+        "rating": null,
+        "date": "2019-10-09",
+        "review_id": "cf51441e2e32"
+      }
+    ]
+  }
+]

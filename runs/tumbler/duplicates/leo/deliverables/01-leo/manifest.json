@@ -1,0 +1,81 @@
+{
+  "result_hash": "74a3b1b9f8fc547f2afadcb847878e4024edf5f493fbf62b11a71d3d98227202",
+  "at": "2026-10-07T04:16:31+00:00",
+  "agent": "Leo",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "faq.json",
+      "sha256": "e56285fa3c108472cc1cfd06b3bc0ebf9922c8caff3e958b9dc13cd55bc6cd6e",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/e56285fa3c108472cc1cfd06b3bc0ebf9922c8caff3e958b9dc13cd55bc6cd6e/faq.json"
+    },
+    {
+      "mime": "text/html",
+      "name": "emails/1-launch-announcement.html",
+      "sha256": "0eff5fe82079ccc0bcc1034f6392a7b511f4a697f40660be0deafb2f01ac033b",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/0eff5fe82079ccc0bcc1034f6392a7b511f4a697f40660be0deafb2f01ac033b/emails/1-launch-announcement.html"
+    },
+    {
+      "mime": "text/plain",
+      "name": "emails/1.txt",
+      "sha256": "850e445e38c994114a83ed21b0a484dbea1eeae781fb036d8d3b19b05fb79aba",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/850e445e38c994114a83ed21b0a484dbea1eeae781fb036d8d3b19b05fb79aba/emails/1.txt"
+    },
+    {
+      "mime": "text/html",
+      "name": "emails/2-launch-reminder.html",
+      "sha256": "0abc83c7e046520b8f90585e72d2f26ea2a2c8d642e5de24c4650227a316a427",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/0abc83c7e046520b8f90585e72d2f26ea2a2c8d642e5de24c4650227a316a427/emails/2-launch-reminder.html"
+    },
+    {
+      "mime": "text/plain",
+      "name": "emails/2.txt",
+      "sha256": "8a7f4e5257fe8ae081d403f038e8facc49b5ffd6bfe2bd7da98db401564dadb1",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/8a7f4e5257fe8ae081d403f038e8facc49b5ffd6bfe2bd7da98db401564dadb1/emails/2.txt"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "flow_blueprints.md",
+      "sha256": "fa2267224891d99f85eb3ae551fc61d15ccb059210533fe9bca4aac4cbf82696",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/fa2267224891d99f85eb3ae551fc61d15ccb059210533fe9bca4aac4cbf82696/flow_blueprints.md"
+    },
+    {
+      "mime": "text/plain",
+      "name": "sms.txt",
+      "sha256": "140280fd6005cd21d74716ae4cc085e02e29a8f9ba584fbdc20b9b5199845746",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/140280fd6005cd21d74716ae4cc085e02e29a8f9ba584fbdc20b9b5199845746/sms.txt"
+    },
+    {
+      "mime": "text/csv",
+      "name": "social_pack.csv",
+      "sha256": "122e19512999cddc1a5164062f9e09817d8163c05af2bf664a05e6bc51662cce",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/122e19512999cddc1a5164062f9e09817d8163c05af2bf664a05e6bc51662cce/social_pack.csv"
+    }
+  ],
+  "changeset": [
+    {
+      "metafields": [
+        {
+          "key": "faq",
+          "namespace": "custom",
+          "type": "json",
+          "value": "[{\"q\": \"What is the capacity of the Travel Coffee Tumbler TT-400?\", \"a\": \"The Travel Coffee Tumbler TT-400 holds 400 ml.\"}, {\"q\": \"What material is the Travel Coffee Tumbler made from?\", \"a\": \"It is made of double-wall vacuum-insulated 18/8 stainless steel.\"}, {\"q\": \"Does the tumbler affect the taste of coffee?\", \"a\": \"No, the ceramic-coated interior ensures coffee keeps its taste.\"}, {\"q\": \"What kind of lid does the tumbler have?\", \"a\": \"It has a natural bamboo lid with a slide closure.\"}, {\"q\": \"How long does the tumbler keep drinks hot or cold?\", \"a\": \"It keeps coffee hot for 6 hours and drinks cold for 12 hours.\"}, {\"q\": \"Does the tumbler fit in car cup holders?\", \"a\": \"Yes, it fits most car cup holders.\"}, {\"q\": \"How should I clean the Travel Coffee Tumbler?\", \"a\": \"It is hand-wash only.\"}, {\"q\": \"How much does the Travel Coffee Tumbler cost?\", \"a\": \"The tumbler costs 26 USD.\"}, {\"q\": \"Are stainless steel tumblers good for coffee?\", \"a\": \"Yes, this stainless steel tumbler has a ceramic-coated interior so coffee keeps its taste and vacuum insulation to maintain temperature.\"}]"
+        }
+      ],
+      "op": "metafields.set",
+      "owner_id": "gid://shopify/Product/8785736237217"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "3017e2e0df614fd00995705a31157dee8c3a081e342b8a5ea90d2aaec4192940",
+  "job_or_task_id": "01a11492-5667-7109-a678-5d29a82fc578",
+  "profile": "leo@5.0.0",
+  "role": "leo",
+  "self_checks": {},
+  "summary_md": "Delivered: faq, email, social. All links carry `utm_campaign=uplift-01a11492-566`; emails are ready to import; the FAQ goes on the product page once you approve.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "1818843969005c9eb722732c5548e33c8130341739c472bafd4415d883b66946",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/1818843969005c9eb722732c5548e33c8130341739c472bafd4415d883b66946/verification_bundle.json"
+  }
+}

@@ -1,0 +1,190 @@
+[
+  {
+    "id": "01a11487-7338-7432-a983-8ec0527d8b3b",
+    "taskId": "01a11487-7332-74ef-805b-1741f46e79fc",
+    "createdAt": "2026-10-07T04:03:03.588Z",
+    "updatedAt": "2026-10-07T04:03:03.602Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "CREATED"
+  },
+  {
+    "id": "01a11487-7338-7432-a983-91ae15d1e65e",
+    "taskId": "01a11487-7332-74ef-805b-1741f46e79fc",
+    "createdAt": "2026-10-07T04:03:03.589Z",
+    "updatedAt": "2026-10-07T04:03:03.602Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "READY"
+  },
+  {
+    "id": "01a11487-7b28-720c-b5a8-0d834dbba20f",
+    "taskId": "01a11487-7332-74ef-805b-1741f46e79fc",
+    "createdAt": "2026-10-07T04:03:05.640Z",
+    "updatedAt": "2026-10-07T04:03:05.640Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11128-1456-7660-91a7-65966cd907fd",
+      "coworker": {
+        "id": "01a11128-1456-7660-91a7-65966cd907fd",
+        "name": "Quinn",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11128-1456-7660-91a7-65966cd907fd/image-quinn-MZu99buVNBVCway0hNSie0qZhiJYAG.png",
+        "slug": "quinn-store-auditor-and-performance-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11128-1456-7660-91a7-65966cd907fd",
+    "coworker": {
+      "id": "01a11128-1456-7660-91a7-65966cd907fd",
+      "name": "Quinn",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11128-1456-7660-91a7-65966cd907fd/image-quinn-MZu99buVNBVCway0hNSie0qZhiJYAG.png",
+      "slug": "quinn-store-auditor-and-performance-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "On it.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11487-9219-77e8-95da-e91978067290",
+    "taskId": "01a11487-7332-74ef-805b-1741f46e79fc",
+    "createdAt": "2026-10-07T04:03:11.513Z",
+    "updatedAt": "2026-10-07T04:03:11.513Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11128-1456-7660-91a7-65966cd907fd",
+      "coworker": {
+        "id": "01a11128-1456-7660-91a7-65966cd907fd",
+        "name": "Quinn",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11128-1456-7660-91a7-65966cd907fd/image-quinn-MZu99buVNBVCway0hNSie0qZhiJYAG.png",
+        "slug": "quinn-store-auditor-and-performance-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11128-1456-7660-91a7-65966cd907fd",
+    "coworker": {
+      "id": "01a11128-1456-7660-91a7-65966cd907fd",
+      "name": "Quinn",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11128-1456-7660-91a7-65966cd907fd/image-quinn-MZu99buVNBVCway0hNSie0qZhiJYAG.png",
+      "slug": "quinn-store-auditor-and-performance-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": "01a11487-920d-77dd-adad-2bfa0301b8fa",
+    "credits": 50,
+    "comment": "Payment requested: 0.5 credits.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11488-3700-706f-a0c4-cdf3f11bbbca",
+    "taskId": "01a11487-7332-74ef-805b-1741f46e79fc",
+    "createdAt": "2026-10-07T04:03:53.728Z",
+    "updatedAt": "2026-10-07T04:03:53.728Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11128-1456-7660-91a7-65966cd907fd",
+      "coworker": {
+        "id": "01a11128-1456-7660-91a7-65966cd907fd",
+        "name": "Quinn",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11128-1456-7660-91a7-65966cd907fd/image-quinn-MZu99buVNBVCway0hNSie0qZhiJYAG.png",
+        "slug": "quinn-store-auditor-and-performance-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11128-1456-7660-91a7-65966cd907fd",
+    "coworker": {
+      "id": "01a11128-1456-7660-91a7-65966cd907fd",
+      "name": "Quinn",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11128-1456-7660-91a7-65966cd907fd/image-quinn-MZu99buVNBVCway0hNSie0qZhiJYAG.png",
+      "slug": "quinn-store-auditor-and-performance-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Chainlink verification: **PASS** · 95/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a1148a-2b6d-76c8-8480-5cf6e0e16eb9",
+    "taskId": "01a11487-7332-74ef-805b-1741f46e79fc",
+    "createdAt": "2026-10-07T04:06:01.837Z",
+    "updatedAt": "2026-10-07T04:06:01.837Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11128-1456-7660-91a7-65966cd907fd",
+      "coworker": {
+        "id": "01a11128-1456-7660-91a7-65966cd907fd",
+        "name": "Quinn",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11128-1456-7660-91a7-65966cd907fd/image-quinn-MZu99buVNBVCway0hNSie0qZhiJYAG.png",
+        "slug": "quinn-store-auditor-and-performance-analyst"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11128-1456-7660-91a7-65966cd907fd",
+    "coworker": {
+      "id": "01a11128-1456-7660-91a7-65966cd907fd",
+      "name": "Quinn",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11128-1456-7660-91a7-65966cd907fd/image-quinn-MZu99buVNBVCway0hNSie0qZhiJYAG.png",
+      "slug": "quinn-store-auditor-and-performance-analyst"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "**Listing score 72.9/100** (was None)\n\n- [high] Add detailed FAQs, guarantees, and trust-building content sections to address the critically low trust score. → leo\n- [high] Rewrite product descriptions and bullet points to boost persuasion and conversion potential. → clara\n- [medium] Optimize catalog structure, collections, and product feed for better organization and discoverability within the store. → oskar\n- [low] Refine keywords slightly to close the remaining discoverability gap. → kai",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "COMPLETED"
+  }
+]

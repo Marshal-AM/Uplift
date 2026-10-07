@@ -1,0 +1,1 @@
+Premium eco-friendly borosilicate glass bottle with natural cork stopper, positioned in the mid-to-upper price range ($25-35) emphasizing plastic-free purity, durability, and aesthetic appeal against competitors like bkr (premium $52), BOROUX (budget $12), Wondrwood ($43), and S'well ($39). Unique cork differentiator sets it apart from silicone/steel caps.

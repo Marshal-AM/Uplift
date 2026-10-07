@@ -1,0 +1,81 @@
+{
+  "result_hash": "176f5a2de528235052f2532972f28e1aee78ee46c520f41032b63f26db931cb4",
+  "at": "2026-10-07T03:54:15+00:00",
+  "agent": "Leo",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "faq.json",
+      "sha256": "7dbbc2a7ca8bc0f3cdfb936e2f1f76e9a9efe98a5c566d190ffa3a907366b212",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/7dbbc2a7ca8bc0f3cdfb936e2f1f76e9a9efe98a5c566d190ffa3a907366b212/faq.json"
+    },
+    {
+      "mime": "text/html",
+      "name": "emails/1-launch-announcement.html",
+      "sha256": "15ce80797a42bd07ff75587964873b2981cd62ce41279cf93594bec3f0d4ae1e",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/15ce80797a42bd07ff75587964873b2981cd62ce41279cf93594bec3f0d4ae1e/emails/1-launch-announcement.html"
+    },
+    {
+      "mime": "text/plain",
+      "name": "emails/1.txt",
+      "sha256": "16c8a8b190b8043b2af990eb0a08b4223789546d683d494bd9a0de9d90ab2772",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/16c8a8b190b8043b2af990eb0a08b4223789546d683d494bd9a0de9d90ab2772/emails/1.txt"
+    },
+    {
+      "mime": "text/html",
+      "name": "emails/2-launch-reminder.html",
+      "sha256": "a72f6188f093b083526788da25214b19de11083fb3f43f428101a2eac353a174",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a72f6188f093b083526788da25214b19de11083fb3f43f428101a2eac353a174/emails/2-launch-reminder.html"
+    },
+    {
+      "mime": "text/plain",
+      "name": "emails/2.txt",
+      "sha256": "ffd912c17273f6ce0ed98161f210cc623c488203b9bae8b03ef7e32d0f3ae6fe",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/ffd912c17273f6ce0ed98161f210cc623c488203b9bae8b03ef7e32d0f3ae6fe/emails/2.txt"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "flow_blueprints.md",
+      "sha256": "143874a4180c930635b50d04af5a5613f8994732e68396c3aebea44fa8acaa48",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/143874a4180c930635b50d04af5a5613f8994732e68396c3aebea44fa8acaa48/flow_blueprints.md"
+    },
+    {
+      "mime": "text/plain",
+      "name": "sms.txt",
+      "sha256": "430743e0a43c92134f1ae4070415afe4577f0583ec777b00c82a76e70ace7057",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/430743e0a43c92134f1ae4070415afe4577f0583ec777b00c82a76e70ace7057/sms.txt"
+    },
+    {
+      "mime": "text/csv",
+      "name": "social_pack.csv",
+      "sha256": "a5f1f15c0ae8b25eebd3f08d13f110650c33b6713c18404eaaa345d3447a9a85",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a5f1f15c0ae8b25eebd3f08d13f110650c33b6713c18404eaaa345d3447a9a85/social_pack.csv"
+    }
+  ],
+  "changeset": [
+    {
+      "metafields": [
+        {
+          "key": "faq",
+          "namespace": "custom",
+          "type": "json",
+          "value": "[{\"q\": \"What is the capacity of the Travel Tumbler TT-400?\", \"a\": \"The Travel Tumbler TT-400 holds 400 ml.\"}, {\"q\": \"What material is the Travel Tumbler TT-400 made from?\", \"a\": \"The Travel Tumbler TT-400 is made of double-wall vacuum-insulated 18/8 stainless steel.\"}, {\"q\": \"Does the Travel Tumbler TT-400 preserve coffee taste?\", \"a\": \"Yes, the Travel Tumbler TT-400 has a ceramic-coated interior so coffee keeps its taste.\"}, {\"q\": \"What type of lid does the Travel Tumbler TT-400 have?\", \"a\": \"The Travel Tumbler TT-400 features a natural bamboo lid with a slide closure.\"}, {\"q\": \"How long does the Travel Tumbler TT-400 keep coffee hot?\", \"a\": \"The Travel Tumbler TT-400 keeps coffee hot for 6 hours.\"}, {\"q\": \"How long does the Travel Tumbler TT-400 keep drinks cold?\", \"a\": \"The Travel Tumbler TT-400 keeps drinks cold for 12 hours.\"}, {\"q\": \"Does the Travel Tumbler TT-400 fit in car cup holders?\", \"a\": \"Yes, the Travel Tumbler TT-400 fits most car cup holders.\"}, {\"q\": \"How do you clean the Travel Tumbler TT-400?\", \"a\": \"The Travel Tumbler TT-400 is hand-wash only.\"}, {\"q\": \"What is the price of the Travel Tumbler TT-400?\", \"a\": \"The Travel Tumbler TT-400 costs 26 USD.\"}]"
+        }
+      ],
+      "op": "metafields.set",
+      "owner_id": "gid://shopify/Product/8785736237217"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "3017e2e0df614fd00995705a31157dee8c3a081e342b8a5ea90d2aaec4192940",
+  "job_or_task_id": "01a1147d-e023-751d-9916-5e0c6a780241",
+  "profile": "leo@5.0.0",
+  "role": "leo",
+  "self_checks": {},
+  "summary_md": "Delivered: faq, email, social. All links carry `utm_campaign=uplift-01a1147d-e02`; emails are ready to import; the FAQ goes on the product page once you approve.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "99f1f877d905c0f8530c6529b49bc438d46167223e308de164856e671dd70f8e",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/99f1f877d905c0f8530c6529b49bc438d46167223e308de164856e671dd70f8e/verification_bundle.json"
+  }
+}

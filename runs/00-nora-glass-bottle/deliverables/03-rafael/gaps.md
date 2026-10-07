@@ -1,0 +1,4 @@
+- No video content on competitors
+- Limited discussion of cork-specific benefits, boiling safety, or health purity vs plastic
+- Sparse size/price education for 500–550ml segment
+- Few repairability or natural-material stories

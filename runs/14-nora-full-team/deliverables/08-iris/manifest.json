@@ -1,0 +1,148 @@
+{
+  "result_hash": "923f39eb01dd9b327fd3133fe9b3ab83920934383d06a348c661573b1431b821",
+  "at": "2026-10-07T04:10:25+00:00",
+  "agent": "Iris",
+  "artifacts": [
+    {
+      "mime": "image/jpeg",
+      "name": "store.jpg",
+      "sha256": "fcf35f3f92ec6d52d2b1f7d8f1f8ce2756cb23f0500107d19c04f17fbd5b9c04",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/fcf35f3f92ec6d52d2b1f7d8f1f8ce2756cb23f0500107d19c04f17fbd5b9c04/store.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "google_shopping.jpg",
+      "sha256": "edb8a945a954878164afd2c4191420c6d95305220fcdc0f5201b1f3c53f3ef71",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/edb8a945a954878164afd2c4191420c6d95305220fcdc0f5201b1f3c53f3ef71/google_shopping.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "google_ads_square.jpg",
+      "sha256": "1618e65f7c44fb56c306c1a03ba18f863fd59ff63b0fd2192fa3d01b8f293acd",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/1618e65f7c44fb56c306c1a03ba18f863fd59ff63b0fd2192fa3d01b8f293acd/google_ads_square.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "google_ads_landscape.jpg",
+      "sha256": "c189d61b51dee2480942da9b1c7b8fa26a9928f926b79e680dd473ecb78aaafc",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/c189d61b51dee2480942da9b1c7b8fa26a9928f926b79e680dd473ecb78aaafc/google_ads_landscape.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "clean_hero.jpg",
+      "sha256": "a336b2b1be07bf9c55cd5b496512b2870e786e2e7e6054805d042229aeab540a",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a336b2b1be07bf9c55cd5b496512b2870e786e2e7e6054805d042229aeab540a/clean_hero.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "scene_1.jpg",
+      "sha256": "015f055dba1902217d4cf345361846a2bedf3fc4394834cda9a20b3984b55e70",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/015f055dba1902217d4cf345361846a2bedf3fc4394834cda9a20b3984b55e70/scene_1.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "scene_3.jpg",
+      "sha256": "f9ceabefed887d48efdede4583375b00270de96ad4c914ef8f3cb1e8654cc69c",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f9ceabefed887d48efdede4583375b00270de96ad4c914ef8f3cb1e8654cc69c/scene_3.jpg"
+    },
+    {
+      "mime": "application/json",
+      "name": "visual_audit.json",
+      "sha256": "6a73743327c9088999b5d229fce2a2ddbf259a1c1053e66653f71169805daf17",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/6a73743327c9088999b5d229fce2a2ddbf259a1c1053e66653f71169805daf17/visual_audit.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "alt_text.json",
+      "sha256": "f44ac926a8ed1f3e45fd0f5ff46266ebc1ffd7be544e16f380e94616202e4d31",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f44ac926a8ed1f3e45fd0f5ff46266ebc1ffd7be544e16f380e94616202e4d31/alt_text.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "order.json",
+      "sha256": "a135bb30588bbaa9b58734c124e16258991f2bd3b7af46a5a1fd220d8e17d2db",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a135bb30588bbaa9b58734c124e16258991f2bd3b7af46a5a1fd220d8e17d2db/order.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "fidelity.json",
+      "sha256": "239686998251a1644e1583cf12224a84adde451b6a4805bfffac6881cf37d68b",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/239686998251a1644e1583cf12224a84adde451b6a4805bfffac6881cf37d68b/fidelity.json"
+    }
+  ],
+  "changeset": [
+    {
+      "media": [
+        {
+          "alt": "Clear borosilicate glass 550ml water bottle with cork stopper and gray silicone sleeve, half filled.",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a336b2b1be07bf9c55cd5b496512b2870e786e2e7e6054805d042229aeab540a/clean_hero.jpg"
+        },
+        {
+          "alt": "Glass Water Bottle Borosilicate 550ml Cork Stopper half-filled with water on a sunlit wooden desk amid plants and notebooks.",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/015f055dba1902217d4cf345361846a2bedf3fc4394834cda9a20b3984b55e70/scene_1.jpg"
+        },
+        {
+          "alt": "Glass Water Bottle Borosilicate 550ml Cork Stopper filled with water on marble kitchen counter, flowers behind.",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f9ceabefed887d48efdede4583375b00270de96ad4c914ef8f3cb1e8654cc69c/scene_3.jpg"
+        }
+      ],
+      "op": "media.add",
+      "product_id": "gid://shopify/Product/8785648550049"
+    },
+    {
+      "files": [
+        {
+          "alt": "Glass Water Bottle Borosilicate 550ml with cork stopper, clear glass, water, and grey silicone sleeve.",
+          "id": "gid://shopify/MediaImage/38178278506657"
+        },
+        {
+          "alt": "Glass Water Bottle Borosilicate 550ml Cork Stopper on a wooden desk amid laptop and office items",
+          "id": "gid://shopify/MediaImage/38178278539425"
+        },
+        {
+          "alt": "Glass Water Bottle Borosilicate 550ml Cork Stopper standing on a blue transit seat beside a dark tote bag",
+          "id": "gid://shopify/MediaImage/38178278572193"
+        },
+        {
+          "alt": "Glass Water Bottle Borosilicate 550ml Cork Stopper with grey sleeve, half-filled, on marble kitchen counter.",
+          "id": "gid://shopify/MediaImage/38177399537825"
+        }
+      ],
+      "op": "media.update_alt"
+    },
+    {
+      "moves": [
+        {
+          "id": "gid://shopify/MediaImage/38178278506657",
+          "newPosition": "1"
+        },
+        {
+          "id": "gid://shopify/MediaImage/38177399537825",
+          "newPosition": "2"
+        },
+        {
+          "id": "gid://shopify/MediaImage/38178278539425",
+          "newPosition": "4"
+        },
+        {
+          "id": "gid://shopify/MediaImage/38178278572193",
+          "newPosition": "5"
+        }
+      ],
+      "op": "media.reorder",
+      "product_id": "gid://shopify/Product/8785648550049"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "dcad359de20b1db575ca392861956bc2a9ca7275ca317df60bcaa9b3face3497",
+  "job_or_task_id": "01a11487-7371-70fa-8db1-bdb027e2a383:iris",
+  "profile": "iris@5.0.0",
+  "role": "iris",
+  "self_checks": {},
+  "summary_md": "Audited 4 images · missing shot types: angle, detail, scale.\n\nAdded a clean white hero and 2 lifestyle scene(s), each checked against your original photo (fidelity ≥ 0.90). Exported 4 channel versions and wrote alt text for every image.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "56cf53b20cd1361a49042c4d4db735d9b5b4e6d780b5463e8135c94cf7210375",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/56cf53b20cd1361a49042c4d4db735d9b5b4e6d780b5463e8135c94cf7210375/verification_bundle.json"
+  }
+}

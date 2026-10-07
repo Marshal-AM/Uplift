@@ -1,0 +1,11 @@
+{
+  "price": 28.0,
+  "margin": 0.7143,
+  "breakeven_cpa": 20.0,
+  "target_cpa": 14.0,
+  "conversion_rate": 0.02,
+  "cvr_source": "category default (connect GA4 for real data)",
+  "max_cpc": 0.28,
+  "monthly_budget": 1000.0,
+  "daily_budget": 32.89
+}

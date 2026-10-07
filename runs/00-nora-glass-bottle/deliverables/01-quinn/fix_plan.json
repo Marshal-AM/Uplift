@@ -1,0 +1,26 @@
+[
+  {
+    "fix": "Add trust signals like reviews, ratings, guarantees, and social proof to build buyer confidence",
+    "specialist": "priya",
+    "impact": "high",
+    "price": 1.5
+  },
+  {
+    "fix": "Strengthen product persuasion with benefit-driven copy, clearer value propositions, and stronger CTAs",
+    "specialist": "clara",
+    "impact": "high",
+    "price": 2.0
+  },
+  {
+    "fix": "Expand catalog depth with more variants, bundles, and related products to improve selection and AOV",
+    "specialist": "oskar",
+    "impact": "medium",
+    "price": 1.5
+  },
+  {
+    "fix": "Enhance visuals with higher-quality lifestyle images and consistent styling",
+    "specialist": "iris",
+    "impact": "medium",
+    "price": 2.5
+  }
+]

@@ -1,0 +1,84 @@
+[
+  {
+    "domain": "amazon.com",
+    "url": "https://www.amazon.com/clp/B091PPPZ6J",
+    "title": "Bidponds 13.5oz / 400ml Double Walled Coffee Mug, Stainless Steel Tea Cups, Travel Camping Mugs",
+    "price": 11.98,
+    "compare_at_price": 0,
+    "currency": "USD",
+    "claims": [
+      "100% 304 (18/8) food grade stainless steel",
+      "Double walled construction keeps hot the temperature of beverages",
+      "Lightweight and durable, suitable for outdoor adventures",
+      "Dishwasher safe",
+      "Capacity: 13.5oz / 400ml"
+    ],
+    "guarantees": [
+      "High quality and durability",
+      "Break resistant"
+    ],
+    "shipping_returns": "Currently unavailable. We don't know when or if this item will be back in stock.",
+    "bundle_offers": [],
+    "image_count": 6,
+    "has_video": false,
+    "review_count": 286,
+    "rating": 4.4,
+    "brand": "Bidponds"
+  },
+  {
+    "domain": "walmart.com",
+    "url": "https://www.walmart.com/ip/Insulated-Coffee-Mug-Cup-Handle-Double-Wall-Vacuum-Tumbler-400ml-Camping-Stainless-Steel-Travel-Flip-Lid-Trave-Mugs/18980255915?classType=undefined&variantFieldId=actual_color",
+    "title": "Insulated Coffee Mug Cup with Handle, Double Wall Vacuum Coffee Tumbler 400ml",
+    "price": 9.27,
+    "compare_at_price": 10.35,
+    "currency": "USD",
+    "claims": [
+      "Vacuum Insulated Coffee Mug",
+      "Transparent plastic lid with rubber gasket",
+      "Made of food-grade 304 stainless steel",
+      "Matte powder coating, sweat-free surface",
+      "Durable and stylish, suitable for various occasions"
+    ],
+    "guarantees": [
+      "Free shipping for online orders",
+      "Returns accepted until January 31"
+    ],
+    "shipping_returns": "Free shipping available. Returns are accepted until January 31 as holiday returns.",
+    "bundle_offers": [],
+    "image_count": 8,
+    "has_video": false,
+    "review_count": 1,
+    "rating": 5,
+    "brand": "bfogop"
+  },
+  {
+    "domain": "corkcicle.com",
+    "url": "https://corkcicle.com/collections/commuter-cup",
+    "title": "Commuter Cup",
+    "price": 40,
+    "compare_at_price": 0,
+    "currency": "USD",
+    "claims": [
+      "17oz capacity",
+      "Spill-proof 360° Sip Lids",
+      "Comfortable grip",
+      "BPA Free",
+      "Dishwasher Safe"
+    ],
+    "guarantees": [
+      "Satisfaction Guarantee",
+      "Free Shipping on Orders $55+"
+    ],
+    "shipping_returns": "Free shipping on orders over $55. Returns are accepted within 30 days of purchase.",
+    "bundle_offers": [
+      "Buy 3 Save $15",
+      "Buy 4 Save $30",
+      "Buy 5 Save $35"
+    ],
+    "image_count": 15,
+    "has_video": false,
+    "review_count": 0,
+    "rating": 0,
+    "brand": "Corkcicle"
+  }
+]

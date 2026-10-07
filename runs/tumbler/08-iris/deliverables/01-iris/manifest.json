@@ -1,0 +1,112 @@
+{
+  "result_hash": "71063b1cbea443471326b59fdc037b0739f3f4c703d542bf80d9dfe76f4bb5bc",
+  "at": "2026-10-07T03:54:06+00:00",
+  "agent": "Iris",
+  "artifacts": [
+    {
+      "mime": "image/jpeg",
+      "name": "store.jpg",
+      "sha256": "0769cd1824bf4d3851eb86e57e64ca4d7ffb3cc0ea4a28fd3e732c33fb312c03",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/0769cd1824bf4d3851eb86e57e64ca4d7ffb3cc0ea4a28fd3e732c33fb312c03/store.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "google_shopping.jpg",
+      "sha256": "77bd022891c268d048ca68af4442831023eab8333d3cac81ea059a5de1fbcb76",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/77bd022891c268d048ca68af4442831023eab8333d3cac81ea059a5de1fbcb76/google_shopping.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "clean_hero.jpg",
+      "sha256": "a5899cef087fd8221c8bc0c8b2e05263d3009b8e19b62263da533ba264f8b737",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a5899cef087fd8221c8bc0c8b2e05263d3009b8e19b62263da533ba264f8b737/clean_hero.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "scene_1.jpg",
+      "sha256": "a8b49feec9646bb69d127c9b1edb2f8af32989a9bf678db9672c647917ac2023",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a8b49feec9646bb69d127c9b1edb2f8af32989a9bf678db9672c647917ac2023/scene_1.jpg"
+    },
+    {
+      "mime": "image/jpeg",
+      "name": "scene_2.jpg",
+      "sha256": "769e26259494bd32ed4eb4c22f0855ec236414632beb6309f06a14fca31e6817",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/769e26259494bd32ed4eb4c22f0855ec236414632beb6309f06a14fca31e6817/scene_2.jpg"
+    },
+    {
+      "mime": "application/json",
+      "name": "visual_audit.json",
+      "sha256": "ce7adf11408734456481b7561cb4d7504a64da90b3706b10a7f6bb25804ba86e",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/ce7adf11408734456481b7561cb4d7504a64da90b3706b10a7f6bb25804ba86e/visual_audit.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "alt_text.json",
+      "sha256": "d9c85ce1bc17f4f472ba27348c43ec3a84c01617efd06b841c126c36da9e75db",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d9c85ce1bc17f4f472ba27348c43ec3a84c01617efd06b841c126c36da9e75db/alt_text.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "order.json",
+      "sha256": "f8ba292d88f6c85272eb706db72f08c3f340799db456fd30b300f4c8e975a340",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f8ba292d88f6c85272eb706db72f08c3f340799db456fd30b300f4c8e975a340/order.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "fidelity.json",
+      "sha256": "0ba42b6d8aaaaf2bfbfa4e9aac11dc118719505a0dbc53136e1a36b37a2806cd",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/0ba42b6d8aaaaf2bfbfa4e9aac11dc118719505a0dbc53136e1a36b37a2806cd/fidelity.json"
+    }
+  ],
+  "changeset": [
+    {
+      "media": [
+        {
+          "alt": "Matte black Travel Tumbler TT-400 with light wood lid and black sliding spout.",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a5899cef087fd8221c8bc0c8b2e05263d3009b8e19b62263da533ba264f8b737/clean_hero.jpg"
+        },
+        {
+          "alt": "Travel Tumbler TT-400, a black tumbler with a wood lid, sits in a car’s cup holder.",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a8b49feec9646bb69d127c9b1edb2f8af32989a9bf678db9672c647917ac2023/scene_1.jpg"
+        },
+        {
+          "alt": "Travel Tumbler TT-400, black tumbler with wood lid on a desk beside laptop and notebook",
+          "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/769e26259494bd32ed4eb4c22f0855ec236414632beb6309f06a14fca31e6817/scene_2.jpg"
+        }
+      ],
+      "op": "media.add",
+      "product_id": "gid://shopify/Product/8785736237217"
+    },
+    {
+      "files": [
+        {
+          "alt": "Black Travel Tumbler TT-400 with bamboo lid on a wooden café counter beside scattered coffee beans.",
+          "id": "gid://shopify/MediaImage/38179171532961"
+        }
+      ],
+      "op": "media.update_alt"
+    },
+    {
+      "moves": [
+        {
+          "id": "gid://shopify/MediaImage/38179171532961",
+          "newPosition": "2"
+        }
+      ],
+      "op": "media.reorder",
+      "product_id": "gid://shopify/Product/8785736237217"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "87317151b50bc9816a40be3537df2fa93e2288497f8b902b1e9cb312844c1ee0",
+  "job_or_task_id": "01a1147d-df41-7705-9afa-ba8c81576cdc",
+  "profile": "iris@5.0.0",
+  "role": "iris",
+  "self_checks": {},
+  "summary_md": "Audited 1 images · missing shot types: hero, angle, detail, scale.\n\nAdded a clean white hero and 2 lifestyle scene(s), each checked against your original photo (fidelity ≥ 0.90). Exported 2 channel versions and wrote alt text for every image.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "dc83b347d79e851e7e1e68c62ba55a14bb9f5d74bba723cb22bf65bcac0012a2",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/dc83b347d79e851e7e1e68c62ba55a14bb9f5d74bba723cb22bf65bcac0012a2/verification_bundle.json"
+  }
+}

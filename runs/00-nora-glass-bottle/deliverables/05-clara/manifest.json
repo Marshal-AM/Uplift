@@ -1,0 +1,69 @@
+{
+  "result_hash": "1a6368dda45829ffaec89c2929676a135af63e342c2ed52c1a5467b928785caa",
+  "at": "2026-10-07T03:34:32+00:00",
+  "agent": "Clara",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "copy_variants.json",
+      "sha256": "05fca8d405b9fe8e1d6a919c9a34229bc58b63079640809f66c3f4bbb3fb2d2e",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/05fca8d405b9fe8e1d6a919c9a34229bc58b63079640809f66c3f4bbb3fb2d2e/copy_variants.json"
+    },
+    {
+      "mime": "text/html",
+      "name": "selected_copy.html",
+      "sha256": "0c0585333c1c2b74a6e349d185d716784881a1767afd74136a85f088a904bf85",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/0c0585333c1c2b74a6e349d185d716784881a1767afd74136a85f088a904bf85/selected_copy.html"
+    },
+    {
+      "mime": "application/json",
+      "name": "facts.json",
+      "sha256": "33ee4eb131d07aa9dde73ab27b22df02dc166112d3364f22c096155629b74065",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/33ee4eb131d07aa9dde73ab27b22df02dc166112d3364f22c096155629b74065/facts.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "rubric_scores.json",
+      "sha256": "ed878d33613d1187fffa674836b2e032280a69d7edbbc87d48cf11ed6ca2f8db",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/ed878d33613d1187fffa674836b2e032280a69d7edbbc87d48cf11ed6ca2f8db/rubric_scores.json"
+    }
+  ],
+  "changeset": [
+    {
+      "fields": {
+        "descriptionHtml": "<p>Imagine filling a clear glass water bottle that feels cool in your hand and keeps every sip tasting fresh and pure all day long.</p><h2>Why You Will Love It</h2><ul><li>550 ml capacity gives you plenty of water without feeling bulky.</li><li>Borosilicate glass stays strong and clear for pure taste.</li><li>Natural cork stopper seals cleanly and feels soft to open.</li><li>Grey silicone sleeve adds grip and gentle protection.</li></ul><h2>Simple Specs</h2><p>This reusable glass water bottle holds 550 ml, is made of borosilicate glass, comes with a natural cork stopper and grey silicone sleeve, uses BPA free materials, and is priced at 28 USD.</p><h2>Everyday Moments</h2><p>Take it to your desk, on walks, or to the gym for cool water that stays crisp.</p><h2>Built To Last And Stay Clean</h2><p>The tough borosilicate glass handles daily use well and the light design keeps weight comfortable while the smooth glass never holds onto flavors.</p><p>Glass is dishwasher safe for easy cleaning and the 550 ml size fits most bags without taking over space.</p><h2>Care Made Simple</h2><p>Wash the glass in the dishwasher and hand wash the cork. Avoid hot drinks or carbonated drinks so it stays perfect for years.</p>",
+        "seo": {
+          "description": "Carry a clear 550ml borosilicate glass water bottle with natural cork and grey silicone sleeve. Reusable, BPA free, and easy to care for daily.",
+          "title": "Glass Water Bottle Borosilicate 550ml Cork"
+        },
+        "title": "Glass Water Bottle Borosilicate 550ml Cork Stopper"
+      },
+      "op": "product.update",
+      "product_id": "gid://shopify/Product/8785648550049"
+    },
+    {
+      "op": "product.tags_add",
+      "product_id": "gid://shopify/Product/8785648550049",
+      "tags": [
+        "borosilicate glass bottle",
+        "cork water bottle",
+        "reusable glass bottles"
+      ]
+    }
+  ],
+  "evidence": [],
+  "input_hash": "3a9e2fab954612ebb9b6c7c1c19f9b1b893c634e13ce9621cae09ae15b74c2b4",
+  "job_or_task_id": "01a11467-b6c1-7301-8ae8-119e5fa2cd28:clara",
+  "profile": "clara@5.0.0",
+  "role": "clara",
+  "self_checks": {
+    "grammar_issues": 3,
+    "rubric_total": 40
+  },
+  "summary_md": "**Title:** Glass Water Bottle Borosilicate 550ml Cork Stopper\n\n**SEO title:** Glass Water Bottle Borosilicate 550ml Cork\n\n**Meta:** Carry a clear 550ml borosilicate glass water bottle with natural cork and grey silicone sleeve. Reusable, BPA free, and easy to care for daily.\n\nRubric 40.0/45 · 100% of claims grounded in 10 facts.",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "056e7c1440f32c3a305581d373de21d0d9664904e679b40739885b11aca24889",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/056e7c1440f32c3a305581d373de21d0d9664904e679b40739885b11aca24889/verification_bundle.json"
+  }
+}

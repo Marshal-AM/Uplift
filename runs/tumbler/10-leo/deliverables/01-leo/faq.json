@@ -1,0 +1,65 @@
+[
+  {
+    "question": "What is the capacity of the Travel Tumbler TT-400?",
+    "answer": "The Travel Tumbler TT-400 holds 400 ml.",
+    "fact_ids": [
+      "f1"
+    ]
+  },
+  {
+    "question": "What material is the Travel Tumbler TT-400 made from?",
+    "answer": "The Travel Tumbler TT-400 is made of double-wall vacuum-insulated 18/8 stainless steel.",
+    "fact_ids": [
+      "f2"
+    ]
+  },
+  {
+    "question": "Does the Travel Tumbler TT-400 preserve coffee taste?",
+    "answer": "Yes, the Travel Tumbler TT-400 has a ceramic-coated interior so coffee keeps its taste.",
+    "fact_ids": [
+      "f3"
+    ]
+  },
+  {
+    "question": "What type of lid does the Travel Tumbler TT-400 have?",
+    "answer": "The Travel Tumbler TT-400 features a natural bamboo lid with a slide closure.",
+    "fact_ids": [
+      "f4"
+    ]
+  },
+  {
+    "question": "How long does the Travel Tumbler TT-400 keep coffee hot?",
+    "answer": "The Travel Tumbler TT-400 keeps coffee hot for 6 hours.",
+    "fact_ids": [
+      "f5"
+    ]
+  },
+  {
+    "question": "How long does the Travel Tumbler TT-400 keep drinks cold?",
+    "answer": "The Travel Tumbler TT-400 keeps drinks cold for 12 hours.",
+    "fact_ids": [
+      "f5"
+    ]
+  },
+  {
+    "question": "Does the Travel Tumbler TT-400 fit in car cup holders?",
+    "answer": "Yes, the Travel Tumbler TT-400 fits most car cup holders.",
+    "fact_ids": [
+      "f6"
+    ]
+  },
+  {
+    "question": "How do you clean the Travel Tumbler TT-400?",
+    "answer": "The Travel Tumbler TT-400 is hand-wash only.",
+    "fact_ids": [
+      "f7"
+    ]
+  },
+  {
+    "question": "What is the price of the Travel Tumbler TT-400?",
+    "answer": "The Travel Tumbler TT-400 costs 26 USD.",
+    "fact_ids": [
+      "f8"
+    ]
+  }
+]

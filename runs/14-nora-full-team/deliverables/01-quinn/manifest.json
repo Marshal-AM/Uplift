@@ -1,0 +1,38 @@
+{
+  "result_hash": "dcda99a114f17debfc4332c908428856cbb7381d9703618c5f5c2feef1e987ee",
+  "at": "2026-10-07T04:04:37+00:00",
+  "agent": "Quinn",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "audit_report.json",
+      "sha256": "5e0d0da27943b7312765f884a2704a56dd72b6d918213f8597eadc8700bbfe71",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/5e0d0da27943b7312765f884a2704a56dd72b6d918213f8597eadc8700bbfe71/audit_report.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "audit_report.md",
+      "sha256": "c06a1151b975ca8b3254387c41408dab7617076564aeffbf1cf3f361243458e8",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/c06a1151b975ca8b3254387c41408dab7617076564aeffbf1cf3f361243458e8/audit_report.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "fix_plan.json",
+      "sha256": "aaec6d25d3d5e075ede5f3d1b04e75b745217c8732bd7997a2ce4a5dcc5fa264",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/aaec6d25d3d5e075ede5f3d1b04e75b745217c8732bd7997a2ce4a5dcc5fa264/fix_plan.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [],
+  "input_hash": "73df7da0f55fb59d47edff726b1f232955a288f2ced7692d3230461350f120ac",
+  "job_or_task_id": "01a11487-7371-70fa-8db1-bdb027e2a383:quinn",
+  "profile": "quinn@5.0.0",
+  "role": "quinn",
+  "self_checks": {},
+  "summary_md": "**Listing score 76.0/100**\n\n- [high] Add prominent trust elements: guarantees, return policy highlights, social proof and review summaries above the fold → leo\n- [high] Rewrite product description and bullet points to emphasize benefits, urgency and emotional triggers → clara\n- [medium] Complete and optimize catalog attributes, collections and feed data for better merchandising → oskar",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "0ee1b94072d6a61619d1c71e4a510962130e2f6500faf4308d3ed8b466802500",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/0ee1b94072d6a61619d1c71e4a510962130e2f6500faf4308d3ed8b466802500/verification_bundle.json"
+  }
+}

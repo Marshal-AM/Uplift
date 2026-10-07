@@ -1,0 +1,32 @@
+[
+  {
+    "fix": "Add trust signals: guarantees, certifications, review highlights and social proof blocks to the listing.",
+    "specialist": "leo",
+    "impact": "high",
+    "price": 2.0
+  },
+  {
+    "fix": "Rebuild catalog structure, collections and product feed completeness so variants and attributes are fully indexed.",
+    "specialist": "oskar",
+    "impact": "high",
+    "price": 1.5
+  },
+  {
+    "fix": "Rewrite title, bullets and description for stronger benefit-led persuasion and clearer value props.",
+    "specialist": "clara",
+    "impact": "high",
+    "price": 2.0
+  },
+  {
+    "fix": "Expand keyword coverage in titles, backend and attributes to lift discoverability.",
+    "specialist": "kai",
+    "impact": "medium",
+    "price": 1.25
+  },
+  {
+    "fix": "Upgrade main and lifestyle images plus infographics for higher visual conversion.",
+    "specialist": "iris",
+    "impact": "medium",
+    "price": 2.5
+  }
+]

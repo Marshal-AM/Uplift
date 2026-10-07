@@ -1,0 +1,1 @@
+Natural-cork premium alternative to stainless-cap borosilicate bottles: 550ml lab-grade glass positioned between mass-market ~$25 options and high-end $40+ lifetime-guarantee vessels, emphasizing eco-seal, purity, and everyday durability.

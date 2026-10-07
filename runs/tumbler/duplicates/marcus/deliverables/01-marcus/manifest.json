@@ -1,0 +1,129 @@
+{
+  "result_hash": "bd43b0300b704788a32ea4006951b808f7111ac8ee1f4773008e81ca6a20fb9d",
+  "at": "2026-10-07T04:15:32+00:00",
+  "agent": "Marcus",
+  "artifacts": [
+    {
+      "mime": "text/markdown",
+      "name": "pricing_strategy.md",
+      "sha256": "5a47dc40bf8c6677bf8b3c8501e75d22471d34ad221c60ab70801fd9f8dfda17",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/5a47dc40bf8c6677bf8b3c8501e75d22471d34ad221c60ab70801fd9f8dfda17/pricing_strategy.md"
+    },
+    {
+      "mime": "text/csv",
+      "name": "scenarios.csv",
+      "sha256": "783b3c78d678bcf3c0e6bd07b4d7e00ae13d1c7983267619aa1a2b85c1360f79",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/783b3c78d678bcf3c0e6bd07b4d7e00ae13d1c7983267619aa1a2b85c1360f79/scenarios.csv"
+    },
+    {
+      "mime": "application/json",
+      "name": "promo_calendar.json",
+      "sha256": "0e96ab013596792ccf690a6af006403495e595af87415ffcf988364bd1f33808",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/0e96ab013596792ccf690a6af006403495e595af87415ffcf988364bd1f33808/promo_calendar.json"
+    },
+    {
+      "mime": "text/calendar",
+      "name": "promo_calendar.ics",
+      "sha256": "41da584ac65372ad037bbaa305f5a5548043e4e21b7717803d1e02d149cfdb2d",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/41da584ac65372ad037bbaa305f5a5548043e4e21b7717803d1e02d149cfdb2d/promo_calendar.ics"
+    },
+    {
+      "mime": "application/json",
+      "name": "discount_codes.json",
+      "sha256": "965a6c076f504c0d93833ad851481acf9fd08d5440982ecc50be2cd605a6a436",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/965a6c076f504c0d93833ad851481acf9fd08d5440982ecc50be2cd605a6a436/discount_codes.json"
+    }
+  ],
+  "changeset": [
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "TTSD20",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8785736237217"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.2
+          }
+        },
+        "endsAt": "2026-11-12T23:59:00+00:00",
+        "startsAt": "2026-11-09T00:00:00+00:00",
+        "title": "Singles' Day Launch",
+        "usageLimit": 500
+      },
+      "op": "discount.create"
+    },
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "TTBF30",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8785736237217"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.25
+          }
+        },
+        "endsAt": "2026-11-30T23:59:00+00:00",
+        "startsAt": "2026-11-26T00:00:00+00:00",
+        "title": "Black Friday Tumbler Deal",
+        "usageLimit": 300
+      },
+      "op": "discount.create"
+    },
+    {
+      "input": {
+        "appliesOncePerCustomer": true,
+        "code": "TTXMAS15",
+        "context": {
+          "all": "ALL"
+        },
+        "customerGets": {
+          "items": {
+            "products": {
+              "productsToAdd": [
+                "gid://shopify/Product/8785736237217"
+              ]
+            }
+          },
+          "value": {
+            "percentage": 0.15
+          }
+        },
+        "endsAt": "2026-12-24T23:59:00+00:00",
+        "startsAt": "2026-12-15T00:00:00+00:00",
+        "title": "Holiday Gift Special",
+        "usageLimit": 400
+      },
+      "op": "discount.create"
+    }
+  ],
+  "evidence": [],
+  "input_hash": "bf4ffc1ecb7c5eda1c00b20441b39132f62cfbded1eb8ee2187144f73d8a6763",
+  "job_or_task_id": "01a11492-5666-7460-847c-0b4ca2f73579",
+  "profile": "marcus@5.0.0",
+  "role": "marcus",
+  "self_checks": {},
+  "summary_md": "**Positioning:** parity · price 26.0 vs market median 19.155\n\n**3 scheduled discount codes**, all above your 35% margin floor:\n- TTSD20: 20% · 2026-11-09 → 2026-11-12\n- TTBF30: 25% · 2026-11-26 → 2026-11-30\n- TTXMAS15: 15% · 2026-12-15 → 2026-12-24",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "a7d7e655d73c965491c721761c04ba3af28f7e198fb4b111f4bf85a33f9e914b",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/a7d7e655d73c965491c721761c04ba3af28f7e198fb4b111f4bf85a33f9e914b/verification_bundle.json"
+  }
+}

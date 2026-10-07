@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Singles' Day Launch Special",
+    "code": "SINGLES11",
+    "percentage": 15,
+    "starts": "2026-11-11T00:00:00+00:00",
+    "ends": "2026-11-12T23:59:00+00:00",
+    "usage_limit": 500,
+    "once_per_customer": true,
+    "why": "Kick off launch visibility on a major shopping day while staying well under the 30% discount cap."
+  },
+  {
+    "name": "Black Friday Tumbler Deal",
+    "code": "BFTT400",
+    "percentage": 25,
+    "starts": "2026-11-27T00:00:00+00:00",
+    "ends": "2026-11-30T23:59:00+00:00",
+    "usage_limit": 1000,
+    "once_per_customer": true,
+    "why": "Capture peak holiday traffic with a stronger but compliant discount."
+  },
+  {
+    "name": "Holiday Gifting Offer",
+    "code": "GIFT24",
+    "percentage": 20,
+    "starts": "2026-12-15T00:00:00+00:00",
+    "ends": "2026-12-24T23:59:00+00:00",
+    "usage_limit": 800,
+    "once_per_customer": true,
+    "why": "Drive gift purchases leading into Christmas without eroding margins."
+  }
+]

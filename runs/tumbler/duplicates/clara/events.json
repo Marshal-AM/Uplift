@@ -1,0 +1,252 @@
+[
+  {
+    "id": "01a11492-564d-73b8-83e5-9423f72ee2cd",
+    "taskId": "01a11492-5649-7488-a805-89976f4e4c32",
+    "createdAt": "2026-10-07T04:14:57.096Z",
+    "updatedAt": "2026-10-07T04:14:57.097Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "CREATED"
+  },
+  {
+    "id": "01a11492-564d-73b8-83e5-9bf982936344",
+    "taskId": "01a11492-5649-7488-a805-89976f4e4c32",
+    "createdAt": "2026-10-07T04:14:57.097Z",
+    "updatedAt": "2026-10-07T04:14:57.097Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "READY"
+  },
+  {
+    "id": "01a11492-5bc1-7326-adfe-2735457d0091",
+    "taskId": "01a11492-5649-7488-a805-89976f4e4c32",
+    "createdAt": "2026-10-07T04:14:58.497Z",
+    "updatedAt": "2026-10-07T04:14:58.497Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "coworker": {
+        "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+        "name": "Clara",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+        "slug": "clara-product-page-copywriter"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+    "coworker": {
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "name": "Clara",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+      "slug": "clara-product-page-copywriter"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "On it.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11492-a792-75fe-945d-16ee3c3caf43",
+    "taskId": "01a11492-5649-7488-a805-89976f4e4c32",
+    "createdAt": "2026-10-07T04:15:17.906Z",
+    "updatedAt": "2026-10-07T04:15:17.906Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "coworker": {
+        "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+        "name": "Clara",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+        "slug": "clara-product-page-copywriter"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+    "coworker": {
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "name": "Clara",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+      "slug": "clara-product-page-copywriter"
+    },
+    "sokoBotId": null,
+    "transactionId": "01a11492-a78a-754b-96e2-5203ffd46327",
+    "credits": 200,
+    "comment": "Payment requested: 2.0 credits.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11493-81d2-72d7-a929-b7615bbe2b08",
+    "taskId": "01a11492-5649-7488-a805-89976f4e4c32",
+    "createdAt": "2026-10-07T04:16:13.778Z",
+    "updatedAt": "2026-10-07T04:16:13.778Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "coworker": {
+        "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+        "name": "Clara",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+        "slug": "clara-product-page-copywriter"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+    "coworker": {
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "name": "Clara",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+      "slug": "clara-product-page-copywriter"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Chainlink verification: **PASS** · 89/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11494-dce5-730d-8466-c275cdf16e04",
+    "taskId": "01a11492-5649-7488-a805-89976f4e4c32",
+    "createdAt": "2026-10-07T04:17:42.629Z",
+    "updatedAt": "2026-10-07T04:17:42.629Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "coworker": {
+        "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+        "name": "Clara",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+        "slug": "clara-product-page-copywriter"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+    "coworker": {
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "name": "Clara",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+      "slug": "clara-product-page-copywriter"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Ready to publish these changes:\n\n- **seo**: “title: Travel Coffee Tumbler 400ml Stainless Steel · description: Insulated travel coffee …” → “title: Travel Coffee Tumbler 400ml Insulated Steel · description: Insulated travel coffee …”\n- **title**: “Travel Coffee Tumbler: 400ml Stainless Steel TT-400” → “Travel Coffee Tumbler 400ml Stainless Steel”\n- **descriptionHtml**: “The Travel Tumbler TT-400 is a double-wall vacuum-insulated coffee tumbler made for US com…” → “A reliable travel coffee tumbler that keeps your drink ready from the first sip to the las…”\n\nFull diff attached (`changes.md`, change hash `9171c6b726458fdf`).\nMove this Task to **Ready** (or reply **approve**) to publish.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "APPROVAL_REQUIRED"
+  },
+  {
+    "id": "01a11495-4ce3-768b-850e-473a79f8ce63",
+    "taskId": "01a11492-5649-7488-a805-89976f4e4c32",
+    "createdAt": "2026-10-07T04:18:11.300Z",
+    "updatedAt": "2026-10-07T04:18:11.300Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Decline: this Task was created twice by mistake. I don't want these changes.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11495-53e6-753a-9276-18cbacbdff25",
+    "taskId": "01a11492-5649-7488-a805-89976f4e4c32",
+    "createdAt": "2026-10-07T04:18:13.095Z",
+    "updatedAt": "2026-10-07T04:18:13.095Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "coworker": {
+        "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+        "name": "Clara",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+        "slug": "clara-product-page-copywriter"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+    "coworker": {
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "name": "Clara",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+      "slug": "clara-product-page-copywriter"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Noted. Reply **approve** to publish, or cancel the Task to keep your store unchanged.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  }
+]

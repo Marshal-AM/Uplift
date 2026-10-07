@@ -1,0 +1,19 @@
+{
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/hg-11-3-11",
+    "fullName": "Home & Garden > Kitchen & Dining > Food & Beverage Carriers > Water Bottles"
+  },
+  "product_type": "Glass Water Bottle",
+  "recommended_attributes": {
+    "capacity": "550 ml",
+    "material": "Borosilicate glass",
+    "closure_type": "Cork stopper",
+    "sleeve": "Grey silicone",
+    "features": "BPA free, dishwasher safe glass"
+  },
+  "tags": [
+    "bpa free water bottle"
+  ],
+  "related": [],
+  "complementary": []
+}

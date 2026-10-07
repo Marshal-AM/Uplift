@@ -1,0 +1,1688 @@
+{
+  "market": "US",
+  "language": "en",
+  "primary": "reusable glass water bottles",
+  "secondary": [
+    "borosilicate glass bottle",
+    "cork stopper water bottle",
+    "550ml glass bottle",
+    "bpa free glass bottle",
+    "pure taste water bottle",
+    "borosilicate glass bottles with lids",
+    "natural cork bottle",
+    "reusable glass water bottle with silicone sleeve",
+    "clear glass bottle stopper",
+    "natural cork bottle stopper",
+    "cork cap water bottle",
+    "bpa in glass bottles"
+  ],
+  "demand_signal": "0–100, from Google autocomplete rank, related searches and People Also Ask",
+  "keywords": [
+    {
+      "keyword": "reusable glass water bottles",
+      "demand": 100.0,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "borosilicate glass bottle",
+      "demand": 92.9,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "cork stopper water bottle",
+      "demand": 92.9,
+      "intent": "commercial",
+      "cluster": "Cork stopper glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "550ml glass bottle",
+      "demand": 92.9,
+      "intent": "commercial",
+      "cluster": "550ml capacity bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "silicone sleeve bottle",
+      "demand": 92.9,
+      "intent": "commercial",
+      "cluster": "Silicone sleeve protection",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "bpa free glass bottle",
+      "demand": 92.9,
+      "intent": "informational",
+      "cluster": "BPA free glass bottles",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "lightweight water bottle",
+      "demand": 92.9,
+      "intent": "commercial",
+      "cluster": "Lightweight travel bottles",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "pure taste water bottle",
+      "demand": 92.9,
+      "intent": "informational",
+      "cluster": "Pure taste glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "grey silicone bottle",
+      "demand": 92.9,
+      "intent": "commercial",
+      "cluster": "Silicone sleeve protection",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "borosilicate glass bottles with lids",
+      "demand": 85.7,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "reusable glass water bottles for fridge",
+      "demand": 85.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "glass water bottle brand",
+      "demand": 85.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "lightweight water bottle for travel",
+      "demand": 85.7,
+      "intent": "commercial",
+      "cluster": "Lightweight travel bottles",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "natural cork bottle",
+      "demand": 85.7,
+      "intent": "commercial",
+      "cluster": "Cork stopper glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "reusable glass water bottle with silicone sleeve",
+      "demand": 78.6,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "clear glass bottle stopper",
+      "demand": 71.4,
+      "intent": "commercial",
+      "cluster": "Cork stopper glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "dishwasher safe bottles",
+      "demand": 71.4,
+      "intent": "informational",
+      "cluster": "Dishwasher safe bottles",
+      "role": "blog"
+    },
+    {
+      "keyword": "dishwasher safe bottles baby",
+      "demand": 71.4,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "natural cork bottle stopper",
+      "demand": 71.4,
+      "intent": "commercial",
+      "cluster": "Cork stopper glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "cork cap water bottle",
+      "demand": 64.3,
+      "intent": "commercial",
+      "cluster": "Cork stopper glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "silicone bottle sleeve dr brown",
+      "demand": 64.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "550ml glass jar",
+      "demand": 64.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "recommend borosilicate glass bottles durable enough for daily gym use",
+      "demand": 64.3,
+      "intent": "commercial",
+      "cluster": "Recommendations for durable bottles",
+      "role": "blog"
+    },
+    {
+      "keyword": "bpa in glass bottles",
+      "demand": 64.3,
+      "intent": "informational",
+      "cluster": "BPA free glass bottles",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "recommend durable reusable glass water bottles with protective silicone sleeves",
+      "demand": 64.3,
+      "intent": "commercial",
+      "cluster": "Recommendations for durable bottles",
+      "role": "blog"
+    },
+    {
+      "keyword": "lightweight water bottle that keeps water cold",
+      "demand": 64.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "lightweight water bottle with straw",
+      "demand": 64.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "clear glass bottle with cork",
+      "demand": 64.3,
+      "intent": "commercial",
+      "cluster": "Cork stopper glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "recommend dishwasher safe water bottles that do not leach chemicals when heated",
+      "demand": 64.3,
+      "intent": "informational",
+      "cluster": "Dishwasher safe bottles",
+      "role": "blog"
+    },
+    {
+      "keyword": "grey silicone bottle brush",
+      "demand": 64.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "does bottled water taste different",
+      "demand": 64.3,
+      "intent": "informational",
+      "cluster": "Pure taste glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "cork lid water jug",
+      "demand": 57.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "silicone bottle sleeve avent",
+      "demand": 57.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "550ml glass jar with wood lid",
+      "demand": 57.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free glass jars",
+      "demand": 57.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "lightweight water bottle stainless steel",
+      "demand": 57.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "clear glass bottle with cork lid",
+      "demand": 57.1,
+      "intent": "commercial",
+      "cluster": "Cork stopper glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "bkr water bottle",
+      "demand": 57.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "pyrex glass water bottle",
+      "demand": 57.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "dishwasher safe bottle labels",
+      "demand": 57.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "grey silicone near me",
+      "demand": 57.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "why does bottled water taste bad",
+      "demand": 57.1,
+      "intent": "informational",
+      "cluster": "Pure taste glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "natural cork for wine bottles",
+      "demand": 57.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cork lid glass water bottle",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Cork stopper glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "silicone bottle sleeve with handle",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Silicone sleeve protection",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "550ml glass container",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "borosilicate glass bottle for breast milk storage",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free glass container",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "lightweight water bottle for hiking",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Lightweight travel bottles",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "clear glass jar with cork lid",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "dishwasher safe bottle brush",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "medical grade silicone vs silicone",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "pure taste water",
+      "demand": 50.0,
+      "intent": "informational",
+      "cluster": "Pure taste glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "flaska natural cork water bottle",
+      "demand": 50.0,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how to measure cork stopper",
+      "demand": 42.9,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "silicone bottle sleeve evenflo",
+      "demand": 42.9,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "550ml glass jar kmart",
+      "demand": 42.9,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "borosilicate glass bottle vs glass bottle",
+      "demand": 42.9,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free glass jars with lids",
+      "demand": 42.9,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "reusable glass water bottles with lids",
+      "demand": 42.9,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "lightweight water bottle that keeps drinks cold",
+      "demand": 42.9,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "clear glass jar with cork",
+      "demand": 42.9,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how long do silicone bottles last",
+      "demand": 42.9,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "pure taste technology",
+      "demand": 42.9,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how to open a cork bottle without a corkscrew",
+      "demand": 42.9,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how to wash a cork stopper",
+      "demand": 35.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "silicone bottle sleeve kmart",
+      "demand": 35.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "550ml glass jar with lid",
+      "demand": 35.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "borosilicate glass bottle 1 litre",
+      "demand": 35.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free glass container for baby food",
+      "demand": 35.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "reusable glass water bottles dishwasher safe",
+      "demand": 35.7,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "clear glass bottle with cork stopper",
+      "demand": 35.7,
+      "intent": "commercial",
+      "cluster": "Cork stopper glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "dishwasher safe bottle stickers",
+      "demand": 35.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "silicone bottle benefits",
+      "demand": 35.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "pure water perfect taste",
+      "demand": 35.7,
+      "intent": "informational",
+      "cluster": "Pure taste glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "ways to open a cork bottle without an opener",
+      "demand": 35.7,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cork stopper bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Cork stopper glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "silicone bottle sleeve nearby",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "borosil 550ml glass bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "550ml capacity bottles",
+      "role": "negative"
+    },
+    {
+      "keyword": "borosilicate glass bottle with protective silicone sleeve",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "cork stopper water bottle nearby",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cork stopper water bottle near me",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cork stopper water bottle walmart",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cork stopper water bottle replacement",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cork bottle stoppers near me",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cork stopper size chart",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cork stopper water bottle amazon",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cork stoppers walmart",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "silicone sleeve bottle nearby",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "silicone sleeve for glass bottle avent",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best silicone sleeve bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Silicone sleeve protection",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "silicone sleeve bottle glass",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Silicone sleeve protection",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "silicone sleeve for glass bottle dr brown",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "silicone bottle covers for travel",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "insulated sleeve for water bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "philips avent glass bottle sleeve",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "is it safe to drink water from silicone bottles?",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free glass water bottles",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "reusable glass water bottles amazon",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "borosilicate glass bottle near me",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best borosilicate glass bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Recommendations for durable bottles",
+      "role": "blog"
+    },
+    {
+      "keyword": "borosilicate glass bottle reusable",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "borosilicate glass water bottle made in usa",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "borosilicate glass bottle for sale",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "borosilicate glass bottle amazon",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "clear glass wine bottle with cork",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best bpa free glass bottle",
+      "demand": 28.6,
+      "intent": "informational",
+      "cluster": "BPA free glass bottles",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "bpa free glass bottle amazon",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "plastic free water bottle glass",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "boroux glass water bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "do glass bottles give off microplastics?",
+      "demand": 28.6,
+      "intent": "informational",
+      "cluster": "BPA free glass bottles",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "best lightweight water bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Lightweight travel bottles",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "lightweight water bottle amazon",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Lightweight travel bottles",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "best lightweight water bottle for travel",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Lightweight travel bottles",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "lightweight water bottle not plastic",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Lightweight travel bottles",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "best lightweight water bottle for hiking",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Lightweight travel bottles",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "why do cardiologists say don't drink bottled water?",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "reusable glass water bottle with straw",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best reusable glass water bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "bkr water bottle 1 liter",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "dishwasher safe bottle with straw",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "clear glass bottle cork stopper",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Cork stopper glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "clear glass bottle cork wholesale",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "large clear glass bottle cork",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "glass cork bottles wholesale",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "clear glass bottle cork near me",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "clear glass bottle cork amazon",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "decorative glass bottles with corks",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "glass bottles with corks dollar tree",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "glass vs silicone baby bottles",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "pure tap water bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "diy cork for bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "light grey silicone bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Silicone sleeve protection",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "nanobebe silicone bottles review",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "silicone baby bottles vs plastic",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "boon silicone bottles",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best silicone baby bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "silicone bottles travel",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "silicone baby bottles tommee tippee",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "silicone baby bottles comotomo",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "where to buy pure taste water bottle",
+      "demand": 28.6,
+      "intent": "informational",
+      "cluster": "Pure taste glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "pure taste water bottle near me",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "pure taste water bottle amazon",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "glass lined water bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "air up water bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "pure taste water bottle review",
+      "demand": 28.6,
+      "intent": "informational",
+      "cluster": "Pure taste glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "purist water bottle review",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "where to buy purist water bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "dishwasher safe water bottle with straw",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best dishwasher safe bottle",
+      "demand": 28.6,
+      "intent": "informational",
+      "cluster": "Dishwasher safe bottles",
+      "role": "blog"
+    },
+    {
+      "keyword": "dishwasher safe bottle amazon",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "dishwasher safe water bottle 1l",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "dishwasher safe water bottle 2l",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "sodastream bottles dishwasher safe symbol",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "dishwasher bottle basket",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "natural cork bottle diy",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "natural cork bottle near me",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "best natural cork bottle",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "natural cork bottle amazon",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "natural cork bottle wholesale",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "natural cork bottle for sale",
+      "demand": 28.6,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cork stopper wine bottle",
+      "demand": 21.4,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "silicone cover bottle",
+      "demand": 21.4,
+      "intent": "commercial",
+      "cluster": "Silicone sleeve protection",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "550ml glass water bottle",
+      "demand": 21.4,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "borosilicate glass bottle manufacturers in india",
+      "demand": 21.4,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "reusable glass water bottle",
+      "demand": 21.4,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "bpa free glass feeding bottle for baby",
+      "demand": 21.4,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "reusable glass water bottles nearby",
+      "demand": 21.4,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "clear glass bottle cork",
+      "demand": 21.4,
+      "intent": "commercial",
+      "cluster": "Cork stopper glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "lightweight water bottle for kids",
+      "demand": 21.4,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "100ml clear glass diffuser bottle with cork",
+      "demand": 21.4,
+      "intent": "informational",
+      "cluster": "Dishwasher safe bottles",
+      "role": "blog"
+    },
+    {
+      "keyword": "dishwasher safe bottle",
+      "demand": 21.4,
+      "intent": "informational",
+      "cluster": "Dishwasher safe bottles",
+      "role": "blog"
+    },
+    {
+      "keyword": "dishwasher safe bottle drying rack",
+      "demand": 21.4,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "grey silicone for plastic",
+      "demand": 21.4,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "natural cork for wine",
+      "demand": 21.4,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cork stopper with pump",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "silicone case bottle",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Silicone sleeve protection",
+      "role": "ads_phrase"
+    },
+    {
+      "keyword": "which glass bottle is best",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Recommendations for durable bottles",
+      "role": "blog"
+    },
+    {
+      "keyword": "borosilicate glass bottle meaning",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the purpose of a cork stopper?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "where can i buy cork stoppers?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is a cork stopper called?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "does hobby lobby sell cork stoppers?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what are silicone bottle sleeves for?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "can you warm a glass bottle with a silicone sleeve?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what does a silicone sleeve do?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free glass baby bottles",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "reusable glass water bottles made in usa",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "is a borosilicate glass bottle safe?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the disadvantage of borosilicate?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "is it safe to boil water in borosilicate glass?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what's so special about borosilicate glass?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how much does a 500 ml glass bottle cost?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "550ml capacity bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "how big is a 500ml glass bottle?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "550ml capacity bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "is it healthier to drink from glass bottles?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "is 500 ml a small bottle of water?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "550ml capacity bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "lightweight water bottle cage",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "26oz clear glass wine bottle with cork by ashland",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "are there any glass water bottles that are completely plastic-free?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the safest glass water bottle?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "is bpa free plastic still safe?",
+      "demand": 14.3,
+      "intent": "informational",
+      "cluster": "BPA free glass bottles",
+      "role": "seo_meta"
+    },
+    {
+      "keyword": "what is the best light weight water bottle?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Lightweight travel bottles",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "what is a good lightweight water bottle?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Lightweight travel bottles",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "which water bottle weighs the least?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Lightweight travel bottles",
+      "role": "ads_exact"
+    },
+    {
+      "keyword": "which glass reusable water bottle is the best?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Reusable borosilicate glass water bottles",
+      "role": "title"
+    },
+    {
+      "keyword": "is it healthier to drink out of a glass water bottle?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the healthiest reusable water bottle?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "dishwasher safe bottle kids",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is a glass cork called?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "does hobby lobby sell bottle corks?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "does dollar tree have corks?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "where can i buy corks?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "grey silicone rubber",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "natural cork lid",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what are the best silicone bottles?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "why are parents switching to silicone baby bottles?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "which silicone water bottle is the best?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "what is the unhealthiest bottled water?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "which water bottle has the best taste?",
+      "demand": 14.3,
+      "intent": "informational",
+      "cluster": "Pure taste glass bottles",
+      "role": "description"
+    },
+    {
+      "keyword": "is there a water bottle that allows you to taste through smell?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "which bottles are dishwasher safe?",
+      "demand": 14.3,
+      "intent": "informational",
+      "cluster": "Dishwasher safe bottles",
+      "role": "blog"
+    },
+    {
+      "keyword": "what kind of drink bottles are dishwasher safe?",
+      "demand": 14.3,
+      "intent": "informational",
+      "cluster": "Dishwasher safe bottles",
+      "role": "blog"
+    },
+    {
+      "keyword": "why can't you put stainless steel bottles in the dishwasher?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "are bottle bottle bottles dishwasher safe?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how to tell if cork is natural?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "is cork 100% natural?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "does cork contain microplastics?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "is there artificial cork?",
+      "demand": 14.3,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "cork stopper walmart",
+      "demand": 7.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "silicone bottle sleeves for travel",
+      "demand": 7.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how much are glass gatorade bottles worth",
+      "demand": 7.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "borosilicate glass bottle with screw cap",
+      "demand": 7.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "bpa free glass spray bottle",
+      "demand": 7.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "reusable glass water bottle near me",
+      "demand": 7.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "lightweight water bottle for elderly",
+      "demand": 7.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "how to seal a glass bottle with cork",
+      "demand": 7.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    },
+    {
+      "keyword": "dishwasher safe bottle water",
+      "demand": 7.1,
+      "intent": "informational",
+      "cluster": "Dishwasher safe bottles",
+      "role": "blog"
+    },
+    {
+      "keyword": "grey silicone walmart",
+      "demand": 7.1,
+      "intent": "commercial",
+      "cluster": "Other",
+      "role": "negative"
+    }
+  ]
+}

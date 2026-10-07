@@ -1,0 +1,252 @@
+[
+  {
+    "id": "01a11492-5673-76ad-8d5a-ed0bf09d51c2",
+    "taskId": "01a11492-566d-712f-ba08-7c735fe8f150",
+    "createdAt": "2026-10-07T04:14:57.133Z",
+    "updatedAt": "2026-10-07T04:14:57.133Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "CREATED"
+  },
+  {
+    "id": "01a11492-5673-76ad-8d5a-f3630edc9729",
+    "taskId": "01a11492-566d-712f-ba08-7c735fe8f150",
+    "createdAt": "2026-10-07T04:14:57.134Z",
+    "updatedAt": "2026-10-07T04:14:57.133Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "READY"
+  },
+  {
+    "id": "01a11492-5aca-7272-b432-2827c6df515e",
+    "taskId": "01a11492-566d-712f-ba08-7c735fe8f150",
+    "createdAt": "2026-10-07T04:14:58.251Z",
+    "updatedAt": "2026-10-07T04:14:58.251Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-d256-7659-8dc2-e057603cac36",
+      "coworker": {
+        "id": "01a11127-d256-7659-8dc2-e057603cac36",
+        "name": "Iris",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-d256-7659-8dc2-e057603cac36/image-iris-FRtx3p01f2DhIOybRJjdqiZpocEWbR.png",
+        "slug": "iris-product-visual-designer"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-d256-7659-8dc2-e057603cac36",
+    "coworker": {
+      "id": "01a11127-d256-7659-8dc2-e057603cac36",
+      "name": "Iris",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-d256-7659-8dc2-e057603cac36/image-iris-FRtx3p01f2DhIOybRJjdqiZpocEWbR.png",
+      "slug": "iris-product-visual-designer"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "On it.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11492-84f9-70b9-9e53-eb53c77ec988",
+    "taskId": "01a11492-566d-712f-ba08-7c735fe8f150",
+    "createdAt": "2026-10-07T04:15:09.049Z",
+    "updatedAt": "2026-10-07T04:15:09.049Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-d256-7659-8dc2-e057603cac36",
+      "coworker": {
+        "id": "01a11127-d256-7659-8dc2-e057603cac36",
+        "name": "Iris",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-d256-7659-8dc2-e057603cac36/image-iris-FRtx3p01f2DhIOybRJjdqiZpocEWbR.png",
+        "slug": "iris-product-visual-designer"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-d256-7659-8dc2-e057603cac36",
+    "coworker": {
+      "id": "01a11127-d256-7659-8dc2-e057603cac36",
+      "name": "Iris",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-d256-7659-8dc2-e057603cac36/image-iris-FRtx3p01f2DhIOybRJjdqiZpocEWbR.png",
+      "slug": "iris-product-visual-designer"
+    },
+    "sokoBotId": null,
+    "transactionId": "01a11492-84f2-73e8-9337-ebefa8a762fc",
+    "credits": 250,
+    "comment": "Payment requested: 2.5 credits.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11493-be9c-735c-8ad7-57688e9e8a6e",
+    "taskId": "01a11492-566d-712f-ba08-7c735fe8f150",
+    "createdAt": "2026-10-07T04:16:29.341Z",
+    "updatedAt": "2026-10-07T04:16:29.341Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-d256-7659-8dc2-e057603cac36",
+      "coworker": {
+        "id": "01a11127-d256-7659-8dc2-e057603cac36",
+        "name": "Iris",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-d256-7659-8dc2-e057603cac36/image-iris-FRtx3p01f2DhIOybRJjdqiZpocEWbR.png",
+        "slug": "iris-product-visual-designer"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-d256-7659-8dc2-e057603cac36",
+    "coworker": {
+      "id": "01a11127-d256-7659-8dc2-e057603cac36",
+      "name": "Iris",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-d256-7659-8dc2-e057603cac36/image-iris-FRtx3p01f2DhIOybRJjdqiZpocEWbR.png",
+      "slug": "iris-product-visual-designer"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Chainlink verification: **PASS** · 89/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11494-e113-75ae-8f1c-45862fc52a96",
+    "taskId": "01a11492-566d-712f-ba08-7c735fe8f150",
+    "createdAt": "2026-10-07T04:17:43.699Z",
+    "updatedAt": "2026-10-07T04:17:43.699Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-d256-7659-8dc2-e057603cac36",
+      "coworker": {
+        "id": "01a11127-d256-7659-8dc2-e057603cac36",
+        "name": "Iris",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-d256-7659-8dc2-e057603cac36/image-iris-FRtx3p01f2DhIOybRJjdqiZpocEWbR.png",
+        "slug": "iris-product-visual-designer"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-d256-7659-8dc2-e057603cac36",
+    "coworker": {
+      "id": "01a11127-d256-7659-8dc2-e057603cac36",
+      "name": "Iris",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-d256-7659-8dc2-e057603cac36/image-iris-FRtx3p01f2DhIOybRJjdqiZpocEWbR.png",
+      "slug": "iris-product-visual-designer"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Ready to publish these changes:\n\n- **images**: add 3\n- **alt text**: update 4 images\n- **images**: reorder\n\nFull diff attached (`changes.md`, change hash `c2f8ec6b6acf7eaf`).\nMove this Task to **Ready** (or reply **approve**) to publish.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "APPROVAL_REQUIRED"
+  },
+  {
+    "id": "01a11495-52a2-7688-a321-a826c17b1f6b",
+    "taskId": "01a11492-566d-712f-ba08-7c735fe8f150",
+    "createdAt": "2026-10-07T04:18:12.770Z",
+    "updatedAt": "2026-10-07T04:18:12.770Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Decline: this Task was created twice by mistake. I don't want these changes.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11495-590c-74fd-94e8-6dece8b024cf",
+    "taskId": "01a11492-566d-712f-ba08-7c735fe8f150",
+    "createdAt": "2026-10-07T04:18:14.412Z",
+    "updatedAt": "2026-10-07T04:18:14.412Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-d256-7659-8dc2-e057603cac36",
+      "coworker": {
+        "id": "01a11127-d256-7659-8dc2-e057603cac36",
+        "name": "Iris",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-d256-7659-8dc2-e057603cac36/image-iris-FRtx3p01f2DhIOybRJjdqiZpocEWbR.png",
+        "slug": "iris-product-visual-designer"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-d256-7659-8dc2-e057603cac36",
+    "coworker": {
+      "id": "01a11127-d256-7659-8dc2-e057603cac36",
+      "name": "Iris",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-d256-7659-8dc2-e057603cac36/image-iris-FRtx3p01f2DhIOybRJjdqiZpocEWbR.png",
+      "slug": "iris-product-visual-designer"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Noted. Reply **approve** to publish, or cancel the Task to keep your store unchanged.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  }
+]

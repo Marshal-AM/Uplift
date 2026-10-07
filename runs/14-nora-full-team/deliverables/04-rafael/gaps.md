@@ -1,0 +1,4 @@
+- Limited emphasis on cork stopper benefits (natural seal, no microplastics, aesthetic) vs. common plastic-free claims
+- Few mentions of thermal shock resistance or lab-grade specifics tailored to 550ml size
+- Missing video content and high review volume compared to top competitors
+- Gaps in addressing PAA questions on cork safety, microplastics, and boiling safety

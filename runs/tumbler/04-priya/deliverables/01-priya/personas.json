@@ -1,0 +1,97 @@
+[
+  {
+    "name": "Car-commute coffee keeper",
+    "attributes": [
+      {
+        "attribute": "Needs a tumbler that fits car cup holders and stays stable on the drive",
+        "review_ids": [
+          "cfa25c1c1875",
+          "1b24c95f42e5",
+          "bbf4f2d44ef1",
+          "79f57f4687be",
+          "a0294f1e5e05"
+        ]
+      },
+      {
+        "attribute": "Prioritizes hours of heat retention for morning coffee",
+        "review_ids": [
+          "c2fbf76bea3f",
+          "1b24c95f42e5",
+          "04fd09cd61fa",
+          "097a19db969a"
+        ]
+      },
+      {
+        "attribute": "Expects a leak-tight lid for travel",
+        "review_ids": [
+          "c2fbf76bea3f",
+          "04fd09cd61fa",
+          "1b09474bccaa",
+          "cfa25c1c1875"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Yeti-alternative value buyer",
+    "attributes": [
+      {
+        "attribute": "Wants strong insulation without premium brand pricing",
+        "review_ids": [
+          "4f7417bfe94a",
+          "b4a1b1f2de74",
+          "02133202945c",
+          "014c3b36fac0"
+        ]
+      },
+      {
+        "attribute": "Compares performance directly to Yeti and accepts slightly shorter heat hold if cheaper",
+        "review_ids": [
+          "4f7417bfe94a",
+          "fab52da22910",
+          "c8b1e0aa9308"
+        ]
+      },
+      {
+        "attribute": "Buys as a replacement for a leaky or overpriced tumbler",
+        "review_ids": [
+          "1b09474bccaa",
+          "6fbd23c64ff8",
+          "2c026f2b0356"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Insulation lover blocked by lid cleaning",
+    "attributes": [
+      {
+        "attribute": "Loves temperature hold but struggles to clean the slider lid",
+        "review_ids": [
+          "80d6b226ad0a",
+          "8a5f80059f3d",
+          "4be32d505f16",
+          "13c421fe75fb"
+        ]
+      },
+      {
+        "attribute": "Residue trapped in the lid is a dealbreaker or near-dealbreaker",
+        "review_ids": [
+          "274bac794996",
+          "0fb26eeeaa58",
+          "f9756c8d07a3",
+          "53b87f1a1cf3"
+        ]
+      },
+      {
+        "attribute": "Will keep using the cup if the lid can be disassembled or stays cleaner",
+        "review_ids": [
+          "02133202945c",
+          "bbf4f2d44ef1",
+          "e2e742deafee",
+          "6bb671868b73"
+        ]
+      }
+    ]
+  }
+]

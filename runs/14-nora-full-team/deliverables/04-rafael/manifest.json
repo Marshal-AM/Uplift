@@ -1,0 +1,77 @@
+{
+  "result_hash": "60458500f3c46ad110d98a388ffeaa4d9f5e87e91535ad2fe53626bc0285b88b",
+  "at": "2026-10-07T04:06:16+00:00",
+  "agent": "Rafael",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "competitor_matrix.json",
+      "sha256": "c2478f3d5c719cade2e0390e97676705fe7fb66d4f3aa1ce26082d923d31962a",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/c2478f3d5c719cade2e0390e97676705fe7fb66d4f3aa1ce26082d923d31962a/competitor_matrix.json"
+    },
+    {
+      "mime": "text/csv",
+      "name": "competitor_matrix.csv",
+      "sha256": "6ef3e28637d012902790078bc042a3ca11591319508d9547b3155c13f08fa4d2",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/6ef3e28637d012902790078bc042a3ca11591319508d9547b3155c13f08fa4d2/competitor_matrix.csv"
+    },
+    {
+      "mime": "application/json",
+      "name": "price_bands.json",
+      "sha256": "587d57f1c9f2deee9d5b7b678b0f8824c7944d573833b2f5d9c1dabf73606c72",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/587d57f1c9f2deee9d5b7b678b0f8824c7944d573833b2f5d9c1dabf73606c72/price_bands.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "positioning.md",
+      "sha256": "44469226c150a556d4a881a1957db59eea117f908b93c983f84acbc5e95fa236",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/44469226c150a556d4a881a1957db59eea117f908b93c983f84acbc5e95fa236/positioning.md"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "gaps.md",
+      "sha256": "233dede1fe23793bea0ba4319c1051319e603f0efbd96c55d6509bf27558c1b7",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/233dede1fe23793bea0ba4319c1051319e603f0efbd96c55d6509bf27558c1b7/gaps.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "competitor_set.json",
+      "sha256": "d73a200483ca5485aeddf4fb9275be74a3d7a955d05000e03cf252ec3e5e8062",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d73a200483ca5485aeddf4fb9275be74a3d7a955d05000e03cf252ec3e5e8062/competitor_set.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [
+    {
+      "claim": "mybkr.com price 52",
+      "excerpt": "bkr Glass Water Bottle",
+      "source_url": "https://mybkr.com/?srsltid=AU7gw4WlUczzdPh6A8pDxMT4i8upMgF5X9IBf7KUJLIAZs6gOScFJafo"
+    },
+    {
+      "claim": "boroux.com price 12",
+      "excerpt": "Glass Water Bottle - 16 oz",
+      "source_url": "https://boroux.com/products/glass-water-bottle-16oz?srsltid=AU7gw4VopnoLYowvaLYhQ5v1ASqQTKPS1ztCT8uRirhUuJQYvs3XN52E"
+    },
+    {
+      "claim": "wondrwood.com price 42.9",
+      "excerpt": "Keep Vessel | 550ml Glass Bottle",
+      "source_url": "https://wondrwood.com/products/reusable-glass-water-bottle-550ml?srsltid=AU7gw4XzQ4ZuGonYMy7b1k9eSXBczFulk4hc0rty5DbTE3zAjqvB78jy"
+    },
+    {
+      "claim": "swell.com price 39",
+      "excerpt": "Glass Original Bottle | 18oz",
+      "source_url": "https://www.swell.com/pages/glass-original-bottle?srsltid=AU7gw4VPUiXVHxumvVWytj6JtFvNmbOhnNULJxQ4JXLO3tS4kpScqGPy"
+    }
+  ],
+  "input_hash": "c26998339dc61473ac4c5978ad9dcdb28f5f5653be4c6fbfdc111534bb70258c",
+  "job_or_task_id": "01a11487-7371-70fa-8db1-bdb027e2a383:rafael",
+  "profile": "rafael@5.0.0",
+  "role": "rafael",
+  "self_checks": {},
+  "summary_md": "**4 competitors** across 5 queries.\n\n**Price bands:** 10.79–52.00 (median 25.00)\n\n**Where to win:**\n- Highlight cork as fully plastic-free alternative to win on 'completely plastic-free' and 'safest bottle' searches\n- Bundle offers or free shipping thresholds to match mid-price competitors\n- Content on borosilicate advantages (thermal shock, no taste) and cork purpose to capture 'what's special' queries\n- Target $25-30 price point with lifetime/satisfaction guarantees for better value perception",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "820af8eba301e785dd9adf69ab4301a336b9e6f4bd757fb1f3190d65dedea91a",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/820af8eba301e785dd9adf69ab4301a336b9e6f4bd757fb1f3190d65dedea91a/verification_bundle.json"
+  }
+}

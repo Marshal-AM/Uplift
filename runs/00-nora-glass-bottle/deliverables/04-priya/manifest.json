@@ -1,0 +1,156 @@
+{
+  "result_hash": "bace0102d1a8eb205bbfeeef9b7c017d19780bd55db9df5e1938c5a21469b3e8",
+  "at": "2026-10-07T03:33:15+00:00",
+  "agent": "Priya",
+  "artifacts": [
+    {
+      "mime": "text/markdown",
+      "name": "competitor_sentiment_report.md",
+      "sha256": "be30650f30f7ba7c7e988b71a3d67125cbbc43a0bfa5987fff21d02f0a18556a",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/be30650f30f7ba7c7e988b71a3d67125cbbc43a0bfa5987fff21d02f0a18556a/competitor_sentiment_report.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "findings.json",
+      "sha256": "d46107b0155999b27ab1edd0980e31c8360e6aec0f1d9ba25fcebccb7384c476",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/d46107b0155999b27ab1edd0980e31c8360e6aec0f1d9ba25fcebccb7384c476/findings.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "coded_reviews.json",
+      "sha256": "b70e1efaca7fb28396ed81b5f7c5c4f7cb51b5b7e56f4f8a544652c2b1fa5938",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/b70e1efaca7fb28396ed81b5f7c5c4f7cb51b5b7e56f4f8a544652c2b1fa5938/coded_reviews.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "personas.json",
+      "sha256": "8daf1a1bbf293d4d54942e9c83a7f0c8141b7a33c2b9fce60b8a66f45a4fc586",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/8daf1a1bbf293d4d54942e9c83a7f0c8141b7a33c2b9fce60b8a66f45a4fc586/personas.json"
+    },
+    {
+      "mime": "application/json",
+      "name": "win_plan.json",
+      "sha256": "098c6171817e6d117dbfcb2c6c78b8ae50e874438608cb022112e30df6bb65fa",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/098c6171817e6d117dbfcb2c6c78b8ae50e874438608cb022112e30df6bb65fa/win_plan.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [
+    {
+      "claim": "love: durability",
+      "excerpt": "Love These Water Bottles. I drink tons of water, and I like to keep water in bottles in the fridge to keep it cold without ice, and I naturally don't like doing it in plastic at all. It is hard to find 1L glass water bottles from a trusted company (i.e. not Amazon) that are nice and won't break the ",
+      "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii"
+    },
+    {
+      "claim": "love: material",
+      "excerpt": "I wanted a glass water jar and this fits the bill",
+      "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii"
+    },
+    {
+      "claim": "love: insulation",
+      "excerpt": "Pleasantly surprised with this cup, it's well made and it's true about the wood insulating the heat.",
+      "source_url": "https://wondrwood.com/products/reusable-glass-water-bottle-550ml?srsltid=AU7gw4U65XB2AzlxW2AF2vcOQhaUo-b_ZdI7Wuei3xIArDCkqmyyhbEQ"
+    },
+    {
+      "claim": "love: taste",
+      "excerpt": "I use both, and while the stainless steel is obviously easier water tastes better out of glass.",
+      "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles"
+    },
+    {
+      "claim": "love: cleaning",
+      "excerpt": "I love this bottle! I wish they had a double wall insulated one and a heavier feel cap but otherwise it’s a great size and easy to clean. Love it and would buy again!",
+      "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii"
+    },
+    {
+      "claim": "love: size",
+      "excerpt": "I wanted a glass water jar and this fits the bill",
+      "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii"
+    },
+    {
+      "claim": "complaint: durability",
+      "excerpt": "I bought two glass bottles and shattered them both within a month of purchasing them by dropping them... Now I have a stainless steel one that is quite dented but still holding strong after over a year. Also I like that this one holds more water than I've seen for glass bottles (it's 32 oz) So if yo",
+      "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles"
+    },
+    {
+      "claim": "complaint: taste",
+      "excerpt": "I am WAY too clumsy for glass (it would shatter within a week) and do not like the aftertaste that water in a stainless steel bottle leaves. I've found the product that works for me and I like it.",
+      "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles"
+    },
+    {
+      "claim": "complaint: weight",
+      "excerpt": "I have a contigo glass water bottle with a silicone cover to protect it if dropped. It’s fairly heavy when full but I’ve been using it for about 6 months and it’s been great!",
+      "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles"
+    },
+    {
+      "claim": "complaint: cleaning",
+      "excerpt": "The boroux bottles are excellent, but the gasket is a bit of a challenge to remove and the mouth opening is like is big to drink out of in a car... But the glass is outstanding.",
+      "source_url": "https://www.reddit.com/r/BuyItForLife/comments/166dspg/looking_for_a_maybe_glass_water_bottle"
+    },
+    {
+      "claim": "complaint: size",
+      "excerpt": "The boroux bottles are excellent, but the gasket is a bit of a challenge to remove and the mouth opening is like is big to drink out of in a car... But the glass is outstanding.",
+      "source_url": "https://www.reddit.com/r/BuyItForLife/comments/166dspg/looking_for_a_maybe_glass_water_bottle"
+    },
+    {
+      "claim": "complaint: insulation",
+      "excerpt": "I love this bottle! I wish they had a double wall insulated one and a heavier feel cap but otherwise it’s a great size and easy to clean. Love it and would buy again!",
+      "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii"
+    },
+    {
+      "claim": "complaint: condensation",
+      "excerpt": "Quality Product. Quick Delivery. Have been happy with the product. I will state if you put cold water in it and your water bottle sweating bothers you get a sleeve because it’s definitely gonna happen :)",
+      "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii"
+    },
+    {
+      "claim": "complaint: material",
+      "excerpt": "For me, nothing can beat a CamelBak Podium even if it's made of plastic. Glass and metal aren't durable for my needs. I'll break it in a day.",
+      "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle"
+    },
+    {
+      "claim": "wish: size",
+      "excerpt": "I love this bottle! I wish they had a double wall insulated one and a heavier feel cap but otherwise it’s a great size and easy to clean. Love it and would buy again!",
+      "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii"
+    },
+    {
+      "claim": "wish: cleaning",
+      "excerpt": "I love this bottle! I wish they had a double wall insulated one and a heavier feel cap but otherwise it’s a great size and easy to clean. Love it and would buy again!",
+      "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii"
+    },
+    {
+      "claim": "wish: insulation",
+      "excerpt": "I love this bottle! I wish they had a double wall insulated one and a heavier feel cap but otherwise it’s a great size and easy to clean. Love it and would buy again!",
+      "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii"
+    },
+    {
+      "claim": "wish: cap",
+      "excerpt": "I love this bottle! I wish they had a double wall insulated one and a heavier feel cap but otherwise it’s a great size and easy to clean. Love it and would buy again!",
+      "source_url": "https://boroux.com/products/glass-water-bottle-33oz?srsltid=AU7gw4UBRrEqqTfUO3KrAFFJ79G2xEW-vd65IkD0-MrS-TTr4lfz_Qii"
+    },
+    {
+      "claim": "dealbreaker: material",
+      "excerpt": "For me, nothing can beat a CamelBak Podium even if it's made of plastic. Glass and metal aren't durable for my needs. I'll break it in a day.",
+      "source_url": "https://www.reddit.com/r/ZeroWaste/comments/9ar8o7/your_favorite_water_bottle"
+    },
+    {
+      "claim": "dealbreaker: durability",
+      "excerpt": "I am WAY too clumsy for glass (it would shatter within a week) and do not like the aftertaste that water in a stainless steel bottle leaves. I've found the product that works for me and I like it.",
+      "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles"
+    },
+    {
+      "claim": "dealbreaker: taste",
+      "excerpt": "I am WAY too clumsy for glass (it would shatter within a week) and do not like the aftertaste that water in a stainless steel bottle leaves. I've found the product that works for me and I like it.",
+      "source_url": "https://www.reddit.com/r/ZeroWaste/comments/bx6f63/stainless_steel_vs_glass_reusable_water_bottles"
+    }
+  ],
+  "input_hash": "da1e04457c8fec3264bd9b4e620b9011031293285a721b240134fbbedd77aa08",
+  "job_or_task_id": "01a11467-b6c1-7301-8ae8-119e5fa2cd28:priya",
+  "profile": "priya@5.0.0",
+  "role": "priya",
+  "self_checks": {},
+  "summary_md": "**102 competitor reviews** analysed.\n\n**Top complaints to win on:**\n- durability\n- taste\n- weight\n- cleaning\n- size",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "7f1535cd890b8ee2c14a30f996dc785ba39667b605cc2e9f70f9929d059a6774",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/7f1535cd890b8ee2c14a30f996dc785ba39667b605cc2e9f70f9929d059a6774/verification_bundle.json"
+  }
+}

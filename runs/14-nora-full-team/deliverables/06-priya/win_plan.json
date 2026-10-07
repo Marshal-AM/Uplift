@@ -1,0 +1,72 @@
+[
+  {
+    "finding_id": "love:durability",
+    "action_type": "listing claim",
+    "action": "Highlight borosilicate toughness and optional sleeve compatibility with real-use longevity claims."
+  },
+  {
+    "finding_id": "love:cleaning",
+    "action_type": "FAQ",
+    "action": "Explain wide-mouth access and safe hand-wash method for the cork stopper."
+  },
+  {
+    "finding_id": "love:appearance",
+    "action_type": "proof image",
+    "action": "Show lifestyle photos of the clear glass bottle looking premium on desk and outdoors."
+  },
+  {
+    "finding_id": "love:insulation",
+    "action_type": "listing claim",
+    "action": "Note it keeps fridge-cold water refreshing for daily carry if pre-chilled."
+  },
+  {
+    "finding_id": "love:price/value",
+    "action_type": "offer/guarantee",
+    "action": "Offer a satisfaction guarantee emphasizing durable glass value versus pricier insulated brands."
+  },
+  {
+    "finding_id": "love:size",
+    "action_type": "listing claim",
+    "action": "Position the 550ml size as practical for daily use and cup-holder friendly."
+  },
+  {
+    "finding_id": "complaint:safety",
+    "action_type": "FAQ",
+    "action": "Clarify pure borosilicate glass body with no plastic shedding and safe materials."
+  },
+  {
+    "finding_id": "complaint:authenticity",
+    "action_type": "ad angle",
+    "action": "Promote buying direct to avoid fakes and ensure genuine product."
+  },
+  {
+    "finding_id": "complaint:durability",
+    "action_type": "product improvement",
+    "action": "Bundle a protective sleeve option to reduce shatter risk in bags or drops."
+  },
+  {
+    "finding_id": "complaint:weight",
+    "action_type": "listing claim",
+    "action": "Acknowledge glass weight but emphasize superior taste and purity."
+  },
+  {
+    "finding_id": "complaint:shipping",
+    "action_type": "offer/guarantee",
+    "action": "Highlight reliable direct shipping with careful packaging."
+  },
+  {
+    "finding_id": "complaint:sleeve",
+    "action_type": "product improvement",
+    "action": "Design a low-friction sleeve that slides easily into bags."
+  },
+  {
+    "finding_id": "complaint:lid",
+    "action_type": "FAQ",
+    "action": "Detail the cork stopper seal quality and care instructions."
+  },
+  {
+    "finding_id": "complaint:service",
+    "action_type": "offer/guarantee",
+    "action": "Provide clear human customer support contact and quick response promise."
+  }
+]

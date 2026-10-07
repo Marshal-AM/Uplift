@@ -1,0 +1,26 @@
+[
+  {
+    "fix": "Add detailed FAQs, guarantees, and trust-building content sections to address the critically low trust score.",
+    "specialist": "leo",
+    "impact": "high",
+    "price": 2.0
+  },
+  {
+    "fix": "Rewrite product descriptions and bullet points to boost persuasion and conversion potential.",
+    "specialist": "clara",
+    "impact": "high",
+    "price": 2.0
+  },
+  {
+    "fix": "Optimize catalog structure, collections, and product feed for better organization and discoverability within the store.",
+    "specialist": "oskar",
+    "impact": "medium",
+    "price": 1.5
+  },
+  {
+    "fix": "Refine keywords slightly to close the remaining discoverability gap.",
+    "specialist": "kai",
+    "impact": "low",
+    "price": 1.25
+  }
+]

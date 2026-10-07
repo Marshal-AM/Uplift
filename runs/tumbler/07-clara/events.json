@@ -1,0 +1,284 @@
+[
+  {
+    "id": "01a1147d-df86-716f-ab98-4d3a4f3679f7",
+    "taskId": "01a1147d-df78-7761-b69d-ab166705a18c",
+    "createdAt": "2026-10-07T03:52:35.947Z",
+    "updatedAt": "2026-10-07T03:52:35.960Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "CREATED"
+  },
+  {
+    "id": "01a1147d-df86-716f-ab98-511dc0884e57",
+    "taskId": "01a1147d-df78-7761-b69d-ab166705a18c",
+    "createdAt": "2026-10-07T03:52:35.948Z",
+    "updatedAt": "2026-10-07T03:52:35.960Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": null,
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "READY"
+  },
+  {
+    "id": "01a1147d-e5e2-7674-8ecc-8b4d56a73aeb",
+    "taskId": "01a1147d-df78-7761-b69d-ab166705a18c",
+    "createdAt": "2026-10-07T03:52:37.602Z",
+    "updatedAt": "2026-10-07T03:52:37.602Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "coworker": {
+        "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+        "name": "Clara",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+        "slug": "clara-product-page-copywriter"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+    "coworker": {
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "name": "Clara",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+      "slug": "clara-product-page-copywriter"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "On it.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a1147e-3433-7149-9a7b-46e478fa4f1b",
+    "taskId": "01a1147d-df78-7761-b69d-ab166705a18c",
+    "createdAt": "2026-10-07T03:52:57.651Z",
+    "updatedAt": "2026-10-07T03:52:57.651Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "coworker": {
+        "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+        "name": "Clara",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+        "slug": "clara-product-page-copywriter"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+    "coworker": {
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "name": "Clara",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+      "slug": "clara-product-page-copywriter"
+    },
+    "sokoBotId": null,
+    "transactionId": "01a1147e-3427-72cd-b362-d0ad3953739a",
+    "credits": 200,
+    "comment": "Payment requested: 2.0 credits.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a1147f-2a5f-767a-abed-b9bb40470cf7",
+    "taskId": "01a1147d-df78-7761-b69d-ab166705a18c",
+    "createdAt": "2026-10-07T03:54:00.671Z",
+    "updatedAt": "2026-10-07T03:54:00.671Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "coworker": {
+        "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+        "name": "Clara",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+        "slug": "clara-product-page-copywriter"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+    "coworker": {
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "name": "Clara",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+      "slug": "clara-product-page-copywriter"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Chainlink verification: **PASS** · 91.4/100",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a1147f-bf4b-740b-9bca-b7eb17877540",
+    "taskId": "01a1147d-df78-7761-b69d-ab166705a18c",
+    "createdAt": "2026-10-07T03:54:38.795Z",
+    "updatedAt": "2026-10-07T03:54:38.795Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "coworker": {
+        "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+        "name": "Clara",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+        "slug": "clara-product-page-copywriter"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+    "coworker": {
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "name": "Clara",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+      "slug": "clara-product-page-copywriter"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Ready to publish these changes:\n\n- **seo**: “title: None · description: None” → “title: Travel Coffee Tumbler 400ml Stainless Steel · description: Insulated travel coffee …”\n- **title**: “Travel Tumbler TT-400” → “Travel Coffee Tumbler: 400ml Stainless Steel TT-400”\n- **descriptionHtml**: “Coffee tumbler. 400 ml.” → “The Travel Tumbler TT-400 is a double-wall vacuum-insulated coffee tumbler made for US com…”\n- **tags**: add travel coffee tumbler, insulated coffee tumbler, stainless steel tumbler with bamboo lid, travel mug, coffee tumbler 400ml, insulated travel mug, ceramic coated tumbler, coffee tumbler with lid\n\nFull diff attached (`changes.md`, change hash `3ca47e5442975d1e`).\nMove this Task to **Ready** (or reply **approve**) to publish.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "APPROVAL_REQUIRED"
+  },
+  {
+    "id": "01a11480-9a18-77a5-b4c3-866ce1ea5fb6",
+    "taskId": "01a1147d-df78-7761-b69d-ab166705a18c",
+    "createdAt": "2026-10-07T03:55:34.808Z",
+    "updatedAt": "2026-10-07T03:55:34.808Z",
+    "actor": {
+      "type": "user",
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "user": {
+        "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+        "name": "Sam Felix",
+        "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+      }
+    },
+    "userId": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+    "user": {
+      "id": "01a10f3d-c226-71ab-b985-e9722b75fb75",
+      "name": "Sam Felix",
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocJLwexRj_44cAojnVlvG4I18JURjGh6ozlQmG7OzMU-H6WDQ1fv=s96-c"
+    },
+    "coworkerId": null,
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "approve",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": null
+  },
+  {
+    "id": "01a11480-9d82-7677-951f-7db47eb1dbce",
+    "taskId": "01a1147d-df78-7761-b69d-ab166705a18c",
+    "createdAt": "2026-10-07T03:55:35.682Z",
+    "updatedAt": "2026-10-07T03:55:35.682Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "coworker": {
+        "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+        "name": "Clara",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+        "slug": "clara-product-page-copywriter"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+    "coworker": {
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "name": "Clara",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+      "slug": "clara-product-page-copywriter"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "Approved — publishing.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "RUNNING"
+  },
+  {
+    "id": "01a11480-b50e-7738-b00b-2b112b46ad8c",
+    "taskId": "01a1147d-df78-7761-b69d-ab166705a18c",
+    "createdAt": "2026-10-07T03:55:41.710Z",
+    "updatedAt": "2026-10-07T03:55:41.710Z",
+    "actor": {
+      "type": "coworker",
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "coworker": {
+        "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+        "name": "Clara",
+        "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+        "slug": "clara-product-page-copywriter"
+      }
+    },
+    "userId": null,
+    "coworkerId": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+    "coworker": {
+      "id": "01a11127-c7d0-701f-a1d0-9917b24110e2",
+      "name": "Clara",
+      "image": "https://yhpsw8jlcoagsrkq.public.blob.vercel-storage.com/coworkers/01a11127-c7d0-701f-a1d0-9917b24110e2/image-clara-bWfyZ5SEz7gbVrD8HB64MvFYL2ds1m.png",
+      "slug": "clara-product-page-copywriter"
+    },
+    "sokoBotId": null,
+    "transactionId": null,
+    "credits": null,
+    "comment": "**Title:** Travel Coffee Tumbler: 400ml Stainless Steel TT-400\n\n**SEO title:** Travel Coffee Tumbler 400ml Stainless Steel\n\n**Meta:** Insulated travel coffee tumbler in 18/8 stainless steel with ceramic coating and bamboo lid. Keeps coffee hot 6 hours, cold 12 hours, fits cup holders.\n\nRubric 37.0/45 · 100% of claims grounded in 12 facts.\n\nPublished to your store. Core listing score now 48.87/95.",
+    "authenticationUrl": null,
+    "channel": "SOKOSUMI",
+    "origin": "SOKOSUMI",
+    "status": "COMPLETED"
+  }
+]

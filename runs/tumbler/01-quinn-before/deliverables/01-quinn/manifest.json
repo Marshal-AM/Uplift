@@ -1,0 +1,38 @@
+{
+  "result_hash": "63551ee8902d94b9bf74d1cdcaf23380ff97aa621c2feda4981516f7916acd1c",
+  "at": "2026-10-07T03:44:35+00:00",
+  "agent": "Quinn",
+  "artifacts": [
+    {
+      "mime": "application/json",
+      "name": "audit_report.json",
+      "sha256": "92d42f4fc2cc21444e668eb36392ce37b79ff0ead2d1989cc9142d38a8ff81fb",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/92d42f4fc2cc21444e668eb36392ce37b79ff0ead2d1989cc9142d38a8ff81fb/audit_report.json"
+    },
+    {
+      "mime": "text/markdown",
+      "name": "audit_report.md",
+      "sha256": "31dbaa9a1f479863b7e29d8361bd71a81a1713a10b7edaeeac2c06921aa00182",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/31dbaa9a1f479863b7e29d8361bd71a81a1713a10b7edaeeac2c06921aa00182/audit_report.md"
+    },
+    {
+      "mime": "application/json",
+      "name": "fix_plan.json",
+      "sha256": "7bf204b23d33b36c85d1c95f4d9ef97dec323ba5cfb07741b5795c989f821bc9",
+      "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/7bf204b23d33b36c85d1c95f4d9ef97dec323ba5cfb07741b5795c989f821bc9/fix_plan.json"
+    }
+  ],
+  "changeset": [],
+  "evidence": [],
+  "input_hash": "8601a34f5d9e9c9f8041c84dec04a6b12be50d78506cfef8ae929bedf023c9b9",
+  "job_or_task_id": "01a11475-e5c3-730f-9441-ecb7fd2b64d3",
+  "profile": "quinn@5.0.0",
+  "role": "quinn",
+  "self_checks": {},
+  "summary_md": "**Listing score 27.1/100**\n\n- [high] Add trust signals: guarantees, certifications, review highlights and social proof blocks to the listing. → leo\n- [high] Rebuild catalog structure, collections and product feed completeness so variants and attributes are fully indexed. → oskar\n- [high] Rewrite title, bullets and description for stronger benefit-led persuasion and clearer value props. → clara\n- [medium] Expand keyword coverage in titles, backend and attributes to lift discoverability. → kai\n- [medium] Upgrade main and lifestyle images plus infographics for higher visual conversion. → iris",
+  "uplift": "5",
+  "verification_bundle": {
+    "sha256": "f526166b03b72a35b407a8e84b88576c6d83e3c5bc38299175eec561e8d5d395",
+    "url": "https://uplift-artifacts-517207998460.s3.amazonaws.com/artifacts/f526166b03b72a35b407a8e84b88576c6d83e3c5bc38299175eec561e8d5d395/verification_bundle.json"
+  }
+}

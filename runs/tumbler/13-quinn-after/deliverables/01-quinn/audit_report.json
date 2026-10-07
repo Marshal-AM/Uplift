@@ -1,0 +1,83 @@
+{
+  "mode": "before_after",
+  "score": 72.9,
+  "deterministic": 68.87,
+  "judge": 4.0,
+  "sections": {
+    "discoverability": 19.0,
+    "persuasion": 12.87,
+    "visuals": 14.0,
+    "trust": 5,
+    "catalog": 8,
+    "compliance": 10
+  },
+  "compliance_hits": [],
+  "rankings": [],
+  "store_search_ranks": [
+    {
+      "keyword": "travel coffee tumbler",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "insulated coffee tumbler",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "stainless steel tumbler with bamboo lid",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "travel mug",
+      "rank": 2,
+      "results": 2
+    },
+    {
+      "keyword": "coffee tumbler 400ml",
+      "rank": 1,
+      "results": 1
+    },
+    {
+      "keyword": "insulated travel mug",
+      "rank": 2,
+      "results": 2
+    }
+  ],
+  "page_speed": null,
+  "sales": null,
+  "diagnosis": "No sales data provided, so unable to diagnose traffic, conversion, or basket-size problems. Prioritized based on largest score gaps: trust (5/18), persuasion (~13/20), and catalog (8/15).",
+  "fixes": [
+    {
+      "fix": "Add detailed FAQs, guarantees, and trust-building content sections to address the critically low trust score.",
+      "specialist": "leo",
+      "impact": "high",
+      "price": 2.0
+    },
+    {
+      "fix": "Rewrite product descriptions and bullet points to boost persuasion and conversion potential.",
+      "specialist": "clara",
+      "impact": "high",
+      "price": 2.0
+    },
+    {
+      "fix": "Optimize catalog structure, collections, and product feed for better organization and discoverability within the store.",
+      "specialist": "oskar",
+      "impact": "medium",
+      "price": 1.5
+    },
+    {
+      "fix": "Refine keywords slightly to close the remaining discoverability gap.",
+      "specialist": "kai",
+      "impact": "low",
+      "price": 1.25
+    }
+  ],
+  "before": {
+    "score": null,
+    "sections": null,
+    "store_search_ranks": []
+  },
+  "delta": 72.9
+}
