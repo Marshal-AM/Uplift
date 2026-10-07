@@ -122,9 +122,9 @@ def advance(role: str, task_id: str) -> None:
             save(phase)
 
         elif phase == "pay":
-            st["terms"] = payments.request_terms(role, task.get("description") or task.get("name"), task_id)
-            payments.charge(client, task_id, st["terms"], settings().prices[role])
-            phase = "funds_wait"
+            paid = payments.pay(client, task_id, st, role, task.get("description") or task.get("name"),
+                                settings().prices[role], lambda: save("pay"))
+            phase = "funds_wait" if paid else "closed"  # out of credits: Sokosumi already shows OUT_OF_CREDITS
             save(phase)
 
         elif phase == "funds_wait":

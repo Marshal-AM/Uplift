@@ -204,9 +204,9 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
             save(phase)
 
         elif phase == "pay":
-            st["terms"] = payments.request_terms("nora", task.get("description") or task.get("name"), task_id)
-            payments.charge(client, task_id, st["terms"], s.prices["nora"])
-            phase = "funds_wait"
+            paid = payments.pay(client, task_id, st, "nora", task.get("description") or task.get("name"),
+                                s.prices["nora"], lambda: save("pay"))
+            phase = "funds_wait" if paid else "closed"  # out of credits: Sokosumi already shows OUT_OF_CREDITS
             save(phase)
 
         elif phase == "funds_wait":

@@ -11,7 +11,7 @@ from typing import Any
 
 from uplift_core.hashing import sha256_hex
 
-from .clients import Sokosumi, mps
+from .clients import Sokosumi, SokosumiError, mps
 from .config import settings
 
 
@@ -53,6 +53,22 @@ def purchase_payload(terms: dict[str, Any]) -> dict[str, Any]:
 
 def charge(client: Sokosumi, task_id: str, terms: dict[str, Any], price: float) -> None:
     client.event(task_id, comment=f"Payment requested: {price} credits.", masumiPayment=purchase_payload(terms))
+
+
+def pay(client: Sokosumi, task_id: str, st: dict, role: str, input_text: str, price: float, save) -> bool:
+    """Request terms once and post the payment. The terms are journaled before the charge, so a retry reuses them
+    (until their pay-by deadline) instead of creating another payment request. False: the workspace has no
+    credits (Sokosumi then marks the Task OUT_OF_CREDITS), which no retry can fix."""
+    if not st.get("terms") or int(st["terms"]["payment"]["payByTime"]) / 1000 < time.time() + 60:
+        st["terms"] = request_terms(role, input_text, task_id)
+        save()
+    try:
+        charge(client, task_id, st["terms"], price)
+    except SokosumiError as exc:
+        if exc.status == 422 and "insufficient_balance" in str(exc):
+            return False
+        raise
+    return True
 
 
 def _confirmed(payment: dict, state: str) -> bool:
