@@ -88,8 +88,9 @@ Each entry: what happened, the evidence, the fix and where it landed. Times are 
 - **Seen:** 2026-10-07, bamboo bottle full-team Task `01a11567-…`: "fully optimize … for US shoppers" made the
   planner list Yuki (1 unit) — it read the US market as a locale to translate into.
 - **Handled:** the merchant replied "Skip the translation please"; Nora re-planned without Yuki (17.0 → 16.0).
-- **Fix:** the planner should list only languages the merchant explicitly asks to translate into, other than the
-  store's own.
+- **Fixed:** Nora reads the store's primary language from Shopify and drops locales in that language before quoting.
+  Checked with the live model and store on five briefs: US and UK briefs plan no translation; "launch for German
+  shoppers" plans `de`; "translate into French and Spanish" plans `fr`, `es`; an FAQ + compliance brief plans none.
 
 ## 15. Found through the live trace (bamboo full-team run `01a11567-…`, 647 steps, 16 services)
 - **Oskar ran out of output tokens once:** one model call took 940 tokens in and ran to the 4,000-token cap

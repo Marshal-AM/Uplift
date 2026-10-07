@@ -60,16 +60,14 @@ def close(roles: set[str], has_keywords: bool, competitors_known: bool) -> set[s
     return roles
 
 
-def plan(task: dict, answers: list[str]) -> dict[str, Any]:
+def plan(task: dict, answers: list[str], store_language: str | None = None) -> dict[str, Any]:
     brief = f"{task.get('name')}\n{task.get('description')}\nFollow-ups: {answers}"
     intent = llm.structured(
         f"A merchant asked their e-commerce growth team:\n{brief}\n"
         f"Which capabilities are needed? Options: {sorted(set(CAPABILITIES))}. Choose only the capabilities whose "
         "deliverables the merchant asked for. full_flow is true only when they ask to launch, overhaul or fully "
         "optimize a product; a request for specific deliverables (e.g. an FAQ and a compliance check) is not "
-        "full_flow. Extract product hint, target market (country code), locales to translate into (only languages "
-        "the merchant explicitly asks to translate into or sell in, never the store's own language; a target market "
-        "alone is not a translation request), keywords and competitors if the merchant gave them, a credit budget if stated, and a "
+        "full_flow. Extract product hint, target market (country code), locales to translate the listing into, keywords and competitors if the merchant gave them, a credit budget if stated, and a "
         "one-paragraph goal.",
         {"type": "object", "properties": {
             "capabilities": {"type": "array", "items": {"type": "string"}}, "full_flow": {"type": "boolean"},
@@ -89,6 +87,10 @@ def plan(task: dict, answers: list[str]) -> dict[str, Any]:
     roles = close(roles, bool(intent.get("keywords")), bool(intent.get("competitors")))
     roles.add("ruth")
     roles.add("quinn")  # baseline + after-report for any listing change
+    # a locale in the store's own language is no translation (e.g. "en-US" read off "US shoppers" in an English store)
+    if store_language:
+        intent["locales"] = [loc for loc in intent.get("locales") or []
+                             if loc.split("-")[0].lower() != store_language.split("-")[0].lower()]
     if "yuki" in roles and not intent.get("locales"):
         roles.discard("yuki")
     return {"intent": intent, "roles": sorted(roles, key=lambda r: (ORDER + ["ruth"]).index(r))}
@@ -157,7 +159,7 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
                 phase = "auth_wait"
                 save(phase)
                 return
-            st["plan"] = plan(task, st.get("answers", []))
+            st["plan"] = plan(task, st.get("answers", []), runs.primary_language(task))
             hint = st["plan"]["intent"].get("product_hint", "")
             products = runs.find_products(task, hint) if hint else []
             if not products:

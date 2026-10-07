@@ -66,6 +66,17 @@ def find_products(task: dict, query: str = "") -> list[dict]:
     return []
 
 
+def primary_language(task: dict) -> str | None:
+    """The store's primary locale (e.g. "en"); None when it cannot be read."""
+    user_id, org_id = owner(task)
+    try:
+        locales = gateway("/v1/read/graphql", {"user_id": user_id, "org_id": org_id,
+                                               "query": "{ shopLocales { locale primary } }"})["shopLocales"]
+    except Exception:
+        return None
+    return next((x["locale"] for x in locales if x.get("primary")), None)
+
+
 def user_replies(client: Sokosumi, task_id: str, after_event_id: str | None) -> list[dict]:
     """User-authored events after `after_event_id` (status moves and comments), oldest first."""
     events = client.task_events(task_id)
