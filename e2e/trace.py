@@ -92,7 +92,7 @@ def main() -> None:
         raise SystemExit("No traced Tasks yet.")
     info = next((t for t in tasks if t["task"] == task), {})
     out.print(Text(f"{(info.get('coworker') or '').title()} · {info.get('title', task)}", style="bold"))
-    after, t0, settled, last_pass = 0, None, set(), False
+    after, t0, settled, last_pass, phase = 0, None, set(), False, None
     while True:
         events = get("/trace/events", task=task, after=after)["events"]
         for e in events:
