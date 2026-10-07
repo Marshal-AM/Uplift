@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+import psycopg
 from psycopg.rows import dict_row
 from psycopg_pool import ConnectionPool
 
@@ -23,6 +24,24 @@ def open_pool() -> None:
 def close_pool() -> None:
     if _pool:
         _pool.close()
+
+
+def try_lease(name: str) -> psycopg.Connection | None:
+    """A session-level advisory lock on its own connection: held until that connection closes (including when the
+    process dies), so a crashed holder never blocks the next one."""
+    conn = psycopg.connect(settings().database_url, autocommit=True)
+    if conn.execute("select pg_try_advisory_lock(hashtext(%s))", (name,)).fetchone()[0]:
+        return conn
+    conn.close()
+    return None
+
+
+def lease_alive(conn: psycopg.Connection) -> bool:
+    try:
+        conn.execute("select 1")
+        return True
+    except psycopg.Error:
+        return False
 
 
 def one(query: str, *params) -> dict | None:

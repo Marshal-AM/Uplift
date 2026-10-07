@@ -20,6 +20,8 @@ from .config import settings
 
 log = logging.getLogger("uplift.worker")
 _inflight: set[str] = set()
+LEASE = "uplift-worker-executors"
+_leader = False  # True while this instance holds the executor lease
 
 
 def _advance(role: str, task_id: str) -> None:
@@ -67,13 +69,35 @@ async def executor(role: str) -> None:
         await asyncio.sleep(5)
 
 
+async def run_executors() -> None:
+    """Exactly one worker instance runs the executors (one per coworker). A redeploy briefly overlaps the old and
+    new containers; the new one waits for the lease, which Postgres frees when the old one exits."""
+    global _leader
+    while True:
+        lease = await asyncio.to_thread(db.try_lease, LEASE)
+        if lease is None:
+            await asyncio.sleep(5)
+            continue
+        log.info("executor lease acquired")
+        _leader = True
+        loops = [asyncio.create_task(executor(role)) for role in settings().coworkers]
+        try:
+            while await asyncio.to_thread(db.lease_alive, lease):
+                await asyncio.sleep(10)
+            log.error("executor lease lost; stopping executors until it is reacquired")
+        finally:
+            _leader = False
+            for loop in loops:
+                loop.cancel()
+            await asyncio.to_thread(lease.close)
+
+
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     db.open_pool()
-    loops = [asyncio.create_task(executor(role)) for role in settings().coworkers]
+    leader = asyncio.create_task(run_executors())
     yield
-    for loop in loops:
-        loop.cancel()
+    leader.cancel()
     db.close_pool()
 
 
@@ -83,7 +107,7 @@ app.include_router(chat_router)
 
 @app.get("/health")
 def health():
-    return {"ok": True, "coworkers": sorted(settings().coworkers)}
+    return {"ok": True, "executors": _leader, "coworkers": sorted(settings().coworkers)}
 
 
 def _verify(body: bytes, signature: str | None) -> None:
@@ -98,7 +122,7 @@ async def store_connected(request: Request, x_uplift_signature: str | None = Hea
     _verify(body, x_uplift_signature)
     event = json.loads(body)
     run = db.get_run(event["task_id"])
-    if run and run["phase"] == "auth_wait":
+    if _leader and run and run["phase"] == "auth_wait":  # other instances leave it to the lease holder
         asyncio.create_task(_kick(run["coworker"], event["task_id"]))
     return {"ok": True}
 
