@@ -12,12 +12,15 @@ from pathlib import Path
 
 import uvicorn
 from fastapi import FastAPI, Header, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
+from uplift_core import trace
 
 from . import db, nora, specialist
 from .agent_api import router as agent_api_router
 from .chat import router as chat_router
 from .clients import Sokosumi
 from .config import settings
+from .trace_api import router as trace_router
 
 log = logging.getLogger("uplift.worker")
 _inflight: set[str] = set()
@@ -93,9 +96,20 @@ async def run_executors() -> None:
             await asyncio.to_thread(lease.close)
 
 
+def _trace_sink(events: list[dict]) -> None:
+    """Worker-side trace events: stored for the live page, and one readable line each in the service log."""
+    db.insert_trace(events)
+    for e in events:
+        if e["status"] != "running":
+            took = f" ({e['ms'] / 1000:.1f}s)" if e.get("ms") is not None else ""
+            log.info("trace %s %s · %s · %s%s%s", e["task"][-8:], e.get("agent") or "-", e["service"], e["step"],
+                     f" — {e['detail']}" if e.get("detail") else "", took)
+
+
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     db.open_pool()
+    trace.set_sink(_trace_sink)
     leader = asyncio.create_task(run_executors())
     yield
     leader.cancel()
@@ -105,6 +119,9 @@ async def lifespan(_: FastAPI):
 app = FastAPI(title="Uplift Worker", lifespan=lifespan)
 app.include_router(chat_router)
 app.include_router(agent_api_router)
+app.include_router(trace_router)
+app.add_middleware(CORSMiddleware, allow_origins=settings().trace_origins.split(","), allow_methods=["GET"],
+                   allow_headers=["Last-Event-ID"])
 
 
 @app.get("/health")
@@ -153,5 +170,6 @@ def _install_cre_session() -> None:
 
 def run() -> None:
     logging.basicConfig(level=logging.INFO)
+    logging.getLogger("httpx").setLevel(logging.WARNING)  # one line per Sokosumi poll drowned everything else
     _install_cre_session()
     uvicorn.run("uplift_worker.app:app", host="0.0.0.0", port=settings().port)

@@ -4,11 +4,15 @@ Each endpoint becomes a Kodosumi flow (`x-kodosumi`) and, through Sumi, a MIP-00
 `/sumi/uplift/<name>` — that URL is the apiBaseUrl registered on Masumi.
 """
 
+import json
+import re
+
 import fastapi
 from kodosumi.core import Launch, ServeAPI
 from kodosumi.core import forms as F
 from kodosumi.error import KodosumiError
 from ray import serve
+from uplift_core import trace
 
 from .flows import clara, iris, kai, leo, marcus, oskar, priya, quinn, rafael, ruth, sasha, yuki
 
@@ -57,16 +61,45 @@ SPECIALISTS = [
 app = ServeAPI()
 
 
+class _Narrated:
+    """The flow's tracer, also sending each of the agent's own step notes to the live trace as a heading."""
+
+    def __init__(self, tracer, role: str):
+        self._tracer, self._role = tracer, role
+
+    def markdown_sync(self, text: str):
+        trace.emit("Agent", re.sub(r"\*\*\w+\*\* · ", "", text).replace("**", ""), status="stage", kind="stage")
+        return self._tracer.markdown_sync(text)
+
+    def __getattr__(self, name: str):
+        return getattr(self._tracer, name)
+
+
+def _run_id(inputs: dict) -> str | None:
+    try:
+        return json.loads(inputs.get("context") or "{}").get("job_or_task_id")
+    except ValueError:
+        return None
+
+
 def _guarded(fn):
-    """Kodosumi only surfaces KodosumiError; wrap so every failure reaches the caller with its message."""
+    """Kodosumi only surfaces KodosumiError; wrap so every failure reaches the caller with its message. Each run is
+    attributed to its Sokosumi Task in the live trace."""
+    role = fn.__module__.rsplit(".", 1)[-1]
 
     def run(inputs: dict, tracer):
+        trace.bind(_run_id(inputs), role, process_wide=True)
         try:
-            return fn(inputs, tracer)
-        except KodosumiError:
+            return fn(inputs, _Narrated(tracer, role))
+        except KodosumiError as exc:
+            trace.emit("Agent", "Stopped", str(exc), status="error", kind="agent.error")
             raise
         except Exception as exc:
+            trace.emit("Agent", "Stopped with an error", f"{type(exc).__name__}: {exc}", status="error",
+                       kind="agent.error")
             raise KodosumiError(f"{type(exc).__name__}: {exc}") from exc
+        finally:
+            trace.flush()
 
     run.__name__ = f"{fn.__module__.rsplit('.', 1)[-1]}_run"
     return run

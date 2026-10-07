@@ -19,7 +19,7 @@ from concurrent.futures import ThreadPoolExecutor
 from copy import deepcopy
 from typing import Any
 
-from uplift_core import llm
+from uplift_core import llm, trace
 from uplift_core.hashing import change_hash, result_hash, sha256_hex
 from uplift_core.score import score
 
@@ -27,6 +27,8 @@ from . import cre, db, payments, runs
 from .clients import FlowLost, Kodosumi, Sokosumi
 from .config import settings
 from .runs import manifest_from_store
+from .specialist import received
+from .trace_api import attach_trace
 
 log = logging.getLogger("uplift.worker")
 
@@ -125,6 +127,7 @@ def fields_for(role: str, intent: dict, product: dict, locale: str | None = None
 
 
 def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine reads best in one place
+    trace.bind(task_id, "nora")
     client = Sokosumi("nora")
     task = client.task(task_id)
     run = db.get_run(task_id) or {"phase": "start", "state": {}}
@@ -141,6 +144,7 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
 
     while True:
         if phase == "start":
+            received(task, "nora")
             client.event(task_id, status="RUNNING", comment="Hi, I'm Nora. Reading your request…")
             phase = "intake"
             save(phase)
@@ -575,6 +579,7 @@ def deliver(client: Sokosumi, task: dict, st: dict) -> None:
                 z.writestr(f"{node}/summary.md", m["summary_md"])
                 z.writestr(f"{node}/manifest.json", json.dumps(m, indent=2))
     client.upload(task["id"], "uplift-launch-pack.zip", pack.getvalue(), "application/zip")
+    attach_trace(client, task["id"], st, lambda: None)
     after = st["nodes"]["quinn_after"]
     report = manifest_from_store(after["result_hash"])["summary_md"] if after.get("result_hash") else ""
     client.event(task["id"], status="COMPLETED", comment=(

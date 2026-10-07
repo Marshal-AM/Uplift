@@ -9,6 +9,7 @@ import time
 from datetime import UTC, datetime, timedelta
 from typing import Any
 
+from uplift_core import trace
 from uplift_core.hashing import sha256_hex
 
 from .clients import Sokosumi, SokosumiError, mps
@@ -35,8 +36,23 @@ def request_terms(role: str, input_text: str, task_id: str, credits: float | Non
     }
     if credits is not None:  # 1 credit = 1 tUSDM (6 decimals)
         body["RequestedFunds"] = [{"amount": str(round(credits * 1_000_000)), "unit": s.tusdm_unit}]
-    payment = mps("/payment", body)
+    with trace.span("Masumi", "Creating the payment request (seller terms)",
+                    "on the Uplift payment node · Cardano preprod", task=task_id, kind="masumi.terms") as sp:
+        payment = mps("/payment", body)
+        bid = payment["blockchainIdentifier"]
+        amount = sum(int(f["amount"]) for f in payment.get("RequestedFunds") or []) / 1_000_000
+        sp.detail = (f"{amount:g} credits · {'dynamic price (the specialists used)' if credits is not None else 'fixed price'}"
+                     + f" · pay by {_hhmm(payment['payByTime'])} · result due by {_hhmm(payment['submitResultTime'])}")
+        sp.meta |= {"blockchain id": f"{bid[:10]}…{bid[-10:]}", "agent": f"{s.agent_identifiers[role][:14]}…",
+                    "input hash": body["inputHash"][:16] + "…", "network": s.network}
     return {"nonce": nonce, "payment": payment}
+
+
+def _hhmm(ms: Any) -> str:
+    return datetime.fromtimestamp(int(ms) / 1000, UTC).strftime("%H:%M UTC")
+
+
+_escrow: dict[str, float] = {}  # blockchain id → when the lock was submitted (for the trace)
 
 
 def purchase_payload(terms: dict[str, Any]) -> dict[str, Any]:
@@ -56,7 +72,15 @@ def purchase_payload(terms: dict[str, Any]) -> dict[str, Any]:
 
 
 def charge(client: Sokosumi, task_id: str, terms: dict[str, Any], price: float) -> None:
-    client.event(task_id, comment=f"Payment requested: {price} credits.", masumiPayment=purchase_payload(terms))
+    with trace.span("Sokosumi", f"Charging {price} credits to the merchant's workspace",
+                    "Sokosumi buys the agent's Masumi payment with workspace credits", task=task_id,
+                    kind="payment.charged", meta={"credits": price}):
+        client.event(task_id, comment=f"Payment requested: {price} credits.", masumiPayment=purchase_payload(terms))
+    bid = terms["payment"]["blockchainIdentifier"]
+    _escrow.setdefault(bid, time.time())
+    trace.emit("Cardano", "Locking the payment in escrow", "the smart contract holds it until the work is accepted; "
+               "the agent starts meanwhile", status="running", span=f"escrow-{bid[-16:]}", task=task_id,
+               kind="cardano.escrow")
 
 
 def pay(client: Sokosumi, task_id: str, st: dict, role: str, input_text: str, price: float, save,
@@ -88,10 +112,18 @@ def lock_expired(terms: dict[str, Any]) -> bool:
 
 
 def funds_locked(terms: dict[str, Any]) -> bool:
+    bid = terms["payment"]["blockchainIdentifier"]
     payment = mps("/payment/resolve-blockchain-identifier", {
-        "network": settings().network, "blockchainIdentifier": terms["payment"]["blockchainIdentifier"],
-        "includeHistory": "true"})
-    return _confirmed(payment, "FundsLocked")
+        "network": settings().network, "blockchainIdentifier": bid, "includeHistory": "true"})
+    locked = _confirmed(payment, "FundsLocked")
+    if locked and _escrow.get(bid) != 0:  # trace the confirmation once
+        started = _escrow.get(bid)
+        tx = (payment.get("CurrentTransaction") or {}).get("txHash") or ""
+        trace.emit("Cardano", "Funds locked in escrow", "confirmed on Cardano preprod" + (f" · tx {tx[:12]}…" if tx else ""),
+                   ms=(time.time() - started) * 1000 if started else None, span=f"escrow-{bid[-16:]}",
+                   kind="cardano.escrow", meta={"tx": tx} if tx else None)
+        _escrow[bid] = 0
+    return locked
 
 
 def wait_funds(terms: dict[str, Any], timeout_s: int = 900) -> None:
@@ -104,6 +136,9 @@ def wait_funds(terms: dict[str, Any], timeout_s: int = 900) -> None:
 
 
 def submit_result(terms: dict[str, Any], result_hash: str) -> None:
-    mps("/payment/submit-result", {"network": settings().network,
-                                   "blockchainIdentifier": terms["payment"]["blockchainIdentifier"],
-                                   "submitResultHash": result_hash})
+    with trace.span("Masumi", "Submitting the result hash on-chain",
+                    f"result {result_hash[:12]}… · the seller can collect after the unlock time",
+                    kind="masumi.result", meta={"result hash": result_hash}):
+        mps("/payment/submit-result", {"network": settings().network,
+                                       "blockchainIdentifier": terms["payment"]["blockchainIdentifier"],
+                                       "submitResultHash": result_hash})

@@ -4,6 +4,7 @@ import time
 from typing import Any
 
 import httpx
+from uplift_core import trace
 
 from .config import settings
 
@@ -46,13 +47,22 @@ class Sokosumi:
         return self.request("GET", f"/v1/tasks/{task_id}/events")["data"]
 
     def event(self, task_id: str, **body: Any) -> dict:
-        return self.request("POST", f"/v1/tasks/{task_id}/events", body)["data"]
+        if "masumiPayment" in body:  # traced by payments.charge, with the amount
+            return self.request("POST", f"/v1/tasks/{task_id}/events", body)["data"]
+        status = body.get("status")
+        step = f"Task status → {STATUS_LABEL.get(status, status)}" if status else "Posted an update to the Task"
+        with trace.span("Sokosumi", step, _first_line(body.get("comment")), task=task_id, kind="sokosumi.event",
+                        meta={"status": status, "message": body.get("comment")} if body.get("comment") else None):
+            return self.request("POST", f"/v1/tasks/{task_id}/events", body)["data"]
 
     def upload(self, task_id: str, filename: str, data: bytes, content_type: str) -> None:
-        session = self.request("POST", f"/v1/tasks/{task_id}/files",
-                               {"filename": filename, "contentType": content_type, "size": len(data)})["data"]
-        httpx.put(session["uploadUrl"], content=data, headers=session.get("headers") or {"Content-Type": content_type},
-                  timeout=httpx.Timeout(120)).raise_for_status()
+        with trace.span("Sokosumi", f"Attached {filename} to the Task", f"{len(data) / 1024:,.1f} KB · {content_type}",
+                        task=task_id, kind="sokosumi.file"):
+            session = self.request("POST", f"/v1/tasks/{task_id}/files",
+                                   {"filename": filename, "contentType": content_type, "size": len(data)})["data"]
+            httpx.put(session["uploadUrl"], content=data,
+                      headers=session.get("headers") or {"Content-Type": content_type},
+                      timeout=httpx.Timeout(120)).raise_for_status()
 
     def create_task(self, as_user: tuple, **body: Any) -> dict:
         return self.request("POST", "/v1/tasks", body, as_user=as_user)["data"]
@@ -70,6 +80,16 @@ class Sokosumi:
 
     def receipt(self, task_id: str) -> dict:
         return self.request("GET", f"/v1/tasks/{task_id}/receipt")["data"]
+
+
+STATUS_LABEL = {"RUNNING": "Running", "INPUT_REQUIRED": "Needs the merchant's input",
+                "APPROVAL_REQUIRED": "Waiting for the merchant's approval", "COMPLETED": "Completed",
+                "FAILED": "Failed", "AUTHENTICATION_REQUIRED": "Needs the store connection"}
+
+
+def _first_line(text: str | None) -> str:
+    line = next((x.strip() for x in (text or "").splitlines() if x.strip()), "")
+    return line.replace("**", "")
 
 
 class SokosumiError(Exception):
@@ -92,7 +112,11 @@ class Kodosumi:
         body = resp.json()
         if not body.get("result"):
             raise FlowError(f"launch rejected: {body.get('errors') or body}")
-        return body["result"]
+        fid = body["result"]
+        _runs[fid] = (role, time.time())
+        trace.emit("Kodosumi", f"Started {role.title()}'s agent", f"run {fid}", status="running", span=f"run-{fid}",
+                   agent=role, kind="kodosumi.run", meta={"run": fid, "flow": f"/uplift/{role}"})
+        return fid
 
     def wait(self, fid: str, launched_at: float, timeout_s: int = 1800) -> str:
         deadline = time.time() + timeout_s
@@ -115,11 +139,16 @@ class Kodosumi:
             unknown = True
         if unknown:
             if time.time() - launched_at > LOST_AFTER_S:
+                role = _runs.pop(fid, (None, 0))[0]
+                trace.emit("Kodosumi", "Agent run never started — relaunching", f"run {fid}", status="error",
+                           span=f"run-{fid}", agent=role, kind="kodosumi.run")
                 raise FlowLost(f"run {fid} never started")
             return "running", None
         status = resp.json()
         if status["status"] in ("finished", "error"):
-            return status["status"], _final_text(status["final"])
+            text = _final_text(status["final"])
+            _close_run(fid, status["status"], text, launched_at)
+            return status["status"], text
         return "running", None
 
     def input_schema(self, role: str) -> list[dict]:
@@ -150,16 +179,51 @@ class FlowLost(FlowError):
     """Kodosumi accepted the launch but the run never started (its status stays unknown); relaunch it."""
 
 
+_runs: dict[str, tuple[str, float]] = {}  # fid → (role, launched) for the trace
+
+
+def _close_run(fid: str, state: str, text: str | None, launched_at: float) -> None:
+    if fid not in _runs and not trace.current():
+        return
+    role, started = _runs.pop(fid, (None, launched_at))
+    if state == "finished":
+        try:
+            import json
+
+            manifest = json.loads(text or "{}")
+            detail = (f"{len(manifest.get('artifacts', []))} deliverables · {len(manifest.get('changeset', []))} "
+                      "proposed store changes")
+        except ValueError:
+            detail = "result ready"
+        trace.emit("Kodosumi", f"{role.title()}'s agent finished" if role else "The agent finished", detail, ms=(time.time() - started) * 1000,
+                   span=f"run-{fid}", agent=role, kind="kodosumi.run", meta={"run": fid})
+    else:
+        trace.emit("Kodosumi", f"{role.title()}'s agent stopped" if role else "The agent stopped", (text or "error")[:300],
+                   status="error",
+                   ms=(time.time() - started) * 1000, span=f"run-{fid}", agent=role, kind="kodosumi.run")
+
+
 LOST_AFTER_S = 90  # a run Kodosumi still does not know this long after launch never started
 
 
+GATEWAY_STEPS = {"/v1/read/snapshot": "Reading the product from the store", "/v1/read/graphql": "Store query"}
+
+
 def gateway(path: str, body: dict) -> Any:
-    resp = httpx.post(f"{settings().gateway_url}{path}", json=body, timeout=TIMEOUT,
-                      headers={"Authorization": f"Bearer {settings().gateway_read_key}"})
-    if resp.status_code == 409:
-        raise ReauthRequired()
-    resp.raise_for_status()
-    return resp.json()
+    step = GATEWAY_STEPS.get(path)  # the connection check repeats while waiting and is not traced
+
+    def call() -> Any:
+        resp = httpx.post(f"{settings().gateway_url}{path}", json=body, timeout=TIMEOUT,
+                          headers={"Authorization": f"Bearer {settings().gateway_read_key}"})
+        if resp.status_code == 409:
+            raise ReauthRequired()
+        resp.raise_for_status()
+        return resp.json()
+
+    if not step:
+        return call()
+    with trace.span("Shopify", step, "read-only, through the Uplift gateway", kind="shopify.read"):
+        return call()
 
 
 class ReauthRequired(Exception):

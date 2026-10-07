@@ -10,12 +10,13 @@ import json
 import time
 from typing import Any
 
-from uplift_core import llm
+from uplift_core import llm, trace
 from uplift_core.hashing import change_hash, result_hash
 
 from . import cre, db, payments, runs
 from .clients import FlowError, FlowLost, Kodosumi, ReauthRequired, Sokosumi
 from .config import settings
+from .trace_api import attach_trace
 
 NEEDS_STORE = {"oskar"}  # every other specialist also works from pasted copy, URLs or images
 
@@ -54,7 +55,14 @@ def intake(task: dict, schema: list[dict], answers: list[str]) -> dict[str, Any]
          "required": ["values", "uses_connected_store"]})
 
 
+def received(task: dict, role: str) -> None:
+    trace.emit("Sokosumi", "Task received", f"“{task.get('name')}”", task=task["id"], agent=role, kind="task.received",
+               meta={"title": task.get("name"), "brief": task.get("description"), "coworker": role,
+                     "status": task.get("status")})
+
+
 def advance(role: str, task_id: str) -> None:
+    trace.bind(task_id, role)
     client = Sokosumi(role)
     task = client.task(task_id)
     run = db.get_run(task_id) or {"phase": "start", "state": {}}
@@ -65,6 +73,7 @@ def advance(role: str, task_id: str) -> None:
 
     while True:
         if phase == "start":
+            received(task, role)
             client.event(task_id, status="RUNNING", comment="On it.")
             phase = "intake"
             save(phase)
@@ -254,6 +263,7 @@ def advance(role: str, task_id: str) -> None:
 
         elif phase == "deliver":
             runs.deliver_files(client, task_id, st["manifest"], st.setdefault("delivered", []), lambda: save("deliver"))
+            attach_trace(client, task_id, st, lambda: save("deliver"))
             if settings().payments_enabled:
                 payments.submit_result(st["terms"], st["result_hash"])
             after = (st.get("publish") or {}).get("after_score")

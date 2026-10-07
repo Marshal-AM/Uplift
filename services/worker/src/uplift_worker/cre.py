@@ -20,6 +20,7 @@ from typing import Any
 import httpx
 from eth_account import Account
 from eth_account.messages import encode_defunct
+from uplift_core import trace
 
 from . import db
 from .config import settings
@@ -44,6 +45,31 @@ def _jwt(body: dict[str, Any]) -> str:
 
 
 def trigger(action: str, payload: dict[str, Any], timeout_s: int = 600) -> dict[str, Any]:
+    role = payload.get("role") or payload.get("coworker")
+    step = f"Verifying {role.title()}'s work" if action == "verify" else "Publishing the approved changes to Shopify"
+    where = "deployed workflow" if settings().cre_trigger_url else "workflow simulation"
+    with trace.span("Chainlink CRE", step, f"uplift-clearing · {where} · hash-checks, scores and signs off",
+                    task=payload.get("task_id"), agent=role if action == "verify" else None,
+                    kind=f"cre.{action}") as sp:
+        result = _trigger(action, payload, timeout_s)
+        if action == "verify":
+            sp.status = "ok" if result.get("outcome") == "PASS" else "fail"
+            sp.detail = f"{result.get('outcome')} · {result.get('score')}/100 (pass mark {result.get('pass_mark', '—')})"
+            sp.meta |= {"checks": result.get("checks", []), "reasons": result.get("reasons", []),
+                        "judge": result.get("judge_note"), "outcome": result.get("outcome"),
+                        "score": result.get("score")}
+        elif result.get("published"):
+            after = result.get("after_score")
+            sp.detail = f"{result.get('applied')} changes applied through the gateway's write API" + (
+                f" · core listing score now {after}/95" if after is not None else "")
+            sp.meta |= {"applied": result.get("applied"), "after_score": after}
+        else:
+            sp.status = "fail"
+            sp.detail = f"refused: {result.get('reason')}"
+        return result
+
+
+def _trigger(action: str, payload: dict[str, Any], timeout_s: int) -> dict[str, Any]:
     s = settings()
     request_id = str(uuid.uuid4())
     started = time.time()

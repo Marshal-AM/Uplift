@@ -16,6 +16,7 @@ from typing import Any
 
 import boto3
 import httpx
+from uplift_core import trace
 from uplift_core.hashing import canonical, sha256_hex
 
 from . import tools
@@ -95,7 +96,9 @@ def store_bytes(name: str, data: bytes, mime: str) -> tuple[str, str]:
     digest = hashlib.sha256(data).hexdigest()
     key = f"artifacts/{digest}/{name}"
     s3 = _s3()
-    s3.put_object(Bucket=BUCKET, Key=key, Body=data, ContentType=mime)
+    with trace.span("Amazon S3", f"Saved {name}", f"{len(data) / 1024:,.1f} KB · content-addressed {digest[:12]}…",
+                    kind="s3.put", meta={"sha256": digest, "type": mime}):
+        s3.put_object(Bucket=BUCKET, Key=key, Body=data, ContentType=mime)
     url = s3.generate_presigned_url("get_object", Params={"Bucket": BUCKET, "Key": key}, ExpiresIn=URL_TTL)
     return digest, url
 

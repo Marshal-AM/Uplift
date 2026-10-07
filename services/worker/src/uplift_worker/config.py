@@ -42,6 +42,10 @@ class Settings(BaseSettings):
     cre_trigger_private_key: str = ""  # EVM key listed in the workflow's authorizedKeys
     cre_project_dir: str = "../../cre"
 
+    trace_key: str = ""  # agents post their trace events with this key
+    trace_view_key: str = ""  # the /live page and e2e/trace.py read with this key
+    trace_origins: str = "https://uplift-landing.up.railway.app,http://localhost:3000"
+
     artifact_bucket: str = "uplift-artifacts-517207998460"
     aws_region: str = "us-east-1"
     port: int = 8080
