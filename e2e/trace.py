@@ -92,7 +92,7 @@ def main() -> None:
         raise SystemExit("No traced Tasks yet.")
     info = next((t for t in tasks if t["task"] == task), {})
     out.print(Text(f"{(info.get('coworker') or '').title()} · {info.get('title', task)}", style="bold"))
-    after, t0, settled = 0, None, set()
+    after, t0, settled, last_pass = 0, None, set(), False
     while True:
         events = get("/trace/events", task=task, after=after)["events"]
         for e in events:
@@ -103,11 +103,12 @@ def main() -> None:
             if e["span"]:
                 settled.add(e["span"])
             out.print(line(e, t0))
-        phase = next((t["phase"] for t in get("/trace/tasks")["tasks"] if t["task"] == task), None)
-        if phase in DONE or (a.until_wait and phase in WAITING):
+        if last_pass:  # one more read after the end, for the steps written alongside it
             out.print(Text(f"— {phase}", style="bold yellow" if phase in WAITING else "bold green"))
             return
-        time.sleep(2)
+        phase = next((t["phase"] for t in get("/trace/tasks")["tasks"] if t["task"] == task), None)
+        last_pass = phase in DONE or (a.until_wait and phase in WAITING)
+        time.sleep(1 if last_pass else 2)
 
 
 if __name__ == "__main__":
