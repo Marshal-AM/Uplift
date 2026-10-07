@@ -1,0 +1,29 @@
+{
+  "name": "uplift-ads-mock",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -p 3100",
+    "build": "next build && node scripts/fix-export.mjs",
+    "preview": "npx serve out -l 3100",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.542.0",
+    "next": "16.0.10",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "2.15.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.9",
+    "@types/node": "^22.13.9",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "postcss": "8.5.6",
+    "tailwindcss": "^4.1.9",
+    "typescript": "~5.7.2"
+  }
+}

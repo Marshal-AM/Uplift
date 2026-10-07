@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --font-roboto: var(--font-roboto-family), Roboto, Arial, sans-serif;
+  --font-serp: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --color-g-blue: #1a73e8;
+  --color-g-link: #1a0dab;
+  --color-g-visited: #681da8;
+  --color-g-text: #202124;
+  --color-g-sub: #4d5156;
+  --color-g-grey: #5f6368;
+  --color-g-line: #dadce0;
+  --color-g-bg: #f8f9fa;
+  --color-g-red: #d93025;
+  --color-g-green: #188038;
+  --color-g-yellow: #f9ab00;
+}
+
+html,
+body {
+  background: #fff;
+  color: #202124;
+}
+
+/* Google-style thin scrollbars for horizontal carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
