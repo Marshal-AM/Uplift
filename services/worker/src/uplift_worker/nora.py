@@ -244,6 +244,12 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
             save(phase)
 
         elif phase == "propose":
+            if not st["changeset"]:  # nothing to publish: no approval step, straight to the report
+                client.event(task_id, comment="Nothing needs to change in your listing; preparing your report.")
+                st["publish"] = {"published": False, "applied": 0, "after_score": st["projection"]["after"]}
+                phase = "report"
+                save(phase)
+                continue
             propose(client, task, st)
             phase = "approval_wait"
             save(phase)
@@ -302,6 +308,13 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
             save(phase)
 
         elif phase == "deliver":
+            if st.get("terms") and not payments.funds_locked(st["terms"]):
+                if payments.lock_expired(st["terms"]):
+                    st["error"] = "The payment was not locked in escrow before its deadline, so nothing was delivered."
+                    phase = "failed"
+                    save(phase)
+                    continue
+                return  # the result is submitted against a locked escrow
             log_timings(task, st)
             deliver(client, task, st)
             if s.payments_enabled:
@@ -459,12 +472,14 @@ def merge(client: Sokosumi, task: dict, st: dict) -> None:
     for n in st["nodes"].values():
         if n.get("verdict") == "PASS" and n["role"] not in ("quinn", "ruth"):
             changeset += manifest_from_store(n["result_hash"])["changeset"]
-    if changeset and "ruth" in st["plan"]["roles"] and "ruth" not in st["nodes"]:
+    if "ruth" in st["plan"]["roles"] and "ruth" not in st["nodes"]:
+        # Ruth reviews the proposed changes, or the live listing when nothing is to change
         ruth_fields = fields_for("ruth", st["plan"]["intent"], {})
-        hire(client, task, st, "ruth", "ruth", ruth_fields, extra={"review_changeset": changeset})
+        review = {"review_changeset": changeset} if changeset else {}
+        hire(client, task, st, "ruth", "ruth", ruth_fields, extra=review)
         while not poll_node(client, task, st, "ruth"):
             if st["nodes"]["ruth"]["status"] == "retry":  # failed once: re-hire with the reasons, as in the DAG
-                hire(client, task, st, "ruth", "ruth", ruth_fields, extra={"review_changeset": changeset})
+                hire(client, task, st, "ruth", "ruth", ruth_fields, extra=review)
             time.sleep(10)
         ruth = st["nodes"]["ruth"]
         if ruth.get("verdict") == "PASS":
@@ -561,5 +576,6 @@ def deliver(client: Sokosumi, task: dict, st: dict) -> None:
     after = st["nodes"]["quinn_after"]
     report = manifest_from_store(after["result_hash"])["summary_md"] if after.get("result_hash") else ""
     client.event(task["id"], status="COMPLETED", comment=(
-        f"**Done.** Published {len(st['changeset'])} changes. Core listing score now "
-        f"{st['publish'].get('after_score', '?')}/95.\n\n{report}\n\nEverything is in `uplift-launch-pack.zip`."))
+        (f"**Done.** Published {len(st['changeset'])} changes. " if st["changeset"] else "**Done.** ")
+        + f"Core listing score now {st['publish'].get('after_score', '?')}/95.\n\n{report}\n\n"
+        "Everything is in `uplift-launch-pack.zip`."))
