@@ -382,7 +382,8 @@ def _verify(client: Sokosumi, task: dict, st: dict, n: dict, manifest_url: str) 
     _mark(task, n, f"verify:{verdict['outcome']}")
     client.event(task["id"], comment=f"{n['role'].title()} delivered · Chainlink: **{verdict['outcome']}** "
                                      f"{verdict['score']}/100" + ("" if verdict["outcome"] == "PASS" else
-                                                                  " · not billed, retrying once"))
+                                                                  " · not billed" + (", retrying once"
+                                                                                     if n["attempts"] < 2 else "")))
     if verdict["outcome"] == "PASS":
         n["status"] = "done"
         return

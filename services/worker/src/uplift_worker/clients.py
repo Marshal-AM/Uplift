@@ -109,11 +109,15 @@ class Kodosumi:
         """Without blocking: ("running", None), ("finished", manifest text) or ("error", message). Kodosumi holds a
         status request for a run it does not know, so the request is short and an unknown run is FlowLost."""
         try:
-            status = self.http.get(f"/outputs/status/{fid}?extended=true", timeout=15).json()
-        except httpx.ReadTimeout as exc:
+            resp = self.http.get(f"/outputs/status/{fid}?extended=true", timeout=15)
+            unknown = resp.status_code >= 500  # the edge proxy answers 502 for a held request
+        except httpx.ReadTimeout:
+            unknown = True
+        if unknown:
             if time.time() - launched_at > LOST_AFTER_S:
-                raise FlowLost(f"run {fid} never started") from exc
+                raise FlowLost(f"run {fid} never started")
             return "running", None
+        status = resp.json()
         if status["status"] in ("finished", "error"):
             return status["status"], _final_text(status["final"])
         return "running", None
