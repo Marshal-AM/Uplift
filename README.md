@@ -2,11 +2,12 @@
 
 # Uplift
 
-### Your AI e-commerce growth team. Every step is verified by Chainlink and every payment is settled on Cardano.
+### An AI growth team for Shopify and Google Ads, paid through Cardano escrow and released only for proven work.
 
-**Thirteen AI specialists that audit, rewrite, photograph, price, translate and advertise a Shopify product.
-A merchant hires them on Sokosumi, Masumi escrow on Cardano holds the payment, and Chainlink CRE checks the work.
-Nothing reaches the store, and nothing is paid, until the work has been proven.**
+**Thirteen AI agents, each with its own identity on Cardano. They optimize a merchant's Shopify listing (keywords,
+copy, photos, pricing, catalog, translations, compliance) and build its Google Ads campaigns. Merchants hire them on
+Sokosumi, every payment is locked in Masumi escrow on Cardano, and Chainlink CRE verifies the work before a single
+change goes live or a single unit is released.**
 
 ![Cardano](https://img.shields.io/badge/Cardano-preprod-0033AD?logo=cardano&logoColor=white)
 ![Masumi](https://img.shields.io/badge/Masumi-escrow%20%2B%20registry-6C3BF5)
@@ -27,45 +28,38 @@ Nothing reaches the store, and nothing is paid, until the work has been proven.*
 
 ---
 
-## 🔗 Important links
+## Important links
 
 | Resource | Link |
 |---|---|
-| 🎬 **Demo video** | _(add link)_ |
-| 📊 **Pitch deck** | _(add link)_ |
-| 🧑‍💼 Hire the team on Sokosumi (preprod) | [preprod.sokosumi.com/agents](https://preprod.sokosumi.com/agents) |
-| 📡 `/live`: watch a Task run, with its Cardano escrow | _(add link to the landing `/live` page)_ |
-| 📣 Google Ads mock (shows a finished run's real campaigns) | [ads-mock-production.up.railway.app](https://ads-mock-production.up.railway.app) |
-| 🔐 Masumi escrow contract (Cardano preprod) | [`addr_test1wzs4e6wc…ftgn37w4g`](https://preprod.cexplorer.io/address/addr_test1wzs4e6wc95hkwezlccjw9mdvq0r0rsgx6zk34avptga3ftgn37w4g) |
-| 🪪 Masumi registry policy (agent identity NFTs) | [`67ab0c92…23b3bd0b`](https://preprod.cexplorer.io/policy/67ab0c92c4ac1610895a1c965ee50aba41a8f1513b15240723b3bd0b) |
-| 🧾 Recorded end-to-end test: 19 Tasks with briefs, receipts, verdicts and deliverables | [`runs/`](runs/README.md) |
+| **Demo video** | _(add link)_ |
+| **Pitch deck** | _(add link)_ |
+| Hire the team on Sokosumi (preprod) | [preprod.sokosumi.com/agents](https://preprod.sokosumi.com/agents) |
+| `/live`: watch a Task run, with its Cardano escrow | _(add link to the landing `/live` page)_ |
+| Google Ads mock (shows a finished run's real campaigns) | [ads-mock-production.up.railway.app](https://ads-mock-production.up.railway.app) |
+| Masumi escrow contract (Cardano preprod) | [`addr_test1wzs4e6wc…ftgn37w4g`](https://preprod.cexplorer.io/address/addr_test1wzs4e6wc95hkwezlccjw9mdvq0r0rsgx6zk34avptga3ftgn37w4g) |
+| Masumi registry policy (agent identity NFTs) | [`67ab0c92…23b3bd0b`](https://preprod.cexplorer.io/policy/67ab0c92c4ac1610895a1c965ee50aba41a8f1513b15240723b3bd0b) |
+| Recorded end-to-end test: 19 Tasks with briefs, receipts, verdicts and deliverables | [`runs/`](runs/README.md) |
 
 ---
 
 <a id="important-transactions"></a>
 
-## ⛓️ Important transactions
+## Important transactions
 
 Everything below is **live on Cardano preprod**. Click any hash to see it on the explorer. The list was pulled from
 Uplift's own Masumi payment node with [`e2e/payments.py`](e2e/payments.py), which anyone with node access can re-run.
 
 ### At a glance
 
-| | |
+|  | |
 |---|---|
 | Agents registered on-chain (Masumi registry NFTs) | **13**, minted in **5** transactions |
 | Paid Tasks escrowed on Cardano | **43** escrows in **45** unique transactions |
 | Escrows settled with an on-chain result hash (`ResultSubmitted`) | **35**, for **96 tUSDM** of work |
 | Escrows refunded on-chain to the buyer (`RefundWithdrawn`) | **8**, for **13.5 tUSDM**: declined or duplicate work, never charged |
 | Escrow locks batched into one transaction | **43 locks → 16 transactions** (Masumi batches escrows) |
-| Settlement token | tUSDM, unit `16a55b2a349361ff88c03788f93e1e966e5d689605d044fef722ddde` + `0014df10745553444d` (1 Sokosumi credit = 1 tUSDM) |
-
-```mermaid
-pie showData
-  title Outcome of the 43 Cardano escrows
-  "ResultSubmitted (verified work, paid)" : 35
-  "RefundWithdrawn (declined or duplicate)" : 8
-```
+| Settlement token | tUSDM, unit `16a55b2a349361ff88c03788f93e1e966e5d689605d044fef722ddde` + `0014df10745553444d` (Sokosumi charges 100 workspace credits per tUSDM) |
 
 ### 1. Agent identities: 13 registry NFTs
 
@@ -93,61 +87,61 @@ Registration code: [`infra/masumi/register.py`](infra/masumi/register.py#L54-L12
 
 Each paid Task leaves two transactions:
 
-- **🔒 FundsLocked.** Sokosumi's buyer node locks the merchant's credits as tUSDM in the Masumi escrow contract.
-- **✅ ResultSubmitted.** Uplift writes the hash of the Chainlink-verified deliverable into the escrow datum.
+- **FundsLocked.** Sokosumi's buyer node locks the merchant's credits as tUSDM in the Masumi escrow contract.
+- **ResultSubmitted.** Uplift writes the hash of the Chainlink-verified deliverable into the escrow datum.
 
 When no result is ever submitted (the merchant declined, or the run was a duplicate), the escrow pays the buyer back
-instead (**↩️ RefundWithdrawn**). Several escrows often share one transaction because the payment node batches them.
+instead (**RefundWithdrawn**). Several escrows often share one transaction because the payment node batches them.
 Tasks marked with a link have a full recorded run in [`runs/`](runs/README.md).
 
 <details open>
 <summary><b>All 43 escrows and their transactions</b></summary>
 
-| # | Locked at (UTC) | Task | Credits | 🔒 FundsLocked | Settlement |
+| # | Locked at (UTC) | Task | tUSDM | FundsLocked | Settlement |
 |---|---|---|---|---|---|
-| 1 | 10-07 01:58 | Task `01a11415…1ed0` | 0.25 | [`c9014adf88bf…`](https://preprod.cexplorer.io/tx/c9014adf88bfbac81ca3abbca6258571149e9eadf4c29d4a5ea99b3af4132448) | ✅ ResultSubmitted [`994b8bef115d…`](https://preprod.cexplorer.io/tx/994b8bef115deeb7cd9f64fbc13219965a3a5caa185c22ec15255f3af94ec5a8) |
-| 2 | 10-07 02:05 | Task `01a1141b…72f1` | 0.5 | [`d3463d4737fd…`](https://preprod.cexplorer.io/tx/d3463d4737fd6c60ec59f8d59150c4eb91c1d30d9dae3d359eb0bed0bb52da6f) | ✅ ResultSubmitted [`4c747a2a7341…`](https://preprod.cexplorer.io/tx/4c747a2a73418b97a267fabb9f0e5988d64b472e19a68846bd308948e5b03781) |
-| 3 | 10-07 02:05 | Task `01a1141b…bd8f` | 1.25 | [`d3463d4737fd…`](https://preprod.cexplorer.io/tx/d3463d4737fd6c60ec59f8d59150c4eb91c1d30d9dae3d359eb0bed0bb52da6f) | ✅ ResultSubmitted [`4c747a2a7341…`](https://preprod.cexplorer.io/tx/4c747a2a73418b97a267fabb9f0e5988d64b472e19a68846bd308948e5b03781) |
-| 4 | 10-07 02:05 | Task `01a1141b…9a66` | 1.25 | [`d3463d4737fd…`](https://preprod.cexplorer.io/tx/d3463d4737fd6c60ec59f8d59150c4eb91c1d30d9dae3d359eb0bed0bb52da6f) | ✅ ResultSubmitted [`1c4e67d058f6…`](https://preprod.cexplorer.io/tx/1c4e67d058f6acede9113e136cd4e277dfa0204425d8baa6797fe9c20c8f9ec4) |
-| 5 | 10-07 02:05 | Task `01a1141b…9363` | 1.25 | [`d3463d4737fd…`](https://preprod.cexplorer.io/tx/d3463d4737fd6c60ec59f8d59150c4eb91c1d30d9dae3d359eb0bed0bb52da6f) | ✅ ResultSubmitted [`ba1abfc91552…`](https://preprod.cexplorer.io/tx/ba1abfc915527ff384c556c3d98154960b15e8b56a543ebed4c2dd511b2c99b7) |
-| 6 | 10-07 02:05 | Task `01a1141b…dbb9` | 2 | [`d3463d4737fd…`](https://preprod.cexplorer.io/tx/d3463d4737fd6c60ec59f8d59150c4eb91c1d30d9dae3d359eb0bed0bb52da6f) | ✅ ResultSubmitted [`ba1abfc91552…`](https://preprod.cexplorer.io/tx/ba1abfc915527ff384c556c3d98154960b15e8b56a543ebed4c2dd511b2c99b7) |
-| 7 | 10-07 02:05 | Task `01a1141b…caf6` | 1.5 | [`d3463d4737fd…`](https://preprod.cexplorer.io/tx/d3463d4737fd6c60ec59f8d59150c4eb91c1d30d9dae3d359eb0bed0bb52da6f) | ↩️ RefundWithdrawn [`df5bb676fbf5…`](https://preprod.cexplorer.io/tx/df5bb676fbf57128671ce954a6c921d3787d7200b123aa5603a7e9d388a76642) |
-| 8 | 10-07 02:09 | Task `01a1141f…32fd` | 1 | [`da221aaf6bc6…`](https://preprod.cexplorer.io/tx/da221aaf6bc6db4e5785893a7277a3bfb741c78ffcbb56a22fb816fe46a17fb8) | ✅ ResultSubmitted [`381c072f2202…`](https://preprod.cexplorer.io/tx/381c072f22021381ae541f3f72d13e971b94e220072ea554c77a78652ec65a00) |
-| 9 | 10-07 02:20 | Task `01a11429…c2b5` | 1.25 | [`6a95b180a71b…`](https://preprod.cexplorer.io/tx/6a95b180a71b15ce99b1392e5a9673c7931e60611e07886f6c97cf9d1c48076c) | ✅ ResultSubmitted [`84a32d12de81…`](https://preprod.cexplorer.io/tx/84a32d12de81a5402867d41486d637a04d3ad3009cb8e160ce656713e39c601f) |
-| 10 | 10-07 02:20 | Task `01a11429…0fec` | 2.5 | [`6a95b180a71b…`](https://preprod.cexplorer.io/tx/6a95b180a71b15ce99b1392e5a9673c7931e60611e07886f6c97cf9d1c48076c) | ✅ ResultSubmitted [`2f3e4441802a…`](https://preprod.cexplorer.io/tx/2f3e4441802a58ca81b12466958a0c543cc89a5be60089e356ea45f495f449f6) |
-| 11 | 10-07 02:20 | Task `01a11429…4b7a` | 1.5 | [`6a95b180a71b…`](https://preprod.cexplorer.io/tx/6a95b180a71b15ce99b1392e5a9673c7931e60611e07886f6c97cf9d1c48076c) | ✅ ResultSubmitted [`aca00b500f03…`](https://preprod.cexplorer.io/tx/aca00b500f0314b87add6519e4bcf6d0a5508b59cb131385ccb674a084ae2da8) |
-| 12 | 10-07 02:20 | Task `01a11429…a00f` | 1.5 | [`6a95b180a71b…`](https://preprod.cexplorer.io/tx/6a95b180a71b15ce99b1392e5a9673c7931e60611e07886f6c97cf9d1c48076c) | ✅ ResultSubmitted [`84a32d12de81…`](https://preprod.cexplorer.io/tx/84a32d12de81a5402867d41486d637a04d3ad3009cb8e160ce656713e39c601f) |
-| 13 | 10-07 02:20 | Task `01a11429…36d2` | 1.5 | [`6a95b180a71b…`](https://preprod.cexplorer.io/tx/6a95b180a71b15ce99b1392e5a9673c7931e60611e07886f6c97cf9d1c48076c) | ✅ ResultSubmitted [`2f3e4441802a…`](https://preprod.cexplorer.io/tx/2f3e4441802a58ca81b12466958a0c543cc89a5be60089e356ea45f495f449f6) |
-| 14 | 10-07 02:20 | Task `01a11429…e08e` | 2 | [`6a95b180a71b…`](https://preprod.cexplorer.io/tx/6a95b180a71b15ce99b1392e5a9673c7931e60611e07886f6c97cf9d1c48076c) | ✅ ResultSubmitted [`2f3e4441802a…`](https://preprod.cexplorer.io/tx/2f3e4441802a58ca81b12466958a0c543cc89a5be60089e356ea45f495f449f6) |
-| 15 | 10-07 02:20 | Task `01a11429…b8ae` | 2 | [`6a95b180a71b…`](https://preprod.cexplorer.io/tx/6a95b180a71b15ce99b1392e5a9673c7931e60611e07886f6c97cf9d1c48076c) | ✅ ResultSubmitted [`15cef4971309…`](https://preprod.cexplorer.io/tx/15cef49713092834d5a16118e7501bb8d3f6b90519d0042d8c1471f02f5a73d3) |
-| 16 | 10-07 03:23 | Task `01a1145a…20f6` | 1 | [`08e84e6c7cf0…`](https://preprod.cexplorer.io/tx/08e84e6c7cf037b8fe40f4221c376fb821745f3481c174dbd470c4fd4450284e) | ✅ ResultSubmitted [`4eb67ab420e9…`](https://preprod.cexplorer.io/tx/4eb67ab420e910965f5365f6b046954ca8f4181ecc7b67254986de11f08fe497) |
-| 17 | 10-07 03:39 | [Polish my glass bottle page](runs/00-nora-glass-bottle/README.md) | 7.25 | [`2288fd5a1716…`](https://preprod.cexplorer.io/tx/2288fd5a171646d5fe8745c487a46df93b70d90c4b7c283fcbee4ff6d786c39b) | ✅ ResultSubmitted [`f04f5d41f508…`](https://preprod.cexplorer.io/tx/f04f5d41f5086b6b2ba345b0f5bf80b1f49ed0c96f75e28340c067e2b83dfba3) |
-| 18 | 10-07 03:44 | [What do shoppers dislike about rival travel tumblers?](runs/tumbler/04-priya/README.md) | 1.5 | [`24816fbdde55…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) | ✅ ResultSubmitted [`dcbdf50cf95a…`](https://preprod.cexplorer.io/tx/dcbdf50cf95a17b66d4304425ed8e528e5d8cbf253b84ed571b4f816e025a4bf) |
-| 19 | 10-07 03:44 | [Keyword research for my travel tumbler](runs/tumbler/02-kai/README.md) | 1.25 | [`24816fbdde55…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) | ✅ ResultSubmitted [`0e2b99d2f4d6…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) |
-| 20 | 10-07 03:44 | [Launch pricing and promos for my travel tumbler](runs/tumbler/05a-marcus-declined/README.md) | 1.25 | [`24816fbdde55…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) | ↩️ RefundWithdrawn [`3a555c02c50e…`](https://preprod.cexplorer.io/tx/3a555c02c50ef458ebadec825e46880247ee984bf8041c41c8228475cb017f73) |
-| 21 | 10-07 03:44 | [Competitor scan for my travel tumbler](runs/tumbler/03-rafael/README.md) | 1.25 | [`24816fbdde55…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) | ✅ ResultSubmitted [`0e2b99d2f4d6…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) |
-| 22 | 10-07 03:44 | [Audit my travel tumbler listing](runs/tumbler/01-quinn-before/README.md) | 0.5 | [`24816fbdde55…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) | ✅ ResultSubmitted [`0e2b99d2f4d6…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) |
-| 23 | 10-07 03:44 | [Google Ads plan for my travel tumbler](runs/tumbler/06-sasha/README.md) | 1.5 | [`24816fbdde55…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) | ✅ ResultSubmitted [`0e2b99d2f4d6…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) |
-| 24 | 10-07 03:52 | [Product photos for my travel tumbler](runs/tumbler/08-iris/README.md) | 2.5 | [`fac952446f37…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) | ✅ ResultSubmitted [`368baf8edc24…`](https://preprod.cexplorer.io/tx/368baf8edc2474e18c8b45262481bd16acb35912aaabefd6e4bdf86d01d170ab) |
-| 25 | 10-07 03:52 | [Launch promos for my travel tumbler (new codes)](runs/tumbler/05b-marcus/README.md) | 1.25 | [`fac952446f37…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) | ✅ ResultSubmitted [`368baf8edc24…`](https://preprod.cexplorer.io/tx/368baf8edc2474e18c8b45262481bd16acb35912aaabefd6e4bdf86d01d170ab) |
-| 26 | 10-07 03:52 | [Catalog setup for my travel tumbler](runs/tumbler/09a-oskar-declined/README.md) | 1.5 | [`fac952446f37…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) | ↩️ RefundWithdrawn [`e2f35ff11e8c…`](https://preprod.cexplorer.io/tx/e2f35ff11e8ca92d80ffca62c54df5446215729c93d1cde90dd8e3ed5f42dfcf) |
-| 27 | 10-07 03:52 | [FAQ and launch content for my travel tumbler](runs/tumbler/10-leo/README.md) | 2 | [`fac952446f37…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) | ✅ ResultSubmitted [`368baf8edc24…`](https://preprod.cexplorer.io/tx/368baf8edc2474e18c8b45262481bd16acb35912aaabefd6e4bdf86d01d170ab) |
-| 28 | 10-07 03:52 | [Rewrite my travel tumbler product page](runs/tumbler/07-clara/README.md) | 2 | [`fac952446f37…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) | ✅ ResultSubmitted [`d1e08b8c260c…`](https://preprod.cexplorer.io/tx/d1e08b8c260ce0afb897ba400c1dea5ee8a1ff925134145d13eb2928eddbbf90) |
-| 29 | 10-07 03:58 | [Compliance check of my travel tumbler page](runs/tumbler/11-ruth/README.md) | 0.25 | [`d3f27dd6c1c7…`](https://preprod.cexplorer.io/tx/d3f27dd6c1c7b9aa583caef662701b6031e385120b2af7b33e2bb7a1dd14856f) | ✅ ResultSubmitted [`a723374f57bf…`](https://preprod.cexplorer.io/tx/a723374f57bfc507de294f4f9649e9766c1334c2bd3d4f4d45f64aa5f9ff0bbb) |
-| 30 | 10-07 03:58 | [German version of my travel tumbler page](runs/tumbler/12-yuki/README.md) | 1 | [`d3f27dd6c1c7…`](https://preprod.cexplorer.io/tx/d3f27dd6c1c7b9aa583caef662701b6031e385120b2af7b33e2bb7a1dd14856f) | ✅ ResultSubmitted [`fa5664b9591e…`](https://preprod.cexplorer.io/tx/fa5664b9591eefddcbeff1751fdc9192ea525341f63aa03da883f678c4685dfb) |
-| 31 | 10-07 03:58 | [Catalog setup for my travel tumbler (retry)](runs/tumbler/09b-oskar/README.md) | 1.5 | [`d3f27dd6c1c7…`](https://preprod.cexplorer.io/tx/d3f27dd6c1c7b9aa583caef662701b6031e385120b2af7b33e2bb7a1dd14856f) | ✅ ResultSubmitted [`fa5664b9591e…`](https://preprod.cexplorer.io/tx/fa5664b9591eefddcbeff1751fdc9192ea525341f63aa03da883f678c4685dfb) |
-| 32 | 10-07 04:03 | [Re-audit my travel tumbler listing](runs/tumbler/13-quinn-after/README.md) | 0.5 | [`77e5622aae67…`](https://preprod.cexplorer.io/tx/77e5622aae672601ed604bb1b443aec422149c8cdf41dd1f851544b2a68b13f8) | ✅ ResultSubmitted [`48ad5c09c479…`](https://preprod.cexplorer.io/tx/48ad5c09c479dd515e3075ee88034c715353a03004c32eea18babe97309a21b1) |
-| 33 | 10-07 04:15 | [Launch promos for my travel tumbler (new codes)](runs/tumbler/duplicates/marcus/README.md) | 1.25 | [`b89e0053dacb…`](https://preprod.cexplorer.io/tx/b89e0053dacbaeec940ed6cb52a3fa4bbd74dc1c0c5e0fcbb6b8dc7b75288708) | ↩️ RefundWithdrawn [`bb9217486be7…`](https://preprod.cexplorer.io/tx/bb9217486be7eadb1628a7f41c1af2028deacd4181e6d4e52a194607b82b2534) |
-| 34 | 10-07 04:15 | [Product photos for my travel tumbler](runs/tumbler/duplicates/iris/README.md) | 2.5 | [`b89e0053dacb…`](https://preprod.cexplorer.io/tx/b89e0053dacbaeec940ed6cb52a3fa4bbd74dc1c0c5e0fcbb6b8dc7b75288708) | ↩️ RefundWithdrawn [`eb0609ee946a…`](https://preprod.cexplorer.io/tx/eb0609ee946aad844c954a1c86e32173984dad1613a298deb5ea8dc29a75fa7d) |
-| 35 | 10-07 04:15 | [Catalog setup for my travel tumbler](runs/tumbler/duplicates/oskar/README.md) | 1.5 | [`b89e0053dacb…`](https://preprod.cexplorer.io/tx/b89e0053dacbaeec940ed6cb52a3fa4bbd74dc1c0c5e0fcbb6b8dc7b75288708) | ↩️ RefundWithdrawn [`eb0609ee946a…`](https://preprod.cexplorer.io/tx/eb0609ee946aad844c954a1c86e32173984dad1613a298deb5ea8dc29a75fa7d) |
-| 36 | 10-07 04:15 | [FAQ and launch content for my travel tumbler](runs/tumbler/duplicates/leo/README.md) | 2 | [`b89e0053dacb…`](https://preprod.cexplorer.io/tx/b89e0053dacbaeec940ed6cb52a3fa4bbd74dc1c0c5e0fcbb6b8dc7b75288708) | ↩️ RefundWithdrawn [`eb0609ee946a…`](https://preprod.cexplorer.io/tx/eb0609ee946aad844c954a1c86e32173984dad1613a298deb5ea8dc29a75fa7d) |
-| 37 | 10-07 04:15 | [Rewrite my travel tumbler product page](runs/tumbler/duplicates/clara/README.md) | 2 | [`b89e0053dacb…`](https://preprod.cexplorer.io/tx/b89e0053dacbaeec940ed6cb52a3fa4bbd74dc1c0c5e0fcbb6b8dc7b75288708) | ↩️ RefundWithdrawn [`eb0609ee946a…`](https://preprod.cexplorer.io/tx/eb0609ee946aad844c954a1c86e32173984dad1613a298deb5ea8dc29a75fa7d) |
-| 38 | 10-07 04:15 | [Content and compliance for my glass bottle](runs/14-nora-full-team/README.md) | 16 | [`b89e0053dacb…`](https://preprod.cexplorer.io/tx/b89e0053dacbaeec940ed6cb52a3fa4bbd74dc1c0c5e0fcbb6b8dc7b75288708) | ✅ ResultSubmitted [`212748facbe6…`](https://preprod.cexplorer.io/tx/212748facbe64dad0fea84ae8c97867fd9eab74e57f4d1122c60b2aa5c3c6906) |
-| 39 | 10-07 07:56 | [Rewrite my bamboo bottle product page](runs/16-clara-bamboo-traced/README.md) | 2 | [`6e2fdc392abc…`](https://preprod.cexplorer.io/tx/6e2fdc392abc64c0cbab90c562d12db23092d31bbe39bc97cc38d6fcc6976868) | ✅ ResultSubmitted [`a00e66f5b8ae…`](https://preprod.cexplorer.io/tx/a00e66f5b8aee6e1f5af699788fd0158377e3250d6ce23283beae99e1cb1ac2e) |
-| 40 | 10-07 08:17 | [Fully optimize my bamboo bottle listing](runs/15-nora-bamboo-full-team/README.md) | 16 | [`2aacdd0c1e20…`](https://preprod.cexplorer.io/tx/2aacdd0c1e209c021f77bfba31876407b599418b18a28ceae784c3e109730ad1) | ✅ ResultSubmitted [`d1bb34489f28…`](https://preprod.cexplorer.io/tx/d1bb34489f28c2be807437eea5f08c63c08bf012773539460a7485c8fffd7f1c) |
-| 41 | 10-07 08:39 | Task `01a11584…73ff` | 0.5 | [`83a57e759d60…`](https://preprod.cexplorer.io/tx/83a57e759d607e46e1edc85201af26ca009379f5d082b3e3ee0d04e4b1e4b1f0) | ✅ ResultSubmitted [`df2fcc4d11b5…`](https://preprod.cexplorer.io/tx/df2fcc4d11b5ad86583e0cfb22c5f846cb833ef6887e88b00b706d5ff63bad3a) |
-| 42 | 10-07 09:10 | Task `01a115a0…97b9` | 0.5 | [`c952f381d1bb…`](https://preprod.cexplorer.io/tx/c952f381d1bb7c4a6881fcf490a73e04fc8d35bee7b8378de4d7def37dca2656) | ✅ ResultSubmitted [`101ac5ce396d…`](https://preprod.cexplorer.io/tx/101ac5ce396d599a9eb256b52037e7771cfbf4bd57db7756caed3497490c1775) |
-| 43 | 10-07 11:07 | Task `01a115fe…6c7a` | 16 | [`ef88f39406fb…`](https://preprod.cexplorer.io/tx/ef88f39406fb7fddf7a4408b7ed6a2e645ab1d1e4de98f78b0fe4c6fa7ffaedd) | ✅ ResultSubmitted [`9932e7772b3c…`](https://preprod.cexplorer.io/tx/9932e7772b3c691e24e7f4e042a742ec71ed7104512c899676349015f7896caf) |
+| 1 | 10-07 01:58 | Task `01a11415…1ed0` | 0.25 | [`c9014adf88bf…`](https://preprod.cexplorer.io/tx/c9014adf88bfbac81ca3abbca6258571149e9eadf4c29d4a5ea99b3af4132448) |  ResultSubmitted [`994b8bef115d…`](https://preprod.cexplorer.io/tx/994b8bef115deeb7cd9f64fbc13219965a3a5caa185c22ec15255f3af94ec5a8) |
+| 2 | 10-07 02:05 | Task `01a1141b…72f1` | 0.5 | [`d3463d4737fd…`](https://preprod.cexplorer.io/tx/d3463d4737fd6c60ec59f8d59150c4eb91c1d30d9dae3d359eb0bed0bb52da6f) |  ResultSubmitted [`4c747a2a7341…`](https://preprod.cexplorer.io/tx/4c747a2a73418b97a267fabb9f0e5988d64b472e19a68846bd308948e5b03781) |
+| 3 | 10-07 02:05 | Task `01a1141b…bd8f` | 1.25 | [`d3463d4737fd…`](https://preprod.cexplorer.io/tx/d3463d4737fd6c60ec59f8d59150c4eb91c1d30d9dae3d359eb0bed0bb52da6f) |  ResultSubmitted [`4c747a2a7341…`](https://preprod.cexplorer.io/tx/4c747a2a73418b97a267fabb9f0e5988d64b472e19a68846bd308948e5b03781) |
+| 4 | 10-07 02:05 | Task `01a1141b…9a66` | 1.25 | [`d3463d4737fd…`](https://preprod.cexplorer.io/tx/d3463d4737fd6c60ec59f8d59150c4eb91c1d30d9dae3d359eb0bed0bb52da6f) |  ResultSubmitted [`1c4e67d058f6…`](https://preprod.cexplorer.io/tx/1c4e67d058f6acede9113e136cd4e277dfa0204425d8baa6797fe9c20c8f9ec4) |
+| 5 | 10-07 02:05 | Task `01a1141b…9363` | 1.25 | [`d3463d4737fd…`](https://preprod.cexplorer.io/tx/d3463d4737fd6c60ec59f8d59150c4eb91c1d30d9dae3d359eb0bed0bb52da6f) |  ResultSubmitted [`ba1abfc91552…`](https://preprod.cexplorer.io/tx/ba1abfc915527ff384c556c3d98154960b15e8b56a543ebed4c2dd511b2c99b7) |
+| 6 | 10-07 02:05 | Task `01a1141b…dbb9` | 2 | [`d3463d4737fd…`](https://preprod.cexplorer.io/tx/d3463d4737fd6c60ec59f8d59150c4eb91c1d30d9dae3d359eb0bed0bb52da6f) |  ResultSubmitted [`ba1abfc91552…`](https://preprod.cexplorer.io/tx/ba1abfc915527ff384c556c3d98154960b15e8b56a543ebed4c2dd511b2c99b7) |
+| 7 | 10-07 02:05 | Task `01a1141b…caf6` | 1.5 | [`d3463d4737fd…`](https://preprod.cexplorer.io/tx/d3463d4737fd6c60ec59f8d59150c4eb91c1d30d9dae3d359eb0bed0bb52da6f) |  RefundWithdrawn [`df5bb676fbf5…`](https://preprod.cexplorer.io/tx/df5bb676fbf57128671ce954a6c921d3787d7200b123aa5603a7e9d388a76642) |
+| 8 | 10-07 02:09 | Task `01a1141f…32fd` | 1 | [`da221aaf6bc6…`](https://preprod.cexplorer.io/tx/da221aaf6bc6db4e5785893a7277a3bfb741c78ffcbb56a22fb816fe46a17fb8) |  ResultSubmitted [`381c072f2202…`](https://preprod.cexplorer.io/tx/381c072f22021381ae541f3f72d13e971b94e220072ea554c77a78652ec65a00) |
+| 9 | 10-07 02:20 | Task `01a11429…c2b5` | 1.25 | [`6a95b180a71b…`](https://preprod.cexplorer.io/tx/6a95b180a71b15ce99b1392e5a9673c7931e60611e07886f6c97cf9d1c48076c) |  ResultSubmitted [`84a32d12de81…`](https://preprod.cexplorer.io/tx/84a32d12de81a5402867d41486d637a04d3ad3009cb8e160ce656713e39c601f) |
+| 10 | 10-07 02:20 | Task `01a11429…0fec` | 2.5 | [`6a95b180a71b…`](https://preprod.cexplorer.io/tx/6a95b180a71b15ce99b1392e5a9673c7931e60611e07886f6c97cf9d1c48076c) |  ResultSubmitted [`2f3e4441802a…`](https://preprod.cexplorer.io/tx/2f3e4441802a58ca81b12466958a0c543cc89a5be60089e356ea45f495f449f6) |
+| 11 | 10-07 02:20 | Task `01a11429…4b7a` | 1.5 | [`6a95b180a71b…`](https://preprod.cexplorer.io/tx/6a95b180a71b15ce99b1392e5a9673c7931e60611e07886f6c97cf9d1c48076c) |  ResultSubmitted [`aca00b500f03…`](https://preprod.cexplorer.io/tx/aca00b500f0314b87add6519e4bcf6d0a5508b59cb131385ccb674a084ae2da8) |
+| 12 | 10-07 02:20 | Task `01a11429…a00f` | 1.5 | [`6a95b180a71b…`](https://preprod.cexplorer.io/tx/6a95b180a71b15ce99b1392e5a9673c7931e60611e07886f6c97cf9d1c48076c) |  ResultSubmitted [`84a32d12de81…`](https://preprod.cexplorer.io/tx/84a32d12de81a5402867d41486d637a04d3ad3009cb8e160ce656713e39c601f) |
+| 13 | 10-07 02:20 | Task `01a11429…36d2` | 1.5 | [`6a95b180a71b…`](https://preprod.cexplorer.io/tx/6a95b180a71b15ce99b1392e5a9673c7931e60611e07886f6c97cf9d1c48076c) |  ResultSubmitted [`2f3e4441802a…`](https://preprod.cexplorer.io/tx/2f3e4441802a58ca81b12466958a0c543cc89a5be60089e356ea45f495f449f6) |
+| 14 | 10-07 02:20 | Task `01a11429…e08e` | 2 | [`6a95b180a71b…`](https://preprod.cexplorer.io/tx/6a95b180a71b15ce99b1392e5a9673c7931e60611e07886f6c97cf9d1c48076c) |  ResultSubmitted [`2f3e4441802a…`](https://preprod.cexplorer.io/tx/2f3e4441802a58ca81b12466958a0c543cc89a5be60089e356ea45f495f449f6) |
+| 15 | 10-07 02:20 | Task `01a11429…b8ae` | 2 | [`6a95b180a71b…`](https://preprod.cexplorer.io/tx/6a95b180a71b15ce99b1392e5a9673c7931e60611e07886f6c97cf9d1c48076c) |  ResultSubmitted [`15cef4971309…`](https://preprod.cexplorer.io/tx/15cef49713092834d5a16118e7501bb8d3f6b90519d0042d8c1471f02f5a73d3) |
+| 16 | 10-07 03:23 | Task `01a1145a…20f6` | 1 | [`08e84e6c7cf0…`](https://preprod.cexplorer.io/tx/08e84e6c7cf037b8fe40f4221c376fb821745f3481c174dbd470c4fd4450284e) |  ResultSubmitted [`4eb67ab420e9…`](https://preprod.cexplorer.io/tx/4eb67ab420e910965f5365f6b046954ca8f4181ecc7b67254986de11f08fe497) |
+| 17 | 10-07 03:39 | [Polish my glass bottle page](runs/00-nora-glass-bottle/README.md) | 7.25 | [`2288fd5a1716…`](https://preprod.cexplorer.io/tx/2288fd5a171646d5fe8745c487a46df93b70d90c4b7c283fcbee4ff6d786c39b) |  ResultSubmitted [`f04f5d41f508…`](https://preprod.cexplorer.io/tx/f04f5d41f5086b6b2ba345b0f5bf80b1f49ed0c96f75e28340c067e2b83dfba3) |
+| 18 | 10-07 03:44 | [What do shoppers dislike about rival travel tumblers?](runs/tumbler/04-priya/README.md) | 1.5 | [`24816fbdde55…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) |  ResultSubmitted [`dcbdf50cf95a…`](https://preprod.cexplorer.io/tx/dcbdf50cf95a17b66d4304425ed8e528e5d8cbf253b84ed571b4f816e025a4bf) |
+| 19 | 10-07 03:44 | [Keyword research for my travel tumbler](runs/tumbler/02-kai/README.md) | 1.25 | [`24816fbdde55…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) |  ResultSubmitted [`0e2b99d2f4d6…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) |
+| 20 | 10-07 03:44 | [Launch pricing and promos for my travel tumbler](runs/tumbler/05a-marcus-declined/README.md) | 1.25 | [`24816fbdde55…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) |  RefundWithdrawn [`3a555c02c50e…`](https://preprod.cexplorer.io/tx/3a555c02c50ef458ebadec825e46880247ee984bf8041c41c8228475cb017f73) |
+| 21 | 10-07 03:44 | [Competitor scan for my travel tumbler](runs/tumbler/03-rafael/README.md) | 1.25 | [`24816fbdde55…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) |  ResultSubmitted [`0e2b99d2f4d6…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) |
+| 22 | 10-07 03:44 | [Audit my travel tumbler listing](runs/tumbler/01-quinn-before/README.md) | 0.5 | [`24816fbdde55…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) |  ResultSubmitted [`0e2b99d2f4d6…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) |
+| 23 | 10-07 03:44 | [Google Ads plan for my travel tumbler](runs/tumbler/06-sasha/README.md) | 1.5 | [`24816fbdde55…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) |  ResultSubmitted [`0e2b99d2f4d6…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) |
+| 24 | 10-07 03:52 | [Product photos for my travel tumbler](runs/tumbler/08-iris/README.md) | 2.5 | [`fac952446f37…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) |  ResultSubmitted [`368baf8edc24…`](https://preprod.cexplorer.io/tx/368baf8edc2474e18c8b45262481bd16acb35912aaabefd6e4bdf86d01d170ab) |
+| 25 | 10-07 03:52 | [Launch promos for my travel tumbler (new codes)](runs/tumbler/05b-marcus/README.md) | 1.25 | [`fac952446f37…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) |  ResultSubmitted [`368baf8edc24…`](https://preprod.cexplorer.io/tx/368baf8edc2474e18c8b45262481bd16acb35912aaabefd6e4bdf86d01d170ab) |
+| 26 | 10-07 03:52 | [Catalog setup for my travel tumbler](runs/tumbler/09a-oskar-declined/README.md) | 1.5 | [`fac952446f37…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) |  RefundWithdrawn [`e2f35ff11e8c…`](https://preprod.cexplorer.io/tx/e2f35ff11e8ca92d80ffca62c54df5446215729c93d1cde90dd8e3ed5f42dfcf) |
+| 27 | 10-07 03:52 | [FAQ and launch content for my travel tumbler](runs/tumbler/10-leo/README.md) | 2 | [`fac952446f37…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) |  ResultSubmitted [`368baf8edc24…`](https://preprod.cexplorer.io/tx/368baf8edc2474e18c8b45262481bd16acb35912aaabefd6e4bdf86d01d170ab) |
+| 28 | 10-07 03:52 | [Rewrite my travel tumbler product page](runs/tumbler/07-clara/README.md) | 2 | [`fac952446f37…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) |  ResultSubmitted [`d1e08b8c260c…`](https://preprod.cexplorer.io/tx/d1e08b8c260ce0afb897ba400c1dea5ee8a1ff925134145d13eb2928eddbbf90) |
+| 29 | 10-07 03:58 | [Compliance check of my travel tumbler page](runs/tumbler/11-ruth/README.md) | 0.25 | [`d3f27dd6c1c7…`](https://preprod.cexplorer.io/tx/d3f27dd6c1c7b9aa583caef662701b6031e385120b2af7b33e2bb7a1dd14856f) |  ResultSubmitted [`a723374f57bf…`](https://preprod.cexplorer.io/tx/a723374f57bfc507de294f4f9649e9766c1334c2bd3d4f4d45f64aa5f9ff0bbb) |
+| 30 | 10-07 03:58 | [German version of my travel tumbler page](runs/tumbler/12-yuki/README.md) | 1 | [`d3f27dd6c1c7…`](https://preprod.cexplorer.io/tx/d3f27dd6c1c7b9aa583caef662701b6031e385120b2af7b33e2bb7a1dd14856f) |  ResultSubmitted [`fa5664b9591e…`](https://preprod.cexplorer.io/tx/fa5664b9591eefddcbeff1751fdc9192ea525341f63aa03da883f678c4685dfb) |
+| 31 | 10-07 03:58 | [Catalog setup for my travel tumbler (retry)](runs/tumbler/09b-oskar/README.md) | 1.5 | [`d3f27dd6c1c7…`](https://preprod.cexplorer.io/tx/d3f27dd6c1c7b9aa583caef662701b6031e385120b2af7b33e2bb7a1dd14856f) |  ResultSubmitted [`fa5664b9591e…`](https://preprod.cexplorer.io/tx/fa5664b9591eefddcbeff1751fdc9192ea525341f63aa03da883f678c4685dfb) |
+| 32 | 10-07 04:03 | [Re-audit my travel tumbler listing](runs/tumbler/13-quinn-after/README.md) | 0.5 | [`77e5622aae67…`](https://preprod.cexplorer.io/tx/77e5622aae672601ed604bb1b443aec422149c8cdf41dd1f851544b2a68b13f8) |  ResultSubmitted [`48ad5c09c479…`](https://preprod.cexplorer.io/tx/48ad5c09c479dd515e3075ee88034c715353a03004c32eea18babe97309a21b1) |
+| 33 | 10-07 04:15 | [Launch promos for my travel tumbler (new codes)](runs/tumbler/duplicates/marcus/README.md) | 1.25 | [`b89e0053dacb…`](https://preprod.cexplorer.io/tx/b89e0053dacbaeec940ed6cb52a3fa4bbd74dc1c0c5e0fcbb6b8dc7b75288708) |  RefundWithdrawn [`bb9217486be7…`](https://preprod.cexplorer.io/tx/bb9217486be7eadb1628a7f41c1af2028deacd4181e6d4e52a194607b82b2534) |
+| 34 | 10-07 04:15 | [Product photos for my travel tumbler](runs/tumbler/duplicates/iris/README.md) | 2.5 | [`b89e0053dacb…`](https://preprod.cexplorer.io/tx/b89e0053dacbaeec940ed6cb52a3fa4bbd74dc1c0c5e0fcbb6b8dc7b75288708) |  RefundWithdrawn [`eb0609ee946a…`](https://preprod.cexplorer.io/tx/eb0609ee946aad844c954a1c86e32173984dad1613a298deb5ea8dc29a75fa7d) |
+| 35 | 10-07 04:15 | [Catalog setup for my travel tumbler](runs/tumbler/duplicates/oskar/README.md) | 1.5 | [`b89e0053dacb…`](https://preprod.cexplorer.io/tx/b89e0053dacbaeec940ed6cb52a3fa4bbd74dc1c0c5e0fcbb6b8dc7b75288708) |  RefundWithdrawn [`eb0609ee946a…`](https://preprod.cexplorer.io/tx/eb0609ee946aad844c954a1c86e32173984dad1613a298deb5ea8dc29a75fa7d) |
+| 36 | 10-07 04:15 | [FAQ and launch content for my travel tumbler](runs/tumbler/duplicates/leo/README.md) | 2 | [`b89e0053dacb…`](https://preprod.cexplorer.io/tx/b89e0053dacbaeec940ed6cb52a3fa4bbd74dc1c0c5e0fcbb6b8dc7b75288708) |  RefundWithdrawn [`eb0609ee946a…`](https://preprod.cexplorer.io/tx/eb0609ee946aad844c954a1c86e32173984dad1613a298deb5ea8dc29a75fa7d) |
+| 37 | 10-07 04:15 | [Rewrite my travel tumbler product page](runs/tumbler/duplicates/clara/README.md) | 2 | [`b89e0053dacb…`](https://preprod.cexplorer.io/tx/b89e0053dacbaeec940ed6cb52a3fa4bbd74dc1c0c5e0fcbb6b8dc7b75288708) |  RefundWithdrawn [`eb0609ee946a…`](https://preprod.cexplorer.io/tx/eb0609ee946aad844c954a1c86e32173984dad1613a298deb5ea8dc29a75fa7d) |
+| 38 | 10-07 04:15 | [Content and compliance for my glass bottle](runs/14-nora-full-team/README.md) | 16 | [`b89e0053dacb…`](https://preprod.cexplorer.io/tx/b89e0053dacbaeec940ed6cb52a3fa4bbd74dc1c0c5e0fcbb6b8dc7b75288708) |  ResultSubmitted [`212748facbe6…`](https://preprod.cexplorer.io/tx/212748facbe64dad0fea84ae8c97867fd9eab74e57f4d1122c60b2aa5c3c6906) |
+| 39 | 10-07 07:56 | [Rewrite my bamboo bottle product page](runs/16-clara-bamboo-traced/README.md) | 2 | [`6e2fdc392abc…`](https://preprod.cexplorer.io/tx/6e2fdc392abc64c0cbab90c562d12db23092d31bbe39bc97cc38d6fcc6976868) |  ResultSubmitted [`a00e66f5b8ae…`](https://preprod.cexplorer.io/tx/a00e66f5b8aee6e1f5af699788fd0158377e3250d6ce23283beae99e1cb1ac2e) |
+| 40 | 10-07 08:17 | [Fully optimize my bamboo bottle listing](runs/15-nora-bamboo-full-team/README.md) | 16 | [`2aacdd0c1e20…`](https://preprod.cexplorer.io/tx/2aacdd0c1e209c021f77bfba31876407b599418b18a28ceae784c3e109730ad1) |  ResultSubmitted [`d1bb34489f28…`](https://preprod.cexplorer.io/tx/d1bb34489f28c2be807437eea5f08c63c08bf012773539460a7485c8fffd7f1c) |
+| 41 | 10-07 08:39 | Task `01a11584…73ff` | 0.5 | [`83a57e759d60…`](https://preprod.cexplorer.io/tx/83a57e759d607e46e1edc85201af26ca009379f5d082b3e3ee0d04e4b1e4b1f0) |  ResultSubmitted [`df2fcc4d11b5…`](https://preprod.cexplorer.io/tx/df2fcc4d11b5ad86583e0cfb22c5f846cb833ef6887e88b00b706d5ff63bad3a) |
+| 42 | 10-07 09:10 | Task `01a115a0…97b9` | 0.5 | [`c952f381d1bb…`](https://preprod.cexplorer.io/tx/c952f381d1bb7c4a6881fcf490a73e04fc8d35bee7b8378de4d7def37dca2656) |  ResultSubmitted [`101ac5ce396d…`](https://preprod.cexplorer.io/tx/101ac5ce396d599a9eb256b52037e7771cfbf4bd57db7756caed3497490c1775) |
+| 43 | 10-07 11:07 | Task `01a115fe…6c7a` | 16 | [`ef88f39406fb…`](https://preprod.cexplorer.io/tx/ef88f39406fb7fddf7a4408b7ed6a2e645ab1d1e4de98f78b0fe4c6fa7ffaedd) |  ResultSubmitted [`9932e7772b3c…`](https://preprod.cexplorer.io/tx/9932e7772b3c691e24e7f4e042a742ec71ed7104512c899676349015f7896caf) |
 
 </details>
 
@@ -160,25 +154,25 @@ each one automatically. The first escrows unlock at **13:58 UTC on 2026-10-07**.
 
 | Withdrawal (payout) tx | Task | tUSDM |
 |---|---|---|
-| _(add link)_ | | |
+| _(add link)_ | |  |
 
 ---
 
-## 📖 Table of contents
+## Table of contents
 
-1. [Introduction](#-introduction)
-2. [The problem](#-the-problem)
-3. [The solution](#-the-solution)
-4. [System architecture](#-system-architecture)
-5. [The agents](#-the-agents)
-6. [Cardano: every integration point](#-cardano-every-integration-point)
-7. [Chainlink CRE: the referee](#-chainlink-cre-the-referee)
-8. [Roadmap](#-roadmap)
-9. [Conclusion](#-conclusion)
+1. [Introduction](#introduction)
+2. [The problem](#the-problem)
+3. [The solution](#the-solution)
+4. [System architecture](#system-architecture)
+5. [The agents](#the-agents)
+6. [Cardano: every integration point](#cardano-every-integration-point)
+7. [Chainlink CRE: the referee](#chainlink-cre-the-referee)
+8. [Roadmap](#roadmap)
+9. [Conclusion](#conclusion)
 
 ---
 
-## 👋 Introduction
+## Introduction
 
 Meet **Nora**. She is a growth lead, and she does not sleep.
 
@@ -200,41 +194,28 @@ written next to it on-chain. Failed work is never billed. Declined work is refun
 
 ```mermaid
 flowchart LR
-  A["🧑 Merchant asks<br/>on Sokosumi"] --> B["🔒 Credits locked<br/>as tUSDM<br/>Cardano escrow"]
-  B --> C["🤖 Agents work<br/>on Kodosumi"]
-  C --> D["🔗 Chainlink CRE<br/>re-hashes and scores"]
-  D -->|PASS| E["✅ Merchant approves<br/>this exact hash"]
-  D -->|FAIL| X["🚫 Not billed"]
-  E --> F["🔗 CRE publishes<br/>to Shopify"]
-  F --> G["⛓️ Verified hash<br/>written to Cardano"]
-  G --> H["💸 Seller paid<br/>after unlock"]
-  E -->|declined| R["↩️ Escrow refunds<br/>on-chain"]
+  A["Merchant asks<br/>on Sokosumi"] --> B["Credits locked<br/>as tUSDM<br/>Cardano escrow"]
+  B --> C["Agents work<br/>on Kodosumi"]
+  C --> D["Chainlink CRE<br/>re-hashes and scores"]
+  D -->|PASS| E["Merchant approves<br/>this exact hash"]
+  D -->|FAIL| X["Not billed"]
+  E --> F["CRE publishes<br/>to Shopify"]
+  F --> G["Verified hash<br/>written to Cardano"]
+  G --> H["Seller paid<br/>after unlock"]
+  E -->|declined| R["Escrow refunds<br/>on-chain"]
 ```
 
 The result is a growth agency that a merchant can audit transaction by transaction:
 
 - **27.1 → 72.9/100.** The listing score of a brand-new Travel Tumbler listing after the 12 specialists worked on it
   ([before](runs/tumbler/01-quinn-before/README.md) → [after](runs/tumbler/13-quinn-after/README.md)).
-- **Not in the top 20 → #1 or #2.** Store-search rank for 5 of the 6 shopping phrases tested
-  ([ranks](runs/tumbler/RANKS.md)).
 - **12/12 Chainlink PASS** on a full-team run: [14 store changes published, listing 75.2 → 82.0, about 13 minutes,
-  16 credits](runs/15-nora-bamboo-full-team/README.md).
+  16 tUSDM](runs/15-nora-bamboo-full-team/README.md).
 - **45 Cardano transactions** that prove it, listed [above](#important-transactions).
-
-```mermaid
-xychart-beta
-  title "Listing score out of 100, before and after Uplift"
-  x-axis ["Tumbler before", "Tumbler after", "Bamboo before", "Bamboo after", "Glass before", "Glass after"]
-  y-axis "Listing score" 0 --> 100
-  bar [27.1, 72.9, 75.2, 82.0, 76.0, 78.0]
-```
-
-<sub>Quinn's audits: tumbler = the 12 standalone specialists, bamboo = [run 15](runs/15-nora-bamboo-full-team/README.md),
-glass = [run 14](runs/14-nora-full-team/README.md).</sub>
 
 ---
 
-## 🔥 The problem
+## The problem
 
 ### 1. Merchants are drowning in work they can't afford
 
@@ -281,32 +262,16 @@ About 1.1M Shopify stores run the Google Ads tag. A badly built campaign (broad 
 break-even, an ad that promises what the product can't do) loses money on every click. A small merchant gets one
 shot at it.
 
-```mermaid
-quadrantChart
-  title Where today's options sit
-  x-axis Expensive --> Affordable
-  y-axis Unaccountable --> Provable
-  quadrant-1 The gap Uplift fills
-  quadrant-2 Trusted but costly
-  quadrant-3 Worst of both
-  quadrant-4 Cheap but blind
-  Growth agency: [0.15, 0.55]
-  Freelancers: [0.4, 0.4]
-  DIY: [0.7, 0.15]
-  Generic AI tools: [0.85, 0.12]
-  Uplift: [0.85, 0.9]
-```
-
 ---
 
-## 💡 The solution
+## The solution
 
 **Uplift is a verified, pay-for-proof AI growth team. It is sold on Sokosumi, settled on Cardano and refereed by
 Chainlink.**
 
 | Problem | How Uplift answers it |
 |---|---|
-| A dozen skills, no budget | **13 specialists** at **0.25–2.5 credits** each. A full team on one product costs **16 credits**, quoted up front with a merchant-set ceiling. |
+| A dozen skills, no budget | **13 specialists** at **0.25–2.5 tUSDM** each (25–250 Sokosumi credits). A full team on one product costs **16 tUSDM**, quoted up front with a merchant-set ceiling. |
 | AI hallucinates and overwrites | Every deliverable is scored by **Chainlink CRE**. Store changes can only be written by the CRE workflow, only verbatim from a verified deliverable, and only after the merchant approves that exact change-set hash. |
 | No receipt | Every artifact is **content-addressed** (`artifacts/{sha256}/…`). That same hash is written into the **Cardano escrow** as the result. One hash ties together the files, the Chainlink verdict and the on-chain payment. |
 | Paying for bad work | Payment is locked in **Masumi escrow on Cardano** before work starts and released only against a submitted result. Failed specialists are left out of Nora's bill. Declined Tasks never get a result, so the escrow refunds on-chain. |
@@ -318,18 +283,18 @@ Uplift splits trust across three systems, so no single party, Uplift included, c
 
 ```mermaid
 flowchart TB
-  subgraph MARKET["🛒 Sokosumi: the storefront"]
+  subgraph MARKET["Sokosumi: the storefront"]
     M1[Discover and hire coworkers]
     M2[Pay with credits, no wallet]
     M3[Approve plans and changes in chat]
   end
-  subgraph SETTLE["🔷 Cardano + Masumi: the money and identity"]
+  subgraph SETTLE["Cardano + Masumi: the money and identity"]
     C1[Agent NFTs on the registry]
     C2[tUSDM escrow per Task]
     C3[Result hash on-chain]
     C4[Refunds, unlock and dispute windows]
   end
-  subgraph VERIFY["🔗 Chainlink CRE: the referee"]
+  subgraph VERIFY["Chainlink CRE: the referee"]
     V1[Re-hash every deliverable]
     V2[Score with role profiles and a judge]
     V3[Sole holder of the store write key]
@@ -340,28 +305,6 @@ flowchart TB
 ```
 
 ### What a merchant sees
-
-```mermaid
-journey
-  title A merchant's Task from start to finish
-  section Hire
-    Open Sokosumi and pick Nora: 5: Merchant
-    Describe the job in one sentence: 5: Merchant
-  section Plan
-    Nora proposes specialists and a ceiling: 4: Nora
-    Merchant edits the plan and approves: 5: Merchant
-  section Work
-    Credits locked in Cardano escrow: 5: Cardano
-    Specialists run and Chainlink verifies each: 5: Agents
-    Merchant watches the live page: 4: Merchant
-  section Approve
-    Review 14 changes and their hash: 4: Merchant
-    Reply approve: 5: Merchant
-  section Deliver
-    Chainlink publishes to Shopify: 5: Chainlink
-    Score report and ads preview: 5: Nora
-    Result hash lands on Cardano: 5: Cardano
-```
 
 1. **Hire.** On Sokosumi, pick Nora (the whole team) or one specialist, and describe the job in plain English. A
    connected Shopify store is optional for research-only roles. The store-writing roles ask the merchant to connect
@@ -378,7 +321,7 @@ journey
 
 ### Hire one specialist, or the whole team
 
-| | Standalone specialist | Nora (full team) |
+|  | Standalone specialist | Nora (full team) |
 |---|---|---|
 | Pricing on Masumi | **Fixed**, the specialist's own price | **Dynamic**: the sum of the specialists who passed, capped by the quote |
 | When the escrow locks | At the start; work runs while the lock confirms | After the work, for exactly what passed |
@@ -388,7 +331,7 @@ journey
 
 ---
 
-## 🏗️ System architecture
+## System architecture
 
 <div align="center">
 
@@ -403,16 +346,16 @@ journey
 ```mermaid
 flowchart LR
   M([Merchant]) -->|hires, approves| SOKO[Sokosumi<br/>marketplace]
-  SOKO -->|Task webhooks| W[Uplift Worker<br/>FastAPI · Nora + runner]
+  SOKO -->|Task webhooks| W[Uplift Worker<br/>FastAPI - Nora + runner]
   SOKO -.->|buys with credits| BUY[Sokosumi buyer node]
   BUY ==>|FundsLocked tUSDM| ESC[(Masumi escrow<br/>Cardano preprod)]
-  W -->|seller terms · result hash| MPS[Uplift Masumi<br/>Payment Service]
-  MPS ==>|ResultSubmitted · Withdrawn| ESC
+  W -->|seller terms - result hash| MPS[Uplift Masumi<br/>Payment Service]
+  MPS ==>|ResultSubmitted - Withdrawn| ESC
   MPS --- BF[Blockfrost]
   W -->|launch flows| K[Kodosumi on Ray<br/>12 specialist agents]
   K -->|content-addressed artifacts| S3[(S3<br/>artifacts/sha256)]
-  K -->|read-only store data| G[Connection Gateway<br/>Shopify OAuth · KMS]
-  W -->|verify · publish| CRE{{Chainlink CRE<br/>uplift-clearing}}
+  K -->|read-only store data| G[Connection Gateway<br/>Shopify OAuth - KMS]
+  W -->|verify - publish| CRE{{Chainlink CRE<br/>uplift-clearing}}
   CRE -->|re-hash and score| S3
   CRE -->|CRE-only write key| G
   G -->|Admin GraphQL| SHOP[(Shopify store)]
@@ -455,9 +398,9 @@ flowchart TB
     SOKO[Sokosumi preprod]
     BF[Blockfrost preprod] --- ADA[(Cardano preprod)]
     AWS[(AWS S3 and KMS)]
-    BR[Amazon Bedrock · Grok 4.7]
+    BR[Amazon Bedrock - Grok 4.7]
     GM[Gemini Nano Banana 2.1]
-    WEB[Serper · Firecrawl · Bright Data<br/>Tavily · PageSpeed · Nager.Date]
+    WEB[Serper - Firecrawl - Bright Data<br/>Tavily - PageSpeed - Nager.Date]
     SH[Shopify Admin API]
   end
   WK --- PG
@@ -495,26 +438,26 @@ sequenceDiagram
   participant C as Cardano escrow
   participant K as Clara (Kodosumi)
   participant L as Chainlink CRE
-  participant G as Gateway → Shopify
+  participant G as Gateway to Shopify
   M->>S: "Rewrite my bamboo bottle product page"
   S->>W: Task webhook
   W->>P: POST /payment (agentIdentifier, inputHash = sha256 of brief)
   P-->>W: blockchainIdentifier, payBy / submitResult / unlock times
-  W->>S: masumiPayment event (2 credits)
-  S->>C: buyer node locks 2 tUSDM → FundsLocked 6e2fdc39…
+  W->>S: masumiPayment event (2 tUSDM)
+  S->>C: buyer node locks 2 tUSDM to FundsLocked 6e2fdc39...
   W->>K: launch flow
-  K->>K: facts ledger → 3 variants → rubric → selected copy
-  K-->>W: manifest content-addressed at artifacts/97028d8f…/
-  W->>L: verify(role=clara, result_hash=97028d8f…)
+  K->>K: facts ledger to 3 variants to rubric to selected copy
+  K-->>W: manifest content-addressed at artifacts/97028d8f.../
+  W->>L: verify(role=clara, result_hash=97028d8f...)
   L->>L: every node re-fetches and re-hashes the manifest and bundle, runs Clara's profile + judge
   L-->>W: PASS 92.5/100
   W->>M: APPROVAL_REQUIRED (change set hash)
   M->>W: approve
   W->>L: publish(change_hash, approval_event_id, manifests)
   L->>G: /v1/write/apply (CRE-only key)
-  G-->>L: 2 changes applied · score 72.2/95
-  W->>P: submit-result 97028d8f…
-  P->>C: ResultSubmitted a00e66f5…
+  G-->>L: 2 changes applied - score 72.2/95
+  W->>P: submit-result 97028d8f...
+  P->>C: ResultSubmitted a00e66f5...
   W->>S: COMPLETED + deliverables + trace
 ```
 
@@ -572,11 +515,11 @@ The design rests on one idea: **a deliverable is named by its hash, and that nam
 
 ```mermaid
 flowchart LR
-  A["Agent writes manifest.json<br/>RFC 8785 canonical JSON"] -->|sha256| H(["97028d8f60cb…d3f2a2"])
-  H --> S3["S3 key<br/>artifacts/97028d8f…/manifest.json<br/><i>storage address</i>"]
+  A["Agent writes manifest.json<br/>RFC 8785 canonical JSON"] -->|sha256| H(["97028d8f60cb...d3f2a2"])
+  H --> S3["S3 key<br/>artifacts/97028d8f.../manifest.json<br/><i>storage address</i>"]
   H --> V["Chainlink CRE<br/>re-fetch, re-hash, must match<br/><i>verification</i>"]
   H --> P["CRE publish<br/>each op must appear in this manifest<br/><i>provenance</i>"]
-  H --> C["Cardano escrow<br/>submitResultHash = 97028d8f…<br/><i>settlement</i>"]
+  H --> C["Cardano escrow<br/>submitResultHash = 97028d8f...<br/><i>settlement</i>"]
 ```
 
 A tampered artifact would change the hash. Chainlink would then refuse it, the publish would fail its provenance
@@ -592,32 +535,6 @@ Python and TypeScript produce byte-identical hashes; [`e2e/cre_parity.py`](e2e/c
 change.
 
 ### 4.7 Trust boundaries
-
-```mermaid
-flowchart LR
-  subgraph UNTRUSTED["Untrusted: may be wrong, may be compromised"]
-    AG[12 agents on Kodosumi]
-    LLM[LLM outputs]
-    WEBD[Scraped web data]
-  end
-  subgraph EVIDENCE["Evidence: immutable, content-addressed"]
-    S3[(S3 artifacts/sha256)]
-  end
-  subgraph REFEREE["Referee: decentralised"]
-    CRE{{Chainlink CRE<br/>verify + publish}}
-  end
-  subgraph LEDGER["Ledger: public"]
-    ADA[(Cardano escrow<br/>and registry)]
-  end
-  subgraph STORE["Merchant's store"]
-    GW[Gateway write API<br/>CRE key only] --> SHOP[(Shopify)]
-  end
-  AG -->|write once| S3
-  AG -.->|read token only| RO[Gateway read API]
-  S3 --> CRE
-  CRE -->|only path| GW
-  CRE -->|verified hash| ADA
-```
 
 - **Agents cannot write to the store.** They get a read token for the gateway's read API
   ([`tools.py#L61`](agents/src/uplift_agents/tools.py#L61)). The write API
@@ -668,13 +585,13 @@ Code: [`connect_start` / `connect_callback`](services/gateway/src/uplift_gateway
 | Store | Table / prefix | Holds |
 |---|---|---|
 | Worker Postgres | `runs` | One row per (Task, coworker): `phase`, a JSON `state` journal (payment terms, node results, verdicts, approvals) and `updated_at` |
-| | `cre_results` | Chainlink callbacks, matched by `request_id` |
-| | `trace_events` | Every step the `/live` page shows: service, kind, timing, metadata such as tx and result hashes |
-| | `rank_checks` | Store-search ranks before and after |
-| | `conversations`, `responses` | The coworker chat API (Responses-API shape) |
+|  | `cre_results` | Chainlink callbacks, matched by `request_id` |
+|  | `trace_events` | Every step the `/live` page shows: service, kind, timing, metadata such as tx and result hashes |
+|  | `rank_checks` | Store-search ranks before and after |
+|  | `conversations`, `responses` | The coworker chat API (Responses-API shape) |
 | Gateway Postgres | `store_links` | Encrypted Shopify tokens, data keys and expiry |
-| | `used_nonces` | One-time OAuth state nonces |
-| | `applied_changesets` | `change_hash` → result: the idempotency ledger of every store write |
+|  | `used_nonces` | One-time OAuth state nonces |
+|  | `applied_changesets` | `change_hash` → result: the idempotency ledger of every store write |
 | S3 | `artifacts/{sha256}/{name}` | Every deliverable, bundle and manifest, addressed by content |
 | S3 | `artifacts/{change_hash}/changeset.json` | Every change set the merchant was asked to approve |
 | Cardano | Masumi escrow datum | `inputHash`, `resultHash`, deadlines, buyer and seller |
@@ -722,7 +639,7 @@ workflow reads the Vault DON), and coworker keys are captured once into `infra/.
 
 ---
 
-## 🤖 The agents
+## The agents
 
 Thirteen agents: one lead, twelve specialists. Each specialist is four things at once:
 
@@ -731,7 +648,8 @@ Thirteen agents: one lead, twelve specialists. Each specialist is four things at
 - a **Masumi registry NFT on Cardano**
 - a **Sokosumi coworker**
 
-Prices are in Sokosumi credits (1 credit = 1 tUSDM in escrow). Every specialist is verified by its own **Chainlink
+Prices are in tUSDM, the test USD stablecoin the Masumi escrow holds on Cardano. Merchants pay with Sokosumi
+workspace credits, which Sokosumi charges at 100 credits per tUSDM. Every specialist is verified by its own **Chainlink
 profile**: a set of checks worth points, some of them gates, plus up to 5 points from an LLM judge. The pass mark is
 40 points with every gate passed ([`profiles.ts`](cre/uplift-clearing/src/profiles.ts)).
 
@@ -740,25 +658,25 @@ profile**: a set of checks worth points, some of them gates, plus up to 5 points
 ```mermaid
 flowchart LR
   subgraph W1["Wave 1"]
-    Q0[🔍 Quinn<br/>baseline]
-    KAI[🗝️ Kai]
+    Q0[Quinn<br/>baseline]
+    KAI[Kai]
   end
   subgraph W2["Wave 2"]
-    RAF[♟️ Rafael]
-    OSK[🗂️ Oskar]
+    RAF[Rafael]
+    OSK[Oskar]
   end
   subgraph W3["Wave 3"]
-    PRI[💬 Priya]
-    MAR[🏷️ Marcus]
+    PRI[Priya]
+    MAR[Marcus]
   end
   subgraph W4["Wave 4"]
-    CLA[✍️ Clara]
-    IRI[📸 Iris]
+    CLA[Clara]
+    IRI[Iris]
   end
   subgraph W5["Wave 5"]
-    LEO[📚 Leo]
-    SAS[📣 Sasha]
-    YUK[🌍 Yuki]
+    LEO[Leo]
+    SAS[Sasha]
+    YUK[Yuki]
   end
   KAI --> RAF & OSK & CLA
   RAF --> PRI & MAR
@@ -766,9 +684,9 @@ flowchart LR
   CLA --> LEO & SAS & YUK
   MAR --> LEO & SAS
   IRI --> SAS
-  W5 --> RUTH[⚖️ Ruth<br/>gates every change set]
-  RUTH --> N[👑 Nora<br/>merge · bill · publish]
-  N --> Q1[🔍 Quinn<br/>after]
+  W5 --> RUTH[Ruth<br/>gates every change set]
+  RUTH --> N[Nora<br/>merge - bill - publish]
+  N --> Q1[Quinn<br/>after]
 ```
 
 The main arrows come from [`DEPENDS`](services/worker/src/uplift_worker/nora.py#L42-L44). (Leo, Sasha and Yuki also read Kai, and Leo reads Rafael and Priya.) An agent
@@ -789,31 +707,12 @@ starts only when everything it reads **has passed Chainlink**, and it re-checks 
 | Clara's change set | Clara | Yuki (translates the *new* copy) |
 | `google_shopping.jpg` | Iris | Google Ads mock (Shopping ad image) |
 
-### 👑 Nora: Uplift Lead
+### Nora: Uplift Lead
 
 > *Dynamic pricing: the sum of the specialists who passed · lives in the Worker · [`nora.py`](services/worker/src/uplift_worker/nora.py)*
 
 Nora is the conductor. She never does the work herself: she plans it, prices it, runs it, makes sure Chainlink signed
 off on every piece and bills for exactly what passed.
-
-```mermaid
-stateDiagram-v2
-  [*] --> intake
-  intake --> plan: brief and store snapshot
-  plan --> quote_wait: plan, price ceiling, plan hash
-  quote_wait --> plan: merchant edits in chat
-  quote_wait --> execute: merchant approves the plan
-  execute --> execute: DAG step - hire, poll, verify in parallel
-  execute --> merge: every node settled
-  merge --> pay: Ruth gates, one escrow for the PASS nodes
-  pay --> propose: escrow requested with a Dynamic amount
-  propose --> approval_wait: changes, projected score, change hash
-  approval_wait --> publish: approve
-  publish --> report: FundsLocked confirmed, CRE publishes
-  report --> deliver: Quinn re-audits the live listing
-  deliver --> done: launch pack, ads preview, submit-result on Cardano
-  done --> [*]
-```
 
 **1. Plan.**
 
@@ -865,7 +764,7 @@ stateDiagram-v2
 - One Masumi escrow is requested for exactly that amount, with **Dynamic** pricing
   ([L246-L256](services/worker/src/uplift_worker/nora.py#L246-L256)).
 - In [run 00](runs/00-nora-glass-bottle/README.md), Leo failed Chainlink twice, so the merchant was billed **7.25**
-  credits and Leo's 2.0 was not charged.
+  tUSDM and Leo's 2.0 was not charged.
 
 **6. Approve, publish and report.**
 
@@ -913,7 +812,7 @@ gantt
 
 ---
 
-### 🔍 Quinn: Store Auditor & Performance Analyst · 0.5 credits
+### Quinn: Store Auditor & Performance Analyst · 0.5 tUSDM
 
 > [`flows/quinn.py`](agents/src/uplift_agents/flows/quinn.py) · report only · runs first and last
 
@@ -943,7 +842,7 @@ can fix it.
 **In the test.** The new Travel Tumbler scored **27.1/100**. Quinn routed trust to Leo, the catalog to Oskar, copy to
 Clara, keywords to Kai and images to Iris. After they ran, he scored it **72.9/100**.
 
-### 🗝️ Kai: Search Demand Analyst · 1.25 credits
+### Kai: Search Demand Analyst · 1.25 tUSDM
 
 > [`flows/kai.py`](agents/src/uplift_agents/flows/kai.py) · report only · the team's foundation
 
@@ -972,7 +871,7 @@ Clara, keywords to Kai and images to Iris. After they ran, he scored it **72.9/1
 **In the test.** **222 keywords** in 6 clusters, primary *"400ml coffee tumbler"* (demand 54.2), and **121 brand or
 irrelevant terms** moved to negatives. Chainlink: **PASS 100**.
 
-### ♟️ Rafael: Competitor & Market Analyst · 1.25 credits
+### Rafael: Competitor & Market Analyst · 1.25 tUSDM
 
 > [`flows/rafael.py`](agents/src/uplift_agents/flows/rafael.py) · report only
 
@@ -999,7 +898,7 @@ irrelevant terms** moved to negatives. Chainlink: **PASS 100**.
 **In the test.** 3 competitors across 5 queries and price bands **$9.27–$40.00** (median $11.98). One of the gaps
 found: *"own 'best leak-proof 400ml under $30' with tested spill and heat-retention data"*. Chainlink: **PASS 86.4**.
 
-### 💬 Priya: Competitor Review & Sentiment Analyst · 1.5 credits
+### Priya: Competitor Review & Sentiment Analyst · 1.5 tUSDM
 
 > [`flows/priya.py`](agents/src/uplift_agents/flows/priya.py) · report only · never analyses the merchant's own reviews
 
@@ -1027,9 +926,9 @@ found: *"own 'best leak-proof 400ml under $30' with tested spill and heat-retent
 **In the test.** **530 competitor reviews** analysed. Top complaints to win on: cleaning, lid, durability, insulation,
 leaks. Chainlink: **PASS 92**.
 
-### 🏷️ Marcus: Pricing & Promotions Strategist · 1.25 credits
+### Marcus: Pricing & Promotions Strategist · 1.25 tUSDM
 
-> [`flows/marcus.py`](agents/src/uplift_agents/flows/marcus.py) · ✅ writes `discount.create`
+> [`flows/marcus.py`](agents/src/uplift_agents/flows/marcus.py) ·  writes `discount.create`
 
 **Mission.** Price and promote the launch without ever selling below the margin floor.
 
@@ -1063,9 +962,9 @@ The first attempt was declined by the merchant and **refunded on-chain**
 ([`3a555c02…`](https://preprod.cexplorer.io/tx/3a555c02c50ef458ebadec825e46880247ee984bf8041c41c8228475cb017f73)).
 The retry passed with **PASS 99** and was published.
 
-### ✍️ Clara: Product Page Copywriter · 2.0 credits
+### Clara: Product Page Copywriter · 2.0 tUSDM
 
-> [`flows/clara.py`](agents/src/uplift_agents/flows/clara.py) · ✅ writes title, description, SEO, tags
+> [`flows/clara.py`](agents/src/uplift_agents/flows/clara.py) ·  writes title, description, SEO, tags
 
 **Mission.** Write copy that ranks and sells, without inventing a single feature.
 
@@ -1094,9 +993,9 @@ The retry passed with **PASS 99** and was published.
 **In the test.** *"Travel Coffee Tumbler: 400ml Stainless Steel TT-400"*, with a rubric score of 37/45 and **100% of
 claims grounded in 12 facts**. Chainlink: **PASS 91.4**.
 
-### 📸 Iris: Product Visual Designer · 2.5 credits
+### Iris: Product Visual Designer · 2.5 tUSDM
 
-> [`flows/iris.py`](agents/src/uplift_agents/flows/iris.py) · ✅ writes media, alt text, order
+> [`flows/iris.py`](agents/src/uplift_agents/flows/iris.py) ·  writes media, alt text, order
 
 **Mission.** Turn one phone photo into a full, channel-ready image set that still looks exactly like the real product.
 
@@ -1126,9 +1025,9 @@ claims grounded in 12 facts**. Chainlink: **PASS 91.4**.
 **In the test.** The tumbler was missing hero, angle, detail and scale shots. Iris added a white hero and 2 lifestyle
 scenes, all at fidelity ≥ 0.90, with alt text for every image. Chainlink: **PASS 95**.
 
-### 🗂️ Oskar: Catalog, Collections & Shopping Feed · 1.5 credits
+### Oskar: Catalog, Collections & Shopping Feed · 1.5 tUSDM
 
-> [`flows/oskar.py`](agents/src/uplift_agents/flows/oskar.py) · ✅ writes category, type, tags, collections,
+> [`flows/oskar.py`](agents/src/uplift_agents/flows/oskar.py) ·  writes category, type, tags, collections,
 > related products · needs a connected store
 
 **Mission.** Make the product findable in the store's navigation and acceptable to Google Merchant Center.
@@ -1156,9 +1055,9 @@ scenes, all at fidelity ≥ 0.90, with alt text for every image. Chainlink: **PA
 **In the test.** Category *Home & Garden › Kitchen & Dining › Food & Beverage Carriers › Travel Mugs*. The feed report
 flagged the missing `gtin_or_mpn`. Chainlink: **PASS 100**.
 
-### 📚 Leo: Content & Email Marketer · 2.0 credits
+### Leo: Content & Email Marketer · 2.0 tUSDM
 
-> [`flows/leo.py`](agents/src/uplift_agents/flows/leo.py) · ✅ writes FAQ and comparison metafields and a **draft** article
+> [`flows/leo.py`](agents/src/uplift_agents/flows/leo.py) ·  writes FAQ and comparison metafields and a **draft** article
 
 **Mission.** Answer every question a shopper asks before buying, and keep the conversation going after they leave.
 
@@ -1187,11 +1086,16 @@ flagged the missing `gtin_or_mpn`. Chainlink: **PASS 100**.
 **PASS 100**. One real bug was caught here: in a Nora run, Chainlink crashed on Leo's comparison table, Leo was **not
 billed**, and the profile was fixed ([ISSUES §3](runs/ISSUES.md)).
 
-### 📣 Sasha: Paid Ads Strategist · 1.5 credits
+### Sasha: Paid Ads Strategist · 1.5 tUSDM
 
-> [`flows/sasha.py`](agents/src/uplift_agents/flows/sasha.py) · report only · every campaign ships **Paused**
+> [`flows/sasha.py`](agents/src/uplift_agents/flows/sasha.py) · builds the Google Ads account · every campaign ships **Paused**
 
 **Mission.** Build Google Ads campaigns that can't lose money per sale.
+
+Sasha produces a complete Google Ads account: campaigns, ad groups, keywords, negatives, bids, budgets and responsive
+ads, as a Google Ads Editor file that imports as-is. Pushing it live needs the merchant's own Google Ads account, so
+in this build the campaigns are delivered paused and previewed in the
+[Google Ads mock](https://ads-mock-production.up.railway.app), which loads the run's real, verified output.
 
 **How it works.**
 
@@ -1222,9 +1126,9 @@ billed**, and the profile was fixed ([ISSUES §3](runs/ISSUES.md)).
 campaigns, ad groups, keywords, negatives, ads and Iris's Shopping image
 ([`ads_api.py`](services/worker/src/uplift_worker/ads_api.py)), with simulated traffic capped at break-even.
 
-### 🌍 Yuki: Localization & Transcreation · 1.0 credit per locale
+### Yuki: Localization & Transcreation · 1.0 tUSDM per locale
 
-> [`flows/yuki.py`](agents/src/uplift_agents/flows/yuki.py) · ✅ writes `translations.register`
+> [`flows/yuki.py`](agents/src/uplift_agents/flows/yuki.py) ·  writes `translations.register`
 
 **Mission.** Sell in another language as well as in English, not just translate the words.
 
@@ -1249,7 +1153,7 @@ campaigns, ad groups, keywords, negatives, ads and Iris's Shopping image
 **In the test.** German: *"Reisebecher aus Edelstahl TT-400 400 ml"*, local primary keyword *reisebecher aus
 edelstahl*, no drift flags. Chainlink: **PASS 99**.
 
-### ⚖️ Ruth: Claims & Compliance Reviewer · 0.25 credits
+### Ruth: Claims & Compliance Reviewer · 0.25 tUSDM
 
 > [`flows/ruth.py`](agents/src/uplift_agents/flows/ruth.py) · report only · **a gate on Nora's merge**
 
@@ -1280,27 +1184,27 @@ Every row is a real Sokosumi Task, paid in credits through Masumi escrow and che
 holds the exact brief, every event with timestamps, the Sokosumi payment receipt, the verdicts and the full
 deliverables.
 
-| Recorded run (brief → deliverables) | Coworker | Credits | Chainlink | 🔒 Escrow locked | Settlement on-chain | Sokosumi Task |
+| Recorded run (brief → deliverables) | Coworker | tUSDM | Chainlink | Escrow locked | Settlement on-chain | Sokosumi Task |
 |---|---|---|---|---|---|---|
-| [Polish my glass bottle page](runs/00-nora-glass-bottle/README.md) | Nora | 7.25 | 7/9 PASS | [`2288fd5a17…`](https://preprod.cexplorer.io/tx/2288fd5a171646d5fe8745c487a46df93b70d90c4b7c283fcbee4ff6d786c39b) | ✅ ResultSubmitted [`f04f5d41f5…`](https://preprod.cexplorer.io/tx/f04f5d41f5086b6b2ba345b0f5bf80b1f49ed0c96f75e28340c067e2b83dfba3) | _(add link)_ |
-| [Content and compliance for my glass bottle](runs/14-nora-full-team/README.md) | Nora | 16.0 | 12/12 PASS | [`b89e0053da…`](https://preprod.cexplorer.io/tx/b89e0053dacbaeec940ed6cb52a3fa4bbd74dc1c0c5e0fcbb6b8dc7b75288708) | ✅ ResultSubmitted [`212748facb…`](https://preprod.cexplorer.io/tx/212748facbe64dad0fea84ae8c97867fd9eab74e57f4d1122c60b2aa5c3c6906) | _(add link)_ |
-| [Fully optimize my bamboo bottle listing](runs/15-nora-bamboo-full-team/README.md) | Nora | 16.0 | 12/12 PASS | [`2aacdd0c1e…`](https://preprod.cexplorer.io/tx/2aacdd0c1e209c021f77bfba31876407b599418b18a28ceae784c3e109730ad1) | ✅ ResultSubmitted [`d1bb34489f…`](https://preprod.cexplorer.io/tx/d1bb34489f28c2be807437eea5f08c63c08bf012773539460a7485c8fffd7f1c) | _(add link)_ |
-| [Rewrite my bamboo bottle product page](runs/16-clara-bamboo-traced/README.md) | Clara | 2.0 | PASS 92.5 | [`6e2fdc392a…`](https://preprod.cexplorer.io/tx/6e2fdc392abc64c0cbab90c562d12db23092d31bbe39bc97cc38d6fcc6976868) | ✅ ResultSubmitted [`a00e66f5b8…`](https://preprod.cexplorer.io/tx/a00e66f5b8aee6e1f5af699788fd0158377e3250d6ce23283beae99e1cb1ac2e) | _(add link)_ |
-| [Audit my travel tumbler listing](runs/tumbler/01-quinn-before/README.md) | Quinn | 0.5 | PASS 95 | [`24816fbdde…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) | ✅ ResultSubmitted [`0e2b99d2f4…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) | _(add link)_ |
-| [Keyword research for my travel tumbler](runs/tumbler/02-kai/README.md) | Kai | 1.25 | PASS 100 | [`24816fbdde…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) | ✅ ResultSubmitted [`0e2b99d2f4…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) | _(add link)_ |
-| [Competitor scan for my travel tumbler](runs/tumbler/03-rafael/README.md) | Rafael | 1.25 | PASS 86.4 | [`24816fbdde…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) | ✅ ResultSubmitted [`0e2b99d2f4…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) | _(add link)_ |
-| [What do shoppers dislike about rival travel tumblers?](runs/tumbler/04-priya/README.md) | Priya | 1.5 | PASS 92 | [`24816fbdde…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) | ✅ ResultSubmitted [`dcbdf50cf9…`](https://preprod.cexplorer.io/tx/dcbdf50cf95a17b66d4304425ed8e528e5d8cbf253b84ed571b4f816e025a4bf) | _(add link)_ |
-| [Launch pricing and promos for my travel tumbler](runs/tumbler/05a-marcus-declined/README.md) | Marcus | 1.25 | PASS 99 | [`24816fbdde…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) | ↩️ Refunded [`3a555c02c5…`](https://preprod.cexplorer.io/tx/3a555c02c50ef458ebadec825e46880247ee984bf8041c41c8228475cb017f73) | _(add link)_ |
-| [Launch promos for my travel tumbler (new codes)](runs/tumbler/05b-marcus/README.md) | Marcus | 1.25 | PASS 99 | [`fac952446f…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) | ✅ ResultSubmitted [`368baf8edc…`](https://preprod.cexplorer.io/tx/368baf8edc2474e18c8b45262481bd16acb35912aaabefd6e4bdf86d01d170ab) | _(add link)_ |
-| [Google Ads plan for my travel tumbler](runs/tumbler/06-sasha/README.md) | Sasha | 1.5 | PASS 99 | [`24816fbdde…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) | ✅ ResultSubmitted [`0e2b99d2f4…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) | _(add link)_ |
-| [Rewrite my travel tumbler product page](runs/tumbler/07-clara/README.md) | Clara | 2.0 | PASS 91.4 | [`fac952446f…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) | ✅ ResultSubmitted [`d1e08b8c26…`](https://preprod.cexplorer.io/tx/d1e08b8c260ce0afb897ba400c1dea5ee8a1ff925134145d13eb2928eddbbf90) | _(add link)_ |
-| [Product photos for my travel tumbler](runs/tumbler/08-iris/README.md) | Iris | 2.5 | PASS 95 | [`fac952446f…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) | ✅ ResultSubmitted [`368baf8edc…`](https://preprod.cexplorer.io/tx/368baf8edc2474e18c8b45262481bd16acb35912aaabefd6e4bdf86d01d170ab) | _(add link)_ |
-| [Catalog setup for my travel tumbler](runs/tumbler/09a-oskar-declined/README.md) | Oskar | 1.5 | PASS 100 | [`fac952446f…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) | ↩️ Refunded [`e2f35ff11e…`](https://preprod.cexplorer.io/tx/e2f35ff11e8ca92d80ffca62c54df5446215729c93d1cde90dd8e3ed5f42dfcf) | _(add link)_ |
-| [Catalog setup for my travel tumbler (retry)](runs/tumbler/09b-oskar/README.md) | Oskar | 1.5 | PASS 100 | [`d3f27dd6c1…`](https://preprod.cexplorer.io/tx/d3f27dd6c1c7b9aa583caef662701b6031e385120b2af7b33e2bb7a1dd14856f) | ✅ ResultSubmitted [`fa5664b959…`](https://preprod.cexplorer.io/tx/fa5664b9591eefddcbeff1751fdc9192ea525341f63aa03da883f678c4685dfb) | _(add link)_ |
-| [FAQ and launch content for my travel tumbler](runs/tumbler/10-leo/README.md) | Leo | 2.0 | PASS 100 | [`fac952446f…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) | ✅ ResultSubmitted [`368baf8edc…`](https://preprod.cexplorer.io/tx/368baf8edc2474e18c8b45262481bd16acb35912aaabefd6e4bdf86d01d170ab) | _(add link)_ |
-| [Compliance check of my travel tumbler page](runs/tumbler/11-ruth/README.md) | Ruth | 0.25 | PASS 95 | [`d3f27dd6c1…`](https://preprod.cexplorer.io/tx/d3f27dd6c1c7b9aa583caef662701b6031e385120b2af7b33e2bb7a1dd14856f) | ✅ ResultSubmitted [`a723374f57…`](https://preprod.cexplorer.io/tx/a723374f57bfc507de294f4f9649e9766c1334c2bd3d4f4d45f64aa5f9ff0bbb) | _(add link)_ |
-| [German version of my travel tumbler page](runs/tumbler/12-yuki/README.md) | Yuki | 1.0 | PASS 99 | [`d3f27dd6c1…`](https://preprod.cexplorer.io/tx/d3f27dd6c1c7b9aa583caef662701b6031e385120b2af7b33e2bb7a1dd14856f) | ✅ ResultSubmitted [`fa5664b959…`](https://preprod.cexplorer.io/tx/fa5664b9591eefddcbeff1751fdc9192ea525341f63aa03da883f678c4685dfb) | _(add link)_ |
-| [Re-audit my travel tumbler listing](runs/tumbler/13-quinn-after/README.md) | Quinn | 0.5 | PASS 95 | [`77e5622aae…`](https://preprod.cexplorer.io/tx/77e5622aae672601ed604bb1b443aec422149c8cdf41dd1f851544b2a68b13f8) | ✅ ResultSubmitted [`48ad5c09c4…`](https://preprod.cexplorer.io/tx/48ad5c09c479dd515e3075ee88034c715353a03004c32eea18babe97309a21b1) | _(add link)_ |
+| [Polish my glass bottle page](runs/00-nora-glass-bottle/README.md) | Nora | 7.25 | 7/9 PASS | [`2288fd5a17…`](https://preprod.cexplorer.io/tx/2288fd5a171646d5fe8745c487a46df93b70d90c4b7c283fcbee4ff6d786c39b) |  ResultSubmitted [`f04f5d41f5…`](https://preprod.cexplorer.io/tx/f04f5d41f5086b6b2ba345b0f5bf80b1f49ed0c96f75e28340c067e2b83dfba3) | _(add link)_ |
+| [Content and compliance for my glass bottle](runs/14-nora-full-team/README.md) | Nora | 16.0 | 12/12 PASS | [`b89e0053da…`](https://preprod.cexplorer.io/tx/b89e0053dacbaeec940ed6cb52a3fa4bbd74dc1c0c5e0fcbb6b8dc7b75288708) |  ResultSubmitted [`212748facb…`](https://preprod.cexplorer.io/tx/212748facbe64dad0fea84ae8c97867fd9eab74e57f4d1122c60b2aa5c3c6906) | _(add link)_ |
+| [Fully optimize my bamboo bottle listing](runs/15-nora-bamboo-full-team/README.md) | Nora | 16.0 | 12/12 PASS | [`2aacdd0c1e…`](https://preprod.cexplorer.io/tx/2aacdd0c1e209c021f77bfba31876407b599418b18a28ceae784c3e109730ad1) |  ResultSubmitted [`d1bb34489f…`](https://preprod.cexplorer.io/tx/d1bb34489f28c2be807437eea5f08c63c08bf012773539460a7485c8fffd7f1c) | _(add link)_ |
+| [Rewrite my bamboo bottle product page](runs/16-clara-bamboo-traced/README.md) | Clara | 2.0 | PASS 92.5 | [`6e2fdc392a…`](https://preprod.cexplorer.io/tx/6e2fdc392abc64c0cbab90c562d12db23092d31bbe39bc97cc38d6fcc6976868) |  ResultSubmitted [`a00e66f5b8…`](https://preprod.cexplorer.io/tx/a00e66f5b8aee6e1f5af699788fd0158377e3250d6ce23283beae99e1cb1ac2e) | _(add link)_ |
+| [Audit my travel tumbler listing](runs/tumbler/01-quinn-before/README.md) | Quinn | 0.5 | PASS 95 | [`24816fbdde…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) |  ResultSubmitted [`0e2b99d2f4…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) | _(add link)_ |
+| [Keyword research for my travel tumbler](runs/tumbler/02-kai/README.md) | Kai | 1.25 | PASS 100 | [`24816fbdde…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) |  ResultSubmitted [`0e2b99d2f4…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) | _(add link)_ |
+| [Competitor scan for my travel tumbler](runs/tumbler/03-rafael/README.md) | Rafael | 1.25 | PASS 86.4 | [`24816fbdde…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) |  ResultSubmitted [`0e2b99d2f4…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) | _(add link)_ |
+| [What do shoppers dislike about rival travel tumblers?](runs/tumbler/04-priya/README.md) | Priya | 1.5 | PASS 92 | [`24816fbdde…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) |  ResultSubmitted [`dcbdf50cf9…`](https://preprod.cexplorer.io/tx/dcbdf50cf95a17b66d4304425ed8e528e5d8cbf253b84ed571b4f816e025a4bf) | _(add link)_ |
+| [Launch pricing and promos for my travel tumbler](runs/tumbler/05a-marcus-declined/README.md) | Marcus | 1.25 | PASS 99 | [`24816fbdde…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) |  Refunded [`3a555c02c5…`](https://preprod.cexplorer.io/tx/3a555c02c50ef458ebadec825e46880247ee984bf8041c41c8228475cb017f73) | _(add link)_ |
+| [Launch promos for my travel tumbler (new codes)](runs/tumbler/05b-marcus/README.md) | Marcus | 1.25 | PASS 99 | [`fac952446f…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) |  ResultSubmitted [`368baf8edc…`](https://preprod.cexplorer.io/tx/368baf8edc2474e18c8b45262481bd16acb35912aaabefd6e4bdf86d01d170ab) | _(add link)_ |
+| [Google Ads plan for my travel tumbler](runs/tumbler/06-sasha/README.md) | Sasha | 1.5 | PASS 99 | [`24816fbdde…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8) |  ResultSubmitted [`0e2b99d2f4…`](https://preprod.cexplorer.io/tx/0e2b99d2f4d6fcaa8c3d0c085cdb48bb3faa3e45b8a135a6de983bf07999eb42) | _(add link)_ |
+| [Rewrite my travel tumbler product page](runs/tumbler/07-clara/README.md) | Clara | 2.0 | PASS 91.4 | [`fac952446f…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) |  ResultSubmitted [`d1e08b8c26…`](https://preprod.cexplorer.io/tx/d1e08b8c260ce0afb897ba400c1dea5ee8a1ff925134145d13eb2928eddbbf90) | _(add link)_ |
+| [Product photos for my travel tumbler](runs/tumbler/08-iris/README.md) | Iris | 2.5 | PASS 95 | [`fac952446f…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) |  ResultSubmitted [`368baf8edc…`](https://preprod.cexplorer.io/tx/368baf8edc2474e18c8b45262481bd16acb35912aaabefd6e4bdf86d01d170ab) | _(add link)_ |
+| [Catalog setup for my travel tumbler](runs/tumbler/09a-oskar-declined/README.md) | Oskar | 1.5 | PASS 100 | [`fac952446f…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) |  Refunded [`e2f35ff11e…`](https://preprod.cexplorer.io/tx/e2f35ff11e8ca92d80ffca62c54df5446215729c93d1cde90dd8e3ed5f42dfcf) | _(add link)_ |
+| [Catalog setup for my travel tumbler (retry)](runs/tumbler/09b-oskar/README.md) | Oskar | 1.5 | PASS 100 | [`d3f27dd6c1…`](https://preprod.cexplorer.io/tx/d3f27dd6c1c7b9aa583caef662701b6031e385120b2af7b33e2bb7a1dd14856f) |  ResultSubmitted [`fa5664b959…`](https://preprod.cexplorer.io/tx/fa5664b9591eefddcbeff1751fdc9192ea525341f63aa03da883f678c4685dfb) | _(add link)_ |
+| [FAQ and launch content for my travel tumbler](runs/tumbler/10-leo/README.md) | Leo | 2.0 | PASS 100 | [`fac952446f…`](https://preprod.cexplorer.io/tx/fac952446f37ccc21cb0d2f5c2e56a817551fbe555c913211ddf3ed29c30504f) |  ResultSubmitted [`368baf8edc…`](https://preprod.cexplorer.io/tx/368baf8edc2474e18c8b45262481bd16acb35912aaabefd6e4bdf86d01d170ab) | _(add link)_ |
+| [Compliance check of my travel tumbler page](runs/tumbler/11-ruth/README.md) | Ruth | 0.25 | PASS 95 | [`d3f27dd6c1…`](https://preprod.cexplorer.io/tx/d3f27dd6c1c7b9aa583caef662701b6031e385120b2af7b33e2bb7a1dd14856f) |  ResultSubmitted [`a723374f57…`](https://preprod.cexplorer.io/tx/a723374f57bfc507de294f4f9649e9766c1334c2bd3d4f4d45f64aa5f9ff0bbb) | _(add link)_ |
+| [German version of my travel tumbler page](runs/tumbler/12-yuki/README.md) | Yuki | 1.0 | PASS 99 | [`d3f27dd6c1…`](https://preprod.cexplorer.io/tx/d3f27dd6c1c7b9aa583caef662701b6031e385120b2af7b33e2bb7a1dd14856f) |  ResultSubmitted [`fa5664b959…`](https://preprod.cexplorer.io/tx/fa5664b9591eefddcbeff1751fdc9192ea525341f63aa03da883f678c4685dfb) | _(add link)_ |
+| [Re-audit my travel tumbler listing](runs/tumbler/13-quinn-after/README.md) | Quinn | 0.5 | PASS 95 | [`77e5622aae…`](https://preprod.cexplorer.io/tx/77e5622aae672601ed604bb1b443aec422149c8cdf41dd1f851544b2a68b13f8) |  ResultSubmitted [`48ad5c09c4…`](https://preprod.cexplorer.io/tx/48ad5c09c479dd515e3075ee88034c715353a03004c32eea18babe97309a21b1) | _(add link)_ |
 
 The [declined runs](runs/tumbler/05a-marcus-declined/README.md) are kept on purpose. The merchant said no, so no
 result was submitted, and the escrow paid them back **on-chain**. The problems found during the test and how they were
@@ -1308,37 +1212,10 @@ fixed are in [`runs/ISSUES.md`](runs/ISSUES.md).
 
 ---
 
-## 🔷 Cardano: every integration point
+## Cardano: every integration point
 
 Cardano is Uplift's **identity layer, settlement layer and source of truth for "did the merchant pay for
 proven work"**. It's in the critical path of every paid Task, not bolted on at the end.
-
-```mermaid
-mindmap
-  root((Cardano in Uplift))
-    Identity
-      13 registry NFTs
-      MIP-003 agent APIs
-      Fixed and Dynamic pricing
-    Payment node
-      Self-hosted Masumi
-      Blockfrost preprod
-      Auto-withdraw
-    Escrow
-      inputHash commits to the brief
-      Credits become tUSDM
-      Confirmed-lock gating
-      Batched transactions
-    Settlement
-      Verified result hash
-      Pay only for PASS
-      On-chain refunds
-      Unlock and dispute windows
-    Visibility
-      Live escrow card
-      Trace events
-      payments.py audit
-```
 
 ### C1 · Agent identity: 13 NFTs on the Masumi registry
 
@@ -1346,23 +1223,20 @@ Every Uplift agent exists on-chain before it can earn a single credit.
 
 ```mermaid
 sequenceDiagram
-  autonumber
   participant R as register.py
   participant K as Kodosumi panel
   participant P as Uplift Masumi node
   participant C as Cardano registry
   participant W as Worker
-  R->>P: GET selling wallet vkey
-  loop 12 specialists
-    R->>K: POST /expose/uplift/registry (flow_url, vkey, Fixed price)
-    K->>P: register agent, MIP-003 at /sumi/uplift/name
+  R->>P: Get the selling wallet key
+  loop For each of the 12 specialists
+    R->>K: Register flow with a Fixed price
+    K->>P: Register agent with its MIP-003 API
   end
-  R->>P: POST /registry Nora (Standard, Dynamic, api /agents/nora)
-  P->>C: mint registry NFTs, batched
-  loop until confirmed
-    R->>P: GET /registry - RegistrationConfirmed?
-  end
-  R->>W: AGENT_IDENTIFIERS_JSON with 13 on-chain identifiers
+  R->>P: Register Nora as Standard with Dynamic pricing
+  P->>C: Mint the registry NFTs in batches
+  R->>P: Poll until RegistrationConfirmed
+  R->>W: Publish the 13 agent identifiers
 ```
 
 - The **12 specialists** register through the Kodosumi panel. Their MIP-003 API is their Kodosumi
@@ -1406,7 +1280,7 @@ Before any work, Uplift creates the **seller terms** on its node
 | `payByTime` | now + 10 min | The buyer must lock quickly or the Task fails cleanly |
 | `submitResultTime` | now + 6 h | Uplift must deliver a verified result in time or the buyer is refunded |
 | `unlockTime`, `externalDisputeUnlockTime` | set by the node, forwarded verbatim | When the seller can collect; until when the buyer can dispute |
-| `RequestedFunds` (Nora only) | credits × 10⁶ in tUSDM | The Dynamic amount: the bill for the specialists who passed |
+| `RequestedFunds` (Nora only) | tUSDM × 10⁶ (6 decimals) | The Dynamic amount: the bill for the specialists who passed |
 | `metadata` | `{"taskId": …}` | Links the escrow back to the Sokosumi Task |
 
 ### C4 · Credits → tUSDM escrow (the Sokosumi bridge)
@@ -1415,31 +1289,29 @@ The merchant never touches a wallet.
 
 ```mermaid
 sequenceDiagram
-  autonumber
   participant W as Uplift Worker
   participant P as Uplift Masumi node
   participant S as Sokosumi
   participant B as Sokosumi buyer node
   participant C as Masumi escrow on Cardano
-  W->>P: POST /payment (seller terms)
+  W->>P: Create seller terms
   P-->>W: blockchainIdentifier and deadlines
-  W->>S: Task event masumiPayment (seller vkey, deadlines, amounts, contract, policy)
-  S->>S: debit workspace credits, or OUT_OF_CREDITS
-  S->>B: purchase
-  B->>B: resolve agentIdentifier on the registry
-  B->>C: lock tUSDM - FundsLocked
-  loop every 15 s, up to 15 min
-    W->>P: resolve-blockchain-identifier with history
-    P-->>W: onChainState and transactions
+  W->>S: Post masumiPayment on the Task
+  S->>S: Debit the workspace credits
+  S->>B: Purchase
+  B->>B: Resolve the agent on the registry
+  B->>C: Lock tUSDM in escrow
+  loop Every 15 seconds
+    W->>P: Resolve the escrow state
   end
-  Note over W: proceeds only on a Confirmed tx whose new state is FundsLocked
+  Note over W,P: Work is gated until a confirmed FundsLocked transaction
 ```
 
 - Uplift posts the terms as a `masumiPayment` Task event
   ([`charge`](services/worker/src/uplift_worker/payments.py#L74-L83)) with everything the buyer needs: seller vkey,
   deadlines, amounts and the contract address and policy.
-- Sokosumi debits workspace credits, and **its buyer node locks the same amount of tUSDM in the Masumi escrow
-  contract** on Cardano.
+- Sokosumi debits workspace credits, and **its buyer node locks the matching tUSDM in the Masumi escrow
+  contract** on Cardano (100 credits per tUSDM).
 - Retries reuse the journaled terms until their pay-by deadline, instead of opening a second escrow. An empty
   workspace becomes `OUT_OF_CREDITS` cleanly ([`pay`](services/worker/src/uplift_worker/payments.py#L86-L100)).
 
@@ -1486,15 +1358,6 @@ the after score.
 Nora's registry entry uses **Dynamic** pricing. One escrow is opened **after** the team has run, for the sum of the
 specialists who passed Chainlink, capped by the quote the merchant approved.
 
-```mermaid
-flowchart LR
-  Q["Quote approved<br/>ceiling: 16 + locales"] --> RUN[Team runs]
-  RUN --> V{Chainlink per specialist}
-  V -->|PASS| B[Added to the bill]
-  V -->|FAIL twice| X[Left off the bill]
-  B --> E["One Cardano escrow<br/>RequestedFunds = sum of PASS"]
-```
-
 In run 00, two of Leo's Chainlink checks failed, so his work was left out and the escrow locked **7.25** tUSDM instead
 of the full quote ([lock](https://preprod.cexplorer.io/tx/2288fd5a171646d5fe8745c487a46df93b70d90c4b7c283fcbee4ff6d786c39b) ·
 [result](https://preprod.cexplorer.io/tx/f04f5d41f5086b6b2ba345b0f5bf80b1f49ed0c96f75e28340c067e2b83dfba3)).
@@ -1505,8 +1368,8 @@ If the merchant declines a change set, or a run fails, **Uplift never submits a 
 passes, the escrow returns the tUSDM to the buyer and the node's auto-withdraw collects it. Eight refunds are on-chain
 in this test, for example:
 
-- Marcus declined: [↩️ `3a555c02…`](https://preprod.cexplorer.io/tx/3a555c02c50ef458ebadec825e46880247ee984bf8041c41c8228475cb017f73)
-- Oskar declined: [↩️ `e2f35ff1…`](https://preprod.cexplorer.io/tx/e2f35ff11e8ca92d80ffca62c54df5446215729c93d1cde90dd8e3ed5f42dfcf)
+- Marcus declined: [`3a555c02…`](https://preprod.cexplorer.io/tx/3a555c02c50ef458ebadec825e46880247ee984bf8041c41c8228475cb017f73)
+- Oskar declined: [`e2f35ff1…`](https://preprod.cexplorer.io/tx/e2f35ff11e8ca92d80ffca62c54df5446215729c93d1cde90dd8e3ed5f42dfcf)
 - Five duplicate Tasks: see the [escrow table](#2-every-escrow-oldest-first)
 
 No support ticket, no promise from a vendor: the contract's own deadline returns the money.
@@ -1515,32 +1378,23 @@ No support ticket, no promise from a vendor: the contract's own deadline returns
 
 A submitted result unlocks for the seller after `unlockTime`, and the buyer can still dispute until
 `externalDisputeUnlockTime`. The Masumi contract enforces the whole lifecycle, not Uplift's database. Here are the
-real deadlines of one escrow from the test (requested 02:05 UTC):
+real deadlines of one escrow from the test, on 2026-10-07:
+
+| Deadline | Time (UTC) | What happens |
+|---|---|---|
+| Payment requested | 02:05 | Uplift creates the seller terms |
+| `payByTime` | 02:15 | The buyer must have locked the funds, or the Task fails cleanly |
+| `submitResultTime` | 08:05 | Uplift must have submitted the verified result hash, or the buyer is refunded |
+| `unlockTime` | 14:05 | The seller can withdraw; Uplift's node auto-withdraws |
+| `externalDisputeUnlockTime` | 20:05 | Until now the buyer can still dispute the result |
 
 ```mermaid
-gantt
-  title One escrow's deadlines in UTC on 2026-10-07
-  dateFormat HH:mm
-  axisFormat %H:%M
-  section Buyer
-  Lock funds by payByTime            :02:05, 10m
-  section Uplift
-  Work, verify, submit the result    :02:15, 350m
-  section Contract
-  Result due - submitResultTime      :milestone, 08:05, 0m
-  Seller can withdraw - unlockTime   :milestone, 14:05, 0m
-  Buyer can still dispute            :14:05, 360m
-```
-
-```mermaid
-stateDiagram-v2
-  [*] --> FundsLocked: Sokosumi buyer locks tUSDM
-  FundsLocked --> ResultSubmitted: Uplift submits the verified hash
-  FundsLocked --> RefundWithdrawn: no result by the deadline
-  ResultSubmitted --> Withdrawn: after unlockTime, auto-withdraw
-  ResultSubmitted --> Disputed: buyer disputes before externalDisputeUnlockTime
-  Withdrawn --> [*]
-  RefundWithdrawn --> [*]
+flowchart LR
+  A[Sokosumi buyer locks tUSDM] --> B[FundsLocked]
+  B -->|Uplift submits the verified hash| C[ResultSubmitted]
+  B -->|no result by the deadline| D[RefundWithdrawn: buyer refunded]
+  C -->|after unlockTime, auto-withdraw| E[Withdrawn: seller paid]
+  C -->|buyer disputes before the dispute deadline| F[Disputed]
 ```
 
 ### C10 · Batching: fewer transactions per Task
@@ -1550,11 +1404,6 @@ Rafael, Priya, Sasha and the first Marcus attempt all locked in
 [`24816fbd…`](https://preprod.cexplorer.io/tx/24816fbdde55e00784b06a508ff01a78086b8468690a251aa2ced6ae6e5917f8).
 A Nora run with ten specialists, or a merchant hiring five coworkers at once, settles in a handful of transactions.
 That keeps fees down as volume grows.
-
-```mermaid
-flowchart LR
-  T1[Quinn Task] & T2[Kai Task] & T3[Rafael Task] & T4[Priya Task] & T5[Marcus Task] & T6[Sasha Task] --> TX["1 Cardano tx<br/>24816fbd…<br/>6 escrows locked"]
-```
 
 ### C11 · Cardano in the product UI
 
@@ -1593,20 +1442,11 @@ names an Uplift agent NFT. That is how Cardano reaches merchants who will never 
 
 ---
 
-## 🔗 Chainlink CRE: the referee
+## Chainlink CRE: the referee
 
 If Cardano is where the money settles, **Chainlink CRE decides whether it should**. The workflow `uplift-clearing`
 ([`main.ts`](cre/uplift-clearing/main.ts)) is one HTTP-triggered workflow with two actions. It's written in TypeScript
 with `@chainlink/cre-sdk`, compiled to WASM, and it reports back to the Worker by callback.
-
-```mermaid
-flowchart LR
-  W[Uplift Worker] -->|"ETH-signed JWT, action + payload"| T[HTTP trigger<br/>authorizedKeys]
-  T --> A{action}
-  A -->|verify| V[verify]
-  A -->|publish| P[publish]
-  V & P --> CB["callback to Worker /hooks/cre<br/>stored in cre_results"]
-```
 
 ### Triggering
 
@@ -1667,25 +1507,6 @@ flowchart TB
 6. **Verdict.** PASS needs every gate to pass and a score of at least **40**. The response lists each check's points,
    so the merchant sees *why*.
 
-### The 12 verification profiles
-
-| Role | Local checks (deterministic, every node) | Remote checks (live web) |
-|---|---|---|
-| Quinn | Score agreement ±3 (50) · Analytics numbers (20) · Fix-plan mapping (5) | Findings reproduced: Google position ±5 (20) |
-| Kai | No foreign trademarks (20) · Demand recomputed (20) · Cluster integrity (15) · Intent labels (10) | Keywords are real: live autocomplete (30) |
-| Rafael | Band maths (20) · Coverage (15) · Evidence URLs (5) | Cited pages support the facts (35) · Ranking sanity (20) |
-| Priya | Competitor-only (15) · Counts recomputed (25) · Persona evidence (10) · Coverage (10) · Win-plan grounding (5) | Quotes are verbatim (30) |
-| Marcus | Margin safety (35) · Dates (20) · Code hygiene (15) · Scenario maths (15) · Band references (10) | — |
-| Clara | **Ownership (gate)** · Format (25) · Keyword placement (15) · Fact grounding (25) · Keyword coverage (10) · Objection coverage (10) · Readability (10) | — |
-| Iris | Product fidelity ≥ 0.90 (25) · Channel rules (25) · Alt text (15) · Hero ≥ 1000 px (15) · Gap closure (10) · Ownership (5) | — |
-| Oskar | **Ownership (gate)** · Category validity (30) · Collections (20) · Related links (15) · Tag hygiene (15) · Export schema (15) | — |
-| Leo | FAQ grounding (20) · Search-query coverage (10) · Comparison sourcing (15) · Article (20) · Email (15) · UTM consistency (10) · Ownership (5) | — |
-| Sasha | Spend cap (25) · Bid safety ≤ break-even (25) · Negatives sanity (15) · Limits (10) · Final URLs (10) · Paused state (10) | — |
-| Yuki | Digest freshness (20) · Locked terms (20) · Lengths (15) · Local keyword (15) · Completeness (15) | Local keywords are real (10) |
-| Ruth | High-severity coverage (40) · Overall agreement (30) · Rewrites (25) | — |
-
-Every profile adds a judge worth up to 5 points.
-
 ### `publish`: the only door into the store
 
 ([`main.ts#L91-L125`](cre/uplift-clearing/main.ts#L91-L125))
@@ -1739,38 +1560,23 @@ file on both sides ([`uplift-rules.json`](rules/uplift-rules.json), imported by
 
 ---
 
-## 🗺️ Roadmap
-
-```mermaid
-timeline
-  title Uplift roadmap
-  section Now - built
-    Identity and escrow : 13 agents on the Masumi registry : Escrow per Task on Cardano preprod
-    Verification : Chainlink verify and publish : Google Ads mock
-  section Next
-    Production : Mainnet USDM settlement : Chainlink DON deployment : Real Google Ads API push
-  section Soon
-    Agent economy : Agent-to-agent escrows : On-chain reputation : CIP-68 deliverable receipts
-  section Later
-    Scale : Hydra heads for micro-jobs : Amazon, Meta Ads and TikTok Shop specialists
-```
+## Roadmap
 
 | When | Milestone | What it unlocks |
 |---|---|---|
+| **Now → Next** | **Every merchant's own Shopify store.** Today Uplift runs end to end on our Shopify demo store: a merchant connects it through the gateway's OAuth flow and every agent reads from it and publishes to it through Chainlink. Next, the Shopify app goes to public distribution so any merchant can connect their own store in one click and hire the team on it. | Uplift on real merchants' stores |
 | **Next** | **Mainnet.** Move settlement to mainnet USDM on Cardano (the unit is already documented in [`docs/research`](docs/research)) and the Sokosumi listings to production. | Real merchants, real revenue |
 | **Next** | **Deploy `uplift-clearing` to a Chainlink DON.** The trigger path, JWT auth and Vault secrets are already in place; only `CRE_TRIGGER_URL` changes. | Verification by independent node operators, not a simulator |
 | **Next** | **Real Google Ads push.** Sasha's verified Editor file goes to the Google Ads API through the CRE publish path, still Paused by default. The [mock](ads-mock/README.md) becomes the preview step. | One-click launch of verified campaigns |
-| **Soon** | **Agent-to-agent payments on Cardano.** Nora pays each specialist through its own Masumi escrow. | Specialists from *other* teams join her bench and get paid on-chain per verified job |
-| **Soon** | **On-chain reputation.** Each agent's registry NFT accumulates verifiable history: escrows settled, refunds and Chainlink scores. | Merchants hire on a track record that no one can fake |
 | **Soon** | **Verifiable deliverable receipts.** A CIP-68 receipt per Task that points to the content-addressed manifest and the CRE verdict. | Merchants carry proof of their listing's provenance |
 | **Later** | **Hydra heads for high-frequency work.** Rank checks, price watches and ad-bid tweaks are tiny, frequent jobs. | Per-job fees near zero |
 | **Later** | **More channels.** Amazon, Meta Ads and TikTok Shop specialists, each with its own CRE profile. | Growth wherever the merchant sells |
 
 ---
 
-## 🏁 Conclusion
+## Conclusion
 
-Most "AI agents for e-commerce" ask merchants for trust. **Uplift asks for none.**
+Most AI agents for e-commerce and ads ask merchants for trust. **Uplift asks for none.**
 
 Every agent has an **identity on Cardano**. Every Task's payment sits in a **Cardano escrow** that commits to the
 merchant's brief. Every deliverable is **content-addressed**, then **verified by Chainlink CRE** across nodes that
@@ -1784,7 +1590,6 @@ This is not a slide. It ran this week:
 - 43 escrows and 45 transactions
 - 96 tUSDM of verified work settled, 13.5 tUSDM refunded
 - a listing taken from 27.1 to 72.9
-- campaigns you can open in [Google Ads (mock)](https://ads-mock-production.up.railway.app)
 
 **Uplift is what the agent economy looks like when payment, proof and permission settle on the same chain.**
 
