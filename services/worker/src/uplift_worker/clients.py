@@ -102,7 +102,7 @@ class Kodosumi:
                 return _final_text(status["final"])
             if status["status"] == "error":
                 raise FlowError(_final_text(status["final"]))
-            time.sleep(5)
+            time.sleep(2)
         raise FlowError(f"flow {fid} timed out")
 
     def input_schema(self, role: str) -> list[dict]:

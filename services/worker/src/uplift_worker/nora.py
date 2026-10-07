@@ -1,8 +1,8 @@
 """Nora — Uplift Lead. Plans, quotes, hires specialists as escrowed Jobs, gates them through CRE, merges,
 asks for one approval and publishes.
 
-Phases: start → intake → [auth_wait | input_wait] → plan → quote_wait → pay → funds_wait → execute →
-merge → approval_wait → publish → report → deliver → done | failed
+Phases: start → intake → [auth_wait | input_wait] → plan → quote_wait → pay → execute (needs Nora's escrow
+locked before it finishes) → merge → approval_wait → publish → report → deliver → done | failed
 """
 
 import contextlib
@@ -217,7 +217,8 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
         elif phase == "pay":
             paid = payments.pay(client, task_id, st, "nora", task.get("description") or task.get("name"),
                                 s.prices["nora"], lambda: save("pay"))
-            phase = "funds_wait" if paid else "closed"  # out of credits: Sokosumi already shows OUT_OF_CREDITS
+            # credits are debited on acceptance: hire now; the escrow lock is required before approval (below)
+            phase = "execute" if paid else "closed"  # out of credits: Sokosumi already shows OUT_OF_CREDITS
             save(phase)
 
         elif phase == "funds_wait":
@@ -229,6 +230,9 @@ def advance(task_id: str) -> None:  # noqa: C901 — one explicit state machine 
         elif phase == "execute":
             if not step_dag(client, task, st):
                 save(phase)
+                return
+            if st.get("terms") and not payments.funds_locked(st["terms"]):
+                save(phase)  # Nora's own escrow must be locked before anything is proposed for publishing
                 return
             log_timings(task, st)
             phase = "merge"
