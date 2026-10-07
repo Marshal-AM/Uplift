@@ -80,7 +80,8 @@ def plan(task: dict, answers: list[str]) -> dict[str, Any]:
             "fit": {"type": "object", "additionalProperties": {"type": "number"},
                     "description": "for each capability you chose: 0–1, can that specialist do what is asked? "
                                    "A related topic is not enough."}},
-         "required": ["capabilities", "full_flow", "goal"]})
+         "required": ["capabilities", "full_flow", "goal"]},
+        purpose="Planning: which specialists does this request need?")
     chosen = {CAPABILITIES[c] for c in intent["capabilities"] if c in CAPABILITIES
               and (intent.get("fit") or {}).get(c, 1) >= 0.4}
     roles = set(FULL_FLOW) if intent["full_flow"] else chosen
@@ -349,7 +350,7 @@ def hire(client: Sokosumi, task: dict, st: dict, node: str, role: str, fields: d
     envelope = {"job_or_task_id": f"{task['id']}:{node}", "fields": fields, "read_token": runs.read_token(task),
                 "store_snapshot": runs.snapshot(task, st["product_id"]), "upstream": upstream,
                 "failure_reasons": n.get("failure_reasons", []), **(extra or {})}
-    fid = Kodosumi().launch(role, {**fields, "context": json.dumps(envelope)})
+    fid = Kodosumi().launch(role, {**fields, "context": json.dumps(envelope)}, label=node)
     n |= {"fid": fid, "fid_at": time.time(), "status": "hired", "attempts": n["attempts"] + 1, "node": node,
           "timeline": {}}
     _mark(task, n, "hired")
@@ -401,7 +402,7 @@ def _verify(client: Sokosumi, task: dict, st: dict, n: dict, manifest_url: str) 
     verdict = cre.trigger("verify", {"mode": "task", "role": n["role"], "task_id": task["id"],
                                      "result_hash": n["result_hash"], "manifest_url": manifest_url,
                                      "user_id": user_id, "org_id": org_id,
-                                     "plan_approval_event_id": st.get("plan_approval_event_id")})
+                                     "plan_approval_event_id": st.get("plan_approval_event_id")}, agent=n.get("node"))
     n["verdict"] = verdict["outcome"]
     n["score"] = verdict["score"]
     _mark(task, n, f"verify:{verdict['outcome']}")

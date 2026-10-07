@@ -23,6 +23,7 @@ from eth_account.messages import encode_defunct
 from uplift_core import trace
 
 from . import db
+from .clients import _name
 from .config import settings
 
 log = logging.getLogger("uplift.worker")
@@ -44,9 +45,10 @@ def _jwt(body: dict[str, Any]) -> str:
     return f"{header}.{payload}.{_b64url(bytes(signature))}"
 
 
-def trigger(action: str, payload: dict[str, Any], timeout_s: int = 600) -> dict[str, Any]:
-    role = payload.get("role") or payload.get("coworker")
-    step = f"Verifying {role.title()}'s work" if action == "verify" else "Publishing the approved changes to Shopify"
+def trigger(action: str, payload: dict[str, Any], timeout_s: int = 600, agent: str | None = None) -> dict[str, Any]:
+    """`agent`: who the live trace attributes a verify to (Nora's plan node); default the payload's role."""
+    role = agent or payload.get("role") or payload.get("coworker")
+    step = f"Verifying {_name(role)}'s work" if action == "verify" else "Publishing the approved changes to Shopify"
     where = "deployed workflow" if settings().cre_trigger_url else "workflow simulation"
     with trace.span("Chainlink CRE", step, f"uplift-clearing · {where} · hash-checks, scores and signs off",
                     task=payload.get("task_id"), agent=role if action == "verify" else None,

@@ -106,16 +106,17 @@ class Kodosumi:
         self.http.post("/api/login", json={"name": settings().kodo_admin_user,
                                            "password": settings().kodo_admin_password}).raise_for_status()
 
-    def launch(self, role: str, inputs: dict[str, Any]) -> str:
+    def launch(self, role: str, inputs: dict[str, Any], label: str | None = None) -> str:
+        """`label`: the plan node the trace shows this run as (Nora: `quinn_after`, `yuki:de`); default the role."""
         resp = self.http.post(f"/-/uplift/uplift/{role}", json=inputs)
         resp.raise_for_status()
         body = resp.json()
         if not body.get("result"):
             raise FlowError(f"launch rejected: {body.get('errors') or body}")
         fid = body["result"]
-        _runs[fid] = (role, time.time())
-        trace.emit("Kodosumi", f"Started {role.title()}'s agent", f"run {fid}", status="running", span=f"run-{fid}",
-                   agent=role, kind="kodosumi.run", meta={"run": fid, "flow": f"/uplift/{role}"})
+        _runs[fid] = (label or role, time.time())
+        trace.emit("Kodosumi", f"Started {_name(label or role)}'s agent", f"run {fid}", status="running",
+                   span=f"run-{fid}", agent=label or role, kind="kodosumi.run", meta={"run": fid, "flow": f"/uplift/{role}"})
         return fid
 
     def wait(self, fid: str, launched_at: float, timeout_s: int = 1800) -> str:
@@ -195,12 +196,18 @@ def _close_run(fid: str, state: str, text: str | None, launched_at: float) -> No
                       "proposed store changes")
         except ValueError:
             detail = "result ready"
-        trace.emit("Kodosumi", f"{role.title()}'s agent finished" if role else "The agent finished", detail, ms=(time.time() - started) * 1000,
+        trace.emit("Kodosumi", f"{_name(role)}'s agent finished" if role else "The agent finished", detail, ms=(time.time() - started) * 1000,
                    span=f"run-{fid}", agent=role, kind="kodosumi.run", meta={"run": fid})
     else:
-        trace.emit("Kodosumi", f"{role.title()}'s agent stopped" if role else "The agent stopped", (text or "error")[:300],
+        trace.emit("Kodosumi", f"{_name(role)}'s agent stopped" if role else "The agent stopped", (text or "error")[:300],
                    status="error",
                    ms=(time.time() - started) * 1000, span=f"run-{fid}", agent=role, kind="kodosumi.run")
+
+
+def _name(agent: str) -> str:
+    """A plan node as people read it: quinn_after → Quinn (after-report), yuki:de → Yuki (de)."""
+    base, _, rest = agent.replace("_after", ":after-report").partition(":")
+    return base.title() + (f" ({rest})" if rest else "")
 
 
 LOST_AFTER_S = 90  # a run Kodosumi still does not know this long after launch never started

@@ -80,6 +80,12 @@ const PEOPLE: Record<string, string> = {
   quinn: "Store Auditor",
 }
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
+/** Nora's plan nodes as people read them: quinn_after → Quinn (after-report), yuki:de → Yuki (de) */
+const baseOf = (agent: string) => agent.split(/[_:]/)[0]
+const nameOf = (agent: string) => {
+  const [base, ...rest] = agent.replace("_after", ":after-report").split(":")
+  return cap(base) + (rest.length ? ` (${rest.join(":")})` : "")
+}
 
 type Svc = { match: string; label: string; color: string; icon: LucideIcon; what: string }
 const SERVICES: Svc[] = [
@@ -308,9 +314,10 @@ function build(events: Ev[]): Item[] {
 
 /* ------------------------------------------------------------------ small parts */
 
-function Avatar({ role, size = 28 }: { role?: string | null; size?: number }) {
+function Avatar({ role: agent, size = 28 }: { role?: string | null; size?: number }) {
+  const role = agent ? baseOf(agent) : agent
   if (!role || !PEOPLE[role]) return <span className="lv-av" style={{ width: size, height: size, display: "inline-grid", placeItems: "center" }}><Workflow size={size * 0.5} /></span>
-  return <img className="lv-av" src={`/avatars/${role}.png`} alt={cap(role)} width={size} height={size} style={{ width: size, height: size }} />
+  return <img className="lv-av" src={`/avatars/${role}.png`} alt={nameOf(agent!)} width={size} height={size} style={{ width: size, height: size }} />
 }
 
 function Chip({ service }: { service: string }) {
@@ -363,7 +370,7 @@ function Details({ ev }: { ev: Ev }) {
         <dd>{ev.service}{svcOf(ev.service).what ? ` — ${svcOf(ev.service).what}` : ""}</dd>
         <dt>Started</dt>
         <dd className="lv-mono">{clock(ev.start)}{ev.ms != null ? ` · took ${dur(ev.ms)}` : ""}</dd>
-        {ev.agent && (<><dt>Agent</dt><dd>{cap(ev.agent)} · {PEOPLE[ev.agent] ?? ""}</dd></>)}
+        {ev.agent && (<><dt>Agent</dt><dd>{nameOf(ev.agent)} · {PEOPLE[baseOf(ev.agent)] ?? ""}</dd></>)}
         {rows.map(([k, v]) => (
           <FragmentKV key={k} k={k} v={v} />
         ))}
@@ -396,7 +403,7 @@ function Row({ ev, t0, now, multi, open, onToggle, fresh }: { ev: Ev; t0: number
       <div style={{ minWidth: 0 }}>
         <div className="lv-line1">
           {multi && ev.agent && (
-            <span className="lv-who-mini"><Avatar role={ev.agent} size={22} />{cap(ev.agent)}</span>
+            <span className="lv-who-mini"><Avatar role={ev.agent} size={22} />{nameOf(ev.agent)}</span>
           )}
           <Chip service={ev.service} />
           <span className="lv-step">{ev.step}</span>
@@ -423,7 +430,7 @@ function Group({ evs, t0, now, multi, open, onToggle, openRow, toggleRow }: { ev
         <span className="lv-ico"><StatusIcon status={running ? "running" : errors ? "error" : "ok"} /></span>
         <div style={{ minWidth: 0 }}>
           <div className="lv-line1">
-            {multi && first.agent && (<span className="lv-who-mini"><Avatar role={first.agent} size={22} />{cap(first.agent)}</span>)}
+            {multi && first.agent && (<span className="lv-who-mini"><Avatar role={first.agent} size={22} />{nameOf(first.agent)}</span>)}
             <Chip service={first.service} />
             <span className="lv-step">{evs.length} × {label}</span>
           </div>
@@ -788,7 +795,7 @@ export default function LivePage() {
                     </button>
                     {agents.map(([a, n]) => (
                       <button key={a} className="lv-fchip" aria-pressed={agentFilter === a} onClick={() => setAgentFilter(agentFilter === a ? null : a)}>
-                        <Avatar role={a} size={26} /> {cap(a)} <span className="n">{n}</span>
+                        <Avatar role={a} size={26} /> {nameOf(a)} <span className="n">{n}</span>
                       </button>
                     ))}
                   </div>
@@ -805,7 +812,7 @@ export default function LivePage() {
                         <div className="lv-stagehead" key={it.ev.id}>
                           <Avatar role={it.ev.agent} size={30} />
                           <span>
-                            <div className="a">{it.ev.agent ? cap(it.ev.agent) : "Agent"}</div>
+                            <div className="a">{it.ev.agent ? nameOf(it.ev.agent) : "Agent"}</div>
                             <div className="t lv-h">{it.ev.step}</div>
                           </span>
                           <span className="when lv-mono">{offset(it.ev.start - t0)}</span>
@@ -864,7 +871,7 @@ export default function LivePage() {
                             <Icon size={18} color={s.color} style={{ marginTop: 2 }} />
                             <div style={{ minWidth: 0 }}>
                               <div className="st">{e.step}</div>
-                              <div className="sv">{s.label}{e.agent ? ` · ${cap(e.agent)}` : ""}</div>
+                              <div className="sv">{s.label}{e.agent ? ` · ${nameOf(e.agent)}` : ""}</div>
                             </div>
                             <span className="tm lv-mono">{dur(now - e.start)}</span>
                           </div>
@@ -885,7 +892,7 @@ export default function LivePage() {
                         {verdicts.map((v) => (
                           <div key={v.id} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14 }}>
                             <Avatar role={v.agent} size={22} />
-                            <span style={{ flex: 1 }}>{v.agent ? cap(v.agent) : ""}</span>
+                            <span style={{ flex: 1 }}>{v.agent ? nameOf(v.agent) : ""}</span>
                             <span className="lv-mono" style={{ color: v.status === "ok" ? "var(--ok)" : "var(--wait)", fontWeight: 700 }}>
                               {v.meta?.outcome} {v.meta?.score}
                             </span>
@@ -895,7 +902,7 @@ export default function LivePage() {
                     )}
                     <div className="lv-verdict">
                       <span className="o" style={{ color: lastVerdict.status === "ok" ? "var(--ok)" : "var(--wait)" }}>{lastVerdict.meta?.outcome}</span>
-                      <span className="s lv-mono">{lastVerdict.meta?.score}/100{multi && lastVerdict.agent ? ` · ${cap(lastVerdict.agent)}` : ""}</span>
+                      <span className="s lv-mono">{lastVerdict.meta?.score}/100{multi && lastVerdict.agent ? ` · ${nameOf(lastVerdict.agent)}` : ""}</span>
                     </div>
                     {Array.isArray(lastVerdict.meta?.checks) && <Checks checks={lastVerdict.meta!.checks} />}
                     {lastVerdict.meta?.judge && <p style={{ fontSize: 13.5, color: "var(--text-2)", margin: "12px 0 0" }}>“{lastVerdict.meta.judge}”</p>}

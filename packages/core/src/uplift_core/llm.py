@@ -27,7 +27,7 @@ def purpose(prompt: str) -> str:
     return first if len(first) <= 140 else first[:139] + "…"
 
 
-def _complete(body: dict[str, Any], prompt: str = "") -> dict[str, Any]:
+def _complete(body: dict[str, Any], prompt: str = "", label: str | None = None) -> dict[str, Any]:
     """POST a chat completion; retries throttling and transient errors with exponential backoff."""
     headers = {"Authorization": f"Bearer {os.environ[LLM_KEY_ENV]}"}
     images = sum(1 for m in body["messages"] for c in (m["content"] if isinstance(m["content"], list) else [])
@@ -36,7 +36,7 @@ def _complete(body: dict[str, Any], prompt: str = "") -> dict[str, Any]:
             "output": "structured (JSON schema)" if "tools" in body else "text", "prompt": prompt[:1200]}
     if images:
         meta["images"] = images
-    with trace.span("Amazon Bedrock · Grok 4.7", purpose(prompt) or "Model call", "thinking…", kind="llm",
+    with trace.span("Amazon Bedrock · Grok 4.7", label or purpose(prompt) or "Model call", "thinking…", kind="llm",
                     meta=meta) as s:
         retries = 0
         for attempt in range(5):
@@ -72,8 +72,10 @@ def _messages(prompt: str, system: str, images: list[bytes] | None) -> list[dict
     return ([{"role": "system", "content": system}] if system else []) + [{"role": "user", "content": content}]
 
 
-def text(prompt: str, system: str = "", max_tokens: int = 4000, images: list[bytes] | None = None) -> str:
-    choice = _complete({"messages": _messages(prompt, system, images), "max_tokens": max_tokens}, prompt)
+def text(prompt: str, system: str = "", max_tokens: int = 4000, images: list[bytes] | None = None,
+         purpose: str | None = None) -> str:
+    """`purpose`: how the live trace names this call (default: the prompt's first sentence)."""
+    choice = _complete({"messages": _messages(prompt, system, images), "max_tokens": max_tokens}, prompt, purpose)
     return choice["message"].get("content") or ""
 
 
@@ -83,6 +85,7 @@ def structured(
     system: str = "",
     max_tokens: int = 4000,
     images: list[bytes] | None = None,
+    purpose: str | None = None,
 ) -> dict[str, Any]:
     """Return JSON matching `schema` by forcing the model to call a single `respond` function. The model can omit a
     required field now and then; such an answer is requested again (up to 3 attempts in all)."""
@@ -94,7 +97,7 @@ def structured(
         "tool_choice": {"type": "function", "function": {"name": "respond"}},
     }
     for _ in range(3):
-        choice = _complete(body, prompt)
+        choice = _complete(body, prompt, purpose)
         calls = choice["message"].get("tool_calls") or []
         if not calls:
             raise RuntimeError(f"model returned no structured output (finish_reason={choice.get('finish_reason')})")

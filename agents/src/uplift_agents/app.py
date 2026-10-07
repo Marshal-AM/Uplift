@@ -68,7 +68,8 @@ class _Narrated:
         self._tracer, self._role = tracer, role
 
     def markdown_sync(self, text: str):
-        trace.emit("Agent", re.sub(r"\*\*\w+\*\* · ", "", text).replace("**", ""), status="stage", kind="stage")
+        step = re.sub(r"\*\*\w+\*\* · ", "", text).replace("**", "").strip()
+        trace.emit("Agent", step[:1].upper() + step[1:], status="stage", kind="stage")
         return self._tracer.markdown_sync(text)
 
     def __getattr__(self, name: str):
@@ -88,7 +89,9 @@ def _guarded(fn):
     role = fn.__module__.rsplit(".", 1)[-1]
 
     def run(inputs: dict, tracer):
-        trace.bind(_run_id(inputs), role, process_wide=True)
+        run_id = _run_id(inputs) or ""
+        node = run_id.split(":", 1)[1] if ":" in run_id else role  # Nora's plan node: quinn_after, yuki:de
+        trace.bind(run_id or None, node, process_wide=True)
         try:
             return fn(inputs, _Narrated(tracer, role))
         except KodosumiError as exc:

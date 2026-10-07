@@ -36,7 +36,7 @@ def form_values(schema: list[dict], values: dict[str, str]) -> dict[str, str]:
     return out
 
 
-def intake(task: dict, schema: list[dict], answers: list[str]) -> dict[str, Any]:
+def intake(task: dict, schema: list[dict], answers: list[str], role: str) -> dict[str, Any]:
     fields = [{"id": f["id"], "label": f["name"], "type": f["type"], "options": (f.get("data") or {}).get("values")}
               for f in schema if f["type"] != "none" and f["id"] != "context"]
     return llm.structured(
@@ -52,7 +52,8 @@ def intake(task: dict, schema: list[dict], answers: list[str]) -> dict[str, Any]
             "uses_connected_store": {"type": "boolean"}, "product_hint": {"type": "string"},
             "missing_question": {"type": "string",
                                  "description": "one short question for anything essential that is missing"}},
-         "required": ["values", "uses_connected_store"]})
+         "required": ["values", "uses_connected_store"]},
+        purpose=f"Reading the merchant's brief into {role.title()}'s work order")
 
 
 def received(task: dict, role: str) -> None:
@@ -80,7 +81,7 @@ def advance(role: str, task_id: str) -> None:
 
         elif phase == "intake":
             schema = Kodosumi().input_schema(role)
-            parsed = intake(task, schema, st.get("answers", []))
+            parsed = intake(task, schema, st.get("answers", []), role)
             st["fields"] = form_values(schema, parsed["values"])
             # naming a product in a connected store means "work on that product" (so changes can be published)
             uses_store = role in NEEDS_STORE or parsed["uses_connected_store"] or (
