@@ -7,13 +7,14 @@ publish] → deliver → done | failed
 """
 
 import json
+import time
 from typing import Any
 
 from uplift_core import llm
 from uplift_core.hashing import change_hash, result_hash
 
 from . import cre, db, payments, runs
-from .clients import FlowError, Kodosumi, ReauthRequired, Sokosumi
+from .clients import FlowError, FlowLost, Kodosumi, ReauthRequired, Sokosumi
 from .config import settings
 
 NEEDS_STORE = {"oskar"}  # every other specialist also works from pasted copy, URLs or images
@@ -145,8 +146,17 @@ def advance(role: str, task_id: str) -> None:
             try:
                 if not st.get("fid"):  # journal the run id first so a restart resumes instead of relaunching
                     st["fid"] = kodo.launch(role, {**st["fields"], "context": json.dumps(envelope)})
+                    st["fid_at"] = time.time()
                     save(phase)
-                manifest_text = kodo.wait(st["fid"])
+                manifest_text = kodo.wait(st["fid"], st.setdefault("fid_at", time.time()))
+            except FlowLost:
+                st.pop("fid", None)
+                st["lost_runs"] = st.get("lost_runs", 0) + 1
+                if st["lost_runs"] > 2:
+                    st["error"] = "The agent could not be started; no charge was submitted."
+                    phase = "failed"
+                save(phase)
+                continue
             except ReauthRequired:
                 st.pop("fid", None)
                 runs.request_connection(client, task, "Your store connection expired.")
